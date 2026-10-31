@@ -56,6 +56,7 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 - [Navegação](docs/navegacao.md)
 - [Solo e escavação](docs/solo.md)
 - [Organização da colônia](docs/colonia.md)
+- [Campos e tarefas](docs/campos.md)
 - [Versões](CHANGELOG.md)
 
 Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validação biológica/geotécnica. Alargamento local por congestionamento não equivale à escavação completa, transporte de terra ou física granular.

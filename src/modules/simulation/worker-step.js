@@ -1,3 +1,5 @@
+import { chooseForagingHeading } from "../chemistry/forage-heading.ts";
+import { depositPheromone } from "../chemistry/reaction-diffusion.ts";
 import { soilEntrance } from "../soil/routing.ts";
 import { updateColonyWorker } from "../colony/worker.ts";
 import { updateSoilWorker } from "../soil/worker.ts";
@@ -51,7 +53,9 @@ export function updateWorkers(world, suitability) {
         ant.tunnelY = 0;
       } else {
         const destination =
-          (ant.carrying || ant.energy < 35) && ant.node !== 4
+          (ant.carrying ||
+            (ant.energy < 35 && world.tick >= (ant.stockEmptyUntil || 0))) &&
+          ant.node !== 4
             ? 4
             : soilEntrance(world, ant);
         ant.route = nestPath(world.nest, ant.node, destination);
@@ -74,7 +78,10 @@ export function updateWorkers(world, suitability) {
     if (danger) {
       heading = Math.atan2(ant.z - danger.z, ant.x - danger.x);
       ant.state = "Fugindo";
-    } else if (ant.carrying || ant.energy < 35) {
+    } else if (
+      ant.carrying ||
+      (ant.energy < 35 && world.tick >= (ant.stockEmptyUntil || 0))
+    ) {
       let entrances = world.nest.nodes
         .map((p, i) => ({ ...p, index: i }))
         .filter((p) => p.type === "entrance");
@@ -124,32 +131,13 @@ export function updateWorkers(world, suitability) {
         }
       } else {
         ant.state = "Explorando";
-        const spread = 0.7;
-        const choices = [heading - spread, heading, heading + spread];
-        let max = -1;
-        for (const angle of choices) {
-          const score =
-            world.pheromones[
-              world.pheromoneIndex(
-                ant.x + Math.cos(angle) * 0.7,
-                ant.z + Math.sin(angle) * 0.7,
-              )
-            ];
-          if (score > max) {
-            max = score;
-            heading = angle;
-          }
-        }
-        // Local exploration is stochastic and reproducible from this world's seed.
-        heading +=
-          world.range(-0.35, 0.35) * (world.params.randomness / 50 + 0.2);
-        if (max < 0.04) heading = ant.angle + world.range(-0.5, 0.5);
+        heading = chooseForagingHeading(world, ant, heading);
       }
     }
     world.moveSurface(ant, heading, ant.speed);
     if (ant.carrying) {
       const idx = world.pheromoneIndex(ant.x, ant.z);
-      world.pheromones[idx] = Math.min(5, world.pheromones[idx] + 0.25);
+      depositPheromone(world.pheromones, idx, 0.25);
     }
   }
 

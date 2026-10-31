@@ -41,13 +41,32 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
           ant.node === p.from &&
           world.ants.filter((a) => a.soilTask?.projectId === p.id).length < 2,
       );
-      if (!project || ant.id % 4 || ant.carrying || world.food < 2)
+      if (
+        !project ||
+        ("role" in ant ? ant.role !== "excavator" : ant.id % 4 !== 0) ||
+        ant.carrying ||
+        world.food < 2
+      )
         return false;
       ant.soilTask = { projectId: project.id, phase: "return", digTicks: 0 };
       ant.route = nestPath(world.nest, ant.node!, project.front);
     }
   }
   const task = ant.soilTask;
+  if (
+    (ant.y || 0) >= -0.04 &&
+    ant.node != null &&
+    Math.hypot(
+      ant.x - world.nest.nodes[ant.node].x,
+      ant.z - world.nest.nodes[ant.node].z,
+    ) > 1.2
+  ) {
+    ant.node = null;
+    ant.route = [];
+    ant.tunnelCenter = null;
+    delete ant.supportMotion;
+    if (ant.navigation) ant.navigation.retreating = false;
+  }
   if (ant.node == null && task.phase !== "dump") {
     ant.route = [];
     task.phase = (ant.carryingSoil || 0) > 0 ? "dump" : "return";
@@ -146,6 +165,11 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
       delete ant.soilTask;
       ant.route = nestPath(world.nest, ant.node!, 0);
     }
+    return true;
+  }
+  if (ant.node !== project.front) {
+    task.phase = "return";
+    ant.route = nestPath(world.nest, ant.node!, project.front);
     return true;
   }
   task.phase = "dig";

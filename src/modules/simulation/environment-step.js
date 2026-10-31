@@ -1,3 +1,4 @@
+import { diffuseEvaporate } from "../chemistry/reaction-diffusion.ts";
 import { updateBroodLifecycle } from "../colony/lifecycle.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { nestPath } from "./nest.ts";
@@ -21,8 +22,16 @@ export function updateEnvironment(world) {
     if (!p.supplemental)
       p.amount = Math.min(p.capacity, p.amount + plantGrowth * 0.0028);
   }
-  for (let i = 0; i < world.pheromones.length; i++)
-    world.pheromones[i] *= 0.986;
+  diffuseEvaporate(world.pheromones, {
+    width: 40,
+    height: 26,
+    cellSize: 0.5,
+    diffusion: 0.008 + h * 0.008,
+    decay: 0.012 + (1 - h) * 0.012,
+    dt: 1,
+    windX: world.params.windX || 0,
+    windZ: world.params.windZ || 0,
+  });
   updateBroodLifecycle(world, suitability);
   return suitability;
 }

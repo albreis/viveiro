@@ -118,14 +118,22 @@ test("underground routes deliver food in the storage chamber and lead back to an
     node: 4,
     route: [4],
     carrying: 1,
+    bioTask: undefined,
+    soilTask: undefined,
+    carryingBrood: 0,
+    carryingWaste: 0,
+    role: "forager",
+    nextTaskChoice: 1000000,
     supportMotion: undefined,
     navigation: undefined,
     tunnelY: storage.y,
     tunnelCenter: { x: storage.x, y: storage.y, z: storage.z },
   });
-  const before = w.food + ant.crop;
+  const nutrition = () =>
+    w.food + w.ants.reduce((n, a) => n + (a.crop || 0), 0);
+  const before = nutrition();
   w.step();
-  assert.ok(w.food + ant.crop > before + 0.8);
+  assert.ok(nutrition() > before + 0.8);
   assert.equal(ant.carrying, 0);
   assert.ok(ant.route.length > 0);
   w.step(250);

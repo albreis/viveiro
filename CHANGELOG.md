@@ -1,5 +1,15 @@
 # Versões
 
+## Em desenvolvimento — campos e tarefas (4A)
+
+- Difusão, evaporação e advecção conservativas com subpassos estáveis.
+- Escolha ACO por amostragem, com exploração residual.
+- Limiares individuais, estímulos locais e modulação por idade/casta.
+- Trofalaxia bloqueada por paredes de solo.
+- Correção de destinos após desvios e regressão de retorno à escavação.
+- Casos matemáticos, regressões e build validados; navegador ainda pendente.
+
+
 ## Em desenvolvimento — organização da colônia
 
 - Trofalaxia conservativa, reserva social e alimentação pela despensa.

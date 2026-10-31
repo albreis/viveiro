@@ -165,3 +165,27 @@ test("a local repair worker clears a collapse through repeated trips to the surf
   );
   assert.ok(w.soil.deposited > 0);
 });
+
+test("a detour ending at another entrance does not complete an excavation return", async () => {
+  const { arriveWithSoil } = await import("../src/modules/soil/routing.ts");
+  const w = new World("detour-job"),
+    project = proposeDig(w, 3);
+  assert.ok(project);
+  const node = w.nest.nodes[6],
+    ant = w.makeAnt("worker", node.x, node.z);
+  Object.assign(ant, {
+    node: 6,
+    route: [],
+    soilTask: { projectId: project.id, phase: "return", digTicks: 0 },
+  });
+  arriveWithSoil(w, ant, 6);
+  assert.equal(ant.soilTask.phase, "return");
+  updateSoilWorker(w, ant);
+  assert.ok(
+    w.nest.links.some(
+      ([a, b]) =>
+        (a === 6 && b === ant.route[0]) || (b === 6 && a === ant.route[0]),
+    ),
+  );
+  assert.notEqual(ant.route[0], project.front);
+});

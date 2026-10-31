@@ -10,7 +10,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0          |
 | 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
 | 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Em desenvolvimento    |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Planejada             |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Em desenvolvimento             |
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada             |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada             |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração |
@@ -117,3 +117,11 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Castas, diferenças individuais e papéis ligados à idade.
 - Migração de snapshots e contador de trocas de alimento.
 - Testes biológicos e de movimento em andamento; publicação aguarda conferência visual.
+
+### Progresso da etapa 4A — 31/10/2026
+
+- Branch: codex/campos-e-tarefas.
+- Fluxos químicos conservativos, difusão, evaporação e vento com subpassos estáveis.
+- Escolha ACO amostrada e respostas por limiares individuais.
+- Estímulos locais, memória de necessidades e contato sem atravessar solo.
+- Roteamento interno ainda usa o grafo conhecido do ninho; a remoção dessa dependência é a próxima parte (4B).

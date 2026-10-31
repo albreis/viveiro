@@ -1,3 +1,4 @@
+import { taskThresholds } from "./response.ts";
 import { hashSeed } from "../simulation/seed.ts";
 import type { ColonyAgent, ColonyState } from "./types.ts";
 
@@ -7,6 +8,7 @@ export function individualTraits(seed: string, id: number, kind: string) {
   const major = kind === "worker" && value("caste") < 0.12;
   return {
     crop: kind === "queen" ? 0.6 : 0,
+    thresholds: taskThresholds(seed, id),
     caste: major ? ("major" as const) : ("minor" as const),
     traits: {
       activity: 0.15 + value("activity") * 0.85,
@@ -33,4 +35,5 @@ export function ensureIndividual(seed: string, ant: ColonyAgent) {
   if (!ant.traits)
     Object.assign(ant, individualTraits(seed, ant.id, ant.kind || "worker"));
   ant.crop ??= 0;
+  ant.thresholds ??= taskThresholds(seed, ant.id);
 }
