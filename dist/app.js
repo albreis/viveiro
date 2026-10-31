@@ -14,13 +14,13 @@ function load(){
     if(saved?.version===1&&saved.world?.seed&&Array.isArray(saved.world.ants)&&saved.world.ants.length<=450){
       world=World.restore(saved.world);initial=saved.initial;interventions=saved.interventions||[];
       comparison=saved.comparison?World.restore(saved.comparison):null;scenario=saved.scenario==='b'&&comparison?'b':'a';
-      replaying=!!saved.replaying;replayIndex=saved.replayIndex||0;running=false;return;
+      replaying=!!saved.replaying;replayIndex=saved.replayIndex||0;running=saved.running!==false;return;
     }
   }catch{}
   world=new World(initial.seed,initial.params);
 }
 function save(){
-  try{localStorage.setItem('viveiro-v1',JSON.stringify({version:1,world:world.snapshot(),comparison:comparison?.snapshot(),scenario,initial,interventions,replaying,replayIndex}));$('save-status').textContent='Progresso salvo neste navegador';}
+  try{localStorage.setItem('viveiro-v1',JSON.stringify({version:1,world:world.snapshot(),comparison:comparison?.snapshot(),scenario,initial,interventions,replaying,replayIndex,running}));$('save-status').textContent='Progresso salvo neste navegador';}
   catch{$('save-status').textContent='Armazenamento indisponível · use Exportar dados';}
 }
 function intervention(type,x=0,z=0,value){
@@ -51,6 +51,7 @@ function syncControls(){
   $('seed').value=initial.seed;
   $('play').textContent=running?'Ⅱ':'▶';$('play').setAttribute('aria-label',running?'Pausar simulação':'Continuar simulação');
   $('status-text').textContent=running?'ECOSSISTEMA VIVO':'OBSERVAÇÃO PAUSADA';
+  $('resume-overlay').hidden=running;
   $('comparison-panel').hidden=!comparison;$('chart-b-legend').hidden=!comparison;$('chart-comparison-legend').hidden=!comparison;
   $('compare').firstChild.textContent=comparison?'Encerrar comparação ':'Comparar dois cenários ';
   document.querySelectorAll('[data-scenario]').forEach(b=>b.classList.toggle('active',b.dataset.scenario===scenario));
@@ -105,7 +106,7 @@ function updateAntCamera(w){
   if(!w.ants.some(a=>a.id===selectedAnt))selectedAnt=w.workers[0]?.id??w.ants[0]?.id??null;
   $('ant-select').value=String(selectedAnt??'');
   const ant=w.ants.find(a=>a.id===selectedAnt);
-  $('ant-state').textContent=ant?(ant.y<-.1?'Subsolo · ':'Superfície · ')+ant.state+' · energia '+Math.round(ant.energy)+'%':'Nenhuma formiga viva.';
+  $('ant-state').textContent=ant?(!running?'Pausada · ':'')+(ant.y<-.1?'Subsolo · ':'Superfície · ')+ant.state+' · percurso '+format(ant.distanceWalked||0)+' u.':'Nenhuma formiga viva.';
   $('follow-ant').disabled=!ant;$('follow-ant').hidden=!!scene?.followId;$('exit-ant').hidden=!scene?.followId;
   $('scene-guide').textContent=scene?.followId?'Arraste para olhar · Esc para sair':scene?.tool?'Clique no solo · Esc para sair':'Arraste para orbitar · Role para aproximar';
 }
@@ -159,6 +160,7 @@ for(const key of ['humidity','light','randomness']){
 }
 $('rain').onclick=()=>{intervention('rain');toast('A umidade aumentou. Observe a resposta do ambiente.');};
 $('play').onclick=()=>{running=!running;accumulator=0;syncControls();save();};
+$('resume-overlay').onclick=()=>{if(!running)$('play').click();};
 document.querySelectorAll('[data-speed]').forEach(button=>button.onclick=()=>{
   speed=Number(button.dataset.speed);document.querySelectorAll('[data-speed]').forEach(b=>b.classList.toggle('active',b===button));
 });

@@ -75,7 +75,7 @@ export class World {
   get population() { return this.ants.length; }
   inPond(x,z) { return ((x - 4.3) / 1.9) ** 2 + ((z + 2.5) / 1.35) ** 2 < 1; }
   makeAnt(kind, x, z) {
-    return { id: this.nextId++, kind, x, y:0, z, angle: this.range(0, Math.PI * 2),
+    return { id: this.nextId++, kind, x, y:0, z, distanceWalked:0, angle: this.range(0, Math.PI * 2),
       energy: 100, age: 0, carrying: 0, speed: this.range(.07,.105), state: kind === 'queen' ? 'Fundando o ninho' : 'Explorando', rest: 0 };
   }
   moveInNest(ant) {
@@ -83,6 +83,7 @@ export class World {
     if(!target){ant.route=[];return;}
     const dx=target.x-ant.x,dy=target.y-ant.y,dz=target.z-ant.z,d=Math.hypot(dx,dy,dz);
     const speed=ant.speed*.85;
+    ant.distanceWalked=(ant.distanceWalked||0)+Math.min(d,speed);
     ant.state=ant.carrying?'Indo para a despensa':'Percorrendo uma galeria';
     if(d<=speed){
       Object.assign(ant,{x:target.x,y:target.y,z:target.z,node:ant.route.shift()});
@@ -98,6 +99,22 @@ export class World {
       ant.x+=dx/d*speed;ant.y+=dy/d*speed;ant.z+=dz/d*speed;
       ant.angle=Math.atan2(dz,dx);ant.pitch=Math.atan2(dy,Math.hypot(dx,dz));
     }
+  }
+  moveSurface(entity,heading,speed,predator=false) {
+    const blocked=(x,z)=>Math.abs(x)>BOUNDS.x||Math.abs(z)>BOUNDS.z||this.inPond(x,z)||
+      (predator&&this.nest.nodes.some(n=>n.type==='entrance'&&distance({x,z},n)<1.3));
+    if(entity.avoidTicks>0){heading=entity.avoidAngle;entity.avoidTicks--;}
+    let x=entity.x+Math.cos(heading)*speed,z=entity.z+Math.sin(heading)*speed;
+    if(blocked(x,z)){
+      let found=false;
+      for(const turn of [.5,-.5,1,-1,1.5,-1.5,2.1,-2.1,Math.PI]){
+        const candidate=heading+turn,tx=entity.x+Math.cos(candidate)*speed,tz=entity.z+Math.sin(candidate)*speed;
+        if(!blocked(tx,tz)){heading=candidate;x=tx;z=tz;entity.avoidTicks=10;entity.avoidAngle=heading;found=true;break;}
+      }
+      if(!found){entity.angle+=1;return false;}
+    }
+    entity.distanceWalked=(entity.distanceWalked||0)+Math.hypot(x-entity.x,z-entity.z);
+    entity.x=x;entity.z=z;entity.angle=heading;return true;
   }
   log(text, type = 'info') {
     this.events.unshift({ tick: this.tick, day: this.day, text, type });
@@ -239,11 +256,7 @@ export class World {
           if(max<.04) heading=ant.angle+this.range(-.5,.5);
         }
       }
-      const dx=Math.cos(heading)*ant.speed, dz=Math.sin(heading)*ant.speed;
-      const x=ant.x+dx, z=ant.z+dz;
-      if(Math.abs(x)>BOUNDS.x || Math.abs(z)>BOUNDS.z || this.inPond(x,z)) {
-        ant.angle=heading+this.range(1.3,2.1);
-      } else { ant.x=x; ant.z=z; ant.angle=heading; }
+      this.moveSurface(ant,heading,ant.speed);
       if(ant.carrying) {
         const idx=this.pheromoneIndex(ant.x,ant.z);
         this.pheromones[idx]=Math.min(5,this.pheromones[idx]+.25);
@@ -264,9 +277,7 @@ export class World {
         }
       } else if(this.random()<.07) p.angle+=this.range(-1,1);
       const speed=target?.kind ? .062 : .024;
-      const x=p.x+Math.cos(p.angle)*speed,z=p.z+Math.sin(p.angle)*speed;
-      if(Math.abs(x)>BOUNDS.x || Math.abs(z)>BOUNDS.z || this.inPond(x,z) || distance({x,z},NEST)<1.4) p.angle+=1.8;
-      else {p.x=x;p.z=z;}
+      this.moveSurface(p,p.angle,speed,true);
     }
     this.predators=this.predators.filter(p=>p.energy>0);
     this.ants=this.ants.filter(a=>!dead.has(a.id));
