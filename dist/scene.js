@@ -61,14 +61,12 @@ export class Terrarium {
       if(this.followId||moved>6)return;
       const p=this.groundPoint(e);
       if(this.tool){if(p)this.onPlace(this.tool,p.x,p.z);return;}
-      const hits=this.raycaster.intersectObjects([...this.antParts,this.queen,this.male,this.soil],true);
-      if(hits.length){const hit=hits[0];let id=null;
-        if(this.antParts.includes(hit.object))id=this.visibleWorkers[hit.instanceId]?.id;
-        else{let obj=hit.object;while(obj.parent&&obj!==this.queen&&obj!==this.male)obj=obj.parent;
-          if(obj===this.queen)id=this.world.ants.find(a=>a.kind==='queen')?.id;
-          if(obj===this.male)id=this.world.ants.find(a=>a.kind==='male')?.id;}
-        if(id){this.selectedId=id;this.onSelect?.(id);}
-      }
+      const id=this.pickAnt(e);if(id){this.selectedId=id;this.onSelect?.(id);}
+    });
+    this.renderer.domElement.addEventListener('dblclick',e=>{
+      if(this.tool||this.followId)return;
+      const id=this.pickAnt(e);if(!id)return;e.preventDefault();
+      this.selectedId=id;this.onSelect?.(id);this.followAnt(id);this.onFollowStarted?.(id);
     });
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(element);this.resize();
     this.plantViews=new Map();this.foodViews=new Map();this.lastTick=-1;
@@ -209,6 +207,28 @@ export class Terrarium {
       }
     });
     for(const m of parts)m.instanceMatrix.needsUpdate=true;
+  }
+  pickAnt(e){
+    this.groundPoint(e);
+    const hits=this.raycaster.intersectObjects([...this.antParts,this.queen,this.male,this.soil],true);
+    if(hits.length){const hit=hits[0];
+      if(this.antParts.includes(hit.object))return this.visibleWorkers[hit.instanceId]?.id;
+      let obj=hit.object;while(obj.parent&&obj!==this.queen&&obj!==this.male)obj=obj.parent;
+      if(obj===this.queen)return this.world.ants.find(a=>a.kind==='queen')?.id;
+      if(obj===this.male)return this.world.ants.find(a=>a.kind==='male')?.id;
+    }
+    // A modest screen-space tolerance keeps tiny ants selectable without selecting through soil.
+    const rect=this.element.getBoundingClientRect();let nearest=null,best=12;
+    for(const ant of this.world.ants){
+      const v=new THREE.Vector3(ant.x,(ant.y||0)+.13,ant.z).project(this.camera);if(v.z<0||v.z>1)continue;
+      const px=rect.left+(v.x+1)/2*rect.width,py=rect.top+(1-v.y)/2*rect.height,d=Math.hypot(e.clientX-px,e.clientY-py);
+      if(d<best){nearest=ant;best=d;}
+    }
+    if(!nearest)return null;
+    const point=new THREE.Vector3(nearest.x,(nearest.y||0)+.13,nearest.z),delta=point.clone().sub(this.camera.position),length=delta.length();
+    this.raycaster.set(this.camera.position,delta.normalize());
+    const soil=this.raycaster.intersectObject(this.soil);
+    return soil[0]&&soil[0].distance<length-.15?null:nearest.id;
   }
   groundPoint(e) {
     const r=this.element.getBoundingClientRect();this.pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
