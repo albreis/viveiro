@@ -21,6 +21,8 @@ export class Terrarium {
     this.controls.maxPolarAngle=Math.PI*.47; this.controls.minPolarAngle=.07;
     this.controls.enablePan=true;
     this.scene.add(new THREE.HemisphereLight(0xf4f4da,0x6d7357,3.2));
+    this.followLight=new THREE.PointLight(0xffe5b5,0,4,1.5);this.scene.add(this.followLight);
+    this.followId=null;this.selectedId=null;this.lookYaw=0;this.lookPitch=0;
     const sun=new THREE.DirectionalLight(0xfff0c6,4.3); sun.position.set(-6,18,9);
     sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
     sun.shadow.camera.left=-16;sun.shadow.camera.right=16;sun.shadow.camera.top=15;sun.shadow.camera.bottom=-15;
@@ -46,15 +48,27 @@ export class Terrarium {
     this.marker.rotation.x=-Math.PI/2;this.marker.position.y=.045;this.marker.visible=false;this.scene.add(this.marker);
     this.raycaster=new THREE.Raycaster();this.pointer=new THREE.Vector2();this.plane=new THREE.Plane(UP,0);
     let down=null;
-    this.renderer.domElement.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};});
+    this.renderer.domElement.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY};});
     this.renderer.domElement.addEventListener('pointermove',e=>{
+      if(this.followId&&down){this.lookYaw+=(e.clientX-down.lastX)*.004;this.lookPitch=Math.max(-.8,Math.min(.8,this.lookPitch-(e.clientY-down.lastY)*.004));down.lastX=e.clientX;down.lastY=e.clientY;return;}
       const p=this.groundPoint(e);this.marker.visible=!!this.tool&&!!p;
       if(p)this.marker.position.set(p.x,.045,p.z);
     });
     this.renderer.domElement.addEventListener('pointerleave',()=>this.marker.visible=false);
     this.renderer.domElement.addEventListener('pointerup',e=>{
-      if(!this.tool||!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>6)return;
-      const p=this.groundPoint(e);if(p)this.onPlace(this.tool,p.x,p.z);down=null;
+      if(!down)return;
+      const moved=Math.hypot(e.clientX-down.x,e.clientY-down.y);down=null;
+      if(this.followId||moved>6)return;
+      const p=this.groundPoint(e);
+      if(this.tool){if(p)this.onPlace(this.tool,p.x,p.z);return;}
+      const hits=this.raycaster.intersectObjects([...this.antParts,this.queen,this.male,this.soil],true);
+      if(hits.length){const hit=hits[0];let id=null;
+        if(this.antParts.includes(hit.object))id=this.visibleWorkers[hit.instanceId]?.id;
+        else{let obj=hit.object;while(obj.parent&&obj!==this.queen&&obj!==this.male)obj=obj.parent;
+          if(obj===this.queen)id=this.world.ants.find(a=>a.kind==='queen')?.id;
+          if(obj===this.male)id=this.world.ants.find(a=>a.kind==='male')?.id;}
+        if(id){this.selectedId=id;this.onSelect?.(id);}
+      }
     });
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(element);this.resize();
     this.plantViews=new Map();this.foodViews=new Map();this.lastTick=-1;
@@ -146,11 +160,12 @@ export class Terrarium {
     const patchIds=new Set(world.patches.map(p=>p.id));
     for(const [id,view] of this.foodViews)if(!patchIds.has(id)){this.foodGroup.remove(view);view.geometry.dispose();view.material.dispose();this.foodViews.delete(id);}
     for(const p of world.patches){let m=this.foodViews.get(p.id);if(!m){m=this.mesh(new THREE.DodecahedronGeometry(.16,0),this.material('#c9a24f'),this.foodGroup,p.x,.12,p.z);this.foodViews.set(p.id,m);}m.visible=p.amount>.06;m.scale.setScalar(.5+Math.sqrt(p.amount)*.32);}
-    this.updateAnts(world.workers,this.antParts,false,time);
+    this.visibleWorkers=world.workers.filter(a=>a.id!==this.followId);
+    this.updateAnts(this.visibleWorkers,this.antParts,false,time);
     this.updateAnts(world.predators,this.predatorParts,true,time);
-    const queen=world.ants.find(a=>a.kind==='queen');this.queen.visible=!!queen;
+    const queen=world.ants.find(a=>a.kind==='queen');this.queen.visible=!!queen&&queen.id!==this.followId;
     if(queen){this.queen.position.set(queen.x,(queen.y||0)+.07,queen.z);this.queen.rotation.y=.6;}
-    const male=world.ants.find(a=>a.kind==='male');this.male.visible=!!male;
+    const male=world.ants.find(a=>a.kind==='male');this.male.visible=!!male&&male.id!==this.followId;
     if(male){this.male.position.set(male.x,.18,male.z);this.male.rotation.y=Math.sin(time)*.3;}
     const dummy=new THREE.Object3D();
     this.broodMesh.count=Math.min(world.brood.length,LIMIT);
@@ -159,6 +174,17 @@ export class Terrarium {
     this.broodMesh.instanceMatrix.needsUpdate=true;
     this.trails.visible=this.showTrails;
     if(this.showTrails){const colors=this.trails.geometry.attributes.color;for(let i=0;i<1040;i++){const v=Math.min(1,world.pheromones[i]/2);colors.setXYZ(i,v*.7,v,v*.2);}colors.needsUpdate=true;}
+    if(this.followId){
+      const ant=world.ants.find(a=>a.id===this.followId);
+      if(!ant){this.stopFollowing();this.onFollowEnded?.();}
+      else{
+        const heading=(ant.kind==='queen'?-.6:ant.angle)+this.lookYaw,pitch=(ant.pitch||0)+this.lookPitch;
+        const eye=new THREE.Vector3(ant.x+Math.cos(ant.angle)*.13,(ant.y||0)+.17,ant.z+Math.sin(ant.angle)*.13);
+        this.camera.position.lerp(eye,.35);
+        const target=this.camera.position.clone().add(new THREE.Vector3(Math.cos(heading)*Math.cos(pitch),Math.sin(pitch),Math.sin(heading)*Math.cos(pitch)));
+        this.camera.lookAt(target);this.followLight.position.copy(eye);this.followLight.intensity=ant.y<-.1?1.8:0;
+      }
+    }
   }
   updateAnts(agents,parts,spider,time) {
     const d=new THREE.Object3D(),q=new THREE.Quaternion(),axis=new THREE.Vector3();
@@ -190,14 +216,30 @@ export class Terrarium {
     if(!this.raycaster.ray.intersectPlane(this.plane,v)||Math.abs(v.x)>9.3||Math.abs(v.z)>5.8)return null;return v;
   }
   setTool(tool){this.tool=tool;this.controls.enableRotate=!tool;this.renderer.domElement.style.cursor=tool?'crosshair':'grab';if(!tool)this.marker.visible=false;}
+  followAnt(id){
+    const ant=this.world.ants.find(a=>a.id===Number(id));if(!ant)return false;
+    if(!this.followId)this.previousView={position:this.camera.position.clone(),target:this.controls.target.clone()};
+    this.followId=ant.id;this.lookYaw=0;this.lookPitch=0;
+    this.controls.enabled=false;this.camera.fov=82;this.camera.near=.018;this.camera.updateProjectionMatrix();
+    this.camera.position.set(ant.x,(ant.y||0)+.17,ant.z);this.setTool(null);
+    return true;
+  }
+  stopFollowing(){
+    if(!this.followId)return;
+    this.followId=null;this.controls.enabled=true;this.followLight.intensity=0;
+    this.camera.fov=37;this.camera.near=.1;this.camera.updateProjectionMatrix();
+    if(this.previousView){this.camera.position.copy(this.previousView.position);this.controls.target.copy(this.previousView.target);}
+    this.controls.update();
+  }
   setView(view){
+    this.stopFollowing();
     const lateral=view==='side',top=view===true;
     this.controls.maxPolarAngle=lateral?Math.PI*.6:Math.PI*.47;
     this.camera.position.set(lateral?0:top?.01:22,lateral?-1.2:top?35:23,lateral?29:top?.01:27);
     this.controls.target.set(0,lateral?-1.9:-.7,lateral?2:0);this.controls.update();
   }
   resize(){const {width,height}=this.element.getBoundingClientRect();if(!width||!height)return;this.camera.aspect=width/height;this.camera.updateProjectionMatrix();this.renderer.setSize(width,height);}
-  render(){this.controls.update();this.renderer.render(this.scene,this.camera);}
+  render(){if(!this.followId)this.controls.update();this.renderer.render(this.scene,this.camera);}
   dispose(){
     this.resizeObserver.disconnect();this.controls.dispose();
     const geos=new Set(),mats=new Set(),textures=new Set();

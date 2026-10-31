@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { World, forecast, LIMIT } from '../dist/simulation.js';
+import { World, forecast, LIMIT, nestPath } from '../dist/simulation.js';
 test('same seed and timed actions reproduce the same complete state',()=>{
   const a=new World('reproducible'),b=new World('reproducible');
   for(let i=0;i<650;i++){if(i===130){a.intervene('rain');b.intervene('rain');}if(i===230){a.intervene('food',-2,1);b.intervene('food',-2,1);}a.step();b.step();}
@@ -31,4 +31,12 @@ test('predators can catch workers while the nest remains a refuge',()=>{
   w.predators=[{id:9999,x:5,z:3,angle:0,energy:100,cooldown:0,prey:0}];w.step(50);
   assert.ok(!w.ants.some(a=>a.id===prey.id));assert.ok(w.deaths>0);assert.ok(w.ants.some(a=>a.kind==='queen'));
   assert.equal(w.addPredator(5,5),true);assert.equal(w.intervene('predator',-4.8,-1.1),false);
+});
+test('underground routes deliver food in the storage chamber and lead back to an entrance',()=>{
+  const w=new World('galleries');w.step(210);const ant=w.workers[0],storage=w.nest.nodes[4];
+  assert.ok(w.ants.find(a=>a.kind==='queen').y<0);
+  Object.assign(ant,{x:storage.x,y:storage.y,z:storage.z,node:4,route:[4],carrying:1});
+  const before=w.food;w.step();assert.ok(w.food>before+.8);assert.equal(ant.carrying,0);assert.ok(ant.route.length>0);
+  w.step(250);assert.ok(ant.y>=-.1||ant.carrying>0||ant.route.length>0);
+  assert.ok(nestPath(w.nest,0,3).length>=3);
 });
