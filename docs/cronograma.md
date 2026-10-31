@@ -159,3 +159,20 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Navegador: nova seed/paisagem, quatro lados, observação interna, primeira pessoa e retorno.
 - Build de produção e TypeScript aprovados.
 - Modelos continuam exploratórios; as etapas científicas restantes não são dadas como concluídas.
+
+### PRs abertos para revisão, em ordem
+
+| Ordem | PR                                              | Entrega                                   |
+| ----- | ----------------------------------------------- | ----------------------------------------- |
+| 1     | [#1](https://github.com/albreis/viveiro/pull/1) | Recuperação nas paredes e migração para G |
+| 2     | [#2](https://github.com/albreis/viveiro/pull/2) | Túneis vivos, terra e reparos             |
+| 3     | [#3](https://github.com/albreis/viveiro/pull/3) | Organização e alimentação da colônia      |
+| 4     | [#4](https://github.com/albreis/viveiro/pull/4) | Reação-difusão, ACO e tarefas             |
+| 5     | [#5](https://github.com/albreis/viveiro/pull/5) | Sensores locais e memória                 |
+| 6     | [#6](https://github.com/albreis/viveiro/pull/6) | Terrário procedural e ecologia dinâmica   |
+
+Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
+a base do próximo para main. Branches antigas já incorporadas não recebem PRs
+vazios. A branch de genética ainda não tem mudanças próprias e terá PR quando
+a implementação da etapa 5 estiver concluída. Novas etapas seguem este fluxo
+automaticamente.
