@@ -40,3 +40,10 @@ test('underground routes deliver food in the storage chamber and lead back to an
   w.step(250);assert.ok(ant.y>=-.1||ant.carrying>0||ant.route.length>0);
   assert.ok(nestPath(w.nest,0,3).length>=3);
 });
+test('a worker approaching water can bypass it instead of remaining stuck at its edge',()=>{
+  const w=new World('water');const ant={x:2.39,z:-2.5,y:0,angle:0,distanceWalked:0};
+  const origin={...ant};
+  for(let i=0;i<100;i++)w.moveSurface(ant,Math.atan2(-2.5-ant.z,6.5-ant.x),.09);
+  assert.ok(Math.hypot(ant.x-origin.x,ant.z-origin.z)>2);
+  assert.ok(ant.distanceWalked>5);assert.ok(!w.inPond(ant.x,ant.z));
+});

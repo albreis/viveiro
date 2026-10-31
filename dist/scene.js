@@ -201,7 +201,7 @@ export class Terrarium {
       const legs=spider?8:6;
       for(let p=0;p<legs;p++){
         const side=p%2?1:-1,along=Math.floor(p/2)-1;
-        const walk=Math.sin(time*18+a.id+along*2)*.035;
+        const walk=Math.sin((a.distanceWalked||0)*25+a.id+along*2)*.035;
         const ax=a.x+c*along*.07*scale-s*side*.045*scale,az=a.z+s*along*.07*scale+c*side*.045*scale;
         const bx=a.x+c*(along*.12+walk)*scale-s*side*.16*scale,bz=a.z+s*(along*.12+walk)*scale+c*side*.16*scale;
         axis.set(bx-ax,-.095*scale,bz-az);const len=axis.length();q.setFromUnitVectors(UP,axis.normalize());

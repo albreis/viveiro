@@ -8,6 +8,7 @@
   <title>Viveiro — um pequeno mundo vivo</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./interaction.css">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
 </head>
 <body>
@@ -46,7 +47,7 @@
       <section class="center-panel">
         <div class="scene-card">
           <div class="scene-toolbar"><div class="live-status"><i></i><span id="status-text">ECOSSISTEMA VIVO</span></div><div class="view-switch"><button id="view-iso" class="active" aria-label="Vista em perspectiva" title="Perspectiva">◇</button><button id="view-top" aria-label="Vista de cima" title="Vista de cima">▦</button><button id="view-side" aria-label="Vista lateral dos túneis" title="Túneis junto ao vidro">▤</button><button id="fullscreen" aria-label="Tela cheia" title="Tela cheia">⛶</button></div></div>
-          <div id="viewport" role="img" aria-label="Terrário tridimensional com formigas, plantas, lago e aranhas"><div id="loading"><span class="loading-leaf">⚘</span>Preparando um pequeno mundo…</div></div>
+          <div id="viewport" role="img" aria-label="Terrário tridimensional com formigas, plantas, lago e aranhas"><div id="loading"><span class="loading-leaf">⚘</span>Preparando um pequeno mundo…</div><button id="resume-overlay" hidden>Simulação pausada · Continuar ▶</button></div>
           <div class="ant-camera"><div><span class="eyebrow">NA PERSPECTIVA DE UMA FORMIGA</span><span id="ant-state">Escolha uma habitante para acompanhar.</span></div><select id="ant-select" aria-label="Formiga para acompanhar"></select><button id="follow-ant">1ª pessoa ↗</button><button id="exit-ant" hidden>Sair da formiga</button></div>
           <div class="scene-caption"><span class="scene-tag"><i class="green-dot"></i> Terrário de floresta</span><span id="scene-guide">Arraste para orbitar · Role para aproximar</span></div>
           <div class="scene-controls">
