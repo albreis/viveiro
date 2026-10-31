@@ -10,17 +10,27 @@ export interface SoilMeshData {
   colors: Float32Array;
   wallCount: number;
   topCount: number;
+  innerCount: number;
 }
 export function soilMeshData(nest: NestState): SoilMeshData {
-  const { walls, top } = polygonize(buildMeshGrid(nest), (v) =>
+  const { walls, top, inner } = polygonize(buildMeshGrid(nest), (v) =>
     projectSoilVertex(nest, v),
   );
   return {
-    positions: new Float32Array([...walls.positions, ...top.positions]),
-    normals: new Float32Array([...walls.normals, ...top.normals]),
-    uvs: new Float32Array([...walls.uvs, ...top.uvs]),
-    colors: new Float32Array([...walls.colors, ...top.colors]),
+    positions: new Float32Array([
+      ...walls.positions,
+      ...top.positions,
+      ...inner.positions,
+    ]),
+    normals: new Float32Array([
+      ...walls.normals,
+      ...top.normals,
+      ...inner.normals,
+    ]),
+    uvs: new Float32Array([...walls.uvs, ...top.uvs, ...inner.uvs]),
+    colors: new Float32Array([...walls.colors, ...top.colors, ...inner.colors]),
     wallCount: walls.positions.length / 3,
     topCount: top.positions.length / 3,
+    innerCount: inner.positions.length / 3,
   };
 }

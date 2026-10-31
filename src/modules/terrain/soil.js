@@ -12,6 +12,7 @@ export function geometryFromSoilData(data) {
     geometry.setAttribute(name, new THREE.BufferAttribute(data[key], size));
   geometry.addGroup(0, data.wallCount, 0);
   geometry.addGroup(data.wallCount, data.topCount, 1);
+  geometry.addGroup(data.wallCount + data.topCount, data.innerCount, 2);
   geometry.computeBoundingSphere();
   return geometry;
 }

@@ -12,6 +12,7 @@ const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 export function updateWorkers(world, suitability) {
   const dead = new Set();
   for (const ant of world.ants) {
+    ant.previousAngle = ant.angle;
     ant.previousX = ant.x;
     ant.previousY = ant.y || 0;
     ant.previousZ = ant.z;

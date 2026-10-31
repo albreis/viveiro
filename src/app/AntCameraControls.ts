@@ -6,6 +6,8 @@ interface SceneControls {
   followAnt(id: number): boolean;
   stopFollowing(): void;
   setView(view: boolean | "side"): void;
+  setInterior(visible: boolean): void;
+  viewLabel?: string;
   onSelect?: (id: number) => void;
   onFollowStarted?: (id: number) => void;
   onFollowEnded?: () => void;
@@ -55,6 +57,10 @@ export class AntCameraControls {
     element("view-top").onclick = () => this.setView(true);
     element("view-iso").onclick = () => this.setView(false);
     element("view-side").onclick = () => this.setView("side");
+    element<HTMLInputElement>("interior").onchange = () =>
+      context
+        .getScene()
+        ?.setInterior(element<HTMLInputElement>("interior").checked);
     element("fullscreen").onclick = async () => {
       try {
         if (document.fullscreenElement) await document.exitFullscreen();
@@ -86,6 +92,10 @@ export class AntCameraControls {
       );
       this.render();
     };
+    element("view-iso").classList.add("active");
+    element("view-top").classList.remove("active");
+    element("view-side").classList.remove("active");
+    scene.setInterior(element<HTMLInputElement>("interior").checked);
     this.listKey = "";
   }
 
@@ -140,7 +150,9 @@ export class AntCameraControls {
       ? "Arraste para olhar · Esc para sair"
       : scene?.tool
         ? "Clique no solo · Esc para sair"
-        : "Duplo clique na formiga · Arraste para orbitar";
+        : scene?.viewLabel
+          ? scene.viewLabel + " · Clique em vista lateral para girar"
+          : "Duplo clique na formiga · Arraste para orbitar";
   }
 
   private setView(view: boolean | "side") {

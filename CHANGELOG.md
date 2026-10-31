@@ -1,52 +1,20 @@
 # Versões
 
-## Em desenvolvimento — navegação local (4B)
+## 0.4.0
 
-- Política de saída separada do mundo físico, com observações adjacentes.
-- Memória de até 64 arestas efetivamente percorridas e custos aprendidos.
-- Odores internos com fontes, difusão e evaporação contabilizadas.
-- Retorno por entrada já visitada ou percebida localmente.
-- Propostas de frentes feitas por operárias sob estímulo de densidade local.
-- Roteamento global removido das decisões dos agentes.
-
-
-## Em desenvolvimento — campos e tarefas (4A)
-
-- Difusão, evaporação e advecção conservativas com subpassos estáveis.
-- Escolha ACO por amostragem, com exploração residual.
-- Limiares individuais, estímulos locais e modulação por idade/casta.
-- Trofalaxia bloqueada por paredes de solo.
-- Correção de destinos após desvios e regressão de retorno à escavação.
-- Casos matemáticos, regressões e build validados; navegador ainda pendente.
-
-
-## Em desenvolvimento — organização da colônia
-
-- Trofalaxia conservativa, reserva social e alimentação pela despensa.
-- Transporte físico de ovos, larvas, pupas e resíduos.
-- Castas e traços individuais reproduzíveis; papéis ligados à idade.
-- Proteção da entrada e visualização de cargas e estágios.
-- Recuperação de posições antigas junto ao tronco e nova rota após tarefas internas.
-- 29 testes e build aprovados; conferência visual pendente.
-
-
-## Em desenvolvimento — túneis vivos
-
-- Frentes de escavação, transporte e depósitos de terra.
-- Erosão exploratória e remoção de bloqueios por viagens reais.
-- Saída pela borda da entrada, sem procurar apoio no ar.
-- Balanço de material, retomada após recuo e testes de recuperação completa.
-- Malha do terreno calculada em Worker.
-- Inicialização, migrações e previsões separadas em módulos pequenos.
-
-
-## Em desenvolvimento — recuperação nas laterais
-
-- Busca de caminho apoiado e desvio lateral durante transições bloqueadas.
-- Detecção de oscilação, tolerância de chegada e escolha de outros setores da parede.
-- Regressão longa de saída do ninho e travessia de um poço.
-- Projeto transferido para G:\Projetos\viveiro; dev mantido em segundo plano.
-- Verificação visual final pendente por limite de uso da ferramenta de navegador.
+- Paisagem e ninho procedurais por seed, com conectividade e lados variáveis.
+- Oito tipos de plantas, lagoas, relevo suave, pedras e três formatos de tronco.
+- Respostas de vegetação, água e materiais à umidade, luz e chuva.
+- Escavação em 3D com curvas, novas frentes e aberturas físicas junto aos vidros.
+- Vistas dos quatro lados e modo de observação dos túneis internos.
+- Correção de faces sobrepostas nas pontas da madeira e interpolação das aranhas.
+- Túneis vivos, transporte de terra, depósitos, erosão exploratória e reparos.
+- Prole, lixo, castas, personalidade, idade e trofalaxia conservativa.
+- Reação-difusão, ACO, tarefas por limiares e navegação por sensores e memória locais.
+- Recuperação em gargalos e inibição de ciclos curtos entre frentes próximas.
+- Projeto no disco G, módulos pequenos e malha do solo em Worker.
+- Novas seeds usam a geração; saves antigos preservam sua geometria.
+- Genética, novas fundações, simbioses, física granular e RL seguem no cronograma.
 
 ## 0.3.0
 

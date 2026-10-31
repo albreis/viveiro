@@ -1,4 +1,5 @@
 import { logLevel, pondLevel, blocksObstacle } from "./surface-obstacles.ts";
+import { surfaceHeight, surfaceNormal } from "../landscape/queries.ts";
 import { sampleSoil } from "../terrain/field.ts";
 import type {
   AgentState,
@@ -44,9 +45,19 @@ export function moveSurface(
   const blocked = (x: number, z: number, angle: number) =>
     (Math.abs(x) > BOUNDS.x && Math.abs(x) >= Math.abs(entity.x) - 0.00001) ||
     (Math.abs(z) > BOUNDS.z && Math.abs(z) >= Math.abs(entity.z) - 0.00001) ||
-    blocksObstacle(pondLevel(x, z), pondLevel(entity.x, entity.z)) ||
-    sampleSoil(world.nest, { x, y: -0.025, z }).distance > 0 ||
-    blocksObstacle(logLevel(x, z), logLevel(entity.x, entity.z)) ||
+    blocksObstacle(
+      pondLevel(x, z, world.landscape),
+      pondLevel(entity.x, entity.z, world.landscape),
+    ) ||
+    sampleSoil(world.nest, {
+      x,
+      y: surfaceHeight(world.nest.relief, x, z) - 0.025,
+      z,
+    }).distance > 0 ||
+    blocksObstacle(
+      logLevel(x, z, world.landscape),
+      logLevel(entity.x, entity.z, world.landscape),
+    ) ||
     (predator
       ? world.nest.nodes.some(
           (n) => n.type === "entrance" && Math.hypot(x - n.x, z - n.z) < 1.3,
@@ -101,6 +112,14 @@ export function moveSurface(
   }
   entity.x = candidate.x;
   entity.z = candidate.z;
+  entity.y = surfaceHeight(world.nest.relief, entity.x, entity.z) + 0.008;
+  entity.normal = surfaceNormal(world.nest.relief, entity.x, entity.z);
+  entity.pitch = Math.atan(
+    -(
+      entity.normal.x * Math.cos(candidate.angle) +
+      entity.normal.z * Math.sin(candidate.angle)
+    ) / entity.normal.y,
+  );
   entity.angle = candidate.angle;
   return true;
 }

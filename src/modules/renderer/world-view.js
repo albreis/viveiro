@@ -1,3 +1,5 @@
+import { updatePlant } from "./plants.js";
+import { surfaceHeight } from "../landscape/queries.ts";
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
 import { geometryFromSoilData } from "../terrain/soil.js";
@@ -6,6 +8,11 @@ const UP = new THREE.Vector3(0, 1, 0);
 
 export function update(host, world, time, alpha = 1) {
   host.alpha = alpha;
+  document.getElementById("biome-label").textContent = {
+    woodland: "Bosque",
+    scrub: "Vegetação árida",
+    meadow: "Pradaria",
+  }[world.landscape.biome];
   if (
     (host.soilNest !== world.nest ||
       host.soilRevision !== world.nest.revision) &&
@@ -23,14 +30,15 @@ export function update(host, world, time, alpha = 1) {
   host.world = world;
   host.lastTick = world.tick;
   host.sun.intensity = 2.2 + world.params.light / 30;
+  host.landscapeView.update(world, time);
+  host.entranceView.update(world);
   for (const p of world.plants) {
     let g = host.plantViews.get(p.id);
     if (!g) {
       g = host.buildPlant(p);
       host.plantViews.set(p.id, g);
     }
-    g.scale.setScalar(0.5 + p.biomass * 0.75);
-    g.rotation.z = Math.sin(time * 0.7 + p.id) * 0.013;
+    updatePlant(g, p, time);
   }
   const patchIds = new Set(world.patches.map((p) => p.id));
   for (const [id, view] of host.foodViews)
@@ -48,7 +56,7 @@ export function update(host, world, time, alpha = 1) {
         host.material("#c9a24f"),
         host.foodGroup,
         p.x,
-        0.12,
+        surfaceHeight(world.nest.relief, p.x, p.z) + 0.12,
         p.z,
       );
       host.foodViews.set(p.id, m);
@@ -69,7 +77,7 @@ export function update(host, world, time, alpha = 1) {
   const male = world.ants.find((a) => a.kind === "male");
   host.male.visible = !!male && male.id !== host.followId;
   if (male) {
-    host.male.position.set(male.x, 0.18, male.z);
+    host.male.position.set(male.x, (male.y || 0) + 0.12, male.z);
     host.male.rotation.y = Math.sin(time) * 0.3;
   }
   host.colonyView.update(world, (a) => host.pose(a), host.followId);

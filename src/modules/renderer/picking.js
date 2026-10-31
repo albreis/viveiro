@@ -7,7 +7,12 @@ const UP = new THREE.Vector3(0, 1, 0);
 export function pickAnt(host, e) {
   host.groundPoint(e);
   const hits = host.raycaster.intersectObjects(
-    [...host.antParts, host.queen, host.male, host.soil],
+    [
+      ...host.antParts,
+      host.queen,
+      host.male,
+      ...(host.showInterior ? [] : [host.soil]),
+    ],
     true,
   );
   if (hits.length) {
@@ -48,7 +53,9 @@ export function pickAnt(host, e) {
     delta = point.clone().sub(host.camera.position),
     length = delta.length();
   host.raycaster.set(host.camera.position, delta.normalize());
-  const soil = host.raycaster.intersectObject(host.soil);
+  const soil = host.showInterior
+    ? []
+    : host.raycaster.intersectObject(host.soil);
   return soil[0] && soil[0].distance < length - 0.15 ? null : nearest.id;
 }
 

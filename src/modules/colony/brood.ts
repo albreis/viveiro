@@ -11,7 +11,7 @@ export function broodPosition(world: ColonyWorld, id: number, nodeId: number) {
   return projectSupport(world.nest, {
     x: node.x + Math.cos(angle) * radius,
     y: node.y - node.r * 0.92,
-    z: Math.min(6.3, node.z + Math.sin(angle) * radius),
+    z: Math.max(-6.3, Math.min(6.3, node.z + Math.sin(angle) * radius)),
   });
 }
 export function makeBrood(world: ColonyWorld, id: number, node = 2): Brood {

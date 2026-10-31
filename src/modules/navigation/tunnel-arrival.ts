@@ -1,3 +1,4 @@
+import { surfaceHeight } from "../landscape/queries.ts";
 import { requestRoute } from "./local-routing.ts";
 import type { AgentState, NavigationWorld } from "./types.ts";
 import { continueLocalRoute, atRouteGoal } from "./local-routing.ts";
@@ -24,7 +25,7 @@ export function finishSegment(
       ant.avoidEntrance = targetId;
       ant.avoidEntranceUntil = world.tick + 250;
       ant.route = [];
-      ant.y = 0;
+      ant.y = surfaceHeight(world.nest.relief, ant.x, ant.z) + 0.008;
       ant.node = null;
       ant.tunnelCenter = null;
       ant.tunnelY = 0;
@@ -70,7 +71,7 @@ export function finishSegment(
   } else if (target.type !== "entrance") {
     requestRoute(world, ant, ant.id % 2 ? 0 : 6);
   } else {
-    ant.y = 0;
+    ant.y = surfaceHeight(world.nest.relief, ant.x, ant.z) + 0.008;
     ant.node = null;
     ant.tunnelCenter = null;
     ant.tunnelY = 0;

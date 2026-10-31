@@ -91,8 +91,15 @@ export function updateAnts(host, agents, parts, spider, time) {
   for (const m of parts)
     m.count = Math.min(agents.length, m.instanceMatrix.count);
   agents.slice(0, parts[0].count).forEach((a, i) => {
-    const c = Math.cos(a.angle),
-      s = Math.sin(a.angle),
+    const angle =
+      (a.previousAngle ?? a.angle) +
+      Math.atan2(
+        Math.sin(a.angle - (a.previousAngle ?? a.angle)),
+        Math.cos(a.angle - (a.previousAngle ?? a.angle)),
+      ) *
+        (host.alpha ?? 1);
+    const c = Math.cos(angle),
+      s = Math.sin(angle),
       scale = spider ? 1.6 : a.bodyScale || 1;
     const base = host.pose(a),
       normal = new THREE.Vector3(

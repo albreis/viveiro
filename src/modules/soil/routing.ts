@@ -1,3 +1,4 @@
+import { surfaceHeight } from "../landscape/queries.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
 import { distance3 } from "./ledger.ts";
@@ -63,6 +64,11 @@ export function arriveWithSoil(
     ant.energy = 100;
   }
   if (world.nest.nodes[node].type === "entrance" && task.phase === "haul") {
+    ant.lastEntrance = {
+      node,
+      x: world.nest.nodes[node].x,
+      z: world.nest.nodes[node].z,
+    };
     task.phase = "dump";
     task.entrance = node;
     const entrance = world.nest.nodes[node];
@@ -71,7 +77,12 @@ export function arriveWithSoil(
       size = Math.hypot(dx, dz) || 1;
     const target = {
       x: entrance.x + (dx / size || 1) * 0.68,
-      y: 0.008,
+      y:
+        surfaceHeight(
+          world.nest.relief,
+          entrance.x + (dx / size || 1) * 0.68,
+          entrance.z + (dz / size) * 0.68,
+        ) + 0.008,
       z: entrance.z + (dz / size) * 0.68,
     };
     startSupportedMotion(world, ant, target, { x: 0, y: 1, z: 0 }, target);

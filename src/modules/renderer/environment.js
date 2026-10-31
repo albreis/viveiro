@@ -1,3 +1,5 @@
+import { LandscapeView } from "./LandscapeView.js";
+import { EntranceView } from "./EntranceView.js";
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
 import { createSoilGeometry } from "../terrain/soil.js";
@@ -32,6 +34,7 @@ export function buildGround(host, seed) {
     [
       host.material("#ffffff", { vertexColors: true }),
       host.material("#ffffff", { map: texture, vertexColors: true }),
+      host.material("#ffffff", { vertexColors: true }),
     ],
     host.staticGroup,
   );
@@ -96,110 +99,11 @@ export function buildGround(host, seed) {
     edges.position.set(...box.p);
     host.staticGroup.add(edges);
   }
-  const pondGeo = new THREE.CircleGeometry(1, 50);
-  host.pond = host.mesh(
-    pondGeo,
-    new THREE.MeshPhysicalMaterial({
-      color: "#7baf9e",
-      roughness: 0.13,
-      metalness: 0.16,
-      transparent: true,
-      opacity: 0.85,
-    }),
-    host.staticGroup,
-    4.3,
-    0.035,
-    -2.5,
-  );
-  host.pond.rotation.x = -Math.PI / 2;
-  host.pond.scale.set(1.9, 1.35, 1);
-  const bank = host.mesh(
-    new THREE.TorusGeometry(1, 0.045, 5, 60),
-    host.material("#a2a778"),
-    host.staticGroup,
-    4.3,
-    0.025,
-    -2.5,
-  );
-  bank.rotation.x = -Math.PI / 2;
-  bank.scale.set(1.94, 1.4, 0.7);
-  for (let i = 0; i < 20; i++) {
-    const t = (i / 20) * Math.PI * 2;
-    const rock = host.mesh(
-      new THREE.DodecahedronGeometry(0.12 + rnd() * 0.18, 0),
-      host.material(["#a7aa8b", "#868e72", "#bac0a1"][i % 3]),
-      host.staticGroup,
-      4.3 + Math.cos(t) * 2,
-      0.07,
-      -2.5 + Math.sin(t) * 1.45,
-    );
-    rock.scale.y = 0.6;
-  }
-  for (const entrance of host.world.nest.nodes.filter(
-    (n) => n.type === "entrance",
-  )) {
-    const rim = host.mesh(
-      new THREE.TorusGeometry(0.41, 0.095, 7, 22),
-      host.material("#a18b60"),
-      host.staticGroup,
-      entrance.x,
-      0.02,
-      entrance.z,
-    );
-    rim.rotation.x = -Math.PI / 2;
-  }
-  for (let i = 0; i < 95; i++) {
-    const x = (rnd() - 0.5) * 18.8,
-      z = (rnd() - 0.5) * 11.8;
-    if (host.world.inPond(x, z)) continue;
-    const r = 0.055 + rnd() * 0.16,
-      rock = host.mesh(
-        new THREE.DodecahedronGeometry(r, 0),
-        host.material(["#c0b28d", "#888f70", "#a59e78"][i % 3]),
-        host.staticGroup,
-        x,
-        r * 0.4,
-        z,
-      );
-    rock.scale.set(1, 0.55 + rnd() * 0.4, 1.3);
-    rock.rotation.y = rnd() * 6;
-  }
-  const log = new THREE.Group();
-  log.position.set(4.3, 0.28, 3.6);
-  log.rotation.z = 0.09;
-  log.rotation.y = 0.5;
-  const timber = host.mesh(
-    new THREE.CylinderGeometry(0.35, 0.42, 3.4, 9),
-    host.material("#71634b"),
-    log,
-  );
-  timber.rotation.z = Math.PI / 2;
-  for (const x of [-1.72, 1.72]) {
-    const cut = host.mesh(
-      new THREE.CircleGeometry(0.33, 16),
-      host.material("#c2aa7e"),
-      log,
-      x,
-      0,
-      0,
-    );
-    cut.rotation.y = x < 0 ? -Math.PI / 2 : Math.PI / 2;
-  }
-  host.staticGroup.add(log);
-  // A few grass tufts add scale without requiring imported assets.
-  const grassMat = host.material("#748a45", { side: THREE.DoubleSide });
-  const blade = new THREE.ConeGeometry(0.045, 0.45, 3);
-  for (let i = 0; i < 240; i++) {
-    const x = (rnd() - 0.5) * 18.6,
-      z = (rnd() - 0.5) * 11.5;
-    if (host.world.inPond(x, z) || Math.hypot(x - NEST.x, z - NEST.z) < 1.2)
-      continue;
-    const g = host.mesh(blade, grassMat, host.staticGroup, x, 0.17, z);
-    g.rotation.z = (rnd() - 0.5) * 0.6;
-    g.scale.y = 0.4 + rnd();
-  }
-  host.nestLabel = host.label("ENTRADA", NEST.x, 0.9, NEST.z);
-  host.label("ÁGUA", 4.3, 0.7, -2.5);
+  host.landscapeView = new LandscapeView(host);
+  host.entranceView = new EntranceView(host);
+  host.entranceView.update(host.world);
+  const entry = host.world.nest.nodes.find((n) => n.type === "entrance");
+  host.nestLabel = host.label("ENTRADA", entry.x, entry.y + 0.6, entry.z);
 }
 
 export function label(host, text, x, y, z) {

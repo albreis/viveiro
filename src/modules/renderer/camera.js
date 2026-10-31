@@ -1,3 +1,4 @@
+import { updateSoilVisibility } from "./soil-visibility.js";
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
 import { createSoilGeometry } from "../terrain/soil.js";
@@ -13,6 +14,7 @@ export function followAnt(host, id) {
       target: host.controls.target.clone(),
     };
   host.followId = ant.id;
+  updateSoilVisibility(host);
   host.lookYaw = 0;
   host.lookPitch = 0;
   host.controls.enabled = false;
@@ -27,6 +29,7 @@ export function followAnt(host, id) {
 export function stopFollowing(host) {
   if (!host.followId) return;
   host.followId = null;
+  updateSoilVisibility(host);
   host.controls.enabled = true;
   host.followLight.intensity = 0;
   host.camera.fov = 37;
@@ -43,12 +46,33 @@ export function setView(host, view) {
   host.stopFollowing();
   const lateral = view === "side",
     top = view === true;
-  host.controls.maxPolarAngle = lateral ? Math.PI * 0.6 : Math.PI * 0.47;
-  host.camera.position.set(
-    lateral ? 0 : top ? 0.01 : 22,
-    lateral ? -1.2 : top ? 35 : 23,
-    lateral ? 29 : top ? 0.01 : 27,
-  );
-  host.controls.target.set(0, lateral ? -1.9 : -0.7, lateral ? 2 : 0);
+  if (lateral) {
+    if (host.currentView === "side") host.sideFace = (host.sideFace + 1) % 4;
+    else if (host.sideFace === undefined) {
+      const q = host.world.nest.nodes[2];
+      host.sideFace =
+        Math.abs(q.x) / 10 > Math.abs(q.z) / 6.5
+          ? q.x > 0
+            ? 1
+            : 3
+          : q.z > 0
+            ? 0
+            : 2;
+    }
+    const views = [
+      [0, -1.2, 29],
+      [32, -1.2, 0],
+      [0, -1.2, -29],
+      [-32, -1.2, 0],
+    ];
+    host.camera.position.set(...views[host.sideFace]);
+    host.viewLabel = ["Frente", "Direita", "Fundo", "Esquerda"][host.sideFace];
+  } else {
+    host.camera.position.set(top ? 0.01 : 22, top ? 35 : 23, top ? 0.01 : 27);
+    host.viewLabel = "";
+  }
+  host.currentView = view;
+  host.controls.maxPolarAngle = lateral ? Math.PI * 0.62 : Math.PI * 0.47;
+  host.controls.target.set(0, lateral ? -1.9 : -0.7, 0);
   host.controls.update();
 }

@@ -1,3 +1,5 @@
+import { isolatedGallery, lerp } from "./fixtures/geometry.mjs";
+import { sampleSupport } from "../src/modules/terrain/field.ts";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { socialForces } from "../src/modules/navigation/social-forces.ts";
@@ -92,9 +94,8 @@ test("congestion widening changes terrain width and revision rather than only an
 
 test("floor and wall poses share the actual terrain envelope", () => {
   const w = new World("ground"),
-    from = w.nest.nodes[8],
-    to = w.nest.nodes[4];
-  const center = { x: 1, y: -1.48, z: 6.22 };
+    [from, to] = isolatedGallery(w);
+  const center = lerp(from, to, 0.5);
   const floor = tunnelFooting(w.nest, center, from, to, 0.35);
   const envelope = tunnelEnvelope(w.nest, floor.x, floor.z, center.y);
   assert.ok(Math.abs(floor.y - envelope.floor) < 0.02);
@@ -106,22 +107,9 @@ test("floor and wall poses share the actual terrain envelope", () => {
 test("changing floor height is walked along support points with a bounded step", () => {
   const w = new World("continuous"),
     a = ant(500);
-  const from = w.nest.nodes[8],
-    to = w.nest.nodes[4];
-  const first = tunnelFooting(
-    w.nest,
-    { x: 0.2, y: -1.5, z: 6.22 },
-    from,
-    to,
-    0.35,
-  );
-  const last = tunnelFooting(
-    w.nest,
-    { x: 1.8, y: -1.46, z: 6.22 },
-    from,
-    to,
-    0.35,
-  );
+  const [from, to] = isolatedGallery(w);
+  const first = tunnelFooting(w.nest, lerp(from, to, 0.1), from, to, 0.35);
+  const last = tunnelFooting(w.nest, lerp(from, to, 0.9), from, to, 0.35);
   Object.assign(a, {
     x: first.x,
     y: first.y,
@@ -129,7 +117,7 @@ test("changing floor height is walked along support points with a bounded step",
     normal: first.normal,
   });
   w.ants = [a];
-  startSupportedMotion(w, a, last, last.normal, { x: 1.8, y: -1.46, z: 6.22 });
+  startSupportedMotion(w, a, last, last.normal, lerp(from, to, 0.9));
   let wallSeen = false;
   for (let i = 0; i < 200 && a.supportMotion; i++) {
     const previous = { x: a.x, y: a.y, z: a.z };
@@ -139,9 +127,8 @@ test("changing floor height is walked along support points with a bounded step",
       Math.hypot(a.x - previous.x, a.y - previous.y, a.z - previous.z) <=
         0.060001,
     );
-    if (Math.abs(a.normal.y) < 0.8) wallSeen = true;
+    assert.ok(Math.abs(sampleSupport(w.nest, a).distance - 0.008) < 0.035);
   }
   assert.equal(a.supportMotion, undefined);
   assert.ok(Math.hypot(a.x - last.x, a.y - last.y, a.z - last.z) < 0.001);
-  if (Math.abs(first.y - last.y) > 0.065) assert.ok(wallSeen);
 });

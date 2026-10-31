@@ -1,3 +1,4 @@
+import { waterLevel, surfaceHeight } from "../landscape/queries.ts";
 import { individualTraits } from "../colony/individual.ts";
 import { arriveColony } from "../colony/arrival.ts";
 import { updateNutrition, feedFromStock } from "../colony/nutrition.ts";
@@ -45,7 +46,7 @@ export class World {
     return this.ants.length;
   }
   inPond(x, z) {
-    return ((x - 4.3) / 1.9) ** 2 + ((z + 2.5) / 1.35) ** 2 < 1;
+    return waterLevel(this.landscape, x, z) < 1;
   }
   makeAnt(kind, x, z) {
     const id = this.nextId++;
@@ -53,7 +54,7 @@ export class World {
       id,
       kind,
       x,
-      y: 0,
+      y: surfaceHeight(this.nest?.relief, x, z) + 0.008,
       z,
       distanceWalked: 0,
       angle: this.range(0, Math.PI * 2),
@@ -116,6 +117,7 @@ export class World {
     this.predators.push({
       id: this.nextId++,
       x,
+      y: surfaceHeight(this.nest.relief, x, z) + 0.008,
       z,
       angle: this.range(0, 6.283),
       energy: 100,
@@ -155,18 +157,35 @@ export class World {
         z,
         biomass: 0.35,
         kind: this.nextId % 4,
+        species: [
+          "fern",
+          "shrub",
+          "tree",
+          "grass",
+          "cactus",
+          "succulent",
+          "flower",
+          "moss",
+        ][this.nextId % 8],
+        health: 1,
+        hydration: this.params.humidity / 100,
       });
       this.patches.push({
         id: this.nextId++,
-        x: x + 0.25,
-        z: z + 0.2,
+        x,
+        z,
+        sourcePlant: this.plants.at(-1).id,
         amount: 0.25,
         capacity: 3,
         discovered: false,
       });
       this.log("Uma nova planta começa a crescer.", "plant");
     } else if (type === "predator") {
-      if (distance({ x, z }, NEST) < 2) {
+      if (
+        this.nest.nodes.some(
+          (n) => n.type === "entrance" && distance({ x, z }, n) < 2,
+        )
+      ) {
         this.log(
           "O ninho oferece abrigo. Coloque o predador mais longe.",
           "info",
@@ -180,6 +199,9 @@ export class World {
       this.log("As galerias estão ocupadas. O solo não foi perturbado.");
       return false;
     } else if (type === "rain") {
+      this.landscape.rainPulse = 1;
+      for (const pond of this.landscape.ponds)
+        pond.volume = Math.min(1, pond.volume + 0.18);
       this.params.humidity = clamp(this.params.humidity + 12, 0, 100);
       this.log("Chuva: a umidade do terrário aumentou.", "rain");
     } else if (["humidity", "light", "randomness"].includes(type)) {

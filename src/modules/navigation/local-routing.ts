@@ -60,6 +60,7 @@ export function continueLocalRoute(
       signal:
         world.routeSignal?.(ant.node!, id, intent.odor, intent.owner) || 0,
       visited: (ant.recentNodes || []).includes(id),
+      visits: (ant.recentNodes || []).filter((node) => node === id).length,
       backtrack: ant.recentNodes?.at(-1) === id,
       goalVisible:
         length <= 1.2 &&

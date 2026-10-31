@@ -4,17 +4,17 @@ Atualizado em 31/10/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação              |
-| ----- | -------------------------------------------------------------------- | --------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1     |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0          |
+| Etapa | Entrega                                                              | Situação               |
+| ----- | -------------------------------------------------------------------- | ---------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1      |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0           |
 | 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Em desenvolvimento    |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Em desenvolvimento             |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada             |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada             |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada             |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada              |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada              |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -107,7 +107,7 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Reconstrução da malha em Worker; arquivos de inicialização, migração e previsão separados.
 - Fundação do primeiro buraco ligada à etapa de novas rainhas (5), ainda pendente.
 - Solo por volumes aproximados, sem representar grãos reais.
-- Conferência visual e publicação aguardam a ferramenta do navegador. Dev continua no G:.
+- Ferramenta do navegador retomada; conferência visual das etapas na versão 0.4.0. Dev continua no G:.
 
 ### Progresso da etapa 3 — 31/10/2026
 
@@ -116,7 +116,7 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Transporte físico de crias e resíduos; estágios e cargas visíveis.
 - Castas, diferenças individuais e papéis ligados à idade.
 - Migração de snapshots e contador de trocas de alimento.
-- Testes biológicos e de movimento em andamento; publicação aguarda conferência visual.
+- Testes biológicos e regressões de movimento implementados.
 
 ### Progresso da etapa 4A — 31/10/2026
 
@@ -133,4 +133,29 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Odores de referência no grafo físico com balanço de fontes e evaporação.
 - Entrada de retorno conhecida ou percebida; sem busca global de rotas pelos agentes.
 - Propostas de escavação iniciadas pelas operárias sob densidade local.
-- Regressões locais aprovadas; suíte completa e build em andamento.
+- Regressões locais e build aprovados; roteamento testado também com geometrias procedurais.
+
+### Etapa adicional — terrário procedural (0.4.0)
+
+- Branch: codex/terrario-procedural.
+- Superfície inteira e ninho por seed; repetir uma seed mantém a reprodução.
+- Bosque, pradaria e vegetação árida; oito tipos de plantas e três formatos de madeira.
+- Água, crescimento, estresse, umidade de materiais e decomposição durante os ticks.
+- Câmaras em lados variáveis, frentes 3D e curvas que preservam trechos anteriores.
+- Aberturas no vidro surgem conforme a escavação alcança a parede, sem recortes decorativos.
+- Alternância entre quatro lados e transparência opcional para observar o interior.
+- Compatibilidade com saves antigos; crie outro terrário para usar a geração nova.
+- Pontas dos troncos sem faces sobrepostas; aranhas interpolam a altura real do relevo.
+- Aceite: seeds reproduzíveis, conectividade, direções 3D, conservação, apoio, ecologia
+  e regressões de fluxo; testes completos e revisão visual antes da publicação.
+- Próxima etapa principal: genética e fundação orgânica (5). A etapa 2 continua
+  parcial enquanto o primeiro buraco e a fundação não forem implementados.
+
+### Verificação da 0.4.0
+
+- Suíte completa: 48 testes aprovados.
+- Regressões dirigidas após ajustes: apoio, fluxo, obstáculos procedurais e malha aprovados.
+- Otimização do campo: 12.000 amostras idênticas à referência anterior.
+- Navegador: nova seed/paisagem, quatro lados, observação interna, primeira pessoa e retorno.
+- Build de produção e TypeScript aprovados.
+- Modelos continuam exploratórios; as etapas científicas restantes não são dadas como concluídas.
