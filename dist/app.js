@@ -219,7 +219,7 @@ let previous=performance.now();
 function frame(now){
   const dt=Math.min((now-previous)/1000,.1);previous=now;
   if(running&&!document.hidden){accumulator+=dt*10*speed;let budget=30;while(accumulator>=1&&budget-->0){tick();accumulator--;}}
-  if(scene){scene.update(active(),now/1000);scene.render();}
+  if(scene){scene.update(active(),now/1000,running?Math.min(1,accumulator):1);scene.render();}
   if(now-lastUi>350){updateUi();lastUi=now;}
   if(now-lastSave>5000){save();lastSave=now;}
   if(active().tick-lastForecast>100||lastForecast<0)requestForecast();

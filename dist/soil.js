@@ -1,20 +1,11 @@
 import * as THREE from 'three';
+import { SOIL_GRID,terrainVoid } from './terrain.js';
 export function createSoilGeometry(nest){
-  const nx=96,ny=28,nz=64,sx=20/nx,sy=4.2/ny,sz=13/nz;
+  const {nx,ny,nz,sx,sy,sz}=SOIL_GRID;
   const index=(x,y,z)=>(y*nz+z)*nx+x;
   const solid=new Uint8Array(nx*ny*nz);
-  const segmentDistance=(x,y,z,a,b)=>{
-    const dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z;
-    const t=Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy+(z-a.z)*dz)/(dx*dx+dy*dy+dz*dz||1)));
-    return Math.hypot(x-a.x-t*dx,y-a.y-t*dy,z-a.z-t*dz);
-  };
-  const isVoid=(x,y,z)=>{
-    for(const p of nest.nodes)if(Math.hypot(x-p.x,y-p.y,z-p.z)<p.r)return true;
-    for(const [a,b] of nest.links)if(segmentDistance(x,y,z,nest.nodes[a],nest.nodes[b])<.27)return true;
-    return false;
-  };
   for(let y=0;y<ny;y++)for(let z=0;z<nz;z++)for(let x=0;x<nx;x++)
-    solid[index(x,y,z)]=isVoid(-10+(x+.5)*sx,-4.2+(y+.5)*sy,-6.5+(z+.5)*sz)?0:1;
+    solid[index(x,y,z)]=terrainVoid(nest,-10+(x+.5)*sx,-4.2+(y+.5)*sy,-6.5+(z+.5)*sz)?0:1;
   const positions=[],normals=[],uvs=[],colors=[],groups=[];
   const faces=[
     {d:[1,0,0],v:[[1,0,0],[1,1,0],[1,1,1],[1,0,1]]},

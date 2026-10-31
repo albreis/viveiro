@@ -1,32 +1,10 @@
-export const TICKS_PER_DAY = 100;
-export const LIMIT = 450;
-export const NEST = { x: -4.8, z: -1.1 };
-export const BOUNDS = { x: 9.3, z: 5.8 };
-export function createNest() {
-  return {
-    nodes: [
-      {name:'Entrada oeste',x:NEST.x,y:.03,z:NEST.z,r:.36,type:'entrance'},
-      {name:'Poço oeste',x:NEST.x,y:-.85,z:NEST.z,r:.31,type:'shaft'},
-      {name:'Câmara da rainha',x:-3.6,y:-1.5,z:6.22,r:.67,type:'royal'},
-      {name:'Berçário',x:-1.4,y:-2.65,z:6.22,r:.72,type:'nursery'},
-      {name:'Despensa',x:2.1,y:-1.45,z:6.22,r:.65,type:'storage'},
-      {name:'Resíduos',x:5.3,y:-3.05,z:6.22,r:.55,type:'waste'},
-      {name:'Entrada leste',x:3,y:.03,z:2.5,r:.36,type:'entrance'},
-      {name:'Poço leste',x:3,y:-.85,z:2.5,r:.31,type:'shaft'},
-      {name:'Galeria principal',x:0,y:-1.5,z:6.22,r:.35,type:'junction'}
-    ],
-    links:[[0,1],[1,2],[2,8],[8,4],[8,3],[3,5],[4,7],[7,6],[2,3]],
-    revision:2
-  };
-}
-export function nestPath(nest,start,end) {
-  const queue=[[start]],visited=new Set([start]);
-  while(queue.length){const path=queue.shift(),node=path.at(-1);if(node===end)return path.slice(1);
-    for(const edge of nest.links){const next=edge[0]===node?edge[1]:edge[1]===node?edge[0]:null;
-      if(next!==null&&!visited.has(next)){visited.add(next);queue.push([...path,next]);}}
-  }
-  return [];
-}
+import { tunnelFooting,tunnelEnvelope } from './terrain.js';
+import { TICKS_PER_DAY,LIMIT,NEST,BOUNDS } from './constants.js';
+import { createNest,nestPath } from './nest.js';
+import { moveInNest } from './navigation/tunnel-motion.js';
+import { moveSurface } from './navigation/surface-motion.js';
+import { positionClear } from './navigation/collision.js';
+export { TICKS_PER_DAY,LIMIT,NEST,BOUNDS,createNest,nestPath };
 export function hashSeed(value) {
   let h = 2166136261;
   for (const c of String(value)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); }
@@ -42,11 +20,15 @@ export class World {
     this.tick = 0; this.nextId = 1; this.food = 18; this.queenHealth = 100;
     this.ants = []; this.brood = []; this.predators = []; this.plants = []; this.patches = [];
     this.nest=createNest();
+    this.physicsVersion=3;
     this.events = []; this.history = []; this.deaths = 0; this.born = 0;
     this.lastLaying = -50; this.lastRecord = -25; this.lastWarning = -1000;
     this.lastDiscovery = -1000; this.pheromones = new Array(40 * 26).fill(0);
     this.ants.push(this.makeAnt('queen', NEST.x, NEST.z));
     Object.assign(this.ants[0],this.nest.nodes[2],{kind:'queen',node:2});
+    this.ants[0].x-=.34;this.ants[0].z-=.33;
+    this.ants[0].tunnelY=this.nest.nodes[2].y;
+    this.ants[0].y=tunnelEnvelope(this.nest,this.ants[0].x,this.ants[0].z,this.ants[0].tunnelY).floor+.008;
     this.ants.push(this.makeAnt('male', NEST.x + .8, NEST.z + .3));
     for (let i = 0; i < 32; i++) {
       let x = this.range(-8.7, 8.7), z = this.range(-5.2, 5.2);
@@ -78,43 +60,12 @@ export class World {
     return { id: this.nextId++, kind, x, y:0, z, distanceWalked:0, angle: this.range(0, Math.PI * 2),
       energy: 100, age: 0, carrying: 0, speed: this.range(.07,.105), state: kind === 'queen' ? 'Fundando o ninho' : 'Explorando', rest: 0 };
   }
-  moveInNest(ant) {
-    const target=this.nest.nodes[ant.route[0]];
-    if(!target){ant.route=[];return;}
-    const dx=target.x-ant.x,dy=target.y-ant.y,dz=target.z-ant.z,d=Math.hypot(dx,dy,dz);
-    const speed=ant.speed*.85;
-    ant.distanceWalked=(ant.distanceWalked||0)+Math.min(d,speed);
-    ant.state=ant.carrying?'Indo para a despensa':'Percorrendo uma galeria';
-    if(d<=speed){
-      Object.assign(ant,{x:target.x,y:target.y,z:target.z,node:ant.route.shift()});
-      if(!ant.route.length){
-        if(target.type==='storage'){
-          this.food+=ant.carrying;ant.carrying=0;
-          if(this.food>.15){this.food-=.15;ant.energy=100;}
-          ant.route=nestPath(this.nest,ant.node,ant.id%2?0:6);
-        }else if(target.type!=='entrance')ant.route=nestPath(this.nest,ant.node,ant.id%2?0:6);
-        else{ant.y=0;ant.node=null;ant.state='Explorando';ant.angle=this.range(0,6.283);}
-      }
-    }else{
-      ant.x+=dx/d*speed;ant.y+=dy/d*speed;ant.z+=dz/d*speed;
-      ant.angle=Math.atan2(dz,dx);ant.pitch=Math.atan2(dy,Math.hypot(dx,dz));
-    }
+  moveInNest(ant) { return moveInNest(this,ant); }
+  moveSurface(ant,heading,speed,predator=false) {
+    return moveSurface(this,ant,heading,speed,predator);
   }
-  moveSurface(entity,heading,speed,predator=false) {
-    const blocked=(x,z)=>Math.abs(x)>BOUNDS.x||Math.abs(z)>BOUNDS.z||this.inPond(x,z)||
-      (predator&&this.nest.nodes.some(n=>n.type==='entrance'&&distance({x,z},n)<1.3));
-    if(entity.avoidTicks>0){heading=entity.avoidAngle;entity.avoidTicks--;}
-    let x=entity.x+Math.cos(heading)*speed,z=entity.z+Math.sin(heading)*speed;
-    if(blocked(x,z)){
-      let found=false;
-      for(const turn of [.5,-.5,1,-1,1.5,-1.5,2.1,-2.1,Math.PI]){
-        const candidate=heading+turn,tx=entity.x+Math.cos(candidate)*speed,tz=entity.z+Math.sin(candidate)*speed;
-        if(!blocked(tx,tz)){heading=candidate;x=tx;z=tz;entity.avoidTicks=10;entity.avoidAngle=heading;found=true;break;}
-      }
-      if(!found){entity.angle+=1;return false;}
-    }
-    entity.distanceWalked=(entity.distanceWalked||0)+Math.hypot(x-entity.x,z-entity.z);
-    entity.x=x;entity.z=z;entity.angle=heading;return true;
+  positionClear(ant,point,heading,pitch,normal) {
+    return positionClear(this,ant,point,heading,pitch,normal);
   }
   log(text, type = 'info') {
     this.events.unshift({ tick: this.tick, day: this.day, text, type });
@@ -192,7 +143,7 @@ export class World {
       if(fed) b.age += .006 + suitability*.004;
       if(b.age >= 1.3 && this.population < LIMIT) {
         const ant=this.makeAnt('worker',this.nest.nodes[3].x,this.nest.nodes[3].z);
-        ant.y=this.nest.nodes[3].y;ant.node=3;ant.route=nestPath(this.nest,3,ant.id%2?0:6);
+        ant.tunnelY=this.nest.nodes[3].y;ant.y=tunnelEnvelope(this.nest,ant.x,ant.z,ant.tunnelY).floor+.008;ant.node=3;ant.route=nestPath(this.nest,3,ant.id%2?0:6);
         this.ants.push(ant);
         this.born++; hatched++;
       } else remaining.push(b);
@@ -201,6 +152,8 @@ export class World {
     if(hatched) this.log(hatched===1 ? 'Uma operária nasceu e se juntou à colônia.' : hatched+' operárias nasceram.', 'birth');
     const dead = new Set();
     for (const ant of this.ants) {
+      ant.previousX=ant.x;ant.previousY=ant.y||0;ant.previousZ=ant.z;
+      ant.previousDistance=ant.distanceWalked||0;
       ant.age += .01;
       if(ant.kind === 'queen') {
         if(this.queenHealth<=0) { dead.add(ant.id); this.log('A rainha morreu por falta de alimento.', 'danger'); }
@@ -213,6 +166,7 @@ export class World {
       }
       if(ant.route?.length){this.moveInNest(ant);continue;}
       ant.pitch=0;
+      ant.normal={x:0,y:1,z:0};
       ant.energy -= .025 + (1-suitability)*.015;
       if(ant.energy<=0 || ant.age>this.lifeLimit(ant)) { dead.add(ant.id); this.deaths++; continue; }
       if(ant.rest>0) { ant.rest--; continue; }
@@ -220,11 +174,16 @@ export class World {
       let heading = ant.angle;
       if(danger) { heading=Math.atan2(ant.z-danger.z,ant.x-danger.x); ant.state='Fugindo'; }
       else if(ant.carrying || ant.energy<35) {
-        const entrances=this.nest.nodes.map((p,i)=>({...p,index:i})).filter(p=>p.type==='entrance');
+        let entrances=this.nest.nodes.map((p,i)=>({...p,index:i})).filter(p=>p.type==='entrance');
+        if(ant.avoidEntranceUntil>this.tick){
+          const alternatives=entrances.filter(p=>p.index!==ant.avoidEntrance);
+          if(alternatives.length)entrances=alternatives;
+        }
         const entrance=entrances.reduce((best,p)=>distance(ant,p)<distance(ant,best)?p:best);
         heading=Math.atan2(entrance.z-ant.z,entrance.x-ant.x); ant.state=ant.carrying?'Levando alimento':'Voltando ao ninho';
         if(distance(ant,entrance)<.4) {
-          ant.y=entrance.y;ant.node=entrance.index;ant.route=nestPath(this.nest,entrance.index,4);
+          ant.tunnelCenter={x:entrance.x,y:entrance.y,z:entrance.z};ant.tunnelY=entrance.y;ant.node=entrance.index;ant.route=nestPath(this.nest,entrance.index,4);
+          continue;
         }
       } else {
         let nearest=null, best=2.3;
@@ -263,6 +222,8 @@ export class World {
       }
     }
     for (const p of this.predators) {
+      p.previousX=p.x;p.previousY=0;p.previousZ=p.z;
+      p.previousDistance=p.distanceWalked||0;
       p.energy -= .012;
       if(p.cooldown>0) p.cooldown--;
       let target=null, nearest=2.6;
@@ -293,6 +254,11 @@ export class World {
     Object.assign(world,JSON.parse(JSON.stringify(snapshot)));
     if(!world.nest||world.nest.revision<2){world.nest=createNest();const q=world.ants.find(a=>a.kind==='queen');if(q)Object.assign(q,world.nest.nodes[2],{node:2});}
     for(const ant of world.ants){if(ant.y===undefined){ant.y=0;if(ant.kind==='queen')Object.assign(ant,world.nest.nodes[2],{node:2});}}
+    if(world.physicsVersion!==3){
+      const queen=world.ants.find(a=>a.kind==='queen');if(queen){queen.x=world.nest.nodes[2].x-.34;queen.z=world.nest.nodes[2].z-.33;queen.tunnelY=world.nest.nodes[2].y;}
+      for(const ant of world.ants)if(ant.y<-.1){ant.tunnelY=world.nest.nodes[ant.node]?.y??ant.y;ant.tunnelCenter=null;ant.y=tunnelEnvelope(world.nest,ant.x,ant.z,ant.tunnelY).floor+.008;ant.normal={x:0,y:1,z:0};}
+      world.physicsVersion=3;
+    }
     return world;
   }
 }
