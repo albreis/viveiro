@@ -176,3 +176,11 @@ a base do próximo para main. Branches antigas já incorporadas não recebem PRs
 vazios. A branch de genética ainda não tem mudanças próprias e terá PR quando
 a implementação da etapa 5 estiver concluída. Novas etapas seguem este fluxo
 automaticamente.
+
+### Publicação e recuperação
+
+- 0.4.0 publicada em 31/10/2026 no mesmo Site privado.
+- Fonte publicada: ec9815c20b81de46039b97172cb610287b4e994b.
+- Tag de recuperação: v0.4.0, apontando exatamente para a fonte publicada.
+- PRs #1 a #6 continuam abertos e encadeados para revisão.
+- Dev mantido em G:\Projetos\viveiro, em http://127.0.0.1:4173/.
