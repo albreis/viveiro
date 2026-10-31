@@ -56,6 +56,10 @@ export interface SupportMotion {
   points: SupportWaypoint[];
   center: Vec3;
   blockedTicks: number;
+  bestDistance?: number;
+  noProgressTicks?: number;
+  searchCooldown?: number;
+  goal?: SupportWaypoint;
 }
 
 export interface NestNode extends Vec3 {

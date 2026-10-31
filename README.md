@@ -6,6 +6,8 @@ Terrário 3D em Three.js com agentes autônomos e experimentos por seed.
 
 Requer Node.js 24.
 
+Nesta máquina, o projeto fica em `G:\Projetos\viveiro`. Execute os comandos nessa pasta.
+
 ```sh
 npm ci
 npm run dev

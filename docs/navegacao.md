@@ -78,6 +78,20 @@ O núcleo não depende de Three.js e pode rodar em testes e Workers.
 Na integração com THREE.Vector3, usar addScaledVector(velocity,dt).
 Usar velocity.multiplyScalar(dt) diretamente alteraria a velocidade guardada.
 
+## Recuperação nas laterais
+
+A transição mede redução da distância até o destino, além dos ticks de contato.
+Oscilar ou caminhar em círculos na parede não reinicia esse contador.
+Uma busca local limitada encontra pontos apoiados no campo implícito;
+cada segmento é amostrado para rejeitar passagens pelo solo ou pelo ar.
+O desvio testa ambos os lados no plano tangente. Próximo do destino,
+uma pequena tolerância libera o próximo ponto sem reposicionar o corpo.
+A escolha de apoio considera outros setores da parede quando o atual falha.
+
+Os testes incluem uma travessia entre lados opostos de um poço e uma
+colônia congestionada por 1.500 ticks, medindo saída e tempo na mesma região.
+Isso cobre regressões conhecidas, sem garantir fluxo para toda configuração.
+
 ## Referências e limites
 
 - [Helbing e Molnár, Social force model](https://doi.org/10.1103/PhysRevE.51.4282).

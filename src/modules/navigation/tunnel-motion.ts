@@ -188,6 +188,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     nav.wallAngle + 0.08,
     nav.wallAngle - 0.08,
     vertical ? nav.wallAngle + Math.PI : -nav.wallAngle,
+    ...Array.from({ length: 16 }, (_, i) => (i * Math.PI) / 8),
   ]) {
     const candidate = tunnelFooting(
       world.nest,
@@ -217,6 +218,8 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
         footing = candidate;
         bestCost = cost;
         nav.wallAngle = angle;
+        if (cost < speed * speed * 0.8 && dot(normal, candidate.normal) > 0.85)
+          break;
       }
     }
   }

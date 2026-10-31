@@ -1,5 +1,13 @@
 # Versões
 
+## Em desenvolvimento — recuperação nas laterais
+
+- Busca de caminho apoiado e desvio lateral durante transições bloqueadas.
+- Detecção de oscilação, tolerância de chegada e escolha de outros setores da parede.
+- Regressão longa de saída do ninho e travessia de um poço.
+- Projeto transferido para G:\Projetos\viveiro; dev mantido em segundo plano.
+- Verificação visual final pendente por limite de uso da ferramenta de navegador.
+
 ## 0.3.0
 
 - Terreno arredondado por campo implícito e malha ajustada à mesma superfície.
