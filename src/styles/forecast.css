@@ -1,0 +1,79 @@
+.forecast-card {
+  border-radius: 10px;
+  background: #e2e9d5;
+  border: 1px solid #d5dfc3;
+  padding: 18px;
+  margin-top: 15px;
+}
+.forecast-card .section-label {
+  font-size: 8px;
+  margin-bottom: 14px;
+  color: #7e8e65;
+}
+.forecast-card h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #425634;
+}
+.forecast-card > p {
+  font-size: 9px;
+  color: #849270;
+  line-height: 1.6;
+  margin: 7px 0;
+}
+.forecast-value {
+  font-family: var(--display);
+  font-size: 31px;
+  font-weight: 500;
+  letter-spacing: -1.6px;
+  color: #526940;
+  margin-top: 10px;
+}
+.forecast-value > span {
+  font-size: 9px;
+  color: #8b9778;
+  font-family: var(--sans);
+  letter-spacing: 0;
+}
+.forecast-range {
+  height: 5px;
+  display: flex;
+  margin: 12px 0 9px;
+  align-items: center;
+  gap: 5px;
+}
+.forecast-range > span {
+  height: 3px;
+  flex: 1;
+  background: linear-gradient(90deg, #cfdcb9, #99ad72);
+  border-radius: 3px;
+}
+.forecast-range > span:last-child {
+  transform: rotate(180deg);
+}
+.forecast-range > i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #708b4c;
+  box-shadow: 0 0 0 3px #d2dfbe;
+}
+.forecast-card > p.forecast-note {
+  font-size: 8px;
+  margin: 8px 0 15px;
+  min-height: 25px;
+}
+.forecast-card > button {
+  background: #f5f8edf0;
+  border: 1px solid #d0ddba;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  font-size: 9px;
+  padding: 10px;
+  color: #60794a;
+}
+.forecast-card > button:hover {
+  background: #faffee;
+}

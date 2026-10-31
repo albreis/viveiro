@@ -1,0 +1,154 @@
+:root {
+  --bg: #f1f2eb;
+  --paper: #fafbf6;
+  --ink: #24332b;
+  --muted: #82897c;
+  --line: #dfe3d6;
+  --green: #426044;
+  --lime: #dce8bc;
+  --orange: #b87947;
+  --sans: "DM Sans", Arial, sans-serif;
+  --display: "Manrope", Arial, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #a7b96d;
+  outline-offset: 4px;
+}
+button {
+  transition:
+    background 0.16s,
+    transform 0.16s;
+}
+button:active {
+  transform: translateY(1px);
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+[hidden] {
+  display: none !important;
+}
+.text-button {
+  border: 0;
+  background: none;
+  font-size: 11px;
+  padding: 4px 0;
+  color: #62715e;
+  white-space: nowrap;
+}
+.text-button:hover {
+  color: #1b3523;
+}
+main {
+  padding: 30px 3.2% 0;
+  max-width: 1900px;
+  margin: auto;
+}
+.eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  color: #87917b;
+}
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.43);
+  padding: 19px;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #7b8672;
+  margin-bottom: 20px;
+}
+.tiny-number {
+  font-family: var(--display);
+  font-size: 10px;
+  letter-spacing: 0;
+  color: #99a28f;
+}
+h2 {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.45px;
+  margin: 0 0 7px;
+}
+.muted {
+  color: #8b9285;
+}
+.small {
+  font-size: 10px;
+  line-height: 1.6;
+}
+@keyframes breathe {
+  to {
+    transform: translateY(-6px);
+    opacity: 0.5;
+  }
+}
+.green-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #819e5c;
+  margin-right: 5px;
+}
+.ant-dot {
+  background: #775143;
+}
+.brood-dot {
+  background: #c3bd8b;
+}
+.food-dot {
+  background: #c6a144;
+}
+.predator-dot {
+  background: #6c6861;
+}
+.right-panel .panel {
+  padding: 18px;
+}
+.live-word {
+  font-size: 7px;
+  letter-spacing: 0.7px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.live-word i {
+  height: 4px;
+  width: 4px;
+}

@@ -1,0 +1,165 @@
+.environment .small {
+  margin-bottom: 23px;
+}
+.slider-block {
+  margin: 0 0 22px;
+}
+.slider-block label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+.slider-block label span {
+  color: #617057;
+}
+.slider-block output {
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.slider-block input {
+  width: 100%;
+  height: 3px;
+  appearance: none;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    #687b4b 0%,
+    #687b4b var(--range, 58%),
+    #dfe5d5 var(--range, 58%),
+    #dfe5d5 100%
+  );
+  display: block;
+  margin: 7px 0;
+}
+.slider-block input::-webkit-slider-thumb {
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  background: #536b41;
+  border: 2px solid #f5f7ed;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #74876a;
+  cursor: grab;
+}
+.slider-block input::-moz-range-thumb {
+  width: 8px;
+  height: 8px;
+  background: #536b41;
+  border: 2px solid #f5f7ed;
+  border-radius: 50%;
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 9px;
+  color: #959c8d;
+}
+.field-note {
+  font-size: 9px;
+  line-height: 1.7;
+  color: #959e8a;
+  margin: 11px 0 0;
+}
+.rain-button {
+  width: 100%;
+  background: #e8edde;
+  border: 1px solid #dbe4cd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 8px;
+  font-size: 10px;
+  color: #587048;
+}
+.rain-button > span:first-child {
+  font-size: 14px;
+}
+.rain-button > span:last-child {
+  margin-left: auto;
+  font-size: 8px;
+  opacity: 0.65;
+}
+.rain-button:hover {
+  background: #dae4ca;
+}
+.intervention-panel {
+  margin-top: 15px;
+}
+.intervention-panel .section-label {
+  margin-bottom: 17px;
+}
+.intervention-panel .small {
+  min-height: 31px;
+  margin-bottom: 13px;
+}
+.tools {
+  display: flex;
+  gap: 6px;
+}
+.tools button {
+  flex: 1;
+  border: 1px solid #e0e5d7;
+  background: #f5f7ef;
+  border-radius: 7px;
+  padding: 10px 2px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+}
+.tools button:hover,
+.tools button.active {
+  border-color: #9bab83;
+  background: #e4ebd6;
+}
+.tool-icon {
+  font-size: 23px;
+  line-height: 1;
+  color: #5a7443;
+}
+.food-icon {
+  color: #b68c43;
+}
+.predator-icon {
+  color: #866254;
+}
+.seed-box {
+  padding: 18px 6px;
+}
+.seed-box label {
+  font-size: 8px;
+  letter-spacing: 1.3px;
+  color: #8c9581;
+}
+.seed-box > div {
+  display: flex;
+  border-bottom: 1px solid #d4dbc8;
+  margin: 8px 0 10px;
+  padding-bottom: 5px;
+}
+.seed-box input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  background: none;
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.7px;
+  color: #5a6a50;
+  padding: 3px 0;
+}
+.seed-box > div > button {
+  background: none;
+  border: 0;
+  font-size: 18px;
+  color: #748764;
+}
+.seed-box .text-button {
+  font-size: 9px;
+}
