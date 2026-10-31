@@ -69,6 +69,7 @@ export interface NestState {
   links: [number, number][];
   revision: number;
   linkWidths?: number[];
+  lastWidenTick?: number[];
 }
 
 export interface NavigationWorld {

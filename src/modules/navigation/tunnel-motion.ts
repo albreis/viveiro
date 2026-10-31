@@ -24,6 +24,7 @@ import { positionClear } from "./collision.ts";
 import {
   startSupportedMotion,
   advanceSupportedMotion,
+  settleSupport,
 } from "./support-motion.ts";
 import { normalize, sub, scale, add, dot, position } from "./vectors.ts";
 
@@ -111,6 +112,7 @@ function finishSegment(
 export function moveInNest(world: NavigationWorld, ant: AgentState) {
   const nav = navigationState(ant);
   recordCongestion(ant);
+  if (settleSupport(world, ant, ant.speed * 0.85)) return;
   if (ant.supportMotion) {
     advanceSupportedMotion(world, ant, ant.speed * 0.85);
     return;
@@ -165,20 +167,27 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     ant.state = "Recuando para liberar passagem";
     return;
   }
-  nav.wallAngle = Math.max(
-    0.2,
-    Math.min(1.6, nav.wallAngle + (force.pressure > 0.1 ? 0.045 : -0.018)),
+  const rest = Math.atan2(
+    Math.sin(0.35 - nav.wallAngle),
+    Math.cos(0.35 - nav.wallAngle),
   );
+  nav.wallAngle +=
+    force.pressure > 0.1 ? 0.035 : Math.max(-0.015, Math.min(0.015, rest));
   const step = Math.min(
     distance,
     Math.max(speed * 0.2, dot(force.velocity, forward)),
   );
   const next = add(center, scale(forward, step));
   let footing: Footing | null = null;
+  let bestCost = Infinity;
+  const vertical =
+    Math.abs(target.y - from.y) >
+    Math.hypot(target.x - from.x, target.z - from.z) * 1.5;
   for (const angle of [
     nav.wallAngle,
     nav.wallAngle + 0.08,
     nav.wallAngle - 0.08,
+    vertical ? nav.wallAngle + Math.PI : -nav.wallAngle,
   ]) {
     const candidate = tunnelFooting(
       world.nest,
@@ -200,9 +209,15 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
         candidate.normal,
       )
     ) {
-      footing = candidate;
-      nav.wallAngle = angle;
-      break;
+      const cost =
+        (candidate.x - ant.x) ** 2 +
+        (candidate.y - (ant.y || 0)) ** 2 +
+        (candidate.z - ant.z) ** 2;
+      if (cost < bestCost) {
+        footing = candidate;
+        bestCost = cost;
+        nav.wallAngle = angle;
+      }
     }
   }
   if (!footing) {

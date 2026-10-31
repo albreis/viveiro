@@ -63,7 +63,7 @@ export function updateWorkers(world, suitability) {
       );
       heading = Math.atan2(entrance.z - ant.z, entrance.x - ant.x);
       ant.state = ant.carrying ? "Levando alimento" : "Voltando ao ninho";
-      if (distance(ant, entrance) < 0.4) {
+      if (distance(ant, entrance) < 0.6) {
         ant.tunnelCenter = { x: entrance.x, y: entrance.y, z: entrance.z };
         ant.tunnelY = entrance.y;
         ant.node = entrance.index;

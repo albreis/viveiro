@@ -70,6 +70,7 @@ export function widenCongestedTunnel(
 ) {
   const nav = navigationState(ant);
   if (edgeIndex < 0 || ant.kind !== "worker") return false;
+  if ((world.nest.linkWidths?.[edgeIndex] || 0.38) >= 0.64) return false;
   if (nav.stagnantTicks > 65 && !nav.excavateUntil) {
     nav.excavateUntil = world.tick + 16;
     world.log(
@@ -85,6 +86,9 @@ export function widenCongestedTunnel(
   }
   ant.state = "Escavar";
   if (world.tick % 4 === 0) {
+    world.nest.lastWidenTick ??= [];
+    if (world.nest.lastWidenTick[edgeIndex] === world.tick) return true;
+    world.nest.lastWidenTick[edgeIndex] = world.tick;
     world.nest.linkWidths ??= world.nest.links.map(() => 0.38);
     const before = world.nest.linkWidths[edgeIndex] || 0.38;
     const after = Math.min(0.64, before + 0.012);

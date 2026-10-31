@@ -1,3 +1,4 @@
+import { sampleSoil } from "../terrain/field.ts";
 import type {
   AgentState,
   NavigationWorld,
@@ -53,6 +54,7 @@ export function moveSurface(
     Math.abs(x) > BOUNDS.x ||
     Math.abs(z) > BOUNDS.z ||
     world.inPond(x, z) ||
+    sampleSoil(world.nest, { x, y: -0.025, z }).distance > 0 ||
     hitsLog(x, z) ||
     (predator
       ? world.nest.nodes.some(
