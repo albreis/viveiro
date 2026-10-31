@@ -35,7 +35,7 @@ test('predators can catch workers while the nest remains a refuge',()=>{
 test('underground routes deliver food in the storage chamber and lead back to an entrance',()=>{
   const w=new World('galleries');w.step(210);const ant=w.workers[0],storage=w.nest.nodes[4];
   assert.ok(w.ants.find(a=>a.kind==='queen').y<0);
-  Object.assign(ant,{x:storage.x,y:storage.y,z:storage.z,node:4,route:[4],carrying:1});
+  Object.assign(ant,{x:storage.x,y:storage.y,z:storage.z,node:4,route:[4],carrying:1,tunnelY:storage.y,tunnelCenter:{x:storage.x,y:storage.y,z:storage.z}});
   const before=w.food;w.step();assert.ok(w.food>before+.8);assert.equal(ant.carrying,0);assert.ok(ant.route.length>0);
   w.step(250);assert.ok(ant.y>=-.1||ant.carrying>0||ant.route.length>0);
   assert.ok(nestPath(w.nest,0,3).length>=3);

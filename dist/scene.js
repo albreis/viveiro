@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { NEST, LIMIT, hashSeed } from './simulation.js';
 import { createSoilGeometry } from './soil.js';
+import { tunnelEnvelope } from './terrain.js';
 const UP = new THREE.Vector3(0,1,0);
 export class Terrarium {
   constructor(element,world,onPlace) {
@@ -80,6 +81,7 @@ export class Terrarium {
     for(let i=0;i<20000;i++){ctx.fillStyle=['#52613b','#8b8c59','#838450','#778353','#646e43'][Math.floor(rnd()*5)];ctx.globalAlpha=.25+rnd()*.4;const s=1+rnd()*5;ctx.fillRect(rnd()*512,rnd()*512,s,s);}
     const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(2,1.3);
     this.soil=this.mesh(createSoilGeometry(this.world.nest),[this.material('#ffffff',{vertexColors:true}),this.material('#ffffff',{map:texture,vertexColors:true})],this.staticGroup);
+    this.soilRevision=this.world.nest.revision;this.lastSoilBuild=0;
     this.mesh(new THREE.BoxGeometry(20.5,.17,13.5),this.material('#5c624c'),this.staticGroup,0,-4.31,0);
     this.mesh(new THREE.BoxGeometry(20.8,.12,13.8),this.material('#aab295'),this.staticGroup,0,-4.46,0);
     const floor=this.mesh(new THREE.PlaneGeometry(180,180),this.material('#e5e9da'),this.scene,0,-4.55,0);floor.rotation.x=-Math.PI/2;floor.castShadow=false;
@@ -151,7 +153,18 @@ export class Terrarium {
     if(plant.kind===2){trunk.scale.y=1.6;for(let i=0;i<3;i++){const crown=this.mesh(new THREE.IcosahedronGeometry(.28,1),leafMat,g,(i-1)*.16,1.2+i*.22,0);crown.scale.set(1.2,1,.9);}}
     this.plantGroup.add(g);return g;
   }
-  update(world,time) {
+  pose(ant){
+    const t=this.alpha??1;
+    return new THREE.Vector3((ant.previousX??ant.x)+(ant.x-(ant.previousX??ant.x))*t,
+      (ant.previousY??ant.y??0)+((ant.y||0)-(ant.previousY??ant.y??0))*t,
+      (ant.previousZ??ant.z)+(ant.z-(ant.previousZ??ant.z))*t);
+  }
+  update(world,time,alpha=1) {
+    this.alpha=alpha;
+    if(this.soilRevision!==world.nest.revision&&time-this.lastSoilBuild>1.5){
+      this.soil.geometry.dispose();this.soil.geometry=createSoilGeometry(world.nest);
+      this.soilRevision=world.nest.revision;this.lastSoilBuild=time;
+    }
     this.world=world;this.lastTick=world.tick;
     this.sun.intensity=2.2+world.params.light/30;
     for(const p of world.plants){let g=this.plantViews.get(p.id);if(!g){g=this.buildPlant(p);this.plantViews.set(p.id,g);}g.scale.setScalar(.5+p.biomass*.75);g.rotation.z=Math.sin(time*.7+p.id)*.013;}
@@ -176,34 +189,48 @@ export class Terrarium {
       const ant=world.ants.find(a=>a.id===this.followId);
       if(!ant){this.stopFollowing();this.onFollowEnded?.();}
       else{
-        const heading=(ant.kind==='queen'?-.6:ant.angle)+this.lookYaw,pitch=(ant.pitch||0)+this.lookPitch;
-        const eye=new THREE.Vector3(ant.x+Math.cos(ant.angle)*.13,(ant.y||0)+.17,ant.z+Math.sin(ant.angle)*.13);
-        this.camera.position.lerp(eye,.35);
-        const target=this.camera.position.clone().add(new THREE.Vector3(Math.cos(heading)*Math.cos(pitch),Math.sin(pitch),Math.sin(heading)*Math.cos(pitch)));
-        this.camera.lookAt(target);this.followLight.position.copy(eye);this.followLight.intensity=ant.y<-.1?1.8:0;
+        const heading=ant.kind==='queen'?-.6:ant.angle,pitch=ant.pitch||0;
+        const normal=new THREE.Vector3(ant.normal?.x||0,ant.normal?.y??1,ant.normal?.z||0).normalize();
+        const forward=new THREE.Vector3(Math.cos(heading)*Math.cos(pitch),Math.sin(pitch),Math.sin(heading)*Math.cos(pitch)).normalize();
+        const side=forward.clone().cross(normal).normalize();
+        const eye=this.pose(ant).addScaledVector(normal,.16).addScaledVector(forward,.06);
+        if(ant.y<-.1&&normal.y>.5){
+          const envelope=tunnelEnvelope(world.nest,eye.x,eye.z,ant.tunnelY??ant.y);
+          if(envelope.inside)eye.y=Math.max(envelope.floor+.08,Math.min(envelope.ceiling-.05,eye.y));
+        }
+        this.camera.position.copy(eye);
+        const direction=forward.applyAxisAngle(normal,-this.lookYaw).applyAxisAngle(side,this.lookPitch);
+        const rotation=new THREE.Matrix4().lookAt(eye,eye.clone().add(direction),normal);
+        this.camera.quaternion.slerp(new THREE.Quaternion().setFromRotationMatrix(rotation),.24);
+        this.followLight.position.copy(eye);this.followLight.intensity=ant.y<-.1?1.8:0;
       }
     }
   }
   updateAnts(agents,parts,spider,time) {
-    const d=new THREE.Object3D(),q=new THREE.Quaternion(),axis=new THREE.Vector3();
+    const d=new THREE.Object3D(),q=new THREE.Quaternion(),axis=new THREE.Vector3(),basis=new THREE.Matrix4();
     for(const m of parts)m.count=Math.min(agents.length,m.instanceMatrix.count);
     agents.slice(0,parts[0].count).forEach((a,i)=>{
       const c=Math.cos(a.angle),s=Math.sin(a.angle),scale=spider?1.6:1;
+      const base=this.pose(a),normal=new THREE.Vector3(a.normal?.x||0,a.normal?.y??1,a.normal?.z||0).normalize();
+      const forward=new THREE.Vector3(c*Math.cos(a.pitch||0),Math.sin(a.pitch||0),s*Math.cos(a.pitch||0)).normalize();
+      const side=forward.clone().cross(normal).normalize();
+      q.setFromRotationMatrix(basis.makeBasis(forward,normal,side));
       for(let p=0;p<3;p++){
         const offset=(p-1)*.12*scale;
-        d.position.set(a.x+c*offset,(a.y||0)+.12*scale,a.z+s*offset);d.rotation.set(0,-a.angle,0);
+        d.position.copy(base).addScaledVector(forward,offset).addScaledVector(normal,.12*scale);d.quaternion.copy(q);
         d.scale.set((p===0?.12:p===1?.065:.085)*scale,.055*scale,.06*scale);
         if(spider&&p===0)d.scale.set(.18,.12,.14);
         d.updateMatrix();parts[p].setMatrixAt(i,d.matrix);
       }
       const legs=spider?8:6;
       for(let p=0;p<legs;p++){
-        const side=p%2?1:-1,along=Math.floor(p/2)-1;
-        const walk=Math.sin((a.distanceWalked||0)*25+a.id+along*2)*.035;
-        const ax=a.x+c*along*.07*scale-s*side*.045*scale,az=a.z+s*along*.07*scale+c*side*.045*scale;
-        const bx=a.x+c*(along*.12+walk)*scale-s*side*.16*scale,bz=a.z+s*(along*.12+walk)*scale+c*side*.16*scale;
-        axis.set(bx-ax,-.095*scale,bz-az);const len=axis.length();q.setFromUnitVectors(UP,axis.normalize());
-        d.position.set((ax+bx)/2,(a.y||0)+.075*scale,(az+bz)/2);d.quaternion.copy(q);d.scale.set(1,len,1);d.updateMatrix();parts[p+3].setMatrixAt(i,d.matrix);
+        const sign=p%2?1:-1,along=Math.floor(p/2)-1;
+        const travel=(a.previousDistance??a.distanceWalked??0)+((a.distanceWalked||0)-(a.previousDistance??a.distanceWalked??0))*(this.alpha??1);
+        const walk=Math.sin(travel*25+a.id+along*2)*.035;
+        const start=base.clone().addScaledVector(forward,along*.07*scale).addScaledVector(side,sign*.045*scale).addScaledVector(normal,.12*scale);
+        const end=base.clone().addScaledVector(forward,(along*.12+walk)*scale).addScaledVector(side,sign*.16*scale).addScaledVector(normal,.012*scale);
+        axis.copy(end).sub(start);const len=axis.length();d.quaternion.setFromUnitVectors(UP,axis.normalize());
+        d.position.copy(start).add(end).multiplyScalar(.5);d.scale.set(1,len,1);d.updateMatrix();parts[p+3].setMatrixAt(i,d.matrix);
       }
     });
     for(const m of parts)m.instanceMatrix.needsUpdate=true;
@@ -240,7 +267,7 @@ export class Terrarium {
     const ant=this.world.ants.find(a=>a.id===Number(id));if(!ant)return false;
     if(!this.followId)this.previousView={position:this.camera.position.clone(),target:this.controls.target.clone()};
     this.followId=ant.id;this.lookYaw=0;this.lookPitch=0;
-    this.controls.enabled=false;this.camera.fov=82;this.camera.near=.018;this.camera.updateProjectionMatrix();
+    this.controls.enabled=false;this.camera.fov=72;this.camera.near=.012;this.camera.updateProjectionMatrix();
     this.camera.position.set(ant.x,(ant.y||0)+.17,ant.z);this.setTool(null);
     return true;
   }
