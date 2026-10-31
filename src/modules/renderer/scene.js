@@ -1,3 +1,5 @@
+import { SoilMesher } from "../../services/SoilMesher.ts";
+import { SoilView } from "./SoilView.ts";
 import { buildGround, label } from "./environment.js";
 import { buildInsects, buildQueen, buildMale, updateAnts } from "./insects.js";
 import { buildPlant } from "./plants.js";
@@ -75,6 +77,8 @@ export class Terrarium {
     this.predatorGroup = new THREE.Group();
     this.scene.add(this.predatorGroup);
     this.buildGround(world.seed);
+    this.soilMesher = new SoilMesher();
+    this.soilView = new SoilView(this.scene, LIMIT);
     this.antParts = this.buildInsects(LIMIT, false);
     this.predatorParts = this.buildInsects(10, true);
     this.queen = this.buildQueen();
@@ -266,6 +270,7 @@ export class Terrarium {
     this.renderer.render(this.scene, this.camera);
   }
   dispose() {
+    this.soilMesher.dispose();
     this.resizeObserver.disconnect();
     this.controls.dispose();
     const geos = new Set(),

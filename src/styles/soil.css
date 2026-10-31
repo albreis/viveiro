@@ -1,0 +1,9 @@
+.soil-panel p {
+  color: var(--muted, #83907c);
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 18px 0;
+}
+.soil-panel button {
+  font-size: 12px;
+}

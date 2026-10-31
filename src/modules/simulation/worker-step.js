@@ -1,3 +1,4 @@
+import { updateSoilWorker } from "../soil/worker.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { nestPath } from "./nest.ts";
 import { tunnelEnvelope } from "../terrain/terrain.js";
@@ -27,18 +28,19 @@ export function updateWorkers(world, suitability) {
       }
       continue;
     }
-    if (ant.route?.length) {
-      world.moveInNest(ant);
-      continue;
-    }
-    ant.pitch = 0;
-    ant.normal = { x: 0, y: 1, z: 0 };
     ant.energy -= 0.025 + (1 - suitability) * 0.015;
     if (ant.energy <= 0 || ant.age > world.lifeLimit(ant)) {
       dead.add(ant.id);
       world.deaths++;
       continue;
     }
+    if (updateSoilWorker(world, ant)) continue;
+    if (ant.route?.length) {
+      world.moveInNest(ant);
+      continue;
+    }
+    ant.pitch = 0;
+    ant.normal = { x: 0, y: 1, z: 0 };
     if (ant.rest > 0) {
       ant.rest--;
       continue;

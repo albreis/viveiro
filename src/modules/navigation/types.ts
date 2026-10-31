@@ -74,6 +74,8 @@ export interface NestState {
   revision: number;
   linkWidths?: number[];
   lastWidenTick?: number[];
+  rubble?: (Vec3 & { id: number; mass: number; edge?: number })[];
+  erosionCuts?: (Vec3 & { r: number })[];
 }
 
 export interface NavigationWorld {
@@ -84,4 +86,6 @@ export interface NavigationWorld {
   range(min: number, max: number): number;
   log(message: string, type?: string): void;
   inPond(x: number, z: number): boolean;
+  onNestArrival?(ant: AgentState, node: number): boolean;
+  recordSoilRemoval?(ant: AgentState, mass: number): void;
 }

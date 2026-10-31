@@ -49,7 +49,8 @@ test("a crowded colony reaches the surface and no worker stays at one wall for d
   for (let i = 0; i < 1500; i++) {
     w.step();
     for (const ant of w.workers) {
-      if (ant.y >= -0.04) exited.add(ant.id);
+      if (ant.node === null && !ant.route?.length && ant.y >= -0.04)
+        exited.add(ant.id);
       const origin = positions.get(ant.id);
       if (
         !origin ||

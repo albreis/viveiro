@@ -8,7 +8,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | ----- | -------------------------------------------------------------------- | --------------------- |
 | 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1     |
 | 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0          |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Próxima               |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
 | 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Planejada             |
 | 4     | Reação-difusão, ACO e limiares de estímulo                           | Planejada             |
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada             |
@@ -97,3 +97,14 @@ substituir uma análise geotécnica validada.
 - Previsões com observações parciais/completas e erro medido por horizonte.
 
 RL depende de sensores, ações, recompensas e física estáveis.
+
+### Progresso da etapa 2 — 31/10/2026
+
+- Branch: codex/tuneis-vivos, incluindo a correção complementar da boca dos túneis.
+- Frentes móveis, novas galerias, carga visível, depósitos e reparo por viagens.
+- Erosão simplificada por umidade e vão; intervenção em uma galeria vazia.
+- Balanço conservativo de material e snapshots reproduzíveis.
+- Reconstrução da malha em Worker; arquivos de inicialização, migração e previsão separados.
+- Fundação do primeiro buraco ligada à etapa de novas rainhas (5), ainda pendente.
+- Solo por volumes aproximados, sem representar grãos reais.
+- Conferência visual e publicação aguardam a ferramenta do navegador. Dev continua no G:.

@@ -1,3 +1,4 @@
+import { renderSoilStatus } from "./soil-status.ts";
 import { drawChart as renderChart } from "./chart-view.js";
 const $ = (id) => document.getElementById(id);
 const format = (n) =>
@@ -84,6 +85,7 @@ export function renderStatus(context, updateAntCamera) {
       " · B " +
       comparison.population +
       " formigas.";
+  renderSoilStatus(w);
   updateAntCamera(w);
   if (forecastCache && forecastCache.scenario === scenario) {
     const f = forecastCache.result;

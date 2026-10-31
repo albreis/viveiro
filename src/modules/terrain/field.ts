@@ -63,6 +63,14 @@ function cavity(nest: NestState, p: Vec3): FieldSample {
       inverse = 1 / (distance || 1);
     union(field, distance - radius, x * inverse, y * inverse, z * inverse);
   }
+  for (const cut of nest.erosionCuts || []) {
+    const x = p.x - cut.x,
+      y = p.y - cut.y,
+      z = p.z - cut.z,
+      d = Math.hypot(x, y, z);
+    if (d < cut.r + 0.32)
+      union(field, d - cut.r, x / (d || 1), y / (d || 1), z / (d || 1));
+  }
   if (!Number.isFinite(field.distance)) field.distance = 2;
   return field;
 }
@@ -96,12 +104,28 @@ export function sampleSoil(nest: NestState, p: Vec3): FieldSample {
   const y = by * h - voidField.y * (1 - h);
   const z = bz * h - voidField.z * (1 - h);
   const size = Math.hypot(x, y, z) || 1;
-  return {
+  const result = {
     distance: cut + (box - cut) * h + k * h * (1 - h),
     x: x / size,
     y: y / size,
     z: z / size,
   };
+  for (const pile of nest.rubble || []) {
+    if (pile.mass <= 0) continue;
+    const r = Math.cbrt((pile.mass * 3) / (4 * Math.PI));
+    const dx = p.x - pile.x,
+      dy = p.y - pile.y,
+      dz = p.z - pile.z,
+      d = Math.hypot(dx, dy, dz);
+    if (d - r < result.distance)
+      Object.assign(result, {
+        distance: d - r,
+        x: dx / (d || 1),
+        y: dy / (d || 1),
+        z: dz / (d || 1),
+      });
+  }
+  return result;
 }
 
 /** Glass is also a valid support, including where a cavity reaches a wall. */

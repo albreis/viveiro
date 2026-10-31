@@ -2,7 +2,7 @@ import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 import { sampleSupport } from "../terrain/field.ts";
 import { navigationState } from "./contact.ts";
-import { add, sub, scale, length, position } from "./vectors.ts";
+import { add, sub, scale, length, position, dot } from "./vectors.ts";
 import { findSupportPath } from "./support-search.ts";
 import { chooseSupportedStep } from "./support-step.ts";
 
@@ -50,7 +50,11 @@ export function advanceSupportedMotion(
   } else motion.noProgressTicks = (motion.noProgressTicks || 0) + 1;
   // A blocked waypoint within one step is already reached by the body.
   // Advance the route without moving the ant or snapping it to that waypoint.
-  if ((motion.noProgressTicks || 0) > 10 && distance < speed) {
+  if (
+    (motion.noProgressTicks || 0) > 10 &&
+    distance < speed &&
+    dot(ant.normal || point.normal, point.normal) > 0.75
+  ) {
     motion.points.shift();
     motion.noProgressTicks = 0;
     motion.bestDistance = Infinity;
