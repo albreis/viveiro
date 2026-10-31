@@ -149,8 +149,9 @@ document.querySelectorAll('[data-tool]').forEach(button=>button.onclick=()=>{
   $('scene-guide').textContent=tool?'Clique no solo · Esc para sair':'Arraste para orbitar · Role para aproximar';
 });
 $('trails').onchange=()=>{if(scene)scene.showTrails=$('trails').checked;};
-function setView(top){scene?.setView(top);$('view-top').classList.toggle('active',top);$('view-iso').classList.toggle('active',!top);}
+function setView(top){scene?.setView(top);$('view-top').classList.toggle('active',top===true);$('view-iso').classList.toggle('active',top===false);$('view-side').classList.toggle('active',top==='side');}
 $('view-top').onclick=()=>setView(true);$('view-iso').onclick=()=>setView(false);
+$('view-side').onclick=()=>setView('side');
 $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('.scene-card').requestFullscreen();}catch{toast('Tela cheia indisponível neste navegador.');}};
 $('new-world').onclick=()=>{const seed='SEMENTE-'+Math.floor(Date.now()%100000);reset(seed,{...world.params});toast('Um novo começo. Observe os primeiros ovos.');};
 $('apply-seed').onclick=()=>{const seed=$('seed').value.trim();if(seed)reset(seed,{...world.params});};

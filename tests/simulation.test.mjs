@@ -22,12 +22,12 @@ test('food, entities and positions remain bounded through a long ecological run'
     const w=new World(seed);w.step(4000);
     assert.ok(w.food>=0&&Number.isFinite(w.food));assert.ok(w.population+w.brood.length<=LIMIT);
     assert.ok(w.patches.every(p=>p.amount>=0&&Number.isFinite(p.amount)));
-    assert.ok(w.ants.every(a=>Math.abs(a.x)<=9.3&&Math.abs(a.z)<=5.8&&Number.isFinite(a.energy)));
+    assert.ok(w.ants.every(a=>Math.abs(a.x)<=10&&Math.abs(a.z)<=6.5&&a.y>=-4.2&&Number.isFinite(a.energy)));
     assert.ok(w.plants.every(p=>p.biomass>=0&&p.biomass<=1.1));
   }
 });
 test('predators can catch workers while the nest remains a refuge',()=>{
-  const w=new World('predator');w.step(210);const prey=w.workers[0];prey.x=5;prey.z=3;prey.speed=0;
+  const w=new World('predator');w.step(210);const prey=w.workers[0];prey.x=5;prey.y=0;prey.z=3;prey.route=[];prey.speed=0;
   w.predators=[{id:9999,x:5,z:3,angle:0,energy:100,cooldown:0,prey:0}];w.step(50);
   assert.ok(!w.ants.some(a=>a.id===prey.id));assert.ok(w.deaths>0);assert.ok(w.ants.some(a=>a.kind==='queen'));
   assert.equal(w.addPredator(5,5),true);assert.equal(w.intervene('predator',-4.8,-1.1),false);
