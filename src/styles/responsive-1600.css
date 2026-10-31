@@ -1,0 +1,27 @@
+@media (min-width: 1600px) {
+  .workspace {
+    grid-template-columns: 245px minmax(440px, 1fr) 285px;
+    gap: 24px;
+  }
+  .panel {
+    padding: 23px;
+  }
+  #viewport {
+    height: 620px;
+  }
+  .scene-controls {
+    min-height: 76px;
+  }
+  .topbar {
+    height: 90px;
+  }
+  .page-heading {
+    margin-bottom: 32px;
+  }
+  .slider-block {
+    margin-bottom: 27px;
+  }
+  main {
+    padding-top: 35px;
+  }
+}

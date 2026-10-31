@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { World, forecast, LIMIT, nestPath } from '../dist/simulation.js';
+import { World, forecast, LIMIT, nestPath } from '../src/modules/simulation/world.js';
 test('same seed and timed actions reproduce the same complete state',()=>{
   const a=new World('reproducible'),b=new World('reproducible');
   for(let i=0;i<650;i++){if(i===130){a.intervene('rain');b.intervene('rain');}if(i===230){a.intervene('food',-2,1);b.intervene('food',-2,1);}a.step();b.step();}

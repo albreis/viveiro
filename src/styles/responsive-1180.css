@@ -1,0 +1,48 @@
+@media (max-width: 1180px) {
+  main {
+    padding: 24px 2.3% 0;
+  }
+  .topbar {
+    padding: 0 2.3%;
+  }
+  .workspace {
+    grid-template-columns: 190px minmax(330px, 1fr) 230px;
+    gap: 13px;
+  }
+  .panel {
+    padding: 15px;
+  }
+  .right-panel .panel,
+  .forecast-card {
+    padding: 15px;
+  }
+  #viewport {
+    height: 465px;
+  }
+  .brand-caption {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .scene-controls {
+    gap: 9px;
+    padding: 11px;
+  }
+  .scene-guide {
+    display: none;
+  }
+  .toggle-label {
+    font-size: 8px;
+  }
+  .legend {
+    gap: 9px;
+  }
+  .rain-button > span:last-child {
+    display: none;
+  }
+  .population-line > strong {
+    font-size: 47px;
+  }
+  .scene-caption > span:last-child {
+    font-size: 7px;
+  }
+}

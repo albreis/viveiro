@@ -1,13 +1,23 @@
 {
   "name": "viveiro",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "start": "vite",
+    "test": "node --test tests/*.test.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "format": "prettier --write src index.html vite.config.ts tsconfig.json"
   },
   "dependencies": {
     "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "prettier": "^3.9.10",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
   }
 }

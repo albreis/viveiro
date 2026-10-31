@@ -1,0 +1,232 @@
+@media (max-width: 650px) {
+  main {
+    padding: 23px 15px 0;
+  }
+  .topbar {
+    height: 66px;
+    padding: 0 18px;
+  }
+  .brand {
+    font-size: 28px;
+  }
+  .brand-symbol {
+    width: 27px;
+    height: 29px;
+    font-size: 23px;
+  }
+  .top-actions {
+    gap: 10px;
+  }
+  .prototype {
+    display: none;
+  }
+  .page-heading {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .page-heading h1 {
+    font-size: 25px;
+    letter-spacing: -1.2px;
+  }
+  .page-heading p {
+    font-size: 10px;
+    max-width: 240px;
+    line-height: 1.7;
+  }
+  .eyebrow {
+    font-size: 7px;
+  }
+  .outline-button {
+    font-size: 9px;
+    padding: 8px;
+    white-space: nowrap;
+    margin-top: 20px;
+  }
+  .outline-button > span {
+    margin-right: 3px;
+  }
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .center-panel {
+    order: 0;
+    width: 100%;
+  }
+  .left-panel {
+    order: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .environment {
+    grid-row: span 2;
+  }
+  .intervention-panel {
+    margin: 0;
+  }
+  .seed-box {
+    padding: 10px 3px;
+  }
+  .right-panel {
+    order: 2;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .forecast-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .chart-panel {
+    grid-column: 1/-1;
+  }
+  .events-panel {
+    grid-column: 1/-1;
+  }
+  .scene-card {
+    border-radius: 10px;
+  }
+  #viewport {
+    height: 390px;
+  }
+  .scene-controls {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .speed-controls button {
+    width: 27px;
+  }
+  .toggle-label {
+    font-size: 8px;
+  }
+  .scene-caption {
+    padding: 0 12px 12px;
+  }
+  .scene-caption > span:last-child {
+    display: none;
+  }
+  .scene-toolbar {
+    left: 13px;
+    top: 13px;
+  }
+  .scene-controls .controls-divider {
+    display: none;
+  }
+  .time-display > span {
+    max-width: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .observation-card {
+    margin-top: 12px;
+    padding: 13px;
+    min-height: 78px;
+  }
+  .observation-card p {
+    font-size: 10px;
+  }
+  .legend {
+    margin: 13px 1px;
+    gap: 10px;
+  }
+  .legend .text-button {
+    font-size: 8px;
+  }
+  .comparison-strip {
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .help-columns {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  dialog {
+    padding: 28px 23px;
+  }
+  .section-label {
+    font-size: 8px;
+  }
+  .environment .small {
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 13px;
+  }
+  .rain-button {
+    font-size: 9px;
+  }
+  .slider-block {
+    margin-bottom: 23px;
+  }
+  .tools {
+    gap: 4px;
+  }
+  .tools button {
+    font-size: 8px;
+  }
+  .intervention-panel {
+    padding: 13px;
+  }
+  .intervention-panel .small {
+    font-size: 9px;
+  }
+  .population-line > strong {
+    font-size: 43px;
+  }
+  .population-line {
+    gap: 9px;
+  }
+  .population-line > div > span {
+    font-size: 7px;
+  }
+  .ant-glyph {
+    display: none;
+  }
+  .metric-grid {
+    gap: 15px 7px;
+  }
+  .metric-grid strong {
+    font-size: 17px;
+  }
+  .forecast-card h2 {
+    font-size: 13px;
+  }
+  .forecast-value {
+    font-size: 27px;
+  }
+  .forecast-card > button {
+    font-size: 8px;
+  }
+  footer {
+    flex-wrap: wrap;
+    font-size: 7px;
+    margin-top: 20px;
+  }
+  footer > span:last-child {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  .ant-camera {
+    padding: 10px 12px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .ant-camera > div {
+    flex-basis: 100%;
+    margin-bottom: 3px;
+  }
+  .ant-camera select {
+    flex: 1;
+    max-width: none;
+  }
+  .ant-camera button {
+    font-size: 8px;
+  }
+}

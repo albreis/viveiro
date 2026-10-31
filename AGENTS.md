@@ -6,4 +6,7 @@
 - Publique etapas concluídas no mesmo Site privado e informe ao usuário o que mudou e o que ainda falta.
 - Não trate modelos simplificados como biologia ou engenharia cientificamente validadas.
 - Nunca armazene tokens ou credenciais no repositório.
-
+- Código editável em src; dist é gerado pelo Vite e não deve ser editado.
+- Prefira módulos focados com aproximadamente 150–250 linhas; divida responsabilidades antes de crescer um arquivo.
+- Formate TypeScript, JavaScript e CSS. Não compacte código de origem em linhas enormes.
+- A navegação usa TypeScript estrito; migre módulos legados gradualmente, sem ts-nocheck.
