@@ -9,7 +9,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1     |
 | 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0          |
 | 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Planejada             |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Em desenvolvimento    |
 | 4     | Reação-difusão, ACO e limiares de estímulo                           | Planejada             |
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada             |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada             |
@@ -108,3 +108,12 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Fundação do primeiro buraco ligada à etapa de novas rainhas (5), ainda pendente.
 - Solo por volumes aproximados, sem representar grãos reais.
 - Conferência visual e publicação aguardam a ferramenta do navegador. Dev continua no G:.
+
+### Progresso da etapa 3 — 31/10/2026
+
+- Branch: codex/organizacao-colonia.
+- Inglúvia, troca conservativa por contatos locais e consumo para energia.
+- Transporte físico de crias e resíduos; estágios e cargas visíveis.
+- Castas, diferenças individuais e papéis ligados à idade.
+- Migração de snapshots e contador de trocas de alimento.
+- Testes biológicos e de movimento em andamento; publicação aguarda conferência visual.

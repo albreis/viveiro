@@ -25,7 +25,13 @@ import {
 } from "./vectors.ts";
 
 export const loaded = (ant: AgentState) =>
-  !!(ant.hasFood || ant.carrying > 0 || ant.carryingBrood || ant.carryingSoil);
+  !!(
+    ant.hasFood ||
+    ant.carrying > 0 ||
+    ant.carryingBrood ||
+    ant.carryingSoil ||
+    ant.carryingWaste
+  );
 export const NAVIGATION = {
   sensingRadius: 1.2,
   safetyRadius: 0.52,

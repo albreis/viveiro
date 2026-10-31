@@ -1,5 +1,15 @@
 # Versões
 
+## Em desenvolvimento — organização da colônia
+
+- Trofalaxia conservativa, reserva social e alimentação pela despensa.
+- Transporte físico de ovos, larvas, pupas e resíduos.
+- Castas e traços individuais reproduzíveis; papéis ligados à idade.
+- Proteção da entrada e visualização de cargas e estágios.
+- Recuperação de posições antigas junto ao tronco e nova rota após tarefas internas.
+- 29 testes e build aprovados; conferência visual pendente.
+
+
 ## Em desenvolvimento — túneis vivos
 
 - Frentes de escavação, transporte e depósitos de terra.

@@ -93,7 +93,7 @@ export function updateAnts(host, agents, parts, spider, time) {
   agents.slice(0, parts[0].count).forEach((a, i) => {
     const c = Math.cos(a.angle),
       s = Math.sin(a.angle),
-      scale = spider ? 1.6 : 1;
+      scale = spider ? 1.6 : a.bodyScale || 1;
     const base = host.pose(a),
       normal = new THREE.Vector3(
         a.normal?.x || 0,
@@ -126,6 +126,7 @@ export function updateAnts(host, agents, parts, spider, time) {
         0.055 * scale,
         0.06 * scale,
       );
+      if (p === 2 && !spider) d.scale.multiplyScalar(a.headScale || 1);
       if (spider && p === 0) d.scale.set(0.18, 0.12, 0.14);
       d.updateMatrix();
       parts[p].setMatrixAt(i, d.matrix);

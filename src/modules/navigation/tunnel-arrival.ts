@@ -63,7 +63,8 @@ export function finishSegment(
   if (target.type === "storage") {
     world.food += ant.carrying;
     ant.carrying = 0;
-    if (world.food > 0.15) {
+    if (world.onStorageVisit) world.onStorageVisit(ant);
+    else if (world.food > 0.15) {
       world.food -= 0.15;
       ant.energy = 100;
     }

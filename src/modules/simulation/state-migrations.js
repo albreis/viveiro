@@ -1,3 +1,5 @@
+import { createColonyState, ensureIndividual } from "../colony/individual.ts";
+import { migrateBrood } from "../colony/brood.ts";
 import { createNest } from "./nest.ts";
 import { createSoilState } from "../soil/ledger.ts";
 import {
@@ -14,6 +16,9 @@ export function restoreWorld(snapshot, prototype) {
     if (q) Object.assign(q, world.nest.nodes[2], { node: 2 });
   }
   world.soil ??= createSoilState(world.ants);
+  world.colony ??= createColonyState();
+  for (const ant of world.ants) ensureIndividual(world.seed, ant);
+  migrateBrood(world);
   for (const ant of world.ants) {
     if (ant.y === undefined) {
       ant.y = 0;

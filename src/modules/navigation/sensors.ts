@@ -60,3 +60,7 @@ export function neighborsOf(
   index.queries.set(queryKey, result);
   return result;
 }
+
+export function invalidateNeighbors(world: NavigationWorld) {
+  indexes.delete(world);
+}

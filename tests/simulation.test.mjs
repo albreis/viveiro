@@ -123,9 +123,9 @@ test("underground routes deliver food in the storage chamber and lead back to an
     tunnelY: storage.y,
     tunnelCenter: { x: storage.x, y: storage.y, z: storage.z },
   });
-  const before = w.food;
+  const before = w.food + ant.crop;
   w.step();
-  assert.ok(w.food > before + 0.8);
+  assert.ok(w.food + ant.crop > before + 0.8);
   assert.equal(ant.carrying, 0);
   assert.ok(ant.route.length > 0);
   w.step(250);

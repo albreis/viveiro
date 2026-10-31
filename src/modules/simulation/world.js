@@ -1,3 +1,7 @@
+import { individualTraits } from "../colony/individual.ts";
+import { arriveColony } from "../colony/arrival.ts";
+import { updateNutrition, feedFromStock } from "../colony/nutrition.ts";
+import { leaveCorpse, spoilStocks } from "../colony/waste.ts";
 import { initializeWorld } from "./initial-world.js";
 import { restoreWorld } from "./state-migrations.js";
 import { removedSoil, dropSoil } from "../soil/ledger.ts";
@@ -11,6 +15,7 @@ import { TICKS_PER_DAY, LIMIT, NEST, BOUNDS } from "./constants.js";
 import { createNest, nestPath } from "./nest.ts";
 import { moveInNest } from "../navigation/tunnel-motion.ts";
 import { moveSurface } from "../navigation/surface-motion.ts";
+import { invalidateNeighbors } from "../navigation/sensors.ts";
 import { positionClear } from "../navigation/collision.ts";
 export { TICKS_PER_DAY, LIMIT, NEST, BOUNDS, createNest, nestPath };
 export { hashSeed } from "./seed.ts";
@@ -43,8 +48,9 @@ export class World {
     return ((x - 4.3) / 1.9) ** 2 + ((z + 2.5) / 1.35) ** 2 < 1;
   }
   makeAnt(kind, x, z) {
+    const id = this.nextId++;
     return {
-      id: this.nextId++,
+      id,
       kind,
       x,
       y: 0,
@@ -57,10 +63,16 @@ export class World {
       speed: this.range(0.07, 0.105),
       state: kind === "queen" ? "Fundando o ninho" : "Explorando",
       rest: 0,
+      route: [],
+      node: null,
+      ...individualTraits(this.seed, id, kind),
     };
   }
   onNestArrival(ant, node) {
-    return arriveWithSoil(this, ant, node);
+    return arriveWithSoil(this, ant, node) || arriveColony(this, ant, node);
+  }
+  onStorageVisit(ant) {
+    feedFromStock(this, ant);
   }
   recordSoilRemoval(ant, mass) {
     removedSoil(this, ant, mass);
@@ -189,8 +201,15 @@ export class World {
     updateErosion(this);
     const dead = updateWorkers(this, suitability);
     updatePredators(this, dead);
-    for (const ant of this.ants) if (dead.has(ant.id)) dropSoil(this, ant);
+    for (const ant of this.ants)
+      if (dead.has(ant.id)) {
+        dropSoil(this, ant);
+        leaveCorpse(this, ant);
+      }
     this.ants = this.ants.filter((a) => !dead.has(a.id));
+    invalidateNeighbors(this);
+    updateNutrition(this);
+    spoilStocks(this);
     if (this.food < 1 && this.tick - this.lastWarning > 200) {
       this.lastWarning = this.tick;
       this.log(
