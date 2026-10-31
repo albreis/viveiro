@@ -195,6 +195,7 @@ export class World {
         continue;
       }
       if(ant.route?.length){this.moveInNest(ant);continue;}
+      ant.pitch=0;
       ant.energy -= .025 + (1-suitability)*.015;
       if(ant.energy<=0 || ant.age>this.lifeLimit(ant)) { dead.add(ant.id); this.deaths++; continue; }
       if(ant.rest>0) { ant.rest--; continue; }

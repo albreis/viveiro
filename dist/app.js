@@ -4,7 +4,7 @@ const $ = id => document.getElementById(id);
 let world, comparison=null, scenario='a', scene, running=true, speed=1, accumulator=0;
 let initial={seed:'SEMENTE-42',params:{humidity:58,light:72,randomness:28}};
 let interventions=[], replaying=false, replayIndex=0, lastUi=0,lastSave=0,lastForecast=-1000;
-let forecastPending=false, forecastId=0, forecastCache=null, worker=null, toastTimer;
+let forecastPending=false, forecastId=0, forecastCache=null, worker=null, toastTimer,selectedAnt=null,antListKey='';
 const active=()=>scenario==='b'&&comparison?comparison:world;
 const format=n=>new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1}).format(n);
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3800);}
@@ -39,6 +39,7 @@ function reset(seed,params,replay=false){
   try{scene?.dispose();scene=new Terrarium($('viewport'),world,intervention);}catch(error){handleError(error);}
   running=true;document.querySelectorAll('[data-tool]').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
   if(scene)scene.showTrails=$('trails').checked;
+  configureAntCamera();antListKey='';
   $('tool-hint').textContent='Escolha um elemento e clique no solo.';
   $('scene-guide').textContent='Arraste para orbitar · Role para aproximar';
   syncControls();updateUi();save();
@@ -82,12 +83,31 @@ function updateUi(){
   else observation='A rainha prepara o ninho. O primeiro ciclo de vida está começando.';
   $('observation').textContent=observation;
   if(comparison)$('comparison-text').textContent='B começou com +1 ponto de umidade. Agora: A '+world.population+' · B '+comparison.population+' formigas.';
+  updateAntCamera(w);
   if(forecastCache&&forecastCache.scenario===scenario){
     const f=forecastCache.result;
     $('forecast-value').replaceChildren(document.createTextNode(f.low===f.high?String(f.low):f.low+'–'+f.high),Object.assign(document.createElement('span'),{textContent:' formigas'}));
     $('forecast-note').textContent='Intervalo P10–P90 · '+f.runs+' cenários · a partir do dia '+format(f.tick/100)+'.';
   }else{$('forecast-value').innerHTML='— <span>formigas</span>';$('forecast-note').textContent='Calculando 18 futuros possíveis…';}
   drawChart();
+}
+function configureAntCamera(){
+  if(!scene)return;
+  scene.onSelect=id=>{selectedAnt=id;$('ant-select').value=String(id);updateAntCamera(active());};
+  scene.onFollowEnded=()=>{toast('Esta formiga não está mais na colônia. A câmera voltou ao terrário.');updateAntCamera(active());};
+}
+function updateAntCamera(w){
+  const key=scenario+':'+w.ants.map(a=>a.id).join(',');
+  if(key!==antListKey){
+    antListKey=key;const options=w.ants.map(a=>{const option=document.createElement('option');option.value=String(a.id);option.textContent=({queen:'Rainha',male:'Macho',worker:'Operária'})[a.kind]+' #'+a.id;return option;});
+    $('ant-select').replaceChildren(...options);
+  }
+  if(!w.ants.some(a=>a.id===selectedAnt))selectedAnt=w.workers[0]?.id??w.ants[0]?.id??null;
+  $('ant-select').value=String(selectedAnt??'');
+  const ant=w.ants.find(a=>a.id===selectedAnt);
+  $('ant-state').textContent=ant?(ant.y<-.1?'Subsolo · ':'Superfície · ')+ant.state+' · energia '+Math.round(ant.energy)+'%':'Nenhuma formiga viva.';
+  $('follow-ant').disabled=!ant;$('follow-ant').hidden=!!scene?.followId;$('exit-ant').hidden=!scene?.followId;
+  $('scene-guide').textContent=scene?.followId?'Arraste para olhar · Esc para sair':scene?.tool?'Clique no solo · Esc para sair':'Arraste para orbitar · Role para aproximar';
 }
 function drawChart(){
   const canvas=$('chart'),r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;
@@ -124,7 +144,7 @@ function handleError(error){
 }
 load();
 try{
-  scene=new Terrarium($('viewport'),active(),intervention);$('loading').hidden=true;
+  scene=new Terrarium($('viewport'),active(),intervention);configureAntCamera();$('loading').hidden=true;
   worker=new Worker(new URL('./forecast.worker.js',import.meta.url),{type:'module'});
   worker.onmessage=({data})=>{
     if(data.id!==forecastId)return;forecastPending=false;
@@ -149,6 +169,9 @@ document.querySelectorAll('[data-tool]').forEach(button=>button.onclick=()=>{
   $('scene-guide').textContent=tool?'Clique no solo · Esc para sair':'Arraste para orbitar · Role para aproximar';
 });
 $('trails').onchange=()=>{if(scene)scene.showTrails=$('trails').checked;};
+$('ant-select').onchange=()=>{selectedAnt=Number($('ant-select').value);if(scene?.followId)scene.followAnt(selectedAnt);updateAntCamera(active());};
+$('follow-ant').onclick=()=>{if(scene?.followAnt(selectedAnt)){document.querySelectorAll('[data-tool]').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});updateAntCamera(active());toast('Você acompanha a formiga. Arraste para olhar ao redor.');}};
+$('exit-ant').onclick=()=>{scene?.stopFollowing();updateAntCamera(active());};
 function setView(top){scene?.setView(top);$('view-top').classList.toggle('active',top===true);$('view-iso').classList.toggle('active',top===false);$('view-side').classList.toggle('active',top==='side');}
 $('view-top').onclick=()=>setView(true);$('view-iso').onclick=()=>setView(false);
 $('view-side').onclick=()=>setView('side');
@@ -171,6 +194,7 @@ $('close-help').onclick=$('start-observing').onclick=()=>dialog.close();
 dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&scene?.tool)document.querySelector('[data-tool].active')?.click();
+  if(e.key==='Escape'&&scene?.followId){scene.stopFollowing();updateAntCamera(active());}
   if(e.code==='Space'&&!/INPUT|BUTTON/.test(e.target.tagName)&&!dialog.open){e.preventDefault();$('play').click();}
 });
 $('export').onclick=()=>{
