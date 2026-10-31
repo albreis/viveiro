@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { NEST, LIMIT, hashSeed } from './simulation.js';
+import { createSoilGeometry } from './soil.js';
 const UP = new THREE.Vector3(0,1,0);
 export class Terrarium {
   constructor(element,world,onPlace) {
@@ -66,21 +67,20 @@ export class Terrarium {
     ctx.fillStyle='#6d7549';ctx.fillRect(0,0,512,512);
     for(let i=0;i<20000;i++){ctx.fillStyle=['#52613b','#8b8c59','#838450','#778353','#646e43'][Math.floor(rnd()*5)];ctx.globalAlpha=.25+rnd()*.4;const s=1+rnd()*5;ctx.fillRect(rnd()*512,rnd()*512,s,s);}
     const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(2,1.3);
-    this.mesh(new THREE.BoxGeometry(20,1.3,13),this.material('#79604a'),this.staticGroup,0,-.68,0);
-    this.mesh(new THREE.BoxGeometry(20,.12,13),this.material('#a2a57b',{map:texture}),this.staticGroup,0,-.035,0);
-    this.mesh(new THREE.BoxGeometry(20.5,.17,13.5),this.material('#5c624c'),this.staticGroup,0,-1.4,0);
-    this.mesh(new THREE.BoxGeometry(20.8,.12,13.8),this.material('#aab295'),this.staticGroup,0,-1.53,0);
-    for(let i=0;i<6;i++)this.mesh(new THREE.BoxGeometry(20.015,.013,13.015),this.material(i%2?'#867157':'#6b5441'),this.staticGroup,0,-.3-i*.17,0);
-    const floor=this.mesh(new THREE.PlaneGeometry(180,180),this.material('#e5e9da'),this.scene,0,-1.63,0);floor.rotation.x=-Math.PI/2;floor.castShadow=false;
+    this.soil=this.mesh(createSoilGeometry(this.world.nest),[this.material('#ffffff',{vertexColors:true}),this.material('#ffffff',{map:texture,vertexColors:true})],this.staticGroup);
+    this.mesh(new THREE.BoxGeometry(20.5,.17,13.5),this.material('#5c624c'),this.staticGroup,0,-4.31,0);
+    this.mesh(new THREE.BoxGeometry(20.8,.12,13.8),this.material('#aab295'),this.staticGroup,0,-4.46,0);
+    const floor=this.mesh(new THREE.PlaneGeometry(180,180),this.material('#e5e9da'),this.scene,0,-4.55,0);floor.rotation.x=-Math.PI/2;floor.castShadow=false;
     const glass=new THREE.MeshPhysicalMaterial({color:0xc5dac1,transparent:true,opacity:.065,roughness:.08,metalness:.05,depthWrite:false,side:THREE.DoubleSide});
     const edge=new THREE.LineBasicMaterial({color:0xa5b89b,transparent:true,opacity:.4});
-    const glassGeos=[{size:[20,.01,13],p:[0,4.1,0],top:true},{size:[20,4.1,.035],p:[0,2.05,-6.5]},{size:[.035,4.1,13],p:[10,2.05,0]},{size:[.035,4.1,13],p:[-10,2.05,0]},{size:[20,4.1,.035],p:[0,2.05,6.5]}];
+    const glassGeos=[{size:[20,.01,13],p:[0,4.1,0],top:true},{size:[20,8.3,.035],p:[0,-.05,-6.5]},{size:[.035,8.3,13],p:[10,-.05,0]},{size:[.035,8.3,13],p:[-10,-.05,0]},{size:[20,8.3,.035],p:[0,-.05,6.5]}];
     for(const box of glassGeos){const geo=new THREE.BoxGeometry(...box.size);if(!box.top){const m=this.mesh(geo,glass,this.staticGroup,...box.p);m.castShadow=false;m.receiveShadow=false;}const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geo),edge);edges.position.set(...box.p);this.staticGroup.add(edges);}
     const pondGeo=new THREE.CircleGeometry(1,50);this.pond=this.mesh(pondGeo,new THREE.MeshPhysicalMaterial({color:'#7baf9e',roughness:.13,metalness:.16,transparent:true,opacity:.85}),this.staticGroup,4.3,.035,-2.5);this.pond.rotation.x=-Math.PI/2;this.pond.scale.set(1.9,1.35,1);
     const bank=this.mesh(new THREE.TorusGeometry(1,.045,5,60),this.material('#a2a778'),this.staticGroup,4.3,.025,-2.5);bank.rotation.x=-Math.PI/2;bank.scale.set(1.94,1.4,.7);
     for(let i=0;i<20;i++){const t=i/20*Math.PI*2;const rock=this.mesh(new THREE.DodecahedronGeometry(.12+rnd()*.18,0),this.material(['#a7aa8b','#868e72','#bac0a1'][i%3]),this.staticGroup,4.3+Math.cos(t)*2,.07,-2.5+Math.sin(t)*1.45);rock.scale.y=.6;}
-    const mound=this.mesh(new THREE.SphereGeometry(.95,18,12),this.material('#9a8862',{map:texture}),this.staticGroup,NEST.x,.01,NEST.z);mound.scale.set(1.2,.32,1);
-    const opening=this.mesh(new THREE.CircleGeometry(.25,24),this.material('#3a3525'),this.staticGroup,NEST.x+.25,.2,NEST.z+.35);opening.rotation.x=-Math.PI*.35;opening.rotation.z=-.2;
+    for(const entrance of this.world.nest.nodes.filter(n=>n.type==='entrance')){
+      const rim=this.mesh(new THREE.TorusGeometry(.41,.095,7,22),this.material('#a18b60'),this.staticGroup,entrance.x,.02,entrance.z);rim.rotation.x=-Math.PI/2;
+    }
     for(let i=0;i<95;i++){
       const x=(rnd()-.5)*18.8,z=(rnd()-.5)*11.8;
       if(this.world.inPond(x,z))continue;
@@ -97,7 +97,7 @@ export class Terrarium {
       const x=(rnd()-.5)*18.6,z=(rnd()-.5)*11.5;if(this.world.inPond(x,z)||Math.hypot(x-NEST.x,z-NEST.z)<1.2)continue;
       const g=this.mesh(blade,grassMat,this.staticGroup,x,.17,z);g.rotation.z=(rnd()-.5)*.6;g.scale.y=.4+rnd();
     }
-    this.nestLabel=this.label('NINHO',NEST.x,.9,NEST.z);
+    this.nestLabel=this.label('ENTRADA',NEST.x,.9,NEST.z);
     this.label('ÁGUA',4.3,.7,-2.5);
   }
   label(text,x,y,z) {
@@ -149,12 +149,13 @@ export class Terrarium {
     this.updateAnts(world.workers,this.antParts,false,time);
     this.updateAnts(world.predators,this.predatorParts,true,time);
     const queen=world.ants.find(a=>a.kind==='queen');this.queen.visible=!!queen;
-    if(queen){this.queen.position.set(queen.x,.07,queen.z);this.queen.rotation.y=.6;}
+    if(queen){this.queen.position.set(queen.x,(queen.y||0)+.07,queen.z);this.queen.rotation.y=.6;}
     const male=world.ants.find(a=>a.kind==='male');this.male.visible=!!male;
     if(male){this.male.position.set(male.x,.18,male.z);this.male.rotation.y=Math.sin(time)*.3;}
     const dummy=new THREE.Object3D();
     this.broodMesh.count=Math.min(world.brood.length,LIMIT);
-    for(let i=0;i<this.broodMesh.count;i++){const a=i*2.4,r=.15+Math.sqrt(i)*.045;dummy.position.set(NEST.x+Math.cos(a)*r,.18,NEST.z+Math.sin(a)*r);dummy.scale.set(.7,.7,1.3);dummy.updateMatrix();this.broodMesh.setMatrixAt(i,dummy.matrix);}
+    const nursery=world.nest.nodes[3];
+    for(let i=0;i<this.broodMesh.count;i++){const a=i*2.4,r=.1+Math.sqrt(i)*.032;dummy.position.set(nursery.x+Math.cos(a)*r,nursery.y-.1,nursery.z+Math.sin(a)*r);dummy.scale.set(.7,.7,1.3);dummy.updateMatrix();this.broodMesh.setMatrixAt(i,dummy.matrix);}
     this.broodMesh.instanceMatrix.needsUpdate=true;
     this.trails.visible=this.showTrails;
     if(this.showTrails){const colors=this.trails.geometry.attributes.color;for(let i=0;i<1040;i++){const v=Math.min(1,world.pheromones[i]/2);colors.setXYZ(i,v*.7,v,v*.2);}colors.needsUpdate=true;}
@@ -166,7 +167,7 @@ export class Terrarium {
       const c=Math.cos(a.angle),s=Math.sin(a.angle),scale=spider?1.6:1;
       for(let p=0;p<3;p++){
         const offset=(p-1)*.12*scale;
-        d.position.set(a.x+c*offset,.12*scale,a.z+s*offset);d.rotation.set(0,-a.angle,0);
+        d.position.set(a.x+c*offset,(a.y||0)+.12*scale,a.z+s*offset);d.rotation.set(0,-a.angle,0);
         d.scale.set((p===0?.12:p===1?.065:.085)*scale,.055*scale,.06*scale);
         if(spider&&p===0)d.scale.set(.18,.12,.14);
         d.updateMatrix();parts[p].setMatrixAt(i,d.matrix);
@@ -178,7 +179,7 @@ export class Terrarium {
         const ax=a.x+c*along*.07*scale-s*side*.045*scale,az=a.z+s*along*.07*scale+c*side*.045*scale;
         const bx=a.x+c*(along*.12+walk)*scale-s*side*.16*scale,bz=a.z+s*(along*.12+walk)*scale+c*side*.16*scale;
         axis.set(bx-ax,-.095*scale,bz-az);const len=axis.length();q.setFromUnitVectors(UP,axis.normalize());
-        d.position.set((ax+bx)/2,.075*scale,(az+bz)/2);d.quaternion.copy(q);d.scale.set(1,len,1);d.updateMatrix();parts[p+3].setMatrixAt(i,d.matrix);
+        d.position.set((ax+bx)/2,(a.y||0)+.075*scale,(az+bz)/2);d.quaternion.copy(q);d.scale.set(1,len,1);d.updateMatrix();parts[p+3].setMatrixAt(i,d.matrix);
       }
     });
     for(const m of parts)m.instanceMatrix.needsUpdate=true;
@@ -189,7 +190,12 @@ export class Terrarium {
     if(!this.raycaster.ray.intersectPlane(this.plane,v)||Math.abs(v.x)>9.3||Math.abs(v.z)>5.8)return null;return v;
   }
   setTool(tool){this.tool=tool;this.controls.enableRotate=!tool;this.renderer.domElement.style.cursor=tool?'crosshair':'grab';if(!tool)this.marker.visible=false;}
-  setView(top){this.camera.position.set(top?.1:22,top?35:23,top?.1:27);this.controls.target.set(0,-.2,0);this.controls.update();}
+  setView(view){
+    const lateral=view==='side',top=view===true;
+    this.controls.maxPolarAngle=lateral?Math.PI*.6:Math.PI*.47;
+    this.camera.position.set(lateral?0:top?.01:22,lateral?-1.2:top?35:23,lateral?29:top?.01:27);
+    this.controls.target.set(0,lateral?-1.9:-.7,lateral?2:0);this.controls.update();
+  }
   resize(){const {width,height}=this.element.getBoundingClientRect();if(!width||!height)return;this.camera.aspect=width/height;this.camera.updateProjectionMatrix();this.renderer.setSize(width,height);}
   render(){this.controls.update();this.renderer.render(this.scene,this.camera);}
   dispose(){
