@@ -1,0 +1,99 @@
+# Cronograma de entregas
+
+Atualizado em 31/10/2026. Cada etapa tem branch própria, testes, publicação
+no mesmo Site privado e registro de limitações. As próximas entregas dependem
+dos testes e do feedback; não há datas artificiais de conclusão.
+
+| Etapa | Entrega                                                              | Situação              |
+| ----- | -------------------------------------------------------------------- | --------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1     |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0          |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Próxima               |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Planejada             |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Planejada             |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada             |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada             |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada             |
+
+## 1. Locomoção e estrutura do projeto
+
+- Corpos e câmera apoiados no terreno, incluindo paredes.
+- Terreno arredondado e consulta física por campo implícito contínuo.
+- Deslocamento limitado, sem saltar diretamente entre apoios.
+- Repulsão local, contato antenal e prioridade para alimento/prole.
+- Recuo e reconsideração de rotas quando o contato persiste.
+- Alargamento local experimental por congestionamento.
+- Sensores, forças, contato, superfície e túneis em módulos.
+- TypeScript estrito na navegação e Vite para gerar o bundle.
+- Migração gradual de UI e renderização legadas para TypeScript.
+
+Aceite: reprodução pela seed, ausência de NaN, prioridade de carga testada,
+apoio correto, fluxo retomado em gargalos e verificação no navegador.
+
+## 2. Túneis vivos
+
+- Abrir o primeiro buraco durante a fundação.
+- Escolher frentes de escavação por estímulos locais.
+- Retirar porções de terra, carregá-las e depositá-las na superfície.
+- Abrir ramificações e câmaras progressivamente.
+- Desgaste, erosão, material solto, bloqueios e reparos.
+- Resistência simplificada por umidade, profundidade e vão.
+
+Aceite: conservação do material removido, passagem após abertura e recuperação
+de um bloqueio reproduzível. O alargamento da etapa 1 não substitui esta etapa.
+
+## 3. Organização e diferenças individuais
+
+- Despensa, lixo e cemitérios afastados da prole.
+- Transporte visível de ovos, larvas e pupas; nascimento.
+- Trofalaxia conservativa via estômago social.
+- Castas com corpos e tarefas diferentes.
+- Idade, energia, coragem, atividade e exploração individuais.
+
+Depende de rotas funcionais. Aceite: transferência conservativa, mudança de
+tarefas observável e ausência de crescimento sem recursos.
+
+## 4. Campos e tarefas probabilísticas
+
+- Difusão-evaporação numericamente estável.
+- Escolha ACO por amostragem e respostas por limiar de estímulo.
+- Sensores limitados, memória local e ausência de informação global oculta.
+
+Aceite: testes de dispersão, evaporação, estabilidade e distribuição de escolhas.
+
+## 5. Genética e novas fundações
+
+- Cromossomos, parentesco, cruzamento e mutações registradas.
+- Efeitos em corpo, movimento, sensores e resistência.
+- Alados, gatilhos ambientais, acasalamento e perda das asas.
+- Reservas maternas e naníticas na fundação claustral quando adequada à espécie.
+
+Aceite: parentesco persistido e reprodução consumindo reservas.
+
+## 6. Ecologia e colônias vizinhas
+
+- Pulgões, melaço e proteção; lagartas miméticas.
+- Reconhecimento por distância química entre odores.
+- Intimidação, fuga, conflito, camuflagem e território.
+
+Aceite: encontros locais, balanço de recursos e resultados dependentes do contexto.
+
+## 7. Física e validação
+
+- Autômatos granulares com massa, atrito e ângulo de repouso.
+- Umidade espacial, infiltração, capilaridade e mofo.
+- Temperatura, O2, CO2 e ventilação dependente da geometria.
+- Calibração por espécie e comparação com experimentos.
+
+Depende de pesquisa e benchmarks. Não promete simular cada grão real nem
+substituir uma análise geotécnica validada.
+
+## 8. Aprendizado, persistência e previsões
+
+- Políticas pequenas de RL, recompensas e comparação com baselines.
+- Treino separado da renderização.
+- Snapshots, checkpoints, migrações, eventos, métricas e replay.
+- Previsões com observações parciais/completas e erro medido por horizonte.
+
+RL depende de sensores, ações, recompensas e física estáveis.
