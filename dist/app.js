@@ -95,6 +95,7 @@ function updateUi(){
 function configureAntCamera(){
   if(!scene)return;
   scene.onSelect=id=>{selectedAnt=id;$('ant-select').value=String(id);updateAntCamera(active());};
+  scene.onFollowStarted=id=>{selectedAnt=id;updateAntCamera(active());toast('Visão da formiga #'+id+'. Arraste para olhar · Esc para sair.');};
   scene.onFollowEnded=()=>{toast('Esta formiga não está mais na colônia. A câmera voltou ao terrário.');updateAntCamera(active());};
 }
 function updateAntCamera(w){
@@ -108,7 +109,7 @@ function updateAntCamera(w){
   const ant=w.ants.find(a=>a.id===selectedAnt);
   $('ant-state').textContent=ant?(!running?'Pausada · ':'')+(ant.y<-.1?'Subsolo · ':'Superfície · ')+ant.state+' · percurso '+format(ant.distanceWalked||0)+' u.':'Nenhuma formiga viva.';
   $('follow-ant').disabled=!ant;$('follow-ant').hidden=!!scene?.followId;$('exit-ant').hidden=!scene?.followId;
-  $('scene-guide').textContent=scene?.followId?'Arraste para olhar · Esc para sair':scene?.tool?'Clique no solo · Esc para sair':'Arraste para orbitar · Role para aproximar';
+  $('scene-guide').textContent=scene?.followId?'Arraste para olhar · Esc para sair':scene?.tool?'Clique no solo · Esc para sair':'Duplo clique na formiga · Arraste para orbitar';
 }
 function drawChart(){
   const canvas=$('chart'),r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;
