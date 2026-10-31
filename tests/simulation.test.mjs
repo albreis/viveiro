@@ -100,8 +100,9 @@ test("predators can catch workers while the nest remains a refuge", () => {
 test("underground routes deliver food in the storage chamber and lead back to an entrance", () => {
   const w = new World("galleries");
   w.step(210);
-  const ant = w.workers[0],
-    storage = w.nest.nodes[4];
+  const storage = w.nest.nodes[4],
+    ant = w.makeAnt("worker", storage.x, storage.z);
+  w.ants.push(ant);
   const footing = tunnelFooting(
     w.nest,
     storage,

@@ -54,6 +54,7 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
     remaining = Math.hypot(delta.x, delta.y, delta.z);
   if (remaining < 0.001) {
     project.completed = true;
+    world.nest.revision++;
     front.type = "chamber";
     front.name = "Câmara escavada";
     world.log("As operárias abriram uma nova câmara.", "dig");
@@ -76,24 +77,4 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
   project.excavated += mass;
   removedSoil(world, ant, mass);
   world.nest.revision++;
-}
-
-export function updateDigProjects(world: SoilWorld) {
-  if (world.tick - world.soil.lastProject < 450 || world.ants.length < 7)
-    return;
-  const local = world.ants.find(
-    (a) =>
-      a.kind === "worker" &&
-      !a.soilTask &&
-      !a.carrying &&
-      a.node !== null &&
-      a.node !== undefined &&
-      ["nursery", "storage", "royal", "chamber"].includes(
-        world.nest.nodes[a.node]?.type,
-      ) &&
-      distance3({ x: a.x, y: a.y || 0, z: a.z }, world.nest.nodes[a.node]) <
-        0.9,
-  );
-  if (local?.node !== null && local?.node !== undefined)
-    proposeDig(world, local.node);
 }

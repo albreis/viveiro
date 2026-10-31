@@ -30,6 +30,17 @@ export interface AgentState {
   state?: string;
   energy: number;
   carrying: number;
+  colonyId?: number;
+  knownEdges?: [number, number, number][];
+  recentNodes?: number[];
+  lastNodeDistance?: number;
+  routeIntent?: {
+    destination: number;
+    tag: string;
+    odor: string;
+    owner: number;
+  };
+  lastEntrance?: { node: number; x: number; z: number };
   hasFood?: boolean;
   carryingBrood?: number;
   carryingWaste?: number;
@@ -68,6 +79,7 @@ export interface NestNode extends Vec3 {
   name: string;
   type: string;
   r: number;
+  colonyId?: number;
 }
 
 export interface NestState {
@@ -91,4 +103,5 @@ export interface NavigationWorld {
   onNestArrival?(ant: AgentState, node: number): boolean;
   onStorageVisit?(ant: AgentState): void;
   recordSoilRemoval?(ant: AgentState, mass: number): void;
+  routeSignal?(from: number, to: number, odor: string, owner: number): number;
 }

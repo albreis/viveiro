@@ -2,10 +2,10 @@ import { individualTraits } from "../colony/individual.ts";
 import { arriveColony } from "../colony/arrival.ts";
 import { updateNutrition, feedFromStock } from "../colony/nutrition.ts";
 import { leaveCorpse, spoilStocks } from "../colony/waste.ts";
+import { updateNestOdors, routeOdorSignal } from "../chemistry/nest-odors.ts";
 import { initializeWorld } from "./initial-world.js";
 import { restoreWorld } from "./state-migrations.js";
 import { removedSoil, dropSoil } from "../soil/ledger.ts";
-import { updateDigProjects } from "../soil/projects.ts";
 import { updateErosion, collapseEdge } from "../soil/erosion.ts";
 import { arriveWithSoil } from "../soil/routing.ts";
 import { updateEnvironment } from "./environment-step.js";
@@ -67,6 +67,15 @@ export class World {
       node: null,
       ...individualTraits(this.seed, id, kind),
     };
+  }
+  routeSignal(from, to, odor, owner) {
+    return routeOdorSignal(
+      this.nest,
+      this.nestOdors,
+      from,
+      to,
+      owner + ":" + odor,
+    );
   }
   onNestArrival(ant, node) {
     return arriveWithSoil(this, ant, node) || arriveColony(this, ant, node);
@@ -197,7 +206,7 @@ export class World {
   }
   advance() {
     const suitability = updateEnvironment(this);
-    updateDigProjects(this);
+    updateNestOdors(this.nest, this.nestOdors);
     updateErosion(this);
     const dead = updateWorkers(this, suitability);
     updatePredators(this, dead);

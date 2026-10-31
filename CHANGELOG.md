@@ -1,5 +1,15 @@
 # Versões
 
+## Em desenvolvimento — navegação local (4B)
+
+- Política de saída separada do mundo físico, com observações adjacentes.
+- Memória de até 64 arestas efetivamente percorridas e custos aprendidos.
+- Odores internos com fontes, difusão e evaporação contabilizadas.
+- Retorno por entrada já visitada ou percebida localmente.
+- Propostas de frentes feitas por operárias sob estímulo de densidade local.
+- Roteamento global removido das decisões dos agentes.
+
+
 ## Em desenvolvimento — campos e tarefas (4A)
 
 - Difusão, evaporação e advecção conservativas com subpassos estáveis.

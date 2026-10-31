@@ -1,8 +1,8 @@
+import { requestRoute } from "../navigation/local-routing.ts";
 import { allocateTask } from "./response.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
 import { ensureIndividual } from "./individual.ts";
 import { distance3 } from "../soil/ledger.ts";
-import { nestPath } from "../simulation/nest.ts";
 import { updateColonyTask } from "./tasks.ts";
 
 export function updateColonyWorker(
@@ -33,7 +33,7 @@ export function updateColonyWorker(
     waste.carrier = ant.id;
     ant.carryingWaste = waste.id;
     ant.bioTask = { kind: "waste", item: waste.id, destination: 5 };
-    if (ant.node != null) ant.route = nestPath(world.nest, ant.node, 5);
+    if (ant.node != null) requestRoute(world, ant, 5);
     ant.state = "Recolhendo resíduos";
     return true;
   }
@@ -45,14 +45,14 @@ export function updateColonyWorker(
       brood.carrier = ant.id;
       ant.carryingBrood = brood.id;
       ant.bioTask = { kind: "brood", item: brood.id, destination: 3 };
-      ant.route = nestPath(world.nest, ant.node, 3);
+      requestRoute(world, ant, 3);
       ant.state = "Transportando uma cria";
       return true;
     }
     if (!ant.route?.length) {
       const destination = ant.crop < 0.15 ? 4 : 2;
       ant.bioTask = { kind: "care", destination };
-      ant.route = nestPath(world.nest, ant.node, destination);
+      requestRoute(world, ant, destination);
       return true;
     }
   }
@@ -60,7 +60,7 @@ export function updateColonyWorker(
     if (ant.node != null) {
       if (!ant.route?.length) {
         ant.bioTask = { kind: "guard", destination: ant.id % 2 ? 0 : 6 };
-        ant.route = nestPath(world.nest, ant.node, ant.bioTask.destination);
+        requestRoute(world, ant, ant.bioTask.destination);
       }
       return false;
     }

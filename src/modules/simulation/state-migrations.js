@@ -1,5 +1,7 @@
 import { createColonyState, ensureIndividual } from "../colony/individual.ts";
 import { migrateBrood } from "../colony/brood.ts";
+import { requestRoute } from "../navigation/local-routing.ts";
+import { createNestOdors } from "../chemistry/nest-odors.ts";
 import { createNest } from "./nest.ts";
 import { createSoilState } from "../soil/ledger.ts";
 import {
@@ -15,6 +17,7 @@ export function restoreWorld(snapshot, prototype) {
     const q = world.ants.find((a) => a.kind === "queen");
     if (q) Object.assign(q, world.nest.nodes[2], { node: 2 });
   }
+  world.nestOdors ??= createNestOdors(world.nest);
   world.soil ??= createSoilState(world.ants);
   world.colony ??= createColonyState();
   for (const ant of world.ants) ensureIndividual(world.seed, ant);
@@ -73,6 +76,14 @@ export function restoreWorld(snapshot, prototype) {
         delete ant.supportMotion;
       }
     world.physicsVersion = 5;
+  }
+  if (world.localRoutingVersion !== 1) {
+    for (const ant of world.ants) {
+      const target = ant.route?.at(-1);
+      if (ant.node != null && target !== undefined)
+        requestRoute(world, ant, target);
+    }
+    world.localRoutingVersion = 1;
   }
   return world;
 }

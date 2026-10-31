@@ -1,4 +1,5 @@
 import { createColonyState } from "../colony/individual.ts";
+import { createNestOdors } from "../chemistry/nest-odors.ts";
 import { NEST } from "./constants.js";
 import { hashSeed } from "./seed.ts";
 import { createNest } from "./nest.ts";
@@ -19,9 +20,11 @@ export function initializeWorld(world, seed, parameters) {
   world.plants = [];
   world.patches = [];
   world.nest = createNest();
+  world.nestOdors = createNestOdors(world.nest);
   world.soil = createSoilState();
   world.colony = createColonyState();
   world.physicsVersion = 5;
+  world.localRoutingVersion = 1;
   world.events = [];
   world.history = [];
   world.deaths = 0;

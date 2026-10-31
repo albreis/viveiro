@@ -1,7 +1,6 @@
 import { diffuseEvaporate } from "../chemistry/reaction-diffusion.ts";
 import { updateBroodLifecycle } from "../colony/lifecycle.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
-import { nestPath } from "./nest.ts";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
