@@ -1,5 +1,13 @@
 # Versões
 
+## 0.21.0 — Maturação térmica local
+
+- Revisão biológica 4: crescimento por estágio com temperatura local e água no solo como proxy explícito.
+- Larvas avançam conforme a fração de alimento paga; estresse persistente, recuperação e perdas sem reembolso.
+- Variação individual/genética determinística, sensores na portadora e saves versionados.
+- Painel, cores de estresse e parâmetros demonstrativos no catálogo; perfis antigos preservados.
+- Métodos e limites em docs/maturacao.md; diapausa/casulos seguem para 11B.
+
 ## 0.20.0 — Selamento físico da fundação
 
 - Revisão biológica 3: rainha recolhe terra, fecha a entrada por dentro e nanítica reabre transportando o material para fora.

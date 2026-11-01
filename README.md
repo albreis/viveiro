@@ -53,6 +53,8 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Maturação térmica](docs/maturacao.md)
+
 - [Selamento físico](docs/selamento.md)
 
 - [Reservas maternas](docs/reservas-maternas.md)

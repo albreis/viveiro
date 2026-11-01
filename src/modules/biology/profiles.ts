@@ -53,6 +53,19 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
         " Reservas maternas e tampão físico nesta revisão; parâmetros exploratórios.",
     }),
   ),
+  ...[generic, lab].map((p) =>
+    Object.freeze({
+      ...p,
+      version: 4,
+      maternalModel: "pools" as const,
+      entranceModel: "plug" as const,
+      developmentModel: "thermal-demo" as const,
+      label: p.id === "generic-demo" ? "Genérico · maturação térmica" : p.label,
+      description:
+        p.description +
+        " Maturação térmica demonstrativa e tampão físico. Durações não calibradas por espécie.",
+    }),
+  ),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

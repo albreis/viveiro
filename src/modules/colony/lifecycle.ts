@@ -1,3 +1,6 @@
+import { advanceBroodDevelopment } from "../development/update.ts";
+import { thermalDevelopment, layingComfort } from "../development/sensing.ts";
+import { loseBrood } from "./brood-loss.ts";
 import { accessibleReserve } from "../maternal/pools.ts";
 import { MATERNAL_PARAMETERS } from "../maternal/types.ts";
 import { laySexualBrood } from "../colonies/sexual-brood.ts";
@@ -11,6 +14,8 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   const f = world.founding,
     queen = world.ants.find((a) => a.kind === "queen" && (a.health ?? 100) > 0),
     closed = isClaustral(world);
+  const thermal = thermalDevelopment(world),
+    comfort = layingComfort(world);
   const consumption =
     world.brood.filter((b) => broodStage(b.age) === "larva").length * 0.0012;
   const paid = closed
@@ -35,7 +40,9 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
     if (
       (!f || f.phase === "established" || first) &&
       world.tick >= 25 &&
-      world.tick - world.lastLaying >= 65 &&
+      world.tick - world.lastLaying >=
+        (thermal ? Math.ceil(65 / Math.max(0.05, comfort)) : 65) &&
+      comfort > 0 &&
       layingAllowed &&
       world.queenHealth > 20 &&
       world.population + world.brood.length + (world.capacityOffset || 0) <
@@ -72,10 +79,23 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
     }
   }
   const remaining = [];
+  let losses = 0;
   let hatched = 0,
     alates = 0;
   for (const brood of world.brood) {
-    if (fed || broodStage(brood.age) !== "larva")
+    if (thermal) {
+      if (
+        !advanceBroodDevelopment(
+          world,
+          brood,
+          consumption > 0 ? paid / consumption : 1,
+        )
+      ) {
+        loseBrood(world, brood);
+        losses++;
+        continue;
+      }
+    } else if (fed || broodStage(brood.age) !== "larva")
       brood.age += 0.006 + suitability * 0.004;
     if (
       brood.age >= 1.3 &&
@@ -88,6 +108,8 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
     } else remaining.push(brood);
   }
   world.brood = remaining;
+  if (losses)
+    world.log(losses + " cria(s) perdidas por estresse local.", "danger");
   if (alates)
     world.log(alates + " alado(s) nasceram para uma futura fundação.", "birth");
   if (hatched) world.log(hatched + " operária(s) nasceram.", "birth");

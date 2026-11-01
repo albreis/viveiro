@@ -8,7 +8,9 @@ const labels: Record<EvidenceKind, string> = {
   measurement: "Medido no estudo",
 };
 const number = (n: number) =>
-  n.toLocaleString("pt-BR", { maximumFractionDigits: 3 });
+  n.toLocaleString("pt-BR", {
+    maximumFractionDigits: Math.abs(n) > 0 && Math.abs(n) < 0.001 ? 6 : 3,
+  });
 export function renderBiologicalParameters(
   topic: ParameterTopic,
   revision: number,
@@ -63,7 +65,7 @@ export function renderBiologicalParameters(
               ? "sem aferição"
               : "n não informado") +
           ". " +
-          record.uncertainty +
+          record.uncertainty.replace(/\.+$/, "") +
           ".",
       ),
     );

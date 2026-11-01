@@ -1,3 +1,4 @@
+import { renderDevelopmentStatus } from "./development-status.ts";
 import { renderSealingStatus } from "./sealing-controls.ts";
 import { renderBiologyStatus } from "./biology-controls.ts";
 import { renderLearningStatus } from "./learning-controls.ts";
@@ -22,6 +23,7 @@ const format = (n) =>
 export function renderStatus(context, updateAntCamera) {
   const { world, comparison, scenario, current } = context;
   renderSealingStatus(current);
+  renderDevelopmentStatus(current);
   const w = current,
     workers = w.workers.length,
     queen = w.ants.some((a) => a.kind === "queen"),

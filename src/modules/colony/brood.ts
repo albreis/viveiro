@@ -1,3 +1,4 @@
+import { initializeBroodDevelopment } from "../development/initialize.ts";
 import { DEMO_BROOD_STAGES } from "../biology/demo-constants.ts";
 import { roomNode } from "./rooms.ts";
 import { inheritGenome } from "../genetics/reproduction.ts";
@@ -35,7 +36,7 @@ export function makeBrood(
     world.genetics.embryos++;
     world.genetics.mutationEvents += genome.mutations.length;
   }
-  return {
+  const brood: Brood = {
     id,
     age: 0,
     node,
@@ -44,6 +45,8 @@ export function makeBrood(
     genome,
     kind,
   };
+  initializeBroodDevelopment(world, brood);
+  return brood;
 }
 export function migrateBrood(world: ColonyWorld) {
   for (const brood of world.brood)

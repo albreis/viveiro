@@ -1,3 +1,4 @@
+import { validateBroodDevelopment } from "../development/validation.ts";
 import { validateSealBudget } from "../sealing/budget.ts";
 import {
   validatePlugMaterials,
@@ -67,6 +68,10 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       c.founding as import("../founding/types.ts").FoundingState | undefined,
       profile.entranceModel === "plug",
       c.nest,
+    );
+    validateBroodDevelopment(
+      c.brood,
+      profile.developmentModel === "thermal-demo",
     );
     population += c.ants.length;
     for (const a of c.ants)

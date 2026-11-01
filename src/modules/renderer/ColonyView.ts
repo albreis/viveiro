@@ -84,11 +84,17 @@ export class ColonyView {
       );
       d.updateMatrix();
       mesh.setMatrixAt(i, d.matrix);
+      const stress = b.development?.stress || 0;
+      mesh.setColorAt(
+        i,
+        new THREE.Color(1, 1 - stress * 0.6, 1 - stress * 0.75),
+      );
       counts[index]++;
     }
     this.stages.forEach((m, i) => {
       m.count = counts[i];
       m.instanceMatrix.needsUpdate = true;
+      if (m.instanceColor) m.instanceColor.needsUpdate = true;
     });
     const litter = (world.colony?.waste || [])
       .filter((w) => !w.carrier)
