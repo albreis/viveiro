@@ -1,3 +1,5 @@
+import { accessibleReserve } from "../maternal/pools.ts";
+import { MATERNAL_PARAMETERS } from "../maternal/types.ts";
 import { laySexualBrood } from "../colonies/sexual-brood.ts";
 import type { ColonyWorld } from "./types.ts";
 import { LIMIT } from "../simulation/constants.js";
@@ -20,7 +22,16 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   if (queen) {
     if (!closed) queen.state = "Cuidando da colônia";
     const first = !!f && f.phase === "claustral" && !f.firstClutch;
-    const layingAllowed = first ? f!.reserves > 2 : !closed && world.food > 2;
+    const affordable =
+      first && f?.maternal
+        ? Math.floor(
+            (accessibleReserve(f.maternal, "eggs") + 1e-10) /
+              MATERNAL_PARAMETERS.eggCost,
+          )
+        : Infinity;
+    const layingAllowed = first
+      ? f!.reserves > 2 && affordable > 0
+      : !closed && world.food > 2;
     if (
       (!f || f.phase === "established" || first) &&
       world.tick >= 25 &&
@@ -31,7 +42,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
         LIMIT
     ) {
       const eggs = Math.min(
-        first ? 4 : 4 + Math.floor(world.random() * 3),
+        first ? Math.min(4, affordable) : 4 + Math.floor(world.random() * 3),
         LIMIT -
           world.population -
           world.brood.length -
@@ -43,9 +54,13 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
         world.brood.push(b);
       }
       if (first) {
-        spendReserve(world, "eggs", eggs * 0.21);
+        spendReserve(world, "eggs", eggs * MATERNAL_PARAMETERS.eggCost);
         f!.firstClutch = true;
-      } else world.food = Math.max(0, world.food - eggs * 0.21);
+      } else
+        world.food = Math.max(
+          0,
+          world.food - eggs * MATERNAL_PARAMETERS.eggCost,
+        );
       world.lastLaying = world.tick;
       world.log(
         "A rainha colocou " +

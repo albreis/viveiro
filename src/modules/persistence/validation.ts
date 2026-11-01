@@ -1,3 +1,4 @@
+import { validateMaternalFounding } from "../maternal/validation.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type { SessionState, WorldWire } from "./types.ts";
 const dangerous = new Set(["__proto__", "prototype", "constructor"]);
@@ -54,7 +55,8 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       (c !== w && (c.colonies?.length ?? 0) > 0)
     )
       throw new Error("Registro de colônia inválido.");
-    resolveBiologicalProfile(c.biologicalProfile);
+    const profile = resolveBiologicalProfile(c.biologicalProfile);
+    validateMaternalFounding(c.founding, profile.maternalModel === "pools");
     population += c.ants.length;
     for (const a of c.ants)
       if (

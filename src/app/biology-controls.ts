@@ -1,15 +1,22 @@
+import { renderMaternalStatus } from "./maternal-status.ts";
 import { biologyMarkup } from "./biology-markup.ts";
 import {
   biologicalProfiles,
+  biologicalProfileKey,
+  biologicalReferenceFromKey,
+  latestProfileReference,
   resolveBiologicalProfile,
 } from "../modules/biology/catalog.ts";
 import { renderBiologicalParameters } from "./biology-parameters.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
-import type { ParameterTopic } from "../modules/biology/types.ts";
-export function selectedBiologicalProfile(): string {
-  return (
+import type {
+  ParameterTopic,
+  BiologicalReference,
+} from "../modules/biology/types.ts";
+export function selectedBiologicalProfile(): BiologicalReference {
+  return biologicalReferenceFromKey(
     (document.getElementById("biology-profile") as HTMLSelectElement | null)
-      ?.value || "generic-demo"
+      ?.value || biologicalProfileKey(latestProfileReference()),
   );
 }
 export function installBiologyControls(world: FamilyWorld): void {
@@ -26,11 +33,19 @@ export function installBiologyControls(world: FamilyWorld): void {
     topic = document.getElementById("biology-topic") as HTMLSelectElement;
   if (!select || !topic) return;
   select.replaceChildren(
-    ...biologicalProfiles.map((p) => new Option(p.label, p.id)),
+    ...biologicalProfiles.map(
+      (p) => new Option(p.label + " · v" + p.version, biologicalProfileKey(p)),
+    ),
   );
-  select.value = resolveBiologicalProfile(world.biologicalProfile).id;
+  select.value = biologicalProfileKey(
+    latestProfileReference(
+      resolveBiologicalProfile(world.biologicalProfile).id,
+    ),
+  );
   const preview = () => {
-    const p = biologicalProfiles.find((p) => p.id === select.value)!;
+    const p = resolveBiologicalProfile(selectedBiologicalProfile());
+    document.getElementById("biology-catalog-profile")!.textContent =
+      "Consulta do próximo perfil: " + p.label + " · v" + p.version;
     document.getElementById("biology-preview")!.textContent =
       p.description +
       " Fundação genérica " +
@@ -39,8 +54,12 @@ export function installBiologyControls(world: FamilyWorld): void {
   };
   select.onchange = () => {
     preview();
-    topic.value = select.value === "lab-lniger-2024" ? "study" : "model";
-    renderBiologicalParameters(topic.value as ParameterTopic);
+    topic.value =
+      selectedBiologicalProfile().id === "lab-lniger-2024" ? "study" : "model";
+    renderBiologicalParameters(
+      topic.value as ParameterTopic,
+      selectedBiologicalProfile().version,
+    );
   };
   topic.onchange = () =>
     renderBiologicalParameters(topic.value as ParameterTopic);
@@ -50,6 +69,7 @@ export function installBiologyControls(world: FamilyWorld): void {
 export function renderBiologyStatus(world: FamilyWorld): void {
   const output = document.getElementById("biology-active");
   if (!output) return;
+  renderMaternalStatus(world);
   const p = resolveBiologicalProfile(world.biologicalProfile);
   output.textContent =
     "Atual: " +

@@ -1,3 +1,4 @@
+import { validateMaternalFounding } from "../maternal/validation.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import { restoreColonies } from "../colonies/shared.ts";
 import { migrateGenetics } from "../genetics/reproduction.ts";
@@ -16,7 +17,11 @@ import {
 export function restoreWorld(snapshot, prototype) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
-  resolveBiologicalProfile(world.biologicalProfile);
+  const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
+  validateMaternalFounding(
+    world.founding,
+    biologicalProfile.maternalModel === "pools",
+  );
   world.landscape ??= legacyLandscape();
   if (!world.nest || world.nest.revision < 2) {
     world.nest = createNest(world.seed, world.landscape);

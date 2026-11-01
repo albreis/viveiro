@@ -1,3 +1,4 @@
+import { accessibleReserve } from "../maternal/pools.ts";
 import { outsideSite } from "./site.ts";
 import { travelToFront, haulFoundingSoil } from "./travel.ts";
 import type { FoundingWorld } from "./types.ts";
@@ -15,6 +16,17 @@ export function updateFoundingDig(world: FoundingWorld) {
     q = founder(world);
   if (!q) return;
   if (f.front === undefined) {
+    if (f.maternal) {
+      const seedMass = sphere(0.02) * 0.5,
+        cost = seedMass * 0.15;
+      if (accessibleReserve(f.maternal, "excavation") + 1e-10 < cost) {
+        q.state = "Sem reservas disponíveis para iniciar o abrigo";
+        f.maternal.unmet.excavation += cost;
+        return;
+      }
+      spendReserve(world, "excavation", cost);
+      removedSoil(world, q, seedMass);
+    }
     f.entry = world.nest.nodes.length;
     f.front = f.entry + 1;
     world.nest.nodes.push(
@@ -89,26 +101,42 @@ export function updateFoundingDig(world: FoundingWorld) {
   }
   if (world.tick % 2) return;
   let mass = 0;
+  let excavate = () => {};
   if (front.r < WIDTH - 0.0001) {
     const r = Math.min(WIDTH, front.r + 0.008);
     mass = (sphere(r) - sphere(front.r)) * 0.5;
-    front.r = mouth.r = r;
-    world.nest.linkWidths![
-      world.nest.links.findIndex(([a, b]) => a === f.entry && b === f.front)
-    ] = r;
+    excavate = () => {
+      front.r = mouth.r = r;
+      world.nest.linkWidths![
+        world.nest.links.findIndex(([a, b]) => a === f.entry && b === f.front)
+      ] = r;
+    };
   } else if (remaining > 0.001) {
     const step = Math.min(0.012, remaining);
-    front.x += ((f.chamber.x - front.x) * step) / remaining;
-    front.y += ((f.chamber.y - front.y) * step) / remaining;
-    front.z += ((f.chamber.z - front.z) * step) / remaining;
+    excavate = () => {
+      front.x += ((f.chamber.x - front.x) * step) / remaining;
+      front.y += ((f.chamber.y - front.y) * step) / remaining;
+      front.z += ((f.chamber.z - front.z) * step) / remaining;
+    };
     mass = Math.PI * WIDTH ** 2 * step;
   } else {
     const r = Math.min(CHAMBER, front.r + 0.004);
     mass = sphere(r) - sphere(front.r);
-    front.r = r;
+    excavate = () => {
+      front.r = r;
+    };
   }
+  if (f.maternal) {
+    if (accessibleReserve(f.maternal, "excavation") + 1e-10 < mass * 0.15) {
+      q.state = "Sem reservas disponíveis para escavar";
+      f.maternal.unmet.excavation += mass * 0.15;
+      return;
+    }
+    spendReserve(world, "excavation", mass * 0.15);
+  }
+  excavate();
   removedSoil(world, q, mass);
-  spendReserve(world, "excavation", mass * 0.15);
+  if (!f.maternal) spendReserve(world, "excavation", mass * 0.15);
   world.nest.revision++;
   if ((q.carryingSoil || 0) >= CAPACITY) {
     f.digMode = "haul";

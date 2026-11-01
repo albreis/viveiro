@@ -157,7 +157,7 @@ test("daughter colonies inherit an independent pinned biological reference from 
 test("unknown profile IDs, versions and schemas fail explicitly during model and session reconstruction", () => {
   for (const ref of [
     { schema: 1, id: "future", version: 1 },
-    { schema: 1, id: "generic-demo", version: 2 },
+    { schema: 1, id: "generic-demo", version: 999 },
     { schema: 2, id: "generic-demo", version: 1 },
   ]) {
     assert.throws(
@@ -183,7 +183,7 @@ test("a future profile in a valid-checksum current save protects original data e
     future = structuredClone(
       createCheckpoint(session(w, profileReference()), meta("future", 2)),
     );
-  future.payload.world.biologicalProfile.version = 2;
+  future.payload.world.biologicalProfile.version = 999;
   const { checksum: ignored, ...body } = future;
   future.checksum = checksum(JSON.stringify(body));
   const driver = new MemoryDriver(),

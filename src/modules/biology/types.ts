@@ -11,6 +11,7 @@ export interface ParameterRecord {
   readonly label: string;
   readonly topic: ParameterTopic;
   readonly version: number;
+  readonly minModelRevision?: number;
   readonly value: number | null;
   readonly range?: readonly [number, number];
   readonly unit: string;
@@ -37,6 +38,7 @@ export interface BiologicalProfile {
   readonly foundation: "claustral" | "semiclaustral" | "unknown";
   readonly cocoon: "present" | "absent" | "unspecified";
   readonly seasonality: "unmodelled" | "seasonal" | "nonseasonal";
+  readonly maternalModel?: "scalar" | "pools";
   readonly climate: Readonly<Record<string, number>>;
   readonly description: string;
 }
