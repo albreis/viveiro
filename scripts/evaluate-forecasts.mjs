@@ -1,10 +1,13 @@
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { World } from "../src/modules/simulation/world.js";
 import { evaluateSnapshot } from "../src/modules/forecast/evaluate-snapshot.ts";
 import { summarizeErrors } from "../src/modules/forecast/evaluation-metrics.ts";
 const manifest = {
   version: 1,
-  modelVersion: "0.17.0",
+  modelVersion: JSON.parse(
+    readFileSync(new URL("../package.json", import.meta.url), "utf8"),
+  ).version,
+  biologicalProfile: { schema: 1, id: "generic-demo", version: 1 },
   seeds: ["EVAL-VIVEIRO-01", "EVAL-VIVEIRO-02", "EVAL-VIVEIRO-03"],
   origins: [300, 600],
   horizons: [1, 3, 7],
@@ -24,7 +27,10 @@ const manifest = {
 const start = performance.now(),
   rows = [];
 for (const seed of manifest.seeds) {
-  const world = new World(seed, manifest.params, { founding: false });
+  const world = new World(seed, manifest.params, {
+    founding: false,
+    biologicalProfile: manifest.biologicalProfile,
+  });
   for (const origin of manifest.origins) {
     world.step(origin - world.tick);
     console.log(seed + " origin " + origin);

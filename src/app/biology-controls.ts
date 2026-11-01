@@ -1,15 +1,22 @@
+import { renderMaternalStatus } from "./maternal-status.ts";
 import { biologyMarkup } from "./biology-markup.ts";
 import {
   biologicalProfiles,
+  biologicalProfileKey,
+  biologicalReferenceFromKey,
+  latestProfileReference,
   resolveBiologicalProfile,
 } from "../modules/biology/catalog.ts";
 import { renderBiologicalParameters } from "./biology-parameters.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
-import type { ParameterTopic } from "../modules/biology/types.ts";
-export function selectedBiologicalProfile(): string {
-  return (
+import type {
+  ParameterTopic,
+  BiologicalReference,
+} from "../modules/biology/types.ts";
+export function selectedBiologicalProfile(): BiologicalReference {
+  return biologicalReferenceFromKey(
     (document.getElementById("biology-profile") as HTMLSelectElement | null)
-      ?.value || "generic-demo"
+      ?.value || biologicalProfileKey(latestProfileReference()),
   );
 }
 export function installBiologyControls(world: FamilyWorld): void {
@@ -24,32 +31,50 @@ export function installBiologyControls(world: FamilyWorld): void {
       "biology-profile",
     ) as HTMLSelectElement,
     topic = document.getElementById("biology-topic") as HTMLSelectElement;
-  if (!select || !topic) return;
   select.replaceChildren(
-    ...biologicalProfiles.map((p) => new Option(p.label, p.id)),
+    ...biologicalProfiles.map(
+      (p) => new Option(p.label + " · v" + p.version, biologicalProfileKey(p)),
+    ),
   );
-  select.value = resolveBiologicalProfile(world.biologicalProfile).id;
-  const preview = () => {
-    const p = biologicalProfiles.find((p) => p.id === select.value)!;
+  select.value = biologicalProfileKey(
+    latestProfileReference(
+      resolveBiologicalProfile(world.biologicalProfile).id,
+    ),
+  );
+  const refresh = () =>
+    renderBiologicalParameters(
+      topic.value as ParameterTopic,
+      selectedBiologicalProfile().version,
+    );
+  const changeProfile = () => {
+    const p = resolveBiologicalProfile(selectedBiologicalProfile());
+    document.getElementById("biology-catalog-profile")!.textContent =
+      "Consulta do próximo perfil: " + p.label + " · v" + p.version;
     document.getElementById("biology-preview")!.textContent =
       p.description +
       " Fundação genérica " +
       p.foundation +
       ". Casulos e sazonalidade sem calibração por espécie.";
+    const maternal = topic.querySelector<HTMLOptionElement>(
+      'option[value="maternal"]',
+    );
+    if (maternal) maternal.disabled = p.version < 2;
+    topic.value =
+      p.id === "lab-lniger-2024"
+        ? "study"
+        : p.version >= 2
+          ? "maternal"
+          : "model";
+    refresh();
   };
-  select.onchange = () => {
-    preview();
-    topic.value = select.value === "lab-lniger-2024" ? "study" : "model";
-    renderBiologicalParameters(topic.value as ParameterTopic);
-  };
-  topic.onchange = () =>
-    renderBiologicalParameters(topic.value as ParameterTopic);
-  preview();
-  renderBiologicalParameters(topic.value as ParameterTopic);
+  select.onchange = changeProfile;
+  topic.onchange = refresh;
+  changeProfile();
 }
 export function renderBiologyStatus(world: FamilyWorld): void {
   const output = document.getElementById("biology-active");
   if (!output) return;
+  renderMaternalStatus(world);
   const p = resolveBiologicalProfile(world.biologicalProfile);
   output.textContent =
     "Atual: " +

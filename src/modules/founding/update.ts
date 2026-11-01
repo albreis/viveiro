@@ -1,3 +1,4 @@
+import { advanceMaternalReserves } from "../maternal/initialize.ts";
 import type { FoundingWorld } from "./types.ts";
 import { changePhase, founder, isClaustral, spendReserve } from "./types.ts";
 import { updateFlight, landMale } from "./flight.ts";
@@ -11,6 +12,7 @@ export function updateFounding(world: FoundingWorld) {
     changePhase(world, "failed", "A fundação terminou com a perda da rainha.");
     return;
   }
+  advanceMaternalReserves(world);
   const paid = spendReserve(world, "maintenance", 0.001);
   if (paid < 0.001) world.queenHealth = Math.max(0, world.queenHealth - 0.15);
   queen.energy = world.queenHealth;

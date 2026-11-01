@@ -1,5 +1,5 @@
 import {
-  profileReference,
+  latestProfileReference,
   prepareBiologicalExperiment,
 } from "../modules/biology/catalog.ts";
 import {
@@ -41,7 +41,7 @@ let world,
 let initial = {
   seed: "SEMENTE-42",
   startMode: "founding",
-  biologicalProfile: profileReference(),
+  biologicalProfile: latestProfileReference(),
   params: { humidity: 58, light: 72, randomness: 28 },
 };
 let interventions = [],

@@ -1,3 +1,4 @@
+import { initializeMaternalReserves } from "../maternal/initialize.ts";
 import type { FamilyWorld } from "./types.ts";
 import { colonyWorlds } from "./types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
@@ -94,6 +95,7 @@ export function spawnDaughter(
     physicsVersion: 5,
     localRoutingVersion: 1,
   }) as FamilyWorld;
+  initializeMaternalReserves(child);
   bindHabitat(root, child);
   source.ants = source.ants.filter((a) => a.id !== gyne.id && a.id !== male.id);
   gyne.kind = "queen";

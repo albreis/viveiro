@@ -1,9 +1,11 @@
+import { initializeMaternalReserves } from "../maternal/initialize.ts";
 import { foundingPlan } from "./plan.ts";
 import type { FoundingWorld } from "./types.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 /** Keep only a potential site, never pre-cut galleries for a new foundress. */
 export function initializeFounding(world: FoundingWorld) {
   world.founding = foundingPlan(world.nest, world.params.humidity);
+  initializeMaternalReserves(world);
   const site = world.founding.site;
   world.food = 0;
   world.nest = {

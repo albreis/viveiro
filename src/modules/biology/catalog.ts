@@ -1,38 +1,18 @@
+import { maternalRecords } from "./maternal-records.ts";
+import { biologicalProfiles, latestBiologicalProfiles } from "./profiles.ts";
 import { UnsupportedBiologicalProfile } from "./errors.ts";
 import type { BiologicalProfile, BiologicalReference } from "./types.ts";
 import { modelRecords } from "./model-records.ts";
 import { proposedRecords } from "./proposed-records.ts";
-import { studyRecords, REFERENCE_AIR } from "./study-records.ts";
-export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
-  Object.freeze({
-    id: "generic-demo",
-    version: 1,
-    label: "Genérico · demonstração",
-    modelSpecies: null,
-    referenceSpecies: null,
-    foundation: "claustral",
-    cocoon: "unspecified",
-    seasonality: "unmodelled",
-    climate: Object.freeze({}),
-    description:
-      "Modelo genérico acelerado; castas/ecologia combinadas, sem espécie calibrada.",
-  }),
-  Object.freeze({
-    id: "lab-lniger-2024",
-    version: 1,
-    label: "Ar de referência · L. niger (2024)",
-    modelSpecies: null,
-    referenceSpecies: "Lasius niger",
-    foundation: "claustral",
-    cocoon: "unspecified",
-    seasonality: "unmodelled",
-    climate: REFERENCE_AIR,
-    description:
-      "Só inicia o ar em 21 °C e 80% conforme condição de laboratório. Biologia e solo continuam genéricos; não reproduz o experimento.",
-  }),
-]);
+import { studyRecords } from "./study-records.ts";
+export { biologicalProfiles } from "./profiles.ts";
 export const biologicalParameters = Object.freeze(
-  [...modelRecords, ...proposedRecords, ...studyRecords].map((record) =>
+  [
+    ...modelRecords,
+    ...proposedRecords,
+    ...studyRecords,
+    ...maternalRecords,
+  ].map((record) =>
     Object.freeze({
       ...record,
       range: record.range
@@ -69,14 +49,37 @@ export function resolveBiologicalProfile(value?: unknown): BiologicalProfile {
     (p) => p.id === canonical.id && p.version === canonical.version,
   )!;
 }
+export function latestProfileReference(
+  id = "generic-demo",
+): BiologicalReference {
+  const profile = latestBiologicalProfiles().find((p) => p.id === id);
+  if (!profile) throw new UnsupportedBiologicalProfile();
+  return profileReference(profile.id, profile.version);
+}
 export function prepareBiologicalExperiment(
-  id: string,
+  id: string | BiologicalReference,
   params: Record<string, number>,
 ) {
-  const reference = profileReference(id),
+  if (typeof id !== "string") resolveBiologicalProfile(id);
+  const reference =
+      typeof id === "string"
+        ? profileReference(id)
+        : profileReference(id.id, id.version),
     profile = resolveBiologicalProfile(reference);
   return {
     params: { ...params, ...profile.climate },
     biologicalProfile: reference,
   };
+}
+
+export function biologicalProfileKey(reference: {
+  id: string;
+  version: number;
+}): string {
+  return reference.id + "@" + reference.version;
+}
+export function biologicalReferenceFromKey(key: string): BiologicalReference {
+  const split = key.lastIndexOf("@");
+  if (split < 0) return profileReference(key);
+  return profileReference(key.slice(0, split), Number(key.slice(split + 1)));
 }

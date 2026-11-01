@@ -1,3 +1,4 @@
+import { withdrawMaternal, reserveTotal } from "../maternal/pools.ts";
 import type { ColonyAgent, ColonyWorld } from "../colony/types.ts";
 import type { Vec3 } from "../navigation/types.ts";
 export type FoundingPhase =
@@ -20,6 +21,7 @@ export interface FoundingState {
   matedTick?: number;
   entry?: number;
   front?: number;
+  maternal?: import("../maternal/types.ts").MaternalState;
   initialReserves: number;
   reserves: number;
   spent: Record<ReserveUse, number>;
@@ -49,8 +51,11 @@ export function spendReserve(
 ) {
   const f = world.founding;
   if (!f || !(requested > 0)) return 0;
-  const amount = Math.min(f.reserves, requested);
-  f.reserves -= amount;
+  const amount = f.maternal
+    ? withdrawMaternal(f.maternal, use, requested)
+    : Math.min(f.reserves, requested);
+  if (f.maternal) f.reserves = reserveTotal(f.maternal.stores);
+  else f.reserves -= amount;
   f.spent[use] += amount;
   return amount;
 }

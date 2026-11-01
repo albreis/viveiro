@@ -389,7 +389,10 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 
 ### 10. Fundação, selamento e orçamento materno
 
-Entrega dividida em10A (reservas/custos/contabilidade) e10B (tampão/isolamento/reabertura físicos), cada uma com branch/PR próprios. Perfis numéricos antigos permanecem preservados.
+Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isolamento e reabertura físicos), cada uma com branch e PR próprios. Perfis numéricos antigos permanecem preservados.
+
+- 10A implementada na branch codex/reservas-maternas, versão 0.19.0: 183/183 testes completos, 14 dirigidos finais, TypeScript/Vite e QA no navegador aprovados. Publicada no mesmo Site privado; PR [#22](https://github.com/albreis/viveiro/pull/22). Ver docs/reservas-maternas.md.
+- 10B é o próximo item pendente: selamento físico com material conservado, efeito sobre trocas e reabertura pelas naníticas.
 
 - Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
 - Cronologia dependente de esforço, geometria, temperatura, condição e reservas; término físico da obra.

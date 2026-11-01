@@ -9,10 +9,15 @@ const labels: Record<EvidenceKind, string> = {
 };
 const number = (n: number) =>
   n.toLocaleString("pt-BR", { maximumFractionDigits: 3 });
-export function renderBiologicalParameters(topic: ParameterTopic): void {
+export function renderBiologicalParameters(
+  topic: ParameterTopic,
+  revision: number,
+): void {
   const list = document.getElementById("biology-records")!;
   list.replaceChildren();
-  for (const record of biologicalParameters.filter((p) => p.topic === topic)) {
+  for (const record of biologicalParameters.filter(
+    (p) => p.topic === topic && (p.minModelRevision ?? 1) <= revision,
+  )) {
     const item = document.createElement("li"),
       name = document.createElement("strong"),
       value = document.createElement("span"),
