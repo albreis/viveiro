@@ -404,7 +404,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isola
 ### 11. Maturação e estações
 
 - 11A: mecanismo térmico demonstrativo, alimentação parcial, estresse, perdas e estado individual persistente implementados. Durações por espécie continuam sem calibração externa.
-- 11B: diapausa, memória sazonal, retomada e casulos ainda pendentes.
+- 11B em validação na branch codex/diapausa-e-casulos, versão 0.22.0: memória endógena, frio acumulado, retomada, abrigo e casulos pagos por perfil. Ainda não publicada.
 
 - Investigar ovo–larva 10–14 d, larva–pupa 10–15 d e pupa–adulta 10–24 d.
 - Conferir o total sugerido de 35–60 d: a soma das faixas individuais recebidas é 30–53 d.

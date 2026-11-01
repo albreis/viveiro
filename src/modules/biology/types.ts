@@ -1,7 +1,7 @@
 export type EvidenceKind =
   "approximation" | "hypothesis" | "protocol" | "measurement";
 export type ParameterTopic =
-  "model" | "founding" | "development" | "study" | "maternal";
+  "model" | "founding" | "development" | "study" | "maternal" | "seasonal";
 export interface BiologicalReference {
   schema: 1;
   id: string;
@@ -39,6 +39,8 @@ export interface BiologicalProfile {
   readonly foundation: "claustral" | "semiclaustral" | "unknown";
   readonly cocoon: "present" | "absent" | "unspecified";
   readonly seasonality: "unmodelled" | "seasonal" | "nonseasonal";
+  readonly modelRevision?: number;
+  readonly dormancyModel?: "obligate-demo";
   readonly developmentModel?: "linear" | "thermal-demo";
   readonly entranceModel?: "open" | "plug";
   readonly maternalModel?: "scalar" | "pools";

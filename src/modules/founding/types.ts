@@ -42,6 +42,7 @@ export interface FoundingWorld extends ColonyWorld {
     temperatureC?: number;
     reposeAngle?: number;
     soilWaterInitial?: number;
+    photoperiodHours?: number;
   };
 }
 export const isClaustral = (world: { founding?: FoundingState }) =>

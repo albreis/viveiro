@@ -66,6 +66,38 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
         " Maturação térmica demonstrativa e tampão físico. Durações não calibradas por espécie.",
     }),
   ),
+  ...[generic, lab].map((p) =>
+    Object.freeze({
+      ...p,
+      version: 5,
+      maternalModel: "pools" as const,
+      entranceModel: "plug" as const,
+      developmentModel: "thermal-demo" as const,
+      dormancyModel: "obligate-demo" as const,
+      seasonality: "seasonal" as const,
+      cocoon: "present" as const,
+      label:
+        p.id === "generic-demo" ? "Genérico · sazonal com casulos" : p.label,
+      description:
+        p.description +
+        " Diapausa reprodutiva demonstrativa com memória e casulos pagos. Não calibrado para uma espécie.",
+    }),
+  ),
+  Object.freeze({
+    ...generic,
+    id: "generic-naked-demo",
+    version: 1,
+    modelRevision: 5,
+    maternalModel: "pools" as const,
+    entranceModel: "plug" as const,
+    developmentModel: "thermal-demo" as const,
+    dormancyModel: "obligate-demo" as const,
+    seasonality: "seasonal" as const,
+    cocoon: "absent" as const,
+    label: "Sazonal · pupa nua (demonstração)",
+    description:
+      "Variante genérica sem casulo, com diapausa reprodutiva, reservas e tampão. Não corresponde a uma espécie calibrada.",
+  }),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

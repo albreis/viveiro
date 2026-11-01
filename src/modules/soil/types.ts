@@ -44,7 +44,12 @@ export interface SoilWorld extends NavigationWorld {
   colonies?: SoilWorld[];
   ants: SoilAgent[];
   soil: SoilState;
-  params: { humidity: number; reposeAngle?: number; temperatureC?: number };
+  params: {
+    humidity: number;
+    reposeAngle?: number;
+    temperatureC?: number;
+    photoperiodHours?: number;
+  };
   brood: unknown[];
   random(): number;
   moveInNest(ant: AgentState): void;

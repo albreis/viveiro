@@ -44,7 +44,8 @@ export function installBiologyControls(world: FamilyWorld): void {
   const refresh = () =>
     renderBiologicalParameters(
       topic.value as ParameterTopic,
-      selectedBiologicalProfile().version,
+      resolveBiologicalProfile(selectedBiologicalProfile()).modelRevision ??
+        selectedBiologicalProfile().version,
     );
   const changeProfile = () => {
     const p = resolveBiologicalProfile(selectedBiologicalProfile());
@@ -58,11 +59,16 @@ export function installBiologyControls(world: FamilyWorld): void {
     const maternal = topic.querySelector<HTMLOptionElement>(
       'option[value="maternal"]',
     );
-    if (maternal) maternal.disabled = p.version < 2;
-    topic.value =
-      p.id === "lab-lniger-2024"
+    if (maternal) maternal.disabled = p.maternalModel !== "pools";
+    const seasonal = topic.querySelector<HTMLOptionElement>(
+      'option[value="seasonal"]',
+    );
+    if (seasonal) seasonal.disabled = !p.dormancyModel;
+    topic.value = p.dormancyModel
+      ? "seasonal"
+      : p.id === "lab-lniger-2024"
         ? "study"
-        : p.version >= 2
+        : p.maternalModel === "pools"
           ? "maternal"
           : "model";
     refresh();

@@ -1,3 +1,4 @@
+import { initializeSeason } from "../seasons/update.ts";
 import {
   resolveBiologicalProfile,
   profileReference,
@@ -116,5 +117,6 @@ export function initializeWorld(world, seed, parameters, options = {}) {
     }
   if (!world.founding)
     world.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
+  initializeSeason(world);
   world.record();
 }

@@ -19,4 +19,11 @@ export const biologicalSources: readonly BiologicalSource[] = Object.freeze([
     license: "Artigo aberto sob CC BY; consultar a fonte para reutilização",
     accessedAt: "2026-11-01",
   },
+  {
+    id: "willot-2026",
+    title: "Willot et al. (2026), Functional Ecology",
+    url: "https://doi.org/10.1111/1365-2435.70359",
+    license: "Artigo de acesso aberto; consultar a licença na fonte.",
+    accessedAt: "2026-11-01",
+  },
 ]);

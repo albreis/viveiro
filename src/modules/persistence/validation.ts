@@ -1,3 +1,5 @@
+import { validateSeason } from "../seasons/validation.ts";
+import { validateCocoons } from "../development/cocoon.ts";
 import { validateBroodDevelopment } from "../development/validation.ts";
 import { validateSealBudget } from "../sealing/budget.ts";
 import {
@@ -73,6 +75,8 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       c.brood,
       profile.developmentModel === "thermal-demo",
     );
+    validateSeason(c, profile.dormancyModel === "obligate-demo");
+    validateCocoons(c.brood, profile.cocoon === "present");
     population += c.ants.length;
     for (const a of c.ants)
       if (

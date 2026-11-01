@@ -1,3 +1,4 @@
+import { initializeSeason } from "../seasons/update.ts";
 import { initializeMaternalReserves } from "../maternal/initialize.ts";
 import type { FamilyWorld } from "./types.ts";
 import { colonyWorlds } from "./types.ts";
@@ -117,6 +118,7 @@ export function spawnDaughter(
     a.tunnelCenter = null;
     a.tunnelY = 0;
   }
+  initializeSeason(child);
   root.nextColonyId = id + 1;
   (root.colonies ??= []).push(child);
   bindNeighbors(root);

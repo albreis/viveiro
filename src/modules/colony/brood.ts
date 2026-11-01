@@ -1,3 +1,4 @@
+import { initializeCocoon } from "../development/cocoon.ts";
 import { initializeBroodDevelopment } from "../development/initialize.ts";
 import { DEMO_BROOD_STAGES } from "../biology/demo-constants.ts";
 import { roomNode } from "./rooms.ts";
@@ -46,6 +47,7 @@ export function makeBrood(
     kind,
   };
   initializeBroodDevelopment(world, brood);
+  initializeCocoon(world, brood);
   return brood;
 }
 export function migrateBrood(world: ColonyWorld) {

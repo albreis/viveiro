@@ -1,3 +1,5 @@
+import { seasonFactors } from "../seasons/update.ts";
+import { finishCocoon, discardCocoon } from "../development/cocoon.ts";
 import { advanceBroodDevelopment } from "../development/update.ts";
 import { thermalDevelopment, layingComfort } from "../development/sensing.ts";
 import { loseBrood } from "./brood-loss.ts";
@@ -17,7 +19,9 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   const thermal = thermalDevelopment(world),
     comfort = layingComfort(world);
   const consumption =
-    world.brood.filter((b) => broodStage(b.age) === "larva").length * 0.0012;
+    world.brood.filter((b) => broodStage(b.age) === "larva").length *
+    0.0012 *
+    seasonFactors(world).larvalDemand;
   const paid = closed
     ? spendReserve(world, "larvae", consumption)
     : Math.min(world.food, consumption);
@@ -97,12 +101,14 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
       }
     } else if (fed || broodStage(brood.age) !== "larva")
       brood.age += 0.006 + suitability * 0.004;
+    finishCocoon(world, brood);
     if (
       brood.age >= 1.3 &&
       brood.carrier === undefined &&
       world.population + (world.capacityOffset || 0) < LIMIT
     ) {
       const adult = hatchWorker(world, brood);
+      discardCocoon(world, brood);
       if (adult.sexual) alates++;
       else hatched++;
     } else remaining.push(brood);

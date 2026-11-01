@@ -1,3 +1,5 @@
+import { seasonFactors } from "../seasons/update.ts";
+import { SEASON_PARAMETERS } from "../seasons/types.ts";
 import type { Brood, ColonyWorld } from "../colony/types.ts";
 import { TICKS_PER_DAY } from "../simulation/constants.js";
 import { broodEnvironment } from "./sensing.ts";
@@ -10,6 +12,7 @@ export function advanceBroodDevelopment(
   paidFraction: number,
 ): boolean {
   const s = b.development!;
+  const seasonal = seasonFactors(w);
   const environment = broodEnvironment(w, b),
     stage = stageSchedule(b.age);
   const t = thermalRate(environment.temperature),
@@ -19,7 +22,10 @@ export function advanceBroodDevelopment(
     0,
     1 - water,
     stage.name === "larva" ? 1 - food : 0,
-    environment.temperature < p.minimum || environment.temperature > p.maximum
+    environment.temperature <
+      (w.colony.season?.phase === "dormant" && stage.name === "larva"
+        ? SEASON_PARAMETERS.coldMinimum
+        : p.minimum) || environment.temperature > p.maximum
       ? 1
       : 0,
   );
@@ -34,7 +40,13 @@ export function advanceBroodDevelopment(
   );
   s.lastTemperature = environment.temperature;
   s.lastSoilWater = environment.water;
-  s.lastRate = t * water * food * s.growthFactor * (1 - 0.5 * s.stress);
+  s.lastRate =
+    t *
+    water *
+    food *
+    s.growthFactor *
+    (1 - 0.5 * s.stress) *
+    (stage.name === "larva" ? seasonal.growth : 1);
   if (s.stress >= 1) return false;
   b.age = Math.min(
     stage.end,

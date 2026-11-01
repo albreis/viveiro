@@ -1,3 +1,5 @@
+import { validateSeason } from "../seasons/validation.ts";
+import { validateCocoons } from "../development/cocoon.ts";
 import { validateBroodDevelopment } from "../development/validation.ts";
 import { validateSealBudget } from "../sealing/budget.ts";
 import {
@@ -38,6 +40,8 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
     world.brood,
     biologicalProfile.developmentModel === "thermal-demo",
   );
+  validateSeason(world, biologicalProfile.dormancyModel === "obligate-demo");
+  validateCocoons(world.brood, biologicalProfile.cocoon === "present");
   world.landscape ??= legacyLandscape();
   if (!world.nest || world.nest.revision < 2) {
     world.nest = createNest(world.seed, world.landscape);

@@ -1,3 +1,4 @@
+import { installSeasonControls } from "./season-controls.ts";
 import { installSealingControls } from "./sealing-controls.ts";
 import {
   latestProfileReference,
@@ -327,6 +328,7 @@ installCheckpointControls({
 installLearningControls(intervention, active);
 installGasControls(intervention);
 installClimateControls(intervention);
+installSeasonControls(intervention);
 installSealingControls(() => scene, toast);
 const focusStructureButton = $("focus-structure");
 if (focusStructureButton)

@@ -1,3 +1,4 @@
+import { seasonFactors } from "../seasons/update.ts";
 import type { Brood, ColonyWorld } from "../colony/types.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
@@ -25,6 +26,7 @@ export function layingComfort(w: ColonyWorld): number {
   const local = sampleClimate(w.microclimate, { x: q.x, y: q.y ?? 0, z: q.z });
   return (
     thermalRate(local?.temperature ?? w.params.temperatureC ?? 24) *
-    waterRate(local?.water ?? 0.55)
+    waterRate(local?.water ?? 0.55) *
+    seasonFactors(w).laying
   );
 }
