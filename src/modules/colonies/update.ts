@@ -1,3 +1,4 @@
+import { updateEcology } from "../ecology/update.ts";
 import { prepareSocialChemistry } from "../social-chemistry/profile.ts";
 import { updateTerritory } from "../social-chemistry/territory.ts";
 import { updateSocialEncounters } from "../social-chemistry/encounters.ts";
@@ -23,6 +24,8 @@ export function advanceFamily(root: FamilyWorld) {
   for (const w of colonies) if (w !== root) bindHabitat(root, w);
   bindNeighbors(root);
   prepareSocialChemistry(root);
+  updateEcology(root);
+  for (const w of colonies) if (w !== root) w.ecology = root.ecology;
   updateTerritory(root);
   updateSocialEncounters(root);
   updateNestOdors(root.nest, root.nestOdors);

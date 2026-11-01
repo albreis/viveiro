@@ -1,3 +1,5 @@
+import { visitMimic } from "../ecology/mimic-worker.ts";
+import { visitAphids } from "../ecology/aphid-worker.ts";
 import { updateIntrusion } from "../social-chemistry/intrusion.ts";
 import { updateEncounterMotion } from "../social-chemistry/contact-motion.ts";
 import { updateSexualAgent } from "../colonies/sexual-motion.ts";
@@ -68,6 +70,8 @@ export function updateWorkers(world, suitability) {
     if (updateEncounterMotion(world, ant)) continue;
     if (updateIntrusion(world, ant)) continue;
     if (recoverStall(world, ant)) continue;
+    if (visitMimic(world, ant)) continue;
+    if (visitAphids(world, ant)) continue;
     if (ant.soilTask && updateSoilWorker(world, ant)) continue;
     if (updateColonyWorker(world, ant)) continue;
     if (updateSoilWorker(world, ant)) continue;

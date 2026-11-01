@@ -14,6 +14,7 @@ export function updateIntrusion(w: ColonyWorld, a: ColonyAgent) {
       a.bioTask ||
       a.soilTask ||
       a.carryingBrood ||
+      a.carryingMimic ||
       a.carryingWaste ||
       a.energy > 45 ||
       a.crop > 0.1 ||

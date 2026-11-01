@@ -1,40 +1,50 @@
 # Continuação do Viveiro
 
-Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma, com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não criar executores concorrentes ou contornar cotas/aprovações.
+Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
 ## Última entrega publicada
 
-- Branch codex/odores-e-territorio, base codex/colonias-filhas; versão 0.8.0.
-- Fonte 35296be9bc4d89b4fef1c9d9eabaad8e4ca50faa, tag v0.8.0.
-- PR #10 https://github.com/albreis/viveiro/pull/10. PRs #1–#10 abertos e encadeados, sem merge na main. Não duplicar.
-- Deploy appgdep_6ae6d368c2c0819198961f76f4086562, succeeded em 01/11/2026 05:51:49 UTC.
-- Site privado https://viveiro-caos-formigueiro.everaldodev.chatgpt.site ; projeto appgprj_6ae6364bc4488191b2757449ed3f7e94. Acesso só do proprietário, zero visitantes externos confirmado antes de publicar.
-- Versões anteriores preservadas: 0.7.0 fonte e6e4790185fab8788cccdaf35dcc8f243e397c35; 0.6.0 fonte 0aec356a9a9d3ef8cbce227dae5577dd9874a34d; 0.5.0 fonte e149fe8944b315bbff078a4f1be7a471c3297145. Tags correspondentes preservadas.
+- Branch codex/simbioses-e-mimetismo; base codex/cronograma-biologia-fundacao. Versão 0.9.0.
+- Fonte 526d7ded6c0f531bbbd7677add22269e0c92524d, tag v0.9.0.
+- PR #12 https://github.com/albreis/viveiro/pull/12. Base documental PR #11 https://github.com/albreis/viveiro/pull/11, que depende do PR #10. PRs #1–#12 abertos e encadeados; não duplicar nem mesclar main sem instrução.
+- Deploy appgdep_6ae6f7a6ab9881918ecf7ac1e80276ef, succeeded em 01/11/2026 08:26:27 UTC.
+- Site privado https://viveiro-caos-formigueiro.everaldodev.chatgpt.site ; projeto appgprj_6ae6364bc4488191b2757449ed3f7e94. Acesso só do proprietário e zero visitantes externos confirmados antes de publicar.
+- Preservar versões anteriores: 0.8.0 fonte 35296be9bc4d89b4fef1c9d9eabaad8e4ca50faa; 0.7.0 e6e4790185fab8788cccdaf35dcc8f243e397c35; 0.6.0 0aec356a9a9d3ef8cbce227dae5577dd9874a34d; 0.5.0 e149fe8944b315bbff078a4f1be7a471c3297145. Tags correspondentes preservadas.
 
-## Implementado e validado
+## Implementado
 
-5B/5C: fundação física a partir de alados com orçamento materno finito; naníticas; alados pagos pelo estoque de colônias maduras; filhas no habitat compartilhado com parentesco, reservas e estoques próprios. Saída física e novas gerações conferidas. Limites: quatro registros de colônia, 450 adultos/crias e duas frentes operárias. Documentos fundacao.md e colonias-filhas.md.
+5B/5C: fundação física de alados com orçamento materno, naníticas, coortes reprodutivas pagas e filhas no mesmo habitat com estoques/genética/parentesco independentes. Limites: quatro registros de colônia, 450 adultos/crias, duas frentes operárias. Documentos fundacao.md e colonias-filhas.md.
 
-6A: perfis químicos abstratos, máscaras temporárias, reconhecimento local pelo ar; intimidação, recuo apoiado e ferimentos; marca territorial conservativa; revestimento pelo solo e infiltração experimental com transferência física de alimento existente. Tratamento Odor estranho pelo usuário, anéis e legenda. Detalhes, equações e dados externos necessários em docs/odores-e-territorio.md. Não declarar química ou políticas calibradas por espécie.
+6A: perfis químicos abstratos, máscaras temporárias, reconhecimento local pelo ar, postura/recuo/dano e território conservativo. Revestimento pelo solo e infiltração exploratória com transporte de estoque real. docs/odores-e-territorio.md.
 
-- Suíte completa: 87/87 testes em 435617 ms; dez testes químicos/infiltração após ajuste final de reconhecimento também passaram.
-- TypeScript e Vite aprovados; novos módulos do modelo com 29–108 linhas. Overlay não desenha células sem concentração.
-- Navegador: seed a, duas colônias, dia 107,9; 20 intimidações, 14 recuos e 14 ataques espontâneos. Tratamento na operária #305 visível e registrado, primeira pessoa e retorno conferidos, console sem erros.
-- Screenshot viveiro-0.8.0-encontros.png no diretório de visualizações autorizado do Codex.
-- QA local pausada; dev continua ativo no G, PID 13196, porta 4173. Perfil Chrome do usuário intocado. Nenhum processo de testes pendente.
+6B: pulgões por seed associados a plantas, seiva debitada, melaço/assimilação/perdas contabilizados, coleta e defesa locais. Lagartas cuco de odor compatível, transporte com apoio até o berçário, deposição e alimento debitado de doadoras próximas. Snapshot conserva estados e liga habitat comum no restore. UI com instâncias e aproximação da câmera. docs/simbioses.md. Limites: pulgões agregados, população inicial de até três lagartas; sem pupa/borboleta adulta, sem calibração por espécie. Não tratar essas estratégias combinadas como universais.
+
+## Verificação da 0.9.0
+
+- Suíte completa: 96 testes aprovados em 366956 ms.
+- Depois: 19 testes químicos/ecológicos após ajustes de saúde/normal/carga e dez ecológicos após impedir crescimento sem seiva. Um teste novo cobre a planta esgotada; total no repositório agora 97 casos, sem alegar uma execução completa de 97.
+- TypeScript e Vite finais aprovados. Módulos novos do modelo com 9–64 linhas, renderer separado.
+- Transporte integrado da lagarta: 125 ticks, maior passo 0,081991 e erro máximo de apoio 0,000296.
+- Navegador: seed a pausada no dia 171, duas colônias, 115 formigas; 99 pulgões em seis plantas, 16,41 u. de melaço coletadas, duas adoções e 1,51 u. cedidas às lagartas. População inicial de lagartas já terminou a vida; contadores são acumulados. Zoom, corpos/gotas e console sem erros conferidos.
+- Screenshots viveiro-0.9.0-pulgoes.png e viveiro-0.9.0-relacoes.png no diretório autorizado do Codex. Chrome do usuário intocado; IAB local tab 2, Site tab 1.
+- Dev foi religado no G: HTTP 200; PID atual em .runtime/dev.pid. Deixar rodando. Nenhum teste pendente.
+
+## Cronograma ampliado pelo usuário
+
+Material de outra IA foi registrado ao final do cronograma como etapas 9–14: perfis por espécie, fundação/selamento, desenvolvimento e diapausa, clima espacial, espermateca/longevidade e relógios de anos. Detalhes em docs/biologia-planejada.md. Commit documental 46e9d8f enviado na branch codex/cronograma-biologia-fundacao, PR #11. A 6B recebeu esse commit por fast-forward, sem colocar código 6B no PR documental.
+
+Faixas de 12–24 h, 1–7 d, 35–60 d, 15–30 anos e alegações derivadas de 52%/68% permanecem hipóteses a validar, não timers novos. Distinguir umidade relativa de água no solo e irradiância de temperatura. Longevidade, número de parceiros e trade-offs não são universais. As referências primárias e dependências estão no documento.
 
 ## Próximo passo concreto
 
-Criar codex/simbioses-e-mimetismo a partir desta branch para 6B: pulgões por seed associados às plantas, produção de melaço com custo vegetal, coleta e proteção por encontros locais, lagartas com compatibilidade química, transporte real ao berçário e alimentação conservativa. Primeiro ler a biologia/transporte existentes para reutilizar apoio e rotas. Não repetir 5A/5B/5C/6A.
+Criar codex/solo-granular a partir desta branch para 7A: acomodação dinâmica de terra solta com massa, gravidade, atrito/ângulo de repouso e colisão no mesmo campo implícito. Reutilizar balanço de solo e reparo sem perder volume ou introduzir saltos nos agentes. Módulos pequenos e testes conservativos; não chamar aproximação granular de geotecnia calibrada. Depois 7B umidade/capilaridade/temperatura/gases, 8 RL/persistência/avaliação e novas 9–14 em ordem das dependências.
 
-Referências primárias já localizadas: Herbert e Horn 2008 (PMID 19036205) mostra proteção dependente do sistema; Schifani et al. 2023 DOI 10.1111/een.13226 mostra que atendimento não garante proteção; Akino et al. 1999 PMC1690087 mostra adoção e mimetismo especializado em Maculinea rebeli/Myrmica. Não misturar estratégias de espécies como um modelo universal; documentar limites.
+Dados reais continuam necessários para calibração. O Site avança no navegador; não há executor contínuo em nuvem. JSON das colônias ainda repete habitat; persistência longa/compactação é etapa 8. Previsões de populações maiores são computacionalmente caras, a medir na etapa 8.
 
-Depois: 7 granular/capilaridade/gases e 8 RL/persistência/avaliação. Calibração real depende de espécie e dados externos. Snapshots ainda repetem habitat no JSON das subcolônias; compactação longa é etapa 8.
+## Ambiente e publicação
 
-## Ambiente, Git e publicação
+Escritas atômicas e já formatadas; normalizar CRLF antes de substituições multilinha. Código em src e dist gerado pelo Vite. Usuário pediu dev ligado no G: não encerrar. Logs .runtime/ ignorados.
 
-Escritas atômicas já formatadas; normalizar CRLF antes de substituições multilinha. Módulos pequenos em src, TypeScript estrito nos novos. O usuário pediu dev continuamente ligado: não encerrar. Logs locais .runtime/ ignorados.
+Push apenas da ref da entrega e tag específica: push --all já foi rejeitado por escopo amplo. Não enviar branches alheias nem mesclar main. Cada etapa tem testes, navegador, commit/push e PR sobre a base anterior.
 
-Push só da ref da entrega e tag específica: push --all foi rejeitado por escopo amplo. Não enviar outra branch nem mesclar main sem instrução. Cada etapa exige testes, navegador, commit/push, PR na base anterior e publicação privada.
-
-Sites: obter get_site/credencial sem expor tokens, abrir helper no HEAD corrente antes de empacotar. Credenciais só na memória/stdin. Tar fora do checkout; 0.8.0 em G:\Projetos\viveiro-0.8.0.tar.gz já publicado. Guardar literalmente project_id/commit_sha/archive retornados. Só marcar publicada após succeeded.
+Sites: get_site e credencial, helper de abertura no HEAD corrente antes de empacotar. Credenciais só em memória/stdin. Arquivo tar fora do checkout; G:\Projetos\viveiro-0.9.0.tar.gz já publicado. Guardar literalmente project_id/commit_sha/archive retornados. Fonte publicada é a tag, enquanto o checkpoint posterior contém os IDs do deploy.

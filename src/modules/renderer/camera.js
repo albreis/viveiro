@@ -44,6 +44,7 @@ export function stopFollowing(host) {
 
 export function setView(host, view) {
   host.stopFollowing();
+  host.controls.minDistance = 9;
   const lateral = view === "side",
     top = view === true;
   if (lateral) {

@@ -1,3 +1,4 @@
+import { renderEcologyStatus } from "./ecology-status.ts";
 import { renderChemicalStatus } from "./chemical-status.ts";
 import { renderFamilyStatus } from "./family-status.ts";
 import {
@@ -99,6 +100,7 @@ export function renderStatus(context, updateAntCamera) {
   renderFoundingStatus(w.founding);
   renderFamilyStatus(w);
   renderChemicalStatus(w.socialChemistry);
+  renderEcologyStatus(w.ecology);
   renderSoilStatus(w);
   renderColonyStatus(w);
   updateAntCamera(w);
