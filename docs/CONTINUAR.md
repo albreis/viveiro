@@ -1,71 +1,68 @@
 # Continuação do Viveiro
 
-Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md antes de editar.
-O usuário autorizou continuar até finalizar o cronograma, com retomada periódica após
-limites de uso. Manter arquivos pequenos, dev ligado e PR por etapa.
+Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md.
+O usuário autorizou continuar até finalizar o cronograma, com retomada horária
+nesta conversa após limites de uso. Automação: continuar-cronograma-do-viveiro.
+Não criar executores concorrentes nem contornar cotas ou aprovações.
 
-## Estado salvo
+## Entregas e Git
 
 - Site privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site
-- 0.4.0 publicada do commit ec9815c20b81de46039b97172cb610287b4e994b.
-- Tag v0.4.0 aponta para essa fonte.
-- Branch procedural: codex/terrario-procedural, último commit documental 260d12d.
-- Seis PRs abertos: #1 → #2 → #3 → #4 → #5 → #6, com bases encadeadas.
-- main permanece na versão anterior enquanto os PRs estão abertos.
-- Suíte completa de 48 casos aprovada; regressões dirigidas, TypeScript e build aprovados.
-- Projeto e dependências foram movidos de C para G; a cópia antiga foi removida após verificação.
-- Dev Vite em http://127.0.0.1:4173/, iniciado em segundo plano. Logs em .runtime/.
-- Retomada horária nesta conversa: continuar-cronograma-do-viveiro. Usa o app nativo;
-  depende de máquina/app ligados e de disponibilidade de uso. Não contornar limites.
+- Publicada: 0.4.0, fonte ec9815c20b81de46039b97172cb610287b4e994b, tag v0.4.0.
+- Branch atual: codex/genetica-e-heranca, baseada em codex/terrario-procedural.
+- Código funcional da 5A: commits 7d3a879 e 563fd42.
+- PRs #1 a #6 estão abertos e encadeados; main permanece na versão anterior.
+- Próximo PR: genética 5A sobre codex/terrario-procedural; conferir se #7 já existe.
+- Cada entrega: branch própria, testes, navegador, commit, push, PR e publicação
+  no mesmo Site privado. Preservar branches, tags e saves.
 
-## Próxima entrega
+## Etapa 5A validada — versão 0.5.0
 
-Branch codex/genetica-e-heranca foi avançada linearmente até 260d12d e recebeu um checkpoint ba298bd, com a implementação
-genética 5A em andamento. A etapa 5A adiciona: genomas persistentes, parentesco, cruzamento,
-mutações reproduzíveis e efeitos limitados em corpo, velocidade, limiares e sensores.
-Preservar os atributos das formigas de saves antigos; não inventar ascendência.
+Genomas e fenótipo em src/modules/genetics. Herança haplodiploide digital,
+recombinação, mutações e parentesco persistentes do ovo ao adulto. Efeitos limitados
+em corpo, velocidade, sentidos, metabolismo e tarefas. Saves antigos preservam
+atributos e recebem procedência inferida, sem inventar ascendência histórica.
 
-Depois: 5B — voo nupcial, fundação orgânica, reservas, escavação do primeiro buraco
-e naníticas; 6 — simbioses e colônias vizinhas; 7 — solo granular, umidade espacial e
-gases/ventilação; 8 — RL, checkpoints longos e avaliação das previsões. Usar os critérios
-de aceite do cronograma e registrar modelos exploratórios sem alegar calibração.
+A validação encontrou gargalos de navegação e foram corrigidos:
 
-Ao fechar cada entrega: testar, conferir no navegador, atualizar este checkpoint e
-cronograma, fazer commit/push, abrir PR sobre a etapa anterior e publicar o Site privado
-pelo fluxo da skill Sites. Credenciais apenas em memória/stdin. O helper exige arquivo
-tar fora do checkout ou em outputs/ ignorado; usar G:\Projetos\viveiro-VERSAO.tar.gz.
-Reabrir o fluxo de source no HEAD atual antes de empacotar; referências antigas podem
-ser recusadas pela revisão automática. Não juntar PRs ou descartar branches para limpar.
+- entrada lenta pelo apoio real da borda do poço;
+- recuperação por progresso físico, além das células da grade;
+- aproximação física da frente mesmo quando o nó lógico já indica chegada;
+- avanço limitado de mordidas e uma atualização por frente e tick.
 
-## Cuidados de desenvolvimento
+Resultado final: 57 testes aprovados, TypeScript e build aprovados.
+Fluxo: 30 saídas reais e maior estagnação de 113 ticks na regressão.
+Apoio: gap máximo 0,0105 e deslocamento dentro do limite por velocidade.
+Navegador conferido: seed nova, pais de uma operária, caminhada, primeira pessoa
+e retorno. Screenshot de QA no diretório de visualizações autorizado do Codex.
+Se a CUA retornar browser.user indisponível após horas parada, reiniciar a REPL e
+vincular de novo a aba IAB existente resolveu; não trocar para outro mecanismo.
 
-Gravar mudanças de forma atômica, já formatadas, para o Vite não reter um módulo vazio
-durante uma gravação. Isso já ocorreu com renderer/environment.js e foi resolvido
-invalidando o módulo e recarregando o dev. Não houve alteração no código publicado.
-Só reiniciar o servidor se necessário, verificando que o processo é o Vite deste projeto.
+A 0.5.0 ainda precisa ter PR e publicação confirmados. Concluir isso antes de 5B.
 
-Saves do navegador são separados por perfil. A sessão IAB de QA pode criar terrários;
-não apagar ou substituir o experimento do Chrome do usuário. Para observar um novo
-desenho procedural em um save anterior, é necessário Novo terrário ou reiniciar a seed.
+## Próxima implementação
 
-## Execução atual da 5A
+5B — voo nupcial, perda das asas, fundação orgânica, reservas maternas,
+escavação do primeiro buraco e naníticas. Usar uma branch codex/ própria após 5A.
+Atualmente o protótipo ainda começa com câmaras e um casal já reprodutivo;
+não dar a etapa 5 completa antes de implementar a fundação e novas gerações.
 
-Genomas e expressão de fenótipo estão em src/modules/genetics. O genoma passa do
-ovo ao adulto, e a UI mostra ascendência. Sete testes específicos aprovados e tsc
-aprovado. A versão de trabalho é 0.5.0; ainda não foi publicada. Próximo passo:
-aguardar regressão completa, corrigir falhas reais, conferir o dev no navegador,
-abrir PR #7 sobre codex/terrario-procedural e publicar só depois da validação.
-Usar gravações atômicas já formatadas para evitar cache vazio do Vite.
+Depois: 6 — simbioses e colônias vizinhas; 7 — solo granular, umidade espacial,
+gases e ventilação; 8 — RL, checkpoints longos e avaliação das previsões.
+Registrar limitações e dependências de dados reais; os modelos são exploratórios.
 
-## Validação retomada em 01/11/2026
+## Ambiente e publicação
 
-A suíte inicial de 55 casos aprovou 54 e encontrou estagnação em uma entrada.
-Foram corrigidos: aproximação apoiada da borda do poço em baixa velocidade,
-recuperação por progresso físico e chegada real ao ponto de escavação. A última
-impedia escavar quando o nó lógico já era a frente, mas o corpo estava longe.
-O avanço por mordida foi limitado e uma frente só avança uma vez por tick,
-para o apoio dos demais agentes acompanhar a alteração da superfície.
-20 regressões dirigidas passaram: 30 saídas reais, maior estagnação de 113 ticks,
-gap de apoio máximo 0,0105 e deslocamento limitado por velocidade. Há dois
-novos casos específicos. A próxima ação é concluir a suíte completa de 57 casos
-e o build, salvar o resultado, abrir o PR genético e publicar a 0.5.0.
+Dev Vite em http://127.0.0.1:4173/, a partir do disco G, em segundo plano.
+Logs em .runtime/. Não encerrar o servidor; só reiniciar se necessário e após
+confirmar que o processo pertence a este projeto. Código editável em src; arquivos
+novos pequenos, TypeScript no modelo e migração gradual dos módulos legados.
+
+Gravar arquivos de forma atômica e já formatados. Uma gravação parcial já fez o
+Vite reter um módulo vazio; invalidar o módulo e recarregar resolveu.
+Não apagar o experimento do Chrome do usuário. O perfil IAB de QA é separado.
+
+Seguir a skill Sites. Reabrir o source helper no HEAD atual antes de empacotar.
+Credenciais apenas em memória e stdin. O tar deve ficar fora do checkout:
+G:\Projetos\viveiro-VERSAO.tar.gz. A source antiga pode ser rejeitada pela
+revisão automática; confirmar HEAD e remoto antes de corrigir a referência.

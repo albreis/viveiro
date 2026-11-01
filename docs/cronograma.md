@@ -11,7 +11,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
 | 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
 | 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Planejada              |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Parcial: 5A validada   |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada              |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
 | 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
@@ -173,8 +173,7 @@ RL depende de sensores, ações, recompensas e física estáveis.
 
 Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
-vazios. A branch de genética ainda não tem mudanças próprias e terá PR quando
-a implementação da etapa 5 estiver concluída. Novas etapas seguem este fluxo
+vazios. A genética digital foi implementada na entrega 5A e está no PR #7. Novas etapas seguem este fluxo
 automaticamente.
 
 ### Publicação e recuperação
@@ -201,3 +200,10 @@ automaticamente.
 - Uma escavadora retorna ao ponto físico de trabalho antes de declarar chegada.
 - Mordidas e apoio são acoplados por limite de avanço por frente e tick.
 - 20 casos dirigidos aprovados; suíte completa novamente em execução.
+
+### Aceite da etapa 5A — 01/11/2026
+
+- 57 testes aprovados na suíte completa, TypeScript e build aprovados.
+- Conferência no navegador: ascendência, movimento, primeira pessoa e retorno.
+- PR #7 sobre a etapa procedural; publicação da 0.5.0 em curso.
+- A etapa 5B de voo e fundação orgânica é a próxima entrega.
