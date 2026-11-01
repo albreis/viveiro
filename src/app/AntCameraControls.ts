@@ -113,14 +113,20 @@ export class AntCameraControls {
           const option = document.createElement("option");
           option.value = String(ant.id);
           const label =
-            ant.kind === "queen"
-              ? "Rainha"
-              : ant.kind === "male"
-                ? "Macho"
-                : ant.caste === "major"
-                  ? "Soldado"
-                  : "Operária";
-          option.textContent = label + " #" + ant.id;
+            ant.kind === "gyne"
+              ? "Princesa"
+              : ant.kind === "queen"
+                ? "Rainha"
+                : ant.kind === "male"
+                  ? "Macho"
+                  : ant.caste === "major"
+                    ? "Soldado"
+                    : "Operária";
+          option.textContent =
+            label +
+            " #" +
+            ant.id +
+            ((ant.colonyId || 1) > 1 ? " · colônia " + ant.colonyId : "");
           return option;
         }),
       );

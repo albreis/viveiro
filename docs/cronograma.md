@@ -8,10 +8,10 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | ----- | -------------------------------------------------------------------- | ---------------------- |
 | 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1      |
 | 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0           |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado |
 | 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
 | 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Parcial: 5A + 5B       |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada              |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
 | 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
@@ -228,3 +228,17 @@ automaticamente.
 - Selamento físico do acesso, espécie-alvo e calibração dependem da etapa 7 e de dados reais.
 
 Publicação 0.6.0 confirmada em 01/11/2026, fonte 0aec356, tag v0.6.0, PR #8 aberto sobre a genética. Site continua privado. A próxima entrega é 5C.
+
+### Etapa 5C — filhas e recursos por colônia (0.7.0)
+
+- Branch codex/colonias-filhas, base codex/voo-e-fundacao.
+- Alados pagos pelo estoque e por poupança reprodutiva conservativa; ploidia e parentesco da geração seguinte.
+- Saída física dos alados, janela de chuva e fundação da filha sem reposicionar corpos.
+- Habitat compartilhado, estoques/genéticas/prole independentes, sensores físicos comuns e apresentação de várias rainhas.
+- Nascimento da geração 2 conferido no navegador; snapshots e balanços testados.
+- Limites e dependências reais: docs/colonias-filhas.md. Pares da mesma coorte, sem calibração por espécie.
+- Próxima etapa: 6 — simbioses, assinatura química, território e interação entre as colônias existentes.
+
+Validação 5C: 76 testes completos aprovados, mais 19 verificações finais direcionadas após os últimos ajustes. TypeScript/build e navegador aprovados. Publicação 0.7.0 em preparação; conferir checkpoint e PR antes de repetir.
+
+Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 sobre a 5B. Site permanece privado. Próxima entrega: etapa 6.

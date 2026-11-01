@@ -14,17 +14,32 @@ export function updateFoundingDig(world: FoundingWorld) {
   const f = world.founding!,
     q = founder(world);
   if (!q) return;
-  if (!world.nest.nodes.length) {
+  if (f.front === undefined) {
+    f.entry = world.nest.nodes.length;
+    f.front = f.entry + 1;
     world.nest.nodes.push(
-      { ...f.site, r: 0.02, type: "entrance", name: "Primeiro buraco" },
-      { ...f.site, r: 0.02, type: "front", name: "Abrigo em escavação" },
+      {
+        ...f.site,
+        r: 0.02,
+        type: "entrance",
+        name: "Primeiro buraco",
+        colonyId: world.colonyId || 1,
+      },
+      {
+        ...f.site,
+        r: 0.02,
+        type: "front",
+        name: "Abrigo em escavação",
+        colonyId: world.colonyId || 1,
+      },
     );
-    world.nest.links.push([0, 1]);
-    world.nest.linkWidths = [0.02];
+    world.nest.linkWidths ??= world.nest.links.map(() => 0.38);
+    world.nest.links.push([f.entry, f.front]);
+    world.nest.linkWidths.push(0.02);
     world.nest.revision++;
   }
-  const front = world.nest.nodes[1],
-    mouth = world.nest.nodes[0];
+  const front = world.nest.nodes[f.front],
+    mouth = world.nest.nodes[f.entry!];
   const outside = outsideSite(f, 0.72);
   const dump = {
     ...outside,
@@ -50,7 +65,7 @@ export function updateFoundingDig(world: FoundingWorld) {
     q.state = "Caminhando até a frente do abrigo";
     return;
   }
-  q.node = 1;
+  q.node = f.front;
   q.tunnelCenter = { x: front.x, y: front.y, z: front.z };
   q.tunnelY = front.y;
   f.digMode = "bite";
@@ -63,6 +78,7 @@ export function updateFoundingDig(world: FoundingWorld) {
     }
     front.type = "royal";
     front.name = "Primeira câmara da rainha";
+    world.nest.revision++;
     delete q.supportMotion;
     changePhase(
       world,
@@ -77,7 +93,9 @@ export function updateFoundingDig(world: FoundingWorld) {
     const r = Math.min(WIDTH, front.r + 0.008);
     mass = (sphere(r) - sphere(front.r)) * 0.5;
     front.r = mouth.r = r;
-    world.nest.linkWidths![0] = r;
+    world.nest.linkWidths![
+      world.nest.links.findIndex(([a, b]) => a === f.entry && b === f.front)
+    ] = r;
   } else if (remaining > 0.001) {
     const step = Math.min(0.012, remaining);
     front.x += ((f.chamber.x - front.x) * step) / remaining;

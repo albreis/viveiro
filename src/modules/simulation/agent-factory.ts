@@ -6,7 +6,14 @@ import { individualTraits } from "../colony/individual.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 type FactoryWorld = Pick<
   ColonyWorld,
-  "nextId" | "seed" | "nest" | "genetics" | "ants" | "brood" | "range"
+  | "nextId"
+  | "seed"
+  | "nest"
+  | "genetics"
+  | "ants"
+  | "brood"
+  | "range"
+  | "colonyId"
 >;
 export function createAgent(
   world: FactoryWorld,
@@ -21,6 +28,7 @@ export function createAgent(
   } = {
     id,
     kind,
+    colonyId: world.colonyId || 1,
     x,
     y: surfaceHeight(world.nest?.relief, x, z) + 0.008,
     z,

@@ -48,6 +48,7 @@ export function updateNutrition(world: ColonyWorld) {
     if (ant.crop < 0.04 || (ant.socialUntil || 0) > world.tick) continue;
     const partner = neighborsOf(world, ant, 0.5).find(
       (p) =>
+        (p.colonyId || 1) === (ant.colonyId || 1) &&
         ((p as ColonyAgent).crop ?? 0) < ant.crop - 0.04 &&
         ((p as ColonyAgent).socialUntil || 0) <= world.tick &&
         contactAcrossAir(world.nest, ant, p),

@@ -9,8 +9,7 @@ export function pickAnt(host, e) {
   const hits = host.raycaster.intersectObjects(
     [
       ...host.antParts,
-      host.queen,
-      host.male,
+      ...host.foundersView.objects(),
       ...(host.showInterior ? [] : [host.soil]),
     ],
     true,
@@ -19,13 +18,8 @@ export function pickAnt(host, e) {
     const hit = hits[0];
     if (host.antParts.includes(hit.object))
       return host.visibleWorkers[hit.instanceId]?.id;
-    let obj = hit.object;
-    while (obj.parent && obj !== host.queen && obj !== host.male)
-      obj = obj.parent;
-    if (obj === host.queen)
-      return host.world.ants.find((a) => a.kind === "queen")?.id;
-    if (obj === host.male)
-      return host.world.ants.find((a) => a.kind === "male")?.id;
+    const founder = host.foundersView.pickId(hit.object);
+    if (founder) return founder;
   }
   // A modest screen-space tolerance keeps tiny ants selectable without selecting through soil.
   const rect = host.element.getBoundingClientRect();

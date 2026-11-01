@@ -27,7 +27,8 @@ export function leaveCorpse(world: ColonyWorld, ant: ColonyAgent) {
       b.x = ant.x;
       b.y = (ant.y || 0) + 0.02;
       b.z = ant.z;
-      b.node = ant.node ?? roomNode(world.nest, "royal");
+      b.node =
+        ant.node ?? roomNode(world.nest, "royal", 0, world.colonyId || 1);
     }
   if (ant.deathCause === "predation") return;
   addWaste(world, {
@@ -49,7 +50,8 @@ export function spoilStocks(world: ColonyWorld) {
   if (amount <= 0) return;
   world.food -= amount;
   world.colony.spoiled += amount;
-  const storage = world.nest.nodes[roomNode(world.nest, "storage")];
+  const storage =
+    world.nest.nodes[roomNode(world.nest, "storage", 0, world.colonyId || 1)];
   addWaste(world, {
     x: storage.x,
     y: storage.y - storage.r + 0.04,

@@ -10,7 +10,10 @@ export function travelToFront(
   q: ColonyAgent,
   goal: Vec3,
 ) {
-  const mouth = world.nest.nodes[0];
+  const f = world.founding!,
+    entry = f.entry!,
+    front = f.front!;
+  const mouth = world.nest.nodes[entry];
   if (q.node === null) {
     if (Math.hypot(q.x - mouth.x, q.z - mouth.z) > 0.58) {
       const reached = walkFoundress(world, q, {
@@ -19,14 +22,14 @@ export function travelToFront(
       });
       if (!reached) return false;
     }
-    q.node = 0;
+    q.node = entry;
     q.tunnelCenter = { x: mouth.x, y: mouth.y, z: mouth.z };
     q.tunnelY = mouth.y;
     delete q.supportMotion;
-    requestRoute(world, q, 1);
+    requestRoute(world, q, front);
   }
-  if (q.node !== 1) {
-    if (!q.route.length) requestRoute(world, q, 1);
+  if (q.node !== front) {
+    if (!q.route.length) requestRoute(world, q, front);
     world.moveInNest(q);
     return false;
   }
@@ -37,12 +40,13 @@ export function haulFoundingSoil(
   q: ColonyAgent,
   dump: Vec3,
 ) {
-  if (q.node !== null && q.node !== 0) {
-    if (!q.route.length) requestRoute(world, q, 0);
+  const entry = world.founding!.entry!;
+  if (q.node !== null && q.node !== entry) {
+    if (!q.route.length) requestRoute(world, q, entry);
     world.moveInNest(q);
     return false;
   }
-  if (q.node === 0) {
+  if (q.node === entry) {
     q.node = null;
     q.tunnelCenter = null;
     delete q.supportMotion;

@@ -1,3 +1,4 @@
+import { restoreColonies } from "../colonies/shared.ts";
 import { migrateGenetics } from "../genetics/reproduction.ts";
 import { legacyLandscape } from "../landscape/generate.ts";
 import { createColonyState, ensureIndividual } from "../colony/individual.ts";
@@ -89,5 +90,6 @@ export function restoreWorld(snapshot, prototype) {
     }
     world.localRoutingVersion = 1;
   }
+  restoreColonies(world, prototype, restoreWorld);
   return world;
 }

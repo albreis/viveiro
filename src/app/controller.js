@@ -1,3 +1,4 @@
+import { presentFamily } from "../modules/colonies/presentation.ts";
 import { AntCameraControls } from "./AntCameraControls.ts";
 import { readState, writeState } from "../services/state-store.ts";
 import { renderStatus } from "./status-view.js";
@@ -33,7 +34,7 @@ const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
 const antCamera = new AntCameraControls({
   getScene: () => scene,
-  getWorld: active,
+  getWorld: () => presentFamily(active()),
   getScenario: () => scenario,
   getRunning: () => running,
   toast,
@@ -174,7 +175,13 @@ function syncControls() {
 }
 function updateUi() {
   renderStatus(
-    { world, comparison, scenario, forecastCache, current: active() },
+    {
+      world: presentFamily(world),
+      comparison: comparison ? presentFamily(comparison) : null,
+      scenario,
+      forecastCache,
+      current: presentFamily(active()),
+    },
     updateAntCamera,
   );
 }
@@ -206,7 +213,7 @@ function handleError(error) {
 }
 load();
 try {
-  scene = new Terrarium($("viewport"), active(), intervention);
+  scene = new Terrarium($("viewport"), presentFamily(active()), intervention);
   configureAntCamera();
   $("loading").hidden = true;
   worker = new Worker(
@@ -428,7 +435,11 @@ function frame(now) {
     }
   }
   if (scene) {
-    scene.update(active(), now / 1000, running ? Math.min(1, accumulator) : 1);
+    scene.update(
+      presentFamily(active()),
+      now / 1000,
+      running ? Math.min(1, accumulator) : 1,
+    );
     scene.render();
   }
   if (now - lastUi > 350) {

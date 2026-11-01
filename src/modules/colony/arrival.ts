@@ -25,7 +25,7 @@ export function arriveColony(
     return true;
   }
   ant.route = [];
-  if (isStock(world.nest, node)) feedFromStock(world, ant);
+  if (isStock(world.nest, node, ant.colonyId || 1)) feedFromStock(world, ant);
   if (task.kind === "brood" || task.kind === "waste") {
     const support = broodPosition(world, task.item!, node);
     task.placing = true;

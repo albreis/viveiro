@@ -1,3 +1,4 @@
+import { allAnts } from "../colonies/types.ts";
 import { World } from "./world.js";
 import { hashSeed } from "./seed.ts";
 import { TICKS_PER_DAY } from "./constants.js";
@@ -10,7 +11,7 @@ export function forecast(snapshot, runs = 18, days = 3) {
     w.params.humidity = clamp(w.params.humidity + w.range(-3, 3), 0, 100);
     w.params.light = clamp(w.params.light + w.range(-3, 3), 0, 100);
     w.step(Math.round(days * TICKS_PER_DAY));
-    values.push(w.population);
+    values.push(allAnts(w).length);
   }
   values.sort((a, b) => a - b);
   return {

@@ -1,23 +1,19 @@
+import { allAnts, allBrood, colonyWorlds } from "../colonies/types.ts";
+import { advanceFamily } from "../colonies/update.ts";
 import { createAgent } from "./agent-factory.ts";
-import { isClaustral } from "../founding/types.ts";
 import { waterLevel, surfaceHeight } from "../landscape/queries.ts";
 import { arriveColony } from "../colony/arrival.ts";
-import { updateNutrition, feedFromStock } from "../colony/nutrition.ts";
-import { leaveCorpse, spoilStocks } from "../colony/waste.ts";
-import { updateNestOdors, routeOdorSignal } from "../chemistry/nest-odors.ts";
+import { feedFromStock } from "../colony/nutrition.ts";
+import { routeOdorSignal } from "../chemistry/nest-odors.ts";
 import { initializeWorld } from "./initial-world.js";
 import { restoreWorld } from "./state-migrations.js";
-import { removedSoil, dropSoil } from "../soil/ledger.ts";
-import { updateErosion, collapseEdge } from "../soil/erosion.ts";
+import { removedSoil } from "../soil/ledger.ts";
+import { collapseEdge } from "../soil/erosion.ts";
 import { arriveWithSoil } from "../soil/routing.ts";
-import { updateEnvironment } from "./environment-step.js";
-import { updateWorkers } from "./worker-step.js";
-import { updatePredators } from "./predator-step.js";
 import { TICKS_PER_DAY, LIMIT, NEST, BOUNDS } from "./constants.js";
 import { createNest, nestPath } from "./nest.ts";
 import { moveInNest } from "../navigation/tunnel-motion.ts";
 import { moveSurface } from "../navigation/surface-motion.ts";
-import { invalidateNeighbors } from "../navigation/sensors.ts";
 import { positionClear } from "../navigation/collision.ts";
 export { TICKS_PER_DAY, LIMIT, NEST, BOUNDS, createNest, nestPath };
 export { hashSeed } from "./seed.ts";
@@ -65,7 +61,7 @@ export class World {
     if (
       ant.kind === "queen" &&
       this.founding?.phase === "digging" &&
-      node === 1
+      node === this.founding.front
     ) {
       ant.route = [];
       return true;
@@ -95,9 +91,12 @@ export class World {
     this.history.push({
       tick: this.tick,
       day: this.day,
-      population: this.population,
-      brood: this.brood.length,
-      food: this.food,
+      population: allAnts(this).length,
+      brood: allBrood(this).length,
+      food: colonyWorlds(this).reduce(
+        (n, c) => n + c.food + (c.colony.reproductiveFood || 0),
+        0,
+      ),
       plants: this.plants.reduce((n, p) => n + p.biomass, 0),
     });
     if (this.history.length > 500) this.history.shift();
@@ -218,32 +217,7 @@ export class World {
     for (let n = 0; n < count; n++) this.advance();
   }
   advance() {
-    const suitability = updateEnvironment(this);
-    updateNestOdors(this.nest, this.nestOdors);
-    updateErosion(this);
-    const dead = updateWorkers(this, suitability);
-    updatePredators(this, dead);
-    for (const ant of this.ants)
-      if (dead.has(ant.id)) {
-        dropSoil(this, ant);
-        leaveCorpse(this, ant);
-      }
-    this.ants = this.ants.filter((a) => !dead.has(a.id));
-    invalidateNeighbors(this);
-    updateNutrition(this);
-    spoilStocks(this);
-    if (
-      !isClaustral(this) &&
-      this.food < 1 &&
-      this.tick - this.lastWarning > 200
-    ) {
-      this.lastWarning = this.tick;
-      this.log(
-        "A reserva está baixa. A colônia precisa de alimento.",
-        "danger",
-      );
-    }
-    if (this.tick - this.lastRecord >= 25) this.record();
+    return advanceFamily(this);
   }
   lifeLimit(ant) {
     return 70 + (ant.id % 37);

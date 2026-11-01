@@ -74,6 +74,7 @@ export function update(host, world, time, alpha = 1) {
     (a) => host.pose(a),
     host.followId,
     time,
+    world.foundings,
   );
   host.colonyView.update(world, (a) => host.pose(a), host.followId);
   host.trails.visible = host.showTrails;

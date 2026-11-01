@@ -38,8 +38,10 @@ export function positionClear(
     const along = x * forward.x + y * forward.y + z * forward.z;
     const across = x * side.x + y * side.y + z * side.z;
     const bodyScale = ((entity.bodyScale || 1) + (other.bodyScale || 1)) / 2;
-    const radius = (other.kind === "queen" ? 0.53 : 0.38) * bodyScale;
-    const width = (other.kind === "queen" ? 0.25 : 0.14) * bodyScale;
+    const radius =
+      (["queen", "gyne"].includes(other.kind || "") ? 0.53 : 0.38) * bodyScale;
+    const width =
+      (["queen", "gyne"].includes(other.kind || "") ? 0.25 : 0.14) * bodyScale;
     if (height < 0.18 && (along / radius) ** 2 + (across / width) ** 2 < 1)
       return false;
   }

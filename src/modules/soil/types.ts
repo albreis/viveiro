@@ -40,6 +40,7 @@ export interface SoilState {
   nextId: number;
 }
 export interface SoilWorld extends NavigationWorld {
+  colonies?: SoilWorld[];
   ants: SoilAgent[];
   soil: SoilState;
   params: { humidity: number };

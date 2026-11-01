@@ -13,6 +13,10 @@ export function initializeWorld(world, seed, parameters, options = {}) {
   world.rng = hashSeed(seed);
   world.params = { humidity: 58, light: 72, randomness: 28, ...parameters };
   Object.assign(world, {
+    colonyId: 1,
+    colonies: [],
+    nextColonyId: 2,
+    capacityOffset: 0,
     tick: 0,
     nextId: 1,
     food: 18,

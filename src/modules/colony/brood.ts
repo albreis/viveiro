@@ -19,10 +19,13 @@ export function broodPosition(world: ColonyWorld, id: number, nodeId: number) {
 export function makeBrood(
   world: ColonyWorld,
   id: number,
-  node = roomNode(world.nest, "royal"),
+  node = roomNode(world.nest, "royal", 0, world.colonyId || 1),
+  kind: "worker" | "gyne" | "male" = "worker",
 ): Brood {
   const support = broodPosition(world, id, node);
-  const genome = world.genetics ? inheritGenome(world, id) : undefined;
+  const genome = world.genetics
+    ? inheritGenome(world, id, kind === "male")
+    : undefined;
   if (genome && world.genetics) {
     world.genetics.embryos++;
     world.genetics.mutationEvents += genome.mutations.length;
@@ -34,6 +37,7 @@ export function makeBrood(
     ...support.point,
     y: support.point.y + 0.025,
     genome,
+    kind,
   };
 }
 export function migrateBrood(world: ColonyWorld) {

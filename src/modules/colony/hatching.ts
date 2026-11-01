@@ -1,9 +1,15 @@
+import { DAUGHTER_RESERVE } from "../colonies/sexual-brood.ts";
 import type { ColonyWorld, Brood } from "./types.ts";
 import { roomNode } from "./rooms.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 export function hatchWorker(world: ColonyWorld, brood: Brood) {
-  const ant = world.makeAnt("worker", brood.x, brood.z, brood.genome),
+  const ant = world.makeAnt(
+      brood.kind || "worker",
+      brood.x,
+      brood.z,
+      brood.genome,
+    ),
     node = world.nest.nodes[brood.node];
   const support = projectSupport(world.nest, {
     x: brood.x,
@@ -16,6 +22,16 @@ export function hatchWorker(world: ColonyWorld, brood: Brood) {
     tunnelY: node.y,
     tunnelCenter: { x: node.x, y: node.y, z: node.z },
   });
+  if (brood.kind === "gyne" || brood.kind === "male") {
+    ant.sexual = true;
+    ant.winged = true;
+    ant.role = "nurse";
+    ant.state = "Alado em maturação";
+    if (brood.kind === "gyne") ant.foundressBudget = DAUGHTER_RESERVE;
+    world.ants.push(ant);
+    world.born++;
+    return ant;
+  }
   if (brood.nanitic) {
     ant.nanitic = true;
     ant.bodyScale *= 0.72;
@@ -32,7 +48,12 @@ export function hatchWorker(world: ColonyWorld, brood: Brood) {
   requestRoute(
     world,
     ant,
-    roomNode(world.nest, nurse ? "royal" : "entrance", ant.id % 2),
+    roomNode(
+      world.nest,
+      nurse ? "royal" : "entrance",
+      ant.id % 2,
+      world.colonyId || 1,
+    ),
   );
   world.ants.push(ant);
   world.born++;

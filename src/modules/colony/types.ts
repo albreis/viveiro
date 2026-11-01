@@ -14,6 +14,9 @@ export interface ColonyTask {
   until?: number;
 }
 export interface ColonyAgent extends SoilAgent {
+  sexual?: boolean;
+  departure?: boolean;
+  foundressBudget?: number;
   winged?: boolean;
   airborne?: boolean;
   nanitic?: boolean;
@@ -37,6 +40,7 @@ export interface ColonyAgent extends SoilAgent {
   socialPartner?: number;
 }
 export interface Brood extends Vec3 {
+  kind?: "worker" | "gyne" | "male";
   nanitic?: boolean;
   genome?: import("../genetics/genome.ts").Genome;
   id: number;
@@ -52,6 +56,7 @@ export interface Waste extends Vec3 {
   stored: boolean;
 }
 export interface ColonyState {
+  reproductiveFood?: number;
   version: number;
   shared: number;
   exchanges: number;
@@ -60,6 +65,10 @@ export interface ColonyState {
   spoiled: number;
 }
 export interface ColonyWorld extends SoilWorld {
+  colonyId?: number;
+  capacityOffset?: number;
+  lastSexualLaying?: number;
+  remainingFoundations?: number;
   founding?: import("../founding/types.ts").FoundingState;
   seed: string;
   nextId: number;

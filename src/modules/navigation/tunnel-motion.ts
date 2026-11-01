@@ -1,3 +1,4 @@
+import { surfaceHeight } from "../landscape/queries.ts";
 import { finishSegment } from "./tunnel-arrival.ts";
 import type {
   AgentState,
@@ -53,6 +54,20 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     ant.route = [];
     return;
   }
+  const top = surfaceHeight(world.nest.relief, ant.x, ant.z),
+    radial = Math.hypot(ant.x - target.x, ant.z - target.z);
+  if (
+    !reversing &&
+    target.type === "entrance" &&
+    radial > target.r + 0.08 &&
+    radial < target.r + 0.75 &&
+    (ant.y || 0) >= top - 0.012 &&
+    (ant.normal?.y ?? 1) > 0.75
+  ) {
+    delete ant.supportMotion;
+    finishSegment(world, ant, targetId, false, blocked);
+    return;
+  }
   const center = ant.tunnelCenter || {
     x: ant.x,
     y: ant.tunnelY ?? world.nest.nodes[ant.node]?.y ?? ant.y ?? 0,
@@ -62,6 +77,13 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   const delta = sub(target, center),
     distance = Math.hypot(delta.x, delta.y, delta.z);
   if (distance < 0.001) {
+    const top = surfaceHeight(world.nest.relief, target.x, target.z);
+    if (
+      target.type === "entrance" &&
+      ((ant.y || 0) < top - 0.015 || (ant.normal?.y ?? 1) < 0.75) &&
+      leaveShaft(world, ant, target, center, edgeIndex)
+    )
+      return;
     finishSegment(world, ant, targetId, reversing, blocked);
     return;
   }
