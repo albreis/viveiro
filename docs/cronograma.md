@@ -226,3 +226,5 @@ automaticamente.
 - Validação: 65 testes aprovados, TypeScript/build aprovados e navegador conferido com quatro naníticas, parentesco e primeira pessoa. Modelo exploratório: docs/fundacao.md.
 - Pendente 5C: novas princesas/zangões e fundações filhas, recursos e genéticas por colônia.
 - Selamento físico do acesso, espécie-alvo e calibração dependem da etapa 7 e de dados reais.
+
+Publicação 0.6.0 confirmada em 01/11/2026, fonte 0aec356, tag v0.6.0, PR #8 aberto sobre a genética. Site continua privado. A próxima entrega é 5C.
