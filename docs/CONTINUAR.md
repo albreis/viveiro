@@ -2,17 +2,18 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
-## Entrega em preparação — 7A
+## Última entrega publicada — 0.10.0
 
-Branch codex/solo-granular, base codex/simbioses-e-mimetismo. Versão 0.10.0 preparada, ainda NÃO publicada. Dinâmica de agregados de terra solta em granular: gravidade, atrito de Coulomb, contato dissipativo e grade espacial. Modelo compacto ainda implícito; depósitos externos visuais. Não é solo inteiro discretizado nem cadeias de força. Controles de repouso da terra, replay, renderização móvel e docs/granular.md implementados.
+- Branch codex/solo-granular; base codex/simbioses-e-mimetismo.
+- Fonte d4648b88506c3fe4e9a2cd2dfe60ddb291eaacb8, tag v0.10.0.
+- PR #13 https://github.com/albreis/viveiro/pull/13. PRs #1–#13 preservados e encadeados; não duplicar.
+- Deploy appgdep_6ae70061e5008191bdb9dbfee64c9ffa, succeeded em 01/11/2026 09:03:43 UTC. Mesmo Site privado, acesso só do proprietário confirmado.
+- Granular: agregados de terra solta com gravidade, atrito de Coulomb, contato dissipativo, grade espacial e controle/replay do repouso. Solo compacto continua implícito; depósitos externos visuais; nada calibrado. docs/granular.md.
+- Suíte final completa: 103/103 em 367449 ms; TypeScript/Vite aprovados. Uma regressão de retorno foi corrigida com settleSupport também no reparo. Limpeza integral em 1688 ticks e asserção adicional de apoio dinâmico passou.
+- Navegador: seed a, queda no dia 171 (0,047 u³); no dia 172,6 material acomodado e parcialmente retirado (0,025 u³). Ajuste para 20° e recarga preservaram o estado. Sem novos erros após corrigir o carregamento parcial HMR; não confundir o erro antigo de null/oninput em 08:37 com estado atual.
+- Screenshots viveiro-0.10.0-terra.png e viveiro-0.10.0-bloqueio.png. IAB local tab 2 pausada no dia 172,6, duas colônias/115 formigas; view foi resetada para perspectiva pela recarga. Dev G PID 17752, porta 4173. Nenhum teste pendente.
 
-Seis testes granulares aprovados. O primeiro full teve 102/103: a reparadora perdia apoio ao cair/encolher o agregado e demorava no retorno. Corrigido com settleSupport também na fase repair. O caso agora limpa tudo em 1688 ticks; 14 testes dirigidos de granular/solo/apoio passaram, incluindo nova asserção de apoio durante o reparo. A suíte completa final passou: 103/103 testes em 367449 ms, com concorrência 2. Build TypeScript/Vite final aprovado.
-
-Navegador: seed a preservada, intervenção no dia 171 criou 0,047 u³. Um agregado foi observado em movimento; no dia 172,6 estava acomodado, e uma operária já retirou parte, restando 0,025 u³. Controle alterado para 20°, registrado no replay. IAB local tab 2 pausada, duas colônias e 115 formigas; interior ligado, vista esquerda. Screenshot viveiro-0.10.0-terra.png. Dev G PID 17752.
-
-Próximo passo imediato: coletar suíte completa, retomada por recarga e controle salvos conferidos, sem novos erros após a correção do carregamento parcial HMR; prova do painel em viveiro-0.10.0-bloqueio.png; commit/push restrito da branch, PR #13 se ainda não existir com base codex/simbioses-e-mimetismo, publicar 0.10.0 no Site privado com source helper atual, tag v0.10.0 e registrar IDs. Depois 7B umidade/capilaridade/calor/gases e 7C suporte estrutural.
-
-## Última entrega publicada
+## Entrega anterior — 0.9.0
 
 - Branch codex/simbioses-e-mimetismo; base codex/cronograma-biologia-fundacao. Versão 0.9.0.
 - Fonte 526d7ded6c0f531bbbd7677add22269e0c92524d, tag v0.9.0.
@@ -47,7 +48,11 @@ Faixas de 12–24 h, 1–7 d, 35–60 d, 15–30 anos e alegações derivadas de
 
 ## Próximo passo concreto
 
-Criar codex/solo-granular a partir desta branch para 7A: acomodação dinâmica de terra solta com massa, gravidade, atrito/ângulo de repouso e colisão no mesmo campo implícito. Reutilizar balanço de solo e reparo sem perder volume ou introduzir saltos nos agentes. Módulos pequenos e testes conservativos; não chamar aproximação granular de geotecnia calibrada. Depois 7B umidade/capilaridade/temperatura/gases, 8 RL/persistência/avaliação e novas 9–14 em ordem das dependências.
+Criar codex/agua-e-calor a partir da 7A para 7B1: campo tridimensional coarse de água nos poros e temperatura, independente da umidade relativa do ar. Proposta ainda NÃO implementada: grade de cerca de 20x8x13 amostras sob o relevo, fluxos conservativos locais de água (diferença de saturação/capilaridade reduzida + gravidade), chuva/infiltração e evaporação com balanço explícito, condução de calor e fonte solar exploratória. Novo controle independente de temperatura do ar; umidade atual passa a ser rotulada como relativa do ar. Amostrar o entorno das plantas e das formigas para leitura/resposta local. Evitar apresentar água nos poros como umidade do ar da câmara ou resolver inundação sem modelo.
+
+Executar o campo global uma vez por tick/família, preferencialmente com subpassos e frequência reduzida para não tornar o ABM caro; conservar água e calor nos testes fechados, contabilizar fronteiras e manter valores finitos. Coeficientes exploratórios e perfil inicial explícitos, sem deduzir estado do solo de 52% de RH. Medir custo e incluir snapshots/replay e visualização observável. Não reexecutar 6/7A já publicadas.
+
+Depois 7B2 gases O2/CO2 e ventilação no grafo com condutância dependente de geometria, respiração e balanços; 7C suporte estrutural; 8 RL/persistência/avaliação; novas 9–14 conforme dependências. Referências primárias já localizadas: Richards 1931 DOI 10.1063/1.1745010 (capilaridade/gravitacional, não confundir aproximação com solver completo); PMC8611346 (experimentos de ventilação/CO2 em Acromyrmex, efeitos de difusão, vento e convecção dependentes de arquitetura). Modelos e taxas precisam de dados para calibrar.
 
 Dados reais continuam necessários para calibração. O Site avança no navegador; não há executor contínuo em nuvem. JSON das colônias ainda repete habitat; persistência longa/compactação é etapa 8. Previsões de populações maiores são computacionalmente caras, a medir na etapa 8.
 
@@ -57,4 +62,4 @@ Escritas atômicas e já formatadas; normalizar CRLF antes de substituições mu
 
 Push apenas da ref da entrega e tag específica: push --all já foi rejeitado por escopo amplo. Não enviar branches alheias nem mesclar main. Cada etapa tem testes, navegador, commit/push e PR sobre a base anterior.
 
-Sites: get_site e credencial, helper de abertura no HEAD corrente antes de empacotar. Credenciais só em memória/stdin. Arquivo tar fora do checkout; G:\Projetos\viveiro-0.9.0.tar.gz já publicado. Guardar literalmente project_id/commit_sha/archive retornados. Fonte publicada é a tag, enquanto o checkpoint posterior contém os IDs do deploy.
+Sites: get_site e credencial, helper de abertura no HEAD corrente antes de empacotar. Credenciais só em memória/stdin. Arquivo tar fora do checkout; G:\Projetos\viveiro-0.9.0.tar.gz e G:\Projetos\viveiro-0.10.0.tar.gz já publicados. Guardar literalmente project_id/commit_sha/archive retornados. Fonte publicada é a tag, enquanto o checkpoint posterior contém os IDs do deploy.
