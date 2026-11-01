@@ -66,6 +66,7 @@ export function update(host, world, time, alpha = 1) {
   }
   host.soilView.update(world, (a) => host.pose(a), host.followId);
   host.granularView.update(world.nest);
+  host.structureView.update(world);
   host.visibleWorkers = world.workers.filter((a) => a.id !== host.followId);
   host.updateAnts(host.visibleWorkers, host.antParts, false, time);
   host.updateAnts(world.predators, host.predatorParts, true, time);

@@ -1,3 +1,4 @@
+import { updateStructure } from "../structure/update.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import type { SoilWorld, SoilPile } from "./types.ts";
 import { distance3, pileRadius } from "./ledger.ts";
@@ -73,6 +74,6 @@ export function updateErosion(world: SoilWorld) {
       0,
       (world.soil.integrity[i] ?? 1) - wear,
     );
-    if (world.soil.integrity[i] < 0.4) collapseEdge(world, i);
   }
+  updateStructure(world);
 }

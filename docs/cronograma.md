@@ -13,7 +13,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado                              |
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                              |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                              |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A/7B implementadas; estrutura/calibração pendentes |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A/7B implementadas; 7C em validação |
 | 8     | RL, persistência longa e avaliação das previsões                     | Planejada                                           |
 
 ## 1. Locomoção e estrutura do projeto
@@ -307,6 +307,17 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - 123/123 testes na execução completa limpa; TypeScript/Vite e navegador aprovados. Publicação privada 0.12.0 confirmada; fonte 0e385cc, tag v0.12.0, PR #15.
 - Limites e dependências experimentais em docs/gases-e-ventilacao.md; modelo não calibrado.
 - Próximo: 7C suporte estrutural, depois 8 e novas etapas biológicas 9–14.
+
+### Etapa 7C — suporte estrutural local (0.13.0)
+
+- Branch codex/suporte-estrutural; base codex/gases-e-ventilacao.
+- Teto, vão, espessura e apoios consultados no mesmo campo da escavação.
+- Carga/capacidade aproximadas por água, atrito e integridade; dano persistente.
+- Corte sólido discretizado vira agregado que cai e pode ser recolhido.
+- Fissuras e câmera de inspeção; snapshots conservam estado e futuro.
+- Dez testes estruturais/de integração aprovados; suíte completa e navegador em andamento.
+- Limites e dados externos em docs/suporte-estrutural.md; sem DEM do solo compacto ou calibração.
+- Depois do aceite: 8 (RL/persistência/previsões) e etapas 9–14.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 
