@@ -2,7 +2,7 @@ import { sampleClimate } from "../microclimate/grid.ts";
 import { roomNode } from "./rooms.ts";
 import type { ColonyAgent, ColonyWorld, Waste } from "./types.ts";
 
-function addWaste(world: ColonyWorld, item: Omit<Waste, "id">) {
+export function addWaste(world: ColonyWorld, item: Omit<Waste, "id">) {
   if (world.colony.waste.length >= 128) {
     const existing = world.colony.waste.find(
       (w) => w.stored === item.stored && w.kind === item.kind && !w.carrier,

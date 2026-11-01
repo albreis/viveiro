@@ -1,3 +1,4 @@
+import { validateBroodDevelopment } from "../development/validation.ts";
 import { validateSealBudget } from "../sealing/budget.ts";
 import {
   validatePlugMaterials,
@@ -32,6 +33,10 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
     world.founding,
     biologicalProfile.entranceModel === "plug",
     world.nest,
+  );
+  validateBroodDevelopment(
+    world.brood,
+    biologicalProfile.developmentModel === "thermal-demo",
   );
   world.landscape ??= legacyLandscape();
   if (!world.nest || world.nest.revision < 2) {

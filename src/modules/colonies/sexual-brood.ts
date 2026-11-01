@@ -1,3 +1,4 @@
+import { layingComfort } from "../development/sensing.ts";
 import type { ColonyWorld } from "../colony/types.ts";
 import { makeBrood } from "../colony/brood.ts";
 import { roomNode } from "../colony/rooms.ts";
@@ -25,6 +26,7 @@ export function laySexualBrood(w: ColonyWorld) {
   }
   if (
     !queen ||
+    layingComfort(w) <= 0 ||
     queen.age < 25 ||
     w.queenHealth < 60 ||
     isClaustral(w) ||

@@ -40,6 +40,7 @@ export interface ColonyAgent extends SoilAgent {
   socialPartner?: number;
 }
 export interface Brood extends Vec3 {
+  development?: import("../development/types.ts").BroodDevelopment;
   kind?: "worker" | "gyne" | "male";
   nanitic?: boolean;
   genome?: import("../genetics/genome.ts").Genome;
@@ -56,6 +57,7 @@ export interface Waste extends Vec3 {
   stored: boolean;
 }
 export interface ColonyState {
+  broodLosses?: number;
   reproductiveFood?: number;
   version: number;
   shared: number;
