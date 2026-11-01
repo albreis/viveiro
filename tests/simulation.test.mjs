@@ -1,3 +1,4 @@
+import { waterScale } from "../src/modules/landscape/queries.ts";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { tunnelFooting } from "../src/modules/terrain/surface-queries.ts";
@@ -95,7 +96,10 @@ test("predators can catch workers while the nest remains a refuge", () => {
   assert.ok(w.deaths > 0);
   assert.ok(w.ants.some((a) => a.kind === "queen"));
   assert.equal(w.addPredator(5, 5), true);
-  assert.equal(w.intervene("predator", -4.8, -1.1), false);
+  assert.equal(
+    w.intervene("predator", w.nest.nodes[0].x, w.nest.nodes[0].z),
+    false,
+  );
 });
 test("underground routes deliver food in the storage chamber and lead back to an entrance", () => {
   const w = new World("galleries");
@@ -143,11 +147,31 @@ test("underground routes deliver food in the storage chamber and lead back to an
 });
 test("a worker approaching water can bypass it instead of remaining stuck at its edge", () => {
   const w = new World("water");
-  const ant = { x: 2.39, z: -2.5, y: 0, angle: 0, distanceWalked: 0 };
+  const pond = w.landscape.ponds[0],
+    r = pond.rx * waterScale(pond) * 1.04;
+  const ant = w.makeAnt(
+    "worker",
+    pond.x - Math.cos(pond.angle) * r,
+    pond.z - Math.sin(pond.angle) * r,
+  );
+  w.ants = [ant];
   const origin = { ...ant };
   for (let i = 0; i < 100; i++)
-    w.moveSurface(ant, Math.atan2(-2.5 - ant.z, 6.5 - ant.x), 0.09);
+    w.moveSurface(
+      ant,
+      Math.atan2(
+        pond.z + Math.sin(pond.angle) * 2.5 - ant.z,
+        pond.x + Math.cos(pond.angle) * 2.5 - ant.x,
+      ),
+      0.09,
+    );
   assert.ok(Math.hypot(ant.x - origin.x, ant.z - origin.z) > 2);
-  assert.ok(ant.distanceWalked > 5);
+  assert.ok(
+    Math.hypot(
+      ant.x - (pond.x + Math.cos(pond.angle) * 2.5),
+      ant.z - (pond.z + Math.sin(pond.angle) * 2.5),
+    ) < 0.35,
+    "the worker must reach the far side of its actual seeded pond",
+  );
   assert.ok(!w.inPond(ant.x, ant.z));
 });

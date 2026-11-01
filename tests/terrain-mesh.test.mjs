@@ -1,11 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createNest } from "../src/modules/simulation/nest.ts";
+import { World } from "../src/modules/simulation/world.js";
 import { createSoilGeometry } from "../src/modules/terrain/soil.js";
 import { sampleSoil } from "../src/modules/terrain/field.ts";
 
 test("rounded mesh vertices follow the same continuous field as support queries", () => {
-  const nest = createNest(),
+  const nest = new World("mesh-procedural").nest,
     geometry = createSoilGeometry(nest);
   const positions = geometry.attributes.position,
     normals = geometry.attributes.normal;

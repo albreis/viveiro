@@ -75,3 +75,28 @@ test("the local policy favors a sensed gradient but still explores", () => {
     forward += chooseLocalExit(options, () => w.random()) === 1 ? 1 : 0;
   assert.ok(forward > 3800 && forward < 4000);
 });
+
+test("recent unrewarded cycles suppress even a strong misleading odor", () => {
+  const options = [
+    {
+      id: 1,
+      signal: 0.15,
+      visited: true,
+      visits: 4,
+      backtrack: true,
+      goalVisible: false,
+    },
+    {
+      id: 2,
+      signal: 0,
+      visited: false,
+      visits: 0,
+      backtrack: false,
+      goalVisible: false,
+    },
+  ];
+  assert.equal(
+    chooseLocalExit(options, () => 0.5),
+    2,
+  );
+});

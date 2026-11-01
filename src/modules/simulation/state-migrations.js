@@ -1,3 +1,4 @@
+import { legacyLandscape } from "../landscape/generate.ts";
 import { createColonyState, ensureIndividual } from "../colony/individual.ts";
 import { migrateBrood } from "../colony/brood.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
@@ -12,8 +13,9 @@ import {
 export function restoreWorld(snapshot, prototype) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
+  world.landscape ??= legacyLandscape();
   if (!world.nest || world.nest.revision < 2) {
-    world.nest = createNest();
+    world.nest = createNest(world.seed, world.landscape);
     const q = world.ants.find((a) => a.kind === "queen");
     if (q) Object.assign(q, world.nest.nodes[2], { node: 2 });
   }

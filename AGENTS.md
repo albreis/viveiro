@@ -1,6 +1,9 @@
 # Regras deste projeto
 
 - Cada etapa funcional deve começar em uma branch própria com prefixo codex/.
+- Assim que concluir uma etapa, faça commit, push e crie ou atualize seu PR automaticamente, conforme pedido do usuário.
+- Abra os PRs em ordem de dependência. Em branches encadeadas, compare com a etapa anterior para isolar o diff; após integrar a anterior, ajuste a base do próximo PR para main.
+- Não duplique PRs, não crie PR para branch vazia e preserve as branches já publicadas.
 - Faça commits descritivos, testes do modelo e verificação no navegador antes de integrar à main e publicar.
 - Preserve as branches e tags das versões publicadas. Envie a main e a branch ao origin.
 - Publique etapas concluídas no mesmo Site privado e informe ao usuário o que mudou e o que ainda falta.

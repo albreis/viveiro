@@ -1,3 +1,8 @@
+import {
+  surfaceHeight,
+  surfaceNormal,
+  surfaceDistanceUpperBound,
+} from "../landscape/queries.ts";
 import type { NestState, Vec3 } from "../navigation/types.ts";
 
 export interface FieldSample {
@@ -96,16 +101,31 @@ export function sampleSoil(nest: NestState, p: Vec3): FieldSample {
   } else if (qx > qy && qx > qz) bx = Math.sign(p.x);
   else if (qy > qz) by = Math.sign(p.y + 2.1);
   else bz = Math.sign(p.z);
+  // Skip relief only where a conservative bound proves the cavity masks it entirely.
+  const needsTop =
+    p.y > -0.3 ||
+    -voidField.distance < surfaceDistanceUpperBound(nest.relief, p.y) + 0.05;
+  const height = needsTop ? surfaceHeight(nest.relief, p.x, p.z) : 0;
+  const topNormal = needsTop
+    ? surfaceNormal(nest.relief, p.x, p.z)
+    : { x: 0, y: 1, z: 0 };
+  const surface = (p.y - height) * topNormal.y;
+  const base = p.y > -2 ? Math.max(qx, qz, surface) : box;
+  if (p.y > -2 && surface >= Math.max(qx, qz)) {
+    bx = topNormal.x;
+    by = topNormal.y;
+    bz = topNormal.z;
+  }
   // Smooth intersection rounds the lips where cavities meet the glass/ground.
   const cut = -voidField.distance,
     k = 0.045,
-    h = clamp(0.5 + (0.5 * (box - cut)) / k);
+    h = clamp(0.5 + (0.5 * (base - cut)) / k);
   const x = bx * h - voidField.x * (1 - h);
   const y = by * h - voidField.y * (1 - h);
   const z = bz * h - voidField.z * (1 - h);
   const size = Math.hypot(x, y, z) || 1;
   const result = {
-    distance: cut + (box - cut) * h + k * h * (1 - h),
+    distance: cut + (base - cut) * h + k * h * (1 - h),
     x: x / size,
     y: y / size,
     z: z / size,

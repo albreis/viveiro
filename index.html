@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.3.0</span
+        <span class="prototype">PROTÓTIPO 0.4.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -148,7 +148,7 @@
                 ><button
                   id="view-side"
                   aria-label="Vista lateral dos túneis"
-                  title="Túneis junto ao vidro"
+                  title="Alternar entre os quatro lados do terrário"
                 >
                   ▤</button
                 ><button
@@ -188,12 +188,19 @@
             </div>
             <div class="scene-caption">
               <span class="scene-tag"
-                ><i class="green-dot"></i> Terrário de floresta</span
+                ><i class="green-dot"></i>
+                <span id="biome-label">Terrário de floresta</span></span
               ><span id="scene-guide"
                 >Arraste para orbitar · Role para aproximar</span
               >
             </div>
             <div class="scene-controls">
+              <label class="toggle-label"
+                ><input type="checkbox" id="interior" /><span
+                  class="toggle-track"
+                ></span
+                >Ver túneis internos</label
+              >
               <button
                 id="play"
                 class="play-button"

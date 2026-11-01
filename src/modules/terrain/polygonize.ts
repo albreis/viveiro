@@ -81,7 +81,14 @@ function intersect(grid: MeshGrid, a: number, b: number): Vertex {
   };
 }
 
-function triangle(walls: Part, top: Part, a: Vertex, b: Vertex, c: Vertex) {
+function triangle(
+  walls: Part,
+  top: Part,
+  inner: Part,
+  a: Vertex,
+  b: Vertex,
+  c: Vertex,
+) {
   const ux = b.x - a.x,
     uy = b.y - a.y,
     uz = b.z - a.z;
@@ -96,7 +103,12 @@ function triangle(walls: Part, top: Part, a: Vertex, b: Vertex, c: Vertex) {
   if (normal.x * a.nx + normal.y * a.ny + normal.z * a.nz < 0) [b, c] = [c, b];
   const isTop =
     (a.y + b.y + c.y) / 3 > -0.09 && (a.ny + b.ny + c.ny) / 3 > 0.65;
-  const output = isTop ? top : walls;
+  const cavityWall =
+    !isTop &&
+    [a, b, c].every(
+      (v) => Math.abs(v.x) < 9.98 && Math.abs(v.z) < 6.48 && v.y > -4.18,
+    );
+  const output = isTop ? top : cavityWall ? inner : walls;
   for (const v of [a, b, c]) {
     output.positions.push(v.x, v.y, v.z);
     output.normals.push(v.nx, v.ny, v.nz);
@@ -127,6 +139,7 @@ export function polygonize(
   };
   const walls = part(),
     top = part(),
+    inner = part(),
     row = grid.nx + 1,
     layer = row * (grid.nz + 1);
   for (let y = 0; y < grid.ny; y++)
@@ -158,9 +171,9 @@ export function polygonize(
               const [a, b] = EDGES[edge];
               return edgeVertex(indices[a], indices[b]);
             });
-            triangle(walls, top, vertices[0], vertices[1], vertices[2]);
+            triangle(walls, top, inner, vertices[0], vertices[1], vertices[2]);
           }
         }
       }
-  return { walls, top };
+  return { walls, top, inner };
 }

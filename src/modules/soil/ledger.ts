@@ -25,7 +25,13 @@ export function depositSoil(world: SoilWorld, ant: SoilAgent) {
   const piles = world.soil.deposits;
   let pile = piles.find((p) => Math.hypot(p.x - ant.x, p.z - ant.z) < 0.45);
   if (!pile) {
-    pile = { id: world.soil.nextId++, x: ant.x, y: 0, z: ant.z, mass: 0 };
+    pile = {
+      id: world.soil.nextId++,
+      x: ant.x,
+      y: ant.y || 0,
+      z: ant.z,
+      mass: 0,
+    };
     piles.push(pile);
   }
   pile.mass += mass;

@@ -1,3 +1,4 @@
+import { updateSoilVisibility } from "./soil-visibility.js";
 import { ColonyView } from "./ColonyView.ts";
 import { SoilMesher } from "../../services/SoilMesher.ts";
 import { SoilView } from "./SoilView.ts";
@@ -248,6 +249,10 @@ export class Terrarium {
   }
   stopFollowing() {
     return stopFollowing(this);
+  }
+  setInterior(visible) {
+    this.showInterior = visible;
+    updateSoilVisibility(this);
   }
   setView(view) {
     return setView(this, view);

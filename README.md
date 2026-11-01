@@ -29,6 +29,7 @@ Dev e preview usam a mesma porta: execute apenas um deles.
 - src/app: interface e controle da experiência.
 - src/modules/navigation: TypeScript estrito, sensores, forças e locomoção.
 - src/modules/simulation: relógio fixo e ciclos biológicos.
+- src/modules/landscape: geração por seed, espécies, água e materiais dinâmicos.
 - src/modules/terrain: terreno compartilhado pela física e pelo desenho.
 - src/modules/renderer: cena, câmera, seleção, plantas e corpos.
 - src/services: persistência e serviços.
@@ -40,7 +41,9 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 ## Observar
 
 - Arraste para orbitar; role para aproximar.
-- A vista lateral mostra câmaras junto ao vidro.
+- Clique novamente na vista lateral para alternar os quatro lados.
+- Ative “Ver túneis internos” para observar galerias afastadas dos vidros.
+- “Novo terrário” gera outra paisagem e ninho pela seed. Saves existentes são preservados.
 - Duplo clique numa formiga ou escolha na lista para entrar em primeira pessoa.
 - Arraste para olhar; Esc retorna ao terrário.
 - Pause, altere a velocidade ou intervenha no solo.
@@ -50,6 +53,7 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Paisagem procedural](docs/procedural.md)
 - [Cronograma](docs/cronograma.md)
 - [Especificações](docs/especificacoes.md)
 - [Arquitetura](docs/arquitetura.md)

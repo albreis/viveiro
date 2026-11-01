@@ -1,3 +1,5 @@
+import { timberLevel } from "../src/modules/landscape/queries.ts";
+import { lerp } from "./fixtures/geometry.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { World } from "../src/modules/simulation/world.js";
@@ -12,7 +14,7 @@ test("an ant walks around a shaft wall instead of oscillating across its diamete
   const w = new World("wall-exit");
   const from = w.nest.nodes[7],
     to = w.nest.nodes[6];
-  const center = { x: 3, y: -0.55, z: 2.5 };
+  const center = lerp(from, to, 0.4);
   const first = tunnelFooting(w.nest, center, from, to, 0.35);
   const last = tunnelFooting(w.nest, center, from, to, Math.PI + 0.35);
   const ant = {
@@ -78,7 +80,8 @@ test("a crowded colony reaches the surface and no worker stays at one wall for d
 
 test("an ant already inside a decorative log walks out with bounded steps", () => {
   const w = new World("log-recovery"),
-    ant = w.makeAnt("worker", 3.42, 2.85);
+    log = w.landscape.logs.find((p) => p.kind === "fallen"),
+    ant = w.makeAnt("worker", log.x, log.z);
   w.ants = [ant];
   for (let i = 0; i < 50; i++) {
     const old = { x: ant.x, z: ant.z };
@@ -88,5 +91,5 @@ test("an ant already inside a decorative log walks out with bounded steps", () =
       Math.hypot(ant.x - old.x, ant.z - old.z) <= ant.speed * 1.2 + 0.002,
     );
   }
-  assert.ok(Math.hypot(ant.x - 3.42, ant.z - 2.85) > 1);
+  assert.ok(timberLevel(w.landscape, ant.x, ant.z) >= 1);
 });

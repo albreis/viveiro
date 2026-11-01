@@ -83,6 +83,7 @@ export interface NestNode extends Vec3 {
 }
 
 export interface NestState {
+  relief?: import("../landscape/types.ts").Hill[];
   nodes: NestNode[];
   links: [number, number][];
   revision: number;
@@ -93,6 +94,7 @@ export interface NestState {
 }
 
 export interface NavigationWorld {
+  landscape?: import("../landscape/types.ts").Landscape;
   tick: number;
   food: number;
   ants: AgentState[];

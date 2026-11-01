@@ -1,26 +1,20 @@
 import type { DigProject, SoilWorld, SoilAgent } from "./types.ts";
 import { distance3, removedSoil } from "./ledger.ts";
 import { normalize, sub } from "../navigation/vectors.ts";
-
+import { chooseDigGoal } from "./dig-direction.ts";
+import { surfaceHeight } from "../landscape/queries.ts";
 export function proposeDig(world: SoilWorld, from: number): DigProject | null {
   const node = world.nest.nodes[from];
   if (
     !node ||
-    world.soil.projects.some((p) => !p.completed) ||
-    world.nest.nodes.length >= 24
+    world.soil.projects.filter((p) => !p.completed).length >= 2 ||
+    world.nest.nodes.length >= 46
   )
     return null;
-  const direction = world.random() < 0.5 ? -1 : 1;
-  const goal = {
-    x: Math.max(
-      -8.8,
-      Math.min(8.8, node.x + direction * world.range(1.4, 2.3)),
-    ),
-    y: Math.max(-3.45, Math.min(-0.8, node.y + world.range(-0.55, 0.35))),
-    z: Math.max(-5.9, Math.min(6.15, node.z + world.range(-0.5, 0.2))),
-  };
-  if (world.nest.nodes.some((n) => n !== node && distance3(n, goal) < 0.8))
+  if (world.soil.projects.some((p) => !p.completed && p.from === from))
     return null;
+  const goal = chooseDigGoal(world, from);
+  if (!goal) return null;
   world.nest.linkWidths ??= world.nest.links.map(() => 0.38);
   const front =
     world.nest.nodes.push({
@@ -31,33 +25,68 @@ export function proposeDig(world: SoilWorld, from: number): DigProject | null {
     }) - 1;
   world.nest.links.push([from, front]);
   world.nest.linkWidths.push(0.28);
-  const project = {
+  const project: DigProject = {
     id: world.soil.nextId++,
     from,
     front,
     goal,
     completed: false,
     excavated: 0,
+    remainingSegments: Math.floor(world.range(2, 5)),
+    heading: normalize(sub(goal, node)),
   };
   world.soil.projects.push(project);
   world.soil.lastProject = world.tick;
   world.nest.revision++;
-  world.log("Uma frente de escavação começou junto a uma câmara.", "dig");
+  world.log("Uma operária iniciou uma nova frente de escavação.", "dig");
   return project;
 }
-
-/** Volume is a coarse capsule estimate; all resulting material stays in the ledger. */
+function advanceFront(world: SoilWorld, project: DigProject) {
+  const front = world.nest.nodes[project.front];
+  const top = surfaceHeight(world.nest.relief, front.x, front.z),
+    emerged = front.y >= top - 0.15;
+  const goal =
+    !emerged &&
+    (project.remainingSegments || 0) > 0 &&
+    world.nest.nodes.length < 48
+      ? chooseDigGoal(world, project.front, project.heading)
+      : null;
+  if (goal) {
+    front.type = "junction";
+    front.name = "Curva escavada";
+    project.from = project.front;
+    project.front =
+      world.nest.nodes.push({
+        ...front,
+        type: "front",
+        name: "Frente de escavação",
+      }) - 1;
+    world.nest.links.push([project.from, project.front]);
+    world.nest.linkWidths!.push(0.28);
+    project.remainingSegments!--;
+    project.goal = goal;
+    project.heading = normalize(sub(goal, front));
+  } else {
+    project.completed = true;
+    front.type = emerged ? "entrance" : "chamber";
+    front.name = emerged ? "Novo acesso escavado" : "Câmara escavada";
+    world.log(
+      emerged
+        ? "A escavação alcançou a superfície e abriu outro acesso."
+        : "As operárias abriram uma nova câmara.",
+      "dig",
+    );
+  }
+  world.nest.revision++;
+}
+/** Capsule volumes are approximate; removed material remains accounted for. */
 export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
   const front = world.nest.nodes[project.front],
-    base = world.nest.nodes[project.from];
-  const delta = sub(project.goal, front),
+    base = world.nest.nodes[project.from],
+    delta = sub(project.goal, front),
     remaining = Math.hypot(delta.x, delta.y, delta.z);
   if (remaining < 0.001) {
-    project.completed = true;
-    world.nest.revision++;
-    front.type = "chamber";
-    front.name = "Câmara escavada";
-    world.log("As operárias abriram uma nova câmara.", "dig");
+    advanceFront(world, project);
     return;
   }
   const step = Math.min(0.035, remaining),

@@ -6,7 +6,8 @@ const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 export function updatePredators(world, dead) {
   for (const p of world.predators) {
     p.previousX = p.x;
-    p.previousY = 0;
+    p.previousY = p.y ?? 0;
+    p.previousAngle = p.angle;
     p.previousZ = p.z;
     p.previousDistance = p.distanceWalked || 0;
     p.energy -= 0.012;
@@ -18,7 +19,9 @@ export function updatePredators(world, dead) {
         a.kind === "worker" &&
         a.y >= -0.1 &&
         !dead.has(a.id) &&
-        distance(a, NEST) > 1.3
+        !world.nest.nodes.some(
+          (n) => n.type === "entrance" && distance(a, n) < 1.3,
+        )
       ) {
         const d = distance(a, p);
         if (d < nearest) {

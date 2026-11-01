@@ -1,3 +1,4 @@
+import { undergroundEdge, lerp } from "./fixtures/geometry.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { World } from "../src/modules/simulation/world.js";
@@ -26,7 +27,7 @@ test("newly excavated and eroded material remains in cargo, deposits or rubble",
   assert.ok(w.soil.deposited > 0);
   assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
   w.ants = [];
-  const rubble = collapseEdge(w, 3, true);
+  const rubble = collapseEdge(w, undergroundEdge(w).i, true);
   assert.ok(rubble && w.soil.eroded > 0);
   assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
 });
@@ -87,13 +88,13 @@ test("a digger carries material to the surface without teleporting, then returns
 test("repairing rubble transfers mass into a worker rather than deleting it", () => {
   const w = new World("soil-repair");
   w.ants = [];
-  const rubble = collapseEdge(w, 3, true);
+  const rubble = collapseEdge(w, undergroundEdge(w).i, true);
   assert.ok(rubble);
   const ant = w.makeAnt("worker", rubble.x, rubble.z);
   Object.assign(ant, {
     y: rubble.y,
-    node: 8,
-    route: [4],
+    node: w.nest.links[rubble.edge][0],
+    route: [w.nest.links[rubble.edge][1]],
     soilTask: { phase: "repair", rubbleId: rubble.id, digTicks: 0 },
   });
   w.ants = [ant];
@@ -123,21 +124,16 @@ test("a local repair worker clears a collapse through repeated trips to the surf
   w.predators = [];
   w.brood = [];
   w.food = 100;
-  const pile = collapseEdge(w, 3, true);
+  const edge = undergroundEdge(w);
+  const pile = collapseEdge(w, edge.i, true);
   assert.ok(pile);
-  const center = { x: 0.4, y: -1.5, z: 6.22 };
-  const f = tunnelFooting(
-    w.nest,
-    center,
-    w.nest.nodes[8],
-    w.nest.nodes[4],
-    0.35,
-  );
+  const center = lerp(edge.p, edge.q, 0.4);
+  const f = tunnelFooting(w.nest, center, edge.p, edge.q, 0.35);
   const ant = w.makeAnt("worker", f.x, f.z);
   Object.assign(ant, {
     ...f,
-    node: 8,
-    route: [4],
+    node: edge.a,
+    route: [edge.b],
     tunnelCenter: center,
     tunnelY: center.y,
   });

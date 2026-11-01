@@ -1,4 +1,5 @@
 import type { AgentState, NavigationWorld, NestNode, Vec3 } from "./types.ts";
+import { surfaceHeight } from "../landscape/queries.ts";
 import { hitsLog } from "./surface-obstacles.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 import {
@@ -23,11 +24,16 @@ export function leaveShaft(
   for (const turn of [0, 0.3, -0.3, 0.6, -0.6, 1, -1, 1.6, -1.6, Math.PI]) {
     const goal = projectSupport(world.nest, {
       x: target.x + Math.cos(heading + turn) * radius,
-      y: 0.008,
+      y:
+        surfaceHeight(
+          world.nest.relief,
+          target.x + Math.cos(heading + turn) * radius,
+          target.z + Math.sin(heading + turn) * radius,
+        ) + 0.008,
       z: target.z + Math.sin(heading + turn) * radius,
     });
     if (
-      hitsLog(goal.point.x, goal.point.z) ||
+      hitsLog(goal.point.x, goal.point.z, world.landscape) ||
       world.inPond(goal.point.x, goal.point.z)
     )
       continue;

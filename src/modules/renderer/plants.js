@@ -1,54 +1,40 @@
 import * as THREE from "three";
-import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
-import { createSoilGeometry } from "../terrain/soil.js";
-import { tunnelEnvelope } from "../terrain/terrain.js";
-const UP = new THREE.Vector3(0, 1, 0);
-
+import { speciesOf } from "../landscape/species.ts";
+import { surfaceHeight } from "../landscape/queries.ts";
+import { buildPlantShape } from "./plant-shapes.js";
+const colors = {
+  fern: "#557a41",
+  shrub: "#6c8844",
+  tree: "#4c703d",
+  grass: "#849552",
+  cactus: "#6c9672",
+  succulent: "#8fa784",
+  flower: "#658145",
+  moss: "#567741",
+};
 export function buildPlant(host, plant) {
-  const g = new THREE.Group();
-  g.position.set(plant.x, 0, plant.z);
-  const greens = ["#5d7c38", "#708c45", "#496c3c", "#8a9b53"];
-  const leafMat = host.material(greens[plant.kind % 4]),
-    stem = host.material("#7b8550");
-  const trunk = host.mesh(
-    new THREE.CylinderGeometry(0.025, 0.045, 1, 5),
-    stem,
-    g,
-    0,
-    0.5,
-    0,
+  const g = new THREE.Group(),
+    type = speciesOf(plant);
+  g.position.set(
+    plant.x,
+    surfaceHeight(host.world.nest.relief, plant.x, plant.z),
+    plant.z,
   );
-  const count = plant.kind === 3 ? 9 : 6;
-  for (let i = 0; i < count; i++) {
-    const angle = i * 2.4 + plant.id;
-    const height = 0.2 + i * 0.1,
-      spread = 0.18 + (i % 3) * 0.05;
-    const leaf = host.mesh(
-      new THREE.SphereGeometry(1, 7, 4),
-      leafMat,
-      g,
-      Math.cos(angle) * spread,
-      height,
-      Math.sin(angle) * spread,
-    );
-    leaf.scale.set(0.09, 0.035, 0.28);
-    leaf.rotation.y = -angle + Math.PI / 2;
-    leaf.rotation.z = 0.35;
-  }
-  if (plant.kind === 2) {
-    trunk.scale.y = 1.6;
-    for (let i = 0; i < 3; i++) {
-      const crown = host.mesh(
-        new THREE.IcosahedronGeometry(0.28, 1),
-        leafMat,
-        g,
-        (i - 1) * 0.16,
-        1.2 + i * 0.22,
-        0,
-      );
-      crown.scale.set(1.2, 1, 0.9);
-    }
-  }
+  const leaf = host.material(colors[type]),
+    stem = host.material("#7b7650");
+  buildPlantShape(host, g, type, leaf, stem, plant.id);
+  g.userData.leaf = leaf;
+  g.userData.healthy = new THREE.Color(colors[type]);
+  g.userData.dry = new THREE.Color("#9a8452");
   host.plantGroup.add(g);
   return g;
+}
+export function updatePlant(g, plant, time) {
+  const health = plant.health ?? 1,
+    stress = plant.stress ?? 0;
+  g.scale.setScalar(0.35 + plant.biomass * 0.85);
+  g.rotation.z = Math.sin(time * 0.7 + plant.id) * 0.012 + (1 - health) * 0.18;
+  g.userData.leaf.color
+    .copy(g.userData.healthy)
+    .lerp(g.userData.dry, Math.min(1, (1 - health) * 0.8 + stress * 0.25));
 }

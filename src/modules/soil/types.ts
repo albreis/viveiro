@@ -19,6 +19,8 @@ export interface DigProject {
   goal: Vec3;
   completed: boolean;
   excavated: number;
+  remainingSegments?: number;
+  heading?: Vec3;
 }
 export interface SoilPile extends Vec3 {
   id: number;
