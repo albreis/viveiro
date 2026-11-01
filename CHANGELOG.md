@@ -1,5 +1,13 @@
 # Versões
 
+## 0.14.0 — Aprendizado individual opcional
+
+- Rede pequena com observações locais e ajustes separados por formiga.
+- Treino em Worker, avaliação reservada e comparação com ACO/rede sem treino.
+- Política aplicável por intervenção validada; retorno a ACO e replay.
+- Pesos, transições e contadores persistidos; leitura na formiga e relatório após recarga.
+- Limites de transferência e calibração em docs/aprendizado-local.md.
+
 ## 0.13.0 — Suporte local dos túneis
 
 - Geometria de teto, vão, espessura e apoio ligados ao campo físico da escavação.

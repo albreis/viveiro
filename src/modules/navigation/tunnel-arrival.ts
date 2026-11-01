@@ -1,3 +1,4 @@
+import { finishLearningEdge } from "../learning/live.ts";
 import { roomNode, isStock } from "../colony/rooms.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { requestRoute } from "./local-routing.ts";
@@ -14,6 +15,7 @@ export function finishSegment(
 ) {
   const nav = navigationState(ant);
   if (reversing) {
+    finishLearningEdge(world, ant, false, true);
     nav.retreating = false;
     nav.stagnantTicks = 0;
     nav.contactTicks = 0;
@@ -46,6 +48,7 @@ export function finishSegment(
     ant.state = "Reavaliando o caminho";
     return;
   }
+  finishLearningEdge(world, ant, atRouteGoal(world, ant, targetId));
   const previousNode = ant.node;
   ant.node = ant.route.shift() ?? targetId;
   if (previousNode !== null)

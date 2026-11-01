@@ -1,3 +1,4 @@
+import { renderLearningStatus } from "./learning-controls.ts";
 import { renderStructureStatus } from "./structure-status.ts";
 import { renderGasStatus } from "./gas-status.ts";
 import { renderClimateStatus } from "./climate-status.ts";
@@ -107,6 +108,7 @@ export function renderStatus(context, updateAntCamera) {
   renderEcologyStatus(w.ecology);
   renderSoilStatus(w);
   renderStructureStatus(w);
+  renderLearningStatus(w);
   renderGranularControls(w);
   renderClimateStatus(w);
   renderGasStatus(w);

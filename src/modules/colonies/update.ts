@@ -1,3 +1,4 @@
+import { learningDeath } from "../learning/live.ts";
 import { updateVentilation } from "../ventilation/update.ts";
 import { updateGranular } from "../granular/update.ts";
 import { updateEcology } from "../ecology/update.ts";
@@ -66,6 +67,7 @@ export function advanceFamily(root: FamilyWorld) {
   for (const w of colonies) {
     for (const a of w.ants)
       if (dead.has(a.id)) {
+        learningDeath(w, a);
         dropSoil(w, a);
         leaveCorpse(w, a);
       }

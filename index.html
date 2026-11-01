@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.13.0</span
+        <span class="prototype">PROTÓTIPO 0.14.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -209,7 +209,8 @@
                 ><span id="ant-state"
                   >Escolha uma habitante para acompanhar.</span
                 ><span id="ant-genome">Herança não registrada</span
-                ><span id="ant-climate"></span><span id="ant-gas"></span>
+                ><span id="ant-climate"></span><span id="ant-gas"></span
+                ><span id="ant-learning"></span>
               </div>
               <select
                 id="ant-select"
@@ -428,6 +429,28 @@
               <p class="field-note">
                 Intensidade em unidades do modelo; também transporta feromônios.
               </p>
+            </div>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>APRENDIZADO LOCAL</span><span>◇</span>
+            </div>
+            <p id="learning-status"></p>
+            <label for="learning-mode">Navegação</label
+            ><select id="learning-mode">
+              <option value="aco">ACO</option>
+              <option value="neural" disabled>Política aprendida</option>
+            </select>
+            <p id="training-status">
+              Treino separado da renderização, com avaliação contra ACO. Modelo
+              exploratório.
+            </p>
+            <div class="climate-tabs">
+              <button id="train-policy" class="text-button">
+                Treinar e comparar</button
+              ><button id="apply-policy" class="text-button" disabled>
+                Aplicar política
+              </button>
             </div>
           </section>
           <section class="panel chart-panel">

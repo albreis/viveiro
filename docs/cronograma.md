@@ -14,7 +14,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                              |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                              |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Protótipo implementado; calibração pendente |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                                           |
+| 8     | RL, persistência longa e avaliação das previsões                     | 8A publicada; 8B/8C pendentes |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -180,6 +180,7 @@ RL depende de sensores, ações, recompensas e física estáveis.
 | 14 | [#14](https://github.com/albreis/viveiro/pull/14) | Água e calor no entorno do solo |
 | 15 | [#15](https://github.com/albreis/viveiro/pull/15) | Gases, ventilação e sensores locais |
 | 16 | [#16](https://github.com/albreis/viveiro/pull/16) | Suporte local do teto e desprendimento conservativo |
+| 17 | [#17](https://github.com/albreis/viveiro/pull/17) | Aprendizado individual e comparação com ACO |
 
 Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
@@ -319,6 +320,16 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - 130/130 testes completos e sete estruturais finais aprovados; TypeScript/Vite e navegador aprovados. Publicação privada0.13.0 confirmada; fonte25dbe03, tagv0.13.0, PR#16.
 - Limites e dados externos em docs/suporte-estrutural.md; sem DEM do solo compacto ou calibração.
 - Depois do aceite: 8 (RL/persistência/previsões) e etapas 9–14.
+
+### Etapa 8A — aprendizado local (0.14.0)
+
+- Branch codex/aprendizado-local; base codex/suporte-estrutural.
+- SARSA neural pequeno, observações locais e pesos próprios por formiga.
+- Treino em Worker separado, 64 cenários reservados e comparação com ACO/rede sem treino.
+- Aplicação validada, retorno a ACO, replay e restore com futuro idêntico.
+- Leitura individual e comparação do modelo inicial persistente no painel.
+- 139/139 testes completos, TypeScript/Vite e navegador aprovados; 0.14.0 publicada no Site privado. Fontefb20930, tagv0.14.0, PR#17.
+- Limites em docs/aprendizado-local.md. 8B: IndexedDB/checkpoints; 8C: previsão/observação/erro/desempenho.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 

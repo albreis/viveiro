@@ -139,3 +139,20 @@
   border-radius: 8px;
   background: #eff2e7;
 }
+
+label[for="learning-mode"] {
+  display: block;
+  margin: 14px 0 7px;
+  font-size: 11px;
+  color: #617057;
+}
+#learning-mode {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d8dfc9;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 11px;
+}
