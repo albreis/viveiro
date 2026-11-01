@@ -1,3 +1,4 @@
+import { exportFoundressPantry } from "../semiclaustral/budget.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { finishCocoon, discardCocoon } from "../development/cocoon.ts";
 import { advanceBroodDevelopment } from "../development/update.ts";
@@ -30,16 +31,21 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   laySexualBrood(world);
   if (queen) {
     if (!closed) queen.state = "Cuidando da colônia";
-    const first = !!f && f.phase === "claustral" && !f.firstClutch;
+    const first =
+      !!f && ["claustral", "semiclaustral"].includes(f.phase) && !f.firstClutch;
     const affordable =
-      first && f?.maternal
-        ? Math.floor(
-            (accessibleReserve(f.maternal, "eggs") + 1e-10) /
-              MATERNAL_PARAMETERS.eggCost,
-          )
-        : Infinity;
+      first && f?.foraging
+        ? Math.floor((f.foraging.pantry + 1e-10) / MATERNAL_PARAMETERS.eggCost)
+        : first && f?.maternal
+          ? Math.floor(
+              (accessibleReserve(f.maternal, "eggs") + 1e-10) /
+                MATERNAL_PARAMETERS.eggCost,
+            )
+          : Infinity;
     const layingAllowed = first
-      ? f!.reserves > 2 && affordable > 0
+      ? f!.foraging
+        ? f!.foraging.phase === "nursing" && affordable >= 4
+        : f!.reserves > 2 && affordable > 0
       : !closed && world.food > 2;
     if (
       (!f || f.phase === "established" || first) &&
@@ -77,7 +83,11 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
         "A rainha colocou " +
           eggs +
           " ovos" +
-          (first ? " usando reservas maternas." : "."),
+          (first
+            ? f?.foraging
+              ? " com alimento trazido pela rainha."
+              : " usando reservas maternas."
+            : "."),
         "birth",
       );
     }
@@ -119,7 +129,14 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   if (alates)
     world.log(alates + " alado(s) nasceram para uma futura fundação.", "birth");
   if (hatched) world.log(hatched + " operária(s) nasceram.", "birth");
-  if (f?.phase === "claustral" && f.nanitics > 0 && !f.seal) {
+  if (
+    f &&
+    ["claustral", "semiclaustral"].includes(f.phase) &&
+    f.nanitics > 0 &&
+    !f.seal &&
+    (!f.foraging || f.foraging.phase === "nursing")
+  ) {
+    exportFoundressPantry(world);
     f.phase = "established";
     f.since = world.tick;
     world.log(

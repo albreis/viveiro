@@ -11,6 +11,7 @@ const record = (
   topic: "founding",
   version: 1,
   minModelRevision: 3,
+  requiresEntrancePlug: true,
   value,
   unit,
   evidence: "approximation",

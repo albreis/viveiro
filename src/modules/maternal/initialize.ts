@@ -17,7 +17,11 @@ export function advanceMaternalReserves(world: FoundingWorld): void {
   const f = world.founding;
   if (!f?.maternal) return;
   const q = world.ants.find((a) => a.kind === "queen");
-  if (q && !q.winged && ["digging", "sealing", "claustral"].includes(f.phase))
+  if (
+    q &&
+    !q.winged &&
+    ["digging", "sealing", "claustral", "semiclaustral"].includes(f.phase)
+  )
     histolyzeMuscle(f.maternal);
   f.reserves = reserveTotal(f.maternal.stores);
 }

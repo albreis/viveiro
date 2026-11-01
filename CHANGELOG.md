@@ -1,5 +1,13 @@
 # Versões
 
+## 0.23.0 — Fundação semiclaustral
+
+- Perfil separado com entrada aberta e rainha coletora por sensores locais.
+- Viagens físicas, carga finita, risco de predadores e primeira postura paga com alimento entregue.
+- Despensa externa separada dos tecidos iniciais, transferência conservativa e save em viagem.
+- Catálogo específico e contadores; genéricos anteriores preservados.
+- Modelo e limites em docs/fundacao-semiclaustral.md.
+
 ## 0.22.0 — Memória sazonal e casulos
 
 - Perfis sazonais com preparação, diapausa reprodutiva, frio acumulado e retomada gradual.

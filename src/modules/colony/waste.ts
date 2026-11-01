@@ -1,3 +1,4 @@
+import { loseFoundressLoad } from "../semiclaustral/budget.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import { roomNode } from "./rooms.ts";
 import type { ColonyAgent, ColonyWorld, Waste } from "./types.ts";
@@ -15,6 +16,7 @@ export function addWaste(world: ColonyWorld, item: Omit<Waste, "id">) {
   world.colony.waste.push({ ...item, id: world.nextId++ });
 }
 export function leaveCorpse(world: ColonyWorld, ant: ColonyAgent) {
+  loseFoundressLoad(world, ant);
   for (const item of world.colony.waste)
     if (item.carrier === ant.id) {
       delete item.carrier;

@@ -1,4 +1,6 @@
 import type { FoundingState } from "../modules/founding/types.ts";
+const number = (n: number) =>
+  n.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
 const labels: Record<FoundingState["phase"], string> = {
   weather: "Aguardando janela de voo",
   flight: "Voo nupcial",
@@ -7,6 +9,7 @@ const labels: Record<FoundingState["phase"], string> = {
   digging: "Escavação do primeiro abrigo",
   sealing: "Fechamento da entrada",
   claustral: "Fundação claustral",
+  semiclaustral: "Fundação semiclaustral",
   established: "Colônia fundada",
   failed: "Fundação interrompida",
 };
@@ -26,6 +29,17 @@ export function foundingDescription(f?: FoundingState) {
     " naníticas · " +
     f.trips +
     " viagens de terra." +
+    (f.foraging
+      ? " Coleta da rainha: " +
+        f.foraging.trips +
+        " viagem(ns) · alimento na câmara " +
+        number(f.foraging.pantry) +
+        " u. · carga " +
+        number(f.foraging.load) +
+        " u. · consumido " +
+        number(f.foraging.consumed) +
+        " u."
+      : "") +
     (f.seal
       ? " Tampão: " +
         {

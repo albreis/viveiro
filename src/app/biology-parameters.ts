@@ -26,7 +26,8 @@ export function renderBiologicalParameters(
     (p) =>
       p.topic === topic &&
       (p.minModelRevision ?? 1) <= revision &&
-      (!p.requiresCocoon || profile.cocoon === "present"),
+      (!p.requiresCocoon || profile.cocoon === "present") &&
+      (!p.requiresEntrancePlug || profile.entranceModel === "plug"),
   )) {
     const item = document.createElement("li"),
       name = document.createElement("strong"),

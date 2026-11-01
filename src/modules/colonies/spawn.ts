@@ -1,3 +1,4 @@
+import { initializeFoundressForaging } from "../semiclaustral/initialize.ts";
 import { initializeSeason } from "../seasons/update.ts";
 import { initializeMaternalReserves } from "../maternal/initialize.ts";
 import type { FamilyWorld } from "./types.ts";
@@ -97,6 +98,7 @@ export function spawnDaughter(
     localRoutingVersion: 1,
   }) as FamilyWorld;
   initializeMaternalReserves(child);
+  initializeFoundressForaging(child);
   bindHabitat(root, child);
   source.ants = source.ants.filter((a) => a.id !== gyne.id && a.id !== male.id);
   gyne.kind = "queen";

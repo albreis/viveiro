@@ -93,6 +93,14 @@ export function updateFoundingDig(world: FoundingWorld) {
     front.name = "Primeira câmara da rainha";
     world.nest.revision++;
     delete q.supportMotion;
+    if (f.foraging) {
+      changePhase(
+        world,
+        "semiclaustral",
+        "O abrigo está pronto. A rainha precisa buscar alimento fora para criar a primeira prole.",
+      );
+      return;
+    }
     if (beginSealing(world)) return;
     changePhase(
       world,
