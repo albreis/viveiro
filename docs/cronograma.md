@@ -486,6 +486,7 @@ As etapas 10C–14 aprofundam o modelo, que já é o ponto forte. As maiores lac
 4. P2 — ferramenta de pesquisa.
 5. P3 — validação científica. Depende de P2 e das etapas 13 e 14.
 6. P4 — comunidade, contínua a partir de P1.
+7. P5 — clima real da localização do usuário, por último.
 
 Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em ordem de dependência, testes do modelo, verificação no navegador, tag e publicação.
 
