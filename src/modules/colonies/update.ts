@@ -1,3 +1,4 @@
+import { updateVentilation } from "../ventilation/update.ts";
 import { updateGranular } from "../granular/update.ts";
 import { updateEcology } from "../ecology/update.ts";
 import { prepareSocialChemistry } from "../social-chemistry/profile.ts";
@@ -32,6 +33,8 @@ export function advanceFamily(root: FamilyWorld) {
   updateNestOdors(root.nest, root.nestOdors);
   updateErosion(root);
   updateGranular(root);
+  updateVentilation(root);
+  for (const w of colonies) w.gases = root.gases;
   const dead = new Set<number>();
   for (const w of colonies) {
     w.nextId = root.nextId;

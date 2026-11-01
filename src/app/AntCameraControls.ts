@@ -1,5 +1,6 @@
+import { localGasLabel } from "./gas-status.ts";
+import type { GasWorld } from "../modules/ventilation/types.ts";
 import { localClimateLabel } from "./climate-status.ts";
-import type { SoilClimate } from "../modules/microclimate/types.ts";
 import { describeGenome } from "./genetics-summary.ts";
 import type { ColonyAgent as AgentState } from "../modules/colony/types.ts";
 
@@ -18,7 +19,7 @@ interface SceneControls {
 
 interface CameraContext {
   getScene(): SceneControls | undefined;
-  getWorld(): { ants: AgentState[]; tick: number; microclimate?: SoilClimate };
+  getWorld(): GasWorld;
   getScenario(): string;
   getRunning(): boolean;
   toast(message: string): void;
@@ -103,7 +104,8 @@ export class AntCameraControls {
   }
 
   render() {
-    const { ants, tick, microclimate } = this.context.getWorld();
+    const selectedWorld = this.context.getWorld();
+    const { ants, tick, microclimate } = selectedWorld;
     const scene = this.context.getScene();
     const key =
       this.context.getScenario() + ":" + ants.map((ant) => ant.id).join(",");
@@ -159,6 +161,9 @@ export class AntCameraControls {
       local.textContent = ant
         ? localClimateLabel(microclimate, { x: ant.x, y: ant.y || 0, z: ant.z })
         : "";
+    const gasLabel = document.getElementById("ant-gas");
+    if (gasLabel)
+      gasLabel.textContent = ant ? localGasLabel(selectedWorld, ant) : "";
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
     follow.hidden = !!scene?.followId;

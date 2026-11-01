@@ -1,3 +1,4 @@
+import { renderGasStatus } from "./gas-status.ts";
 import { renderClimateStatus } from "./climate-status.ts";
 import { renderGranularControls } from "./granular-controls.ts";
 import { renderEcologyStatus } from "./ecology-status.ts";
@@ -106,6 +107,7 @@ export function renderStatus(context, updateAntCamera) {
   renderSoilStatus(w);
   renderGranularControls(w);
   renderClimateStatus(w);
+  renderGasStatus(w);
   renderColonyStatus(w);
   updateAntCamera(w);
   if (forecastCache && forecastCache.scenario === scenario) {

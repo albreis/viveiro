@@ -72,3 +72,5 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 - [Versões](CHANGELOG.md)
 
 Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validação biológica/geotécnica. Alargamento local por congestionamento não equivale à escavação completa, transporte de terra ou física granular.
+
+- [Gases e ventilação](docs/gases-e-ventilacao.md): rede de fluxo, respiração, balanços e sensores locais exploratórios.

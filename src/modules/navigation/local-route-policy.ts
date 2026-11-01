@@ -2,6 +2,7 @@ import { sampleACO } from "../chemistry/aco.ts";
 export interface RouteOption {
   id: number;
   signal: number;
+  comfort?: number;
   visited: boolean;
   visits?: number;
   backtrack: boolean;
@@ -17,16 +18,18 @@ export function chooseLocalExit(
   const pheromone = options.map((o) =>
     Math.exp(Math.max(-6, Math.min(6, o.signal * 60))),
   );
-  const heuristic = options.map((o) =>
-    o.goalVisible
-      ? 100
-      : (o.visits || 0) >= 3
-        ? 0.000001
-        : o.backtrack
-          ? 0.12
-          : o.visited
-            ? 0.5
-            : 1,
+  const heuristic = options.map(
+    (o) =>
+      (o.comfort ?? 1) *
+      (o.goalVisible
+        ? 100
+        : (o.visits || 0) >= 3
+          ? 0.000001
+          : o.backtrack
+            ? 0.12
+            : o.visited
+              ? 0.5
+              : 1),
   );
   return options[
     sampleACO(pheromone, heuristic, random, {

@@ -1,5 +1,13 @@
 # Versões
 
+## 0.12.0 — Gases e ventilação
+
+- O₂/CO₂ por câmara, difusão/advecção conservativas, vento e empuxo térmico.
+- Geometria, entulho e escavação alteram volumes e resistências com balanços.
+- Custos e decisões por sensores de ar locais; água do solo no desgaste e estoque.
+- Painel, diagrama e leitura de ar da formiga; saves e duas colônias preservados.
+- Modelo exploratório e dependências experimentais em docs/gases-e-ventilacao.md.
+
 ## 0.11.0 — Água e calor no solo
 
 - Campo 3D procedural com água nos poros e temperatura, independente da umidade do ar.

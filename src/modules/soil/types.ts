@@ -38,6 +38,7 @@ export interface SoilState {
   nextId: number;
 }
 export interface SoilWorld extends NavigationWorld {
+  microclimate?: import("../microclimate/types.ts").SoilClimate;
   colonies?: SoilWorld[];
   ants: SoilAgent[];
   soil: SoilState;

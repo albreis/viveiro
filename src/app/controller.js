@@ -1,3 +1,4 @@
+import { installGasControls } from "./gas-status.ts";
 import { installClimateControls } from "./climate-status.ts";
 import { installGranularControls } from "./granular-controls.ts";
 import { presentFamily } from "../modules/colonies/presentation.ts";
@@ -263,6 +264,7 @@ $("focus-ecology").onclick = () => {
   $("viewport").scrollIntoView({ block: "center", behavior: "smooth" });
 };
 installGranularControls(intervention);
+installGasControls(intervention);
 installClimateControls(intervention);
 $("disturb").onclick = () => {
   intervention("collapse");

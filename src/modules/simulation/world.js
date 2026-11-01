@@ -203,6 +203,13 @@ export class World {
         pond.volume = Math.min(1, pond.volume + 0.18);
       this.params.humidity = clamp(this.params.humidity + 12, 0, 100);
       this.log("Chuva: a umidade do terrário aumentou.", "rain");
+    } else if (type === "windX") {
+      this.params.windX = clamp(Number(value) || 0, -4, 4);
+      this.log(
+        "Vento horizontal ajustado para " +
+          this.params.windX +
+          " unidades do modelo.",
+      );
     } else if (type === "temperatureC") {
       this.params.temperatureC = clamp(
         Number.isFinite(Number(value)) ? Number(value) : 24,
