@@ -53,7 +53,7 @@ Desgaste do túnel e perda de alimento passaram a amostrar água da matriz perto
 
 O painel informa faixas espaciais e consumo acumulado. O diagrama projeta o grafo, colore por CO₂ e marca direção de circulação e entradas. Não é uma seção física exata. A formiga selecionada mostra O₂/CO₂ locais, inclusive em primeira pessoa. O vento horizontal é uma intervenção registrada, persistente e compartilhada com o transporte de feromônios.
 
-Testes dirigidos cobrem conservação fechada, positividade para passo longo, uma/duas entradas, remoção de CO₂ por vento, inversão térmica, entulho/alargamento, balanços respiratórios e geométricos, prole carregada, terreno sem galerias, componentes desconectados, sensores locais, viés ACO com exploração, duas colônias e restauração determinística. Uma regressão da fundação sem estoque foi encontrada e corrigida preservando o teste original. A suíte completa deve passar antes da publicação.
+Testes dirigidos cobrem conservação fechada, positividade para passo longo, uma/duas entradas, remoção de CO₂ por vento, inversão térmica, entulho/alargamento, balanços respiratórios e geométricos, prole carregada, terreno sem galerias, componentes desconectados, sensores locais, viés ACO com exploração, duas colônias e restauração determinística. Uma regressão da fundação sem estoque foi encontrada e corrigida preservando o teste original. A execução completa limpa aprovou 123/123 casos em 448552 ms, após a correção; TypeScript e Vite finais aprovados. No navegador, vento, campos locais, diagrama, recarga e leitura em primeira pessoa foram conferidos preservando a seed a. Nenhum erro novo de console após corrigir o HMR de uma instalação parcial.
 
 ## Evidência e dependências
 

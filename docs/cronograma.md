@@ -178,6 +178,7 @@ RL depende de sensores, ações, recompensas e física estáveis.
 | 12 | [#12](https://github.com/albreis/viveiro/pull/12) | Simbioses e mimetismo |
 | 13 | [#13](https://github.com/albreis/viveiro/pull/13) | Agregados soltos com gravidade e atrito |
 | 14 | [#14](https://github.com/albreis/viveiro/pull/14) | Água e calor no entorno do solo |
+| 15 | [#15](https://github.com/albreis/viveiro/pull/15) | Gases, ventilação e sensores locais |
 
 Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
@@ -303,7 +304,7 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Sensores locais, custo energético e viés ACO sem mapa global.
 - Água/temperatura próximas para desgaste e deterioração do estoque; resíduos conservativos.
 - Painel, diagrama e leitura na formiga; intervenções e restore determinísticos.
-- Testes dirigidos aprovados; suíte completa e navegador em conclusão antes de publicar.
+- 123/123 testes na execução completa limpa; TypeScript/Vite e navegador aprovados. Publicação privada 0.12.0 confirmada; fonte 0e385cc, tag v0.12.0, PR #15.
 - Limites e dependências experimentais em docs/gases-e-ventilacao.md; modelo não calibrado.
 - Próximo: 7C suporte estrutural, depois 8 e novas etapas biológicas 9–14.
 
