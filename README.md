@@ -97,4 +97,4 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 
 Fundação semiclaustral: [mecanismo e limites](docs/fundacao-semiclaustral.md).
 
-Divulgação: [kit técnico para redes, comparação e plano para o primeiro lugar](docs/divulgacao/kit-divulgacao.html). Abra o arquivo no navegador.
+Divulgação: [kit técnico para redes, comparação e plano para o primeiro lugar](docs/divulgacao/kit-divulgacao.html). Abra o arquivo no navegador. Cada fórmula dos pilares técnicos tem explicação detalhada, exemplos e aplicações em [docs/divulgacao/formulas](docs/divulgacao/formulas/README.md).
