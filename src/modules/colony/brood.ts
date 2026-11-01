@@ -1,3 +1,4 @@
+import { inheritGenome } from "../genetics/reproduction.ts";
 import type { Brood, ColonyWorld } from "./types.ts";
 import { hashSeed } from "../simulation/seed.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
@@ -16,7 +17,19 @@ export function broodPosition(world: ColonyWorld, id: number, nodeId: number) {
 }
 export function makeBrood(world: ColonyWorld, id: number, node = 2): Brood {
   const support = broodPosition(world, id, node);
-  return { id, age: 0, node, ...support.point, y: support.point.y + 0.025 };
+  const genome = world.genetics ? inheritGenome(world, id) : undefined;
+  if (genome && world.genetics) {
+    world.genetics.embryos++;
+    world.genetics.mutationEvents += genome.mutations.length;
+  }
+  return {
+    id,
+    age: 0,
+    node,
+    ...support.point,
+    y: support.point.y + 0.025,
+    genome,
+  };
 }
 export function migrateBrood(world: ColonyWorld) {
   for (const brood of world.brood)

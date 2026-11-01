@@ -1,3 +1,4 @@
+import { createGenetics } from "../genetics/reproduction.ts";
 import { createColonyState } from "../colony/individual.ts";
 import { createNestOdors } from "../chemistry/nest-odors.ts";
 import { hashSeed } from "./seed.ts";
@@ -35,6 +36,7 @@ export function initializeWorld(world, seed, parameters) {
   world.nestOdors = createNestOdors(world.nest);
   world.soil = createSoilState();
   world.colony = createColonyState();
+  world.genetics = createGenetics(world.seed);
   world.physicsVersion = 5;
   world.localRoutingVersion = 1;
   world.pheromones = new Array(40 * 26).fill(0);

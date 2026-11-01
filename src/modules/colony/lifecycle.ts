@@ -41,7 +41,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
       brood.carrier === undefined &&
       world.population < LIMIT
     ) {
-      const ant = world.makeAnt("worker", brood.x, brood.z);
+      const ant = world.makeAnt("worker", brood.x, brood.z, brood.genome);
       const support = projectSupport(world.nest, {
         x: brood.x,
         y: brood.y - 0.025,

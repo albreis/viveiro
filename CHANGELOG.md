@@ -1,5 +1,14 @@
 # Versões
 
+## 0.5.0 — etapa genética 5A
+
+- Genomas digitais persistentes, duas cópias nas fêmeas e uma nos machos.
+- Recombinação, mutações reproduzíveis e parentesco preservado do ovo ao adulto.
+- Efeitos limitados em corpo, locomoção, sensores, metabolismo e tarefas.
+- Indicador de geração, pais e mutações na seleção da formiga.
+- Migração de saves sem alterar atributos existentes ou inventar ascendência.
+- Voo nupcial e novas fundações permanecem na etapa 5B.
+
 ## 0.4.0
 
 - Paisagem e ninho procedurais por seed, com conectividade e lados variáveis.

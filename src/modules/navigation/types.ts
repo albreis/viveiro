@@ -5,6 +5,10 @@ export interface Vec3 {
 }
 
 export interface NavigationState {
+  progressAnchor?: Vec3;
+  progressSince?: number;
+  escapeDirection?: Vec3;
+  escapeUntil?: number;
   velocity: Vec3;
   contactTicks: number;
   stagnantTicks: number;
@@ -42,6 +46,9 @@ export interface AgentState {
   };
   lastEntrance?: { node: number; x: number; z: number };
   hasFood?: boolean;
+  pheromoneGain?: number;
+  metabolicCost?: number;
+  digPower?: number;
   carryingBrood?: number;
   carryingWaste?: number;
   bodyScale?: number;

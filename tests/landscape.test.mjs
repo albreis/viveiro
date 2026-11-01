@@ -163,7 +163,7 @@ test("an advancing cavity exposes a new opening only after reaching the glass", 
   w.ants = [ant];
   const glass = { x: 9.999, y: -1.8, z: 0 };
   assert.ok(sampleSoil(w.nest, glass).distance < 0);
-  for (let i = 0; i < 55; i++) digBite(w, ant, project);
+  for (let i = 0; i < 200 && !project.completed; i++) digBite(w, ant, project);
   assert.ok(sampleSoil(w.nest, glass).distance > 0);
   assert.ok(Math.abs(soilBalance(w).error) < 1e-9);
 });

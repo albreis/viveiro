@@ -58,7 +58,8 @@ export function continueLocalRoute(
     return {
       id,
       signal:
-        world.routeSignal?.(ant.node!, id, intent.odor, intent.owner) || 0,
+        (world.routeSignal?.(ant.node!, id, intent.odor, intent.owner) || 0) *
+        (ant.pheromoneGain ?? 1),
       visited: (ant.recentNodes || []).includes(id),
       visits: (ant.recentNodes || []).filter((node) => node === id).length,
       backtrack: ant.recentNodes?.at(-1) === id,

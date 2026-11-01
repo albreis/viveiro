@@ -11,6 +11,7 @@ interface Footing extends Vec3 {
   heading?: number;
   inside: boolean;
 }
+import { enterShaft } from "./entry-motion.ts";
 import { leaveShaft } from "./exit-motion.ts";
 import { tunnelFooting } from "../terrain/terrain.js";
 import { neighborsOf } from "./sensors.ts";
@@ -64,6 +65,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     finishSegment(world, ant, targetId, reversing, blocked);
     return;
   }
+  if (!reversing && enterShaft(world, ant, from, target, center)) return;
   if (leaveShaft(world, ant, target, center, edgeIndex)) return;
   const forward = normalize(delta),
     normal = ant.normal || { x: 0, y: 1, z: 0 };

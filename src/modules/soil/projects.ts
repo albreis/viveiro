@@ -89,7 +89,7 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
     advanceFront(world, project);
     return;
   }
-  const step = Math.min(0.035, remaining),
+  const step = Math.min(0.02 * (ant.digPower ?? 1), remaining),
     direction = normalize(delta);
   const before = Math.max(
     0,

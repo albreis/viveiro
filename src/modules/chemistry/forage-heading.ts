@@ -27,6 +27,7 @@ export function chooseForagingHeading(
         : 1) * (i === 1 ? 1 : 0.85),
   );
   const index = sampleACO(signal, heuristic, () => world.random(), {
+    alpha: ant.pheromoneGain ?? 1,
     exploration:
       0.03 + (world.params.randomness / 100) * ant.traits.exploration * 0.35,
   });

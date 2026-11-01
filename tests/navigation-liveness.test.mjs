@@ -93,3 +93,34 @@ test("an ant already inside a decorative log walks out with bounded steps", () =
   }
   assert.ok(timberLevel(w.landscape, ant.x, ant.z) >= 1);
 });
+
+test("a slow ant enters a shaft along the supported lip instead of raycasting above ground", () => {
+  const w = new World("SEMENTE-42"),
+    entry = w.nest.nodes[0];
+  const ant = w.makeAnt("worker", entry.x - 0.16, entry.z - 0.55);
+  w.ants = [ant];
+  w.brood = [];
+  w.predators = [];
+  Object.assign(ant, {
+    speed: 0.02,
+    node: 0,
+    route: [1],
+    tunnelCenter: { x: entry.x, y: entry.y, z: entry.z },
+    tunnelY: entry.y,
+  });
+  for (let i = 0; i < 400 && (ant.tunnelCenter?.y ?? 0) > -0.25; i++) {
+    const before = { x: ant.x, y: ant.y, z: ant.z };
+    w.tick++;
+    w.moveInNest(ant);
+    assert.ok(
+      Math.hypot(ant.x - before.x, ant.y - before.y, ant.z - before.z) <=
+        ant.speed * 1.2 + 0.002,
+    );
+    assert.ok(Math.abs(sampleSupport(w.nest, ant).distance - 0.008) < 0.035);
+  }
+  assert.ok(ant.y < -0.15, "the body must descend into the shaft");
+  assert.ok(
+    ant.tunnelCenter.y < -0.2,
+    "the route must actually advance below the mouth",
+  );
+});

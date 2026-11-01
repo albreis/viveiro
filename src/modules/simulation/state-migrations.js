@@ -1,3 +1,4 @@
+import { migrateGenetics } from "../genetics/reproduction.ts";
 import { legacyLandscape } from "../landscape/generate.ts";
 import { createColonyState, ensureIndividual } from "../colony/individual.ts";
 import { migrateBrood } from "../colony/brood.ts";
@@ -24,6 +25,7 @@ export function restoreWorld(snapshot, prototype) {
   world.colony ??= createColonyState();
   for (const ant of world.ants) ensureIndividual(world.seed, ant);
   migrateBrood(world);
+  migrateGenetics(world);
   for (const ant of world.ants) {
     if (ant.y === undefined) {
       ant.y = 0;
