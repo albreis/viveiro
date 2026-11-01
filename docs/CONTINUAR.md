@@ -8,11 +8,12 @@ Não criar executores concorrentes nem contornar cotas ou aprovações.
 ## Entregas e Git
 
 - Site privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site
-- Publicada: 0.4.0, fonte ec9815c20b81de46039b97172cb610287b4e994b, tag v0.4.0.
+- Publicada: 0.5.0, fonte e149fe8944b315bbff078a4f1be7a471c3297145, tag v0.5.0.
+- A 0.4.0 permanece preservada na tag v0.4.0.
 - Branch atual: codex/genetica-e-heranca, baseada em codex/terrario-procedural.
 - Código funcional da 5A: commits 7d3a879 e 563fd42.
-- PRs #1 a #6 estão abertos e encadeados; main permanece na versão anterior.
-- Próximo PR: genética 5A sobre codex/terrario-procedural; conferir se #7 já existe.
+- PRs #1 a #7 estão abertos e encadeados; main permanece na versão anterior.
+- Genética 5A: https://github.com/albreis/viveiro/pull/7, base codex/terrario-procedural.
 - Cada entrega: branch própria, testes, navegador, commit, push, PR e publicação
   no mesmo Site privado. Preservar branches, tags e saves.
 
@@ -38,10 +39,12 @@ e retorno. Screenshot de QA no diretório de visualizações autorizado do Codex
 Se a CUA retornar browser.user indisponível após horas parada, reiniciar a REPL e
 vincular de novo a aba IAB existente resolveu; não trocar para outro mecanismo.
 
-A 0.5.0 ainda precisa ter PR e publicação confirmados. Concluir isso antes de 5B.
+A 0.5.0 foi publicada com sucesso em 01/11/2026 e o PR #7 está aberto.
+A próxima tarefa é implementar 5B, sem repetir testes ou publicação da 5A.
 
 ## Próxima implementação
 
+Criar codex/voo-e-fundacao a partir da branch genética atual para a etapa
 5B — voo nupcial, perda das asas, fundação orgânica, reservas maternas,
 escavação do primeiro buraco e naníticas. Usar uma branch codex/ própria após 5A.
 Atualmente o protótipo ainda começa com câmaras e um casal já reprodutivo;
@@ -66,3 +69,9 @@ Seguir a skill Sites. Reabrir o source helper no HEAD atual antes de empacotar.
 Credenciais apenas em memória e stdin. O tar deve ficar fora do checkout:
 G:\Projetos\viveiro-VERSAO.tar.gz. A source antiga pode ser rejeitada pela
 revisão automática; confirmar HEAD e remoto antes de corrigir a referência.
+
+## Retomada seguinte
+
+Não há processo de testes pendente. Prosseguir pela fundação orgânica;
+não encerrar a automação enquanto 5B, 6, 7 e 8 tiverem implementação possível
+pendente. Preservar o dev rodando e limitar pushes às refs da entrega corrente.

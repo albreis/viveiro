@@ -162,14 +162,15 @@ RL depende de sensores, ações, recompensas e física estáveis.
 
 ### PRs abertos para revisão, em ordem
 
-| Ordem | PR                                              | Entrega                                   |
-| ----- | ----------------------------------------------- | ----------------------------------------- |
-| 1     | [#1](https://github.com/albreis/viveiro/pull/1) | Recuperação nas paredes e migração para G |
-| 2     | [#2](https://github.com/albreis/viveiro/pull/2) | Túneis vivos, terra e reparos             |
-| 3     | [#3](https://github.com/albreis/viveiro/pull/3) | Organização e alimentação da colônia      |
-| 4     | [#4](https://github.com/albreis/viveiro/pull/4) | Reação-difusão, ACO e tarefas             |
-| 5     | [#5](https://github.com/albreis/viveiro/pull/5) | Sensores locais e memória                 |
-| 6     | [#6](https://github.com/albreis/viveiro/pull/6) | Terrário procedural e ecologia dinâmica   |
+| Ordem | PR                                              | Entrega                                             |
+| ----- | ----------------------------------------------- | --------------------------------------------------- |
+| 1     | [#1](https://github.com/albreis/viveiro/pull/1) | Recuperação nas paredes e migração para G           |
+| 2     | [#2](https://github.com/albreis/viveiro/pull/2) | Túneis vivos, terra e reparos                       |
+| 3     | [#3](https://github.com/albreis/viveiro/pull/3) | Organização e alimentação da colônia                |
+| 4     | [#4](https://github.com/albreis/viveiro/pull/4) | Reação-difusão, ACO e tarefas                       |
+| 5     | [#5](https://github.com/albreis/viveiro/pull/5) | Sensores locais e memória                           |
+| 6     | [#6](https://github.com/albreis/viveiro/pull/6) | Terrário procedural e ecologia dinâmica             |
+| 7     | [#7](https://github.com/albreis/viveiro/pull/7) | Genética digital e fluxo com diferenças individuais |
 
 Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
@@ -205,5 +206,12 @@ automaticamente.
 
 - 57 testes aprovados na suíte completa, TypeScript e build aprovados.
 - Conferência no navegador: ascendência, movimento, primeira pessoa e retorno.
-- PR #7 sobre a etapa procedural; publicação da 0.5.0 em curso.
+- PR #7 sobre a etapa procedural; 0.5.0 publicada em 01/11/2026.
 - A etapa 5B de voo e fundação orgânica é a próxima entrega.
+
+### Publicação da 5A
+
+- 0.5.0 publicada com sucesso no mesmo Site privado.
+- Fonte publicada e tag v0.5.0: e149fe8944b315bbff078a4f1be7a471c3297145.
+- PR #7 aberto: https://github.com/albreis/viveiro/pull/7.
+- Continuação horária ativa. Próxima etapa: voo e fundação orgânica (5B).
