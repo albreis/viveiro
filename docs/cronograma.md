@@ -366,7 +366,7 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 | ----- | --------------------------------------------------------------------- | ----------------------------------------- |
 | 9     | Perfis biológicos por espécie e proveniência dos parâmetros           | Registro implementado; calibração externa |
 | 10    | Fundação claustral com cronologia, tampão físico e reservas corporais | 10A/10B publicadas; calibração pendente   |
-| 11    | Desenvolvimento térmico da prole, nutrição e diapausa                 | 11A publicada; 11B validada               |
+| 11    | Desenvolvimento térmico da prole, nutrição e diapausa                 | 11A/11B publicadas; calibração pendente   |
 | 12    | Clima espacial, umidade e seleção local da câmara                     | Planejada; 7 e 9                          |
 | 13    | Espermateca, fertilidade, envelhecimento e longevidade da rainha      | Planejada; 5A/5C, 8 e 9                   |
 | 14    | Escala de tempo biológico e experimentos de anos com recuperação      | Planejada; 8–13                           |
@@ -404,7 +404,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isola
 ### 11. Maturação e estações
 
 - 11A: mecanismo térmico demonstrativo, alimentação parcial, estresse, perdas e estado individual persistente implementados. Durações por espécie continuam sem calibração externa.
-- 11B implementada na branch codex/diapausa-e-casulos, versão 0.22.0: memória endógena, frio acumulado, retomada, abrigo e casulos pagos por perfil. 210/210 testes, build e QA completos aprovados; publicação em finalização. Ver docs/sazonalidade.md.
+- 11B implementada na branch codex/diapausa-e-casulos, versão 0.22.0: memória endógena, frio acumulado, retomada, abrigo e casulos pagos por perfil. 210/210 testes, build e QA completos aprovados. Publicada no mesmo Site privado; PR [#25](https://github.com/albreis/viveiro/pull/25), fonte 5af4191, tag v0.22.0. Ver docs/sazonalidade.md.
 
 - Investigar ovo–larva 10–14 d, larva–pupa 10–15 d e pupa–adulta 10–24 d.
 - Conferir o total sugerido de 35–60 d: a soma das faixas individuais recebidas é 30–53 d.

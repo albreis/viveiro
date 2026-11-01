@@ -2,9 +2,9 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
-## Etapa 11B pronta para publicar — 0.22.0
+## Última entrega publicada — etapa 11B (0.22.0)
 
-Branch codex/diapausa-e-casulos; base codex/maturacao-e-estacoes (PR #24). Núcleo 32f8b41 enviado; finalizar commit, PR #25 se ausente, pacote/publicação privada e tag exata. Não declarar publicação antes do retorno nativo.
+Branch codex/diapausa-e-casulos; base codex/maturacao-e-estacoes (PR #24). PR #25 aberto. Fonte 5af4191ea97787d2414c6faef30ac9adb91aa4ec, tag v0.22.0. Deploy appgdep_6ae79f3e3548819195ecf89a8c937020 succeeded em 01/11/2026 20:21:31 UTC. Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_f7390c6c4fb48191b1201e2c1e59d4a4. Mesmo Site privado, somente proprietário e zero externos. Arquivo G:\Projetos\viveiro-0.22.0.tar.gz.
 
 - Memória sazonal por colônia, frio acumulado, retomada gradual, atividade/energia/O₂ reduzidos e procura física de abrigo. Casulos com pagamento parcial persistente e resíduo sem reembolso. Fotoperíodo explícito separado da intensidade solar. Perfis genérico/lab v5; pupa nua generic-naked-demo@1 com modelRevision5. Saves anteriores preservados.
 - 210/210 testes completos em 291.383 ms, log .runtime/season-suite.log. Sessão 98016 encerrada. Depois, apenas UI/catálogo/câmera; build final 246 módulos aprovado. Não repetir suíte sem mudança relevante. Sem dependências novas.
@@ -15,7 +15,7 @@ Branch codex/diapausa-e-casulos; base codex/maturacao-e-estacoes (PR #24). Núcl
 
 ### Próximo passo concreto
 
-Concluir publicação 0.22.0, atualizar este cabeçalho com fonte/tag/deploy exatos. Depois criar branch codex/ própria para 10C: fundação semiclaustral com coleta externa e orçamento conservativo. Em seguida 12–14. Calibração por espécie continua dependência externa real. Não declarar cronograma concluído nem desativar retomada ainda.
+Criar branch codex/ própria para 10C: fundação semiclaustral com coleta externa e orçamento conservativo. Em seguida 12–14. Calibração por espécie continua dependência externa real. Não declarar cronograma concluído nem desativar retomada ainda.
 
 ## Última entrega publicada — etapa 11A (0.21.0)
 
