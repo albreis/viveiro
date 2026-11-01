@@ -2,9 +2,13 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
-## Em andamento — etapa9 pronta para publicar0.18.0
+## Próximo passo — etapa10A reservas maternas
 
-Branch codex/perfis-biologicos, base codex/observacao-e-validacao9790422.0.18.0validada:176/176testes completos em307760ms (log.runtime/biology-suite.log),21dirigidos,TS/Vite ebrowser aprovados. Sessão82954concluída; não repetirsem mudança relevante. Falta commit/push/PR#21sobre#20(se nãoexistir), publicarowner-only,tag/checkpoint. Módulosnovospequenos: src/modules/biology eapp/biology-controls,parameters,markup; CSSpróprio. index sóplaceholder,catálogo emdialoglegível. Sem pacote novo. Mesmo modelo numérico; constantesreserva8/limiares.35/.9extraídas semmudança.
+Criar codex/reservas-maternas sobre codex/perfis-biologicos após registrar0.18.0. Dividir10em10A reservasmaternas e10B tampão/isolamento/reabertura física, com PRs próprios. Para preservar snapshots/perfis numéricos antigos, manter genérico/labv1 e adicionar revisão biológica nova explícita (seletor por id+versão, exibirúltima no próximo terrário, replayversãopinada). Começar pools lipídio/proteína/músculo, conversão conservativa e custos/affordabilitydeprole/escavação em unidadesabstratas, sem timersuniversais. Reusar budget8atual; não duplicar energia. Plugprecisará material existente, termo próprio no soilBalance,campoSDF/nav e ventilação; não é apagar buraco.
+
+## Última entrega publicada — etapa9 (0.18.0)
+
+Branch codex/perfis-biologicos, base codex/observacao-e-validacao9790422.0.18.0publicada:fonteadfa0fd87b42cc267b00a9869639216d384ec061,tagv0.18.0,PR#21 https://github.com/albreis/viveiro/pull/21sobre#20. Deployappgdep_6ae760e625408191b8bd518379b117d7succeeded01/11/2026 15:55:30UTC. MesmoSiteprivadoowner-only/zeroexternos.ArquivoG:\Projetos\viveiro-0.18.0.tar.gz.176/176testes completos em307760ms (log.runtime/biology-suite.log),21dirigidos,TS/Vite ebrowser aprovados. Sessão82954concluída; não repetirsem mudança relevante. Fonteadfa0fd+tag/checkpointenviados;mainintocada. Módulosnovospequenos: src/modules/biology eapp/biology-controls,parameters,markup; CSSpróprio. index sóplaceholder,catálogo emdialoglegível. Sem pacote novo. Mesmo modelo numérico; constantesreserva8/limiares.35/.9extraídas semmudança.
 
 Registro14parâmetros: aproximação/hipótese/condiçãoexperimental/medição com unidade/fonte/amostra/incerteza/uso. Perfisgenérico eAr dereferência(21°C/80%na criação,restogenérico),sem espéciecalibrada. FonteMajidifar2024doi10.1111/1365-2435.14536lida: condicionadores nãoótimos; medida17/22sobreviventescomoperáriasaté93dias(coorte24),n22,sóconsulta. FaixasoutraIAhipótesesinativas. Nãoatualizar timerscom essesvalores. Casulo/semiclaustral/diapausamecanismosnas próximas10/11, dadospor espécie pendentes. docs/perfis-biologicos.mdregistralimites.
 

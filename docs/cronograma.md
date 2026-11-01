@@ -384,10 +384,12 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 - Registros versionados com fonte, unidade, contexto, amostra e incerteza; quatro classes de evidência visíveis.
 - Genérico preservado e preset opcional de ar de referência; consulta não muda o experimento.
 - Perfil em snapshots/replay e herança por colônia; versão desconhecida protege os dados.
-  - 21 testes dirigidos e 176/176 completos aprovados; QA/recarga/recuperação aprovadas; publicação em preparação. docs/perfis-biologicos.md.
+  - 21 testes dirigidos e 176/176 completos aprovados; QA/recarga/recuperação aprovadas; publicada no mesmo Site privado; PR#21. docs/perfis-biologicos.md.
 - Espécies calibradas dependem de dados; mecanismos semiclaustrais/casulo/diapausa seguem nas etapas10/11.
 
 ### 10. Fundação, selamento e orçamento materno
+
+Entrega dividida em10A (reservas/custos/contabilidade) e10B (tampão/isolamento/reabertura físicos), cada uma com branch/PR próprios. Perfis numéricos antigos permanecem preservados.
 
 - Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
 - Cronologia dependente de esforço, geometria, temperatura, condição e reservas; término físico da obra.
