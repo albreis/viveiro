@@ -1,3 +1,5 @@
+import { isCountObservation } from "../modules/forecast/observations.ts";
+import type { CountObservation } from "../modules/forecast/observations.ts";
 import { defaultForecastOptions } from "../modules/forecast/types.ts";
 import type {
   ForecastOptions,
@@ -24,7 +26,7 @@ export class ForecastClient {
     this.factory = factory;
   }
   consider(
-    snapshot: () => ForecastSnapshot,
+    snapshot: () => ForecastSnapshot | CountObservation,
     scenario: string,
     tick: number,
   ): void {
@@ -36,10 +38,21 @@ export class ForecastClient {
     )
       this.request(snapshot(), scenario);
   }
-  request(snapshot: ForecastSnapshot, scenario: string): void {
+  request(
+    snapshot: ForecastSnapshot | CountObservation,
+    scenario: string,
+  ): void {
     const id = ++this.id;
-    this.state = { status: "running", scenario, tick: snapshot.tick };
+    this.state = {
+      status: "running",
+      scenario,
+      tick: snapshot.tick,
+      observation: this.options.observation ?? "complete",
+    };
     try {
+      const counts = isCountObservation(snapshot);
+      if ((this.options.observation === "counts") !== counts)
+        throw new Error("Fonte de observação incompatível com o método.");
       this.port ??= this.factory();
       this.port.onmessage = ({ data }) => this.receive(data);
       this.port.onerror = () => {
@@ -56,7 +69,10 @@ export class ForecastClient {
       this.port.postMessage({
         type: "start",
         id,
-        snapshot,
+        snapshot: counts
+          ? { seed: snapshot.seed, tick: snapshot.tick }
+          : snapshot,
+        observation: counts ? snapshot : undefined,
         options: { ...this.options },
       });
     } catch (error) {
@@ -97,6 +113,9 @@ export class ForecastClient {
         status: data.outcome.complete ? "complete" : "budget",
         result: data.outcome.result,
         progress: data.outcome.progress,
+        observation: data.outcome.observation ?? "complete",
+        observedPoints: data.outcome.observedPoints,
+        warning: data.outcome.warning,
       };
     }
     this.changed();

@@ -82,3 +82,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Persistência e recuperação](docs/persistencia.md): IndexedDB, checkpoints, importação e preservação dos saves antigos.
 
 - [Previsões](docs/previsoes.md): progresso, cancelamento, horizonte e orçamento do modelo completo.
+
+- [Observação e avaliação das previsões](docs/avaliacao-previsoes.md): contrato parcial, comparação por horizonte e ensaio sintético reproduzível.

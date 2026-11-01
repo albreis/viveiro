@@ -138,3 +138,57 @@
   outline: 2px solid #658446;
   outline-offset: 2px;
 }
+
+.forecast-options label:first-child {
+  grid-column: 1 / -1;
+}
+
+.forecast-benchmark {
+  margin: 14px 0;
+  font-size: 10px;
+  color: #536a42;
+  line-height: 1.5;
+}
+.forecast-benchmark summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.forecast-benchmark table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+.forecast-benchmark th,
+.forecast-benchmark td {
+  padding: 5px 2px;
+  text-align: right;
+  border-bottom: 1px solid #cbd7b5;
+}
+.forecast-benchmark th:first-child {
+  text-align: left;
+}
+.forecast-benchmark caption {
+  text-align: left;
+  color: #738361;
+  font-size: 9px;
+  margin-bottom: 6px;
+}
+.forecast-benchmark label {
+  display: block;
+  margin: 10px 0;
+}
+.forecast-benchmark select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #cbd7b5;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 10px;
+}
+.forecast-benchmark a {
+  color: #435b38;
+}

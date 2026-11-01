@@ -7,6 +7,7 @@ export interface ForecastOptions {
   runs: number;
   days: number;
   budgetMs: number;
+  observation?: "complete" | "counts";
 }
 export interface ForecastResult {
   low: number;
@@ -29,12 +30,16 @@ export interface ForecastOutcome {
   result: ForecastResult | null;
   progress: ForecastProgress;
   complete: boolean;
+  observation?: "complete" | "counts";
+  observedPoints?: number;
+  warning?: string;
 }
 export type ForecastRequest =
   | {
       type: "start";
       id: number;
       snapshot: ForecastSnapshot;
+      observation?: import("./observations.ts").CountObservation;
       options: ForecastOptions;
     }
   | { type: "cancel"; id: number };
@@ -51,14 +56,21 @@ export interface ForecastState {
   progress?: ForecastProgress;
   result?: ForecastResult | null;
   error?: string;
+  observation?: "complete" | "counts";
+  observedPoints?: number;
+  warning?: string;
 }
 export const defaultForecastOptions: ForecastOptions = {
   runs: 18,
   days: 3,
   budgetMs: 30000,
+  observation: "complete",
 };
 export function validateOptions(options: ForecastOptions): void {
   if (
+    (options.observation !== undefined &&
+      options.observation !== "complete" &&
+      options.observation !== "counts") ||
     !Number.isInteger(options.runs) ||
     options.runs < 2 ||
     options.runs > 32 ||
