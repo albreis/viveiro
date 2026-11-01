@@ -96,3 +96,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Perfis biológicos](docs/perfis-biologicos.md): parâmetros versionados, proveniência, hipóteses e cenários de referência.
 
 Fundação semiclaustral: [mecanismo e limites](docs/fundacao-semiclaustral.md).
+
+Divulgação: [kit técnico para redes, comparação e plano para o primeiro lugar](docs/divulgacao/kit-divulgacao.html). Abra o arquivo no navegador.

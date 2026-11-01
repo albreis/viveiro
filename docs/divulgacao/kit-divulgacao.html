@@ -1,0 +1,2887 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Viveiro em Equações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      /* Layout: coluna editorial estreita; cartões de equação em grade; tabela e ranking em faixas largas. Paleta de vidro do terrário, solo e âmbar de feromônio. */
+      :root {
+        --bg: #eef1ec;
+        --panel: #f8faf6;
+        --ink: #1b221e;
+        --muted: #5a665e;
+        --line: #d3dacf;
+        --accent: #a85f00;
+        --moss: #3d6a4c;
+        --warn: #9b3b2a;
+        --chip: #e2e8de;
+        --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+        --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+        --mono:
+          "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #111613;
+          --panel: #18201b;
+          --ink: #e2e8e1;
+          --muted: #9aa79e;
+          --line: #2c3830;
+          --accent: #f0a842;
+          --moss: #84b894;
+          --warn: #e48a76;
+          --chip: #223027;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #111613;
+        --panel: #18201b;
+        --ink: #e2e8e1;
+        --muted: #9aa79e;
+        --line: #2c3830;
+        --accent: #f0a842;
+        --moss: #84b894;
+        --warn: #e48a76;
+        --chip: #223027;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.6;
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+        padding-block: 0 64px;
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      .narrow {
+        max-width: 68ch;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--display);
+        text-wrap: balance;
+        line-height: 1.12;
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(2.2rem, 6vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 1.12rem;
+        font-weight: 700;
+      }
+      p {
+        margin: 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--moss);
+      }
+      .lede {
+        font-size: 1.15rem;
+        color: var(--muted);
+      }
+      code,
+      .eq {
+        font-family: var(--mono);
+      }
+
+      header {
+        padding-block: 56px 32px;
+        display: grid;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      header h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        font-size: 0.9rem;
+        padding-block: 14px;
+      }
+      nav a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--line);
+      }
+      nav a:hover,
+      nav a:focus-visible {
+        border-color: var(--accent);
+      }
+
+      section {
+        padding-block: 48px 8px;
+        display: grid;
+        gap: 22px;
+      }
+      section > *,
+      .phase,
+      .steps > li {
+        min-width: 0;
+      }
+      p code,
+      li code,
+      td code {
+        overflow-wrap: anywhere;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .stat {
+        background: var(--panel);
+        padding: 16px;
+        display: grid;
+        gap: 2px;
+      }
+      .stat b {
+        font-family: var(--display);
+        font-size: 1.9rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .stat span {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .source {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .position {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .say,
+      .avoid {
+        padding: 18px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+      .say h3 {
+        color: var(--moss);
+      }
+      .avoid h3 {
+        color: var(--warn);
+      }
+      .say ul,
+      .avoid ul {
+        margin: 0;
+        padding-left: 1.1em;
+        display: grid;
+        gap: 6px;
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 16px;
+      }
+      .pillar {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 18px;
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        min-width: 0;
+      }
+      .pillar .tag {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .eq {
+        display: block;
+        background: var(--chip);
+        padding: 10px 12px;
+        font-size: 0.86rem;
+        line-height: 1.5;
+        overflow-x: auto;
+        white-space: pre;
+        color: var(--ink);
+      }
+      .pillar p {
+        font-size: 0.95rem;
+      }
+      .pillar .limit {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tabs button,
+      .toggle button {
+        font: 500 0.9rem var(--body);
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--ink);
+        cursor: pointer;
+        border-radius: 999px;
+      }
+      .tabs button[aria-selected="true"],
+      .toggle button[aria-pressed="true"] {
+        background: var(--ink);
+        color: var(--bg);
+        border-color: var(--ink);
+      }
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .post {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        display: grid;
+      }
+      .post-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+        flex-wrap: wrap;
+      }
+      .post-head span {
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+      .copy {
+        font: 500 0.85rem var(--body);
+        padding: 6px 12px;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        background: transparent;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .post pre {
+        margin: 0;
+        padding: 16px;
+        font-family: var(--body);
+        font-size: 0.95rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        line-height: 1.6;
+      }
+      .slides {
+        display: grid;
+        gap: 1px;
+        background: var(--line);
+      }
+      .slide {
+        background: var(--panel);
+        padding: 14px 16px;
+        display: grid;
+        grid-template-columns: 3.2rem 1fr;
+        gap: 12px;
+      }
+      .slide .n {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 1.6rem;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+      }
+      .slide div {
+        min-width: 0;
+      }
+      .slide strong {
+        display: block;
+        font-family: var(--display);
+        font-size: 1.05rem;
+      }
+      .slide small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-top: 4px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 860px;
+        font-size: 0.88rem;
+      }
+      th,
+      td {
+        padding: 10px 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      thead th {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      tbody th {
+        font-family: var(--display);
+        font-size: 0.98rem;
+        white-space: nowrap;
+      }
+      tr.us {
+        background: var(--chip);
+      }
+      .y {
+        color: var(--moss);
+        font-weight: 600;
+      }
+      .n0 {
+        color: var(--muted);
+      }
+      .p {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .toggle {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .rank {
+        display: grid;
+        gap: 8px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 2rem minmax(0, 12rem) 1fr 3.2rem;
+        gap: 10px;
+        align-items: center;
+      }
+      .row .pos {
+        font-family: var(--mono);
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .row .name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        overflow-wrap: anywhere;
+      }
+      .row .bar {
+        height: 14px;
+        background: var(--chip);
+        position: relative;
+      }
+      .row .bar i {
+        position: absolute;
+        inset: 0 auto 0 0;
+        background: var(--moss);
+      }
+      .row.us .bar i {
+        background: var(--accent);
+      }
+      .row.proj .bar i {
+        background: transparent;
+        border: 2px dashed var(--accent);
+      }
+      .row.proj .name {
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .row .score {
+        font-family: var(--mono);
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .weights {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      details {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 12px 16px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      details table {
+        min-width: 640px;
+        margin-top: 12px;
+      }
+
+      .phase {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        display: grid;
+      }
+      .phase-head {
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 6px;
+      }
+      .phase-head .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .phase-head .meta b {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        counter-reset: step;
+      }
+      .steps > li {
+        counter-increment: step;
+        padding: 16px 18px 16px 66px;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+        display: grid;
+        gap: 6px;
+      }
+      .steps > li:last-child {
+        border-bottom: 0;
+      }
+      .steps > li::before {
+        content: counter(step);
+        position: absolute;
+        left: 16px;
+        top: 14px;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+      }
+      .steps[data-p="0"] > li::before {
+        content: "0." counter(step);
+      }
+      .steps[data-p="1"] > li::before {
+        content: "1." counter(step);
+      }
+      .steps[data-p="2"] > li::before {
+        content: "2." counter(step);
+      }
+      .steps[data-p="3"] > li::before {
+        content: "3." counter(step);
+      }
+      .steps[data-p="4"] > li::before {
+        content: "4." counter(step);
+      }
+      .steps[data-p="C"] > li::before {
+        content: "C." counter(step);
+      }
+      .steps[data-p="R"] > li::before {
+        content: counter(step);
+      }
+      .steps b {
+        font-family: var(--display);
+        font-size: 1.02rem;
+      }
+      .steps p {
+        font-size: 0.93rem;
+      }
+      .steps .done {
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+      .steps .done strong {
+        color: var(--moss);
+        font-weight: 600;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .chips span {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        padding: 2px 8px;
+        background: var(--chip);
+        border-radius: 999px;
+      }
+      .steps ul {
+        margin: 0;
+        padding-left: 1.1em;
+        font-size: 0.93rem;
+        display: grid;
+        gap: 3px;
+      }
+      .goal td,
+      .goal th {
+        font-variant-numeric: tabular-nums;
+      }
+      .goal .up {
+        color: var(--moss);
+        font-weight: 600;
+      }
+      .checklist {
+        display: grid;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .checklist li {
+        padding: 14px 16px;
+        border-left: 3px solid var(--warn);
+        background: var(--panel);
+        display: grid;
+        gap: 4px;
+      }
+      .checklist li b {
+        font-family: var(--display);
+      }
+      .checklist li.ok {
+        border-left-color: var(--moss);
+      }
+      footer {
+        padding-block: 40px 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      @media (max-width: 520px) {
+        .row {
+          grid-template-columns: 1.6rem minmax(0, 7.5rem) 1fr 2.8rem;
+          gap: 8px;
+        }
+        .slide {
+          grid-template-columns: 2.4rem 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .row .bar i {
+          transition: width 0.4s ease;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="eyebrow">
+          Kit de divulgação · Viveiro 0.23.0 · novembro de 2026
+        </p>
+        <h1>
+          Um formigueiro inteiro em equações,
+          <em>e cada uma pode ser auditada.</em>
+        </h1>
+        <p class="lede narrow">
+          Material para redes sociais focado no que é técnico no Viveiro: os
+          cálculos, as leis de conservação, a reprodutibilidade e a forma como o
+          projeto declara os próprios limites. Inclui comparação com outras
+          ferramentas e um ranking de uso em escolas e universidades.
+        </p>
+        <nav aria-label="Seções">
+          <a href="#numeros">Números</a
+          ><a href="#posicionamento">Posicionamento</a
+          ><a href="#pilares">Pilares técnicos</a
+          ><a href="#posts">Posts prontos</a
+          ><a href="#modelos">O que é um modelo</a
+          ><a href="#comparacao">Comparação</a
+          ><a href="#ranking">Ranking educacional</a
+          ><a href="#plano">Plano para o 1º lugar</a
+          ><a href="#ia-formiga">Instruções para uma formiga</a>
+        </nav>
+      </header>
+
+      <section id="numeros">
+        <p class="eyebrow">O projeto em números</p>
+        <div class="stats">
+          <div class="stat"><b>23</b><span>versões (0.1 → 0.23)</span></div>
+          <div class="stat">
+            <b>27</b><span>pull requests integrados, um por etapa</span>
+          </div>
+          <div class="stat">
+            <b>217</b><span>testes automatizados do modelo</span>
+          </div>
+          <div class="stat">
+            <b>~18,9 mil</b><span>linhas de código em src</span>
+          </div>
+          <div class="stat">
+            <b>26</b><span>módulos de domínio (solo, gases, genética…)</span>
+          </div>
+          <div class="stat">
+            <b>29</b><span>documentos técnicos com equações e limites</span>
+          </div>
+        </div>
+        <p class="source">
+          Fonte: branch main, versão 0.23.0, com os PRs #1 a #27 integrados em
+          01/11/2026.
+        </p>
+      </section>
+
+      <section id="posicionamento">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Posicionamento</p>
+          <h2>Simulador exploratório e auditável, não biologia validada</h2>
+          <p>
+            O próprio projeto proíbe apresentar seus modelos como biologia ou
+            engenharia validadas. Isso não enfraquece a divulgação. O ponto
+            forte para o público científico é exatamente esse: cada coeficiente
+            tem unidade, origem e limite escritos, cada recurso é contabilizado,
+            e cada experimento pode ser repetido pela seed. A mensagem central é
+            método, não realismo.
+          </p>
+        </div>
+        <div class="position">
+          <div class="say">
+            <h3>Pode dizer</h3>
+            <ul>
+              <li>
+                Modelo baseado em agentes com percepção estritamente local
+              </li>
+              <li>
+                Alimento, terra, água, gases e reservas maternas com balanço
+                fechado e testado
+              </li>
+              <li>
+                Experimentos reproduzíveis por seed, com replay e checkpoints
+              </li>
+              <li>
+                Previsões avaliadas com MAE, RMSE, viés e cobertura em ensaio
+                reservado
+              </li>
+              <li>
+                Catálogo de parâmetros separa aproximação, hipótese e medida
+                publicada
+              </li>
+              <li>
+                Inspirado em literatura (Helbing e Molnár, Kipyatkov e Lopatina,
+                Willot et al.)
+              </li>
+            </ul>
+          </div>
+          <div class="avoid">
+            <h3>Evite dizer</h3>
+            <ul>
+              <li>"Cientificamente validado" ou "simula a espécie X"</li>
+              <li>"Prevê o comportamento de formigas reais"</li>
+              <li>
+                "Física real do solo" (é um modelo reduzido, não DEM nem
+                geotecnia)
+              </li>
+              <li>
+                "CFD dos túneis" (é uma rede de pressão por analogia laminar)
+              </li>
+              <li>
+                "A IA aprende como uma formiga" (é SARSA em ambiente abstrato)
+              </li>
+              <li>"Código aberto", enquanto não houver arquivo de licença</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="pilares">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Pilares técnicos</p>
+          <h2>O que acontece por baixo da cena 3D</h2>
+          <p>
+            Cada cartão traz a equação como está no código e na documentação,
+            seguida do limite declarado. Use como base para posts individuais ou
+            para o carrossel.
+          </p>
+        </div>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="tag">Navegação · social-forces.ts</span>
+            <h3>Trânsito por forças sociais</h3>
+            <code class="eq"
+              >F = (v_desejada − v)/τ + Σ w·A·max(0, 1/(d+ε) − 1/(R+ε))·n +
+              F_lateral</code
+            >
+            <p>
+              Adaptação do modelo de pedestres de Helbing e Molnár. Quem carrega
+              alimento ou prole tem peso 2 e passagem. Contato antenal
+              persistente gera desvio de 30 a 90 graus sorteado pela seed.
+            </p>
+            <p class="limit">
+              Limite: adaptação de um modelo humano; parâmetros sem calibração
+              para formigas.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Terreno · field.ts</span>
+            <h3>Andar sobre uma superfície implícita</h3>
+            <code class="eq"
+              >v_t = v − n(v·n) p' = p + Δt·v_t − (φ(p') − margem)·n</code
+            >
+            <p>
+              O solo é um campo de distância assinado. A malha visual é extraída
+              do mesmo campo, então física e desenho coincidem. O deslocamento
+              por passo é limitado, sem saltos entre paredes.
+            </p>
+            <p class="limit">
+              Limite: cavidades como uniões de esferas e cápsulas, não grãos.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Química · campos.md</span>
+            <h3>Feromônio por reação-difusão</h3>
+            <code class="eq"
+              >∂C/∂t = D∇²C − λC 4DΔt/h² + (|vx|+|vz|)Δt/h ≤ 0,85</code
+            >
+            <p>
+              Volumes finitos conservativos: todo fluxo sai de uma célula e
+              entra na vizinha. O número de subpassos respeita a condição de
+              estabilidade. Vento entra por advecção a montante, e a umidade
+              altera D e λ.
+            </p>
+            <p class="limit">
+              Limite: unidades do modelo, sem química calibrada por espécie.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Decisão · ACO e limiares</span>
+            <h3>Escolha probabilística e divisão de tarefas</h3>
+            <code class="eq"
+              >P(saída) ∝ τ^α · η^β (+ exploração) resposta = S² / (S² +
+              θ²)</code
+            >
+            <p>
+              Otimização por colônia de formigas com sensores a 0,7 unidade.
+              Cada operária tem limiares individuais estáveis pela seed,
+              modulados por idade, casta e atividade. A memória guarda no máximo
+              64 arestas percorridas, sem mapa global.
+            </p>
+            <p class="limit">
+              Limite: estímulos abstratos dentro de um raio local.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Genética · genetics</span>
+            <h3>Herança haplodiploide digital</h3>
+            <code class="eq"
+              >fêmea = recomb(mãe₁, mãe₂) + pai macho = cópia materna única 11
+              locos ∈ [0, 1]</code
+            >
+            <p>
+              Genomas com pais, geração e mutações registradas antes e depois.
+              Afetam velocidade, corpo, antenas, metabolismo, escavação e
+              limiares. Colônias filhas fundadas por rainhas da geração
+              seguinte.
+            </p>
+            <p class="limit">Limite: locos abstratos, não genes moleculares.</p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Solo solto · granular.md</span>
+            <h3>Terra que cai e se acomoda</h3>
+            <code class="eq"
+              >F_n = max(0, 0,08·δ − 0,3·v_n)·m_red |J_t| ≤ μ·J_n, μ = tan
+              θ_repouso</code
+            >
+            <p>
+              Agregados com gravidade, mola dissipativa e atrito de Coulomb,
+              quatro subpassos por tick. Impulsos opostos preservam o momento
+              linear do par. Ângulo de repouso ajustável de 15° a 55°.
+            </p>
+            <p class="limit">
+              Limite: agregados macroscópicos; sem DEM do solo compacto.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Estrutura · suporte-estrutural.md</span>
+            <h3>O teto do túnel aguenta?</h3>
+            <code class="eq"
+              >σ' = max(0, ρgH − u) cap = 2(c + σ'·tanφ)·t·A/L + 6ct²/L² margem
+              = cap / [σ(1 − 0,45A)]</code
+            >
+            <p>
+              Vão, espessura e apoio lateral são medidos no mesmo campo do
+              terreno. Coesão depende da saturação. Dano acumula com margem
+              abaixo de 1 e solta agregados que as operárias recolhem.
+            </p>
+            <p class="limit">
+              Limite: analogia de cisalhamento e placa; não é fator de segurança
+              normativo.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Microclima · agua-e-calor.md</span>
+            <h3>Água e calor no solo</h3>
+            <code class="eq"
+              >q_ij = cap·Δt·[0,0015(s_i − s_j) + 0,00015·s̄²·Δh/dist]</code
+            >
+            <p>
+              Grade 3D de 20 × 8 × 13 células (2.080) sob o relevo. Chuva,
+              lagos, evaporação e plantas entram no balanço. A temperatura do
+              solo tem memória própria e não copia o slider do ar.
+            </p>
+            <p class="limit">
+              Limite: tendência capilar, não a equação de Richards completa.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Ventilação · gases-e-ventilacao.md</span>
+            <h3>O ninho respira</h3>
+            <code class="eq"
+              >Q_ab = G_ab·(p_a − p_b + H_ab) G_ab = 0,02·r⁴/ℓ · abertura⁴ Σ Q =
+              0 → gradiente conjugado</code
+            >
+            <p>
+              O₂ e CO₂ por câmara, respiração das formigas, vento nas entradas e
+              empuxo térmico. A rede de pressão é resolvida por gradiente
+              conjugado com residual registrado. Entulho estreita a passagem e
+              reduz o fluxo.
+            </p>
+            <p class="limit">
+              Limite: rede isotérmica por compartimento, não CFD.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Desenvolvimento · maturacao.md</span>
+            <h3>Prole que depende da temperatura local</h3>
+            <code class="eq"
+              >r(T) = max(0, min(1, (T−10)/15, (38−T)/13)) Δprog =
+              s/(100d)·r(T)·r(água)·alimento ·variação·(1 − 0,5·estresse)</code
+            >
+            <p>
+              Sensor na própria cria ou em quem a carrega. Larva cresce na
+              fração de alimento efetivamente paga. Diapausa com frio acumulado:
+              aquecer sozinho não apaga a memória sazonal.
+            </p>
+            <p class="limit">
+              Limite: curva demonstrativa; durações em dias acelerados do
+              modelo.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Aprendizado · aprendizado-local.md</span>
+            <h3>Um cérebro pequeno por formiga</h3>
+            <code class="eq"
+              >δ = r + γQ(s′,a′) − Q(s,a) θ ← θ + α·clip(δ, −1, 1)·∇Q(s,a)</code
+            >
+            <p>
+              Rede 6 → 8 tanh → 1, com 65 coeficientes. Cada formiga ajusta só
+              os próprios pesos. Treino em Worker, comparado com ACO e rede sem
+              treino em 64 cenários reservados.
+            </p>
+            <p class="limit">
+              Limite: ambiente de treino abstrato; sem prova de convergência.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Previsão · avaliacao-previsoes.md</span>
+            <h3>Prever e medir o erro</h3>
+            <code class="eq"
+              >MAE 7 dias (adultos): estado completo 1,17 só contagem 20,67 base
+              constante 35,50</code
+            >
+            <p>
+              Ensaio pré-registrado: 3 seeds, 2 origens, horizontes de 1, 3 e 7
+              dias, 6 futuros por origem. Nenhuma seed descartada. Mede quanto a
+              informação disponível muda a previsibilidade.
+            </p>
+            <p class="limit">
+              Limite: erro contra o próprio motor, amostra pequena; não mede
+              fidelidade à natureza.
+            </p>
+          </article>
+        </div>
+        <div class="narrow" style="display: grid; gap: 10px">
+          <h3>A base de tudo: nada surge do nada</h3>
+          <p>
+            Os testes verificam balanços fechados. Na terra,
+            <code>removido + erodido = carga + depósitos + terra solta</code>.
+            Trofalaxia conserva alimento. Perdas de prole não reembolsam
+            recursos. Ao restaurar um checkpoint, o futuro é numericamente
+            idêntico. Esse é o argumento mais forte para o público acadêmico.
+          </p>
+        </div>
+      </section>
+
+      <section id="posts">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Posts prontos</p>
+          <h2>Textos para copiar e ajustar</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Formato do post">
+          <button
+            role="tab"
+            id="tab-carrossel"
+            aria-selected="true"
+            aria-controls="p-carrossel"
+          >
+            Carrossel
+          </button>
+          <button
+            role="tab"
+            id="tab-linkedin"
+            aria-selected="false"
+            aria-controls="p-linkedin"
+          >
+            LinkedIn
+          </button>
+          <button
+            role="tab"
+            id="tab-thread"
+            aria-selected="false"
+            aria-controls="p-thread"
+          >
+            Thread (X, Threads, Bluesky)
+          </button>
+          <button
+            role="tab"
+            id="tab-video"
+            aria-selected="false"
+            aria-controls="p-video"
+          >
+            Roteiro de vídeo curto
+          </button>
+          <button
+            role="tab"
+            id="tab-edu"
+            aria-selected="false"
+            aria-controls="p-edu"
+          >
+            Para professores
+          </button>
+        </div>
+
+        <div
+          class="post"
+          role="tabpanel"
+          id="p-carrossel"
+          aria-labelledby="tab-carrossel"
+        >
+          <div class="post-head">
+            <span
+              >Instagram ou LinkedIn · 9 slides · texto de cada slide e
+              legenda</span
+            ><button class="copy" data-copy="t-carrossel">Copiar tudo</button>
+          </div>
+          <div class="slides">
+            <div class="slide">
+              <span class="n">1</span>
+              <div>
+                <strong>Um formigueiro inteiro em equações.</strong>E você pode
+                auditar cada uma.<small
+                  >Visual: corte lateral do terrário com túneis junto ao
+                  vidro.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">2</span>
+              <div>
+                <strong>Nenhuma formiga tem o mapa.</strong>Cada uma sente
+                química a 0,7 unidade, alimento a 2,3 e lembra no máximo 64
+                trechos que já percorreu.<small
+                  >Visual: câmera em primeira pessoa de uma operária.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">3</span>
+              <div>
+                <strong>Feromônio é física.</strong>∂C/∂t = D∇²C − λC, em
+                volumes finitos que conservam massa, com passo de tempo limitado
+                pela condição de estabilidade.<small
+                  >Visual: mapa de concentração sobre o solo.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">4</span>
+              <div>
+                <strong>Engarrafamento no túnel.</strong>Forças sociais
+                adaptadas de modelos de pedestres. Quem carrega comida ou cria
+                tem prioridade. Contato antenal gera desvio de 30° a 90°.<small
+                  >Visual: fila de formigas cedendo passagem.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">5</span>
+              <div>
+                <strong>A terra cai de verdade.</strong>Gravidade, contato
+                dissipativo e atrito de Coulomb. O ângulo de repouso define μ =
+                tan θ.<small
+                  >Visual: agregado caindo do teto e sendo recolhido.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">6</span>
+              <div>
+                <strong>O ninho respira.</strong>O₂ e CO₂ por câmara, vento e
+                empuxo térmico, resolvidos como rede de pressão por gradiente
+                conjugado.<small
+                  >Visual: diagrama de ventilação do painel.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">7</span>
+              <div>
+                <strong>Nada surge do nada.</strong>Alimento, terra, água, gases
+                e reservas da rainha com balanço fechado. 217 testes
+                automatizados.<small
+                  >Visual: equação do balanço de terra.</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">8</span>
+              <div>
+                <strong>Prever é medir o erro.</strong>Em 7 dias, erro médio de
+                1,17 adulto com o estado completo, 20,67 só com contagens e
+                35,50 mantendo a população constante.<small
+                  >Visual: tabela de MAE por horizonte. Rodapé: "ensaio contra o
+                  próprio modelo".</small
+                >
+              </div>
+            </div>
+            <div class="slide">
+              <span class="n">9</span>
+              <div>
+                <strong>Exploratório e transparente.</strong>Cada coeficiente
+                com unidade, fonte e limite escritos. Repita qualquer
+                experimento pela seed.<small
+                  >Visual: catálogo de parâmetros. CTA para o link.</small
+                >
+              </div>
+            </div>
+          </div>
+          <pre id="t-carrossel" hidden>
+SLIDE 1
+Um formigueiro inteiro em equações.
+E você pode auditar cada uma.
+
+SLIDE 2
+Nenhuma formiga tem o mapa.
+Cada uma sente química a 0,7 unidade, alimento a 2,3 e lembra no máximo 64 trechos que já percorreu.
+
+SLIDE 3
+Feromônio é física.
+∂C/∂t = D∇²C − λC, em volumes finitos que conservam massa, com passo de tempo limitado pela condição de estabilidade.
+
+SLIDE 4
+Engarrafamento no túnel.
+Forças sociais adaptadas de modelos de pedestres. Quem carrega comida ou cria tem prioridade. Contato antenal gera desvio de 30° a 90°.
+
+SLIDE 5
+A terra cai de verdade.
+Gravidade, contato dissipativo e atrito de Coulomb. O ângulo de repouso define μ = tan θ.
+
+SLIDE 6
+O ninho respira.
+O₂ e CO₂ por câmara, vento e empuxo térmico, resolvidos como rede de pressão por gradiente conjugado.
+
+SLIDE 7
+Nada surge do nada.
+Alimento, terra, água, gases e reservas da rainha com balanço fechado. 217 testes automatizados.
+
+SLIDE 8
+Prever é medir o erro.
+Em 7 dias, erro médio de 1,17 adulto com o estado completo, 20,67 só com contagens e 35,50 mantendo a população constante.
+(Ensaio contra o próprio modelo, não contra formigas reais.)
+
+SLIDE 9
+Exploratório e transparente.
+Cada coeficiente com unidade, fonte e limite escritos. Repita qualquer experimento pela seed.
+
+LEGENDA
+O Viveiro é um terrário 3D no navegador onde cada formiga decide só com o que sente por perto. Por baixo da cena há reação-difusão de feromônios, forças sociais no trânsito, atrito de Coulomb na terra solta, rede de pressão na ventilação e genética haplodiploide.
+
+O mais importante: tudo é contabilizado. Se um grão de terra sai do túnel, ele aparece em algum lugar. Se a previsão erra, o erro é medido.
+
+É um modelo exploratório, sem calibração por espécie, e diz isso em cada documento. Esse é o ponto.
+
+#simulação #modelagembaseadaemagentes #formigas #ciênciacomputacional #ecologia #threejs #ensinodeciências</pre>
+        </div>
+
+        <div
+          class="post"
+          role="tabpanel"
+          id="p-linkedin"
+          aria-labelledby="tab-linkedin"
+          hidden
+        >
+          <div class="post-head">
+            <span>Post longo · tom técnico</span
+            ><button class="copy" data-copy="t-linkedin">Copiar</button>
+          </div>
+          <pre id="t-linkedin">
+Construímos um formigueiro em que nenhuma formiga conhece o mapa.
+
+O Viveiro é um simulador 3D de colônias no navegador. Cada agente percebe apenas o entorno: química amostrada a 0,7 unidade, alimento a 2,3 e uma memória de até 64 trechos percorridos. O comportamento coletivo surge dessas decisões locais.
+
+O que há por baixo:
+
+• Feromônios por reação-difusão (∂C/∂t = D∇²C − λC) em volumes finitos conservativos, com subpassos que respeitam a condição de estabilidade.
+• Trânsito nos túneis por forças sociais adaptadas de Helbing e Molnár, com prioridade para quem carrega carga.
+• Terra solta com gravidade, contato dissipativo e atrito de Coulomb.
+• Teto dos túneis com uma razão capacidade/carga que depende de vão, espessura, apoio e saturação do solo.
+• Ventilação por rede de pressão resolvida com gradiente conjugado: O₂, CO₂, vento e empuxo térmico.
+• Genética haplodiploide com 11 locos, mutações registradas e novas colônias fundadas por filhas.
+• Desenvolvimento da prole por curva térmica local e diapausa com memória de frio acumulado.
+• Política neural opcional (SARSA) com pesos individuais por formiga, comparada com ACO.
+
+O que considero mais relevante para uso científico não é o realismo. É a contabilidade. Alimento, terra, água, gases e reservas maternas fecham balanço e são verificados por 217 testes. Checkpoints restaurados produzem o mesmo futuro, número por número. As previsões são avaliadas em ensaio reservado, com MAE, RMSE, viés e cobertura.
+
+E cada documento diz o que o modelo não é: não é CFD, não é DEM do solo, não é calibrado para nenhuma espécie. Um catálogo versionado separa aproximações do motor, hipóteses recebidas e medidas publicadas.
+
+É um laboratório para estudar emergência, previsibilidade e caos com transparência total sobre os pressupostos.
+
+#ModelagemBaseadaEmAgentes #SimulaçãoComputacional #VidaArtificial #Ecologia #EnsinoDeCiências</pre>
+        </div>
+
+        <div
+          class="post"
+          role="tabpanel"
+          id="p-thread"
+          aria-labelledby="tab-thread"
+          hidden
+        >
+          <div class="post-head">
+            <span>7 posts curtos · até 280 caracteres cada</span
+            ><button class="copy" data-copy="t-thread">Copiar</button>
+          </div>
+          <pre id="t-thread">
+1/ Fizemos um formigueiro 3D em que nenhuma formiga tem o mapa. Cada uma decide só com o que sente por perto. Abaixo, os cálculos que fazem isso funcionar.
+
+2/ Feromônio: ∂C/∂t = D∇²C − λC, em volumes finitos. Todo fluxo que sai de uma célula entra na vizinha. O passo de tempo respeita 4DΔt/h² + |v|Δt/h ≤ 0,85.
+
+3/ Trânsito: forças sociais (modelo de pedestres de Helbing e Molnár, adaptado). Quem carrega comida ou cria passa primeiro. Contato antenal gera desvio de 30° a 90°.
+
+4/ Terra solta: gravidade, mola dissipativa e atrito de Coulomb, com μ = tan(ângulo de repouso). O teto do túnel tem razão capacidade/carga que piora com solo encharcado.
+
+5/ Ventilação: O₂ e CO₂ por câmara, vento e empuxo térmico. Uma rede de pressão resolvida por gradiente conjugado. Entulho no túnel reduz o fluxo.
+
+6/ Tudo fecha balanço: alimento, terra, água, gases. 217 testes. Restaurar um save gera o mesmo futuro, número por número.
+
+7/ Previsão em 7 dias: erro de 1,17 adulto com estado completo, 20,67 só com contagens. Medido contra o próprio modelo. Sem calibração por espécie, e isso está escrito em cada documento.</pre>
+        </div>
+
+        <div
+          class="post"
+          role="tabpanel"
+          id="p-video"
+          aria-labelledby="tab-video"
+          hidden
+        >
+          <div class="post-head">
+            <span>Reels, Shorts ou TikTok · cerca de 35 segundos</span
+            ><button class="copy" data-copy="t-video">Copiar</button>
+          </div>
+          <pre id="t-video">
+[0–3 s] Câmera mergulha da superfície para dentro do túnel em primeira pessoa.
+Texto: "Esta formiga não sabe onde está."
+
+[3–8 s] Vista lateral do vidro, mapa de feromônio aceso.
+Narração: "Ela só sente o cheiro a poucos milímetros. O caminho surge da química."
+Texto: ∂C/∂t = D∇²C − λC
+
+[8–14 s] Fila no túnel, uma operária com larva passando primeiro.
+Narração: "No trânsito, quem carrega cria tem prioridade. São forças sociais, como em multidões humanas."
+
+[14–20 s] Pedaço do teto se soltando e caindo; operária recolhendo.
+Narração: "A terra tem gravidade e atrito. Se o solo encharca, o teto perde resistência."
+
+[20–26 s] Painel de ventilação com O₂ e CO₂.
+Narração: "O ninho respira. Vento e calor movem o ar pelas câmaras."
+
+[26–32 s] Tabela de erro de previsão.
+Narração: "E toda previsão tem o erro medido."
+
+[32–35 s] Logo e link.
+Texto: "Viveiro. Exploratório, reproduzível, auditável."</pre>
+        </div>
+
+        <div
+          class="post"
+          role="tabpanel"
+          id="p-edu"
+          aria-labelledby="tab-edu"
+          hidden
+        >
+          <div class="post-head">
+            <span>Para grupos de professores e coordenações</span
+            ><button class="copy" data-copy="t-edu">Copiar</button>
+          </div>
+          <pre id="t-edu">
+Ideias de aula com o Viveiro
+
+Ensino médio
+• Biologia: castas, divisão de tarefas por limiares de resposta, haplodiploidia e parentesco.
+• Física: atrito e ângulo de repouso. Mude o ângulo de 15° para 55° e observe a terra se acomodar.
+• Química: difusão e evaporação de feromônios. Compare com tinta se espalhando na água.
+• Ecologia: pulgões e melaço, mimetismo químico, competição entre colônias.
+
+Graduação
+• Modelagem: reação-difusão com condição de estabilidade, gradiente conjugado em rede de pressão.
+• Computação: ACO versus aprendizado por reforço (SARSA) com pesos individuais.
+• Estatística: previsões por ensemble, MAE, RMSE e cobertura por horizonte.
+• Filosofia da ciência: o que separa um modelo exploratório de um modelo calibrado? O catálogo do Viveiro mostra a diferença em cada parâmetro.
+
+Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenção e compare as populações. Isso é caos ou acaso?</pre>
+        </div>
+      </section>
+
+      <section id="modelos">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Conceito</p>
+          <h2>O que é um modelo baseado em agentes</h2>
+          <p>
+            É uma forma de estudar um sistema programando cada indivíduo, em vez
+            do grupo inteiro. Você escreve regras simples para cada agente (uma
+            formiga, uma pessoa, um carro), coloca muitos juntos e observa o que
+            o grupo faz.
+          </p>
+          <p>
+            O exemplo clássico é o modelo de formigas do NetLogo, com três
+            regras:
+          </p>
+          <ol style="margin: 0; padding-left: 1.3em; display: grid; gap: 4px">
+            <li>Ande ao acaso procurando comida.</li>
+            <li>Achou comida? Volte ao ninho deixando um rastro de cheiro.</li>
+            <li>Sentiu cheiro? Siga para onde ele é mais forte.</li>
+          </ol>
+          <p>
+            Nenhuma formiga sabe onde está a comida mais próxima e nenhuma
+            recebe ordens. Mesmo assim surgem trilhas até a fonte mais perto do
+            ninho. Esse comportamento coletivo, que ninguém programou
+            diretamente, se chama <b>emergência</b>. É o que essa modelagem
+            estuda.
+          </p>
+          <p>
+            A alternativa tradicional é uma equação para o total, como "a
+            população cresce 3% ao dia". Ela funciona quando os indivíduos são
+            parecidos e o espaço não importa. Modelos de agentes servem quando
+            cada indivíduo é diferente, quando o lugar onde ele está faz
+            diferença e quando o resultado depende de quem encontra quem.
+          </p>
+        </div>
+
+        <h3>Para que serve</h3>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="tag">Saúde</span>
+            <h3>Epidemias</h3>
+            <p>
+              Cada pessoa é um agente com rotina e contatos. Ajuda a comparar
+              medidas, como fechar escolas ou vacinar primeiro um grupo.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Engenharia</span>
+            <h3>Multidões e trânsito</h3>
+            <p>
+              Evacuação de estádios e estações. O modelo de forças sociais usado
+              nos túneis do Viveiro veio de estudos de pedestres.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Ecologia</span>
+            <h3>Populações e ambiente</h3>
+            <p>
+              Pesca, predadores e presas, espécies invasoras, uso do território.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Economia e cidades</span>
+            <h3>Decisões coletivas</h3>
+            <p>Mercados, segregação urbana e ocupação do solo.</p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Computação</span>
+            <h3>Otimização inspirada em formigas</h3>
+            <p>
+              O algoritmo ACO, também usado no Viveiro, é aplicado para
+              encontrar rotas curtas em entregas e redes.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Pesquisa</span>
+            <h3>Laboratório virtual</h3>
+            <p>
+              Testar o que seria caro ou impossível na realidade: "e se o solo
+              fosse mais úmido?", "e se a rainha precisasse buscar comida?".
+            </p>
+          </article>
+        </div>
+
+        <div class="narrow" style="display: grid; gap: 12px">
+          <h3>Como se estuda</h3>
+          <ol style="margin: 0; padding-left: 1.3em; display: grid; gap: 6px">
+            <li>
+              <b>Pergunta.</b> Por exemplo, "por que as formigas formam
+              trilhas?".
+            </li>
+            <li>
+              <b>Regras.</b> Quais comportamentos simples cada agente tem.
+            </li>
+            <li>
+              <b>Programação.</b> Em NetLogo (feito para ensino), Mesa (Python)
+              ou GAMA.
+            </li>
+            <li>
+              <b>Muitas execuções.</b> Há sorteios, então um resultado sozinho
+              não prova nada. A seed permite repetir exatamente a mesma
+              execução.
+            </li>
+            <li>
+              <b>Variar parâmetros.</b> Mudar uma coisa de cada vez e medir o
+              efeito.
+            </li>
+            <li>
+              <b>Comparar com dados reais.</b> É a validação. Sem ela o modelo é
+              exploratório: mostra o que pode acontecer, não o que acontece na
+              natureza. É onde o Viveiro está hoje.
+            </li>
+            <li>
+              <b>Documentar.</b> O protocolo ODD descreve o modelo para que
+              outra pessoa consiga reproduzi-lo.
+            </li>
+          </ol>
+          <p>
+            <b>Onde aprender:</b> o livro
+            <i>An Introduction to Agent-Based Modeling</i>, de Wilensky e Rand
+            (Wilensky criou o NetLogo);
+            <i>Agent-Based and Individual-Based Modeling</i>, de Railsback e
+            Grimm, voltado para biologia; e o curso introdutório gratuito do
+            Complexity Explorer, do Santa Fe Institute. Na graduação, o tema
+            aparece em ecologia, computação, engenharia e economia, muitas vezes
+            como "sistemas complexos".
+          </p>
+        </div>
+
+        <div class="position">
+          <div class="say">
+            <h3>NetLogo: o aluno escreve as regras</h3>
+            <p>
+              Simples e visual. Ideal para aprender a construir um modelo do
+              zero. Por isso é a referência no ensino.
+            </p>
+          </div>
+          <div class="say">
+            <h3>Viveiro: o aluno experimenta com regras detalhadas</h3>
+            <p>
+              As regras já vêm escritas e cobrem solo, ar, genética e prole.
+              Hoje o aluno não escreve as próprias regras; a proposta de
+              <a href="#ia-formiga">instruções em português</a> muda isso.
+            </p>
+          </div>
+        </div>
+        <p class="narrow">
+          Sugestão de aula: primeiro o aluno monta as três regras da trilha de
+          feromônio no NetLogo e entende a emergência. Depois abre o Viveiro e
+          vê o mesmo princípio convivendo com terra que desaba, túneis sem ar e
+          rainhas que envelhecem.
+        </p>
+      </section>
+
+      <section id="comparacao">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Comparação com o mercado</p>
+          <h2>Onde o Viveiro se encaixa</h2>
+          <p>
+            Comparação qualitativa com plataformas de modelagem, simuladores
+            educacionais e jogos de formigas. As colunas descrevem o que vem
+            pronto; NetLogo, GAMA e Mesa permitem construir quase tudo, mas
+            exigem programar.
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ferramenta</th>
+                <th>Tipo</th>
+                <th>Formigas prontas</th>
+                <th>3D</th>
+                <th>Física de solo e ar</th>
+                <th>Conservação testada</th>
+                <th>Seed e replay</th>
+                <th>Previsão avaliada</th>
+                <th>Aluno edita o modelo</th>
+                <th>Maturidade e literatura</th>
+                <th>Custo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="us">
+                <th>Viveiro</th>
+                <td>Simulador ABM de formigueiro, navegador</td>
+                <td class="y">Colônia completa</td>
+                <td class="y">Sim</td>
+                <td class="y">Solo, água, calor, gases</td>
+                <td class="y">217 testes</td>
+                <td class="y">Sim, com checkpoints</td>
+                <td class="y">MAE, RMSE, cobertura</td>
+                <td class="p">Parâmetros e intervenções</td>
+                <td class="n0">Projeto novo, sem publicações</td>
+                <td>Gratuito (sem licença definida)</td>
+              </tr>
+              <tr>
+                <th>NetLogo</th>
+                <td>Linguagem e ambiente ABM</td>
+                <td class="p">Modelo Ants simples</td>
+                <td class="p">NetLogo 3D</td>
+                <td class="n0">Não pronto</td>
+                <td class="n0">Depende do modelo</td>
+                <td class="y">Sim</td>
+                <td class="n0">Via BehaviorSpace</td>
+                <td class="y">Total</td>
+                <td class="y">Referência há décadas</td>
+                <td>Gratuito, código aberto</td>
+              </tr>
+              <tr>
+                <th>GAMA Platform</th>
+                <td>Plataforma ABM com GIS</td>
+                <td class="n0">Exemplos</td>
+                <td class="y">Sim</td>
+                <td class="n0">Não pronto</td>
+                <td class="n0">Depende do modelo</td>
+                <td class="y">Sim</td>
+                <td class="p">Ferramentas de exploração</td>
+                <td class="y">Total (GAML)</td>
+                <td class="y">Forte na pesquisa</td>
+                <td>Gratuito, código aberto</td>
+              </tr>
+              <tr>
+                <th>Mesa</th>
+                <td>Biblioteca ABM em Python</td>
+                <td class="n0">Exemplos da comunidade</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não pronto</td>
+                <td class="n0">Depende do modelo</td>
+                <td class="y">Sim</td>
+                <td class="p">Com o ecossistema Python</td>
+                <td class="y">Total</td>
+                <td class="y">Usada em pesquisa</td>
+                <td>Gratuito, código aberto</td>
+              </tr>
+              <tr>
+                <th>PhET (Seleção Natural)</th>
+                <td>Simulação educacional</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não se aplica</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="y">Muito usada em escolas</td>
+                <td>Gratuito, em português</td>
+              </tr>
+              <tr>
+                <th>Avida-ED</th>
+                <td>Evolução digital educacional</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não se aplica</td>
+                <td class="y">Sim</td>
+                <td class="n0">Não</td>
+                <td class="p">Parâmetros</td>
+                <td class="y">Base Avida, com pesquisa em ensino</td>
+                <td>Gratuito</td>
+              </tr>
+              <tr>
+                <th>The Bibites</th>
+                <td>Vida artificial com redes neurais</td>
+                <td class="n0">Não</td>
+                <td class="n0">2D</td>
+                <td class="n0">Não</td>
+                <td class="n0">Energia aproximada</td>
+                <td class="p">Parcial</td>
+                <td class="n0">Não</td>
+                <td class="p">Parâmetros</td>
+                <td class="n0">Comunidade de entusiastas</td>
+                <td>Gratuito</td>
+              </tr>
+              <tr>
+                <th>SimAnt (1991)</th>
+                <td>Jogo de simulação</td>
+                <td class="p">Colônia simplificada</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Clássico, sem atualização</td>
+                <td>Disponibilidade limitada</td>
+              </tr>
+              <tr>
+                <th>Empires of the Undergrowth</th>
+                <td>Jogo de estratégia</td>
+                <td class="p">Espécies reais, jogabilidade</td>
+                <td class="y">Sim</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Não</td>
+                <td class="n0">Entretenimento</td>
+                <td>Pago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="narrow" style="display: grid; gap: 10px">
+          <p>
+            <b>Diferencial do Viveiro:</b> nenhuma das outras ferramentas
+            entrega pronto um formigueiro em que navegação, química, solo,
+            microclima, genética, prole e previsão rodam acoplados no mesmo
+            modelo, com conservação testada e replay por seed, direto no
+            navegador.
+          </p>
+          <p>
+            <b>Onde perde:</b> maturidade, base de publicações, comunidade,
+            material didático, e a possibilidade de o aluno escrever o próprio
+            modelo. NetLogo continua sendo a referência para ensinar modelagem
+            baseada em agentes.
+          </p>
+          <p>
+            <b>Mensagem sugerida:</b> complementar, não concorrente. "Aprenda o
+            modelo de formigas no NetLogo; veja o que acontece quando o mesmo
+            princípio encontra solo, ar e genética no Viveiro."
+          </p>
+        </div>
+      </section>
+
+      <section id="ranking">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Ranking educacional</p>
+          <h2>Quem serve melhor em sala de aula</h2>
+          <p>
+            Notas de 0 a 10 por critério, atribuídas a partir da análise do
+            repositório e do conhecimento público sobre cada ferramenta. São
+            avaliações editoriais, não medições. As linhas tracejadas mostram
+            onde o Viveiro chega ao concluir o cronograma atual do projeto
+            (etapas 10C a 14) e as fases do
+            <a href="#plano">plano para o 1º lugar</a>.
+          </p>
+        </div>
+        <div class="toggle" role="group" aria-label="Contexto do ranking">
+          <button id="btn-uni" aria-pressed="true" data-ctx="uni">
+            Universidades
+          </button>
+          <button id="btn-esc" aria-pressed="false" data-ctx="esc">
+            Escolas (ensino médio)
+          </button>
+        </div>
+        <p class="weights" id="weights"></p>
+        <div class="rank" id="rank" aria-live="polite"></div>
+        <p class="narrow" id="rank-note"></p>
+        <details>
+          <summary>Ver as notas por critério</summary>
+          <div class="table-wrap" style="border: 0">
+            <table id="score-table"></table>
+          </div>
+        </details>
+      </section>
+
+      <section id="plano">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Plano para o 1º lugar</p>
+          <h2>Passos de implementação, em ordem</h2>
+          <p>
+            Cinco fases. A fase C conclui o cronograma que o projeto já tem
+            (etapas 10C, 12, 13 e 14) e corre em paralelo às fases 1 e 2. Cada
+            passo diz o que fazer, onde mexer no repositório, quando está pronto
+            e qual critério do ranking ele sobe. Siga as regras do AGENTS.md em
+            todos: branch própria com prefixo <code>codex/</code>, testes do
+            modelo, verificação no navegador, tag da versão e publicação.
+          </p>
+          <p>
+            <b>Resumo:</b> as fases 0 e 1 bastam para o 1º lugar em escolas. Nas
+            universidades, o cronograma mais as fases 0 a 2 levam ao 2º lugar. O
+            1º só vem com a fase 3, que exige dados reais e revisão por pares, e
+            que depende das etapas 13 e 14 do cronograma. Esse é o trecho mais
+            demorado e não depende só de código.
+          </p>
+          <p>
+            <b>O peso do cronograma:</b> sozinho, ele sobe a nota de 6,05 para
+            6,40 nas universidades e de 6,70 para 6,85 nas escolas. Ele
+            aprofunda o modelo, que já é o ponto forte. As maiores lacunas são
+            validação, extensibilidade e material didático, que só as fases 0 a
+            3 resolvem. Por isso o plano não pede para esperar o cronograma
+            terminar antes de começar as fases 0 e 1.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="goal">
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>Peso</th>
+                <th>Hoje</th>
+                <th>Só cronograma 10C–14</th>
+                <th>Cronograma e fases 0–2</th>
+                <th>Após fase 3</th>
+                <th>Passos que movem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th colspan="7">Universidades · líder atual: NetLogo 8,50</th>
+              </tr>
+              <tr>
+                <td>Rigor e transparência</td>
+                <td>20%</td>
+                <td>8</td>
+                <td class="up">9</td>
+                <td class="up">10</td>
+                <td class="up">10</td>
+                <td>C.1 a C.3, 2.1, 2.4</td>
+              </tr>
+              <tr>
+                <td>Reprodutibilidade</td>
+                <td>15%</td>
+                <td>9</td>
+                <td class="up">10</td>
+                <td class="up">10</td>
+                <td class="up">10</td>
+                <td>C.4, 0.4, 2.2, 2.3</td>
+              </tr>
+              <tr>
+                <td>Validação e literatura</td>
+                <td>15%</td>
+                <td>3</td>
+                <td>3</td>
+                <td class="up">4</td>
+                <td class="up">7</td>
+                <td>0.4, 3.1 a 3.4 (dependem de C.3 e C.4)</td>
+              </tr>
+              <tr>
+                <td>Aluno estende o modelo</td>
+                <td>15%</td>
+                <td>4</td>
+                <td>4</td>
+                <td class="up">9</td>
+                <td class="up">9</td>
+                <td>2.2, 2.5, 2.6</td>
+              </tr>
+              <tr>
+                <td>Acesso e custo</td>
+                <td>10%</td>
+                <td>7</td>
+                <td>7</td>
+                <td class="up">9</td>
+                <td class="up">9</td>
+                <td>0.1, 0.3, 1.1</td>
+              </tr>
+              <tr>
+                <td>Engajamento visual</td>
+                <td>10%</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>já é ponto forte</td>
+              </tr>
+              <tr>
+                <td>Material didático e comunidade</td>
+                <td>15%</td>
+                <td>3</td>
+                <td>3</td>
+                <td class="up">7</td>
+                <td class="up">8</td>
+                <td>1.4, 2.7, 4.1 a 4.3</td>
+              </tr>
+              <tr>
+                <td><b>Total</b></td>
+                <td></td>
+                <td><b>6,05</b> (6º)</td>
+                <td><b>6,40</b> (5º)</td>
+                <td><b>8,30</b> (2º)</td>
+                <td><b>8,90</b> (1º)</td>
+                <td></td>
+              </tr>
+              <tr>
+                <th colspan="7">Escolas · líder atual: PhET 8,70</th>
+              </tr>
+              <tr>
+                <td>Engajamento visual</td>
+                <td>20%</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>já é ponto forte</td>
+              </tr>
+              <tr>
+                <td>Facilidade de uso</td>
+                <td>20%</td>
+                <td>6</td>
+                <td>6</td>
+                <td class="up">9</td>
+                <td class="up">9</td>
+                <td>1.2, 1.3, 1.6</td>
+              </tr>
+              <tr>
+                <td>Material didático</td>
+                <td>20%</td>
+                <td>3</td>
+                <td>3</td>
+                <td class="up">9</td>
+                <td class="up">9</td>
+                <td>1.3, 1.4, 1.7</td>
+              </tr>
+              <tr>
+                <td>Acesso, custo e hardware</td>
+                <td>15%</td>
+                <td>6</td>
+                <td>6</td>
+                <td class="up">9</td>
+                <td class="up">9</td>
+                <td>0.1, 0.3, 1.1, 1.5</td>
+              </tr>
+              <tr>
+                <td>Rigor conceitual</td>
+                <td>15%</td>
+                <td>8</td>
+                <td class="up">9</td>
+                <td class="up">9</td>
+                <td class="up">10</td>
+                <td>C.1, C.2, 3.3</td>
+              </tr>
+              <tr>
+                <td>Português</td>
+                <td>10%</td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>manter ao adicionar inglês</td>
+              </tr>
+              <tr>
+                <td><b>Total</b></td>
+                <td></td>
+                <td><b>6,70</b> (2º)</td>
+                <td><b>6,85</b> (2º)</td>
+                <td><b>9,10</b> (1º)</td>
+                <td><b>9,25</b> (1º)</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Fase 0</p>
+            <h3>Deixar o projeto público e reutilizável</h3>
+            <div class="meta">
+              <span>Prazo estimado: <b>1 a 2 semanas</b></span
+              ><span>Pré-requisito de todo o resto e da divulgação</span>
+            </div>
+          </div>
+          <ol class="steps" data-p="0">
+            <li>
+              <b>Escolher e adicionar licenças</b>
+              <p>
+                Crie <code>LICENSE</code> na raiz com uma licença aprovada pela
+                OSI para o código (MIT ou Apache-2.0) e declare CC BY 4.0 para
+                <code>docs/</code> e imagens. Atualize o campo
+                <code>license</code> do <code>package.json</code> e a seção de
+                licença do README.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> o GitHub mostra a licença na
+                página do repositório e o README explica o que cada parte
+                permite.
+              </p>
+              <div class="chips">
+                <span>Acesso e custo</span
+                ><span>Pré-requisito da etapa 3.4</span>
+              </div>
+            </li>
+            <li>
+              <b>Integrar os PRs na main, em ordem · concluído em 01/11/2026</b>
+              <p>
+                Revise e integre do #1 ao #25, um de cada vez, porque cada um
+                usa o anterior como base. Depois de cada integração, ajuste a
+                base do próximo PR para <code>main</code>, rode
+                <code>npm test</code> e <code>npm run build</code>. Preserve
+                branches e tags, como pede o AGENTS.md.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> a main está na 0.23.0, com
+                217/217 testes passando. Feito: PRs #1 a #27 integrados em
+                ordem, com commits de merge e branches preservadas. Falta só a
+                tag <code>v0.23.0</code>.
+              </p>
+              <div class="chips"><span>Reprodutibilidade</span></div>
+            </li>
+            <li>
+              <b>Publicar o site aberto</b>
+              <p>
+                Publique o build de <code>dist/</code> em um endereço público e
+                estável (GitHub Pages ou Cloudflare Pages). Mantenha o Site
+                privado para testes. Cada tag deve ter a própria URL, por
+                exemplo <code>/v0.23.0/</code>, para quem precisar citar uma
+                versão exata.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> o link abre sem login em uma aba
+                anônima e a versão aparece na interface.
+              </p>
+              <div class="chips">
+                <span>Acesso e custo</span><span>Acesso nas escolas</span>
+              </div>
+            </li>
+            <li>
+              <b>Tornar o projeto citável</b>
+              <p>
+                Adicione <code>CITATION.cff</code> com autores, versão e data.
+                Conecte o repositório ao Zenodo para gerar um DOI a cada
+                release.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> o GitHub mostra o botão "Cite
+                this repository" e a release 0.23.0 tem DOI.
+              </p>
+              <div class="chips">
+                <span>Reprodutibilidade</span
+                ><span>Validação e literatura</span>
+              </div>
+            </li>
+          </ol>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Fase 1</p>
+            <h3>Modo escola</h3>
+            <div class="meta">
+              <span>Prazo estimado: <b>6 a 10 semanas</b></span
+              ><span>Resultado: <b>1º lugar em escolas</b></span>
+            </div>
+          </div>
+          <ol class="steps" data-p="1">
+            <li>
+              <b>Criar um perfil de desempenho leve</b>
+              <p>
+                Adicione um preset "Laboratório da escola" que reduz o limite de
+                população, a resolução da malha
+                (<code>src/modules/terrain/polygonize.ts</code>), as instâncias
+                renderizadas e desliga o ensemble completo de previsão. Por
+                padrão, o modo parcial por contagem roda em milissegundos.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> pelo menos 30 quadros por
+                segundo em um Chromebook ou notebook de entrada, medido e
+                registrado em <code>docs/</code>, com o mesmo modelo e a mesma
+                seed do modo normal.
+              </p>
+              <div class="chips"><span>Acesso e hardware</span></div>
+            </li>
+            <li>
+              <b>Fazer um tour de primeira visita</b>
+              <p>
+                Um passo a passo de 5 telas: orbitar, entrar em uma formiga,
+                pausar, mudar a umidade e ver o gráfico. Use um módulo novo em
+                <code>src/app/</code>, separado do <code>controller.js</code>.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> um aluno que nunca viu o
+                simulador entra em primeira pessoa em menos de 2 minutos sem
+                ajuda.
+              </p>
+              <div class="chips"><span>Facilidade de uso</span></div>
+            </li>
+            <li>
+              <b>Criar experimentos prontos de um clique</b>
+              <p>
+                Um menu "Experimentos" que carrega seed, parâmetros e câmera e
+                mostra a pergunta da aula. Sugestões:
+              </p>
+              <ul>
+                <li>Rastro de feromônio com e sem vento</li>
+                <li>Ângulo de repouso de 15° contra 55°</li>
+                <li>Ninho com uma ou duas entradas e o efeito na ventilação</li>
+                <li>Prole em solo frio e em solo quente</li>
+                <li>
+                  Mesma seed com uma intervenção diferente: caos ou acaso?
+                </li>
+                <li>Herança: comparar mães, filhas e mutações</li>
+              </ul>
+              <p class="done">
+                <strong>Pronto quando:</strong> cada experimento abre em menos
+                de 10 segundos e tem teste que garante o mesmo estado inicial.
+              </p>
+              <div class="chips">
+                <span>Facilidade de uso</span><span>Material didático</span>
+              </div>
+            </li>
+            <li>
+              <b>Escrever o guia do professor</b>
+              <p>
+                Em <code>docs/ensino/</code>, um roteiro por experimento com
+                objetivo, tempo de aula, passos, perguntas, gabarito e "o que o
+                modelo não representa". Associe cada roteiro às habilidades de
+                Ciências da Natureza da BNCC. Peça revisão de pelo menos um
+                professor de biologia e um de física.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver 6 roteiros revisados,
+                exportáveis em PDF.
+              </p>
+              <div class="chips"><span>Material didático</span></div>
+            </li>
+            <li>
+              <b>Funcionar com internet fraca</b>
+              <p>
+                Transforme o site em PWA com cache offline, para que o
+                laboratório baixe uma vez e use sem rede. O armazenamento em
+                IndexedDB já existe (PR #18).
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> o simulador abre e salva um
+                checkpoint com a rede desligada.
+              </p>
+              <div class="chips"><span>Acesso e hardware</span></div>
+            </li>
+            <li>
+              <b>Exportar dados em CSV e cuidar da acessibilidade</b>
+              <p>
+                Botão "Baixar CSV" com população, prole, alimento, temperatura e
+                gases por dia, ao lado do JSON atual. Revise contraste, foco de
+                teclado e rótulos para atingir WCAG 2.1 AA.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> o CSV abre direto em uma
+                planilha e a auditoria de acessibilidade do Lighthouse fica
+                acima de 90.
+              </p>
+              <div class="chips">
+                <span>Facilidade de uso</span><span>Material didático</span>
+              </div>
+            </li>
+            <li>
+              <b>Fazer um piloto com escolas</b>
+              <p>
+                Teste com 2 ou 3 turmas. Aplique o questionário SUS (System
+                Usability Scale) e um pré-teste e pós-teste curto sobre os
+                conceitos da aula. Corrija o que travar os alunos.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> SUS médio acima de 70 e o
+                relatório do piloto publicado em <code>docs/ensino/</code>.
+              </p>
+              <div class="chips">
+                <span>Material didático</span
+                ><span>Evidência para a fase 3</span>
+              </div>
+            </li>
+          </ol>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Fase 2</p>
+            <h3>Ferramenta de pesquisa</h3>
+            <div class="meta">
+              <span>Prazo estimado: <b>3 a 4 meses</b></span
+              ><span
+                >Resultado: <b>2º lugar em universidades</b>, a 0,4 ponto do
+                NetLogo</span
+              >
+            </div>
+          </div>
+          <ol class="steps" data-p="2">
+            <li>
+              <b>Documentar o modelo no protocolo ODD</b>
+              <p>
+                O ODD (Overview, Design concepts, Details) é o padrão para
+                descrever modelos baseados em agentes. Escreva
+                <code>docs/odd.md</code> reunindo as equações que hoje estão
+                espalhadas em 28 documentos, com ordem do loop, escalas e
+                variáveis de estado.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> alguém consegue reimplementar um
+                submodelo, como a ventilação, só lendo o ODD.
+              </p>
+              <div class="chips"><span>Rigor e transparência</span></div>
+            </li>
+            <li>
+              <b>Criar uma linha de comando sem interface</b>
+              <p>
+                Um
+                <code
+                  >npm run simulate -- --seed X --days N --params arquivo.json
+                  --out pasta/</code
+                >
+                que roda o <code>World.step</code> no Node e grava métricas em
+                CSV e o manifesto da execução. O script
+                <code>scripts/evaluate-forecasts.mjs</code> já mostra que o
+                motor roda fora do navegador.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> a mesma seed gera arquivos
+                idênticos byte a byte no navegador e na linha de comando, com
+                teste.
+              </p>
+              <div class="chips">
+                <span>Reprodutibilidade</span
+                ><span>Aluno estende o modelo</span>
+              </div>
+            </li>
+            <li>
+              <b>Adicionar varredura de parâmetros e réplicas</b>
+              <p>
+                Equivalente ao BehaviorSpace do NetLogo: um arquivo define
+                faixas de parâmetros e número de réplicas, e a linha de comando
+                roda tudo em paralelo com Workers, gerando uma tabela única.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> uma varredura de 5 valores × 10
+                réplicas roda com um comando e retoma do ponto onde parou se for
+                interrompida.
+              </p>
+              <div class="chips"><span>Reprodutibilidade</span></div>
+            </li>
+            <li>
+              <b>Publicar uma análise de sensibilidade</b>
+              <p>
+                Use o método de Morris para ordenar os parâmetros que mais
+                afetam população, sobrevivência da prole e ventilação. Publique
+                em <code>docs/sensibilidade.md</code> com os dados brutos.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver uma lista dos 10
+                parâmetros mais influentes, que orienta o que calibrar na fase
+                3.
+              </p>
+              <div class="chips"><span>Rigor e transparência</span></div>
+            </li>
+            <li>
+              <b>Abrir o modelo para extensões</b>
+              <p>
+                Uma API tipada em TypeScript para registrar políticas de
+                decisão, sensores e submodelos próprios sem editar o núcleo,
+                seguindo os componentes já planejados em
+                <code>docs/arquitetura.md</code> (<code>DecisionPolicy</code>,
+                <code>SensorSystem</code>). Inclua dois exemplos: uma política
+                de decisão alternativa e um novo sinal químico.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> um aluno cria uma política em um
+                único arquivo, roda os testes e compara com ACO na linha de
+                comando.
+              </p>
+              <div class="chips"><span>Aluno estende o modelo</span></div>
+            </li>
+            <li>
+              <b>Criar um editor de parâmetros na interface</b>
+              <p>
+                Um painel que lista todos os coeficientes do catálogo (PR #21)
+                com unidade, faixa válida e fonte, permite alterá-los antes de
+                criar o terrário e salva o conjunto como perfil versionado.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> um perfil editado pode ser
+                exportado, reimportado e reproduzido por seed.
+              </p>
+              <div class="chips"><span>Aluno estende o modelo</span></div>
+            </li>
+            <li>
+              <b>Traduzir para o inglês</b>
+              <p>
+                Interface com seleção de idioma, mantendo o português como
+                padrão, além de README, ODD e guia do professor em inglês.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> todas as telas trocam de idioma
+                sem textos fixos no código.
+              </p>
+              <div class="chips">
+                <span>Material didático e comunidade</span>
+              </div>
+            </li>
+            <li>
+              <b>Instruções em português para uma formiga</b>
+              <p>
+                O usuário escreve um pedido para uma formiga e uma IA traduz em
+                uma regra de uma linguagem limitada, que o simulador valida,
+                salva e aplica só a ela. Detalhes, regras de segurança e ordem
+                de implementação na seção
+                <a href="#ia-formiga"
+                  >Instruções em português para uma formiga</a
+                >. Depende de 2.5, que cria o ponto de extensão das decisões.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> uma regra pedida em português é
+                aplicada, aparece no save e o replay da mesma seed dá o mesmo
+                resultado sem chamar a IA de novo.
+              </p>
+              <div class="chips">
+                <span>Aluno estende o modelo</span><span>Facilidade de uso</span
+                ><span>Material didático</span>
+              </div>
+            </li>
+          </ol>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Fase C · cronograma atual do projeto</p>
+            <h3>Concluir as etapas 10C, 12, 13 e 14</h3>
+            <div class="meta">
+              <span>Em paralelo às fases 1 e 2</span
+              ><span>Precisa terminar <b>antes da fase 3</b></span
+              ><span
+                >Ganho isolado: <b>+0,35</b> em universidades, <b>+0,15</b> em
+                escolas</span
+              >
+            </div>
+          </div>
+          <ol class="steps" data-p="C">
+            <li>
+              <b>10C · Fechar a fundação semiclaustral (PR #26)</b>
+              <p>
+                O mecanismo foi integrado à main com o PR #26: rainha sai para
+                coletar, alimento externo com balanço separado, exposição a
+                predadores, 7 testes novos. Falta corrigir a tabela inicial do
+                <code>docs/cronograma.md</code>, que ainda marca a 10C como "em
+                implementação", criar a tag e publicar a 0.23.0.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> a suíte completa passa (217
+                testes, já conferido), o cronograma marca a 10C como entregue
+                com o número do PR e a tag <code>v0.23.0</code> existe.
+              </p>
+              <div class="chips">
+                <span>Rigor e transparência</span><span>Rigor conceitual</span
+                ><span>Experimento de aula: claustral × semiclaustral</span>
+              </div>
+            </li>
+            <li>
+              <b>12 · Seleção local do microclima e da câmara</b>
+              <p>
+                As operárias passam a escolher onde guardar a prole e o alimento
+                lendo temperatura, água e gases perto delas, usando os campos
+                que já existem em <code>src/modules/microclimate</code> e
+                <code>src/modules/ventilation</code>. A decisão deve usar só
+                sensores locais, sem consultar o mapa global, como o resto da
+                navegação.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> um teste mostra a prole migrando
+                para a câmara mais adequada depois de uma mudança de
+                temperatura, sem leitura de estado fora do alcance dos sensores,
+                e há um experimento pronto de aula para isso.
+              </p>
+              <div class="chips">
+                <span>Rigor e transparência</span><span>Rigor conceitual</span
+                ><span>Alimenta 1.3</span>
+              </div>
+            </li>
+            <li>
+              <b>13 · Espermateca, fertilidade e longevidade da rainha</b>
+              <p>
+                Estoque finito de esperma, queda de fertilidade com a idade,
+                envelhecimento e morte natural da rainha, e o que acontece com a
+                colônia depois. Registre cada coeficiente no catálogo de
+                proveniência como aproximação, hipótese ou medida, como nos
+                perfis atuais.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> uma colônia simulada tem um
+                ciclo de vida completo, da fundação ao declínio, com balanços
+                fechados e saves antigos preservados.
+              </p>
+              <div class="chips">
+                <span>Rigor e transparência</span
+                ><span>Pré-requisito de 3.2</span>
+              </div>
+            </li>
+            <li>
+              <b>14 · Escala de tempo biológico e execução longa</b>
+              <p>
+                Hoje 100 passos equivalem a um dia acelerado, e as durações não
+                correspondem às reais. Esta etapa separa o relógio biológico do
+                relógio de simulação e permite rodar anos de colônia entre
+                sessões, retomando de checkpoints. Aproveite para reutilizar a
+                linha de comando do passo 2.2, que roda sem navegador.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> é possível simular pelo menos um
+                ano biológico com durações em dias reais, retomar em outra
+                sessão com o mesmo futuro, e o tempo de execução está medido e
+                documentado.
+              </p>
+              <div class="chips">
+                <span>Reprodutibilidade</span
+                ><span>Pré-requisito de 3.2 e 3.3</span>
+              </div>
+            </li>
+          </ol>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Fase 3</p>
+            <h3>Validação científica</h3>
+            <div class="meta">
+              <span>Prazo estimado: <b>6 a 12 meses</b></span
+              ><span>Resultado: <b>1º lugar em universidades</b></span>
+            </div>
+          </div>
+          <ol class="steps" data-p="3">
+            <li>
+              <b>Escolher uma espécie e uma parceria</b>
+              <p>
+                Escolha uma espécie com muitos dados de laboratório e que
+                combine com o que o modelo já tem: fundação claustral, diapausa
+                e casulo. <i>Lasius niger</i> é uma boa candidata. Procure um
+                laboratório de mirmecologia para fornecer dados e revisar os
+                pressupostos.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver um acordo de colaboração
+                e uma lista de conjuntos de dados disponíveis, com licença de
+                uso.
+              </p>
+              <div class="chips"><span>Validação e literatura</span></div>
+            </li>
+            <li>
+              <b>Calibrar com padrões observados</b>
+              <p>
+                Use a modelagem orientada a padrões (POM): escolha 3 ou mais
+                padrões medidos, como duração dos estágios da prole por
+                temperatura, tamanho da colônia no primeiro ano e geometria do
+                ninho inicial. Ajuste apenas os parâmetros mais influentes
+                apontados no passo 2.4. Comece só depois de C.3 e C.4: sem
+                longevidade da rainha e sem tempo biológico real, não há como
+                comparar o crescimento da colônia com dados de campo ou de
+                laboratório.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> um perfil "<i>Lasius niger</i>
+                v1" no catálogo tem fonte, amostra e incerteza em cada
+                coeficiente calibrado.
+              </p>
+              <div class="chips"><span>Validação e literatura</span></div>
+            </li>
+            <li>
+              <b>Validar com dados que não entraram na calibração</b>
+              <p>
+                Separe dados de validação antes de começar. Use o protocolo de
+                avaliação de previsões que já existe (PR #20), agora contra
+                observações reais, e publique os resultados mesmo que sejam
+                ruins.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver MAE e cobertura contra
+                dados reais em <code>docs/validacao.md</code>, com o mesmo
+                pré-registro usado no ensaio sintético.
+              </p>
+              <div class="chips">
+                <span>Validação e literatura</span><span>Rigor conceitual</span>
+              </div>
+            </li>
+            <li>
+              <b>Publicar com revisão por pares</b>
+              <p>
+                Primeiro, submeta o software ao
+                <i>Journal of Open Source Software</i> (JOSS), que exige licença
+                aberta, testes e documentação; a fase 0 já cobre isso. Depois,
+                publique o modelo calibrado em uma revista de modelagem
+                ecológica e o resultado do piloto escolar em uma revista de
+                ensino de ciências.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> o artigo no JOSS for aceito e
+                houver pelo menos um preprint do modelo calibrado.
+              </p>
+              <div class="chips"><span>Validação e literatura</span></div>
+            </li>
+          </ol>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Fase 4 · contínua</p>
+            <h3>Comunidade</h3>
+            <div class="meta">
+              <span>Em paralelo, a partir da fase 1</span
+              ><span>Mantém a posição depois de alcançada</span>
+            </div>
+          </div>
+          <ol class="steps" data-p="4">
+            <li>
+              <b>Abrir canais de contribuição</b>
+              <p>
+                Ative o GitHub Discussions e crie
+                <code>CONTRIBUTING.md</code> com as regras do AGENTS.md, modelos
+                de issue e um rótulo "boa primeira tarefa".
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver a primeira contribuição
+                externa aceita.
+              </p>
+              <div class="chips"><span>Comunidade</span></div>
+            </li>
+            <li>
+              <b>Montar uma galeria de experimentos</b>
+              <p>
+                Uma página pública com experimentos enviados por professores e
+                pesquisadores: seed, perfil, intervenções e resultado, todos
+                reproduzíveis com um clique.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver 20 experimentos
+                publicados, metade de fora da equipe.
+              </p>
+              <div class="chips">
+                <span>Comunidade</span><span>Material didático</span>
+              </div>
+            </li>
+            <li>
+              <b>Oferecer oficinas</b>
+              <p>
+                Oficinas curtas para professores e minicursos em congressos de
+                ensino de ciências, computação e entomologia. Grave e publique
+                as aulas.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> houver uma oficina por semestre
+                e os vídeos estiverem no site.
+              </p>
+              <div class="chips"><span>Comunidade</span></div>
+            </li>
+          </ol>
+        </article>
+
+        <div class="narrow" style="display: grid; gap: 10px">
+          <h3>Ordem de prioridade se o tempo for curto</h3>
+          <p>
+            Licença e site público (0.1 e 0.3; a integração na main, 0.2, já foi
+            feita), depois perfil leve, experimentos prontos e guia do professor
+            (1.1, 1.3, 1.4). Esses passos sozinhos levam a nota em escolas para
+            cerca de 8,4 e destravam a divulgação. Em paralelo, feche a 10C
+            (C.1), que já está na main e só precisa de tag e publicação. As
+            etapas 12 a 14 podem seguir no ritmo atual, desde que terminem antes
+            da fase 3.
+          </p>
+        </div>
+      </section>
+
+      <section id="ia-formiga">
+        <div class="narrow" style="display: grid; gap: 12px">
+          <p class="eyebrow">Proposta · passo 2.8</p>
+          <h2>Instruções em português para uma formiga</h2>
+          <p>
+            A ideia: enviar um pedido a uma formiga e uma IA gerar, na hora, uma
+            regra nova que adapta o comportamento dela a um caso. É viável e
+            combina com o que o Viveiro já tem, com uma condição: a IA não
+            escreve código livre dentro da simulação. Ela gera uma
+            <b>regra em uma linguagem limitada</b>, que o simulador valida,
+            guarda no save e aplica só àquela formiga. Sem isso, perdem-se a
+            reprodutibilidade, a conservação e a percepção local, que são o que
+            dá valor científico ao projeto.
+          </p>
+        </div>
+
+        <div class="slides">
+          <div class="slide">
+            <span class="n">1</span>
+            <div>
+              <strong>O pedido</strong>Em primeira pessoa numa operária, o
+              usuário escreve: "Evite túneis com muito CO₂, mesmo que o cheiro
+              de comida venha de lá."
+            </div>
+          </div>
+          <div class="slide">
+            <span class="n">2</span>
+            <div>
+              <strong>A regra gerada</strong
+              ><code class="eq"
+                >peso_da_saída = cheiro_alimento − 2,5 × max(0, co2_local −
+                0,8)</code
+              ><small
+                >Com explicação em português e a lista de sensores
+                usados.</small
+              >
+            </div>
+          </div>
+          <div class="slide">
+            <span class="n">3</span>
+            <div>
+              <strong>A revisão</strong>O usuário vê a regra antes de aplicar e
+              pode aceitar, recusar ou pedir ajuste.
+            </div>
+          </div>
+          <div class="slide">
+            <span class="n">4</span>
+            <div>
+              <strong>O efeito</strong>A formiga passa a decidir com a regra, e
+              o painel compara com a mesma seed sem ela.
+            </div>
+          </div>
+        </div>
+
+        <h3>Regras de segurança do modelo</h3>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="tag">Linguagem fechada</span>
+            <h3>Sem código livre</h3>
+            <p>
+              <b>Entradas:</b> só sensores locais que a formiga já tem (cheiro,
+              CO₂ e O₂ por perto, temperatura e água do solo, carga, energia,
+              contato com vizinhas).
+            </p>
+            <p>
+              <b>Saídas:</b> só "botões" de decisão (peso das saídas do túnel,
+              limiar de tarefa, preferência de câmara, exploração).
+            </p>
+            <p class="limit">
+              Nunca mover o corpo, criar comida ou ler o mapa global. É o mesmo
+              limite da rede neural individual do PR #17.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Validação</span>
+            <h3>Checagem antes de aplicar</h3>
+            <p>
+              Um interpretador pequeno em TypeScript, sem <code>eval</code>,
+              rejeita sensores inexistentes, fórmulas grandes demais, valores
+              fora da faixa, divisão por zero e NaN.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Reprodutibilidade</span>
+            <h3>Guardar a regra, não o prompt</h3>
+            <p>
+              A IA responde diferente a cada chamada, então o replay nunca a
+              chama de novo. O save guarda a fórmula, o texto pedido, a versão
+              do modelo de IA e o tick, como uma intervenção comum.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Proveniência</span>
+            <h3>Registrar como hipótese</h3>
+            <p>
+              No catálogo de parâmetros, a regra entra como "hipótese gerada por
+              IA a pedido do usuário", nunca como comportamento biológico.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="tag">Credenciais</span>
+            <h3>Chave fora do navegador</h3>
+            <p>
+              O AGENTS.md proíbe credenciais no repositório, e no navegador a
+              chave ficaria exposta. A chamada passa por um servidor pequeno,
+              como um Worker da Cloudflare ou o <code>server.mjs</code> do
+              projeto, que guarda a chave como segredo.
+            </p>
+          </article>
+        </div>
+
+        <div class="position">
+          <div class="say">
+            <h3>Por que vale a pena</h3>
+            <ul>
+              <li>
+                <b>Pesquisa:</b> testar hipóteses de comportamento sem
+                programar, como "o que acontece com o tráfego se 10% das
+                operárias evitarem CO₂ alto?".
+              </li>
+              <li>
+                <b>Escola:</b> o aluno descreve o comportamento em português e
+                vê a fórmula correspondente. É uma ponte direta entre intuição e
+                modelagem.
+              </li>
+              <li>
+                <b>Ranking:</b> sobe "Aluno estende o modelo" e "Facilidade de
+                uso", hoje as maiores fraquezas.
+              </li>
+            </ul>
+          </div>
+          <div class="avoid">
+            <h3>Cuidados</h3>
+            <ul>
+              <li>
+                <b>Tempo de resposta:</b> a IA leva alguns segundos. A simulação
+                pausa ou aplica no tick seguinte, nunca no meio de um passo.
+              </li>
+              <li>
+                <b>Custo:</b> cada pedido é uma chamada paga. Uma regra vale
+                para uma formiga ou um grupo; nada de uma chamada por formiga a
+                cada passo.
+              </li>
+              <li>
+                <b>Regras ruins:</b> a validação impede que a regra quebre o
+                modelo, não que ela seja má ideia. Isso faz parte do
+                experimento.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <article class="phase">
+          <div class="phase-head">
+            <p class="eyebrow">Ordem de implementação</p>
+            <h3>Do interpretador à IA</h3>
+            <div class="meta">
+              <span
+                >Uma branch <code>codex/</code> por etapa, como pede o
+                AGENTS.md</span
+              ><span>Os passos 1 e 2 já têm valor sozinhos, sem IA</span>
+            </div>
+          </div>
+          <ol class="steps" data-p="R">
+            <li>
+              <b>Linguagem de fórmulas</b>
+              <p>
+                Lista fechada de entradas e saídas, interpretador e validador em
+                um módulo novo, por exemplo <code>src/modules/rules/</code>, com
+                testes.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> fórmulas inválidas são
+                rejeitadas com mensagem clara e as válidas só leem sensores
+                locais.
+              </p>
+            </li>
+            <li>
+              <b>Regras escritas à mão</b>
+              <p>
+                Aplicar uma fórmula a uma formiga, salvar no checkpoint e
+                repetir no replay. O aluno já consegue escrever regras simples,
+                como no NetLogo.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> a mesma seed com a mesma regra
+                dá o mesmo futuro, número por número.
+              </p>
+            </li>
+            <li>
+              <b>Servidor e chamada à IA</b>
+              <p>
+                Endpoint que guarda a chave como segredo, envia o pedido com a
+                lista de entradas e saídas permitidas e recebe resposta
+                estruturada: fórmula, explicação e sensores usados.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> nenhuma credencial aparece no
+                repositório nem no bundle do navegador.
+              </p>
+            </li>
+            <li>
+              <b>Painel na primeira pessoa</b>
+              <p>
+                Caixa de texto, prévia da regra, aplicar ou descartar, e
+                comparação com a mesma seed sem a regra.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> um aluno aplica uma regra e vê a
+                comparação sem ajuda.
+              </p>
+            </li>
+            <li>
+              <b>Testes de garantia</b>
+              <p>
+                Conservação de alimento, terra e gases com regras ativas,
+                ausência de leitura global e replay idêntico sem chamar a IA.
+              </p>
+              <p class="done">
+                <strong>Pronto quando:</strong> a suíte completa passa com os
+                novos casos.
+              </p>
+            </li>
+          </ol>
+        </article>
+      </section>
+
+      <footer>
+        Análise feita sobre o repositório albreis/viveiro, branch main (versão
+        0.23.0, PRs #1 a #27 integrados). Os números de testes, equações e
+        resultados de previsão vêm da documentação em docs/. A comparação
+        reflete funcionalidades conhecidas de cada ferramenta e pode estar
+        desatualizada em detalhes.
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        // Abas dos posts
+        var tabs = Array.prototype.slice.call(
+          document.querySelectorAll('[role="tab"]'),
+        );
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () {
+            tabs.forEach(function (o) {
+              var on = o === t;
+              o.setAttribute("aria-selected", on ? "true" : "false");
+              document.getElementById(o.getAttribute("aria-controls")).hidden =
+                !on;
+            });
+          });
+        });
+
+        // Botões de copiar
+        document.querySelectorAll(".copy").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var el = document.getElementById(b.dataset.copy);
+            var text = el.textContent;
+            var done = function () {
+              b.textContent = "Copiado";
+              setTimeout(function () {
+                b.textContent =
+                  b.dataset.copy === "t-carrossel" ? "Copiar tudo" : "Copiar";
+              }, 1600);
+            };
+            var fallback = function () {
+              if (el.hidden) {
+                el.hidden = false;
+              }
+              var r = document.createRange();
+              r.selectNodeContents(el);
+              var s = window.getSelection();
+              s.removeAllRanges();
+              s.addRange(r);
+              b.textContent = "Texto selecionado";
+            };
+            try {
+              navigator.clipboard.writeText(text).then(done, fallback);
+            } catch (e) {
+              fallback();
+            }
+          });
+        });
+
+        // Ranking
+        var ctx = {
+          uni: {
+            label: "Universidades",
+            crit: [
+              ["Rigor e transparência do modelo", 0.2],
+              ["Reprodutibilidade", 0.15],
+              ["Validação e literatura", 0.15],
+              ["Aluno estende o modelo", 0.15],
+              ["Acesso e custo", 0.1],
+              ["Engajamento visual", 0.1],
+              ["Material didático e comunidade", 0.15],
+            ],
+            note: "NetLogo lidera porque é a referência de ensino de modelagem, com décadas de literatura e edição total pelo aluno. O Viveiro tem as maiores notas em rigor, reprodutibilidade e visual, mas perde em validação, extensibilidade e material didático. Concluir só o cronograma (10C a 14) sobe a nota de 6,05 para 6,40 e passa o PhET (5º lugar): o modelo fica mais completo, mas o que falta é validação e material didático. Cronograma mais fases 0 a 2 levam ao 2º lugar (8,30). O 1º lugar (8,90) só vem com a fase 3, que depende de dados reais, de revisão por pares e das etapas 13 e 14 concluídas.",
+          },
+          esc: {
+            label: "Escolas",
+            crit: [
+              ["Engajamento visual", 0.2],
+              ["Facilidade de uso", 0.2],
+              ["Material didático", 0.2],
+              ["Acesso, custo e hardware", 0.15],
+              ["Rigor conceitual", 0.15],
+              ["Português", 0.1],
+            ],
+            note: "PhET lidera com folga por ser simples, traduzido e acompanhado de planos de aula. O Viveiro empata no segundo grupo: é o mais envolvente visualmente entre as opções científicas e está em português, mas ainda falta guia do professor. O cronograma sozinho rende pouco aqui (6,70 para 6,85). As fases 0 e 1 bastam para passar o PhET; com o cronograma concluído, a nota chega a 9,10 contra 8,70.",
+          },
+        };
+        var tools = [
+          {
+            n: "Viveiro",
+            us: true,
+            uni: [8, 9, 3, 4, 7, 9, 3],
+            esc: [9, 6, 3, 6, 8, 10],
+          },
+          {
+            n: "Viveiro só com o cronograma (10C–14)",
+            proj: true,
+            uni: [9, 10, 3, 4, 7, 9, 3],
+            esc: [9, 6, 3, 6, 9, 10],
+          },
+          {
+            n: "Viveiro após cronograma e fases 0–2",
+            proj: true,
+            uni: [10, 10, 4, 9, 9, 9, 7],
+            esc: [9, 9, 9, 9, 9, 10],
+          },
+          {
+            n: "Viveiro após fase 3",
+            proj: true,
+            uni: [10, 10, 7, 9, 9, 9, 8],
+            esc: [9, 9, 9, 9, 10, 10],
+          },
+          {
+            n: "NetLogo",
+            uni: [7, 8, 10, 10, 9, 5, 10],
+            esc: [4, 6, 9, 9, 7, 5],
+          },
+          {
+            n: "GAMA Platform",
+            uni: [7, 8, 8, 9, 6, 7, 6],
+            esc: [6, 3, 4, 6, 7, 3],
+          },
+          { n: "Mesa", uni: [7, 8, 7, 10, 7, 3, 7], esc: [2, 2, 4, 6, 7, 2] },
+          {
+            n: "PhET",
+            uni: [6, 4, 8, 1, 10, 7, 9],
+            esc: [7, 10, 10, 10, 6, 9],
+          },
+          {
+            n: "Avida-ED",
+            uni: [8, 8, 9, 5, 8, 4, 9],
+            esc: [4, 7, 9, 8, 8, 3],
+          },
+          {
+            n: "The Bibites",
+            uni: [4, 5, 2, 3, 8, 7, 4],
+            esc: [7, 6, 3, 8, 4, 4],
+          },
+          { n: "SimAnt", uni: [2, 2, 2, 0, 3, 6, 3], esc: [6, 7, 3, 3, 3, 4] },
+          {
+            n: "Empires of the Undergrowth",
+            uni: [2, 1, 1, 1, 5, 10, 2],
+            esc: [10, 8, 2, 5, 2, 5],
+          },
+        ];
+        function score(t, c) {
+          var w = ctx[c].crit,
+            s = 0;
+          for (var i = 0; i < w.length; i++) s += t[c][i] * w[i][1];
+          return Math.round(s * 100) / 100;
+        }
+        function render(c) {
+          var list = tools
+            .map(function (t) {
+              return { t: t, s: score(t, c) };
+            })
+            .sort(function (a, b) {
+              return b.s - a.s || (a.t.proj ? 1 : 0) - (b.t.proj ? 1 : 0);
+            });
+          var rank = document.getElementById("rank");
+          rank.innerHTML = "";
+          var pos = 0;
+          list.forEach(function (r) {
+            var row = document.createElement("div");
+            row.className =
+              "row" + (r.t.us ? " us" : "") + (r.t.proj ? " proj" : "");
+            if (!r.t.proj) pos++;
+            row.innerHTML =
+              '<span class="pos">' +
+              (r.t.proj ? "·" : pos + "º") +
+              '</span><span class="name"></span><span class="bar"><i style="width:' +
+              r.s * 10 +
+              '%"></i></span><span class="score">' +
+              r.s.toFixed(2).replace(".", ",") +
+              "</span>";
+            row.querySelector(".name").textContent = r.t.n;
+            rank.appendChild(row);
+          });
+          document.getElementById("weights").textContent =
+            "Pesos: " +
+            ctx[c].crit
+              .map(function (k) {
+                return k[0] + " " + Math.round(k[1] * 100) + "%";
+              })
+              .join(" · ");
+          document.getElementById("rank-note").textContent = ctx[c].note;
+          var tbl = document.getElementById("score-table");
+          var h =
+            "<thead><tr><th>Ferramenta</th>" +
+            ctx[c].crit
+              .map(function (k) {
+                return "<th>" + k[0] + "</th>";
+              })
+              .join("") +
+            "<th>Total</th></tr></thead><tbody>";
+          tools.forEach(function (t) {
+            h +=
+              "<tr" +
+              (t.us ? ' class="us"' : "") +
+              "><th>" +
+              t.n +
+              "</th>" +
+              t[c]
+                .map(function (v) {
+                  return "<td>" + v + "</td>";
+                })
+                .join("") +
+              "<td><b>" +
+              score(t, c).toFixed(2).replace(".", ",") +
+              "</b></td></tr>";
+          });
+          tbl.innerHTML = h + "</tbody>";
+          document.querySelectorAll(".toggle button").forEach(function (b) {
+            b.setAttribute(
+              "aria-pressed",
+              b.dataset.ctx === c ? "true" : "false",
+            );
+          });
+        }
+        document.querySelectorAll(".toggle button").forEach(function (b) {
+          b.addEventListener("click", function () {
+            render(b.dataset.ctx);
+          });
+        });
+        render("uni");
+      })();
+    </script>
+  </body>
+</html>
