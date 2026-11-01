@@ -1,5 +1,13 @@
 # Versões
 
+## 0.15.0 — Checkpoints e recuperação
+
+- Save assíncrono em IndexedDB, confirmação atômica e cópia local de emergência.
+- Checkpoints nomeados, oito automáticos recentes e recuperação em pausa.
+- Importação validada de JSON antigo/v2 com cópia do estado anterior.
+- Habitat compartilhado compactado sem perder recursos e cérebros individuais.
+- Save legado intocado; limites de armazenamento e recuperação em docs/persistencia.md.
+
 ## 0.14.0 — Aprendizado individual opcional
 
 - Rede pequena com observações locais e ajustes separados por formiga.

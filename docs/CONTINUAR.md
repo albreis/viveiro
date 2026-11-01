@@ -2,7 +2,21 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
-## Última entrega publicada — 0.14.0 (8A)
+## Próximo passo — 8C previsões
+
+Criar codex/previsoes-cancelaveis a partir de codex/checkpoints-e-recuperacao. Extrair cálculo em fatias com progresso/cancelamento, limite de tempo e orçamento de trabalho em segundo plano. Depois avaliar observação parcial/completa, erro por horizonte e baselines. O cálculo atual de18futuros completos pode levar minutos; não chamar emulador rápido de física completa. Etapas9–14 seguem pendentes. DevG PID17752, porta4173; browser localtab2 pausado, seed a, dia267,97adultos/14crias/2colônias, modelo neural preservado. Não resetar nem fechar Site tab1.
+
+## Última entrega publicada — 0.15.0 (8B)
+
+Branch codex/checkpoints-e-recuperacao, base codex/aprendizado-local bd3b64f. Fonte0868ca68042065212163995282400205bc788d18, tagv0.15.0. PR#18 https://github.com/albreis/viveiro/pull/18 pronto, encadeado ao#17. Deploy appgdep_6ae74f5a580881919755d62158dda0c2 succeeded em01/11/2026 14:40:39UTC. Mesmo Site privado: proprietário, zero externos. ArquivoG:\Projetos\viveiro-0.15.0.tar.gz. Commits3b1f14b e0868ca6 enviados; main intocada.
+
+IndexedDB com transação atômica,8autoslots, pontos manuais preservados, fila serial e coalescência de autosaves pendentes. Compactação do habitat compartilhado, checksumCRC para corrupção acidental, importação legada, fallback independente e proteção contra sobrescrita de dados ilegíveis. Sem colaboração multitab/garantia de encerramento brusco. docs/persistencia.md. Novos módulos focados em TypeScript, sem dependências novas. Modelo biológico inalterado.
+
+Validação:153/153 testes em250853ms, TypeScript/Vite aprovados; não repetir sem alteração relevante. UI real: criação de ponto,92→91%RH,restauração92 com backup anterior, importação do JSON original e recarga. Dia267,4719escolhas/4607ajustes e formiga#647 com38ajustes conservados. Console vazio. Screenshot viveiro-0.15.0-checkpoints.png. Backup original C:\Users\conta\Downloads\viveiro-a-dia-267.json e cópia G:\Projetos\viveiro\.runtime\before-checkpoints-dia-267.json preservados.806285bytes checkpoint vs1847316exportformatado; decode igual à sessão normalizada, diferença inclui formatação/campos derivados.
+
+CUA export/import tiveram latência longa do provedor mas concluíram; evitar repetir sem necessidade. Reconectar documentação após compaction. Credenciais só em memória/stdin, nunca persistir. Publicação usa site-workflow.mjs, sourceOPEN no HEAD exato e arquivo fora do checkout. Push somente branch e tag explícitas.
+
+## Entrega anterior — 0.14.0 (8A)
 
 Branch codex/aprendizado-local, base codex/suporte-estrutural (83f43a2). Publicada. Fonte fb2093069ee97f980746a987534746ee164b72b4, tagv0.14.0, PR#17 https://github.com/albreis/viveiro/pull/17. Deploy appgdep_6ae73d981e948191a4cc7cc2461c0860 succeeded em01/11/2026 13:24:52 UTC. Mesmo Site privado, somente proprietário/zero externos confirmados. Learning em módulos TypeScript pequenos: rede6x8→1 (65 coeficientes), SARSA semi-gradiente, políticas locais, arena/treino separado, intervenção validada. Pesos e traços próprios por formiga; template de colônia imutável. Worker compara rede, ACO e rede sem treino em64 cenários reservados. Snapshots/replay, seletorACO/neural e leitura individual. ACO sem aprendizado preserva exatamente o estado/RNG anterior.
 

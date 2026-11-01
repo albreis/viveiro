@@ -78,3 +78,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Suporte estrutural](docs/suporte-estrutural.md): amostras do teto, carga/capacidade, fissuras e desprendimento exploratórios.
 
 - [Aprendizado local](docs/aprendizado-local.md): SARSA neural opcional, cérebros individuais e avaliação contra ACO.
+
+- [Persistência e recuperação](docs/persistencia.md): IndexedDB, checkpoints, importação e preservação dos saves antigos.
