@@ -44,8 +44,7 @@ export function installBiologyControls(world: FamilyWorld): void {
   const refresh = () =>
     renderBiologicalParameters(
       topic.value as ParameterTopic,
-      resolveBiologicalProfile(selectedBiologicalProfile()).modelRevision ??
-        selectedBiologicalProfile().version,
+      resolveBiologicalProfile(selectedBiologicalProfile()),
     );
   const changeProfile = () => {
     const p = resolveBiologicalProfile(selectedBiologicalProfile());

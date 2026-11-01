@@ -14,6 +14,7 @@ const record = (
   topic: "seasonal",
   version: 1,
   minModelRevision: 5,
+  ...(id === "cocoon" ? { requiresCocoon: true } : {}),
   evidence: "approximation",
   source: "viveiro-demo",
   sample: null,

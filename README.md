@@ -53,6 +53,8 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Memória sazonal e casulos](docs/sazonalidade.md)
+
 - [Maturação térmica](docs/maturacao.md)
 
 - [Selamento físico](docs/selamento.md)

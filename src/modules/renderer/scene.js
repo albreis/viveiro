@@ -1,3 +1,4 @@
+import { focusBrood } from "./brood-focus.ts";
 import { PlugView } from "./PlugView.ts";
 import { focusSealing } from "./sealing-focus.ts";
 import { StructureView } from "./StructureView.ts";
@@ -249,6 +250,9 @@ export class Terrarium {
   setInterior(visible) {
     this.showInterior = visible;
     updateSoilVisibility(this);
+  }
+  focusBrood() {
+    return focusBrood(this);
   }
   focusSealing() {
     return focusSealing(this);

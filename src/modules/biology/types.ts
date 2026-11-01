@@ -13,6 +13,7 @@ export interface ParameterRecord {
   readonly topic: ParameterTopic;
   readonly version: number;
   readonly minModelRevision?: number;
+  readonly requiresCocoon?: boolean;
   readonly value: number | null;
   readonly range?: readonly [number, number];
   readonly unit: string;

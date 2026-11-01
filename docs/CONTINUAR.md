@@ -2,27 +2,20 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
-## Em andamento — etapa 11B (0.22.0)
+## Etapa 11B pronta para publicar — 0.22.0
 
-Branch codex/diapausa-e-casulos, base codex/maturacao-e-estacoes (f694482, PR #24). Núcleo e UI implementados; ainda NÃO publicados nem com PR próprio. Fazer backup WIP antes de interrupção. Próxima entrega deve abrir PR sobre #24 sem duplicar.
+Branch codex/diapausa-e-casulos; base codex/maturacao-e-estacoes (PR #24). Núcleo 32f8b41 enviado; finalizar commit, PR #25 se ausente, pacote/publicação privada e tag exata. Não declarar publicação antes do retorno nativo.
 
-- Novos módulos src/modules/seasons: tipos/parâmetros, máquina pura, atualização/sensores, abrigo e validação. Colônia tem memória própria, sem RNG extra em perfis anteriores. Novo development/cocoon.ts, controles e registros próprios.
-- Genérico e lab v5: sazonalidade demonstrativa, prole térmica, tampão, reservas e casulos. Variante generic-naked-demo@1 tem modelRevision 5 e pupas nuas; não confundir versão de identidade do perfil com revisão do mecanismo. UI do catálogo usa modelRevision e flags, sem depender só de version>=2. Latest genérico agora 5; testes antigos continuam fixados em 1–4.
-- Máquina: active → preparing → dormant → resuming → active. Timer ativo 40 dias do modelo só após fundação; sinal frio/dias curtos persistente por dois dias; preparação dois; frio acumulado 5–12 °C por cinco dias, repouso mínimo cinco, aquecimento >=18 °C por um dia; retomada dois. Todos demonstrativos, não calibrados.
-- Larvas paradas durante diapausa, manutenção 10%, tolerância fria demonstrativa >=5 °C; ovos/pupas não recebem essa proteção larval. Postura para. Atividade/energia/O₂ em repouso 20%, procura de abrigo por navegação local, sem teleporte; cargas são entregues. Fotoperíodo 0–24h é sinal sazonal separado de intensidade solar, ainda sem ciclo visual dia/noite.
-- Casulo exige 0,02 crédito adicional antes da pupa; pagamento parcial persiste, sem recurso fica larva. Casulos vazios viram resíduo ao emergir, sem comida devolvida. Pupa com casulo e nua têm representações diferentes. Economia ainda usa unidades demonstrativas, não biomassa calibrada.
-- Fontes: Willot et al.2026 doi10.1111/1365-2435.70359, texto primário e métodos lidos. Cinco espécies temperadas, protocolo 8 °C/4 meses e 26 °C apenas consulta no catálogo; não virou timer. Inspira memória endógena, não calibra os coeficientes. Registros de protocolo separados de aproximações.
-- Build TypeScript/Vite aprovado (245 módulos). 19 regressões anteriores passaram após integração; dez testes novos de memória/casulo passaram, incluindo fundação completa seed a v5: passo3770, quatro naníticas, reserva2,61055, ciclo0. Teste adicional de retorno ao abrigo passou (sete sazonais em 1648 ms); total de 11 casos novos aprovados. Não afirmar suíte completa ainda.
-- Regressão completa será iniciada após este commit em .runtime/season-suite.log; esperados 210 casos. Não iniciar outra enquanto estiver ativa; coletar a sessão retornada pelo comando. Sessões dirigidas anteriores concluídas.
+- Memória sazonal por colônia, frio acumulado, retomada gradual, atividade/energia/O₂ reduzidos e procura física de abrigo. Casulos com pagamento parcial persistente e resíduo sem reembolso. Fotoperíodo explícito separado da intensidade solar. Perfis genérico/lab v5; pupa nua generic-naked-demo@1 com modelRevision5. Saves anteriores preservados.
+- 210/210 testes completos em 291.383 ms, log .runtime/season-suite.log. Sessão 98016 encerrada. Depois, apenas UI/catálogo/câmera; build final 246 módulos aprovado. Não repetir suíte sem mudança relevante. Sem dependências novas.
+- QA completa ESTACOES-QA: cinco casulos em D62,1; diapausa quente em D97,6; frio 6,3/5 em D173,7; ciclo1 ativo em D188,8 com rainha viva. Operárias envelheceram; não afirmar nova postura nem sobrevivência calibrada. Checkpoints nomeados das fases preservados. Variante nua no catálogo e inspeção por linha de visão real aprovadas.
+- Fontes e limites em docs/sazonalidade.md. Willot2026 doi10.1111/1365-2435.70359 inspira qualitativamente; protocolo 8°C/4 meses/26°C só consulta, não coeficientes calibrados.
+- Novo terrário do usuário SEMENTE-50088 preservado em manual-aa40d713-28e7-45a1-bf10-cea8001456c8, Antes da QA sazonal · SEMENTE-50088, D16,9. Restaurado em pausa após QA; não substituir pelo antigo D267, também preservado.
+- Screenshots viveiro-0.22.0-casulos.png e viveiro-0.22.0-sazonalidade.png no diretório autorizado de visualizações. IAB localtab2 mantida; Sitetab1 intocado. Dev G PID17752 porta4173 ativo.
 
 ### Próximo passo concreto
 
-1. Coletar teste do abrigo, corrigir se necessário e rodar suíte completa. Conferir que módulos novos continuam pequenos e snapshots antigos inalterados.
-2. QA no IAB tab2. Original atual deve continuar seed a/D267 em pausa, checkpoint manual-691625be-84fe-4949-bf1f-68490114e3db. Testar perfil lab v5 (21 °C/80%) até fundação+timer sazonal, fotoperíodo, casulos e recarga. Variante nua deve ter catálogo completo apesar de versão1. Sempre RESTAURAR o original e confirmar 97 adultos/14 crias/4719 escolhas/4607 ajustes.
-3. Docs/sazonalidade.md, CHANGELOG/README/cronograma/checkpoint. Commit/push, PR #25 sobre #24 se ausente, publicação privada exata G:\Projetos\viveiro-0.22.0.tar.gz, tag/checkpoint.
-4. Fundação semiclaustral ainda pendente (decidir subetapa explícita antes de declarar 11 completa); depois 12–14 e calibração externa. Não afirmar biologia cientificamente calibrada.
-
-Dev Vite PID17752, porta4173 em G. Localtab2 marcada para permanecer, Sitetab1 intocado. Publicações anteriores abaixo. Credenciais só em memória/stdin; nunca no repositório.
+Concluir publicação 0.22.0, atualizar este cabeçalho com fonte/tag/deploy exatos. Depois criar branch codex/ própria para 10C: fundação semiclaustral com coleta externa e orçamento conservativo. Em seguida 12–14. Calibração por espécie continua dependência externa real. Não declarar cronograma concluído nem desativar retomada ainda.
 
 ## Última entrega publicada — etapa 11A (0.21.0)
 

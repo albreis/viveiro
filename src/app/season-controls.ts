@@ -41,13 +41,17 @@ export function renderSeasonStatus(w: FamilyWorld): void {
           labels[s.phase] +
           " · " +
           format(s.lastTemperature) +
-          " °C locais · frio " +
+          " °C locais · atividade " +
+          format(s.activeTicks / TICKS_PER_DAY) +
+          "/" +
+          SEASON_PARAMETERS.activeDays +
+          " dias do modelo · frio " +
           format(s.chillTicks / TICKS_PER_DAY) +
           "/" +
           SEASON_PARAMETERS.chillDays +
           " dias do modelo · postura " +
           format(100 * f.laying) +
-          "% · ciclo " +
+          "% sazonal · ciclo " +
           s.cycles +
           "."
         );
