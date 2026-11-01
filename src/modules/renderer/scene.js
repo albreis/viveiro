@@ -1,3 +1,5 @@
+import { EcologyView } from "./EcologyView.ts";
+import { focusEcology } from "./ecology-focus.ts";
 import { TrailView } from "./TrailView.ts";
 import { ChemicalContactView } from "./ChemicalContactView.ts";
 import { FoundersView } from "./FoundersView.ts";
@@ -101,6 +103,7 @@ export class Terrarium {
     this.trailView = new TrailView(this.scene, world.nest);
     this.trails = this.trailView.points;
     this.chemicalView = new ChemicalContactView(this.scene, LIMIT);
+    this.ecologyView = new EcologyView(this.scene);
     this.marker = new THREE.Mesh(
       new THREE.RingGeometry(0.3, 0.36, 32),
       new THREE.MeshBasicMaterial({
@@ -238,6 +241,9 @@ export class Terrarium {
   setInterior(visible) {
     this.showInterior = visible;
     updateSoilVisibility(this);
+  }
+  focusEcology() {
+    return focusEcology(this);
   }
   setView(view) {
     return setView(this, view);

@@ -253,6 +253,13 @@ $("rain").onclick = () => {
   intervention("rain");
   toast("A umidade aumentou. Observe a resposta do ambiente.");
 };
+$("focus-ecology").onclick = () => {
+  if (!scene) return;
+  toast(scene.focusEcology());
+  $("interior").checked = !!scene.showInterior;
+  updateUi();
+  $("viewport").scrollIntoView({ block: "center", behavior: "smooth" });
+};
 $("disturb").onclick = () => {
   intervention("collapse");
   toast("Observe a terra solta e o trabalho de recuperação.");

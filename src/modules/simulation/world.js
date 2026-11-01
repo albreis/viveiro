@@ -1,3 +1,4 @@
+import { arriveMimic } from "../ecology/mimic-arrival.ts";
 import { applyOdorPulse } from "../social-chemistry/intervention.ts";
 import { arriveIntruder } from "../social-chemistry/intrusion-arrival.ts";
 import { allAnts, allBrood, colonyWorlds } from "../colonies/types.ts";
@@ -69,6 +70,7 @@ export class World {
       return true;
     }
     return (
+      arriveMimic(this, ant, node) ||
       arriveIntruder(this, ant, node) ||
       arriveWithSoil(this, ant, node) ||
       arriveColony(this, ant, node)

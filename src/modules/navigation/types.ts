@@ -58,6 +58,8 @@ export interface AgentState {
   metabolicCost?: number;
   digPower?: number;
   carryingBrood?: number;
+  carryingMimic?: number;
+  mimicRejectedUntil?: number;
   carryingWaste?: number;
   bodyScale?: number;
   carryingSoil?: number;

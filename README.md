@@ -53,6 +53,8 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Simbioses e mimetismo](docs/simbioses.md)
+- [Biologia planejada](docs/biologia-planejada.md)
 - [Odores e território](docs/odores-e-territorio.md)
 - [Fundação claustral](docs/fundacao.md)
 - [Colônias filhas](docs/colonias-filhas.md)

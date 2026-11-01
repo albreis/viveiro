@@ -4,17 +4,17 @@ Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação                     |
-| ----- | -------------------------------------------------------------------- | ---------------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1            |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                 |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado       |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado       |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado       |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado       |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | 6A implementada; 6B pendente |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração        |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                    |
+| Etapa | Entrega                                                              | Situação               |
+| ----- | -------------------------------------------------------------------- | ---------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1      |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0           |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -253,6 +253,17 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Testes de química, recursos, apoio, ida/volta e snapshots; conferência no navegador com duas colônias.
 - Evidência qualitativa, equações, limitações e dados externos em docs/odores-e-territorio.md.
 - Próximo: 6B pulgões/melaço/proteção e lagartas miméticas; não repetir 6A.
+
+### Progresso da etapa 6B — 01/11/2026
+
+- Branch codex/simbioses-e-mimetismo; base codex/cronograma-biologia-fundacao para preservar o PR do planejamento novo.
+- Pulgões por seed, seiva debitada da planta, melaço e coleta conservativos, proteção e predação locais.
+- Lagartas cuco com reconhecimento químico, transporte físico, deposição no berçário e alimento debitado de doadoras próximas.
+- Instâncias visuais, painel ecológico e câmera para observar as relações de perto.
+- Suíte completa: 96 testes aprovados; 19 verificações químicas/ecológicas após ajustes finais e dez verificações de ecologia/mimetismo após impedir crescimento sem seiva. Um novo teste adiciona o caso da planta esgotada.
+- Navegador: seed a, duas adoções e 1,51 u. cedidas às lagartas; 16,41 u. de melaço coletadas até o dia 171. Sem erros de console. São resultados do modelo.
+- Referências, orçamento e limites em docs/simbioses.md: agregação de pulgões, população inicial de lagartas e ausência de ciclo adulto de borboleta/calibração.
+- Próximo passo do cronograma original: 7 — granular, capilaridade e gases; depois 8 e as novas etapas 9–14.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 

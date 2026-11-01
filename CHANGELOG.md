@@ -1,5 +1,14 @@
 # Versões
 
+## 0.9.0 — Simbioses e mimetismo
+
+- Pulgões associados a plantas, com custo de seiva, melaço, coleta e perdas contabilizadas.
+- Defesa contextual das hospedeiras e predação local.
+- Lagartas de odor compatível podem ser levadas fisicamente ao berçário e receber alimento existente.
+- Reserva metabólica, recusas, morte da transportadora, snapshots e prioridade de carga.
+- Painel ecológico, corpos/gotas visíveis e aproximação da câmera para observar as relações.
+- Novas etapas 9–14 de biologia, clima, longevidade e tempo longo documentadas sem alterar timers atuais.
+
 ## 0.8.0 — Odores e território
 
 - Perfis químicos por colônia e máscaras temporárias no corpo.

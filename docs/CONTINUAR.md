@@ -2,6 +2,18 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma, com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não criar executores concorrentes ou contornar cotas/aprovações.
 
+## Entrega em preparação — 6B
+
+Branch codex/simbioses-e-mimetismo; base codex/cronograma-biologia-fundacao. Versão 0.9.0 preparada, ainda NÃO publicada. Código em ecology e renderização pequenos em TypeScript. Pulgões, melaço com custo vegetal, defesa local, adoção química, transporte e alimentação das lagartas implementados. Documentação em docs/simbioses.md.
+
+Suíte completa: 96 aprovados em 366956 ms; 19 testes após ajustes de saúde/normal/carga e dez ecológicos após o ajuste de crescimento sem seiva passaram. Um teste novo adiciona a planta esgotada. Build Vite/TypeScript aprovado, repetir após o último ajuste de seiva antes de empacotar.
+
+Navegador: seed a pausada no dia 171, duas colônias, 115 formigas; 99 pulgões em seis plantas, 16,41 u. de melaço coletadas, duas adoções e 1,51 u. cedidas às lagartas. A população inicial de lagartas já terminou sua vida; contadores são acumulados. Zoom ecológico e corpos/gotas conferidos, console sem erros. Screenshots viveiro-0.9.0-pulgoes.png e viveiro-0.9.0-relacoes.png no diretório autorizado.
+
+O usuário acrescentou material de outra IA. Novas etapas 9–14 foram adicionadas ao final do cronograma, com faixas recebidas como hipóteses e referências primárias em docs/biologia-planejada.md. Commit 46e9d8f enviado na branch codex/cronograma-biologia-fundacao; PR #11 https://github.com/albreis/viveiro/pull/11, base codex/odores-e-territorio. A branch 6B recebeu esse commit por fast-forward; não mesclou main nem incluiu código 6B no PR documental.
+
+Próximo passo imediato: build final, commit/push restrito da 6B, abrir PR #12 se ainda não existir com base codex/cronograma-biologia-fundacao, publicar 0.9.0 no mesmo Site privado com fonte atual pelo helper, tag v0.9.0 e registrar IDs. Depois etapa 7. Dev foi religado no G e HTTP 200 conferido; conferir .runtime/dev.pid. Nenhum processo de testes pendente.
+
 ## Última entrega publicada
 
 - Branch codex/odores-e-territorio, base codex/colonias-filhas; versão 0.8.0.

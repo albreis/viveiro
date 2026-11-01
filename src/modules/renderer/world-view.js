@@ -77,6 +77,7 @@ export function update(host, world, time, alpha = 1) {
     world.foundings,
   );
   host.colonyView.update(world, (a) => host.pose(a), host.followId);
+  host.ecologyView.update(world, (a) => host.pose(a), host.followId);
   host.trailView.update(world, host.showTrails);
   host.chemicalView.update(
     world.ants,

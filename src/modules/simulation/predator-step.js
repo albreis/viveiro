@@ -1,3 +1,4 @@
+import { aphidPrey } from "../ecology/predation.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -12,6 +13,10 @@ export function updatePredators(world, dead) {
     p.previousDistance = p.distanceWalked || 0;
     p.energy -= 0.012;
     if (p.cooldown > 0) p.cooldown--;
+    if (p.repelledUntil > world.tick) {
+      world.moveSurface(p, p.angle, 0.055, true);
+      continue;
+    }
     let target = null,
       nearest = 2.6;
     for (const a of world.ants)
@@ -40,7 +45,11 @@ export function updatePredators(world, dead) {
         p.cooldown = 65;
         world.log("Uma aranha capturou uma operária.", "danger");
       }
-    } else if (world.random() < 0.07) p.angle += world.range(-1, 1);
+    } else {
+      const aphid = aphidPrey(world, p);
+      if (aphid) p.angle = Math.atan2(aphid.z - p.z, aphid.x - p.x);
+      else if (world.random() < 0.07) p.angle += world.range(-1, 1);
+    }
     const speed = target?.kind ? 0.062 : 0.024;
     world.moveSurface(p, p.angle, speed, true);
   }

@@ -65,6 +65,7 @@ export interface ColonyState {
   spoiled: number;
 }
 export interface ColonyWorld extends SoilWorld {
+  ecology?: import("../ecology/types.ts").EcologyState;
   socialChemistry?: import("../social-chemistry/types.ts").SocialChemistry;
   colonyId?: number;
   capacityOffset?: number;
