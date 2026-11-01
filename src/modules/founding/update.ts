@@ -1,3 +1,4 @@
+import { seasonFactors } from "../seasons/update.ts";
 import { updateQueenSealing, parkSealedQueen } from "../sealing/queen.ts";
 import { advanceMaternalReserves } from "../maternal/initialize.ts";
 import type { FoundingWorld } from "./types.ts";
@@ -14,8 +15,9 @@ export function updateFounding(world: FoundingWorld) {
     return;
   }
   advanceMaternalReserves(world);
-  const paid = spendReserve(world, "maintenance", 0.001);
-  if (paid < 0.001) world.queenHealth = Math.max(0, world.queenHealth - 0.15);
+  const demand = 0.001 * seasonFactors(world).activity;
+  const paid = spendReserve(world, "maintenance", demand);
+  if (paid < demand) world.queenHealth = Math.max(0, world.queenHealth - 0.15);
   queen.energy = world.queenHealth;
   if (world.queenHealth <= 0) {
     changePhase(

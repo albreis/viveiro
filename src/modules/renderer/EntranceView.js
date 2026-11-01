@@ -14,7 +14,7 @@ export class EntranceView {
       (this.host.nestLabel.visible =
         !!entry &&
         !this.host.followId &&
-        !["sealing", "structure"].includes(this.host.currentView));
+        !["sealing", "structure", "brood"].includes(this.host.currentView));
     if (entry && this.host.nestLabel)
       this.host.nestLabel.position.set(entry.x, entry.y + 0.6, entry.z);
     world.nest.nodes.forEach((node, id) => {

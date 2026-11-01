@@ -1,6 +1,10 @@
 import { biologicalParameters } from "../modules/biology/catalog.ts";
 import { biologicalSources } from "../modules/biology/sources.ts";
-import type { EvidenceKind, ParameterTopic } from "../modules/biology/types.ts";
+import type {
+  BiologicalProfile,
+  EvidenceKind,
+  ParameterTopic,
+} from "../modules/biology/types.ts";
 const labels: Record<EvidenceKind, string> = {
   approximation: "Aproximação do modelo",
   hypothesis: "Hipótese não verificada",
@@ -13,12 +17,16 @@ const number = (n: number) =>
   });
 export function renderBiologicalParameters(
   topic: ParameterTopic,
-  revision: number,
+  profile: BiologicalProfile,
 ): void {
+  const revision = profile.modelRevision ?? profile.version;
   const list = document.getElementById("biology-records")!;
   list.replaceChildren();
   for (const record of biologicalParameters.filter(
-    (p) => p.topic === topic && (p.minModelRevision ?? 1) <= revision,
+    (p) =>
+      p.topic === topic &&
+      (p.minModelRevision ?? 1) <= revision &&
+      (!p.requiresCocoon || profile.cocoon === "present"),
   )) {
     const item = document.createElement("li"),
       name = document.createElement("strong"),

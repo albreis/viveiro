@@ -1,3 +1,4 @@
+import { seasonFactors } from "../seasons/update.ts";
 import { recognizes } from "../social-chemistry/profile.ts";
 import { isClaustral, spendReserve } from "../founding/types.ts";
 import { contactAcrossAir } from "./contact.ts";
@@ -29,12 +30,15 @@ export function updateNutrition(world: ColonyWorld) {
     const queen = ant.kind === "queen";
     if (queen && isClaustral(world)) continue;
     if (queen) {
+      const factor = seasonFactors(world).activity,
+        need = 0.0006 * factor,
+        demand = 0.001 * factor;
       const maternal =
-        ant.crop < 0.0006 && world.founding
-          ? spendReserve(world, "maintenance", 0.001)
+        ant.crop < need && world.founding
+          ? spendReserve(world, "maintenance", demand)
           : 0;
-      const fed = ant.crop >= 0.0006 || maternal >= 0.001,
-        amount = Math.min(ant.crop, 0.0006);
+      const fed = ant.crop >= need || maternal >= demand,
+        amount = Math.min(ant.crop, need);
       ant.crop -= amount;
       world.queenHealth = Math.max(
         0,

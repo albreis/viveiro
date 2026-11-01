@@ -366,7 +366,7 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 | ----- | --------------------------------------------------------------------- | ----------------------------------------- |
 | 9     | Perfis biológicos por espécie e proveniência dos parâmetros           | Registro implementado; calibração externa |
 | 10    | Fundação claustral com cronologia, tampão físico e reservas corporais | 10A/10B publicadas; calibração pendente   |
-| 11    | Desenvolvimento térmico da prole, nutrição e diapausa                 | Planejada; 7 e 9                          |
+| 11    | Desenvolvimento térmico da prole, nutrição e diapausa                 | 11A/11B publicadas; calibração pendente   |
 | 12    | Clima espacial, umidade e seleção local da câmara                     | Planejada; 7 e 9                          |
 | 13    | Espermateca, fertilidade, envelhecimento e longevidade da rainha      | Planejada; 5A/5C, 8 e 9                   |
 | 14    | Escala de tempo biológico e experimentos de anos com recuperação      | Planejada; 8–13                           |
@@ -385,7 +385,7 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 - Genérico preservado e preset opcional de ar de referência; consulta não muda o experimento.
 - Perfil em snapshots/replay e herança por colônia; versão desconhecida protege os dados.
   - 21 testes dirigidos e 176/176 completos aprovados; QA/recarga/recuperação aprovadas; publicada no mesmo Site privado; PR#21. docs/perfis-biologicos.md.
-- Espécies calibradas dependem de dados; mecanismos semiclaustrais/casulo/diapausa seguem nas etapas10/11.
+- Espécies calibradas dependem de dados; casulos e diapausa implementados em 11B; fundação semiclaustral segue em 10C.
 
 ### 10. Fundação, selamento e orçamento materno
 
@@ -393,7 +393,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isola
 
 - 10A implementada na branch codex/reservas-maternas, versão 0.19.0: 183/183 testes completos, 14 dirigidos finais, TypeScript/Vite e QA no navegador aprovados. Publicada no mesmo Site privado; PR [#22](https://github.com/albreis/viveiro/pull/22). Ver docs/reservas-maternas.md.
 - 10B publicada na versão 0.20.0, branch codex/selamento-fundacao e PR [#23](https://github.com/albreis/viveiro/pull/23): tampão físico conservativo, gases porosos, inspeção e reabertura pelas naníticas. Regressão 190/190 e 16 dirigidos finais aprovados. Ver docs/selamento.md.
-- Cronologia real e fundação semiclaustral continuam pendentes; não há isolamento térmico ou de umidade do ar calibrado.
+- 10C pendente: variante semiclaustral com coleta externa e orçamento conservativo. Cronologia real continua dependente de calibração; não há isolamento térmico ou de umidade do ar calibrado.
 - 11A implementada na branch codex/maturacao-e-estacoes, versão 0.21.0: 199/199 testes, build e QA aprovados. Publicada no mesmo Site privado, PR [#24](https://github.com/albreis/viveiro/pull/24); ver docs/maturacao.md. Próximo item: 11B, diapausa e casulos.
 
 - Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
@@ -404,7 +404,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isola
 ### 11. Maturação e estações
 
 - 11A: mecanismo térmico demonstrativo, alimentação parcial, estresse, perdas e estado individual persistente implementados. Durações por espécie continuam sem calibração externa.
-- 11B: diapausa, memória sazonal, retomada e casulos ainda pendentes.
+- 11B implementada na branch codex/diapausa-e-casulos, versão 0.22.0: memória endógena, frio acumulado, retomada, abrigo e casulos pagos por perfil. 210/210 testes, build e QA completos aprovados. Publicada no mesmo Site privado; PR [#25](https://github.com/albreis/viveiro/pull/25), fonte 5af4191, tag v0.22.0. Ver docs/sazonalidade.md.
 
 - Investigar ovo–larva 10–14 d, larva–pupa 10–15 d e pupa–adulta 10–24 d.
 - Conferir o total sugerido de 35–60 d: a soma das faixas individuais recebidas é 30–53 d.

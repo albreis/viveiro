@@ -70,7 +70,7 @@ test("revision one remains scalar while revision two pins separate stores and hi
   spendReserve(next, "maintenance", 0.1);
   close(next.founding.reserves, 7.9);
   close(next.founding.spent.maintenance, 0.1);
-  assert.equal(latestProfileReference().version, 4);
+  assert.equal(latestProfileReference().version, 5);
   assert.deepEqual(
     biologicalReferenceFromKey(biologicalProfileKey(next.biologicalProfile)),
     next.biologicalProfile,

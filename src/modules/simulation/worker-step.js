@@ -1,3 +1,5 @@
+import { seasonFactors } from "../seasons/update.ts";
+import { seasonalShelter } from "../seasons/shelter.ts";
 import { updateSealWorker } from "../sealing/worker.ts";
 import { learningTick } from "../learning/live.ts";
 import { airEnergyCost } from "../ventilation/sensing.ts";
@@ -64,7 +66,9 @@ export function updateWorkers(world, suitability) {
     }
     learningTick(world, ant);
     ant.energy -=
-      (0.025 + (1 - suitability) * 0.015) * (ant.metabolicCost ?? 1) +
+      (0.025 + (1 - suitability) * 0.015) *
+        (ant.metabolicCost ?? 1) *
+        seasonFactors(world).activity +
       airEnergyCost(world, ant);
     if (ant.energy <= 0 || ant.age > world.lifeLimit(ant)) {
       dead.add(ant.id);
@@ -74,6 +78,7 @@ export function updateWorkers(world, suitability) {
     }
     if (updateEncounterMotion(world, ant)) continue;
     if (updateIntrusion(world, ant)) continue;
+    if (seasonalShelter(world, ant)) continue;
     if (updateSealWorker(world, ant)) continue;
     if (recoverStall(world, ant)) continue;
     if (visitMimic(world, ant)) continue;

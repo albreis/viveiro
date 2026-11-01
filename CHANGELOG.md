@@ -1,5 +1,13 @@
 # Versões
 
+## 0.22.0 — Memória sazonal e casulos
+
+- Perfis sazonais com preparação, diapausa reprodutiva, frio acumulado e retomada gradual.
+- Fotoperíodo de referência, repouso no abrigo e demanda reduzida de recursos e oxigênio.
+- Casulos pagos antes da pupação, resíduos após emergência e variante de pupa nua.
+- Contadores e inspeção da prole; memória e pagamentos persistentes, com perfis antigos preservados.
+- Coeficientes demonstrativos e limites em docs/sazonalidade.md.
+
 ## 0.21.0 — Maturação térmica local
 
 - Revisão biológica 4: crescimento por estágio com temperatura local e água no solo como proxy explícito.

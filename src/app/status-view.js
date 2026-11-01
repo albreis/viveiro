@@ -1,3 +1,4 @@
+import { renderSeasonStatus } from "./season-controls.ts";
 import { renderDevelopmentStatus } from "./development-status.ts";
 import { renderSealingStatus } from "./sealing-controls.ts";
 import { renderBiologyStatus } from "./biology-controls.ts";
@@ -24,6 +25,7 @@ export function renderStatus(context, updateAntCamera) {
   const { world, comparison, scenario, current } = context;
   renderSealingStatus(current);
   renderDevelopmentStatus(current);
+  renderSeasonStatus(current);
   const w = current,
     workers = w.workers.length,
     queen = w.ants.some((a) => a.kind === "queen"),

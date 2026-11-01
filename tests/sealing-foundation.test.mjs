@@ -13,7 +13,7 @@ import { sampleSoil, sampleSupport } from "../src/modules/terrain/field.ts";
 import { normalizeSession } from "../src/modules/persistence/validation.ts";
 const near = (x) => assert.ok(Math.abs(x) < 1e-7, String(x));
 test("new model revision is explicit; old pooled and scalar profiles retain an open entrance", () => {
-  assert.equal(latestProfileReference().version, 4);
+  assert.equal(latestProfileReference().version, 5);
   for (const v of [1, 2])
     assert.notEqual(
       resolveBiologicalProfile(profileReference("generic-demo", v))

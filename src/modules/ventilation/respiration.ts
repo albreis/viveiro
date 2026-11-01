@@ -1,3 +1,4 @@
+import { seasonFactors } from "../seasons/update.ts";
 import type { GasState, GasWorld } from "./types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
 export function agentGasCell(w: GasWorld, a: ColonyAgent) {
@@ -17,11 +18,12 @@ export function agentGasCell(w: GasWorld, a: ColonyAgent) {
 export function respire(w: GasWorld, s: GasState, dt: number) {
   const demand = new Float64Array(s.cells.length);
   for (const c of [w, ...(w.colonies || [])]) {
+    const factor = seasonFactors(c).activity;
     for (const a of c.ants) {
       const i = agentGasCell(w, a);
       if (i != null)
         demand[i] +=
-          0.000002 * (a.bodyScale ?? 1) ** 3 * (a.metabolicCost ?? 1);
+          0.000002 * (a.bodyScale ?? 1) ** 3 * (a.metabolicCost ?? 1) * factor;
     }
     for (const b of c.brood) {
       const carrier =
@@ -29,7 +31,7 @@ export function respire(w: GasWorld, s: GasState, dt: number) {
           ? undefined
           : c.ants.find((a) => a.id === b.carrier);
       const i = carrier ? agentGasCell(w, carrier) : b.node;
-      if (i != null && s.cells[i]) demand[i] += 0.0000003;
+      if (i != null && s.cells[i]) demand[i] += 0.0000003 * factor;
     }
   }
   demand.forEach((rate, i) => {

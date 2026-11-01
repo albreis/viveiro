@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.21.0</span
+        <span class="prototype">PROTÓTIPO 0.22.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -328,6 +328,24 @@
               Observar entrada por dentro
             </button>
             <p id="development-status" hidden></p>
+            <button id="focus-brood" class="text-button" disabled>
+              Observar crias de perto
+            </button>
+            <div id="season-panel" hidden>
+              <p id="season-status"></p>
+              <label for="photoperiod"
+                >Duração diária da luz
+                <strong id="photoperiod-value">12 h</strong></label
+              ><input
+                id="photoperiod"
+                type="range"
+                min="0"
+                max="24"
+                step="0.5"
+                value="12"
+                aria-label="Duração diária da luz"
+              />
+            </div>
             <p id="chemical-status"></p>
             <div
               id="odor-legend"

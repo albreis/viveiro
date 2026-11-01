@@ -46,9 +46,9 @@ export class FoundersView {
     this.views.set(a.id, v);
     return v;
   }
-  objects() {
+  objects(includeHidden = false) {
     return [...this.views.values()]
-      .filter((v) => v.body.visible)
+      .filter((v) => includeHidden || v.body.visible)
       .map((v) => v.body);
   }
   pickId(object: THREE.Object3D): number | undefined {

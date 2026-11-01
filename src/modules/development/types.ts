@@ -20,3 +20,5 @@ export const DEVELOPMENT_PARAMETERS = Object.freeze({
   stressPerTick: 0.003,
   recoveryPerTick: 0.0005,
 });
+
+export const COCOON_COST = 0.02;

@@ -8,7 +8,7 @@ export class ColonyView {
   private loads: THREE.InstancedMesh;
   private dummy = new THREE.Object3D();
   constructor(scene: THREE.Scene, capacity: number) {
-    this.stages = [0xeee4b9, 0xd3c39c, 0xc9b389].map((color) =>
+    this.stages = [0xeee4b9, 0xd3c39c, 0xc9b389, 0xb39a70].map((color) =>
       this.mesh(scene, new THREE.SphereGeometry(0.075, 8, 6), color, capacity),
     );
     this.waste = this.mesh(
@@ -66,10 +66,11 @@ export class ColonyView {
   ) {
     const d = this.dummy,
       ants = new Map(world.ants.map((a) => [a.id, a])),
-      counts = [0, 0, 0];
+      counts = [0, 0, 0, 0];
     for (const b of world.brood) {
-      const index =
+      let index =
         broodStage(b.age) === "egg" ? 0 : broodStage(b.age) === "larva" ? 1 : 2;
+      if (index === 2 && b.cocoon?.built) index = 3;
       const mesh = this.stages[index],
         i = counts[index];
       if (i >= mesh.instanceMatrix.count) continue;
@@ -78,9 +79,9 @@ export class ColonyView {
       else d.position.set(b.x, b.y, b.z);
       d.rotation.set(0, b.id * 2.4, 0);
       d.scale.set(
-        index === 1 ? 0.75 : 0.65,
-        0.65,
-        index === 1 ? 1.7 : index === 2 ? 1.4 : 1.1,
+        index === 1 ? 0.75 : index === 3 ? 0.85 : 0.65,
+        index === 3 ? 0.85 : 0.65,
+        index === 1 ? 1.7 : index === 3 ? 1.7 : index === 2 ? 1.4 : 1.1,
       );
       d.updateMatrix();
       mesh.setMatrixAt(i, d.matrix);
