@@ -53,6 +53,7 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Genética digital](docs/genetica.md)
 - [Paisagem procedural](docs/procedural.md)
 - [Cronograma](docs/cronograma.md)
 - [Especificações](docs/especificacoes.md)

@@ -268,7 +268,8 @@
   font-size: 7px;
   letter-spacing: 0.8px;
 }
-.ant-camera #ant-state {
+.ant-camera #ant-state,
+.ant-camera #ant-genome {
   color: #7b896d;
   font-size: 8px;
   white-space: nowrap;

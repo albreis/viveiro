@@ -42,6 +42,9 @@ export interface AgentState {
   };
   lastEntrance?: { node: number; x: number; z: number };
   hasFood?: boolean;
+  pheromoneGain?: number;
+  metabolicCost?: number;
+  digPower?: number;
   carryingBrood?: number;
   carryingWaste?: number;
   bodyScale?: number;

@@ -1,3 +1,5 @@
+import { genomeForAgent } from "../genetics/reproduction.ts";
+import { expressGenome } from "../genetics/phenotype.ts";
 import { waterLevel, surfaceHeight } from "../landscape/queries.ts";
 import { individualTraits } from "../colony/individual.ts";
 import { arriveColony } from "../colony/arrival.ts";
@@ -48,9 +50,9 @@ export class World {
   inPond(x, z) {
     return waterLevel(this.landscape, x, z) < 1;
   }
-  makeAnt(kind, x, z) {
+  makeAnt(kind, x, z, suppliedGenome) {
     const id = this.nextId++;
-    return {
+    const ant = {
       id,
       kind,
       x,
@@ -68,6 +70,11 @@ export class World {
       node: null,
       ...individualTraits(this.seed, id, kind),
     };
+    if (this.genetics) {
+      ant.genome = genomeForAgent(this, id, kind, suppliedGenome);
+      expressGenome(ant, ant.genome);
+    }
+    return ant;
   }
   routeSignal(from, to, odor, owner) {
     return routeOdorSignal(

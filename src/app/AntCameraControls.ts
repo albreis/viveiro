@@ -1,3 +1,4 @@
+import { describeGenome } from "./genetics-summary.ts";
 import type { ColonyAgent as AgentState } from "../modules/colony/types.ts";
 
 interface SceneControls {
@@ -142,6 +143,7 @@ export class AntCameraControls {
         format(ant.age || 0) +
         " d"
       : "Nenhuma formiga viva.";
+    element("ant-genome").textContent = describeGenome(ant?.genome);
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
     follow.hidden = !!scene?.followId;

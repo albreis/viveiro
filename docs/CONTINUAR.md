@@ -20,8 +20,8 @@ limites de uso. Manter arquivos pequenos, dev ligado e PR por etapa.
 
 ## Próxima entrega
 
-Branch codex/genetica-e-heranca foi avançada linearmente até 260d12d, sem implementação
-genética ainda. Implementar a etapa 5A: genomas persistentes, parentesco, cruzamento,
+Branch codex/genetica-e-heranca foi avançada linearmente até 260d12d e recebeu um checkpoint ba298bd, com a implementação
+genética 5A em andamento. A etapa 5A adiciona: genomas persistentes, parentesco, cruzamento,
 mutações reproduzíveis e efeitos limitados em corpo, velocidade, limiares e sensores.
 Preservar os atributos das formigas de saves antigos; não inventar ascendência.
 
@@ -47,3 +47,12 @@ Só reiniciar o servidor se necessário, verificando que o processo é o Vite de
 Saves do navegador são separados por perfil. A sessão IAB de QA pode criar terrários;
 não apagar ou substituir o experimento do Chrome do usuário. Para observar um novo
 desenho procedural em um save anterior, é necessário Novo terrário ou reiniciar a seed.
+
+## Execução atual da 5A
+
+Genomas e expressão de fenótipo estão em src/modules/genetics. O genoma passa do
+ovo ao adulto, e a UI mostra ascendência. Sete testes específicos aprovados e tsc
+aprovado. A versão de trabalho é 0.5.0; ainda não foi publicada. Próximo passo:
+aguardar regressão completa, corrigir falhas reais, conferir o dev no navegador,
+abrir PR #7 sobre codex/terrario-procedural e publicar só depois da validação.
+Usar gravações atômicas já formatadas para evitar cache vazio do Vite.

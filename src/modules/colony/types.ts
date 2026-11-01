@@ -14,6 +14,7 @@ export interface ColonyTask {
   until?: number;
 }
 export interface ColonyAgent extends SoilAgent {
+  genome?: import("../genetics/genome.ts").Genome;
   age: number;
   crop: number;
   caste: "minor" | "major";
@@ -33,6 +34,7 @@ export interface ColonyAgent extends SoilAgent {
   socialPartner?: number;
 }
 export interface Brood extends Vec3 {
+  genome?: import("../genetics/genome.ts").Genome;
   id: number;
   age: number;
   node: number;
@@ -61,7 +63,13 @@ export interface ColonyWorld extends SoilWorld {
   born: number;
   population: number;
   predators: { x: number; z: number; energy: number }[];
-  makeAnt(kind: string, x: number, z: number): ColonyAgent;
+  makeAnt(
+    kind: string,
+    x: number,
+    z: number,
+    genome?: import("../genetics/genome.ts").Genome,
+  ): ColonyAgent;
+  genetics?: import("../genetics/reproduction.ts").GeneticsState;
   ants: ColonyAgent[];
   brood: Brood[];
   colony: ColonyState;

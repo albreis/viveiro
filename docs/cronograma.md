@@ -184,3 +184,12 @@ automaticamente.
 - Tag de recuperação: v0.4.0, apontando exatamente para a fonte publicada.
 - PRs #1 a #6 continuam abertos e encadeados para revisão.
 - Dev mantido em G:\Projetos\viveiro, em http://127.0.0.1:4173/.
+
+### Etapa 5A — genética e herança
+
+- Branch codex/genetica-e-heranca, baseada na entrega procedural.
+- Genomas, recombinação, mutações e parentesco persistentes ligados ao ciclo da prole.
+- Efeitos limitados em corpo, velocidade, sentidos, metabolismo e limiares.
+- Sete testes genéticos aprovados; regressões completas e revisão visual em andamento.
+- Não conclui a etapa 5: voo nupcial e fundação orgânica continuam em 5B.
+- Retomada horária nesta conversa configurada no app; checkpoint em docs/CONTINUAR.md.

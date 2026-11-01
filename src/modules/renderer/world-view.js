@@ -73,12 +73,14 @@ export function update(host, world, time, alpha = 1) {
   if (queen) {
     host.queen.position.set(queen.x, (queen.y || 0) + 0.07, queen.z);
     host.queen.rotation.y = 0.6;
+    host.queen.scale.setScalar(queen.bodyScale || 1);
   }
   const male = world.ants.find((a) => a.kind === "male");
   host.male.visible = !!male && male.id !== host.followId;
   if (male) {
     host.male.position.set(male.x, (male.y || 0) + 0.12, male.z);
     host.male.rotation.y = Math.sin(time) * 0.3;
+    host.male.scale.setScalar(male.bodyScale || 1);
   }
   host.colonyView.update(world, (a) => host.pose(a), host.followId);
   host.trails.visible = host.showTrails;
