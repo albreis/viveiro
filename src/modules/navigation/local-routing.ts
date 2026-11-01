@@ -1,3 +1,4 @@
+import { adjacentAirComfort } from "../ventilation/sensing.ts";
 import type { AgentState, NavigationWorld } from "./types.ts";
 import { knownRoute } from "./route-memory.ts";
 import { chooseLocalExit } from "./local-route-policy.ts";
@@ -33,7 +34,11 @@ export function continueLocalRoute(
     intent.destination,
     blocked,
   );
-  if (known.length && world.range(0, 1) > 0.04) {
+  if (
+    known.length &&
+    adjacentAirComfort(world, ant, known[0]) > 0.8 &&
+    world.range(0, 1) > 0.04
+  ) {
     ant.route = known;
     return true;
   }
@@ -57,6 +62,7 @@ export function continueLocalRoute(
       length = Math.hypot(node.x - from.x, node.y - from.y, node.z - from.z);
     return {
       id,
+      comfort: adjacentAirComfort(world, ant, id),
       signal:
         (world.routeSignal?.(ant.node!, id, intent.odor, intent.owner) || 0) *
         (ant.pheromoneGain ?? 1),

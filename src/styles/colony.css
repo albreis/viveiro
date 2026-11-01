@@ -131,3 +131,11 @@
   display: flex;
   gap: 16px;
 }
+
+#gas-map {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  background: #eff2e7;
+}

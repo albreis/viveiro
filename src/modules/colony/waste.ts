@@ -1,3 +1,4 @@
+import { sampleClimate } from "../microclimate/grid.ts";
 import { roomNode } from "./rooms.ts";
 import type { ColonyAgent, ColonyWorld, Waste } from "./types.ts";
 
@@ -42,16 +43,22 @@ export function leaveCorpse(world: ColonyWorld, ant: ColonyAgent) {
 }
 export function spoilStocks(world: ColonyWorld) {
   if (world.tick % 100 || world.food <= 0) return;
-  const humidity = world.params.humidity / 100;
+  const storage =
+    world.nest.nodes[roomNode(world.nest, "storage", 0, world.colonyId || 1)];
+  if (!storage) return;
+  const local = sampleClimate(world.microclimate, storage),
+    water = local?.water ?? 0.55;
+  const thermal = Math.max(
+    0.25,
+    Math.min(2, 1 + ((local?.temperature ?? 24) - 24) / 20),
+  );
   const amount = Math.min(
     world.food,
-    world.food * Math.max(0, humidity - 0.75) * 0.005,
+    world.food * Math.max(0, water - 0.75) * 0.005 * thermal,
   );
   if (amount <= 0) return;
   world.food -= amount;
   world.colony.spoiled += amount;
-  const storage =
-    world.nest.nodes[roomNode(world.nest, "storage", 0, world.colonyId || 1)];
   addWaste(world, {
     x: storage.x,
     y: storage.y - storage.r + 0.04,

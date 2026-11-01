@@ -1,3 +1,4 @@
+import { sampleClimate } from "../microclimate/grid.ts";
 import type { SoilWorld, SoilPile } from "./types.ts";
 import { distance3, pileRadius } from "./ledger.ts";
 
@@ -56,8 +57,17 @@ export function updateErosion(world: SoilWorld) {
   if (world.tick % 50) return;
   for (let i = 0; i < world.nest.links.length; i++) {
     const width = world.nest.linkWidths?.[i] || 0.38;
-    const saturation = Math.max(0, world.params.humidity / 100 - 0.77);
-    const dryness = Math.max(0, 0.18 - world.params.humidity / 100);
+    const [a, b] = world.nest.links[i],
+      p = world.nest.nodes[a],
+      q = world.nest.nodes[b];
+    const water =
+      sampleClimate(world.microclimate, {
+        x: (p.x + q.x) / 2,
+        y: (p.y + q.y) / 2,
+        z: (p.z + q.z) / 2,
+      })?.water ?? 0.55;
+    const saturation = Math.max(0, water - 0.77),
+      dryness = Math.max(0, 0.18 - water);
     const wear = saturation * (0.008 + width * 0.035) + dryness * 0.006;
     world.soil.integrity[i] = Math.max(
       0,

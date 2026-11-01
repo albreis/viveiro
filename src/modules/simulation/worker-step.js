@@ -1,3 +1,4 @@
+import { airEnergyCost } from "../ventilation/sensing.ts";
 import { visitMimic } from "../ecology/mimic-worker.ts";
 import { visitAphids } from "../ecology/aphid-worker.ts";
 import { updateIntrusion } from "../social-chemistry/intrusion.ts";
@@ -60,7 +61,8 @@ export function updateWorkers(world, suitability) {
       continue;
     }
     ant.energy -=
-      (0.025 + (1 - suitability) * 0.015) * (ant.metabolicCost ?? 1);
+      (0.025 + (1 - suitability) * 0.015) * (ant.metabolicCost ?? 1) +
+      airEnergyCost(world, ant);
     if (ant.energy <= 0 || ant.age > world.lifeLimit(ant)) {
       dead.add(ant.id);
       world.deaths++;

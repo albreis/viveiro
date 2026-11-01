@@ -4,17 +4,17 @@ Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação                                        |
-| ----- | -------------------------------------------------------------------- | ----------------------------------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1                               |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                                    |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado                          |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado                          |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado                          |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                          |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                          |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A/7B1 implementadas; gases/estrutura pendentes |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                                       |
+| Etapa | Entrega                                                              | Situação                                            |
+| ----- | -------------------------------------------------------------------- | --------------------------------------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1                                   |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                                        |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado                              |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado                              |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado                              |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                              |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                              |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A/7B implementadas; estrutura/calibração pendentes |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                                           |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -171,6 +171,14 @@ RL depende de sensores, ações, recompensas e física estáveis.
 | 5     | [#5](https://github.com/albreis/viveiro/pull/5) | Sensores locais e memória                           |
 | 6     | [#6](https://github.com/albreis/viveiro/pull/6) | Terrário procedural e ecologia dinâmica             |
 | 7     | [#7](https://github.com/albreis/viveiro/pull/7) | Genética digital e fluxo com diferenças individuais |
+| 8 | [#8](https://github.com/albreis/viveiro/pull/8) | Voo e fundação física do casal inicial |
+| 9 | [#9](https://github.com/albreis/viveiro/pull/9) | Colônias filhas no habitat comum |
+| 10 | [#10](https://github.com/albreis/viveiro/pull/10) | Reconhecimento químico e território |
+| 11 | [#11](https://github.com/albreis/viveiro/pull/11) | Planejamento biológico recebido (etapas 9–14) |
+| 12 | [#12](https://github.com/albreis/viveiro/pull/12) | Simbioses e mimetismo |
+| 13 | [#13](https://github.com/albreis/viveiro/pull/13) | Agregados soltos com gravidade e atrito |
+| 14 | [#14](https://github.com/albreis/viveiro/pull/14) | Água e calor no entorno do solo |
+| 15 | [#15](https://github.com/albreis/viveiro/pull/15) | Gases, ventilação e sensores locais |
 
 Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
@@ -287,6 +295,18 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Estado compartilhado por colônias e snapshots reproduzíveis; 111 testes completos aprovados e TypeScript/Vite aprovados.
 - Modelo exploratório e limitações em docs/agua-e-calor.md; sem inundação, gelo ou solução completa de Richards.
 - Pendente 7B2: gases, ventilação e respostas biológicas; 7C: acoplamento estrutural do solo. Etapas 9–14 preservadas ao final.
+
+### Etapa 7B2 — gases e ventilação (0.12.0)
+
+- Branch codex/gases-e-ventilacao; base codex/agua-e-calor.
+- O₂/CO₂ por compartimentos, respiração, difusão e advecção com balanços.
+- Pressão em grafo, entradas, vento, empuxo aproximado e resistência por entulho.
+- Sensores locais, custo energético e viés ACO sem mapa global.
+- Água/temperatura próximas para desgaste e deterioração do estoque; resíduos conservativos.
+- Painel, diagrama e leitura na formiga; intervenções e restore determinísticos.
+- 123/123 testes na execução completa limpa; TypeScript/Vite e navegador aprovados. Publicação privada 0.12.0 confirmada; fonte 0e385cc, tag v0.12.0, PR #15.
+- Limites e dependências experimentais em docs/gases-e-ventilacao.md; modelo não calibrado.
+- Próximo: 7C suporte estrutural, depois 8 e novas etapas biológicas 9–14.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 
