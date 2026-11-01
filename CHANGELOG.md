@@ -1,5 +1,15 @@
 # Versões
 
+## Em desenvolvimento — túneis vivos
+
+- Frentes de escavação, transporte e depósitos de terra.
+- Erosão exploratória e remoção de bloqueios por viagens reais.
+- Saída pela borda da entrada, sem procurar apoio no ar.
+- Balanço de material, retomada após recuo e testes de recuperação completa.
+- Malha do terreno calculada em Worker.
+- Inicialização, migrações e previsões separadas em módulos pequenos.
+
+
 ## Em desenvolvimento — recuperação nas laterais
 
 - Busca de caminho apoiado e desvio lateral durante transições bloqueadas.

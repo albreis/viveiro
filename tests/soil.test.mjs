@@ -1,0 +1,167 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { World } from "../src/modules/simulation/world.js";
+import { proposeDig, digBite } from "../src/modules/soil/projects.ts";
+import {
+  soilBalance,
+  depositSoil,
+  dropSoil,
+} from "../src/modules/soil/ledger.ts";
+import { collapseEdge } from "../src/modules/soil/erosion.ts";
+import { updateSoilWorker } from "../src/modules/soil/worker.ts";
+import { tunnelFooting } from "../src/modules/terrain/surface-queries.ts";
+
+test("newly excavated and eroded material remains in cargo, deposits or rubble", () => {
+  const w = new World("soil-ledger");
+  const project = proposeDig(w, 3);
+  assert.ok(project);
+  const ant = w.makeAnt("worker", 0, 0);
+  w.ants = [ant];
+  const revision = w.nest.revision;
+  for (let i = 0; i < 35; i++) digBite(w, ant, project);
+  assert.ok(w.soil.removed > 0);
+  assert.ok(w.nest.revision > revision);
+  assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
+  depositSoil(w, ant);
+  assert.ok(w.soil.deposited > 0);
+  assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
+  w.ants = [];
+  const rubble = collapseEdge(w, 3, true);
+  assert.ok(rubble && w.soil.eroded > 0);
+  assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
+});
+
+test("a digger carries material to the surface without teleporting, then returns to work", () => {
+  const w = new World("soil-carrier");
+  const project = proposeDig(w, 3);
+  assert.ok(project);
+  const front = w.nest.nodes[project.front],
+    from = w.nest.nodes[3];
+  const footing = tunnelFooting(w.nest, front, from, front, 0.35);
+  const ant = w.makeAnt("worker", footing.x, footing.z);
+  Object.assign(ant, {
+    ...footing,
+    node: project.front,
+    route: [],
+    tunnelCenter: { x: front.x, y: front.y, z: front.z },
+    tunnelY: front.y,
+    soilTask: { projectId: project.id, phase: "dig", digTicks: 0 },
+  });
+  w.ants = [ant];
+  w.brood = [];
+  w.predators = [];
+  w.food = 100;
+  let carrying = false,
+    deposited = false,
+    maxJump = 0;
+  for (let i = 0; i < 2200; i++) {
+    const p = { x: ant.x, y: ant.y, z: ant.z };
+    w.step();
+    maxJump = Math.max(
+      maxJump,
+      Math.hypot(ant.x - p.x, ant.y - p.y, ant.z - p.z),
+    );
+    carrying ||= ant.carryingSoil > 0;
+    deposited ||= w.soil.deposited > 0;
+    assert.ok(Math.abs(soilBalance(w).error) < 1e-8);
+    assert.ok(maxJump <= ant.speed * 1.2 + 0.002, "soil carrier teleported");
+    if (deposited && ant.node !== null && ant.soilTask?.phase !== "dump") break;
+  }
+  console.log(
+    JSON.stringify({
+      carrying,
+      deposited,
+      maxJump,
+      task: ant.soilTask,
+      state: ant.state,
+    }),
+  );
+  assert.ok(carrying);
+  assert.ok(
+    deposited,
+    "a digger must reach the surface before claiming delivery",
+  );
+  assert.ok(ant.node !== null, "the digger must return below ground");
+});
+
+test("repairing rubble transfers mass into a worker rather than deleting it", () => {
+  const w = new World("soil-repair");
+  w.ants = [];
+  const rubble = collapseEdge(w, 3, true);
+  assert.ok(rubble);
+  const ant = w.makeAnt("worker", rubble.x, rubble.z);
+  Object.assign(ant, {
+    y: rubble.y,
+    node: 8,
+    route: [4],
+    soilTask: { phase: "repair", rubbleId: rubble.id, digTicks: 0 },
+  });
+  w.ants = [ant];
+  const before = rubble.mass;
+  for (let i = 0; i < 5; i++) updateSoilWorker(w, ant);
+  assert.ok(rubble.mass < before);
+  assert.ok(ant.carryingSoil > 0);
+  assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
+  dropSoil(w, ant);
+  assert.equal(ant.carryingSoil, 0);
+  assert.ok(Math.abs(soilBalance(w).error) < 1e-10);
+});
+
+test("snapshots preserve excavation work and its future material balance", () => {
+  const w = new World("soil-snapshot");
+  w.step(600);
+  const copy = World.restore(w.snapshot());
+  w.step(200);
+  copy.step(200);
+  assert.deepEqual(copy.snapshot(), w.snapshot());
+  assert.ok(Math.abs(soilBalance(copy).error) < 1e-8);
+});
+
+test("a local repair worker clears a collapse through repeated trips to the surface", () => {
+  const w = new World("repair-cycle");
+  w.ants = [];
+  w.predators = [];
+  w.brood = [];
+  w.food = 100;
+  const pile = collapseEdge(w, 3, true);
+  assert.ok(pile);
+  const center = { x: 0.4, y: -1.5, z: 6.22 };
+  const f = tunnelFooting(
+    w.nest,
+    center,
+    w.nest.nodes[8],
+    w.nest.nodes[4],
+    0.35,
+  );
+  const ant = w.makeAnt("worker", f.x, f.z);
+  Object.assign(ant, {
+    ...f,
+    node: 8,
+    route: [4],
+    tunnelCenter: center,
+    tunnelY: center.y,
+  });
+  w.ants = [ant];
+  for (let i = 0; i < 3500 && pile.mass > 0.0001; i++) {
+    const p = { x: ant.x, y: ant.y, z: ant.z };
+    w.step();
+    assert.ok(
+      Math.hypot(ant.x - p.x, ant.y - p.y, ant.z - p.z) <=
+        ant.speed * 1.2 + 0.002,
+    );
+    assert.ok(Math.abs(soilBalance(w).error) < 1e-8);
+  }
+  console.log(
+    JSON.stringify({
+      remaining: pile.mass,
+      deposited: w.soil.deposited,
+      tick: w.tick,
+      task: ant.soilTask,
+    }),
+  );
+  assert.ok(
+    pile.mass <= 0.0001,
+    "the collapse must be cleared, not only have its first bite removed",
+  );
+  assert.ok(w.soil.deposited > 0);
+});

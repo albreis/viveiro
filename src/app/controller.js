@@ -238,6 +238,10 @@ $("rain").onclick = () => {
   intervention("rain");
   toast("A umidade aumentou. Observe a resposta do ambiente.");
 };
+$("disturb").onclick = () => {
+  intervention("collapse");
+  toast("Observe a terra solta e o trabalho de recuperação.");
+};
 $("play").onclick = () => {
   running = !running;
   accumulator = 0;

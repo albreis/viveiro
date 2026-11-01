@@ -1,19 +1,24 @@
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
-import { createSoilGeometry } from "../terrain/soil.js";
+import { geometryFromSoilData } from "../terrain/soil.js";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const UP = new THREE.Vector3(0, 1, 0);
 
 export function update(host, world, time, alpha = 1) {
   host.alpha = alpha;
   if (
-    host.soilRevision !== world.nest.revision &&
+    (host.soilNest !== world.nest ||
+      host.soilRevision !== world.nest.revision) &&
     time - host.lastSoilBuild > 1.5
   ) {
-    host.soil.geometry.dispose();
-    host.soil.geometry = createSoilGeometry(world.nest);
-    host.soilRevision = world.nest.revision;
     host.lastSoilBuild = time;
+    host.soilMesher.request(world.nest, (data, revision) => {
+      if (host.world.nest !== world.nest) return;
+      host.soil.geometry.dispose();
+      host.soil.geometry = geometryFromSoilData(data);
+      host.soilRevision = revision;
+      host.soilNest = world.nest;
+    });
   }
   host.world = world;
   host.lastTick = world.tick;
@@ -51,6 +56,7 @@ export function update(host, world, time, alpha = 1) {
     m.visible = p.amount > 0.06;
     m.scale.setScalar(0.5 + Math.sqrt(p.amount) * 0.32);
   }
+  host.soilView.update(world, (a) => host.pose(a), host.followId);
   host.visibleWorkers = world.workers.filter((a) => a.id !== host.followId);
   host.updateAnts(host.visibleWorkers, host.antParts, false, time);
   host.updateAnts(world.predators, host.predatorParts, true, time);

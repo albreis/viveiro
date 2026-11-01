@@ -36,6 +36,7 @@ export function buildGround(host, seed) {
     host.staticGroup,
   );
   host.soilRevision = host.world.nest.revision;
+  host.soilNest = host.world.nest;
   host.lastSoilBuild = 0;
   host.mesh(
     new THREE.BoxGeometry(20.5, 0.17, 13.5),

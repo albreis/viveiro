@@ -112,7 +112,14 @@ export function updateAnts(host, agents, parts, spider, time) {
       d.position
         .copy(base)
         .addScaledVector(forward, offset)
-        .addScaledVector(normal, 0.12 * scale);
+        .addScaledVector(
+          normal,
+          (0.12 +
+            (p === 2 && a.state?.startsWith("Escavando")
+              ? Math.sin(time * 22 + a.id) * 0.014
+              : 0)) *
+            scale,
+        );
       d.quaternion.copy(q);
       d.scale.set(
         (p === 0 ? 0.12 : p === 1 ? 0.065 : 0.085) * scale,

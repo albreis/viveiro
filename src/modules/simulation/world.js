@@ -1,95 +1,24 @@
+import { initializeWorld } from "./initial-world.js";
+import { restoreWorld } from "./state-migrations.js";
+import { removedSoil, dropSoil } from "../soil/ledger.ts";
+import { updateDigProjects } from "../soil/projects.ts";
+import { updateErosion, collapseEdge } from "../soil/erosion.ts";
+import { arriveWithSoil } from "../soil/routing.ts";
 import { updateEnvironment } from "./environment-step.js";
 import { updateWorkers } from "./worker-step.js";
 import { updatePredators } from "./predator-step.js";
-import {
-  tunnelFooting,
-  tunnelEnvelope,
-  projectSupport,
-} from "../terrain/terrain.js";
 import { TICKS_PER_DAY, LIMIT, NEST, BOUNDS } from "./constants.js";
 import { createNest, nestPath } from "./nest.ts";
 import { moveInNest } from "../navigation/tunnel-motion.ts";
 import { moveSurface } from "../navigation/surface-motion.ts";
 import { positionClear } from "../navigation/collision.ts";
 export { TICKS_PER_DAY, LIMIT, NEST, BOUNDS, createNest, nestPath };
-export function hashSeed(value) {
-  let h = 2166136261;
-  for (const c of String(value)) {
-    h ^= c.charCodeAt(0);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-}
+export { hashSeed } from "./seed.ts";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 export class World {
   constructor(seed = "SEMENTE-42", parameters = {}) {
-    this.seed = String(seed);
-    this.rng = hashSeed(seed);
-    this.params = { humidity: 58, light: 72, randomness: 28, ...parameters };
-    this.tick = 0;
-    this.nextId = 1;
-    this.food = 18;
-    this.queenHealth = 100;
-    this.ants = [];
-    this.brood = [];
-    this.predators = [];
-    this.plants = [];
-    this.patches = [];
-    this.nest = createNest();
-    this.physicsVersion = 5;
-    this.events = [];
-    this.history = [];
-    this.deaths = 0;
-    this.born = 0;
-    this.lastLaying = -50;
-    this.lastRecord = -25;
-    this.lastWarning = -1000;
-    this.lastDiscovery = -1000;
-    this.pheromones = new Array(40 * 26).fill(0);
-    this.ants.push(this.makeAnt("queen", NEST.x, NEST.z));
-    Object.assign(this.ants[0], this.nest.nodes[2], { kind: "queen", node: 2 });
-    this.ants[0].x -= 0.34;
-    this.ants[0].z -= 0.33;
-    this.ants[0].tunnelY = this.nest.nodes[2].y;
-    this.ants[0].y =
-      tunnelEnvelope(
-        this.nest,
-        this.ants[0].x,
-        this.ants[0].z,
-        this.ants[0].tunnelY,
-      ).floor + 0.008;
-    this.ants.push(this.makeAnt("male", NEST.x + 0.8, NEST.z + 0.3));
-    for (let i = 0; i < 32; i++) {
-      let x = this.range(-8.7, 8.7),
-        z = this.range(-5.2, 5.2);
-      if (distance({ x, z }, NEST) < 1.6 || this.inPond(x, z)) {
-        i--;
-        continue;
-      }
-      this.plants.push({
-        id: this.nextId++,
-        x,
-        z,
-        biomass: this.range(0.45, 1),
-        kind: i % 4,
-      });
-    }
-    for (let i = 0; i < 12; i++) {
-      const plant = this.plants[(i * 2 + 1) % this.plants.length];
-      this.patches.push({
-        id: this.nextId++,
-        x: plant.x + 0.25,
-        z: plant.z + 0.2,
-        amount: this.range(1, 3.5),
-        capacity: 4,
-        discovered: false,
-      });
-    }
-    this.addPredator(6, 3.5, false);
-    this.addPredator(4.5, -4, false);
-    this.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
-    this.record();
+    initializeWorld(this, seed, parameters);
   }
   random() {
     this.rng = (this.rng + 0x6d2b79f5) >>> 0;
@@ -129,6 +58,12 @@ export class World {
       state: kind === "queen" ? "Fundando o ninho" : "Explorando",
       rest: 0,
     };
+  }
+  onNestArrival(ant, node) {
+    return arriveWithSoil(this, ant, node);
+  }
+  recordSoilRemoval(ant, mass) {
+    removedSoil(this, ant, mass);
   }
   moveInNest(ant) {
     return moveInNest(this, ant);
@@ -218,6 +153,11 @@ export class World {
         return false;
       }
       return this.addPredator(x, z);
+    } else if (type === "collapse") {
+      for (let i = 0; i < this.nest.links.length; i++)
+        if (collapseEdge(this, i, true)) return true;
+      this.log("As galerias estão ocupadas. O solo não foi perturbado.");
+      return false;
     } else if (type === "rain") {
       this.params.humidity = clamp(this.params.humidity + 12, 0, 100);
       this.log("Chuva: a umidade do terrário aumentou.", "rain");
@@ -245,8 +185,11 @@ export class World {
   }
   advance() {
     const suitability = updateEnvironment(this);
+    updateDigProjects(this);
+    updateErosion(this);
     const dead = updateWorkers(this, suitability);
     updatePredators(this, dead);
+    for (const ant of this.ants) if (dead.has(ant.id)) dropSoil(this, ant);
     this.ants = this.ants.filter((a) => !dead.has(a.id));
     if (this.food < 1 && this.tick - this.lastWarning > 200) {
       this.lastWarning = this.tick;
@@ -264,89 +207,7 @@ export class World {
     return JSON.parse(JSON.stringify(this));
   }
   static restore(snapshot) {
-    const world = Object.create(World.prototype);
-    Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
-    if (!world.nest || world.nest.revision < 2) {
-      world.nest = createNest();
-      const q = world.ants.find((a) => a.kind === "queen");
-      if (q) Object.assign(q, world.nest.nodes[2], { node: 2 });
-    }
-    for (const ant of world.ants) {
-      if (ant.y === undefined) {
-        ant.y = 0;
-        if (ant.kind === "queen")
-          Object.assign(ant, world.nest.nodes[2], { node: 2 });
-      }
-    }
-    if (world.physicsVersion !== 5) {
-      const queen = world.ants.find((a) => a.kind === "queen");
-      if (queen) {
-        queen.x = world.nest.nodes[2].x - 0.34;
-        queen.z = world.nest.nodes[2].z - 0.33;
-        queen.tunnelY = world.nest.nodes[2].y;
-      }
-      for (const ant of world.ants)
-        if (ant.y < -0.1) {
-          ant.tunnelY = world.nest.nodes[ant.node]?.y ?? ant.y;
-          ant.tunnelCenter = null;
-          ant.y =
-            tunnelEnvelope(world.nest, ant.x, ant.z, ant.tunnelY).floor + 0.008;
-          ant.normal = { x: 0, y: 1, z: 0 };
-        }
-      for (const ant of world.ants)
-        if ((ant.y || 0) < -0.1) {
-          let support = projectSupport(world.nest, {
-            x: ant.x,
-            y: ant.y,
-            z: ant.z,
-          });
-          if (Math.abs(support.gap - 0.008) > 0.025) {
-            const center = ant.tunnelCenter || {
-              x: ant.x,
-              y: ant.tunnelY || ant.y,
-              z: ant.z,
-            };
-            const from = world.nest.nodes[ant.node] || center;
-            const to = world.nest.nodes[ant.route?.[0]] || center;
-            const footing = tunnelFooting(
-              world.nest,
-              center,
-              from,
-              to,
-              ant.navigation?.wallAngle || 0.35,
-            );
-            if (footing.inside)
-              support = { point: footing, normal: footing.normal, gap: 0.008 };
-          }
-          Object.assign(ant, support.point, { normal: support.normal });
-          ant.previousX = ant.x;
-          ant.previousY = ant.y;
-          ant.previousZ = ant.z;
-          delete ant.supportMotion;
-        }
-      world.physicsVersion = 5;
-    }
-    return world;
+    return restoreWorld(snapshot, World.prototype);
   }
 }
-export function forecast(snapshot, runs = 18, days = 3) {
-  const values = [];
-  for (let i = 0; i < runs; i++) {
-    const w = World.restore(snapshot);
-    w.rng = hashSeed(snapshot.seed + ":forecast:" + snapshot.tick + ":" + i);
-    w.params.humidity = clamp(w.params.humidity + w.range(-3, 3), 0, 100);
-    w.params.light = clamp(w.params.light + w.range(-3, 3), 0, 100);
-    w.step(Math.round(days * TICKS_PER_DAY));
-    values.push(w.population);
-  }
-  values.sort((a, b) => a - b);
-  return {
-    low: values[Math.floor((runs - 1) * 0.1)],
-    high: values[Math.ceil((runs - 1) * 0.9)],
-    median: values[Math.floor(runs / 2)],
-    runs,
-    days,
-    tick: snapshot.tick,
-    values,
-  };
-}
+export { forecast } from "./forecast.js";

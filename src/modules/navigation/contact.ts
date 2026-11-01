@@ -69,7 +69,7 @@ export function widenCongestedTunnel(
   edgeIndex: number,
 ) {
   const nav = navigationState(ant);
-  if (edgeIndex < 0 || ant.kind !== "worker") return false;
+  if (edgeIndex < 0 || ant.kind !== "worker" || loaded(ant)) return false;
   if ((world.nest.linkWidths?.[edgeIndex] || 0.38) >= 0.64) return false;
   if (nav.stagnantTicks > 65 && !nav.excavateUntil) {
     nav.excavateUntil = world.tick + 16;
@@ -95,7 +95,16 @@ export function widenCongestedTunnel(
     if (after > before) {
       world.nest.linkWidths[edgeIndex] = after;
       world.nest.revision++;
-      ant.carryingSoil = (ant.carryingSoil || 0) + (after - before);
+      if (world.recordSoilRemoval) {
+        const [a, b] = world.nest.links[edgeIndex].map(
+          (i) => world.nest.nodes[i],
+        );
+        const volume =
+          Math.PI *
+          (after ** 2 - before ** 2) *
+          Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+        world.recordSoilRemoval(ant, volume);
+      } else ant.carryingSoil = (ant.carryingSoil || 0) + (after - before);
     }
   }
   return true;
