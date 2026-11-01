@@ -1,3 +1,5 @@
+import { localClimateLabel } from "./climate-status.ts";
+import type { SoilClimate } from "../modules/microclimate/types.ts";
 import { describeGenome } from "./genetics-summary.ts";
 import type { ColonyAgent as AgentState } from "../modules/colony/types.ts";
 
@@ -16,7 +18,7 @@ interface SceneControls {
 
 interface CameraContext {
   getScene(): SceneControls | undefined;
-  getWorld(): { ants: AgentState[]; tick: number };
+  getWorld(): { ants: AgentState[]; tick: number; microclimate?: SoilClimate };
   getScenario(): string;
   getRunning(): boolean;
   toast(message: string): void;
@@ -101,7 +103,7 @@ export class AntCameraControls {
   }
 
   render() {
-    const { ants, tick } = this.context.getWorld();
+    const { ants, tick, microclimate } = this.context.getWorld();
     const scene = this.context.getScene();
     const key =
       this.context.getScenario() + ":" + ants.map((ant) => ant.id).join(",");
@@ -152,6 +154,11 @@ export class AntCameraControls {
         "%"
       : "Nenhuma formiga viva.";
     element("ant-genome").textContent = describeGenome(ant?.genome);
+    const local = document.getElementById("ant-climate");
+    if (local)
+      local.textContent = ant
+        ? localClimateLabel(microclimate, { x: ant.x, y: ant.y || 0, z: ant.z })
+        : "";
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
     follow.hidden = !!scene?.followId;

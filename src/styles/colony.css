@@ -119,3 +119,15 @@
   border-radius: 50%;
   display: inline-block;
 }
+
+#climate-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 12px;
+}
+.climate-tabs {
+  display: flex;
+  gap: 16px;
+}

@@ -1,7 +1,9 @@
+import { updateSoilClimate } from "../microclimate/update.ts";
 import { diffuseEvaporate } from "../chemistry/reaction-diffusion.ts";
 import { updateLandscape } from "../landscape/dynamics.ts";
 export function updateEnvironment(world) {
   world.tick++;
+  updateSoilClimate(world);
   const h = world.params.humidity / 100;
   const suitability = Math.max(0.02, 1 - Math.abs(h - 0.62) * 1.7);
   updateLandscape(world);

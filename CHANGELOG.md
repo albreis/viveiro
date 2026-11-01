@@ -1,5 +1,14 @@
 # Versões
 
+## 0.11.0 — Água e calor no solo
+
+- Campo 3D procedural com água nos poros e temperatura, independente da umidade do ar.
+- Fluxos locais conservativos, infiltração, drenagem, evaporação, lagos e plantas com balanços.
+- Referência de temperatura do ar e propagação gradual do calor solar.
+- Plantas/materiais leem condições próximas; formiga acompanhada mostra o entorno.
+- Mapas em corte, snapshots e campo global compartilhado entre colônias.
+- Modelo reduzido exploratório; gases e suporte estrutural continuam pendentes.
+
 ## 0.10.0 — Terra solta dinâmica
 
 - Agregados com gravidade, velocidade, contato dissipativo e atrito de Coulomb.

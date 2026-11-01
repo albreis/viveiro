@@ -66,6 +66,7 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 - [Navegação](docs/navegacao.md)
 - [Solo e escavação](docs/solo.md)
 - [Dinâmica de terra solta](docs/granular.md)
+- [Água e calor espaciais](docs/agua-e-calor.md)
 - [Organização da colônia](docs/colonia.md)
 - [Campos e tarefas](docs/campos.md)
 - [Versões](CHANGELOG.md)

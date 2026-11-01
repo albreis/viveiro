@@ -1,8 +1,11 @@
+import { sampleClimate } from "../microclimate/grid.ts";
+import type { SoilClimate } from "../microclimate/types.ts";
 import type { Landscape, Plant } from "./types.ts";
 import { SPECIES, speciesOf } from "./species.ts";
 import { waterLevel } from "./queries.ts";
 const clamp = (x: number, lo = 0, hi = 1) => Math.max(lo, Math.min(hi, x));
 interface EnvironmentWorld {
+  microclimate?: SoilClimate;
   params: { humidity: number; light: number };
   landscape: Landscape;
   plants: Plant[];
@@ -32,14 +35,22 @@ export function updateLandscape(w: EnvironmentWorld) {
     );
   }
   for (const log of land.logs) {
-    log.moisture += (land.wetness - log.moisture) * 0.004;
+    log.moisture +=
+      ((sampleClimate(w.microclimate, { x: log.x, y: 0, z: log.z })?.water ??
+        land.wetness) -
+        log.moisture) *
+      0.004;
     const decomposition =
       (0.000001 + log.moisture * 0.000006) * (0.65 + light * 0.35);
     log.decay = clamp(log.decay + decomposition);
     log.integrity = 1 - log.decay * 0.75;
   }
   for (const rock of land.rocks) {
-    rock.wetness += (land.wetness - rock.wetness) * 0.012;
+    rock.wetness +=
+      ((sampleClimate(w.microclimate, { x: rock.x, y: 0, z: rock.z })?.water ??
+        land.wetness) -
+        rock.wetness) *
+      0.012;
     rock.moss = clamp(rock.moss + (h * 0.8 - light * 0.45 - 0.15) * 0.00006);
   }
   let shed = 0;
@@ -47,14 +58,19 @@ export function updateLandscape(w: EnvironmentWorld) {
   for (const p of w.plants) {
     const profile = SPECIES[speciesOf(p)],
       nearWater = waterLevel(land, p.x, p.z) < 3;
-    const moisture = clamp(land.wetness + (nearWater ? 0.12 : 0));
+    const local = sampleClimate(w.microclimate, { x: p.x, y: -0.2, z: p.z });
+    const moisture =
+      local?.water ?? clamp(land.wetness + (nearWater ? 0.12 : 0));
     p.hydration =
       (p.hydration ?? moisture) +
       (moisture - (p.hydration ?? moisture)) * 0.006;
     const waterStress =
       Math.abs(p.hydration - profile.humidity) / profile.tolerance;
     const lightStress = Math.abs(light - profile.light) / 0.7;
-    const fit = clamp(1 - waterStress * 0.8 - lightStress * 0.45);
+    const thermalStress = local ? Math.abs(local.temperature - 24) / 22 : 0;
+    const fit = clamp(
+      1 - waterStress * 0.8 - lightStress * 0.45 - thermalStress * 0.3,
+    );
     p.stress = clamp(waterStress * 0.65 + lightStress * 0.35);
     p.health = clamp((p.health ?? 1) + (fit - 0.42) * 0.0007, 0, 1);
     const previous = p.biomass;
