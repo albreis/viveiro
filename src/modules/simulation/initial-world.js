@@ -1,3 +1,4 @@
+import { initializeFounding } from "../founding/initialize.ts";
 import { createGenetics } from "../genetics/reproduction.ts";
 import { createColonyState } from "../colony/individual.ts";
 import { createNestOdors } from "../chemistry/nest-odors.ts";
@@ -7,7 +8,7 @@ import { createSoilState } from "../soil/ledger.ts";
 import { projectSupport } from "../terrain/terrain.js";
 import { generateLandscape, generatePlants } from "../landscape/generate.ts";
 import { timberLevel, surfaceHeight } from "../landscape/queries.ts";
-export function initializeWorld(world, seed, parameters) {
+export function initializeWorld(world, seed, parameters, options = {}) {
   world.seed = String(seed);
   world.rng = hashSeed(seed);
   world.params = { humidity: 58, light: 72, randomness: 28, ...parameters };
@@ -55,6 +56,10 @@ export function initializeWorld(world, seed, parameters) {
     }),
   );
   world.ants.push(world.makeAnt("male", entry.x + 0.7, entry.z));
+  if (options.founding !== false) {
+    initializeFounding(world);
+    world.nestOdors = createNestOdors(world.nest);
+  }
   world.plants = generatePlants(
     world.seed,
     world.landscape,
@@ -88,6 +93,7 @@ export function initializeWorld(world, seed, parameters) {
       world.addPredator(x, z, false);
       break;
     }
-  world.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
+  if (!world.founding)
+    world.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
   world.record();
 }

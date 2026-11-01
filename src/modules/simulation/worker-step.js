@@ -1,3 +1,5 @@
+import { updateFounding } from "../founding/update.ts";
+import { roomNode } from "../colony/rooms.ts";
 import { recoverStall } from "../navigation/stall-recovery.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import { chooseForagingHeading } from "../chemistry/forage-heading.ts";
@@ -18,6 +20,9 @@ export function updateWorkers(world, suitability) {
     ant.previousY = ant.y || 0;
     ant.previousZ = ant.z;
     ant.previousDistance = ant.distanceWalked || 0;
+  }
+  updateFounding(world);
+  for (const ant of world.ants) {
     ant.age += 0.01;
     if (ant.kind === "queen") {
       if (world.queenHealth <= 0) {
@@ -27,8 +32,14 @@ export function updateWorkers(world, suitability) {
       continue;
     }
     if (ant.kind === "male") {
-      ant.state = "Acasalamento";
-      if (world.tick > 65) {
+      if (!world.founding) ant.state = "Acasalamento";
+      if (
+        world.founding
+          ? world.founding.matedTick !== undefined &&
+            world.tick > world.founding.matedTick + 25 &&
+            !ant.airborne
+          : world.tick > 65
+      ) {
         dead.add(ant.id);
         world.log("Após o acasalamento, o ciclo do macho terminou.", "info");
       }
@@ -59,8 +70,8 @@ export function updateWorkers(world, suitability) {
         const destination =
           (ant.carrying ||
             (ant.energy < 35 && world.tick >= (ant.stockEmptyUntil || 0))) &&
-          ant.node !== 4
-            ? 4
+          ant.node !== roomNode(world.nest, "storage")
+            ? roomNode(world.nest, "storage")
             : soilEntrance(world, ant);
         requestRoute(world, ant, destination);
         if (!ant.route.length && node.type === "entrance")
@@ -103,7 +114,7 @@ export function updateWorkers(world, suitability) {
         ant.tunnelCenter = { x: entrance.x, y: entrance.y, z: entrance.z };
         ant.tunnelY = entrance.y;
         ant.node = entrance.index;
-        requestRoute(world, ant, 4);
+        requestRoute(world, ant, roomNode(world.nest, "storage"));
         continue;
       }
     } else {

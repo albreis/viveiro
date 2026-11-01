@@ -1,3 +1,4 @@
+import { roomNode } from "./rooms.ts";
 import type { ColonyAgent, ColonyWorld, Waste } from "./types.ts";
 
 function addWaste(world: ColonyWorld, item: Omit<Waste, "id">) {
@@ -26,7 +27,7 @@ export function leaveCorpse(world: ColonyWorld, ant: ColonyAgent) {
       b.x = ant.x;
       b.y = (ant.y || 0) + 0.02;
       b.z = ant.z;
-      b.node = ant.node ?? 2;
+      b.node = ant.node ?? roomNode(world.nest, "royal");
     }
   if (ant.deathCause === "predation") return;
   addWaste(world, {
@@ -48,7 +49,7 @@ export function spoilStocks(world: ColonyWorld) {
   if (amount <= 0) return;
   world.food -= amount;
   world.colony.spoiled += amount;
-  const storage = world.nest.nodes[4];
+  const storage = world.nest.nodes[roomNode(world.nest, "storage")];
   addWaste(world, {
     x: storage.x,
     y: storage.y - storage.r + 0.04,

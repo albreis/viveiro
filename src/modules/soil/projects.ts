@@ -68,8 +68,17 @@ function advanceFront(world: SoilWorld, project: DigProject) {
     project.heading = normalize(sub(goal, front));
   } else {
     project.completed = true;
-    front.type = emerged ? "entrance" : "chamber";
-    front.name = emerged ? "Novo acesso escavado" : "Câmara escavada";
+    const missing = ["nursery", "storage", "waste"].find(
+      (type) => !world.nest.nodes.some((n) => n.type === type),
+    );
+    front.type = emerged ? "entrance" : missing || "chamber";
+    front.name = emerged
+      ? "Novo acesso escavado"
+      : {
+          nursery: "Berçário escavado",
+          storage: "Despensa escavada",
+          waste: "Câmara de resíduos escavada",
+        }[front.type] || "Câmara escavada";
     world.log(
       emerged
         ? "A escavação alcançou a superfície e abriu outro acesso."

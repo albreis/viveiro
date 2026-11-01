@@ -8,7 +8,7 @@ import {
   contactResponse,
   widenCongestedTunnel,
 } from "../src/modules/navigation/contact.ts";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import {
   tunnelEnvelope,
   tunnelFooting,

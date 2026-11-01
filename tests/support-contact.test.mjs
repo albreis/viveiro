@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import { sampleSupport } from "../src/modules/terrain/field.ts";
 
 const nearestSupport = (nest, point) =>

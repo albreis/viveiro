@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import { knownRoute } from "../src/modules/navigation/route-memory.ts";
 import { requestRoute } from "../src/modules/navigation/local-routing.ts";
 import { chooseLocalExit } from "../src/modules/navigation/local-route-policy.ts";

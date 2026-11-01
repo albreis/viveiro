@@ -14,6 +14,9 @@ export interface ColonyTask {
   until?: number;
 }
 export interface ColonyAgent extends SoilAgent {
+  winged?: boolean;
+  airborne?: boolean;
+  nanitic?: boolean;
   genome?: import("../genetics/genome.ts").Genome;
   age: number;
   crop: number;
@@ -34,6 +37,7 @@ export interface ColonyAgent extends SoilAgent {
   socialPartner?: number;
 }
 export interface Brood extends Vec3 {
+  nanitic?: boolean;
   genome?: import("../genetics/genome.ts").Genome;
   id: number;
   age: number;
@@ -56,6 +60,7 @@ export interface ColonyState {
   spoiled: number;
 }
 export interface ColonyWorld extends SoilWorld {
+  founding?: import("../founding/types.ts").FoundingState;
   seed: string;
   nextId: number;
   queenHealth: number;

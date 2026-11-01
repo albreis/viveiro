@@ -1,7 +1,7 @@
 import { undergroundEdge, lerp } from "./fixtures/geometry.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import { proposeDig, digBite } from "../src/modules/soil/projects.ts";
 import {
   soilBalance,

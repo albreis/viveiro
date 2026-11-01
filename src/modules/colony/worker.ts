@@ -1,3 +1,4 @@
+import { roomNode } from "./rooms.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import { allocateTask } from "./response.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
@@ -32,25 +33,40 @@ export function updateColonyWorker(
   if (waste && ["cleaner", "nurse"].includes(ant.role)) {
     waste.carrier = ant.id;
     ant.carryingWaste = waste.id;
-    ant.bioTask = { kind: "waste", item: waste.id, destination: 5 };
-    if (ant.node != null) requestRoute(world, ant, 5);
+    ant.bioTask = {
+      kind: "waste",
+      item: waste.id,
+      destination: roomNode(world.nest, "waste"),
+    };
+    if (ant.node != null)
+      requestRoute(world, ant, roomNode(world.nest, "waste"));
     ant.state = "Recolhendo resíduos";
     return true;
   }
   if (ant.role === "nurse" && ant.node != null) {
     const brood = world.brood.find(
-      (b) => b.node !== 3 && !b.carrier && distance3(here, b) < 0.85,
+      (b) =>
+        b.node !== roomNode(world.nest, "nursery") &&
+        !b.carrier &&
+        distance3(here, b) < 0.85,
     );
     if (brood) {
       brood.carrier = ant.id;
       ant.carryingBrood = brood.id;
-      ant.bioTask = { kind: "brood", item: brood.id, destination: 3 };
-      requestRoute(world, ant, 3);
+      ant.bioTask = {
+        kind: "brood",
+        item: brood.id,
+        destination: roomNode(world.nest, "nursery"),
+      };
+      requestRoute(world, ant, roomNode(world.nest, "nursery"));
       ant.state = "Transportando uma cria";
       return true;
     }
     if (!ant.route?.length) {
-      const destination = ant.crop < 0.15 ? 4 : 2;
+      const destination = roomNode(
+        world.nest,
+        ant.crop < 0.15 ? "storage" : "royal",
+      );
       ant.bioTask = { kind: "care", destination };
       requestRoute(world, ant, destination);
       return true;
@@ -59,7 +75,10 @@ export function updateColonyWorker(
   if (ant.role === "defender" && ant.energy > 35) {
     if (ant.node != null) {
       if (!ant.route?.length) {
-        ant.bioTask = { kind: "guard", destination: ant.id % 2 ? 0 : 6 };
+        ant.bioTask = {
+          kind: "guard",
+          destination: roomNode(world.nest, "entrance", ant.id % 2),
+        };
         requestRoute(world, ant, ant.bioTask.destination);
       }
       return false;
@@ -78,7 +97,8 @@ export function updateColonyWorker(
       ant.state = "Defendendo a entrada";
       return true;
     }
-    const entrance = world.nest.nodes[ant.id % 2 ? 0 : 6],
+    const entrance =
+        world.nest.nodes[roomNode(world.nest, "entrance", ant.id % 2)],
       angle = world.tick * 0.012 + ant.id;
     const target = {
       x: entrance.x + Math.cos(angle) * 0.8,

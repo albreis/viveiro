@@ -23,6 +23,7 @@ export function enterShaft(
     y: from.y + (target.y - from.y) * t,
     z: from.z + (target.z - from.z) * t,
   };
+  if (center.y <= below.y + 0.001) return false;
   const angle = Math.atan2(ant.z - from.z, ant.x - from.x);
   let best: ReturnType<typeof tunnelFooting> | undefined,
     cost = Infinity;

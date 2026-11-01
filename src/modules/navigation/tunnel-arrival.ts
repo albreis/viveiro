@@ -1,3 +1,4 @@
+import { roomNode, isStock } from "../colony/rooms.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { requestRoute } from "./local-routing.ts";
 import type { AgentState, NavigationWorld } from "./types.ts";
@@ -59,7 +60,7 @@ export function finishSegment(
   if (target.type === "entrance")
     ant.lastEntrance = { node: targetId, x: target.x, z: target.z };
   if (world.onNestArrival?.(ant, targetId)) return;
-  if (target.type === "storage") {
+  if (isStock(world.nest, targetId)) {
     world.food += ant.carrying;
     ant.carrying = 0;
     if (world.onStorageVisit) world.onStorageVisit(ant);
@@ -67,9 +68,9 @@ export function finishSegment(
       world.food -= 0.15;
       ant.energy = 100;
     }
-    requestRoute(world, ant, ant.id % 2 ? 0 : 6);
+    requestRoute(world, ant, roomNode(world.nest, "entrance", ant.id % 2));
   } else if (target.type !== "entrance") {
-    requestRoute(world, ant, ant.id % 2 ? 0 : 6);
+    requestRoute(world, ant, roomNode(world.nest, "entrance", ant.id % 2));
   } else {
     ant.y = surfaceHeight(world.nest.relief, ant.x, ant.z) + 0.008;
     ant.node = null;

@@ -1,7 +1,6 @@
-import { genomeForAgent } from "../genetics/reproduction.ts";
-import { expressGenome } from "../genetics/phenotype.ts";
+import { createAgent } from "./agent-factory.ts";
+import { isClaustral } from "../founding/types.ts";
 import { waterLevel, surfaceHeight } from "../landscape/queries.ts";
-import { individualTraits } from "../colony/individual.ts";
 import { arriveColony } from "../colony/arrival.ts";
 import { updateNutrition, feedFromStock } from "../colony/nutrition.ts";
 import { leaveCorpse, spoilStocks } from "../colony/waste.ts";
@@ -25,8 +24,8 @@ export { hashSeed } from "./seed.ts";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 export class World {
-  constructor(seed = "SEMENTE-42", parameters = {}) {
-    initializeWorld(this, seed, parameters);
+  constructor(seed = "SEMENTE-42", parameters = {}, options = {}) {
+    initializeWorld(this, seed, parameters, options);
   }
   random() {
     this.rng = (this.rng + 0x6d2b79f5) >>> 0;
@@ -51,30 +50,7 @@ export class World {
     return waterLevel(this.landscape, x, z) < 1;
   }
   makeAnt(kind, x, z, suppliedGenome) {
-    const id = this.nextId++;
-    const ant = {
-      id,
-      kind,
-      x,
-      y: surfaceHeight(this.nest?.relief, x, z) + 0.008,
-      z,
-      distanceWalked: 0,
-      angle: this.range(0, Math.PI * 2),
-      energy: 100,
-      age: 0,
-      carrying: 0,
-      speed: this.range(0.07, 0.105),
-      state: kind === "queen" ? "Fundando o ninho" : "Explorando",
-      rest: 0,
-      route: [],
-      node: null,
-      ...individualTraits(this.seed, id, kind),
-    };
-    if (this.genetics) {
-      ant.genome = genomeForAgent(this, id, kind, suppliedGenome);
-      expressGenome(ant, ant.genome);
-    }
-    return ant;
+    return createAgent(this, kind, x, z, suppliedGenome);
   }
   routeSignal(from, to, odor, owner) {
     return routeOdorSignal(
@@ -86,6 +62,14 @@ export class World {
     );
   }
   onNestArrival(ant, node) {
+    if (
+      ant.kind === "queen" &&
+      this.founding?.phase === "digging" &&
+      node === 1
+    ) {
+      ant.route = [];
+      return true;
+    }
     return arriveWithSoil(this, ant, node) || arriveColony(this, ant, node);
   }
   onStorageVisit(ant) {
@@ -248,7 +232,11 @@ export class World {
     invalidateNeighbors(this);
     updateNutrition(this);
     spoilStocks(this);
-    if (this.food < 1 && this.tick - this.lastWarning > 200) {
+    if (
+      !isClaustral(this) &&
+      this.food < 1 &&
+      this.tick - this.lastWarning > 200
+    ) {
       this.lastWarning = this.tick;
       this.log(
         "A reserva está baixa. A colônia precisa de alimento.",
