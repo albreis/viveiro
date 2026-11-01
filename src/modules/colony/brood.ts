@@ -1,10 +1,15 @@
+import { DEMO_BROOD_STAGES } from "../biology/demo-constants.ts";
 import { roomNode } from "./rooms.ts";
 import { inheritGenome } from "../genetics/reproduction.ts";
 import type { Brood, ColonyWorld } from "./types.ts";
 import { hashSeed } from "../simulation/seed.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 export const broodStage = (age: number) =>
-  age < 0.35 ? "egg" : age < 0.9 ? "larva" : "pupa";
+  age < DEMO_BROOD_STAGES.larva
+    ? "egg"
+    : age < DEMO_BROOD_STAGES.pupa
+      ? "larva"
+      : "pupa";
 export function broodPosition(world: ColonyWorld, id: number, nodeId: number) {
   const node = world.nest.nodes[nodeId];
   const angle =

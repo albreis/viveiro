@@ -9,7 +9,12 @@ export interface SessionState {
   world: WorldWire;
   comparison?: WorldWire | null;
   scenario: "a" | "b";
-  initial: { seed: string; params: Record<string, number>; startMode?: string };
+  initial: {
+    seed: string;
+    params: Record<string, number>;
+    startMode?: string;
+    biologicalProfile?: import("../biology/types.ts").BiologicalReference;
+  };
   interventions: Record<string, unknown>[];
   replaying: boolean;
   replayIndex: number;

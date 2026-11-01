@@ -1,0 +1,92 @@
+.biology-panel label {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 12px;
+  color: #617057;
+}
+.biology-panel select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d8dfc9;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 11px;
+}
+.biology-panel #biology-open {
+  margin-top: 14px;
+  font-size: 11px;
+  color: #536a42;
+}
+.biology-panel #biology-open {
+  cursor: pointer;
+}
+#biology-records {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+#biology-records li {
+  padding: 10px 0;
+  border-top: 1px solid #e2e7d8;
+}
+#biology-records strong,
+#biology-records span,
+#biology-records em {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+}
+#biology-records em {
+  font-style: normal;
+  margin: 5px 0;
+  color: #7c6336;
+}
+#biology-records em[data-evidence="measurement"] {
+  color: #4f753c;
+}
+#biology-records p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #79836f;
+}
+#biology-records a {
+  color: #526f42;
+}
+
+.biology-catalog {
+  width: min(660px, 92vw);
+  max-height: 85vh;
+  box-sizing: border-box;
+  padding: 22px;
+  border: 1px solid #d8dfc9;
+  border-radius: 12px;
+  background: #f7f9ef;
+  color: #435b38;
+}
+.biology-catalog::backdrop {
+  background: #1d291b80;
+}
+.biology-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.biology-heading h2 {
+  font-size: 20px;
+}
+#biology-close {
+  border: 0;
+  background: transparent;
+  color: #435b38;
+  font-size: 24px;
+  cursor: pointer;
+}
+#biology-records {
+  max-height: 53vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 8px;
+}

@@ -84,3 +84,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Previsões](docs/previsoes.md): progresso, cancelamento, horizonte e orçamento do modelo completo.
 
 - [Observação e avaliação das previsões](docs/avaliacao-previsoes.md): contrato parcial, comparação por horizonte e ensaio sintético reproduzível.
+
+- [Perfis biológicos](docs/perfis-biologicos.md): parâmetros versionados, proveniência, hipóteses e cenários de referência.

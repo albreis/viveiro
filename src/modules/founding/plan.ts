@@ -1,10 +1,11 @@
+import { DEMO_FOUNDING_RESERVE } from "../biology/demo-constants.ts";
 import type { FoundingState } from "./types.ts";
 import type { NestState } from "../navigation/types.ts";
 export function foundingPlan(
   nest: NestState,
   humidity: number,
   tick = 0,
-  reserves = 8,
+  reserves = DEMO_FOUNDING_RESERVE,
 ): FoundingState {
   const site = { ...nest.nodes[0] },
     chamber = { ...nest.nodes[2] };

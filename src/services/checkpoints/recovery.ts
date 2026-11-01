@@ -1,3 +1,4 @@
+import { UnsupportedBiologicalProfile } from "../../modules/biology/errors.ts";
 import type {
   Checkpoint,
   CheckpointDriver,
@@ -11,7 +12,10 @@ export async function recoverSession(
   fallback: CheckpointFallback,
 ): Promise<RestoreOutcome & { record?: Checkpoint }> {
   const candidates: { value: unknown; source: string }[] = [];
-  let damaged = false;
+  let damaged = false,
+    unsupported = false;
+  const noticeUnsupported =
+    "Um perfil biológico não é compatível com esta versão. O original foi preservado e a gravação ficou protegida; use uma versão compatível ou recupere explicitamente um checkpoint conhecido.";
   try {
     const current = await driver.current();
     if (current) candidates.push({ value: current, source: "indexedDB" });
@@ -31,7 +35,8 @@ export async function recoverSession(
         session: decodeCheckpoint(c.value),
         source: c.source,
       });
-    } catch {
+    } catch (error) {
+      if (error instanceof UnsupportedBiologicalProfile) unsupported = true;
       damaged = true;
     }
   valid.sort(
@@ -41,12 +46,16 @@ export async function recoverSession(
   );
   if (valid.length)
     return {
-      session: valid[0].session,
+      session: unsupported
+        ? { ...valid[0].session, running: false }
+        : valid[0].session,
       record: valid[0].record,
-      blocked: false,
-      notice: damaged
-        ? "O último registro disponível foi recuperado."
-        : undefined,
+      blocked: unsupported,
+      notice: unsupported
+        ? noticeUnsupported
+        : damaged
+          ? "O último registro disponível foi recuperado."
+          : undefined,
     };
   try {
     const list = await driver.list();
@@ -56,13 +65,17 @@ export async function recoverSession(
       if (!record) continue;
       try {
         return {
-          session: decodeCheckpoint(record),
+          session: unsupported
+            ? { ...decodeCheckpoint(record), running: false }
+            : decodeCheckpoint(record),
           record,
-          blocked: false,
-          notice:
-            "Um checkpoint anterior foi recuperado; o registro atual não estava disponível.",
+          blocked: unsupported,
+          notice: unsupported
+            ? noticeUnsupported
+            : "Um checkpoint anterior foi recuperado; o registro atual não estava disponível.",
         };
-      } catch {
+      } catch (error) {
+        if (error instanceof UnsupportedBiologicalProfile) unsupported = true;
         damaged = true;
       }
     }
@@ -73,19 +86,25 @@ export async function recoverSession(
     legacyFound = !!legacy;
     if (legacy)
       return {
-        session: normalizeSession(legacy),
-        blocked: false,
-        notice:
-          "Save anterior carregado. O original será preservado na migração.",
+        session: unsupported
+          ? { ...normalizeSession(legacy), running: false }
+          : normalizeSession(legacy),
+        blocked: unsupported,
+        notice: unsupported
+          ? noticeUnsupported
+          : "Save anterior carregado. O original será preservado na migração.",
       };
   } catch (error) {
+    if (error instanceof UnsupportedBiologicalProfile) unsupported = true;
     if (legacyFound || error instanceof SyntaxError) damaged = true;
   }
   return {
     session: null,
-    blocked: damaged,
-    notice: damaged
-      ? "Não foi possível recuperar um registro válido. A gravação automática ficou protegida; importe um experimento ou crie outro terrário."
-      : undefined,
+    blocked: damaged || unsupported,
+    notice: unsupported
+      ? noticeUnsupported
+      : damaged
+        ? "Não foi possível recuperar um registro válido. A gravação automática ficou protegida; importe um experimento ou crie outro terrário."
+        : undefined,
   };
 }
