@@ -1,6 +1,6 @@
 import type { SoilAgent, SoilWorld } from "../soil/types.ts";
 import type { Vec3 } from "../navigation/types.ts";
-export type Role = "forager" | "nurse" | "cleaner" | "defender";
+export type Role = "forager" | "nurse" | "cleaner" | "defender" | "excavator";
 export interface Traits {
   activity: number;
   courage: number;
@@ -26,6 +26,10 @@ export interface ColonyAgent extends SoilAgent {
   rest: number;
   deathCause?: string;
   socialUntil?: number;
+  thresholds?: Record<Role, number>;
+  nextTaskChoice?: number;
+  taskMemory?: { queenNeed: number; until: number };
+  stockEmptyUntil?: number;
   socialPartner?: number;
 }
 export interface Brood extends Vec3 {

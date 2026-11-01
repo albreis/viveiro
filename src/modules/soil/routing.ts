@@ -70,8 +70,11 @@ export function arriveWithSoil(
     };
     startSupportedMotion(world, ant, target, { x: 0, y: 1, z: 0 }, target);
     ant.node = null;
-  } else if (task.phase === "return")
-    task.phase = task.rubbleId ? "repair" : "dig";
+  } else if (task.phase === "return") {
+    const project = world.soil.projects.find((p) => p.id === task.projectId);
+    if (task.rubbleId && node === task.sourceNode) task.phase = "repair";
+    else if (project && node === project.front) task.phase = "dig";
+  }
   return true;
 }
 export function enterForSoil(world: SoilWorld, ant: SoilAgent, target: number) {

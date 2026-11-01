@@ -1,3 +1,4 @@
+import { contactAcrossAir } from "./contact.ts";
 import { neighborsOf } from "../navigation/sensors.ts";
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
 import { ensureIndividual } from "./individual.ts";
@@ -16,6 +17,7 @@ export function shareCrop(donor: ColonyAgent, receiver: ColonyAgent) {
 export function feedFromStock(world: ColonyWorld, ant: ColonyAgent) {
   ensureIndividual(world.seed, ant);
   const amount = Math.max(0, Math.min(0.3, 0.6 - ant.crop, world.food));
+  ant.stockEmptyUntil = amount > 0 ? 0 : world.tick + 150;
   ant.crop += amount;
   world.food -= amount;
 }
@@ -41,7 +43,8 @@ export function updateNutrition(world: ColonyWorld) {
     const partner = neighborsOf(world, ant, 0.5).find(
       (p) =>
         ((p as ColonyAgent).crop ?? 0) < ant.crop - 0.04 &&
-        ((p as ColonyAgent).socialUntil || 0) <= world.tick,
+        ((p as ColonyAgent).socialUntil || 0) <= world.tick &&
+        contactAcrossAir(world.nest, ant, p),
     ) as ColonyAgent | undefined;
     if (!partner) continue;
     ensureIndividual(world.seed, partner);

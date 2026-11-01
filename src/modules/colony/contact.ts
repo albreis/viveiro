@@ -1,0 +1,30 @@
+import type { NestState, AgentState, Vec3 } from "../navigation/types.ts";
+import { sampleSoil } from "../terrain/field.ts";
+function mouth(ant: AgentState): Vec3 {
+  const normal = ant.normal || { x: 0, y: 1, z: 0 };
+  return {
+    x: ant.x + normal.x * 0.12 + Math.cos(ant.angle) * 0.14,
+    y: (ant.y || 0) + normal.y * 0.12 + Math.sin(ant.pitch || 0) * 0.14,
+    z: ant.z + normal.z * 0.12 + Math.sin(ant.angle) * 0.14,
+  };
+}
+export function contactAcrossAir(
+  nest: NestState,
+  a: AgentState,
+  b: AgentState,
+) {
+  const start = mouth(a),
+    end = mouth(b);
+  for (let i = 0; i <= 5; i++) {
+    const t = i / 5;
+    if (
+      sampleSoil(nest, {
+        x: start.x + (end.x - start.x) * t,
+        y: start.y + (end.y - start.y) * t,
+        z: start.z + (end.z - start.z) * t,
+      }).distance < -0.005
+    )
+      return false;
+  }
+  return true;
+}

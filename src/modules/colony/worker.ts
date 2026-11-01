@@ -1,20 +1,10 @@
+import { allocateTask } from "./response.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
 import { ensureIndividual } from "./individual.ts";
 import { distance3 } from "../soil/ledger.ts";
 import { nestPath } from "../simulation/nest.ts";
 import { updateColonyTask } from "./tasks.ts";
 
-function roleFor(world: ColonyWorld, ant: ColonyAgent): Role {
-  if (ant.caste === "major" && ant.age > 1) return "defender";
-  if (
-    ant.age < 1.5 &&
-    ant.traits.exploration < 0.5 &&
-    world.ants.filter((a) => a.kind === "worker").length > 4
-  )
-    return "nurse";
-  if (ant.age < 4 && ant.traits.activity > 0.6) return "cleaner";
-  return "forager";
-}
 export function updateColonyWorker(
   world: ColonyWorld,
   ant: ColonyAgent,
@@ -22,7 +12,7 @@ export function updateColonyWorker(
   ensureIndividual(world.seed, ant);
   if (updateColonyTask(world, ant)) return true;
   if (ant.carrying || ant.soilTask || (ant.carryingSoil || 0) > 0) return false;
-  ant.role = roleFor(world, ant);
+  ant.role = allocateTask(world, ant);
   if (
     world.tick % 50 === ant.id % 50 &&
     world.random() > 0.3 + ant.traits.activity * 0.7 &&

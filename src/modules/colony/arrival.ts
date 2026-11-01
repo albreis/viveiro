@@ -1,4 +1,5 @@
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
+import { nestPath } from "../simulation/nest.ts";
 import { feedFromStock } from "./nutrition.ts";
 import { broodPosition } from "./brood.ts";
 import { startSupportedMotion } from "../navigation/support-motion.ts";
@@ -10,6 +11,10 @@ export function arriveColony(
 ): boolean {
   const task = ant.bioTask;
   if (!task) return false;
+  if (node !== task.destination) {
+    ant.route = nestPath(world.nest, node, task.destination);
+    return true;
+  }
   ant.route = [];
   if (world.nest.nodes[node].type === "storage") feedFromStock(world, ant);
   if (task.kind === "brood" || task.kind === "waste") {
