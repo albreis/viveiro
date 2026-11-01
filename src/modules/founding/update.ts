@@ -1,3 +1,4 @@
+import { updateSiteSurvey } from "../chambers/survey.ts";
 import { updateFoundressForaging } from "../semiclaustral/update.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { updateQueenSealing, parkSealedQueen } from "../sealing/queen.ts";
@@ -30,6 +31,7 @@ export function updateFounding(world: FoundingWorld) {
   }
   if (["weather", "flight", "landing", "dealate"].includes(f.phase))
     updateFlight(world);
+  else if (f.phase === "surveying") updateSiteSurvey(world);
   else if (f.phase === "digging") updateFoundingDig(world);
   else if (f.phase === "sealing") updateQueenSealing(world);
   else if (f.phase === "semiclaustral") updateFoundressForaging(world);

@@ -1,3 +1,4 @@
+import { validateChamberChoice } from "../chambers/validation.ts";
 import { validateFoundressForaging } from "../semiclaustral/validation.ts";
 import { validateSeason } from "../seasons/validation.ts";
 import { validateCocoons } from "../development/cocoon.ts";
@@ -65,6 +66,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
     )
       throw new Error("Registro de colônia inválido.");
     const profile = resolveBiologicalProfile(c.biologicalProfile);
+    validateChamberChoice(c, profile.chamberModel === "local-demo");
     validateMaternalFounding(c.founding, profile.maternalModel === "pools");
     validateFoundressForaging(
       c.founding,

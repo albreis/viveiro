@@ -6,6 +6,7 @@ const labels: Record<FoundingState["phase"], string> = {
   flight: "Voo nupcial",
   landing: "Acasalamento concluído · pouso",
   dealate: "Perda das asas",
+  surveying: "Escolha local do abrigo",
   digging: "Escavação do primeiro abrigo",
   sealing: "Fechamento da entrada",
   claustral: "Fundação claustral",
@@ -29,6 +30,15 @@ export function foundingDescription(f?: FoundingState) {
     " naníticas · " +
     f.trips +
     " viagens de terra." +
+    (f.survey
+      ? " Sondagem: " +
+        f.survey.samples +
+        " amostras locais · solo " +
+        number(f.survey.last.temperature) +
+        " °C / " +
+        number(f.survey.last.water * 100) +
+        "% de água nos poros."
+      : "") +
     (f.foraging
       ? " Coleta da rainha: " +
         f.foraging.trips +

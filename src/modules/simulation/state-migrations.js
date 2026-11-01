@@ -1,3 +1,4 @@
+import { validateChamberChoice } from "../chambers/validation.ts";
 import { validateFoundressForaging } from "../semiclaustral/validation.ts";
 import { validateSeason } from "../seasons/validation.ts";
 import { validateCocoons } from "../development/cocoon.ts";
@@ -27,6 +28,7 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
+  validateChamberChoice(world, biologicalProfile.chamberModel === "local-demo");
   validateFoundressForaging(
     world.founding,
     biologicalProfile.foundation === "semiclaustral",

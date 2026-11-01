@@ -1,3 +1,4 @@
+import { localChambers } from "../chambers/memory.ts";
 import { isStock } from "./rooms.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
@@ -13,6 +14,7 @@ export function arriveColony(
   const task = ant.bioTask;
   if (!task) return false;
   if (
+    !(task.kind === "brood" && localChambers(world)) &&
     node !== task.destination &&
     world.nest.nodes[node].type === world.nest.nodes[task.destination].type &&
     ["entrance", "royal", "nursery", "storage", "waste"].includes(

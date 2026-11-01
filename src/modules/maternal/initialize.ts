@@ -20,7 +20,9 @@ export function advanceMaternalReserves(world: FoundingWorld): void {
   if (
     q &&
     !q.winged &&
-    ["digging", "sealing", "claustral", "semiclaustral"].includes(f.phase)
+    ["digging", "sealing", "claustral", "semiclaustral", "surveying"].includes(
+      f.phase,
+    )
   )
     histolyzeMuscle(f.maternal);
   f.reserves = reserveTotal(f.maternal.stores);

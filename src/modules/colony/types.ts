@@ -14,6 +14,7 @@ export interface ColonyTask {
   until?: number;
 }
 export interface ColonyAgent extends SoilAgent {
+  roomMemory?: import("../chambers/types.ts").RoomMemory;
   sexual?: boolean;
   departure?: boolean;
   foundressBudget?: number;

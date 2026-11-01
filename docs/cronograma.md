@@ -25,7 +25,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 10C   | Fundação semiclaustral com coleta externa da rainha                | ✅ Entregue · 0.23 · PR #26 integrado                            |
 | 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
-| 12    | Seleção local do microclima e da câmara                            | ⬜ Pendente; campos físicos básicos já existem                   |
+| 12    | Seleção local do microclima e da câmara                            | 🔧 12A em validação; 12B pendente                                |
 | 13    | Espermateca, fertilidade e longevidade                             | ⬜ Pendente                                                      |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
 
@@ -440,6 +440,9 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 - Aceite: curvas e transições testadas; aquecimento excessivo não acelera indefinidamente a prole.
 
 ### 12. Cenários climáticos e engenharia da câmara
+
+- [ ] 12A implementada e validada, com publicação em finalização na branch codex/escolha-local-da-camara: sondagem física da rainha, memória de câmaras das cuidadoras e roteiro de aula. Ver [mecanismo e limites](escolha-local.md).
+- [ ] 12B pendente: estoque espacial com preferência seca, materiais, textura/compactação e suporte. Não declarar toda a etapa 12 concluída.
 
 - Usar 52% de umidade e 68% de luz como cenário de investigação, sem deduzir temperatura ou estabilidade diretamente.
 - Separar umidade do ar e água no solo, irradiância, temperatura, textura, compactação e suporte.

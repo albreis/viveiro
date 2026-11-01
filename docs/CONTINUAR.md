@@ -2,6 +2,21 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
+## Etapa 12A validada — publicação 0.24.0 pendente
+
+Branch codex/escolha-local-da-camara, base aca738c / PR #30. Núcleo TypeScript pequeno em src/modules/chambers; perfil opcional generic-microclimate-demo@1, revisão7, sem atualizar genéricos antigos. Modelo e limites em docs/escolha-local.md.
+
+- Sondagem física rasa, sensores 3D limitados, memória de pontos ocupados, custos e retorno apoiado. Cuidadoras comparam apenas câmaras visitadas recentemente e levam crias ao destino escolhido; atalhos semânticos legados de outros comportamentos continuam existindo.
+- Suíte completa 221/221 em 245.947 ms, log .runtime/chambers-suite.log. Sessão82358 coletada e encerrada. Caso adicional de transporte foi acrescentado depois de iniciar a suíte e passou nos cinco dirigidos finais (.runtime/chambers-integration-final.log). Não afirmar suíte completa222. Build259 módulos aprovado. Depois, apenas docs.
+- Seed a: fundação no passo3567, quatro naníticas; sondagem184 passos/185 leituras; maior passo0,06790. Restore em sondagem, conservação e ausência de leitura global testados.
+- QA MICROCLIMA-QA,21°C/80%:181 leituras, última21,49°C /44,07% dos poros. Checkpoint manual-e3e58cf1-b7c6-4690-a0d8-64a8ed38ee25 emD18,2. Fundação concluída observada D31,1: rainha viva, quatro naníticas nascidas, três operárias vivas; tampão reaberto em quatro viagens. Checkpoint nomeado preservado. Execução longa D134,1 perdeu a rainha; preservada antes de recuperar. Não declarar sobrevivência calibrada.
+- Catálogo dez registros e console aprovados. Screenshots viveiro-0.24.0-escolha-local.png (já mostrado) e viveiro-0.24.0-fundada.png no diretório autorizado. SEMENTE-50088 restaurado em pausa, ponto manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf /D62,5/labv5. Conferir ACK final. Dev G PID17752 mantido; Sitetab1 intocado.
+- Roteiro inicial docs/ensino/microclima-local.md; não é revisão docente nem piloto. 12B ainda pendente: estoque espacial, preferência seca, materiais/textura/compactação/suporte. P0–P4 ficam APÓS12–14, orientação atual do usuário.
+
+### Próximo passo concreto
+
+Commit/push, PR#31 sobre#30 se ausente (se#30 integrado, usar main). Obter credencial e audiência atuais do Site; abrir helper APÓS commit final para referência exata, empacotar G:\Projetos\viveiro-0.24.0.tar.gz e publicar privado. Tag exata/metadados/cronograma. Não repetir publicação0.23. Depois branch própria para12B; não pular a13 ou marcar12 inteira concluída. Nenhum teste ou executor paralelo pendente.
+
 ## Sincronização e prioridades atuais
 
 Main local atualizada por fast-forward para 93e28d16375a77cbc38fd78001580acde31cec8b, igual à origin/main. A implementação ee34b75 já era ancestral dos merges; não houve conflito ou perda de trabalho. Referência de segurança local codex/backup-pre-sync-ee34b75 e branches antigas preservadas. PR #26 integrado pelo usuário; não duplicar ou reabrir.
