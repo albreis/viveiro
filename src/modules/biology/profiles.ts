@@ -98,6 +98,20 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
     description:
       "Variante genérica sem casulo, com diapausa reprodutiva, reservas e tampão. Não corresponde a uma espécie calibrada.",
   }),
+  Object.freeze({
+    ...generic,
+    id: "generic-semiclaustral-demo",
+    version: 1,
+    modelRevision: 6,
+    foundation: "semiclaustral" as const,
+    maternalModel: "pools" as const,
+    entranceModel: "open" as const,
+    developmentModel: "thermal-demo" as const,
+    cocoon: "absent" as const,
+    label: "Semiclaustral · coleta da rainha",
+    description:
+      "Variante demonstrativa com entrada aberta e coleta externa local pela rainha. Alimento finito separado das reservas iniciais; sem espécie calibrada.",
+  }),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

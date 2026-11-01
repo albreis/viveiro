@@ -1,7 +1,13 @@
 export type EvidenceKind =
   "approximation" | "hypothesis" | "protocol" | "measurement";
 export type ParameterTopic =
-  "model" | "founding" | "development" | "study" | "maternal" | "seasonal";
+  | "model"
+  | "founding"
+  | "development"
+  | "study"
+  | "maternal"
+  | "seasonal"
+  | "semiclaustral";
 export interface BiologicalReference {
   schema: 1;
   id: string;
@@ -14,6 +20,7 @@ export interface ParameterRecord {
   readonly version: number;
   readonly minModelRevision?: number;
   readonly requiresCocoon?: boolean;
+  readonly requiresEntrancePlug?: boolean;
   readonly value: number | null;
   readonly range?: readonly [number, number];
   readonly unit: string;

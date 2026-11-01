@@ -1,3 +1,4 @@
+import { exposedFoundress } from "../semiclaustral/exposure.ts";
 import { aphidPrey } from "../ecology/predation.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { tunnelEnvelope } from "../terrain/terrain.js";
@@ -21,7 +22,7 @@ export function updatePredators(world, dead) {
       nearest = 2.6;
     for (const a of world.ants)
       if (
-        a.kind === "worker" &&
+        (a.kind === "worker" || exposedFoundress(world, a)) &&
         a.y >= -0.1 &&
         !dead.has(a.id) &&
         !world.nest.nodes.some(
@@ -43,7 +44,12 @@ export function updatePredators(world, dead) {
         p.prey++;
         p.energy = Math.min(100, p.energy + 20);
         p.cooldown = 65;
-        world.log("Uma aranha capturou uma operária.", "danger");
+        world.log(
+          target.kind === "queen"
+            ? "Uma aranha capturou uma rainha durante a coleta."
+            : "Uma aranha capturou uma operária.",
+          "danger",
+        );
       }
     } else {
       const aphid = aphidPrey(world, p);

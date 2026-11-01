@@ -1,3 +1,4 @@
+import { updateFoundressForaging } from "../semiclaustral/update.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { updateQueenSealing, parkSealedQueen } from "../sealing/queen.ts";
 import { advanceMaternalReserves } from "../maternal/initialize.ts";
@@ -31,6 +32,7 @@ export function updateFounding(world: FoundingWorld) {
     updateFlight(world);
   else if (f.phase === "digging") updateFoundingDig(world);
   else if (f.phase === "sealing") updateQueenSealing(world);
+  else if (f.phase === "semiclaustral") updateFoundressForaging(world);
   else if (f.phase === "claustral") {
     if (f.seal) parkSealedQueen(world);
     queen.state = "Cuidando da prole com reservas maternas";

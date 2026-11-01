@@ -62,6 +62,10 @@ export class World {
     );
   }
   onNestArrival(ant, node) {
+    if (ant.kind === "queen" && this.founding?.phase === "semiclaustral") {
+      ant.route = [];
+      return true;
+    }
     if (
       this.founding?.seal &&
       (this.founding.seal.workerId === ant.id ||

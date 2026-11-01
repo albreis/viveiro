@@ -1,3 +1,4 @@
+import { initializeFoundressForaging } from "../semiclaustral/initialize.ts";
 import { initializeMaternalReserves } from "../maternal/initialize.ts";
 import { foundingPlan } from "./plan.ts";
 import type { FoundingWorld } from "./types.ts";
@@ -6,6 +7,7 @@ import { surfaceHeight } from "../landscape/queries.ts";
 export function initializeFounding(world: FoundingWorld) {
   world.founding = foundingPlan(world.nest, world.params.humidity);
   initializeMaternalReserves(world);
+  initializeFoundressForaging(world);
   const site = world.founding.site;
   world.food = 0;
   world.nest = {

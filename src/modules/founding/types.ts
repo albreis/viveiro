@@ -1,3 +1,4 @@
+import { withdrawForaged } from "../semiclaustral/budget.ts";
 import { withdrawMaternal, reserveTotal } from "../maternal/pools.ts";
 import type { ColonyAgent, ColonyWorld } from "../colony/types.ts";
 import type { Vec3 } from "../navigation/types.ts";
@@ -9,6 +10,7 @@ export type FoundingPhase =
   | "digging"
   | "sealing"
   | "claustral"
+  | "semiclaustral"
   | "established"
   | "failed";
 export type ReserveUse = "maintenance" | "eggs" | "larvae" | "excavation";
@@ -22,6 +24,7 @@ export interface FoundingState {
   matedTick?: number;
   entry?: number;
   front?: number;
+  foraging?: import("../semiclaustral/types.ts").FoundressForaging;
   seal?: import("../sealing/types.ts").SealTask;
   maternal?: import("../maternal/types.ts").MaternalState;
   initialReserves: number;
@@ -35,6 +38,7 @@ export interface FoundingState {
 }
 export interface FoundingWorld extends ColonyWorld {
   founding?: FoundingState;
+  patches: import("../semiclaustral/types.ts").FoodPatch[];
   landscape: import("../landscape/types.ts").Landscape;
   params: {
     humidity: number;
@@ -54,11 +58,15 @@ export function spendReserve(
 ) {
   const f = world.founding;
   if (!f || !(requested > 0)) return 0;
-  const amount = f.maternal
-    ? withdrawMaternal(f.maternal, use, requested)
-    : Math.min(f.reserves, requested);
+  const external = withdrawForaged(f, use, requested);
+  const remaining = requested - external;
+  const amount =
+    external +
+    (f.maternal
+      ? withdrawMaternal(f.maternal, use, remaining)
+      : Math.min(f.reserves, remaining));
   if (f.maternal) f.reserves = reserveTotal(f.maternal.stores);
-  else f.reserves -= amount;
+  else f.reserves -= amount - external;
   f.spent[use] += amount;
   return amount;
 }

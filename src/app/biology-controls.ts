@@ -63,13 +63,20 @@ export function installBiologyControls(world: FamilyWorld): void {
       'option[value="seasonal"]',
     );
     if (seasonal) seasonal.disabled = !p.dormancyModel;
-    topic.value = p.dormancyModel
-      ? "seasonal"
-      : p.id === "lab-lniger-2024"
-        ? "study"
-        : p.maternalModel === "pools"
-          ? "maternal"
-          : "model";
+    const semi = topic.querySelector<HTMLOptionElement>(
+      'option[value="semiclaustral"]',
+    );
+    if (semi) semi.disabled = p.foundation !== "semiclaustral";
+    topic.value =
+      p.foundation === "semiclaustral"
+        ? "semiclaustral"
+        : p.dormancyModel
+          ? "seasonal"
+          : p.id === "lab-lniger-2024"
+            ? "study"
+            : p.maternalModel === "pools"
+              ? "maternal"
+              : "model";
     refresh();
   };
   select.onchange = changeProfile;

@@ -56,7 +56,7 @@ export function validateMaternalFounding(
   if (
     Math.abs(reserveTotal(f.maternal.stores) - f.reserves) > 1e-7 ||
     Math.abs(balance.initial - f.initialReserves) > 1e-7 ||
-    Math.abs(balance.consumed - used) > 1e-7
+    Math.abs(balance.consumed + (f.foraging?.consumed ?? 0) - used) > 1e-7
   )
     throw new Error("Resumo das reservas maternas inconsistente.");
 }

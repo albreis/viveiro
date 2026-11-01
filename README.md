@@ -94,3 +94,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Observação e avaliação das previsões](docs/avaliacao-previsoes.md): contrato parcial, comparação por horizonte e ensaio sintético reproduzível.
 
 - [Perfis biológicos](docs/perfis-biologicos.md): parâmetros versionados, proveniência, hipóteses e cenários de referência.
+
+Fundação semiclaustral: [mecanismo e limites](docs/fundacao-semiclaustral.md).

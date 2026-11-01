@@ -1,3 +1,4 @@
+import { validateFoundressForaging } from "../semiclaustral/validation.ts";
 import { validateSeason } from "../seasons/validation.ts";
 import { validateCocoons } from "../development/cocoon.ts";
 import { validateBroodDevelopment } from "../development/validation.ts";
@@ -65,6 +66,10 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       throw new Error("Registro de colônia inválido.");
     const profile = resolveBiologicalProfile(c.biologicalProfile);
     validateMaternalFounding(c.founding, profile.maternalModel === "pools");
+    validateFoundressForaging(
+      c.founding,
+      profile.foundation === "semiclaustral",
+    );
     validatePlugMaterials(c.nest, c.soil);
     validateSealTask(
       c.founding as import("../founding/types.ts").FoundingState | undefined,
