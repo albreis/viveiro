@@ -1,3 +1,4 @@
+import { renderFamilyStatus } from "./family-status.ts";
 import {
   renderFoundingStatus,
   foundingDescription,
@@ -23,7 +24,9 @@ export function renderStatus(context, updateAntCamera) {
     }
   $("population").textContent = w.population;
   $("population-detail").textContent =
-    (queen ? "1 rainha" : "Sem rainha") +
+    (queen
+      ? w.ants.filter((a) => a.kind === "queen").length + " rainha(s)"
+      : "Sem rainha") +
     (workers ? " · " + workers + " operárias" : male ? " · 1 macho" : "");
   $("brood").textContent = w.brood.length;
   $("food").replaceChildren(
@@ -93,6 +96,7 @@ export function renderStatus(context, updateAntCamera) {
       comparison.population +
       " formigas.";
   renderFoundingStatus(w.founding);
+  renderFamilyStatus(w);
   renderSoilStatus(w);
   renderColonyStatus(w);
   updateAntCamera(w);

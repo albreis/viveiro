@@ -18,6 +18,8 @@ export interface FoundingState {
   site: Vec3;
   chamber: Vec3;
   matedTick?: number;
+  entry?: number;
+  front?: number;
   initialReserves: number;
   reserves: number;
   spent: Record<ReserveUse, number>;

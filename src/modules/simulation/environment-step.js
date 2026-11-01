@@ -1,5 +1,4 @@
 import { diffuseEvaporate } from "../chemistry/reaction-diffusion.ts";
-import { updateBroodLifecycle } from "../colony/lifecycle.ts";
 import { updateLandscape } from "../landscape/dynamics.ts";
 export function updateEnvironment(world) {
   world.tick++;
@@ -16,6 +15,5 @@ export function updateEnvironment(world) {
     windX: world.params.windX || 0,
     windZ: world.params.windZ || 0,
   });
-  updateBroodLifecycle(world, suitability);
   return suitability;
 }

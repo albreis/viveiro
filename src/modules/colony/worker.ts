@@ -36,17 +36,21 @@ export function updateColonyWorker(
     ant.bioTask = {
       kind: "waste",
       item: waste.id,
-      destination: roomNode(world.nest, "waste"),
+      destination: roomNode(world.nest, "waste", 0, ant.colonyId || 1),
     };
     if (ant.node != null)
-      requestRoute(world, ant, roomNode(world.nest, "waste"));
+      requestRoute(
+        world,
+        ant,
+        roomNode(world.nest, "waste", 0, ant.colonyId || 1),
+      );
     ant.state = "Recolhendo resíduos";
     return true;
   }
   if (ant.role === "nurse" && ant.node != null) {
     const brood = world.brood.find(
       (b) =>
-        b.node !== roomNode(world.nest, "nursery") &&
+        b.node !== roomNode(world.nest, "nursery", 0, ant.colonyId || 1) &&
         !b.carrier &&
         distance3(here, b) < 0.85,
     );
@@ -56,9 +60,13 @@ export function updateColonyWorker(
       ant.bioTask = {
         kind: "brood",
         item: brood.id,
-        destination: roomNode(world.nest, "nursery"),
+        destination: roomNode(world.nest, "nursery", 0, ant.colonyId || 1),
       };
-      requestRoute(world, ant, roomNode(world.nest, "nursery"));
+      requestRoute(
+        world,
+        ant,
+        roomNode(world.nest, "nursery", 0, ant.colonyId || 1),
+      );
       ant.state = "Transportando uma cria";
       return true;
     }
@@ -77,7 +85,12 @@ export function updateColonyWorker(
       if (!ant.route?.length) {
         ant.bioTask = {
           kind: "guard",
-          destination: roomNode(world.nest, "entrance", ant.id % 2),
+          destination: roomNode(
+            world.nest,
+            "entrance",
+            ant.id % 2,
+            ant.colonyId || 1,
+          ),
         };
         requestRoute(world, ant, ant.bioTask.destination);
       }
@@ -98,7 +111,9 @@ export function updateColonyWorker(
       return true;
     }
     const entrance =
-        world.nest.nodes[roomNode(world.nest, "entrance", ant.id % 2)],
+        world.nest.nodes[
+          roomNode(world.nest, "entrance", ant.id % 2, ant.colonyId || 1)
+        ],
       angle = world.tick * 0.012 + ant.id;
     const target = {
       x: entrance.x + Math.cos(angle) * 0.8,

@@ -26,7 +26,7 @@ export function senseTaskStimuli(
   const brood = world.brood.filter(
     (b) =>
       !b.carrier &&
-      b.node !== roomNode(world.nest, "nursery") &&
+      b.node !== roomNode(world.nest, "nursery", 0, ant.colonyId || 1) &&
       distance3(here, b) < 0.9,
   ).length;
   const waste = world.colony.waste

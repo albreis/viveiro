@@ -69,7 +69,10 @@ function advanceFront(world: SoilWorld, project: DigProject) {
   } else {
     project.completed = true;
     const missing = ["nursery", "storage", "waste"].find(
-      (type) => !world.nest.nodes.some((n) => n.type === type),
+      (type) =>
+        !world.nest.nodes.some(
+          (n) => n.type === type && (n.colonyId || 1) === (front.colonyId || 1),
+        ),
     );
     front.type = emerged ? "entrance" : missing || "chamber";
     front.name = emerged

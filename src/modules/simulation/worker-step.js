@@ -1,3 +1,4 @@
+import { updateSexualAgent } from "../colonies/sexual-motion.ts";
 import { updateFounding } from "../founding/update.ts";
 import { roomNode } from "../colony/rooms.ts";
 import { recoverStall } from "../navigation/stall-recovery.ts";
@@ -24,6 +25,7 @@ export function updateWorkers(world, suitability) {
   updateFounding(world);
   for (const ant of world.ants) {
     ant.age += 0.01;
+    if (updateSexualAgent(world, ant, dead)) continue;
     if (ant.kind === "queen") {
       if (world.queenHealth <= 0) {
         dead.add(ant.id);
@@ -70,8 +72,8 @@ export function updateWorkers(world, suitability) {
         const destination =
           (ant.carrying ||
             (ant.energy < 35 && world.tick >= (ant.stockEmptyUntil || 0))) &&
-          ant.node !== roomNode(world.nest, "storage")
-            ? roomNode(world.nest, "storage")
+          ant.node !== roomNode(world.nest, "storage", 0, ant.colonyId || 1)
+            ? roomNode(world.nest, "storage", 0, ant.colonyId || 1)
             : soilEntrance(world, ant);
         requestRoute(world, ant, destination);
         if (!ant.route.length && node.type === "entrance")
@@ -114,7 +116,11 @@ export function updateWorkers(world, suitability) {
         ant.tunnelCenter = { x: entrance.x, y: entrance.y, z: entrance.z };
         ant.tunnelY = entrance.y;
         ant.node = entrance.index;
-        requestRoute(world, ant, roomNode(world.nest, "storage"));
+        requestRoute(
+          world,
+          ant,
+          roomNode(world.nest, "storage", 0, ant.colonyId || 1),
+        );
         continue;
       }
     } else {

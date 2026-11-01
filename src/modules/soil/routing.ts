@@ -26,6 +26,7 @@ export function soilEntrance(world: SoilWorld, ant: SoilAgent) {
     .filter(
       (n) =>
         n.type === "entrance" &&
+        (n.colonyId || 1) === (ant.colonyId || 1) &&
         Math.hypot(n.x - ant.x, n.z - ant.z) < 2.3 &&
         !(
           ant.avoidEntranceUntil! > world.tick && ant.avoidEntrance === n.index

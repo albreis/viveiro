@@ -21,7 +21,7 @@ export function neighborsOf(
   let index = indexes.get(world);
   if (!index || index.tick !== world.tick) {
     index = { tick: world.tick, cells: new Map(), queries: new Map() };
-    for (const ant of world.ants) {
+    for (const ant of world.neighborAgents || world.ants) {
       const cell = key(
         Math.floor(ant.x / CELL),
         Math.floor((ant.y || 0) / CELL),

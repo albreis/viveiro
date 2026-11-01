@@ -89,7 +89,13 @@ export class Terrarium {
     this.scene.add(this.queen);
     this.male = this.buildMale();
     this.scene.add(this.male);
-    this.foundersView = new FoundersView(this.scene, this.queen, this.male);
+    this.foundersView = new FoundersView(
+      this.scene,
+      this.queen,
+      this.male,
+      () => this.buildQueen(),
+      () => this.buildMale(),
+    );
     const trailPositions = new Float32Array(1040 * 3),
       trailColors = new Float32Array(1040 * 3);
     for (let z = 0; z < 26; z++)

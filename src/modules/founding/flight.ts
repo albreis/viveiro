@@ -1,5 +1,5 @@
 import { outsideSite } from "./site.ts";
-import type { FoundingWorld } from "./types.ts";
+import type { FoundingState, FoundingWorld } from "./types.ts";
 import { changePhase, founder } from "./types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
 import type { Vec3 } from "../navigation/types.ts";
@@ -19,8 +19,12 @@ function fly(ant: ColonyAgent, target: Vec3, speed: number) {
   return d <= speed;
 }
 /** Probabilistic window with an explicit recent-rain memory; coefficients are exploratory. */
-export function flightReadiness(world: FoundingWorld) {
-  const f = world.founding!;
+export function flightReadiness(
+  world: FoundingWorld,
+  memory: Pick<FoundingState, "lastRain"> | undefined = world.founding,
+) {
+  const f = memory;
+  if (!f) return 0;
   if (world.landscape.rainPulse > 0.15) f.lastRain = world.tick;
   if (
     world.tick - f.lastRain > 300 ||

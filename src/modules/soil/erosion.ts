@@ -18,7 +18,7 @@ export function collapseEdge(
   const center = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, z: (a.z + b.z) / 2 };
   if (
     center.y > -0.45 ||
-    world.ants.some(
+    (world.neighborAgents || world.ants).some(
       (p) => distance3({ x: p.x, y: p.y || 0, z: p.z }, center) < 1,
     )
   )

@@ -1,3 +1,4 @@
+import { laySexualBrood } from "../colonies/sexual-brood.ts";
 import type { ColonyWorld } from "./types.ts";
 import { LIMIT } from "../simulation/constants.js";
 import { makeBrood, broodStage } from "./brood.ts";
@@ -15,6 +16,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
     : Math.min(world.food, consumption);
   if (!closed) world.food -= paid;
   const fed = paid >= consumption - 1e-10;
+  laySexualBrood(world);
   if (queen) {
     if (!closed) queen.state = "Cuidando da colônia";
     const first = !!f && f.phase === "claustral" && !f.firstClutch;
@@ -25,11 +27,15 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
       world.tick - world.lastLaying >= 65 &&
       layingAllowed &&
       world.queenHealth > 20 &&
-      world.population + world.brood.length < LIMIT
+      world.population + world.brood.length + (world.capacityOffset || 0) <
+        LIMIT
     ) {
       const eggs = Math.min(
         first ? 4 : 4 + Math.floor(world.random() * 3),
-        LIMIT - world.population - world.brood.length,
+        LIMIT -
+          world.population -
+          world.brood.length -
+          (world.capacityOffset || 0),
       );
       for (let i = 0; i < eggs; i++) {
         const b = makeBrood(world, world.nextId++);
@@ -51,20 +57,24 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
     }
   }
   const remaining = [];
-  let hatched = 0;
+  let hatched = 0,
+    alates = 0;
   for (const brood of world.brood) {
     if (fed || broodStage(brood.age) !== "larva")
       brood.age += 0.006 + suitability * 0.004;
     if (
       brood.age >= 1.3 &&
       brood.carrier === undefined &&
-      world.population < LIMIT
+      world.population + (world.capacityOffset || 0) < LIMIT
     ) {
-      hatchWorker(world, brood);
-      hatched++;
+      const adult = hatchWorker(world, brood);
+      if (adult.sexual) alates++;
+      else hatched++;
     } else remaining.push(brood);
   }
   world.brood = remaining;
+  if (alates)
+    world.log(alates + " alado(s) nasceram para uma futura fundação.", "birth");
   if (hatched) world.log(hatched + " operária(s) nasceram.", "birth");
   if (f?.phase === "claustral" && f.nanitics > 0) {
     f.phase = "established";

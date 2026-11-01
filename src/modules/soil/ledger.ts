@@ -53,7 +53,15 @@ export function dropSoil(world: SoilWorld, ant: SoilAgent) {
   world.nest.revision++;
 }
 export function soilBalance(world: SoilWorld) {
-  const carried = world.ants.reduce((n, a) => n + (a.carryingSoil || 0), 0);
+  const actors = new Map(
+    [...world.ants, ...(world.colonies || []).flatMap((c) => c.ants)].map(
+      (a) => [a.id, a],
+    ),
+  );
+  const carried = [...actors.values()].reduce(
+    (n, a) => n + (a.carryingSoil || 0),
+    0,
+  );
   const loose = (world.nest.rubble || []).reduce((n, p) => n + p.mass, 0);
   const input = world.soil.removed + world.soil.eroded;
   return {

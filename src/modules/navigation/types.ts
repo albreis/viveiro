@@ -101,6 +101,7 @@ export interface NestState {
 }
 
 export interface NavigationWorld {
+  neighborAgents?: AgentState[];
   landscape?: import("../landscape/types.ts").Landscape;
   tick: number;
   food: number;

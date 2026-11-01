@@ -50,7 +50,11 @@ export function updateColonyTask(
       ant.crop > 0.02 ? "Cuidando da rainha" : "Buscando alimento social";
     if (world.tick >= task.until) {
       delete ant.bioTask;
-      requestRoute(world, ant, roomNode(world.nest, "storage"));
+      requestRoute(
+        world,
+        ant,
+        roomNode(world.nest, "storage", 0, ant.colonyId || 1),
+      );
     }
     return true;
   }
