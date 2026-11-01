@@ -125,3 +125,12 @@ RL depende de sensores, ações, recompensas e física estáveis.
 - Escolha ACO amostrada e respostas por limiares individuais.
 - Estímulos locais, memória de necessidades e contato sem atravessar solo.
 - Roteamento interno ainda usa o grafo conhecido do ninho; a remoção dessa dependência é a próxima parte (4B).
+
+### Progresso da etapa 4B — 31/10/2026
+
+- Branch: codex/navegacao-local.
+- Política com observações locais e memória limitada a arestas visitadas.
+- Odores de referência no grafo físico com balanço de fontes e evaporação.
+- Entrada de retorno conhecida ou percebida; sem busca global de rotas pelos agentes.
+- Propostas de escavação iniciadas pelas operárias sob densidade local.
+- Regressões locais aprovadas; suíte completa e build em andamento.

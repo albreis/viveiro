@@ -1,5 +1,5 @@
+import { requestRoute } from "../navigation/local-routing.ts";
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
-import { nestPath } from "../simulation/nest.ts";
 import { enterForSoil } from "../soil/routing.ts";
 import { advanceSupportedMotion } from "../navigation/support-motion.ts";
 import { arriveColony } from "./arrival.ts";
@@ -49,7 +49,7 @@ export function updateColonyTask(
       ant.crop > 0.02 ? "Cuidando da rainha" : "Buscando alimento social";
     if (world.tick >= task.until) {
       delete ant.bioTask;
-      ant.route = nestPath(world.nest, ant.node!, 4);
+      requestRoute(world, ant, 4);
     }
     return true;
   }
@@ -66,6 +66,6 @@ export function updateColonyTask(
     return true;
   }
   if (ant.node === task.destination) arriveColony(world, ant, ant.node);
-  else ant.route = nestPath(world.nest, ant.node, task.destination);
+  else requestRoute(world, ant, task.destination);
   return true;
 }

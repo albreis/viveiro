@@ -1,35 +1,41 @@
+import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
-import { nestPath } from "../simulation/nest.ts";
 import { distance3 } from "./ledger.ts";
 import { startSupportedMotion } from "../navigation/support-motion.ts";
 
 export function soilEntrance(world: SoilWorld, ant: SoilAgent) {
-  let best = 0,
-    bestDistance = Infinity;
-  world.nest.nodes.forEach((node, i) => {
-    if (node.type !== "entrance") return;
-    const route = ant.node == null ? [] : nestPath(world.nest, ant.node, i);
-    const distance =
-      ant.node == null
-        ? Math.hypot(ant.x - node.x, ant.z - node.z)
-        : route.reduce(
-            (n, id, j) =>
-              n +
-              distance3(
-                world.nest.nodes[j ? route[j - 1] : ant.node!],
-                world.nest.nodes[id],
-              ),
-            0,
-          );
-    if (
-      (ant.node == null || route.length || ant.node === i) &&
-      distance < bestDistance
-    ) {
-      best = i;
-      bestDistance = distance;
-    }
-  });
-  return best;
+  if (ant.node != null) {
+    if (world.nest.nodes[ant.node].type === "entrance") return ant.node;
+    return (
+      ant.lastEntrance?.node ??
+      world.nest.nodes.findIndex(
+        (n) =>
+          n.type === "entrance" && (n.colonyId || 1) === (ant.colonyId || 1),
+      )
+    );
+  }
+  const known = ant.lastEntrance;
+  if (
+    known &&
+    !(ant.avoidEntranceUntil! > world.tick && ant.avoidEntrance === known.node)
+  )
+    return known.node;
+  const visible = world.nest.nodes
+    .map((node, index) => ({ ...node, index }))
+    .filter(
+      (n) =>
+        n.type === "entrance" &&
+        Math.hypot(n.x - ant.x, n.z - ant.z) < 2.3 &&
+        !(
+          ant.avoidEntranceUntil! > world.tick && ant.avoidEntrance === n.index
+        ),
+    );
+  visible.sort(
+    (a, b) =>
+      Math.hypot(a.x - ant.x, a.z - ant.z) -
+      Math.hypot(b.x - ant.x, b.z - ant.z),
+  );
+  return visible[0]?.index ?? -1;
 }
 export function beginSoilHaul(world: SoilWorld, ant: SoilAgent) {
   const task = ant.soilTask;
@@ -37,7 +43,7 @@ export function beginSoilHaul(world: SoilWorld, ant: SoilAgent) {
   task.phase = "haul";
   task.entrance = soilEntrance(world, ant);
   if (task.reversing) return;
-  ant.route = nestPath(world.nest, ant.node, task.entrance);
+  requestRoute(world, ant, task.entrance);
   if (ant.node === task.entrance) world.onNestArrival?.(ant, task.entrance);
 }
 export function arriveWithSoil(
@@ -78,8 +84,13 @@ export function arriveWithSoil(
   return true;
 }
 export function enterForSoil(world: SoilWorld, ant: SoilAgent, target: number) {
-  const entranceId = soilEntrance(world, ant),
-    entrance = world.nest.nodes[entranceId];
+  const entranceId = soilEntrance(world, ant);
+  if (entranceId < 0) {
+    world.moveSurface(ant, ant.angle + world.range(-0.4, 0.4), ant.speed);
+    ant.state = "Procurando uma entrada";
+    return;
+  }
+  const entrance = world.nest.nodes[entranceId];
   const d = Math.hypot(entrance.x - ant.x, entrance.z - ant.z);
   if (d > 0.6) {
     world.moveSurface(
@@ -93,5 +104,5 @@ export function enterForSoil(world: SoilWorld, ant: SoilAgent, target: number) {
   ant.node = entranceId;
   ant.tunnelCenter = { x: entrance.x, y: entrance.y, z: entrance.z };
   ant.tunnelY = entrance.y;
-  ant.route = nestPath(world.nest, entranceId, target);
+  requestRoute(world, ant, target);
 }

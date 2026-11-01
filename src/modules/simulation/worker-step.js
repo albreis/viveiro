@@ -1,10 +1,10 @@
+import { requestRoute } from "../navigation/local-routing.ts";
 import { chooseForagingHeading } from "../chemistry/forage-heading.ts";
 import { depositPheromone } from "../chemistry/reaction-diffusion.ts";
 import { soilEntrance } from "../soil/routing.ts";
 import { updateColonyWorker } from "../colony/worker.ts";
 import { updateSoilWorker } from "../soil/worker.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
-import { nestPath } from "./nest.ts";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
@@ -58,7 +58,7 @@ export function updateWorkers(world, suitability) {
           ant.node !== 4
             ? 4
             : soilEntrance(world, ant);
-        ant.route = nestPath(world.nest, ant.node, destination);
+        requestRoute(world, ant, destination);
         if (!ant.route.length && node.type === "entrance")
           ant.route = [ant.node];
       }
@@ -82,25 +82,24 @@ export function updateWorkers(world, suitability) {
       ant.carrying ||
       (ant.energy < 35 && world.tick >= (ant.stockEmptyUntil || 0))
     ) {
-      let entrances = world.nest.nodes
-        .map((p, i) => ({ ...p, index: i }))
-        .filter((p) => p.type === "entrance");
-      if (ant.avoidEntranceUntil > world.tick) {
-        const alternatives = entrances.filter(
-          (p) => p.index !== ant.avoidEntrance,
-        );
-        if (alternatives.length) entrances = alternatives;
+      const entranceIndex = soilEntrance(world, ant);
+      if (entranceIndex < 0) {
+        heading = chooseForagingHeading(world, ant, heading);
+        world.moveSurface(ant, heading, ant.speed);
+        ant.state = "Procurando a entrada pelo cheiro";
+        continue;
       }
-      const entrance = entrances.reduce((best, p) =>
-        distance(ant, p) < distance(ant, best) ? p : best,
-      );
+      const entrance = {
+        ...world.nest.nodes[entranceIndex],
+        index: entranceIndex,
+      };
       heading = Math.atan2(entrance.z - ant.z, entrance.x - ant.x);
       ant.state = ant.carrying ? "Levando alimento" : "Voltando ao ninho";
       if (distance(ant, entrance) < 0.6) {
         ant.tunnelCenter = { x: entrance.x, y: entrance.y, z: entrance.z };
         ant.tunnelY = entrance.y;
         ant.node = entrance.index;
-        ant.route = nestPath(world.nest, entrance.index, 4);
+        requestRoute(world, ant, 4);
         continue;
       }
     } else {

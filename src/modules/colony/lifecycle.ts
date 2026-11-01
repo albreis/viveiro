@@ -1,6 +1,6 @@
+import { requestRoute } from "../navigation/local-routing.ts";
 import type { ColonyWorld } from "./types.ts";
 import { LIMIT } from "../simulation/constants.js";
-import { nestPath } from "../simulation/nest.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 import { makeBrood, broodStage } from "./brood.ts";
 
@@ -58,13 +58,13 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
         },
       });
       const nurse =
-        world.ants.filter((a) => a.kind === "worker").length >= 4 &&
-        ant.traits.exploration < 0.5;
-      ant.route = nestPath(
-        world.nest,
-        brood.node,
-        nurse ? 2 : ant.id % 2 ? 0 : 6,
-      );
+        world.ants.filter(
+          (a) =>
+            a.kind === "worker" &&
+            Math.hypot(a.x - ant.x, (a.y || 0) - (ant.y || 0), a.z - ant.z) <
+              1.2,
+        ).length >= 4 && ant.traits.exploration < 0.5;
+      requestRoute(world, ant, nurse ? 2 : ant.id % 2 ? 0 : 6);
       world.ants.push(ant);
       world.born++;
       hatched++;

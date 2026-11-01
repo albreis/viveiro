@@ -1,5 +1,6 @@
+import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
-import { nestPath } from "../simulation/nest.ts";
+import { proposeDig } from "./projects.ts";
 import { digBite } from "./projects.ts";
 import { beginSoilHaul, enterForSoil } from "./routing.ts";
 import { depositSoil, distance3 } from "./ledger.ts";
@@ -17,6 +18,19 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
       ("bioTask" in ant && ant.bioTask))
   )
     return false;
+  if (
+    !ant.soilTask &&
+    "role" in ant &&
+    ant.role === "excavator" &&
+    ant.node != null &&
+    world.tick - world.soil.lastProject >= 450 &&
+    ["royal", "nursery", "storage", "chamber"].includes(
+      world.nest.nodes[ant.node].type,
+    ) &&
+    (!ant.tunnelCenter ||
+      distance3(ant.tunnelCenter, world.nest.nodes[ant.node]) < 0.03)
+  )
+    proposeDig(world, ant.node);
   if (!ant.soilTask) {
     const rubble = (world.nest.rubble || []).find(
       (p) =>
@@ -45,11 +59,11 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
         !project ||
         ("role" in ant ? ant.role !== "excavator" : ant.id % 4 !== 0) ||
         ant.carrying ||
-        world.food < 2
+        ant.energy < 50
       )
         return false;
       ant.soilTask = { projectId: project.id, phase: "return", digTicks: 0 };
-      ant.route = nestPath(world.nest, ant.node!, project.front);
+      requestRoute(world, ant, project.front);
     }
   }
   const task = ant.soilTask;
@@ -163,13 +177,13 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     if ((ant.carryingSoil || 0) > 0) beginSoilHaul(world, ant);
     else {
       delete ant.soilTask;
-      ant.route = nestPath(world.nest, ant.node!, 0);
+      requestRoute(world, ant, 0);
     }
     return true;
   }
   if (ant.node !== project.front) {
     task.phase = "return";
-    ant.route = nestPath(world.nest, ant.node!, project.front);
+    requestRoute(world, ant, project.front);
     return true;
   }
   task.phase = "dig";

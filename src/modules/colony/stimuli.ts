@@ -1,3 +1,4 @@
+import { neighborsOf } from "../navigation/sensors.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
 import { distance3 } from "../soil/ledger.ts";
 export type TaskStimuli = Record<Role, number>;
@@ -5,6 +6,7 @@ export function senseTaskStimuli(
   world: ColonyWorld,
   ant: ColonyAgent,
 ): TaskStimuli {
+  const crowd = Math.max(0, neighborsOf(world, ant, 0.9).length - 3);
   const here = { x: ant.x, y: ant.y || 0, z: ant.z };
   const queen = world.ants.find(
     (a) =>
@@ -49,7 +51,7 @@ export function senseTaskStimuli(
       Math.min(2, brood * 0.4) +
       (ant.age < 1.5 && [2, 3].includes(ant.node ?? -1) ? 0.2 : 0),
     cleaner: waste / 0.04,
-    excavator: rubble / 0.03 + (front ? 0.55 : 0),
+    excavator: rubble / 0.03 + (front ? 0.55 : 0) + crowd * 0.15,
     defender:
       (danger ? 1.5 : entrance && ant.caste === "major" ? 0.2 : 0) *
       (0.2 + ant.traits.courage * 1.8),
