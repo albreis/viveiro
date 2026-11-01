@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import { shareCrop, feedFromStock } from "../src/modules/colony/nutrition.ts";
 import {
   makeBrood,

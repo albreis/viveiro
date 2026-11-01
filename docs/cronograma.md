@@ -1,6 +1,6 @@
 # Cronograma de entregas
 
-Atualizado em 31/10/2026. Cada etapa tem branch própria, testes, publicação
+Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
@@ -11,7 +11,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Em desenvolvimento     |
 | 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
 | 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Parcial: 5A validada   |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Parcial: 5A + 5B       |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada              |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
 | 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
@@ -33,7 +33,7 @@ apoio correto, fluxo retomado em gargalos e verificação no navegador.
 
 ## 2. Túneis vivos
 
-- Abrir o primeiro buraco durante a fundação.
+- Abrir o primeiro buraco durante a fundação (5B implementada).
 - Escolher frentes de escavação por estímulos locais.
 - Retirar porções de terra, carregá-las e depositá-las na superfície.
 - Abrir ramificações e câmaras progressivamente.
@@ -215,3 +215,14 @@ automaticamente.
 - Fonte publicada e tag v0.5.0: e149fe8944b315bbff078a4f1be7a471c3297145.
 - PR #7 aberto: https://github.com/albreis/viveiro/pull/7.
 - Continuação horária ativa. Próxima etapa: voo e fundação orgânica (5B).
+
+### Etapa 5B — voo e fundação do casal inicial (0.6.0)
+
+- Branch: codex/voo-e-fundacao, baseada na genética 5A.
+- Novos terrários com alados e solo intacto; janela de voo local, encontro aéreo, pouso e asas descartadas.
+- Boca, poço e primeira câmara escavados pela rainha, com viagens físicas e conservação da terra.
+- Reservas maternas finitas, primeira postura claustral e naníticas menores; depois, alimento externo.
+- Destinos por função, sem pressupor câmaras de índices fixos; ninhos e saves antigos preservados.
+- Validação: 65 testes aprovados, TypeScript/build aprovados e navegador conferido com quatro naníticas, parentesco e primeira pessoa. Modelo exploratório: docs/fundacao.md.
+- Pendente 5C: novas princesas/zangões e fundações filhas, recursos e genéticas por colônia.
+- Selamento físico do acesso, espécie-alvo e calibração dependem da etapa 7 e de dados reais.

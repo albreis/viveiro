@@ -6,7 +6,7 @@ import {
   offspringGenome,
 } from "../src/modules/genetics/genome.ts";
 import { expressGenome } from "../src/modules/genetics/phenotype.ts";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 test("offspring inherit maternal and paternal copies reproducibly without mutating parents", () => {
   const mother = founderGenome("family", 1, "queen"),
     father = founderGenome("family", 2, "male"),

@@ -103,7 +103,12 @@ export function buildGround(host, seed) {
   host.entranceView = new EntranceView(host);
   host.entranceView.update(host.world);
   const entry = host.world.nest.nodes.find((n) => n.type === "entrance");
-  host.nestLabel = host.label("ENTRADA", entry.x, entry.y + 0.6, entry.z);
+  host.nestLabel = host.label(
+    "ENTRADA",
+    entry?.x || 0,
+    (entry?.y || 0) + 0.6,
+    entry?.z || 0,
+  );
 }
 
 export function label(host, text, x, y, z) {

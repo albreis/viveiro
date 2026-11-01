@@ -1,3 +1,4 @@
+import { roomNode } from "./rooms.ts";
 import { neighborsOf } from "../navigation/sensors.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
 import { distance3 } from "../soil/ledger.ts";
@@ -23,7 +24,10 @@ export function senseTaskStimuli(
       ? ant.taskMemory.queenNeed
       : 0;
   const brood = world.brood.filter(
-    (b) => !b.carrier && b.node !== 3 && distance3(here, b) < 0.9,
+    (b) =>
+      !b.carrier &&
+      b.node !== roomNode(world.nest, "nursery") &&
+      distance3(here, b) < 0.9,
   ).length;
   const waste = world.colony.waste
     .filter((w) => !w.stored && !w.carrier && distance3(here, w) < 0.9)
@@ -49,7 +53,10 @@ export function senseTaskStimuli(
     nurse:
       queenNeed +
       Math.min(2, brood * 0.4) +
-      (ant.age < 1.5 && [2, 3].includes(ant.node ?? -1) ? 0.2 : 0),
+      (ant.age < 1.5 &&
+      ["royal", "nursery"].includes(world.nest.nodes[ant.node ?? -1]?.type)
+        ? 0.2
+        : 0),
     cleaner: waste / 0.04,
     excavator: rubble / 0.03 + (front ? 0.55 : 0) + crowd * 0.15,
     defender:

@@ -14,6 +14,7 @@ let world,
   accumulator = 0;
 let initial = {
   seed: "SEMENTE-42",
+  startMode: "founding",
   params: { humidity: 58, light: 72, randomness: 28 },
 };
 let interventions = [],
@@ -53,7 +54,12 @@ function load() {
       saved.world.ants.length <= 450
     ) {
       world = World.restore(saved.world);
-      initial = saved.initial;
+      initial = {
+        ...saved.initial,
+        startMode:
+          saved.initial?.startMode ||
+          (saved.world.founding ? "founding" : "established"),
+      };
       interventions = saved.interventions || [];
       comparison = saved.comparison ? World.restore(saved.comparison) : null;
       scenario = saved.scenario === "b" && comparison ? "b" : "a";
@@ -99,12 +105,14 @@ function intervention(type, x = 0, z = 0, value) {
   save();
 }
 function reset(seed, params, replay = false) {
-  world = new World(seed, params);
+  world = new World(seed, params, {
+    founding: !replay || initial.startMode !== "established",
+  });
   comparison = null;
   scenario = "a";
   accumulator = 0;
   if (!replay) {
-    initial = { seed, params: { ...params } };
+    initial = { seed, params: { ...params }, startMode: "founding" };
     interventions = [];
     replaying = false;
     replayIndex = 0;

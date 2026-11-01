@@ -1,3 +1,4 @@
+import { isStock } from "./rooms.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
 import { feedFromStock } from "./nutrition.ts";
@@ -24,7 +25,7 @@ export function arriveColony(
     return true;
   }
   ant.route = [];
-  if (world.nest.nodes[node].type === "storage") feedFromStock(world, ant);
+  if (isStock(world.nest, node)) feedFromStock(world, ant);
   if (task.kind === "brood" || task.kind === "waste") {
     const support = broodPosition(world, task.item!, node);
     task.placing = true;

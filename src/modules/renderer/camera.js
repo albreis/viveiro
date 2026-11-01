@@ -49,7 +49,8 @@ export function setView(host, view) {
   if (lateral) {
     if (host.currentView === "side") host.sideFace = (host.sideFace + 1) % 4;
     else if (host.sideFace === undefined) {
-      const q = host.world.nest.nodes[2];
+      const q = host.world.nest.nodes.find((n) => n.type === "royal") ||
+        host.world.founding?.chamber || { x: 0, z: 0 };
       host.sideFace =
         Math.abs(q.x) / 10 > Math.abs(q.z) / 6.5
           ? q.x > 0

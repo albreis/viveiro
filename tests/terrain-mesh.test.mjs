@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import { createSoilGeometry } from "../src/modules/terrain/soil.js";
 import { sampleSoil } from "../src/modules/terrain/field.ts";
 

@@ -1,3 +1,4 @@
+import { roomNode } from "./rooms.ts";
 import { inheritGenome } from "../genetics/reproduction.ts";
 import type { Brood, ColonyWorld } from "./types.ts";
 import { hashSeed } from "../simulation/seed.ts";
@@ -15,7 +16,11 @@ export function broodPosition(world: ColonyWorld, id: number, nodeId: number) {
     z: Math.max(-6.3, Math.min(6.3, node.z + Math.sin(angle) * radius)),
   });
 }
-export function makeBrood(world: ColonyWorld, id: number, node = 2): Brood {
+export function makeBrood(
+  world: ColonyWorld,
+  id: number,
+  node = roomNode(world.nest, "royal"),
+): Brood {
   const support = broodPosition(world, id, node);
   const genome = world.genetics ? inheritGenome(world, id) : undefined;
   if (genome && world.genetics) {

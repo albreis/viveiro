@@ -1,3 +1,4 @@
+import { roomNode } from "./rooms.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
 import { enterForSoil } from "../soil/routing.ts";
@@ -49,7 +50,7 @@ export function updateColonyTask(
       ant.crop > 0.02 ? "Cuidando da rainha" : "Buscando alimento social";
     if (world.tick >= task.until) {
       delete ant.bioTask;
-      requestRoute(world, ant, 4);
+      requestRoute(world, ant, roomNode(world.nest, "storage"));
     }
     return true;
   }

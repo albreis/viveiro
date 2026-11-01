@@ -2,7 +2,7 @@ import { timberLevel } from "../src/modules/landscape/queries.ts";
 import { lerp } from "./fixtures/geometry.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 import { tunnelFooting } from "../src/modules/terrain/surface-queries.ts";
 import { sampleSupport } from "../src/modules/terrain/field.ts";
 import {

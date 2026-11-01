@@ -1,3 +1,4 @@
+import { isClaustral, spendReserve } from "../founding/types.ts";
 import { contactAcrossAir } from "./contact.ts";
 import { neighborsOf } from "../navigation/sensors.ts";
 import type { ColonyAgent, ColonyWorld } from "./types.ts";
@@ -25,8 +26,13 @@ export function updateNutrition(world: ColonyWorld) {
   for (const ant of world.ants) {
     ensureIndividual(world.seed, ant);
     const queen = ant.kind === "queen";
+    if (queen && isClaustral(world)) continue;
     if (queen) {
-      const fed = ant.crop >= 0.0006,
+      const maternal =
+        ant.crop < 0.0006 && world.founding
+          ? spendReserve(world, "maintenance", 0.001)
+          : 0;
+      const fed = ant.crop >= 0.0006 || maternal >= 0.001,
         amount = Math.min(ant.crop, 0.0006);
       ant.crop -= amount;
       world.queenHealth = Math.max(

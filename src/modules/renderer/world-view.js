@@ -68,20 +68,13 @@ export function update(host, world, time, alpha = 1) {
   host.visibleWorkers = world.workers.filter((a) => a.id !== host.followId);
   host.updateAnts(host.visibleWorkers, host.antParts, false, time);
   host.updateAnts(world.predators, host.predatorParts, true, time);
-  const queen = world.ants.find((a) => a.kind === "queen");
-  host.queen.visible = !!queen && queen.id !== host.followId;
-  if (queen) {
-    host.queen.position.set(queen.x, (queen.y || 0) + 0.07, queen.z);
-    host.queen.rotation.y = 0.6;
-    host.queen.scale.setScalar(queen.bodyScale || 1);
-  }
-  const male = world.ants.find((a) => a.kind === "male");
-  host.male.visible = !!male && male.id !== host.followId;
-  if (male) {
-    host.male.position.set(male.x, (male.y || 0) + 0.12, male.z);
-    host.male.rotation.y = Math.sin(time) * 0.3;
-    host.male.scale.setScalar(male.bodyScale || 1);
-  }
+  host.foundersView.update(
+    world.ants,
+    world.founding,
+    (a) => host.pose(a),
+    host.followId,
+    time,
+  );
   host.colonyView.update(world, (a) => host.pose(a), host.followId);
   host.trails.visible = host.showTrails;
   if (host.showTrails) {
@@ -98,7 +91,7 @@ export function update(host, world, time, alpha = 1) {
       host.stopFollowing();
       host.onFollowEnded?.();
     } else {
-      const heading = ant.kind === "queen" ? -0.6 : ant.angle,
+      const heading = ant.angle,
         pitch = ant.pitch || 0;
       const normal = new THREE.Vector3(
         ant.normal?.x || 0,

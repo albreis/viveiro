@@ -11,7 +11,7 @@ import {
 } from "../src/modules/colony/response.ts";
 import { senseTaskStimuli } from "../src/modules/colony/stimuli.ts";
 import { contactAcrossAir } from "../src/modules/colony/contact.ts";
-import { World } from "../src/modules/simulation/world.js";
+import { World } from "./fixtures/established-world.mjs";
 const sum = (a) => a.reduce((n, v) => n + v, 0);
 
 test("diffusion spreads a deposit conservatively and evaporation matches exponential decay", () => {

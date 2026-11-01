@@ -1,3 +1,8 @@
+import {
+  renderFoundingStatus,
+  foundingDescription,
+} from "./founding-status.ts";
+import { isClaustral } from "../modules/founding/types.ts";
 import { renderColonyStatus } from "./colony-status.ts";
 import { renderSoilStatus } from "./soil-status.ts";
 import { drawChart as renderChart } from "./chart-view.js";
@@ -57,6 +62,7 @@ export function renderStatus(context, updateAntCamera) {
   if (!queen)
     observation =
       "A colônia perdeu a rainha. Observe quanto tempo as operárias conseguem sobreviver.";
+  else if (isClaustral(w)) observation = foundingDescription(w.founding);
   else if (w.food < 2)
     observation =
       "As reservas estão baixas. Novas crias dependem do alimento que as operárias conseguirem trazer.";
@@ -86,6 +92,7 @@ export function renderStatus(context, updateAntCamera) {
       " · B " +
       comparison.population +
       " formigas.";
+  renderFoundingStatus(w.founding);
   renderSoilStatus(w);
   renderColonyStatus(w);
   updateAntCamera(w);

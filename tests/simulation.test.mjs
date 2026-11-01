@@ -7,7 +7,7 @@ import {
   forecast,
   LIMIT,
   nestPath,
-} from "../src/modules/simulation/world.js";
+} from "./fixtures/established-world.mjs";
 test("same seed and timed actions reproduce the same complete state", () => {
   const a = new World("reproducible"),
     b = new World("reproducible");

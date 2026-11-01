@@ -4,8 +4,15 @@ import { soilBalance } from "../modules/soil/ledger.ts";
 export function renderSoilStatus(world: SoilWorld) {
   const target = document.getElementById("soil-status");
   if (!target || !world.soil) return;
-  const active = world.soil.projects.filter((p) => !p.completed).length;
-  const digging = world.ants.filter((a) => a.soilTask?.phase === "dig").length;
+  const founding =
+    (world as SoilWorld & { founding?: { phase: string } }).founding?.phase ===
+    "digging";
+  const active =
+    world.soil.projects.filter((p) => !p.completed).length + (founding ? 1 : 0);
+  const digging = world.ants.filter(
+    (a) =>
+      a.soilTask?.phase === "dig" || a.state === "Escavando o primeiro abrigo",
+  ).length;
   const hauling = world.ants.filter((a) => (a.carryingSoil || 0) > 0).length;
   const balance = soilBalance(world);
   const format = (v: number) =>
