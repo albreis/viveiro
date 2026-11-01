@@ -4,17 +4,17 @@ Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação               |
-| ----- | -------------------------------------------------------------------- | ---------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1      |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0           |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | Planejada              |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
+| Etapa | Entrega                                                              | Situação                     |
+| ----- | -------------------------------------------------------------------- | ---------------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1            |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                 |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado       |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado       |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado       |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado       |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | 6A implementada; 6B pendente |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração        |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                    |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -242,3 +242,14 @@ Publicação 0.6.0 confirmada em 01/11/2026, fonte 0aec356, tag v0.6.0, PR #8 ab
 Validação 5C: 76 testes completos aprovados, mais 19 verificações finais direcionadas após os últimos ajustes. TypeScript/build e navegador aprovados. Publicação 0.7.0 em preparação; conferir checkpoint e PR antes de repetir.
 
 Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 sobre a 5B. Site permanece privado. Próxima entrega: etapa 6.
+
+### Progresso da etapa 6A — 01/11/2026
+
+- Branch codex/odores-e-territorio, base codex/colonias-filhas; versão 0.8.0.
+- Perfis químicos por colônia, máscara temporária e reconhecimento local pelo ar.
+- Postura, recuo apoiado, dano persistente e prioridade dependente do contexto.
+- Campo territorial conservativo, legenda, anéis de contato e tratamento de odor pelo usuário.
+- Infiltração experimental com revestimento, percurso físico e transferência conservativa de estoque.
+- Testes de química, recursos, apoio, ida/volta e snapshots; conferência no navegador com duas colônias.
+- Evidência qualitativa, equações, limitações e dados externos em docs/odores-e-territorio.md.
+- Próximo: 6B pulgões/melaço/proteção e lagartas miméticas; não repetir 6A.

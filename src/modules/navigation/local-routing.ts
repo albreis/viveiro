@@ -78,6 +78,7 @@ export function requestRoute(
   world: NavigationWorld,
   ant: AgentState,
   destination: number,
+  owner = ant.colonyId || 1,
 ) {
   const node = world.nest.nodes[destination];
   if (!node || ant.node == null) return;
@@ -96,7 +97,7 @@ export function requestRoute(
       : node.type === "front" || node.type === "chamber"
         ? "front"
         : "entrance",
-    owner: ant.colonyId || 1,
+    owner,
   };
   if (underway) {
     ant.route = [oldHead];

@@ -53,6 +53,9 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Odores e território](docs/odores-e-territorio.md)
+- [Fundação claustral](docs/fundacao.md)
+- [Colônias filhas](docs/colonias-filhas.md)
 - [Genética digital](docs/genetica.md)
 - [Paisagem procedural](docs/procedural.md)
 - [Cronograma](docs/cronograma.md)

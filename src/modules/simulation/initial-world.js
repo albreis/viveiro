@@ -1,3 +1,4 @@
+import { createSocialChemistry } from "../social-chemistry/types.ts";
 import { initializeFounding } from "../founding/initialize.ts";
 import { createGenetics } from "../genetics/reproduction.ts";
 import { createColonyState } from "../colony/individual.ts";
@@ -41,6 +42,7 @@ export function initializeWorld(world, seed, parameters, options = {}) {
   world.nestOdors = createNestOdors(world.nest);
   world.soil = createSoilState();
   world.colony = createColonyState();
+  world.socialChemistry = createSocialChemistry();
   world.genetics = createGenetics(world.seed);
   world.physicsVersion = 5;
   world.localRoutingVersion = 1;

@@ -1,3 +1,5 @@
+import { TrailView } from "./TrailView.ts";
+import { ChemicalContactView } from "./ChemicalContactView.ts";
 import { FoundersView } from "./FoundersView.ts";
 import { updateSoilVisibility } from "./soil-visibility.js";
 import { ColonyView } from "./ColonyView.ts";
@@ -96,34 +98,9 @@ export class Terrarium {
       () => this.buildQueen(),
       () => this.buildMale(),
     );
-    const trailPositions = new Float32Array(1040 * 3),
-      trailColors = new Float32Array(1040 * 3);
-    for (let z = 0; z < 26; z++)
-      for (let x = 0; x < 40; x++) {
-        const i = z * 40 + x;
-        trailPositions[i * 3] = ((x + 0.5) / 40) * 20 - 10;
-        trailPositions[i * 3 + 1] = 0.055;
-        trailPositions[i * 3 + 2] = ((z + 0.5) / 26) * 13 - 6.5;
-      }
-    const trailGeo = new THREE.BufferGeometry();
-    trailGeo.setAttribute(
-      "position",
-      new THREE.BufferAttribute(trailPositions, 3),
-    );
-    trailGeo.setAttribute("color", new THREE.BufferAttribute(trailColors, 3));
-    this.trails = new THREE.Points(
-      trailGeo,
-      new THREE.PointsMaterial({
-        size: 0.27,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.6,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-      }),
-    );
-    this.trails.visible = false;
-    this.scene.add(this.trails);
+    this.trailView = new TrailView(this.scene, world.nest);
+    this.trails = this.trailView.points;
+    this.chemicalView = new ChemicalContactView(this.scene, LIMIT);
     this.marker = new THREE.Mesh(
       new THREE.RingGeometry(0.3, 0.36, 32),
       new THREE.MeshBasicMaterial({

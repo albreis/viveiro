@@ -1,3 +1,5 @@
+import { updateIntrusion } from "../social-chemistry/intrusion.ts";
+import { updateEncounterMotion } from "../social-chemistry/contact-motion.ts";
 import { updateSexualAgent } from "../colonies/sexual-motion.ts";
 import { updateFounding } from "../founding/update.ts";
 import { roomNode } from "../colony/rooms.ts";
@@ -25,6 +27,14 @@ export function updateWorkers(world, suitability) {
   updateFounding(world);
   for (const ant of world.ants) {
     ant.age += 0.01;
+    if ((ant.health ?? 100) <= 0) {
+      dead.add(ant.id);
+      world.deaths++;
+      ant.deathCause = "combat";
+      if (ant.kind === "queen")
+        world.log("Uma rainha morreu durante um conflito.", "danger");
+      continue;
+    }
     if (updateSexualAgent(world, ant, dead)) continue;
     if (ant.kind === "queen") {
       if (world.queenHealth <= 0) {
@@ -55,6 +65,8 @@ export function updateWorkers(world, suitability) {
       ant.deathCause = ant.energy <= 0 ? "starvation" : "age";
       continue;
     }
+    if (updateEncounterMotion(world, ant)) continue;
+    if (updateIntrusion(world, ant)) continue;
     if (recoverStall(world, ant)) continue;
     if (ant.soilTask && updateSoilWorker(world, ant)) continue;
     if (updateColonyWorker(world, ant)) continue;

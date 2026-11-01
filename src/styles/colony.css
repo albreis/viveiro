@@ -100,3 +100,22 @@
   margin-left: auto;
   font-size: 7px;
 }
+
+.odor-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 9px;
+  color: #7b866d;
+}
+.odor-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.odor-legend i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}

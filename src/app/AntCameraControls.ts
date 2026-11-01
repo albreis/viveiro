@@ -147,7 +147,9 @@ export class AntCameraControls {
         format(ant.distanceWalked || 0) +
         " u. · idade " +
         format(ant.age || 0) +
-        " d"
+        " d · saúde " +
+        Math.round(ant.health ?? 100) +
+        "%"
       : "Nenhuma formiga viva.";
     element("ant-genome").textContent = describeGenome(ant?.genome);
     const follow = element<HTMLButtonElement>("follow-ant");

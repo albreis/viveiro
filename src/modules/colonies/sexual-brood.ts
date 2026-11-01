@@ -8,7 +8,7 @@ export const GYNE_COST = 9,
   MALE_COST = 1.2,
   DAUGHTER_RESERVE = 8;
 export function laySexualBrood(w: ColonyWorld) {
-  const queen = w.ants.find((a) => a.kind === "queen");
+  const queen = w.ants.find((a) => a.kind === "queen" && (a.health ?? 100) > 0);
   w.colony.reproductiveFood ??= 0;
   if (w.remainingFoundations === 0) {
     w.food += w.colony.reproductiveFood;

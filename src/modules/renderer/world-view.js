@@ -77,15 +77,13 @@ export function update(host, world, time, alpha = 1) {
     world.foundings,
   );
   host.colonyView.update(world, (a) => host.pose(a), host.followId);
-  host.trails.visible = host.showTrails;
-  if (host.showTrails) {
-    const colors = host.trails.geometry.attributes.color;
-    for (let i = 0; i < 1040; i++) {
-      const v = Math.min(1, world.pheromones[i] / 2);
-      colors.setXYZ(i, v * 0.7, v, v * 0.2);
-    }
-    colors.needsUpdate = true;
-  }
+  host.trailView.update(world, host.showTrails);
+  host.chemicalView.update(
+    world.ants,
+    world.tick,
+    (a) => host.pose(a),
+    host.followId,
+  );
   if (host.followId) {
     const ant = world.ants.find((a) => a.id === host.followId);
     if (!ant) {

@@ -287,13 +287,16 @@ document.querySelectorAll("[data-tool]").forEach(
         b.classList.toggle("active", selected);
         b.setAttribute("aria-pressed", String(selected));
       });
-      $("tool-hint").textContent = tool
-        ? "Clique no solo para adicionar " +
-          { food: "alimento", plant: "uma planta", predator: "uma aranha" }[
-            tool
-          ] +
-          "."
-        : "Escolha um elemento e clique no solo.";
+      $("tool-hint").textContent =
+        tool === "scent"
+          ? "Clique no solo perto de uma formiga na superfície para alterar seu odor."
+          : tool
+            ? "Clique no solo para adicionar " +
+              { food: "alimento", plant: "uma planta", predator: "uma aranha" }[
+                tool
+              ] +
+              "."
+            : "Escolha um elemento e clique no solo.";
       $("scene-guide").textContent = tool
         ? "Clique no solo · Esc para sair"
         : "Arraste para orbitar · Role para aproximar";

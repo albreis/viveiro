@@ -1,6 +1,10 @@
 import { allAnts, colonyWorlds, type FamilyWorld } from "./types.ts";
+const owners = new WeakMap<object, Map<number, FamilyWorld>>();
+export const ownerWorld = (world: object, id: number) =>
+  owners.get(world)?.get(id);
 /** Shared habitat; food, brood, genome, RNG and health remain in each colony's own state. */
 export function bindHabitat(root: FamilyWorld, child: FamilyWorld) {
+  child.socialChemistry = root.socialChemistry;
   child.nest = root.nest;
   child.landscape = root.landscape;
   child.soil = root.soil;
@@ -13,7 +17,9 @@ export function bindHabitat(root: FamilyWorld, child: FamilyWorld) {
   child.tick = root.tick;
 }
 export function bindNeighbors(root: FamilyWorld) {
-  const agents = allAnts(root);
+  const agents = allAnts(root),
+    registry = new Map(colonyWorlds(root).map((w) => [w.colonyId || 1, w]));
+  for (const w of colonyWorlds(root)) owners.set(w, registry);
   for (const w of colonyWorlds(root))
     Object.defineProperty(w, "neighborAgents", {
       value: agents,

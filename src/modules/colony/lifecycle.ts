@@ -7,7 +7,7 @@ import { isClaustral, spendReserve } from "../founding/types.ts";
 /** The first clutch is paid from a finite maternal pool; later clutches need stock. */
 export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   const f = world.founding,
-    queen = world.ants.find((a) => a.kind === "queen"),
+    queen = world.ants.find((a) => a.kind === "queen" && (a.health ?? 100) > 0),
     closed = isClaustral(world);
   const consumption =
     world.brood.filter((b) => broodStage(b.age) === "larva").length * 0.0012;

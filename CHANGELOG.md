@@ -1,5 +1,14 @@
 # Versões
 
+## 0.8.0 — Odores e território
+
+- Perfis químicos por colônia e máscaras temporárias no corpo.
+- Encontros locais com intimidação, recuo apoiado, ferimentos e defesa contextual.
+- Campo territorial com difusão/evaporação conservativas e cores por colônia.
+- Camuflagem exploratória e infiltração com transporte físico de alimento existente.
+- Tratamento de odor pelo usuário, diário, anéis de contato e persistência.
+- Módulos TypeScript pequenos, testes de recursos/apoio/restore e referências com limites explícitos.
+
 ## 0.5.0 — etapa genética 5A
 
 - Genomas digitais persistentes, duas cópias nas fêmeas e uma nos machos.

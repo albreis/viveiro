@@ -7,7 +7,7 @@ export function updateFounding(world: FoundingWorld) {
   if (!f || ["established", "failed"].includes(f.phase)) return;
   landMale(world);
   const queen = founder(world);
-  if (!queen) {
+  if (!queen || (queen.health ?? 100) <= 0) {
     changePhase(world, "failed", "A fundação terminou com a perda da rainha.");
     return;
   }

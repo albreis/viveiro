@@ -1,3 +1,4 @@
+import { renderChemicalStatus } from "./chemical-status.ts";
 import { renderFamilyStatus } from "./family-status.ts";
 import {
   renderFoundingStatus,
@@ -97,6 +98,7 @@ export function renderStatus(context, updateAntCamera) {
       " formigas.";
   renderFoundingStatus(w.founding);
   renderFamilyStatus(w);
+  renderChemicalStatus(w.socialChemistry);
   renderSoilStatus(w);
   renderColonyStatus(w);
   updateAntCamera(w);

@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.7.0</span
+        <span class="prototype">PROTÓTIPO 0.8.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -98,6 +98,9 @@
               <button data-tool="predator" aria-pressed="false">
                 <span class="tool-icon predator-icon">✳</span
                 ><span>Predador</span>
+              </button>
+              <button data-tool="scent" aria-pressed="false">
+                <span class="tool-icon">◌</span><span>Odor estranho</span>
               </button>
             </div>
             <p class="field-note">
@@ -290,6 +293,12 @@
             <p id="founding-status" role="status" aria-live="off">
               Aguardando o primeiro voo.
             </p>
+            <p id="chemical-status"></p>
+            <div
+              id="odor-legend"
+              class="odor-legend"
+              aria-label="Cores dos territórios"
+            ></div>
             <p id="colony-status">
               A divisão de tarefas começa com as primeiras operárias.
             </p>

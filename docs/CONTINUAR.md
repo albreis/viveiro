@@ -2,7 +2,13 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar até finalizar o cronograma, com retomada horária nesta conversa após limites. Automação continuar-cronograma-do-viveiro ativa. Não criar executores concorrentes nem contornar cotas/aprovações.
 
-## Entrega corrente
+## Trabalho em andamento — 6A
+
+Branch codex/odores-e-territorio, base codex/colonias-filhas. Versão 0.8.0 preparada, ainda NÃO publicada. Perfis químicos, campo territorial, encontros/dano/recuo, camuflagem e infiltração conservativa implementados. Dez testes novos aprovados. TypeScript/build aprovados. Suíte completa: 87 testes aprovados em 435617 ms; após o ajuste final da contagem química de vizinhas, os dez testes direcionados também passaram. TypeScript/build final aprovados. Navegador: dia 107,9 da seed a; 20 intimidações, 14 recuos, 14 ataques em duas colônias. Odor aplicado à operária #305, anel visível, primeira pessoa e retorno conferidos; console sem erros. Prova: viveiro-0.8.0-encontros.png. Dev PID 13196 no G permanece ativo.
+
+Próximo passo imediato: coletar a suíte completa, commit/push restrito da branch, abrir PR #10 se ainda não existir com base codex/colonias-filhas, publicar 0.8.0 no Site privado pelo helper com fonte atual, tag v0.8.0 e registrar os IDs retornados. Então criar branch para 6B pulgões/melaço/proteção e lagartas miméticas. Não repetir etapas já publicadas.
+
+## Última entrega publicada
 
 - Branch codex/colonias-filhas, base codex/voo-e-fundacao.
 - Versão 0.7.0 publicada: fonte e6e4790185fab8788cccdaf35dcc8f243e397c35, tag v0.7.0. Deploy appgdep_6ae6cbf2a92081919d188fb4cca26b47 concluído em 01/11/2026.
@@ -32,7 +38,7 @@ Correções de navegação: saída de poço raso quando centros coincidem; recon
 
 ## Próximo passo concreto
 
-A 0.7.0 está publicada e o PR #9 aberto. Criar codex/ecologia-e-odores a partir desta branch para 6: pulgões/melaço/proteção, lagartas miméticas, assinatura química e encontros locais entre colônias. Não repetir 5A/5B/5C já implementadas.
+A 0.7.0 está publicada e o PR #9 aberto. A 6A está em implementação na branch codex/odores-e-territorio, conforme o checkpoint acima. Depois de publicar, seguir com 6B: pulgões/melaço/proteção e lagartas miméticas. Não repetir 5A/5B/5C ou 6A.
 
 Depois: 7 solo granular, capilaridade e gases; 8 RL, persistência longa e avaliação. Não declarar calibração científica: faltam espécie-alvo e dados reais. Os snapshots atuais ainda repetem habitat no JSON das subcolônias, embora o restore reconstitua referências comuns; compactação/armazenamento longo é etapa 8.
 
