@@ -253,3 +253,62 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Testes de química, recursos, apoio, ida/volta e snapshots; conferência no navegador com duas colônias.
 - Evidência qualitativa, equações, limitações e dados externos em docs/odores-e-territorio.md.
 - Próximo: 6B pulgões/melaço/proteção e lagartas miméticas; não repetir 6A.
+
+## Novas etapas 9–14 — biologia, clima e vida longa
+
+Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de outra IA. São etapas futuras; não substituem nem marcam como concluídas as etapas 6B, 7 e 8. Faixas recebidas, correções, referências primárias e dados necessários estão em [Biologia planejada](biologia-planejada.md). Valores dependem da espécie e de calibração.
+
+| Etapa | Nova entrega                                                          | Situação / dependências   |
+| ----- | --------------------------------------------------------------------- | ------------------------- |
+| 9     | Perfis biológicos por espécie e proveniência dos parâmetros           | Planejada; dados externos |
+| 10    | Fundação claustral com cronologia, tampão físico e reservas corporais | Planejada; 5B/5C, 7 e 9   |
+| 11    | Desenvolvimento térmico da prole, nutrição e diapausa                 | Planejada; 7 e 9          |
+| 12    | Clima espacial, umidade e seleção local da câmara                     | Planejada; 7 e 9          |
+| 13    | Espermateca, fertilidade, envelhecimento e longevidade da rainha      | Planejada; 5A/5C, 8 e 9   |
+| 14    | Escala de tempo biológico e experimentos de anos com recuperação      | Planejada; 8–13           |
+
+### 9. Espécie e parâmetros rastreáveis
+
+- Escolher espécie/perfil de fundação e registrar unidades, fonte, amostra e incerteza.
+- Investigar as faixas propostas: câmara 12–24 h; postura 1–7 d e 5–30 ovos; referência térmica 24–27 °C.
+- Distinguir estratégias claustrais, semiclaustrais, sazonalidade e espécies sem casulo.
+- Aceite: parâmetros versionados e distinção visível entre medição, hipótese e aproximação.
+
+### 10. Fundação, selamento e orçamento materno
+
+- Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
+- Cronologia dependente de esforço, geometria, temperatura, condição e reservas; término físico da obra.
+- Reservas lipídicas/proteicas, histólise muscular quando apropriada, custos de postura e cuidado.
+- Aceite: massa do tampão conservada, trocas ambientais alteradas e prole sem recursos gratuitos.
+
+### 11. Maturação e estações
+
+- Investigar ovo–larva 10–14 d, larva–pupa 10–15 d e pupa–adulta 10–24 d.
+- Conferir o total sugerido de 35–60 d: a soma das faixas individuais recebidas é 30–53 d.
+- Curvas térmicas, alimentação, umidade da câmara, estresse e variabilidade individual.
+- Diapausa por espécie/estação, pausa de postura e retomada gradual.
+- Aceite: curvas e transições testadas; aquecimento excessivo não acelera indefinidamente a prole.
+
+### 12. Cenários climáticos e engenharia da câmara
+
+- Usar 52% de umidade e 68% de luz como cenário de investigação, sem deduzir temperatura ou estabilidade diretamente.
+- Separar umidade do ar e água no solo, irradiância, temperatura, textura, compactação e suporte.
+- Rainha procura umidade/temperatura por sensores locais; prole e sementes requerem condições diferentes.
+- Validar as sugestões de 70–80% de umidade, postura em 3–5 d, conversão de luz em calor e aceleração de 25%; não hardcodar como leis.
+- Aceite: gradientes físicos, custos e decisões locais observáveis; estabilidade não é garantida por um slider.
+
+### 13. Fertilidade e longevidade
+
+- Estoque/viabilidade de esperma, uso por ovo e possível contribuição de múltiplos machos.
+- Perda de fertilização altera a prole em perfis apropriados, sem morte instantânea da rainha.
+- Saúde, reservas, danos, idade, doença e risco de morte separados; custo da postura com hipótese explicitada.
+- Investigar vida de 15–30 anos e a alegação histórica de 28 anos e 8 meses, sem tratá-las como universais ou confirmadas.
+- Aceite: balanço espermático, parentesco, curvas de sobrevivência e desfechos emergentes testados.
+
+### 14. Ritmo biológico e execução longa
+
+- Oferecer perfil de 1 minuto real por dia simulado e outros ritmos; separar relógio biológico de estabilidade numérica.
+- Exemplo: 365 dias = 6 h 5 min; 30 anos = 182,5 h nessa escala, sem obrigar o navegador a ficar aberto todo esse tempo.
+- Checkpoints, migração, recuperação, avanço offline definido e comparação de execuções aceleradas.
+- Execução contínua em servidor é requisito futuro com custo e limites explícitos; o Site atual avança no navegador.
+- Aceite: continuidade entre sessões e resultados equivalentes sob aceleração para ações nos mesmos instantes biológicos.
