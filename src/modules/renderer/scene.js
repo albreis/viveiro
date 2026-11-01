@@ -1,3 +1,5 @@
+import { StructureView } from "./StructureView.ts";
+import { focusStructure } from "./structure-focus.ts";
 import { GranularView } from "./GranularView.ts";
 import { EcologyView } from "./EcologyView.ts";
 import { focusEcology } from "./ecology-focus.ts";
@@ -88,6 +90,7 @@ export class Terrarium {
     this.soilMesher = new SoilMesher();
     this.soilView = new SoilView(this.scene, LIMIT);
     this.granularView = new GranularView(this.scene);
+    this.structureView = new StructureView(this.scene);
     this.colonyView = new ColonyView(this.scene, LIMIT);
     this.antParts = this.buildInsects(LIMIT, false);
     this.predatorParts = this.buildInsects(10, true);
@@ -243,6 +246,9 @@ export class Terrarium {
   setInterior(visible) {
     this.showInterior = visible;
     updateSoilVisibility(this);
+  }
+  focusStructure() {
+    return focusStructure(this);
   }
   focusEcology() {
     return focusEcology(this);

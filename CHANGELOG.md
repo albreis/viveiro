@@ -1,5 +1,13 @@
 # Versões
 
+## 0.13.0 — Suporte local dos túneis
+
+- Geometria de teto, vão, espessura e apoio ligados ao campo físico da escavação.
+- Carga/capacidade por água, atrito e integridade; dano e desprendimento de agregados.
+- Volume sólido discretizado conservado, queda granular e reparo pelas operárias.
+- Fissuras, estado estrutural, câmera de inspeção e persistência.
+- Aproximação exploratória com dependências reais em docs/suporte-estrutural.md.
+
 ## 0.12.0 — Gases e ventilação
 
 - O₂/CO₂ por câmara, difusão/advecção conservativas, vento e empuxo térmico.

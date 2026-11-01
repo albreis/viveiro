@@ -266,6 +266,15 @@ $("focus-ecology").onclick = () => {
 installGranularControls(intervention);
 installGasControls(intervention);
 installClimateControls(intervention);
+const focusStructureButton = $("focus-structure");
+if (focusStructureButton)
+  focusStructureButton.onclick = () => {
+    if (!scene) return;
+    toast(scene.focusStructure());
+    $("interior").checked = !!scene.showInterior;
+    updateUi();
+    $("viewport").scrollIntoView({ block: "center", behavior: "smooth" });
+  };
 $("disturb").onclick = () => {
   intervention("collapse");
   toast("Observe a terra solta e o trabalho de recuperação.");

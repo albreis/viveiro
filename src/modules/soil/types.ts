@@ -26,6 +26,7 @@ export interface DigProject {
 }
 export interface SoilPile extends GranularBody {}
 export interface SoilState {
+  structure?: import("../structure/types.ts").StructureState;
   granular?: GranularState;
   version: number;
   removed: number;
