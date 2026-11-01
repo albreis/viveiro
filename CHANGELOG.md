@@ -1,5 +1,13 @@
 # Versões
 
+## 0.17.0 — Observação e avaliação das previsões
+
+- Modo por contagem e histórico, com transporte que exclui o estado interno.
+- Extrapolação identificada e fallback de persistência quando faltam censos.
+- Ensaio reservado com estado completo, contagem e base constante em1/3/7dias.
+- Erro absoluto, RMSE, viés, cobertura, largura e custo registrados em JSON.
+- Painel de métricas e protocolo reproduzível; limites em docs/avaliacao-previsoes.md.
+
 ## 0.16.0 — Previsões canceláveis
 
 - Cálculo em fatias com progresso e pausas no Worker.

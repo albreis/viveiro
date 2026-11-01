@@ -1,3 +1,4 @@
+import { runCountForecast } from "../modules/forecast/count-run.ts";
 import { runForecast, ForecastCancelled } from "../modules/forecast/run.ts";
 import type {
   ForecastRequest,
@@ -33,13 +34,20 @@ export class ForecastRunner {
         this.pending = undefined;
         const current = () => generation === this.generation;
         try {
-          const outcome = await this.execute(job.snapshot, job.options, {
+          if (job.options.observation === "counts" && !job.observation)
+            throw new Error("Observação parcial ausente.");
+          const hooks = {
             cancelled: () => !current(),
-            progress: (progress) => {
+            progress: (
+              progress: import("../modules/forecast/types.ts").ForecastProgress,
+            ) => {
               if (current())
                 this.post({ id: job.id, type: "progress", progress });
             },
-          });
+          };
+          const outcome = job.observation
+            ? await runCountForecast(job.observation, job.options, hooks)
+            : await this.execute(job.snapshot, job.options, hooks);
           if (current()) this.post({ id: job.id, type: "result", outcome });
         } catch (error) {
           if (current() && !(error instanceof ForecastCancelled))

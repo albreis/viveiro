@@ -1,3 +1,5 @@
+import { installForecastBenchmark } from "./forecast-benchmark.ts";
+import { observeCounts } from "../modules/forecast/observations.ts";
 import { ForecastClient } from "../services/forecast-client.ts";
 import { renderForecast, installForecastControls } from "./forecast-panel.ts";
 import { installLearningControls } from "./learning-controls.ts";
@@ -225,6 +227,11 @@ function configureAntCamera() {
 function updateAntCamera() {
   antCamera.render();
 }
+function forecastSource() {
+  return forecaster.options.observation === "counts"
+    ? observeCounts(active())
+    : active().snapshot();
+}
 function handleError(error) {
   console.error(error);
   const loading = $("loading");
@@ -257,11 +264,8 @@ try {
         type: "module",
       }),
   );
-  installForecastControls(
-    forecaster,
-    () => active().snapshot(),
-    () => scenario,
-  );
+  installForecastControls(forecaster, forecastSource, () => scenario);
+  installForecastBenchmark();
   if (import.meta.hot) import.meta.hot.dispose(() => forecaster.dispose());
 } catch (error) {
   handleError(error);
@@ -504,7 +508,7 @@ function frame(now) {
     save();
     lastSave = now;
   }
-  forecaster?.consider(() => active().snapshot(), scenario, active().tick);
+  forecaster?.consider(forecastSource, scenario, active().tick);
   requestAnimationFrame(frame);
 }
 document.addEventListener("visibilitychange", () => {

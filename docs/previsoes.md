@@ -28,6 +28,6 @@ Navegador: seed a no dia267,97adultos,14crias e duas colônias preservados.1dia/
 
 Medição isolada em Node24 usando o backup real do dia267:2futuros de0,1dia (20passos totais),912,9ms decorridos/911,8ms ativos, maior fatia160,7ms,97adultos em ambos. Sem pausas artificiais nessa medição. Isso evidencia que uma operação indivisível pode exceder8ms; não comparar esse microteste diretamente com renderização ou com horizontes de1/3/7dias. Os tempos dependem da máquina/carga.
 
-## Próximo — 8C2
+## Etapa8C2 — observação e validação (0.17.0)
 
-Ainda falta comparar observações parciais/completas e medir erro por horizonte em rollouts reservados, com baselines, tamanho de amostra e custo explícitos. Essa avaliação é do modelo sintético; calibração científica exige séries observadas por espécie, ambiente, manejo e desfechos, além de dados para identificar parâmetros. Melhor ajuste ao próprio simulador não prova fidelidade à natureza.
+Modo parcial e ensaio pareado por horizonte implementados; protocolo, resultados e limites em [Avaliação das previsões](avaliacao-previsoes.md). Essa avaliação é do modelo sintético; calibração científica exige séries observadas por espécie, ambiente, manejo e desfechos, além de dados para identificar parâmetros. Melhor ajuste ao próprio simulador não prova fidelidade à natureza.

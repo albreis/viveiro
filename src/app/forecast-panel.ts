@@ -1,3 +1,4 @@
+import type { CountObservation } from "../modules/forecast/observations.ts";
 import type { ForecastClient } from "../services/forecast-client.ts";
 import type {
   ForecastState,
@@ -6,8 +7,11 @@ import type {
 } from "../modules/forecast/types.ts";
 const element = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
-const seconds = (value: number) =>
-  (value / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 });
+const duration = (value: number) =>
+  value < 1000
+    ? value.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " ms"
+    : (value / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) +
+      " s";
 export function renderForecast(
   state: ForecastState,
   scenario: string,
@@ -68,26 +72,41 @@ export function renderForecast(
   else if (state.status === "error")
     note = state.error ?? "Previsão indisponível.";
   element("forecast-note").textContent = note;
+  element("forecast-method-note").textContent =
+    options.observation === "counts"
+      ? (state.warning ??
+          "Extrapolação por contagem e histórico; não simula túneis ou genética.") +
+        (state.observedPoints
+          ? " " + state.observedPoints + " censos recentes."
+          : "")
+      : "Estado completo: agentes, prole, habitat e túneis. Faixa não calibrada cientificamente.";
   const bar = element<HTMLProgressElement>("forecast-progress");
   bar.value = (progress?.doneTicks ?? 0) / (progress?.totalTicks || 1);
   bar.hidden = !progress;
   element("forecast-cost").textContent = progress
-    ? seconds(progress.elapsedMs) +
-      " s decorridos · " +
-      seconds(progress.activeMs) +
-      " s de cálculo"
+    ? duration(progress.elapsedMs) +
+      " decorridos · " +
+      duration(progress.activeMs) +
+      " de cálculo"
     : "";
   element<HTMLButtonElement>("forecast-cancel").disabled = !running;
   element<HTMLButtonElement>("forecast-run").disabled = running;
 }
 export function installForecastControls(
   client: ForecastClient,
-  snapshot: () => ForecastSnapshot,
+  snapshot: () => ForecastSnapshot | CountObservation,
   scenario: () => string,
 ): void {
   element("forecast-run").onclick = () =>
     client.request(snapshot(), scenario());
   element("forecast-cancel").onclick = () => client.cancel();
+  const mode = element<HTMLSelectElement>("forecast-observation");
+  mode.value = client.options.observation ?? "complete";
+  mode.onchange = () => {
+    client.options.observation =
+      mode.value === "counts" ? "counts" : "complete";
+    client.invalidate();
+  };
   for (const [id, key, multiplier] of [
     ["forecast-days", "days", 1],
     ["forecast-runs", "runs", 1],

@@ -14,7 +14,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                      |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                      |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Protótipo implementado; calibração pendente |
-| 8     | RL, persistência longa e avaliação das previsões                     | 8A/8B/8C1 publicadas; 8C2 pendente          |
+| 8     | RL, persistência longa e avaliação das previsões                     | Protótipo implementado; publicada 0.17.0    |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -349,6 +349,14 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Mesmo modelo completo, sem emulador oculto. Oito testes novos e dois de regressão aprovados.
 - Navegador aprovado: cancelamento/intervenção e orçamento3/6 vs conclusão6/6. Publicada no mesmo Site privado, PR#19. Limites em docs/previsoes.md.
 - Próximo8C2: observação parcial/completa, erro por horizonte, baselines e custo; depois9–14.
+
+### Etapa 8C2 — observação e avaliação (0.17.0)
+
+- Branch codex/observacao-e-validacao, base codex/previsoes-cancelaveis.
+- Contrato parcial só com censos passados; extrapolação identificada, sem estado oculto.
+- Avaliação pareada de completo/contagem/base constante em1/3/7dias e seeds reservadas.
+- Métricas/custo, download e painel;16testes dirigidos aprovados. Ensaio18casos e QA aprovados; publicada no mesmo Site privado, PR#20.
+- docs/avaliacao-previsoes.md distingue validação sintética e calibração externa. Depois9–14.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 

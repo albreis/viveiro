@@ -14,6 +14,7 @@ export interface ForecastHooks {
   progress(value: ForecastProgress): void;
   pause?(): Promise<void>;
   now?(): number;
+  observeStep?(world: ForecastWorld, step: number, run: number): void;
   createWorld?(snapshot: ForecastSnapshot, run: number): ForecastWorld;
 }
 // Cooperative scheduling bounds work by time slices; one indivisible model tick may exceed the slice.
@@ -65,6 +66,7 @@ export async function runForecast(
       w.step();
       step++;
       doneTicks++;
+      hooks.observeStep?.(w, step, run);
       if (step === ticks) values.push(w.population());
       const duration = now() - sliceStart;
       if (duration >= 8 || step === ticks) {

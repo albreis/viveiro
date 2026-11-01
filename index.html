@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.16.0</span
+        <span class="prototype">PROTÓTIPO 0.17.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -520,6 +520,9 @@
             <p class="forecast-note" id="forecast-note">
               Previsão aguardando início.
             </p>
+            <p id="forecast-method-note" class="forecast-note">
+              Estado completo do modelo.
+            </p>
             <progress
               id="forecast-progress"
               max="1"
@@ -529,6 +532,14 @@
             ></progress>
             <p id="forecast-cost" class="forecast-note"></p>
             <div class="forecast-options">
+              <label
+                >Observação<select id="forecast-observation">
+                  <option value="complete">Estado completo (modelo 3D)</option>
+                  <option value="counts">
+                    Contagem e histórico (aproximação)
+                  </option>
+                </select></label
+              >
               <label
                 >Horizonte<select id="forecast-days">
                   <option value="1">1 dia</option>
@@ -554,6 +565,39 @@
               <button id="forecast-run">Recalcular previsão</button
               ><button id="forecast-cancel" disabled>Cancelar previsão</button>
             </div>
+            <details id="forecast-benchmark" class="forecast-benchmark">
+              <summary>Erros por horizonte · ensaio reservado</summary>
+              <label
+                >Métrica<select id="forecast-metric">
+                  <option value="mae">Erro absoluto médio (formigas)</option>
+                  <option value="rmse">
+                    Raiz do erro quadrático (formigas)
+                  </option>
+                  <option value="coverage">Faixa contém o desfecho (%)</option>
+                </select></label
+              >
+              <table>
+                <caption>
+                  Comparação com continuação sintética sem intervenções futuras
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Dias</th>
+                    <th scope="col">Completo</th>
+                    <th scope="col">Contagem</th>
+                    <th scope="col">Base</th>
+                  </tr>
+                </thead>
+                <tbody id="forecast-benchmark-rows"></tbody>
+              </table>
+              <p id="forecast-benchmark-note">
+                Abra para carregar o ensaio reservado.
+              </p>
+              <p id="forecast-benchmark-cost"></p>
+              <a href="/benchmarks/previsoes-v1.json" download
+                >Baixar relatório completo em JSON</a
+              >
+            </details>
             <button id="compare">Comparar dois cenários <span>↗</span></button>
           </section>
           <section class="panel events-panel">
