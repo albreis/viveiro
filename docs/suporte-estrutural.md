@@ -52,7 +52,7 @@ O ensaio determinístico de duas galerias sobrepostas produziu espessura estimad
 
 Testes dirigidos cobrem vão, espessura, apoio, água e atrito; afinamento real por outra cavidade; dano e desprendimento; não duplicação do sólido; queda granular; adiamento perto de corpos sem deslocá-los; restore com futuro idêntico; coleta conservativa por uma operária. O fixture usa revisão de geometria atual; revisão legada é tratada separadamente pelo migrador existente.
 
-A suíte completa e a revisão no navegador devem ser concluídas antes de publicar. Faltam discretização volumétrica de todo o solo compacto, contatos/coerência reais entre grãos, solução de esforços 3D, propriedades dependentes de sucção e granulometria, propagação física de ruptura, reforço por raízes, esmagamento e calibração. Esta etapa entrega o acoplamento local implementável, preservando essas limitações e a necessidade de dados.
+A suíte completa aprovou 130/130 testes em 494952 ms; sete estruturais finais com restore fortalecido também passaram. TypeScript/Vite finais aprovados. No navegador, seed a no dia240,1: 72 amostras, uma sob sobrecarga, margem mínima0,95× e um desprendimento natural. Fissura, câmera interna, recarga e ausência de novos erros foram conferidas. Faltam discretização volumétrica de todo o solo compacto, contatos/coerência reais entre grãos, solução de esforços 3D, propriedades dependentes de sucção e granulometria, propagação física de ruptura, reforço por raízes, esmagamento e calibração. Esta etapa entrega o acoplamento local implementável, preservando essas limitações e a necessidade de dados.
 
 ## Referências e dados externos
 
