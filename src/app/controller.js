@@ -1,3 +1,5 @@
+import { ForecastClient } from "../services/forecast-client.ts";
+import { renderForecast, installForecastControls } from "./forecast-panel.ts";
 import { installLearningControls } from "./learning-controls.ts";
 import { installGasControls } from "./gas-status.ts";
 import { installClimateControls } from "./climate-status.ts";
@@ -35,13 +37,8 @@ let interventions = [],
   replaying = false,
   replayIndex = 0,
   lastUi = 0,
-  lastSave = 0,
-  lastForecast = -1000;
-let forecastPending = false,
-  forecastId = 0,
-  forecastCache = null,
-  worker = null,
-  toastTimer;
+  lastSave = 0;
+let forecaster, toastTimer;
 const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
@@ -85,10 +82,7 @@ function applySavedSession(value, paused = false) {
   replayIndex = next.replayIndex;
   running = paused ? false : next.running;
   accumulator = 0;
-  forecastId++;
-  forecastPending = false;
-  forecastCache = null;
-  lastForecast = -1000;
+  forecaster?.invalidate();
   if (nextScene) {
     scene = nextScene;
     previousScene?.dispose();
@@ -141,7 +135,7 @@ function intervention(type, x = 0, z = 0, value) {
   }
   if (comparison) comparison.intervene(type, x, z, value);
   interventions.push({ tick: world.tick, type, x, z, value });
-  lastForecast = -1000;
+  forecaster?.invalidate();
   syncControls();
   updateUi();
   save();
@@ -163,10 +157,7 @@ function reset(seed, params, replay = false) {
     replaying = true;
     replayIndex = 0;
   }
-  forecastId++;
-  forecastPending = false;
-  forecastCache = null;
-  lastForecast = -1000;
+  forecaster?.invalidate();
   try {
     scene?.dispose();
     scene = new Terrarium($("viewport"), world, intervention);
@@ -221,25 +212,18 @@ function updateUi() {
       world: presentFamily(world),
       comparison: comparison ? presentFamily(comparison) : null,
       scenario,
-      forecastCache,
       current: presentFamily(active()),
     },
     updateAntCamera,
   );
+  if (forecaster)
+    renderForecast(forecaster.state, scenario, forecaster.options);
 }
 function configureAntCamera() {
   antCamera.configureScene();
 }
 function updateAntCamera() {
   antCamera.render();
-}
-function requestForecast() {
-  if (!worker || forecastPending) return;
-  const w = active();
-  forecastPending = true;
-  lastForecast = w.tick;
-  const id = ++forecastId;
-  worker.postMessage({ id, snapshot: w.snapshot(), runs: 18, days: 3 });
 }
 function handleError(error) {
   console.error(error);
@@ -266,27 +250,19 @@ try {
   scene = new Terrarium($("viewport"), presentFamily(active()), intervention);
   configureAntCamera();
   $("loading").hidden = true;
-  worker = new Worker(
-    new URL("../workers/forecast.worker.js", import.meta.url),
-    { type: "module" },
+  forecaster = new ForecastClient(
+    () => renderForecast(forecaster.state, scenario, forecaster.options),
+    () =>
+      new Worker(new URL("../workers/forecast.worker.ts", import.meta.url), {
+        type: "module",
+      }),
   );
-  worker.onmessage = ({ data }) => {
-    if (data.id !== forecastId) return;
-    forecastPending = false;
-    if (data.result) {
-      forecastCache = { scenario, result: data.result };
-      updateUi();
-    } else {
-      $("forecast-note").textContent = "Previsão indisponível nesta execução.";
-    }
-  };
-  worker.onerror = () => {
-    forecastPending = false;
-    worker.terminate();
-    worker = null;
-    $("forecast-note").textContent =
-      "Este navegador não disponibilizou a previsão.";
-  };
+  installForecastControls(
+    forecaster,
+    () => active().snapshot(),
+    () => scenario,
+  );
+  if (import.meta.hot) import.meta.hot.dispose(() => forecaster.dispose());
 } catch (error) {
   handleError(error);
 }
@@ -412,10 +388,7 @@ $("compare").onclick = () => {
     comparison.log("Cenário B: umidade aumentada em 1 ponto.");
     toast("Dois mundos, uma pequena diferença. Compare a evolução no gráfico.");
   }
-  forecastId++;
-  forecastPending = false;
-  forecastCache = null;
-  lastForecast = -1000;
+  forecaster?.invalidate();
   syncControls();
   updateUi();
   save();
@@ -424,10 +397,7 @@ document.querySelectorAll("[data-scenario]").forEach(
   (button) =>
     (button.onclick = () => {
       scenario = button.dataset.scenario;
-      forecastId++;
-      forecastPending = false;
-      forecastCache = null;
-      lastForecast = -1000;
+      forecaster.invalidate();
       syncControls();
       updateUi();
     }),
@@ -471,7 +441,7 @@ $("export").onclick = () => {
     interventions,
     world: world.snapshot(),
     comparison: comparison?.snapshot(),
-    forecast: forecastCache,
+    forecast: forecaster?.state,
     description:
       "Modelo ecológico simplificado. Tempos de vida acelerados. 100 passos = 1 dia simulado.",
   };
@@ -497,6 +467,7 @@ function tick() {
       interventions[replayIndex].tick <= world.tick
     ) {
       const action = interventions[replayIndex++];
+      forecaster?.invalidate();
       world.intervene(action.type, action.x, action.z, action.value);
       if (comparison)
         comparison.intervene(action.type, action.x, action.z, action.value);
@@ -533,7 +504,7 @@ function frame(now) {
     save();
     lastSave = now;
   }
-  if (active().tick - lastForecast > 100 || lastForecast < 0) requestForecast();
+  forecaster?.consider(() => active().snapshot(), scenario, active().tick);
   requestAnimationFrame(frame);
 }
 document.addEventListener("visibilitychange", () => {
@@ -548,5 +519,5 @@ window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
 syncControls();
 updateUi();
-requestForecast();
+forecaster?.consider(() => active().snapshot(), scenario, active().tick);
 requestAnimationFrame(frame);

@@ -80,3 +80,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Aprendizado local](docs/aprendizado-local.md): SARSA neural opcional, cérebros individuais e avaliação contra ACO.
 
 - [Persistência e recuperação](docs/persistencia.md): IndexedDB, checkpoints, importação e preservação dos saves antigos.
+
+- [Previsões](docs/previsoes.md): progresso, cancelamento, horizonte e orçamento do modelo completo.

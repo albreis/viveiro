@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.15.0</span
+        <span class="prototype">PROTÓTIPO 0.16.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -512,14 +512,48 @@
               <span>UM OLHAR ADIANTE</span><span>✧</span>
             </div>
             <h2>O futuro tem intervalos.</h2>
-            <p>População estimada daqui a 3 dias:</p>
+            <p id="forecast-horizon">População estimada daqui a 3 dias:</p>
             <div class="forecast-value" id="forecast-value">
               — <span>formigas</span>
             </div>
             <div class="forecast-range"><span></span><i></i><span></span></div>
             <p class="forecast-note" id="forecast-note">
-              Calculando 18 futuros possíveis…
+              Previsão aguardando início.
             </p>
+            <progress
+              id="forecast-progress"
+              max="1"
+              value="0"
+              aria-label="Progresso da previsão"
+              hidden
+            ></progress>
+            <p id="forecast-cost" class="forecast-note"></p>
+            <div class="forecast-options">
+              <label
+                >Horizonte<select id="forecast-days">
+                  <option value="1">1 dia</option>
+                  <option value="3" selected>3 dias</option>
+                  <option value="7">7 dias</option>
+                </select></label
+              >
+              <label
+                >Futuros<select id="forecast-runs">
+                  <option value="6">6 cenários</option>
+                  <option value="18" selected>18 cenários</option>
+                </select></label
+              >
+              <label
+                >Limite de cálculo<select id="forecast-budget">
+                  <option value="10">10 s de trabalho</option>
+                  <option value="30" selected>30 s de trabalho</option>
+                  <option value="120">120 s de trabalho</option>
+                </select></label
+              >
+            </div>
+            <div class="forecast-actions">
+              <button id="forecast-run">Recalcular previsão</button
+              ><button id="forecast-cancel" disabled>Cancelar previsão</button>
+            </div>
             <button id="compare">Comparar dois cenários <span>↗</span></button>
           </section>
           <section class="panel events-panel">

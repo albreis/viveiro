@@ -1,5 +1,13 @@
 # Versões
 
+## 0.16.0 — Previsões canceláveis
+
+- Cálculo em fatias com progresso e pausas no Worker.
+- Cancelamento e descarte de resultados obsoletos após intervenções/recuperação.
+- Horizonte, número de futuros e limite de trabalho configuráveis.
+- Encerramento explícito por orçamento; intervalos incompletos rotulados como provisórios.
+- Mesmo modelo completo e ensemble anterior; limites em docs/previsoes.md.
+
 ## 0.15.0 — Checkpoints e recuperação
 
 - Save assíncrono em IndexedDB, confirmação atômica e cópia local de emergência.

@@ -77,3 +77,64 @@
 .forecast-card > button:hover {
   background: #faffee;
 }
+
+.forecast-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 12px 0;
+}
+.forecast-options label {
+  font-size: 10px;
+  color: #617057;
+}
+.forecast-options label:last-child {
+  grid-column: 1 / -1;
+}
+.forecast-options select {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  margin-top: 5px;
+  border: 1px solid #cfd9b9;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 11px;
+}
+.forecast-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.forecast-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+#forecast-progress {
+  width: 100%;
+  height: 7px;
+  accent-color: #658446;
+}
+#forecast-cost {
+  font-size: 10px;
+}
+
+.forecast-actions button {
+  padding: 8px 10px;
+  border: 1px solid #cbd7b5;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+.forecast-actions button:hover:not(:disabled) {
+  background: #e8eedb;
+}
+.forecast-actions button:focus-visible {
+  outline: 2px solid #658446;
+  outline-offset: 2px;
+}
