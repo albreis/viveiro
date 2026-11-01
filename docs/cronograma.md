@@ -465,7 +465,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 ## Passos futuros para ultrapassar concorrentes
 
-⬜ Planejamento futuro: nenhum passo desta seção foi iniciado. A ordem abaixo é proposta para levar o Viveiro ao primeiro lugar em uso educacional, em escolas e universidades, frente a NetLogo, GAMA, Mesa, PhET, Avida-ED e simuladores comerciais. As notas são avaliações editoriais, não medições; servem para priorizar trabalho, não como afirmação pública de superioridade.
+⬜ Planejamento futuro: apenas P0.2 foi concluído; os demais passos desta seção não foram iniciados. A ordem abaixo é proposta para levar o Viveiro ao primeiro lugar em uso educacional, em escolas e universidades, frente a NetLogo, GAMA, Mesa, PhET, Avida-ED e simuladores comerciais. As notas são avaliações editoriais, não medições; servem para priorizar trabalho, não como afirmação pública de superioridade.
 
 ### Situação do ranking
 
@@ -492,7 +492,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 ### P0. Projeto público e reutilizável
 
 - [ ] P0.1 Licenças: LICENSE aprovada pela OSI para o código (MIT ou Apache-2.0) e CC BY 4.0 para docs e imagens; campo license no package.json. Aceite: licença visível no GitHub e explicada no README.
-- [ ] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Aceite: main na versão atual, suíte completa aprovada e tag correspondente.
+- [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Falta a tag v0.23.0.
 - [ ] P0.3 Site público e estável (por exemplo GitHub Pages ou Cloudflare Pages), com URL por tag. O Site privado continua para testes. Aceite: abre sem login e mostra a versão.
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
 
