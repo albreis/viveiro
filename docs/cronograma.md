@@ -4,99 +4,118 @@ Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação                                    |
-| ----- | -------------------------------------------------------------------- | ------------------------------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1                           |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                                |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado                      |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado                      |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado                      |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                      |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                      |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Protótipo implementado; calibração pendente |
-| 8     | RL, persistência longa e avaliação das previsões                     | Protótipo implementado; publicada 0.17.0    |
+## Situação atual
+
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.22.0**, PR [#25](https://github.com/albreis/viveiro/pull/25).
+
+| Etapa | Entrega                                                            | Situação                                                         |
+| ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| 0     | Terrário, túneis e primeira pessoa                                 | ✅ Entregue                                                      |
+| 1     | Navegação social 3D, apoio e TypeScript/Vite                       | ✅ Entregue; migração dos módulos legados continua gradual       |
+| 2     | Escavação, transporte, erosão, bloqueios e reparos                 | ✅ Entregue; primeiro abrigo incluído em 5B                      |
+| 3     | Estoques, lixo, prole, trofalaxia, castas e diferenças individuais | ✅ Entregue                                                      |
+| 4     | Reação-difusão, ACO, sensores locais e limiares de tarefas         | ✅ Entregue                                                      |
+| 5A–5C | Genética, voo nupcial, fundação física e colônias filhas           | ✅ Entregues · 0.5–0.7                                           |
+| 6A–6B | Odor, território, simbioses e mimetismo                            | ✅ Entregues · 0.8–0.9                                           |
+| 7A–7C | Granulares, água, calor, gases e suporte do teto                   | ✅ Protótipos entregues · 0.10–0.13; calibração externa pendente |
+| 8A–8C | RL, checkpoints e avaliação das previsões                          | ✅ Entregues · 0.14–0.17; avaliação sintética                    |
+| 9     | Perfis versionados e proveniência dos parâmetros                   | ✅ Entregue · 0.18; dados calibrados por espécie pendentes       |
+| 10A   | Reservas maternas e custos conservativos                           | ✅ Entregue · 0.19 · PR #22                                      |
+| 10B   | Tampão físico e reabertura pelas naníticas                         | ✅ Entregue · 0.20 · PR #23                                      |
+| 10C   | Fundação semiclaustral com coleta externa da rainha                | 🔧 Em implementação e testes; ainda não entregue                 |
+| 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
+| 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
+| 12    | Seleção local do microclima e da câmara                            | ⬜ Pendente; campos físicos básicos já existem                   |
+| 13    | Espermateca, fertilidade e longevidade                             | ⬜ Pendente                                                      |
+| 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
+
+**Ordem restante:** concluir 10C → 12 → 13 → 14 → revisão final. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
-- Corpos e câmera apoiados no terreno, incluindo paredes.
-- Terreno arredondado e consulta física por campo implícito contínuo.
-- Deslocamento limitado, sem saltar diretamente entre apoios.
-- Repulsão local, contato antenal e prioridade para alimento/prole.
-- Recuo e reconsideração de rotas quando o contato persiste.
-- Alargamento local experimental por congestionamento.
-- Sensores, forças, contato, superfície e túneis em módulos.
-- TypeScript estrito na navegação e Vite para gerar o bundle.
-- Migração gradual de UI e renderização legadas para TypeScript.
+- [x] Corpos e câmera apoiados no terreno, incluindo paredes.
+- [x] Terreno arredondado e consulta física por campo implícito contínuo.
+- [x] Deslocamento limitado, sem saltar diretamente entre apoios.
+- [x] Repulsão local, contato antenal e prioridade para alimento/prole.
+- [x] Recuo e reconsideração de rotas quando o contato persiste.
+- [x] Alargamento local experimental por congestionamento.
+- [x] Sensores, forças, contato, superfície e túneis em módulos.
+- [x] TypeScript estrito na navegação e Vite para gerar o bundle.
+- [ ] Migração gradual de UI e renderização legadas para TypeScript.
 
 Aceite: reprodução pela seed, ausência de NaN, prioridade de carga testada,
 apoio correto, fluxo retomado em gargalos e verificação no navegador.
 
 ## 2. Túneis vivos
 
-- Abrir o primeiro buraco durante a fundação (5B implementada).
-- Escolher frentes de escavação por estímulos locais.
-- Retirar porções de terra, carregá-las e depositá-las na superfície.
-- Abrir ramificações e câmaras progressivamente.
-- Desgaste, erosão, material solto, bloqueios e reparos.
-- Resistência simplificada por umidade, profundidade e vão.
+- [x] Abrir o primeiro buraco durante a fundação (5B implementada).
+- [x] Escolher frentes de escavação por estímulos locais.
+- [x] Retirar porções de terra, carregá-las e depositá-las na superfície.
+- [x] Abrir ramificações e câmaras progressivamente.
+- [x] Desgaste, erosão, material solto, bloqueios e reparos.
+- [x] Resistência simplificada por umidade, profundidade e vão.
 
 Aceite: conservação do material removido, passagem após abertura e recuperação
 de um bloqueio reproduzível. O alargamento da etapa 1 não substitui esta etapa.
 
 ## 3. Organização e diferenças individuais
 
-- Despensa, lixo e cemitérios afastados da prole.
-- Transporte visível de ovos, larvas e pupas; nascimento.
-- Trofalaxia conservativa via estômago social.
-- Castas com corpos e tarefas diferentes.
-- Idade, energia, coragem, atividade e exploração individuais.
+- [x] Despensa, lixo e cemitérios afastados da prole.
+- [x] Transporte visível de ovos, larvas e pupas; nascimento.
+- [x] Trofalaxia conservativa via estômago social.
+- [x] Castas com corpos e tarefas diferentes.
+- [x] Idade, energia, coragem, atividade e exploração individuais.
 
 Depende de rotas funcionais. Aceite: transferência conservativa, mudança de
 tarefas observável e ausência de crescimento sem recursos.
 
 ## 4. Campos e tarefas probabilísticas
 
-- Difusão-evaporação numericamente estável.
-- Escolha ACO por amostragem e respostas por limiar de estímulo.
-- Sensores limitados, memória local e ausência de informação global oculta.
+- [x] Difusão-evaporação numericamente estável.
+- [x] Escolha ACO por amostragem e respostas por limiar de estímulo.
+- [x] Sensores limitados, memória local e ausência de informação global oculta.
 
 Aceite: testes de dispersão, evaporação, estabilidade e distribuição de escolhas.
 
 ## 5. Genética e novas fundações
 
-- Cromossomos, parentesco, cruzamento e mutações registradas.
-- Efeitos em corpo, movimento, sensores e resistência.
-- Alados, gatilhos ambientais, acasalamento e perda das asas.
-- Reservas maternas e naníticas na fundação claustral quando adequada à espécie.
+- [x] Cromossomos, parentesco, cruzamento e mutações registradas.
+- [x] Efeitos em corpo, movimento, sensores e resistência.
+- [x] Alados, gatilhos ambientais, acasalamento e perda das asas.
+- [x] Reservas maternas e naníticas na fundação claustral quando adequada à espécie.
 
 Aceite: parentesco persistido e reprodução consumindo reservas.
 
 ## 6. Ecologia e colônias vizinhas
 
-- Pulgões, melaço e proteção; lagartas miméticas.
-- Reconhecimento por distância química entre odores.
-- Intimidação, fuga, conflito, camuflagem e território.
+- [x] Pulgões, melaço e proteção; lagartas miméticas.
+- [x] Reconhecimento por distância química entre odores.
+- [x] Intimidação, fuga, conflito, camuflagem e território.
 
 Aceite: encontros locais, balanço de recursos e resultados dependentes do contexto.
 
 ## 7. Física e validação
 
-- Autômatos granulares com massa, atrito e ângulo de repouso.
-- Umidade espacial, infiltração, capilaridade e mofo.
-- Temperatura, O2, CO2 e ventilação dependente da geometria.
-- Calibração por espécie e comparação com experimentos.
+- [x] Autômatos granulares com massa, atrito e ângulo de repouso.
+- [x] Umidade espacial, infiltração, capilaridade e mofo.
+- [x] Temperatura, O2, CO2 e ventilação dependente da geometria.
+- [ ] Calibração por espécie e comparação com experimentos.
 
 Depende de pesquisa e benchmarks. Não promete simular cada grão real nem
 substituir uma análise geotécnica validada.
 
 ## 8. Aprendizado, persistência e previsões
 
-- Políticas pequenas de RL, recompensas e comparação com baselines.
-- Treino separado da renderização.
-- Snapshots, checkpoints, migrações, eventos, métricas e replay.
-- Previsões com observações parciais/completas e erro medido por horizonte.
+- [x] Políticas pequenas de RL, recompensas e comparação com baselines.
+- [x] Treino separado da renderização.
+- [x] Snapshots, checkpoints, migrações, eventos, métricas e replay.
+- [x] Previsões com observações parciais/completas e erro medido por horizonte.
 
 RL depende de sensores, ações, recompensas e física estáveis.
+
+## Histórico das entregas
+
+Os registros abaixo descrevem cada momento do desenvolvimento. Menções antigas a “próximo” ou “pendente” são históricas; a tabela acima e o andamento das etapas 9–14 representam a situação atual.
 
 ### Progresso da etapa 2 — 31/10/2026
 
@@ -181,6 +200,14 @@ RL depende de sensores, ações, recompensas e física estáveis.
 | 15    | [#15](https://github.com/albreis/viveiro/pull/15) | Gases, ventilação e sensores locais                 |
 | 16    | [#16](https://github.com/albreis/viveiro/pull/16) | Suporte local do teto e desprendimento conservativo |
 | 17    | [#17](https://github.com/albreis/viveiro/pull/17) | Aprendizado individual e comparação com ACO         |
+| 18    | [#18](https://github.com/albreis/viveiro/pull/18) | Checkpoints e recuperação                           |
+| 19    | [#19](https://github.com/albreis/viveiro/pull/19) | Previsões canceláveis                               |
+| 20    | [#20](https://github.com/albreis/viveiro/pull/20) | Observações e avaliação das previsões               |
+| 21    | [#21](https://github.com/albreis/viveiro/pull/21) | Perfis biológicos e parâmetros                      |
+| 22    | [#22](https://github.com/albreis/viveiro/pull/22) | Reservas maternas                                   |
+| 23    | [#23](https://github.com/albreis/viveiro/pull/23) | Selamento físico da fundação                        |
+| 24    | [#24](https://github.com/albreis/viveiro/pull/24) | Maturação térmica da prole                          |
+| 25    | [#25](https://github.com/albreis/viveiro/pull/25) | Memória sazonal e casulos                           |
 
 Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
@@ -362,14 +389,14 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 
 Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de outra IA. O andamento atual está registrado abaixo; estas entregas não substituem as etapas anteriores. Faixas recebidas, correções, referências primárias e dados necessários estão em [Biologia planejada](biologia-planejada.md). Valores dependem da espécie e de calibração.
 
-| Etapa | Nova entrega                                                          | Situação / dependências                   |
-| ----- | --------------------------------------------------------------------- | ----------------------------------------- |
-| 9     | Perfis biológicos por espécie e proveniência dos parâmetros           | Registro implementado; calibração externa |
-| 10    | Fundação claustral com cronologia, tampão físico e reservas corporais | 10A/10B publicadas; calibração pendente   |
-| 11    | Desenvolvimento térmico da prole, nutrição e diapausa                 | 11A/11B publicadas; calibração pendente   |
-| 12    | Clima espacial, umidade e seleção local da câmara                     | Planejada; 7 e 9                          |
-| 13    | Espermateca, fertilidade, envelhecimento e longevidade da rainha      | Planejada; 5A/5C, 8 e 9                   |
-| 14    | Escala de tempo biológico e experimentos de anos com recuperação      | Planejada; 8–13                           |
+| Etapa | Nova entrega                                                     | Situação / dependências                   |
+| ----- | ---------------------------------------------------------------- | ----------------------------------------- |
+| 9     | Perfis biológicos por espécie e proveniência dos parâmetros      | Registro implementado; calibração externa |
+| 10    | Fundação, reservas, tampão e estratégia semiclaustral            | ✅ 10A/10B; 🔧 10C em andamento           |
+| 11    | Desenvolvimento térmico da prole, nutrição e diapausa            | 11A/11B publicadas; calibração pendente   |
+| 12    | Clima espacial, umidade e seleção local da câmara                | Planejada; 7 e 9                          |
+| 13    | Espermateca, fertilidade, envelhecimento e longevidade da rainha | Planejada; 5A/5C, 8 e 9                   |
+| 14    | Escala de tempo biológico e experimentos de anos com recuperação | Planejada; 8–13                           |
 
 ### 9. Espécie e parâmetros rastreáveis
 
@@ -389,12 +416,12 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 
 ### 10. Fundação, selamento e orçamento materno
 
-Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isolamento e reabertura físicos), cada uma com branch e PR próprios. Perfis numéricos antigos permanecem preservados.
+Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabertura físicos) e 10C (coleta semiclaustral), cada uma com branch e PR próprios. Perfis numéricos antigos permanecem preservados.
 
-- 10A implementada na branch codex/reservas-maternas, versão 0.19.0: 183/183 testes completos, 14 dirigidos finais, TypeScript/Vite e QA no navegador aprovados. Publicada no mesmo Site privado; PR [#22](https://github.com/albreis/viveiro/pull/22). Ver docs/reservas-maternas.md.
-- 10B publicada na versão 0.20.0, branch codex/selamento-fundacao e PR [#23](https://github.com/albreis/viveiro/pull/23): tampão físico conservativo, gases porosos, inspeção e reabertura pelas naníticas. Regressão 190/190 e 16 dirigidos finais aprovados. Ver docs/selamento.md.
-- 10C pendente: variante semiclaustral com coleta externa e orçamento conservativo. Cronologia real continua dependente de calibração; não há isolamento térmico ou de umidade do ar calibrado.
-- 11A implementada na branch codex/maturacao-e-estacoes, versão 0.21.0: 199/199 testes, build e QA aprovados. Publicada no mesmo Site privado, PR [#24](https://github.com/albreis/viveiro/pull/24); ver docs/maturacao.md. Próximo item: 11B, diapausa e casulos.
+- [x] 10A implementada na branch codex/reservas-maternas, versão 0.19.0: 183/183 testes completos, 14 dirigidos finais, TypeScript/Vite e QA no navegador aprovados. Publicada no mesmo Site privado; PR [#22](https://github.com/albreis/viveiro/pull/22). Ver docs/reservas-maternas.md.
+- [x] 10B publicada na versão 0.20.0, branch codex/selamento-fundacao e PR [#23](https://github.com/albreis/viveiro/pull/23): tampão físico conservativo, gases porosos, inspeção e reabertura pelas naníticas. Regressão 190/190 e 16 dirigidos finais aprovados. Ver docs/selamento.md.
+- [ ] 10C em implementação e testes na branch codex/fundacao-semiclaustral: variante semiclaustral com coleta externa e orçamento conservativo. Cronologia real continua dependente de calibração; não há isolamento térmico ou de umidade do ar calibrado.
+- [x] 11A implementada na branch codex/maturacao-e-estacoes, versão 0.21.0: 199/199 testes, build e QA aprovados. Publicada no mesmo Site privado, PR [#24](https://github.com/albreis/viveiro/pull/24); ver docs/maturacao.md. Próximo item: 11B, diapausa e casulos.
 
 - Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
 - Cronologia dependente de esforço, geometria, temperatura, condição e reservas; término físico da obra.
@@ -403,8 +430,8 @@ Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isola
 
 ### 11. Maturação e estações
 
-- 11A: mecanismo térmico demonstrativo, alimentação parcial, estresse, perdas e estado individual persistente implementados. Durações por espécie continuam sem calibração externa.
-- 11B implementada na branch codex/diapausa-e-casulos, versão 0.22.0: memória endógena, frio acumulado, retomada, abrigo e casulos pagos por perfil. 210/210 testes, build e QA completos aprovados. Publicada no mesmo Site privado; PR [#25](https://github.com/albreis/viveiro/pull/25), fonte 5af4191, tag v0.22.0. Ver docs/sazonalidade.md.
+- [x] 11A: mecanismo térmico demonstrativo, alimentação parcial, estresse, perdas e estado individual persistente implementados. Durações por espécie continuam sem calibração externa.
+- [x] 11B implementada na branch codex/diapausa-e-casulos, versão 0.22.0: memória endógena, frio acumulado, retomada, abrigo e casulos pagos por perfil. 210/210 testes, build e QA completos aprovados. Publicada no mesmo Site privado; PR [#25](https://github.com/albreis/viveiro/pull/25), fonte 5af4191, tag v0.22.0. Ver docs/sazonalidade.md.
 
 - Investigar ovo–larva 10–14 d, larva–pupa 10–15 d e pupa–adulta 10–24 d.
 - Conferir o total sugerido de 35–60 d: a soma das faixas individuais recebidas é 30–53 d.
