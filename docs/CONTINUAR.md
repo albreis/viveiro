@@ -5,8 +5,8 @@ Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário
 ## Entrega corrente
 
 - Branch codex/colonias-filhas, base codex/voo-e-fundacao.
-- Versão 0.7.0 pronta para commit, push, PR e publicação. Conferir Git/PRs e Site antes de repetir qualquer operação.
-- PRs #1 a #8 já abertos e encadeados. O PR 5C deve ter base codex/voo-e-fundacao; não duplicar se já existir.
+- Versão 0.7.0 publicada: fonte e6e4790185fab8788cccdaf35dcc8f243e397c35, tag v0.7.0. Deploy appgdep_6ae6cbf2a92081919d188fb4cca26b47 concluído em 01/11/2026.
+- PRs #1 a #9 abertos e encadeados. 5C: https://github.com/albreis/viveiro/pull/9, base codex/voo-e-fundacao. Não duplicar.
 - Publicação anterior confirmada: 0.6.0, fonte 0aec356a9a9d3ef8cbce227dae5577dd9874a34d, tag v0.6.0.
 - Versão 0.5.0 preservada: e149fe8944b315bbff078a4f1be7a471c3297145, tag v0.5.0.
 - Site privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site
@@ -32,7 +32,7 @@ Correções de navegação: saída de poço raso quando centros coincidem; recon
 
 ## Próximo passo concreto
 
-Concluir commit/push/PR e publicação privada da 0.7.0 se ainda pendentes. Depois criar branch própria para 6: pulgões/melaço/proteção, lagartas miméticas, assinatura química e encontros locais entre colônias. Não repetir 5A/5B/5C já implementadas.
+A 0.7.0 está publicada e o PR #9 aberto. Criar codex/ecologia-e-odores a partir desta branch para 6: pulgões/melaço/proteção, lagartas miméticas, assinatura química e encontros locais entre colônias. Não repetir 5A/5B/5C já implementadas.
 
 Depois: 7 solo granular, capilaridade e gases; 8 RL, persistência longa e avaliação. Não declarar calibração científica: faltam espécie-alvo e dados reais. Os snapshots atuais ainda repetem habitat no JSON das subcolônias, embora o restore reconstitua referências comuns; compactação/armazenamento longo é etapa 8.
 
@@ -42,4 +42,4 @@ Dev em http://127.0.0.1:4173/ no G, PID 13196 na última conferência; logs .run
 
 Push apenas das refs da entrega e tag específica; push --all já foi rejeitado por escopo amplo. Main permanece anterior com os PRs para revisão. Não mesclar sem instrução.
 
-Seguir Sites: reabrir source helper no HEAD atual antes de empacotar, credenciais só em memória/stdin, tar fora do checkout (G:\Projetos\viveiro-0.7.0.tar.gz). Atualizar este checkpoint com SHA, PR e deploy exatos após sucesso.
+Seguir Sites: reabrir source helper no HEAD atual antes de empacotar, credenciais só em memória/stdin, tar fora do checkout (G:\Projetos\viveiro-0.7.0.tar.gz). Fonte, tag, PR e deploy da 0.7.0 já registrados acima. Nenhum processo de testes pendente.
