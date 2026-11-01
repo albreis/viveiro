@@ -1,45 +1,40 @@
 # Continuação do Viveiro
 
-Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar até finalizar o cronograma, com retomada horária nesta conversa após limites. Automação continuar-cronograma-do-viveiro ativa. Não criar executores concorrentes nem contornar cotas/aprovações.
+Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma, com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não criar executores concorrentes ou contornar cotas/aprovações.
 
-## Entrega corrente
+## Última entrega publicada
 
-- Branch codex/colonias-filhas, base codex/voo-e-fundacao.
-- Versão 0.7.0 publicada: fonte e6e4790185fab8788cccdaf35dcc8f243e397c35, tag v0.7.0. Deploy appgdep_6ae6cbf2a92081919d188fb4cca26b47 concluído em 01/11/2026.
-- PRs #1 a #9 abertos e encadeados. 5C: https://github.com/albreis/viveiro/pull/9, base codex/voo-e-fundacao. Não duplicar.
-- Publicação anterior confirmada: 0.6.0, fonte 0aec356a9a9d3ef8cbce227dae5577dd9874a34d, tag v0.6.0.
-- Versão 0.5.0 preservada: e149fe8944b315bbff078a4f1be7a471c3297145, tag v0.5.0.
-- Site privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site
-- Projeto Site appgprj_6ae6364bc4488191b2757449ed3f7e94. Preservar acesso só do proprietário.
+- Branch codex/odores-e-territorio, base codex/colonias-filhas; versão 0.8.0.
+- Fonte 35296be9bc4d89b4fef1c9d9eabaad8e4ca50faa, tag v0.8.0.
+- PR #10 https://github.com/albreis/viveiro/pull/10. PRs #1–#10 abertos e encadeados, sem merge na main. Não duplicar.
+- Deploy appgdep_6ae6d368c2c0819198961f76f4086562, succeeded em 01/11/2026 05:51:49 UTC.
+- Site privado https://viveiro-caos-formigueiro.everaldodev.chatgpt.site ; projeto appgprj_6ae6364bc4488191b2757449ed3f7e94. Acesso só do proprietário, zero visitantes externos confirmado antes de publicar.
+- Versões anteriores preservadas: 0.7.0 fonte e6e4790185fab8788cccdaf35dcc8f243e397c35; 0.6.0 fonte 0aec356a9a9d3ef8cbce227dae5577dd9874a34d; 0.5.0 fonte e149fe8944b315bbff078a4f1be7a471c3297145. Tags correspondentes preservadas.
 
-## Implementado na 5C
+## Implementado e validado
 
-Colônias em src/modules/colonies, com habitat compartilhado e estoques, genes, prole, saúde e RNG próprios. Ambiente integrado uma vez por tick global. Sensores físicos veem vizinhas de todas as colônias; trofalaxia respeita identidade. O campo e a malha do solo são comuns, com entradas/frentes dinâmicas por proprietária.
+5B/5C: fundação física a partir de alados com orçamento materno finito; naníticas; alados pagos pelo estoque de colônias maduras; filhas no habitat compartilhado com parentesco, reservas e estoques próprios. Saída física e novas gerações conferidas. Limites: quatro registros de colônia, 450 adultos/crias e duas frentes operárias. Documentos fundacao.md e colonias-filhas.md.
 
-Colônias maduras poupam alimento de forma conservativa e pagam princesas/zangões; a reserva é devolvida durante crise ou ao atingir o limite de fundações. A dupla amadurece, caminha para fora e aguarda janela após chuva. A filha usa os mesmos IDs adultos, genomas herdados e oito unidades já pagas de reserva; não há teleporte ou casal gratuito. Fundação 5B reutilizada no habitat comum. Modelo exploratório e limitações em docs/colonias-filhas.md: até quatro registros de colônia e 450 adultos/crias; dupla da mesma coorte, sem escolha de parceiros externos, sem calibração por espécie.
+6A: perfis químicos abstratos, máscaras temporárias, reconhecimento local pelo ar; intimidação, recuo apoiado e ferimentos; marca territorial conservativa; revestimento pelo solo e infiltração experimental com transferência física de alimento existente. Tratamento Odor estranho pelo usuário, anéis e legenda. Detalhes, equações e dados externos necessários em docs/odores-e-territorio.md. Não declarar química ou políticas calibradas por espécie.
 
-Correções de navegação: saída de poço raso quando centros coincidem; reconhecer um corpo já sobre a superfície mesmo se o centro lógico ficou atrás; recuperação de bloqueio também nos alados; limpar memória de acesso da antiga colônia ao fundar a filha. Migração da 0.6 reconhece o abrigo existente pelos IDs, sem escavar uma cópia.
-
-## Validação
-
-- Suíte completa: 76 testes aprovados em 423814 ms.
-- Após os últimos ajustes de cache/limite/balanço, 19 testes direcionados de chegada, colônias, orçamento e solo passaram (16556 ms). Há um teste novo adicional de restituição da poupança no limite de colônias.
-- TypeScript e build aprovados; módulos novos pequenos. A fábrica de agentes e o passo da família foram extraídos de World.
-- Filha: 2248 ticks, 16 viagens, quatro naníticas, geração 2 e maior deslocamento 0,075 unidade na regressão.
-- Navegador: seed a, umidade inicial 68; alados surgiram naturalmente; esperaram nova chuva após perder a primeira janela. Duas rainhas, outro abrigo e operária de geração 2 confirmados. Primeira pessoa e retorno conferidos; sem erros recentes de console.
-- QA IAB local pausada no dia 105,8, umidade 80, 72 formigas em duas colônias. Operária #255 da colônia 2: mãe #103, pai #104. Deixar o dev rodando. Perfil do Chrome do usuário intocado.
-- Screenshots salvos no diretório autorizado do Codex: viveiro-0.7.0-colonias-filhas.png e viveiro-0.7.0-resumo.png.
+- Suíte completa: 87/87 testes em 435617 ms; dez testes químicos/infiltração após ajuste final de reconhecimento também passaram.
+- TypeScript e Vite aprovados; novos módulos do modelo com 29–108 linhas. Overlay não desenha células sem concentração.
+- Navegador: seed a, duas colônias, dia 107,9; 20 intimidações, 14 recuos e 14 ataques espontâneos. Tratamento na operária #305 visível e registrado, primeira pessoa e retorno conferidos, console sem erros.
+- Screenshot viveiro-0.8.0-encontros.png no diretório de visualizações autorizado do Codex.
+- QA local pausada; dev continua ativo no G, PID 13196, porta 4173. Perfil Chrome do usuário intocado. Nenhum processo de testes pendente.
 
 ## Próximo passo concreto
 
-A 0.7.0 está publicada e o PR #9 aberto. Criar codex/ecologia-e-odores a partir desta branch para 6: pulgões/melaço/proteção, lagartas miméticas, assinatura química e encontros locais entre colônias. Não repetir 5A/5B/5C já implementadas.
+Criar codex/simbioses-e-mimetismo a partir desta branch para 6B: pulgões por seed associados às plantas, produção de melaço com custo vegetal, coleta e proteção por encontros locais, lagartas com compatibilidade química, transporte real ao berçário e alimentação conservativa. Primeiro ler a biologia/transporte existentes para reutilizar apoio e rotas. Não repetir 5A/5B/5C/6A.
 
-Depois: 7 solo granular, capilaridade e gases; 8 RL, persistência longa e avaliação. Não declarar calibração científica: faltam espécie-alvo e dados reais. Os snapshots atuais ainda repetem habitat no JSON das subcolônias, embora o restore reconstitua referências comuns; compactação/armazenamento longo é etapa 8.
+Referências primárias já localizadas: Herbert e Horn 2008 (PMID 19036205) mostra proteção dependente do sistema; Schifani et al. 2023 DOI 10.1111/een.13226 mostra que atendimento não garante proteção; Akino et al. 1999 PMC1690087 mostra adoção e mimetismo especializado em Maculinea rebeli/Myrmica. Não misturar estratégias de espécies como um modelo universal; documentar limites.
+
+Depois: 7 granular/capilaridade/gases e 8 RL/persistência/avaliação. Calibração real depende de espécie e dados externos. Snapshots ainda repetem habitat no JSON das subcolônias; compactação longa é etapa 8.
 
 ## Ambiente, Git e publicação
 
-Dev em http://127.0.0.1:4173/ no G, PID 13196 na última conferência; logs .runtime/. Não encerrar. Escrita atômica e já formatada. Normalizar CRLF ao editar por scripts para que substituições de várias linhas funcionem. Evitar gravação parcial, que já fez o HMR guardar módulo vazio.
+Escritas atômicas já formatadas; normalizar CRLF antes de substituições multilinha. Módulos pequenos em src, TypeScript estrito nos novos. O usuário pediu dev continuamente ligado: não encerrar. Logs locais .runtime/ ignorados.
 
-Push apenas das refs da entrega e tag específica; push --all já foi rejeitado por escopo amplo. Main permanece anterior com os PRs para revisão. Não mesclar sem instrução.
+Push só da ref da entrega e tag específica: push --all foi rejeitado por escopo amplo. Não enviar outra branch nem mesclar main sem instrução. Cada etapa exige testes, navegador, commit/push, PR na base anterior e publicação privada.
 
-Seguir Sites: reabrir source helper no HEAD atual antes de empacotar, credenciais só em memória/stdin, tar fora do checkout (G:\Projetos\viveiro-0.7.0.tar.gz). Fonte, tag, PR e deploy da 0.7.0 já registrados acima. Nenhum processo de testes pendente.
+Sites: obter get_site/credencial sem expor tokens, abrir helper no HEAD corrente antes de empacotar. Credenciais só na memória/stdin. Tar fora do checkout; 0.8.0 em G:\Projetos\viveiro-0.8.0.tar.gz já publicado. Guardar literalmente project_id/commit_sha/archive retornados. Só marcar publicada após succeeded.

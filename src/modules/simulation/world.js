@@ -1,3 +1,5 @@
+import { applyOdorPulse } from "../social-chemistry/intervention.ts";
+import { arriveIntruder } from "../social-chemistry/intrusion-arrival.ts";
 import { allAnts, allBrood, colonyWorlds } from "../colonies/types.ts";
 import { advanceFamily } from "../colonies/update.ts";
 import { createAgent } from "./agent-factory.ts";
@@ -66,7 +68,11 @@ export class World {
       ant.route = [];
       return true;
     }
-    return arriveWithSoil(this, ant, node) || arriveColony(this, ant, node);
+    return (
+      arriveIntruder(this, ant, node) ||
+      arriveWithSoil(this, ant, node) ||
+      arriveColony(this, ant, node)
+    );
   }
   onStorageVisit(ant) {
     feedFromStock(this, ant);
@@ -120,6 +126,7 @@ export class World {
   intervene(type, x = 0, z = 0, value) {
     x = clamp(Number(x) || 0, -BOUNDS.x, BOUNDS.x);
     z = clamp(Number(z) || 0, -BOUNDS.z, BOUNDS.z);
+    if (type === "scent") return applyOdorPulse(this, x, z);
     if (type === "food") {
       this.patches.push({
         id: this.nextId++,

@@ -24,6 +24,14 @@ export interface NavigationState {
 
 export interface AgentState {
   id: number;
+  health?: number;
+  bodyOdor?: number[];
+  odorMask?: import("../social-chemistry/types.ts").OdorMask;
+  intrusion?: import("../social-chemistry/types.ts").IntrusionTask;
+  encounter?: import("../social-chemistry/types.ts").EncounterMotion;
+  encounterCooldown?: number;
+  encounterTicks?: number;
+  lastAlienContact?: number;
   kind?: string;
   x: number;
   y?: number;

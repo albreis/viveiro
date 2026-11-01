@@ -98,7 +98,8 @@
   margin-bottom: 13px;
 }
 .tools {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 6px;
 }
 .tools button {

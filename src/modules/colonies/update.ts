@@ -1,3 +1,6 @@
+import { prepareSocialChemistry } from "../social-chemistry/profile.ts";
+import { updateTerritory } from "../social-chemistry/territory.ts";
+import { updateSocialEncounters } from "../social-chemistry/encounters.ts";
 import { coordinateFlights } from "./mating.ts";
 import { MAX_COLONIES } from "./spawn.ts";
 import type { FamilyWorld } from "./types.ts";
@@ -19,6 +22,9 @@ export function advanceFamily(root: FamilyWorld) {
     colonies = colonyWorlds(root);
   for (const w of colonies) if (w !== root) bindHabitat(root, w);
   bindNeighbors(root);
+  prepareSocialChemistry(root);
+  updateTerritory(root);
+  updateSocialEncounters(root);
   updateNestOdors(root.nest, root.nestOdors);
   updateErosion(root);
   const dead = new Set<number>();
