@@ -1,3 +1,4 @@
+import { updateSealWorker } from "../sealing/worker.ts";
 import { learningTick } from "../learning/live.ts";
 import { airEnergyCost } from "../ventilation/sensing.ts";
 import { visitMimic } from "../ecology/mimic-worker.ts";
@@ -73,6 +74,7 @@ export function updateWorkers(world, suitability) {
     }
     if (updateEncounterMotion(world, ant)) continue;
     if (updateIntrusion(world, ant)) continue;
+    if (updateSealWorker(world, ant)) continue;
     if (recoverStall(world, ant)) continue;
     if (visitMimic(world, ant)) continue;
     if (visitAphids(world, ant)) continue;

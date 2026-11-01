@@ -91,7 +91,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   if (alates)
     world.log(alates + " alado(s) nasceram para uma futura fundação.", "birth");
   if (hatched) world.log(hatched + " operária(s) nasceram.", "birth");
-  if (f?.phase === "claustral" && f.nanitics > 0) {
+  if (f?.phase === "claustral" && f.nanitics > 0 && !f.seal) {
     f.phase = "established";
     f.since = world.tick;
     world.log(

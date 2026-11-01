@@ -41,6 +41,18 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
     description:
       lab.description + " Reservas maternas separadas nesta revisão.",
   }),
+  ...[generic, lab].map((p) =>
+    Object.freeze({
+      ...p,
+      version: 3,
+      maternalModel: "pools" as const,
+      entranceModel: "plug" as const,
+      label: p.id === "generic-demo" ? "Genérico · fundação selada" : p.label,
+      description:
+        p.description +
+        " Reservas maternas e tampão físico nesta revisão; parâmetros exploratórios.",
+    }),
+  ),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

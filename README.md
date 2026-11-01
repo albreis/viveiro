@@ -53,6 +53,8 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Selamento físico](docs/selamento.md)
+
 - [Reservas maternas](docs/reservas-maternas.md)
 
 - [Simbioses e mimetismo](docs/simbioses.md)

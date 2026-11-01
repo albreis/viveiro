@@ -1,3 +1,4 @@
+import { plugField } from "../sealing/field.ts";
 import {
   surfaceHeight,
   surfaceNormal,
@@ -144,6 +145,17 @@ export function sampleSoil(nest: NestState, p: Vec3): FieldSample {
         y: dy / (d || 1),
         z: dz / (d || 1),
       });
+  }
+  for (const plug of nest.plugs || []) {
+    if (
+      plug.mass <= 1e-10 ||
+      Math.abs(p.x - plug.x) > plug.radius + plug.depth ||
+      Math.abs(p.y - plug.y) > plug.radius + plug.depth ||
+      Math.abs(p.z - plug.z) > plug.radius + plug.depth
+    )
+      continue;
+    const material = plugField(plug, p);
+    if (material.distance < result.distance) Object.assign(result, material);
   }
   return result;
 }

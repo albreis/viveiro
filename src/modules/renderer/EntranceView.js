@@ -10,7 +10,11 @@ export class EntranceView {
     const entry = world.nest.nodes.find(
       (n) => n.type === "entrance" && n.r > 0.1,
     );
-    this.host.nestLabel && (this.host.nestLabel.visible = !!entry);
+    this.host.nestLabel &&
+      (this.host.nestLabel.visible =
+        !!entry &&
+        !this.host.followId &&
+        !["sealing", "structure"].includes(this.host.currentView));
     if (entry && this.host.nestLabel)
       this.host.nestLabel.position.set(entry.x, entry.y + 0.6, entry.z);
     world.nest.nodes.forEach((node, id) => {

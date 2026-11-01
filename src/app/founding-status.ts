@@ -5,6 +5,7 @@ const labels: Record<FoundingState["phase"], string> = {
   landing: "Acasalamento concluído · pouso",
   dealate: "Perda das asas",
   digging: "Escavação do primeiro abrigo",
+  sealing: "Fechamento da entrada",
   claustral: "Fundação claustral",
   established: "Colônia fundada",
   failed: "Fundação interrompida",
@@ -24,7 +25,22 @@ export function foundingDescription(f?: FoundingState) {
     f.nanitics +
     " naníticas · " +
     f.trips +
-    " viagens de terra."
+    " viagens de terra." +
+    (f.seal
+      ? " Tampão: " +
+        {
+          collect: "recolhendo material",
+          return: "transportando",
+          build: "construindo",
+          closed: "fechado",
+          remove: "nanítica escavando",
+          haul: "retirando terra",
+          opened: "reaberto",
+        }[f.seal.phase] +
+        " · " +
+        f.seal.trips +
+        " viagens de reabertura."
+      : "")
   );
 }
 export function renderFoundingStatus(f?: FoundingState) {

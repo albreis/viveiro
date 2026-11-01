@@ -1,3 +1,4 @@
+import { plugTransport } from "../sealing/passage.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import { pileRadius } from "../soil/ledger.ts";
 import type { GasWorld, AirNetwork } from "./types.ts";
@@ -45,14 +46,21 @@ export function airNetwork(w: GasWorld): AirNetwork {
         (sampleClimate(w.microclimate, q)?.temperature ?? 24)) /
       2;
     const air = w.params.temperatureC ?? 24;
+    const plug = plugTransport(w.nest, i);
     return {
       a,
       b,
-      diffusion: ((0.0005 * area) / length) * clearance ** 2,
-      conductance: ((0.02 * r ** 4) / length) * clearance ** 4,
+      diffusion: ((0.0005 * area) / length) * clearance ** 2 * plug.diffusion,
+      conductance: ((0.02 * r ** 4) / length) * clearance ** 4 * plug.flow,
       head: ((0.02 * (temperature - air)) / (air + 273.15)) * (q.y - p.y),
     };
   });
+  for (const p of w.nest.plugs || []) {
+    const pair = w.nest.links[p.edge];
+    if (pair)
+      for (const id of pair)
+        volume[id] = Math.max(0.01, volume[id] - p.mass / 2);
+  }
   return {
     volume,
     ventDiffusion: w.nest.nodes.map(

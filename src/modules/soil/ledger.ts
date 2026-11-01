@@ -64,13 +64,19 @@ export function soilBalance(world: SoilWorld) {
   );
   const loose = (world.nest.rubble || []).reduce((n, p) => n + p.mass, 0);
   const input = world.soil.removed + world.soil.eroded;
+  const sealed = (world.nest.plugs || []).reduce((n, p) => n + p.mass, 0);
+  const reclaimed = world.soil.reclaimed || 0;
   return {
     removed: world.soil.removed,
     eroded: world.soil.eroded,
     carried,
     loose,
     deposited: world.soil.deposited,
-    error: input - carried - loose - world.soil.deposited,
+    ...(world.nest.plugs?.length || reclaimed
+      ? { sealed, reclaimed, surfaceStock: world.soil.deposited - reclaimed }
+      : {}),
+    error:
+      input - carried - loose - (world.soil.deposited - reclaimed) - sealed,
   };
 }
 export const pileRadius = (mass: number) =>

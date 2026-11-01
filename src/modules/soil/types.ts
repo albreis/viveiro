@@ -32,6 +32,7 @@ export interface SoilState {
   removed: number;
   eroded: number;
   deposited: number;
+  reclaimed?: number;
   deposits: SoilPile[];
   projects: DigProject[];
   integrity: number[];

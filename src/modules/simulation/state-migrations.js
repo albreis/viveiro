@@ -1,3 +1,8 @@
+import { validateSealBudget } from "../sealing/budget.ts";
+import {
+  validatePlugMaterials,
+  validateSealTask,
+} from "../sealing/validation.ts";
 import { validateMaternalFounding } from "../maternal/validation.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import { restoreColonies } from "../colonies/shared.ts";
@@ -14,13 +19,19 @@ import {
   tunnelEnvelope,
   projectSupport,
 } from "../terrain/terrain.js";
-export function restoreWorld(snapshot, prototype) {
+export function restoreWorld(snapshot, prototype, checkBudget = true) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
   validateMaternalFounding(
     world.founding,
     biologicalProfile.maternalModel === "pools",
+  );
+  validatePlugMaterials(world.nest, world.soil);
+  validateSealTask(
+    world.founding,
+    biologicalProfile.entranceModel === "plug",
+    world.nest,
   );
   world.landscape ??= legacyLandscape();
   if (!world.nest || world.nest.revision < 2) {
@@ -97,6 +108,7 @@ export function restoreWorld(snapshot, prototype) {
     }
     world.localRoutingVersion = 1;
   }
-  restoreColonies(world, prototype, restoreWorld);
+  restoreColonies(world, prototype, (raw, p) => restoreWorld(raw, p, false));
+  if (checkBudget) validateSealBudget(world);
   return world;
 }

@@ -1,3 +1,4 @@
+import { edgePassable } from "../sealing/passage.ts";
 import { chooseLearnedExit } from "../learning/live.ts";
 import { adjacentAirComfort } from "../ventilation/sensing.ts";
 import type { AgentState, NavigationWorld } from "./types.ts";
@@ -38,6 +39,7 @@ export function continueLocalRoute(
   if (
     !world.learning?.enabled &&
     known.length &&
+    edgePassable(world.nest, ant.node, known[0], ant) &&
     adjacentAirComfort(world, ant, known[0]) > 0.8 &&
     world.range(0, 1) > 0.04
   ) {
@@ -48,7 +50,9 @@ export function continueLocalRoute(
   let neighbors = world.nest.links.flatMap(([a, b]) =>
     a === ant.node ? [b] : b === ant.node ? [a] : [],
   );
-  neighbors = [...new Set(neighbors)];
+  neighbors = [...new Set(neighbors)].filter((id) =>
+    edgePassable(world.nest, ant.node!, id, ant),
+  );
   const alternatives = blocked
     ? neighbors.filter(
         (id) =>

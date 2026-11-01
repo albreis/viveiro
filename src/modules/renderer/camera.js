@@ -44,6 +44,9 @@ export function stopFollowing(host) {
 
 export function setView(host, view) {
   host.stopFollowing();
+  host.camera.fov = 37;
+  host.camera.updateProjectionMatrix();
+  host.followLight.intensity = 0;
   host.controls.minDistance = 9;
   const lateral = view === "side",
     top = view === true;

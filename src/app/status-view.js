@@ -1,3 +1,4 @@
+import { renderSealingStatus } from "./sealing-controls.ts";
 import { renderBiologyStatus } from "./biology-controls.ts";
 import { renderLearningStatus } from "./learning-controls.ts";
 import { renderStructureStatus } from "./structure-status.ts";
@@ -20,6 +21,7 @@ const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
 export function renderStatus(context, updateAntCamera) {
   const { world, comparison, scenario, current } = context;
+  renderSealingStatus(current);
   const w = current,
     workers = w.workers.length,
     queen = w.ants.some((a) => a.kind === "queen"),

@@ -103,6 +103,7 @@ export interface NestNode extends Vec3 {
 }
 
 export interface NestState {
+  plugs?: import("../sealing/types.ts").EntrancePlug[];
   relief?: import("../landscape/types.ts").Hill[];
   nodes: NestNode[];
   links: [number, number][];

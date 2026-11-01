@@ -1,3 +1,4 @@
+import { sealingRecords } from "./sealing-records.ts";
 import { maternalRecords } from "./maternal-records.ts";
 import { biologicalProfiles, latestBiologicalProfiles } from "./profiles.ts";
 import { UnsupportedBiologicalProfile } from "./errors.ts";
@@ -12,6 +13,7 @@ export const biologicalParameters = Object.freeze(
     ...proposedRecords,
     ...studyRecords,
     ...maternalRecords,
+    ...sealingRecords,
   ].map((record) =>
     Object.freeze({
       ...record,
