@@ -14,7 +14,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                      |
 | 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                      |
 | 7     | Solo granular, capilaridade, termodinâmica e gases                   | Protótipo implementado; calibração pendente |
-| 8     | RL, persistência longa e avaliação das previsões                     | 8A e 8B publicadas; 8C pendente             |
+| 8     | RL, persistência longa e avaliação das previsões                     | 8A e 8B publicadas; 8C1 em validação        |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -338,8 +338,17 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Habitat compartilhado compactado; recursos, RNG, cérebros e replay preservados.
 - Pontos nomeados, oito automáticos recentes e importação/recuperação em pausa.
 - Estado anterior guardado antes de recuperar; dados inválidos não causam sobrescrita silenciosa.
-- 153/153 testes completos, quatorze dirigidos e navegador aprovados. TypeScript/Vite aprovados; publicação em preparação.
+- 153/153 testes completos, quatorze dirigidos e navegador aprovados. TypeScript/Vite aprovados; publicada no mesmo Site privado.
 - Limites em docs/persistencia.md. Próximo: 8C previsões/observações/erro/desempenho; depois9–14.
+
+### Etapa 8C1 — previsões canceláveis (0.16.0)
+
+- Branch codex/previsoes-cancelaveis, base codex/checkpoints-e-recuperacao.
+- Worker cooperativo, progresso, cancelamento, último pedido e descarte de resultados obsoletos.
+- Horizonte/amostra/orçamento configuráveis; parada explícita e amostras incompletas rotuladas.
+- Mesmo modelo completo, sem emulador oculto. Oito testes novos e dois de regressão aprovados.
+- Navegador aprovado: cancelamento/intervenção e orçamento3/6 vs conclusão6/6. Publicação em preparação. Limites em docs/previsoes.md.
+- Próximo8C2: observação parcial/completa, erro por horizonte, baselines e custo; depois9–14.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 

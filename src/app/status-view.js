@@ -18,7 +18,7 @@ const $ = (id) => document.getElementById(id);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
 export function renderStatus(context, updateAntCamera) {
-  const { world, comparison, scenario, forecastCache, current } = context;
+  const { world, comparison, scenario, current } = context;
   const w = current,
     workers = w.workers.length,
     queen = w.ants.some((a) => a.kind === "queen"),
@@ -114,25 +114,5 @@ export function renderStatus(context, updateAntCamera) {
   renderGasStatus(w);
   renderColonyStatus(w);
   updateAntCamera(w);
-  if (forecastCache && forecastCache.scenario === scenario) {
-    const f = forecastCache.result;
-    $("forecast-value").replaceChildren(
-      document.createTextNode(
-        f.low === f.high ? String(f.low) : f.low + "–" + f.high,
-      ),
-      Object.assign(document.createElement("span"), {
-        textContent: " formigas",
-      }),
-    );
-    $("forecast-note").textContent =
-      "Intervalo P10–P90 · " +
-      f.runs +
-      " cenários · a partir do dia " +
-      format(f.tick / 100) +
-      ".";
-  } else {
-    $("forecast-value").innerHTML = "— <span>formigas</span>";
-    $("forecast-note").textContent = "Calculando 18 futuros possíveis…";
-  }
   renderChart(world, comparison);
 }

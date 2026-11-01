@@ -2,9 +2,13 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
-## Próximo passo — 8C previsões
+## Em andamento — 8C1 previsões canceláveis
 
-Criar codex/previsoes-cancelaveis a partir de codex/checkpoints-e-recuperacao. Extrair cálculo em fatias com progresso/cancelamento, limite de tempo e orçamento de trabalho em segundo plano. Depois avaliar observação parcial/completa, erro por horizonte e baselines. O cálculo atual de18futuros completos pode levar minutos; não chamar emulador rápido de física completa. Etapas9–14 seguem pendentes. DevG PID17752, porta4173; browser localtab2 pausado, seed a, dia267,97adultos/14crias/2colônias, modelo neural preservado. Não resetar nem fechar Site tab1.
+Branch codex/previsoes-cancelaveis, base codex/checkpoints-e-recuperacao5ac9d83. Versão0.16.0 validada, falta commit/push/PR e publicação privada, tag e registro. Módulos pequenos src/modules/forecast (model/run/types), serviços forecast-client/runner, WorkerTS e painel próprio. Controller perdeu a lógica antiga; arquivo workerJS substituído. Sem mudanças biológicas. Cálculo cooperativo8ms/pausa40ms, um tick pode exceder8ms; último pedido pendente, cancelamento e invalidação por intervenção/reset/restore/replay/cenário. Opções1/3/7dias,6/18futuros,10/30/120s ativos; orçamento incompleto explícito, não auto-reinicia, amostra<2não exibe intervalo.
+
+Oito testes novos e dois existentes de forecast/restore passaram (41379ms regressão); TypeScript/Vite e diffcheck aprovados. Não alegar execução completa161/161:153/153 foi na0.15.0. Engine igual ao ensemble síncrono. CLI backup real97adultos:2x10passos,912,9ms,maiorfatia160,7ms. Browser seed a/dia267 pausado preservado,2colônias/97adultos/14crias. QA orçamento10s→3/6futuros,98–99,25s; completo6/6→97–99,44,9s/17,6s. Cancelamento, recálculo e92→91→92%RH descartaram resultados velhos. Nenhum erro novo na QA final; dois logs de14:44:57 vieram de HMR parcial antes da recarga final. Screenshots0.16.0-previsao e-completa. DevG PID17752. Localtab2 mantida; previsão deixada cancelada, opções1/6/120. Site tab1 intocado.
+
+Próximo concreto após publicar0.16.0: branch8C2 para observações parciais/completas, erros por horizonte e baselines em séries reservadas, custo e métricas explícitos. Não tratar faixaP10–P90 sintética como confiança científica calibrada. Etapas9–14 ainda pendentes. Publicar com helper sourceOPEN no HEAD final, archiveG:\Projetos\viveiro-0.16.0.tar.gz fora do checkout, preservar acesso owner-only. Tags e saves antigos preservados. Push só branch/tag específicas.
 
 ## Última entrega publicada — 0.15.0 (8B)
 
