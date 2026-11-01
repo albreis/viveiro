@@ -113,6 +113,9 @@ test("snapshot restore retains exact nutrient flows and rejects inconsistent sto
   other.step(40);
   assert.ok(isDeepStrictEqual(w.snapshot(), other.snapshot()));
   const sourceProtein = before.founding.maternal.stores.protein;
+  const wrongRevision = structuredClone(before);
+  wrongRevision.biologicalProfile.version = 1;
+  assert.throws(() => World.restore(wrongRevision), /revisão/);
   const broken = structuredClone(before);
   broken.founding.maternal.stores.protein += 1;
   assert.throws(() => World.restore(broken), /materno/);

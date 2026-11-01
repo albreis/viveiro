@@ -1,6 +1,7 @@
 export type EvidenceKind =
   "approximation" | "hypothesis" | "protocol" | "measurement";
-export type ParameterTopic = "model" | "founding" | "development" | "study";
+export type ParameterTopic =
+  "model" | "founding" | "development" | "study" | "maternal";
 export interface BiologicalReference {
   schema: 1;
   id: string;

@@ -11,7 +11,7 @@ const number = (n: number) =>
   n.toLocaleString("pt-BR", { maximumFractionDigits: 3 });
 export function renderBiologicalParameters(
   topic: ParameterTopic,
-  revision = 1,
+  revision: number,
 ): void {
   const list = document.getElementById("biology-records")!;
   list.replaceChildren();

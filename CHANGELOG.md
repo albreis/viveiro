@@ -1,5 +1,13 @@
 # Versões
 
+## 0.19.0 — Reservas maternas
+
+- Revisão biológica 2 com reservas separadas de lipídio, proteína e músculo.
+- Histólise após perda das asas, custos proteicos da prole e escavação autorizada antes da geometria.
+- Balanços por componente, validação de saves e versões anteriores preservadas.
+- Catálogo com cinco coeficientes explícitos e registro da fundação na interface.
+- Modelo demonstrativo e limites em docs/reservas-maternas.md.
+
 ## 0.18.0 — Perfis e proveniência biológica
 
 - Catálogo versionado de aproximações, hipóteses, condições de laboratório e medidas.

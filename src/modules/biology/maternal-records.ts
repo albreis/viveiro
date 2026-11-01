@@ -10,7 +10,7 @@ const record = (
   label,
   value,
   unit,
-  topic: "model",
+  topic: "maternal",
   version: 1,
   minModelRevision: 2,
   evidence: "approximation",

@@ -1,20 +1,33 @@
 # Continuação do Viveiro
 
-Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
+Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Retomada horária autorizada nesta conversa; não iniciar executor concorrente nem contornar cotas ou aprovações. Manter o dev em G e preservar os experimentos, branches, tags e acesso privado.
 
-## Em andamento — etapa10A reservas maternas0.19.0
+## Em finalização — etapa 10A (0.19.0)
 
-Branch codex/reservas-maternas, base codex/perfis-biologicos3926c8e. Implementado núcleo eUI, ainda não publicado. Novos módulosmaternal/types,pools,initialize,validation,app/maternal-status,biology/profiles e maternal-records. Revisões genérico/lab1permanecemescalares,2habilitam pools. resolve(undefined)legado1; profileReference()continua1;controllerinitialnovo usa latestProfileReference2. Picker usa id@versão, defaultmaisrecente para próximo terrário; versõesanterioresselecionáveis, replayinitialpinado. minModelRevision2nos5novoscoeficientes do catálogo. UIvalores deL/P/M/consumo/conversão/balanço. Códigopequeno emTS,semdependências.
+- Branch: codex/reservas-maternas; base: codex/perfis-biologicos (3926c8e).
+- Núcleo enviado em 8d60c97. Ajustes finais de UI, validação e documentação devem ser enviados antes de publicar.
+- Novos módulos pequenos em src/modules/maternal e src/modules/biology, com UI própria. Nenhuma dependência nova.
+- Revisões 1 continuam escalares; revisões 2 habilitam reservas. Legados e replay preservam sua versão. Próximos terrários usam a revisão mais recente selecionada.
+- Reservas, equações, custos e limites estão em docs/reservas-maternas.md. Unidades são créditos demonstrativos, não gramas ou kcal. Histólise só após perda das asas; prole usa proteína; escavação é paga antes da geometria.
 
-Reservas8divididas3lipídio/3proteína/2músculo, unidadesabstratasdisponíveis,não gramas/kcal/ant.energy. Histo0,001u./passosóapósperdaasas/digging/claustral,transfer1:1conserva. Maintenance/excav lipid-first/protein fallback;eggs/larvaeproteinonly. f.reservesespelhosoma,f.spentresumouso,ledgerporcomponentefechado. Prolelimitadaaffordability;escavaçãoautorizadaprégeom inclusive seedhalfsphere.02. Estadosinconsistentesrejeitadossave/restore. FontequalitativaKurihara2022doi10.1016/j.asd.2022.101169verificada viaPubMed/ScienceDirectsearchprimário; nãocalibrataxas. docs/reservas-maternas.mdregistraequações/limites.
+### Verificações concluídas
 
-14dirigidospassaram,TS/Vitepassou. Integração seed aRH68:4naníticas2194ticks,restante4,395654841843442,errores−3,69e−13,solo−2,22e−15. Próprios7maternos+7perfil. SUÍTECOMPLETA EM EXECUÇÃO sessão48388,log.runtime/maternal-suite.log; não iniciaroutra nem afirmar183/183antescoletar. A7deperfilfuture-versionmudoude2para999porque2agoraéconhecida. Scriptbenchmarkagoraregistraactualpackageversion e fixa perfil1; relatório0.17históricoinalterado/nãorerodado.
+- Suíte completa: 183/183, duração 1.228.964 ms; log .runtime/maternal-suite.log. Sessão 48388 concluída.
+- Proteção adicional contra reservas em perfil escalar: 14 dirigidos finais passaram. Sessão 57294 concluída. Depois disso, apenas UI e documentação; build final aprovado.
+- Integração: quatro naníticas no passo 2194; erros de reserva −3,69e−13 e terra −2,22e−15.
+- QA: RESERVAS-QA, laboratório v2, 21 °C / 80%, fundada com quatro naníticas e 16 viagens de terra. Checkpoint nomeado Fundação v2 · reservas QA preservado. Recarga e cinco registros maternos do catálogo conferidos.
+- Experimento original RESTAURADO e confirmado em pausa: seed a, dia 267, 97 adultos, 14 crias, duas colônias, 35 °C / 92%, aprendizado 4719 escolhas / 4607 ajustes. Aviso de recuperação confirmado. Próximo perfil selecionado genérico v2, sem alterar o atual.
+- Checkpoint original: manual-691625be-84fe-4949-bf1f-68490114e3db (Antes de validar perfis · dia267). JSON de segurança em .runtime/before-checkpoints-dia-267.json.
+- Dev Vite PID 17752 mantido. Navegador IAB local tab 2 marcado como entrega; Site tab 1 intocado. Screenshot final viveiro-0.19.0-reservas.png no diretório de visualizações autorizado.
 
-Browserlocaltab2 CURRENTTESTRESERVAS-QAperfilLABv2,ar21°C80%,PAUSADOdia32,9 último. StoresL0/P3,682/M0,009consumidos4,309convertidos1,991balançofechado;provavelmenteestablished(registrocongelaapósfundação),conferir#founding-status. Testeprimeirocom92%RHficouweatherporqueflightReadinessbloqueia>88(echuvaexpira300ticks),consumiuacessíveissemhistóliseantesasas. ReinícioLabv2acabouaplicandoapósCDPtimeout. CUAcliquesapplyseedtiveramtimeoutInput.dispatchMouseEvent/snapshotatrasadocomtestesCPU; NÃOsuporquenãoagiu,relerUIantesretentar. Browser-troubleshootinglido;sem desconexão, não resetar/trocarbrowser. GetAXeplayworks;DocumentaçãoCuaemcontexto. Nenhumapp-errorvisívelúltimologsemErrors.
+### Próximo passo concreto
 
-ORIGINALAINDADEVE SERRESTAURADO: seed a267dias/97adultos14crias2colônias35°C92%neural4719/4607. Checkpointmanual-691625be-84fe-4949-bf1f-68490114e3db (Antes de validar perfis · dia267) existeconfirmado0.19antesQA. Não sair deixandoRESERVAS-QA. Próximo: conferirphase/ledger, salvartestepoolnomeado(opcional),reloadperfil2paraconsistência, restaurarmanualoriginalviaUIeACK, ajustarpróximopickercondesejado, fecharcatálogo/previsãocancelada. Screenshotfinal0.19pendente. DevG PID17752,Site1intocado. CSSdialogbio evitapágina gigante; markupTSseparada.
+1. Commit e push dos ajustes finais; criar PR sobre codex/perfis-biologicos somente se ainda não existir (consulta em 18:20 UTC retornou vazio).
+2. Publicar o HEAD exato no mesmo Site privado. Owner-only confirmado: um proprietário, zero externos. Arquivo G:\Projetos\viveiro-0.19.0.tar.gz, fora do checkout. Credenciais apenas em memória/stdin.
+3. Registrar fonte, deploy, tag v0.19.0 e PR no cronograma e neste checkpoint; enviar branch e tag específicas.
+4. Criar branch codex/ própria para 10B. Tampão, isolamento e reabertura NÃO estão feitos. Depois, etapas 11–14. Dados por espécie continuam dependência externa real.
 
-Depoiscoletarsuite48388,UI/docs/changelogbuildfinal,commitpushPR#22sobre#21(se nãoexistir),publishowner-onlyarchiveG:\Projetos\viveiro-0.19.0.tar.gz,tag/checkpoint.10Bdepois: tampãocommaterialreal/reservaterraledger/SDF/nav/gases e reabertura; não estáfeito.11–14pendentes/calibraçãodadosexternos. Gitfetch/PRs1–21verificadosabertosencadeados,origin/mainba081a4inalterada. HelperantigoPID15872encerrado, devpreservado. Semexecutordeassistantconcorrente.
+Git e PRs 1–21 foram conferidos; permanecem encadeados e abertos. Não integrar main, não duplicar PRs. Main ba081a4 permanece preservada. Não repetir testes completos sem nova alteração relevante.
 
 ## Última entrega publicada — etapa9 (0.18.0)
 

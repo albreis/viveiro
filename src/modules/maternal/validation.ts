@@ -48,6 +48,8 @@ export function validateMaternalFounding(
     if (required) throw new Error("Reservas da revisão biológica ausentes.");
     return;
   }
+  if (!required)
+    throw new Error("Reservas incompatíveis com a revisão biológica escalar.");
   validateMaternalState(f.maternal);
   const used = Object.values(f.spent).reduce((a, b) => a + b, 0),
     balance = maternalBalance(f.maternal);

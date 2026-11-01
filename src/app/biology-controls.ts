@@ -31,7 +31,6 @@ export function installBiologyControls(world: FamilyWorld): void {
       "biology-profile",
     ) as HTMLSelectElement,
     topic = document.getElementById("biology-topic") as HTMLSelectElement;
-  if (!select || !topic) return;
   select.replaceChildren(
     ...biologicalProfiles.map(
       (p) => new Option(p.label + " · v" + p.version, biologicalProfileKey(p)),
@@ -42,7 +41,12 @@ export function installBiologyControls(world: FamilyWorld): void {
       resolveBiologicalProfile(world.biologicalProfile).id,
     ),
   );
-  const preview = () => {
+  const refresh = () =>
+    renderBiologicalParameters(
+      topic.value as ParameterTopic,
+      selectedBiologicalProfile().version,
+    );
+  const changeProfile = () => {
     const p = resolveBiologicalProfile(selectedBiologicalProfile());
     document.getElementById("biology-catalog-profile")!.textContent =
       "Consulta do próximo perfil: " + p.label + " · v" + p.version;
@@ -51,20 +55,21 @@ export function installBiologyControls(world: FamilyWorld): void {
       " Fundação genérica " +
       p.foundation +
       ". Casulos e sazonalidade sem calibração por espécie.";
-  };
-  select.onchange = () => {
-    preview();
-    topic.value =
-      selectedBiologicalProfile().id === "lab-lniger-2024" ? "study" : "model";
-    renderBiologicalParameters(
-      topic.value as ParameterTopic,
-      selectedBiologicalProfile().version,
+    const maternal = topic.querySelector<HTMLOptionElement>(
+      'option[value="maternal"]',
     );
+    if (maternal) maternal.disabled = p.version < 2;
+    topic.value =
+      p.id === "lab-lniger-2024"
+        ? "study"
+        : p.version >= 2
+          ? "maternal"
+          : "model";
+    refresh();
   };
-  topic.onchange = () =>
-    renderBiologicalParameters(topic.value as ParameterTopic);
-  preview();
-  renderBiologicalParameters(topic.value as ParameterTopic);
+  select.onchange = changeProfile;
+  topic.onchange = refresh;
+  changeProfile();
 }
 export function renderBiologyStatus(world: FamilyWorld): void {
   const output = document.getElementById("biology-active");
