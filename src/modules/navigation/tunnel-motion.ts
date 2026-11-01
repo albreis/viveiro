@@ -1,3 +1,4 @@
+import { edgePassable } from "../sealing/passage.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { finishSegment } from "./tunnel-arrival.ts";
 import type {
@@ -32,6 +33,16 @@ import {
 import { normalize, sub, scale, add, dot, position } from "./vectors.ts";
 
 export function moveInNest(world: NavigationWorld, ant: AgentState) {
+  if (
+    ant.node !== null &&
+    ant.route[0] !== undefined &&
+    !edgePassable(world.nest, ant.node, ant.route[0], ant)
+  ) {
+    delete ant.supportMotion;
+    ant.route = [];
+    ant.state = "Investigando o tampão com as antenas";
+    return;
+  }
   const nav = navigationState(ant);
   recordCongestion(ant);
   if (settleSupport(world, ant, ant.speed * 0.85)) return;

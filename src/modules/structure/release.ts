@@ -9,7 +9,7 @@ export function solidVolume(
   r: number,
 ) {
   const n = 8,
-    compact = { ...w.nest, rubble: [] };
+    compact = { ...w.nest, rubble: [], plugs: [] };
   let count = 0;
   for (let ix = 0; ix < n; ix++)
     for (let iy = 0; iy < n; iy++)

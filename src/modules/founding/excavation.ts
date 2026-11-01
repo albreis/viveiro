@@ -1,3 +1,4 @@
+import { beginSealing } from "../sealing/queen.ts";
 import { accessibleReserve } from "../maternal/pools.ts";
 import { outsideSite } from "./site.ts";
 import { travelToFront, haulFoundingSoil } from "./travel.ts";
@@ -92,6 +93,7 @@ export function updateFoundingDig(world: FoundingWorld) {
     front.name = "Primeira câmara da rainha";
     world.nest.revision++;
     delete q.supportMotion;
+    if (beginSealing(world)) return;
     changePhase(
       world,
       "claustral",

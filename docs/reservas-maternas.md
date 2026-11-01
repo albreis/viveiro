@@ -23,7 +23,7 @@ As invariantes são L₀ = L + Sᴸ, P₀ + H = P + Sᴾ, M₀ = M + H e R₀ = 
 - Larvas: 0,0012 u. proteica por larva/passo; falta de pagamento impede desenvolvimento larval nesse passo.
 - Escavação: 0,15 u. por unidade volumétrica aproximada. A revisão 2 autoriza o débito antes de mudar a geometria, inclusive a cavidade numérica inicial. Sem reserva acessível, não cria solo transportado nem avanço da frente.
 
-Os coeficientes aparecem como aproximações no catálogo. A estimativa volumétrica continua sendo o modelo geométrico reduzido existente, não DEM calibrado ou massa bioquímica. Transporte e deposição usam o mesmo balanço de terra. Depois da primeira geração, o registro materno fica histórico e a alimentação retorna à rede e ao estoque existentes; esta entrega não modela toda a dieta adulta, reposição lipídica ou cadáveres.
+Os coeficientes aparecem como aproximações no catálogo. A estimativa volumétrica continua sendo o modelo geométrico reduzido existente, não DEM calibrado ou massa bioquímica. Transporte e deposição usam o mesmo balanço de terra. Depois da primeira geração, a alimentação usa a rede e o estoque existentes; a manutenção da rainha ainda pode recorrer ao saldo materno pela regra de fallback já existente. O registro resume esse orçamento de origem, não a dieta adulta completa; esta entrega não modela toda a dieta adulta, reposição lipídica ou cadáveres.
 
 ## Validação
 

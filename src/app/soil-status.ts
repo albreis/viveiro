@@ -16,7 +16,9 @@ export function renderSoilStatus(world: SoilWorld) {
   const hauling = world.ants.filter((a) => (a.carryingSoil || 0) > 0).length;
   const balance = soilBalance(world);
   const format = (v: number) =>
-    new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 3 }).format(v);
+    new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 3 }).format(
+      Math.abs(v) < 1e-9 ? 0 : v,
+    );
   target.textContent =
     active +
     " frente(s) · " +
@@ -25,8 +27,15 @@ export function renderSoilStatus(world: SoilWorld) {
     hauling +
     " transportando. " +
     "Terra depositada: " +
-    format(balance.deposited) +
+    format(balance.surfaceStock ?? balance.deposited) +
     " u³ · solta: " +
     format(balance.loose) +
-    " u³.";
+    " u³." +
+    (balance.sealed !== undefined
+      ? " Tampão: " +
+        format(balance.sealed) +
+        " u³ · erro de balanço: " +
+        format(balance.error) +
+        "."
+      : "");
 }

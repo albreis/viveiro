@@ -13,6 +13,8 @@ export interface SoilMeshData {
   innerCount: number;
 }
 export function soilMeshData(nest: NestState): SoilMeshData {
+  // Analytic plugs are rendered separately as the same annular solid used by collision.
+  if (nest.plugs?.length) nest = { ...nest, plugs: [] };
   // Moving aggregates are rendered as instances; their collision still uses the same spherical field.
   if (nest.rubble?.some((p) => p.mobile))
     nest = { ...nest, rubble: nest.rubble.filter((p) => !p.mobile) };

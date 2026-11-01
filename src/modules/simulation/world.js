@@ -63,6 +63,14 @@ export class World {
   }
   onNestArrival(ant, node) {
     if (
+      this.founding?.seal &&
+      (this.founding.seal.workerId === ant.id ||
+        (ant.kind === "queen" && this.founding.phase === "sealing"))
+    ) {
+      ant.route = [];
+      return true;
+    }
+    if (
       ant.kind === "queen" &&
       this.founding?.phase === "digging" &&
       node === this.founding.front

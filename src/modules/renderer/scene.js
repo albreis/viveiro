@@ -1,3 +1,5 @@
+import { PlugView } from "./PlugView.ts";
+import { focusSealing } from "./sealing-focus.ts";
 import { StructureView } from "./StructureView.ts";
 import { focusStructure } from "./structure-focus.ts";
 import { GranularView } from "./GranularView.ts";
@@ -91,6 +93,7 @@ export class Terrarium {
     this.soilView = new SoilView(this.scene, LIMIT);
     this.granularView = new GranularView(this.scene);
     this.structureView = new StructureView(this.scene);
+    this.plugView = new PlugView(this.scene);
     this.colonyView = new ColonyView(this.scene, LIMIT);
     this.antParts = this.buildInsects(LIMIT, false);
     this.predatorParts = this.buildInsects(10, true);
@@ -247,6 +250,9 @@ export class Terrarium {
     this.showInterior = visible;
     updateSoilVisibility(this);
   }
+  focusSealing() {
+    return focusSealing(this);
+  }
   focusStructure() {
     return focusStructure(this);
   }
@@ -268,6 +274,7 @@ export class Terrarium {
     this.renderer.render(this.scene, this.camera);
   }
   dispose() {
+    this.plugView.dispose();
     this.soilMesher.dispose();
     this.resizeObserver.disconnect();
     this.controls.dispose();

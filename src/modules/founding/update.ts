@@ -1,3 +1,4 @@
+import { updateQueenSealing, parkSealedQueen } from "../sealing/queen.ts";
 import { advanceMaternalReserves } from "../maternal/initialize.ts";
 import type { FoundingWorld } from "./types.ts";
 import { changePhase, founder, isClaustral, spendReserve } from "./types.ts";
@@ -27,7 +28,10 @@ export function updateFounding(world: FoundingWorld) {
   if (["weather", "flight", "landing", "dealate"].includes(f.phase))
     updateFlight(world);
   else if (f.phase === "digging") updateFoundingDig(world);
-  else if (f.phase === "claustral")
+  else if (f.phase === "sealing") updateQueenSealing(world);
+  else if (f.phase === "claustral") {
+    if (f.seal) parkSealedQueen(world);
     queen.state = "Cuidando da prole com reservas maternas";
+  }
 }
 export { isClaustral };

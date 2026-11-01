@@ -1,3 +1,4 @@
+import { installSealingControls } from "./sealing-controls.ts";
 import {
   latestProfileReference,
   prepareBiologicalExperiment,
@@ -326,6 +327,7 @@ installCheckpointControls({
 installLearningControls(intervention, active);
 installGasControls(intervention);
 installClimateControls(intervention);
+installSealingControls(() => scene, toast);
 const focusStructureButton = $("focus-structure");
 if (focusStructureButton)
   focusStructureButton.onclick = () => {

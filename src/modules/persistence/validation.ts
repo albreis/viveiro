@@ -1,3 +1,8 @@
+import { validateSealBudget } from "../sealing/budget.ts";
+import {
+  validatePlugMaterials,
+  validateSealTask,
+} from "../sealing/validation.ts";
 import { validateMaternalFounding } from "../maternal/validation.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type { SessionState, WorldWire } from "./types.ts";
@@ -57,6 +62,12 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       throw new Error("Registro de colônia inválido.");
     const profile = resolveBiologicalProfile(c.biologicalProfile);
     validateMaternalFounding(c.founding, profile.maternalModel === "pools");
+    validatePlugMaterials(c.nest, c.soil);
+    validateSealTask(
+      c.founding as import("../founding/types.ts").FoundingState | undefined,
+      profile.entranceModel === "plug",
+      c.nest,
+    );
     population += c.ants.length;
     for (const a of c.ants)
       if (
@@ -90,6 +101,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       if (Object.hasOwn(c, key))
         throw new Error("Método não pode ser importado como estado.");
   }
+  validateSealBudget(w);
   if (population > 450)
     throw new Error("O experimento excede o limite de agentes.");
 }

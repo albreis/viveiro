@@ -1,5 +1,13 @@
 # Versões
 
+## 0.20.0 — Selamento físico da fundação
+
+- Revisão biológica 3: rainha recolhe terra, fecha a entrada por dentro e nanítica reabre transportando o material para fora.
+- Tampão no campo de colisão, na navegação e na circulação porosa de gases.
+- Balanço global da terra, validação de recuperação e peça analítica arredondada no renderer.
+- Inspeção da entrada pela câmera; perfis antigos preservados.
+- Coeficientes exploratórios e limites em docs/selamento.md.
+
 ## 0.19.0 — Reservas maternas
 
 - Revisão biológica 2 com reservas separadas de lipídio, proteína e músculo.

@@ -33,7 +33,7 @@ function halfSpan(n: NestState, p: Vec3, dx: number, dz: number) {
   return 2;
 }
 export function roofGeometry(n: NestState): RoofGeometry[] {
-  n = { ...n, rubble: [] };
+  n = { ...n, rubble: [], plugs: [] };
   const patches: RoofGeometry[] = [];
   n.links.forEach(([a, b], edge) => {
     const p = n.nodes[a],

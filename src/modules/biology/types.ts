@@ -39,6 +39,7 @@ export interface BiologicalProfile {
   readonly foundation: "claustral" | "semiclaustral" | "unknown";
   readonly cocoon: "present" | "absent" | "unspecified";
   readonly seasonality: "unmodelled" | "seasonal" | "nonseasonal";
+  readonly entranceModel?: "open" | "plug";
   readonly maternalModel?: "scalar" | "pools";
   readonly climate: Readonly<Record<string, number>>;
   readonly description: string;
