@@ -2,20 +2,26 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
-## Etapa 10C validada — publicação 0.23.0 pendente
+## Sincronização e prioridades atuais
 
-Branch codex/fundacao-semiclaustral, base c00d8d6 / PR #25. Cronograma já marcado e enviado no commit ecce7e9, a pedido do usuário. Núcleo novo em src/modules/semiclaustral; nenhum pacote novo. Modelo e limites em docs/fundacao-semiclaustral.md.
+Main local atualizada por fast-forward para 93e28d16375a77cbc38fd78001580acde31cec8b, igual à origin/main. A implementação ee34b75 já era ancestral dos merges; não houve conflito ou perda de trabalho. Referência de segurança local codex/backup-pre-sync-ee34b75 e branches antigas preservadas. PR #26 integrado pelo usuário; não duplicar ou reabrir.
 
-- Perfil generic-semiclaustral-demo@1, revisão de mecanismos 6: entrada aberta, rainha coletora local e prole térmica sem casulo/diapausa. Genéricos antigos preservados; padrão continua genérico v5.
-- Alimento coletado separado das reservas iniciais; carga limitada, primeira postura com alimento entregue, predação por colônia real, retorno físico e transferência única ao estoque geral com naníticas e rainha em casa. Despensa contém créditos genéricos, sem dieta ou biomassa calibrada.
-- Suíte completa 217/217 em 270.340 ms, log .runtime/semiclaustral-suite.log. Sessão 12648 coletada e encerrada. Sete novos e nove regressões dirigidas também passaram. Depois, apenas UI/documentação. Build final 253 módulos aprovado. Não repetir sem mudança relevante.
-- Ensaio seed a, fonte finita controlada: passo 2612, quatro naníticas, três viagens, 1,95 coletados / 1,30 consumidos / 0,65 exportados; reserva 5,19005; maior passo 0,06798. Restore exato em viagem e falha sem alimento testados.
-- QA SEMICLAUSTRAL-QA: quatro viagens da rainha e quatro naníticas; ponto Fundação semiclaustral · QA em D87,2 preservado. Sete coeficientes e exclusão do tampão conferidos; console sem erros. Screenshot viveiro-0.23.0-fundacao-semiclaustral.png no diretório autorizado, já mostrado ao usuário.
-- Mundo do usuário RESTAURADO em pausa, confirmado D62,5 / SEMENTE-50088 / lab v5. Ponto manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf, Antes da QA semiclaustral · SEMENTE-50088. Não voltar ao ponto mais antigo D16,9 ou D267 como estado atual. IAB localtab2 mantida; Sitetab1 intocado. Dev G PID17752 ativo.
+Recebidos kit de divulgação, fórmulas e seção P0–P4 do cronograma. Orientação explícita atual: executar as novidades DEPOIS das pendências anteriores 12–14. A proposta antiga de paralelismo foi corrigida preservando todos os itens. Rankings são projeções editoriais, não medições. Dados, professores, turmas e publicação científica continuam dependências externas reais.
+
+## Última entrega publicada — etapa 10C (0.23.0)
+
+Fonte ee34b75bca62e4ebc65fb83d397ae429acb09e6c, branch codex/fundacao-semiclaustral; PR #26 integrado em 01/11/2026 21:39:28 UTC. Tag v0.23.0 aponta à fonte publicada. Deploy appgdep_6ae7a30d9f148191936e0799569b39f8 succeeded em 01/11/2026 20:37:46 UTC. Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_824150d8d6d08191b718fd5f87337902, mesmo Site privado. Arquivo G:\Projetos\viveiro-0.23.0.tar.gz preservado. A interrupção ocorreu após o retorno nativo e antes destes metadados; não repetir publicação.
+
+- Rainha coletora, entrada aberta e alimento separado dos tecidos iniciais em src/modules/semiclaustral. Perfil generic-semiclaustral-demo@1, genéricos anteriores preservados. Modelo e limites em docs/fundacao-semiclaustral.md, sem dieta/espécie calibrada.
+- 217/217 testes completos em 270.340 ms, log .runtime/semiclaustral-suite.log. Sete novos e nove regressões dirigidas passaram; sessão 12648 encerrada. Build final 253 módulos aprovado. Remoto recebido mudou somente documentação; não repetir suíte sem mudança relevante.
+- Seed a controlada: passo 2612, quatro naníticas, três viagens; 1,95 coletados / 1,30 consumidos / 0,65 exportados; maior passo 0,06798. Restore em viagem e falha sem alimento testados.
+- QA SEMICLAUSTRAL-QA: quatro viagens e quatro naníticas; ponto Fundação semiclaustral · QA em D87,2. Catálogo/console aprovados. Screenshot viveiro-0.23.0-fundacao-semiclaustral.png já mostrado.
+- Última recuperação do usuário: SEMENTE-50088 / D62,5 / lab v5, manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf. Antes de outra QA, conferir se avançou e salvar o estado mais recente; não forçar um ponto antigo como atual. Saves preservados.
+- Dev Vite G PID17752 porta4173 confirmado ativo após sincronizar. Não encerrar. Nenhum executor de desenvolvimento concorrente iniciado.
 
 ### Próximo passo concreto
 
-Commit/push, PR #26 sobre #25 se ausente, abertura atualizada do helper e pacote G:\Projetos\viveiro-0.23.0.tar.gz com fonte final exata. Publicar no mesmo Site privado, tag e checkpoint. Atualizar cronograma para 10C entregue somente após sucesso nativo. Depois criar branch própria para etapa 12, seleção local do microclima/câmara. 13–14 e calibração externa continuam pendentes; retomada ainda necessária.
+Concluir PR documental codex/cronograma-pos-merges sobre main, enviar tag e metadados. Depois criar branch própria para 12: seleção local do microclima e da câmara, começando por sensores e escolha física da rainha, preservando perfis/saves antigos. Conferir Git/PRs antes; se o PR documental já foi integrado, usar main atualizada. Depois 13, 14 e P0–P4. Manter Site privado e retomada ativa.
 
 ## Última entrega publicada — etapa 11B (0.22.0)
 

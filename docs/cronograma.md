@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.22.0**, PR [#25](https://github.com/albreis/viveiro/pull/25).
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.23.0**, PR [#26](https://github.com/albreis/viveiro/pull/26), já integrado à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -22,14 +22,14 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 9     | Perfis versionados e proveniência dos parâmetros                   | ✅ Entregue · 0.18; dados calibrados por espécie pendentes       |
 | 10A   | Reservas maternas e custos conservativos                           | ✅ Entregue · 0.19 · PR #22                                      |
 | 10B   | Tampão físico e reabertura pelas naníticas                         | ✅ Entregue · 0.20 · PR #23                                      |
-| 10C   | Fundação semiclaustral com coleta externa da rainha                | 🔧 Em implementação e testes; ainda não entregue                 |
+| 10C   | Fundação semiclaustral com coleta externa da rainha                | ✅ Entregue · 0.23 · PR #26 integrado                            |
 | 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
 | 12    | Seleção local do microclima e da câmara                            | ⬜ Pendente; campos físicos básicos já existem                   |
 | 13    | Espermateca, fertilidade e longevidade                             | ⬜ Pendente                                                      |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
 
-**Ordem restante:** concluir 10C → 12 → 13 → 14 → revisão final. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
+**Ordem restante:** 12 → 13 → 14 → revisão do núcleo → P0–P4 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -179,7 +179,7 @@ Os registros abaixo descrevem cada momento do desenvolvimento. Menções antigas
 - Build de produção e TypeScript aprovados.
 - Modelos continuam exploratórios; as etapas científicas restantes não são dadas como concluídas.
 
-### PRs abertos para revisão, em ordem
+### PRs das entregas, em ordem
 
 | Ordem | PR                                                | Entrega                                             |
 | ----- | ------------------------------------------------- | --------------------------------------------------- |
@@ -209,7 +209,7 @@ Os registros abaixo descrevem cada momento do desenvolvimento. Menções antigas
 | 24    | [#24](https://github.com/albreis/viveiro/pull/24) | Maturação térmica da prole                          |
 | 25    | [#25](https://github.com/albreis/viveiro/pull/25) | Memória sazonal e casulos                           |
 
-Os PRs usam a branch anterior como base. Após integrar cada predecessor, ajuste
+Os PRs #1–#26 desta tabela já foram integrados pelo usuário. Novas entregas continuam com branches próprias. PRs encadeados usam a branch anterior como base. Após integrar cada predecessor, ajuste
 a base do próximo para main. Branches antigas já incorporadas não recebem PRs
 vazios. A genética digital foi implementada na entrega 5A e está no PR #7. Novas etapas seguem este fluxo
 automaticamente.
@@ -392,7 +392,7 @@ Adicionadas ao final em 01/11/2026 a pedido do usuário, a partir do material de
 | Etapa | Nova entrega                                                     | Situação / dependências                   |
 | ----- | ---------------------------------------------------------------- | ----------------------------------------- |
 | 9     | Perfis biológicos por espécie e proveniência dos parâmetros      | Registro implementado; calibração externa |
-| 10    | Fundação, reservas, tampão e estratégia semiclaustral            | ✅ 10A/10B; 🔧 10C em andamento           |
+| 10    | Fundação, reservas, tampão e estratégia semiclaustral            | ✅ 10A/10B/10C entregues                  |
 | 11    | Desenvolvimento térmico da prole, nutrição e diapausa            | 11A/11B publicadas; calibração pendente   |
 | 12    | Clima espacial, umidade e seleção local da câmara                | Planejada; 7 e 9                          |
 | 13    | Espermateca, fertilidade, envelhecimento e longevidade da rainha | Planejada; 5A/5C, 8 e 9                   |
@@ -420,7 +420,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 - [x] 10A implementada na branch codex/reservas-maternas, versão 0.19.0: 183/183 testes completos, 14 dirigidos finais, TypeScript/Vite e QA no navegador aprovados. Publicada no mesmo Site privado; PR [#22](https://github.com/albreis/viveiro/pull/22). Ver docs/reservas-maternas.md.
 - [x] 10B publicada na versão 0.20.0, branch codex/selamento-fundacao e PR [#23](https://github.com/albreis/viveiro/pull/23): tampão físico conservativo, gases porosos, inspeção e reabertura pelas naníticas. Regressão 190/190 e 16 dirigidos finais aprovados. Ver docs/selamento.md.
-- [ ] 10C em implementação e testes na branch codex/fundacao-semiclaustral: variante semiclaustral com coleta externa e orçamento conservativo. Cronologia real continua dependente de calibração; não há isolamento térmico ou de umidade do ar calibrado.
+- [x] 10C entregue em 0.23.0, PR [#26](https://github.com/albreis/viveiro/pull/26) integrado à main: variante semiclaustral com coleta externa e orçamento conservativo. Cronologia real continua dependente de calibração; não há isolamento térmico ou de umidade do ar calibrado.
 - [x] 11A implementada na branch codex/maturacao-e-estacoes, versão 0.21.0: 199/199 testes, build e QA aprovados. Publicada no mesmo Site privado, PR [#24](https://github.com/albreis/viveiro/pull/24); ver docs/maturacao.md. Próximo item: 11B, diapausa e casulos.
 
 - Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
@@ -476,24 +476,26 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 Pesos em universidades: rigor e transparência 20%, reprodutibilidade 15%, validação e literatura 15%, aluno estende o modelo 15%, acesso e custo 10%, engajamento visual 10%, material didático e comunidade 15%. Pesos em escolas: engajamento visual 20%, facilidade de uso 20%, material didático 20%, acesso e hardware 15%, rigor conceitual 15%, português 10%.
 
-As etapas 10C–14 aprofundam o modelo, que já é o ponto forte. As maiores lacunas são validação, extensibilidade e material didático. Por isso P0 e P1 não esperam o fim das etapas 12–14; apenas P3 depende delas.
+As etapas 10C–14 aprofundam o modelo, que já é o ponto forte. As maiores lacunas são validação, extensibilidade e material didático. Conforme a orientação mais recente do usuário, P0–P4 serão executados depois das pendências anteriores 12–14 e da revisão do núcleo. As dependências técnicas entre os novos itens continuam registradas abaixo.
 
 ### Ordem
 
-1. P0 — projeto público e reutilizável.
-2. P1 — modo escola. Concluído P1, o Viveiro passa o PhET em escolas.
-3. Etapas 10C, 12, 13 e 14 deste cronograma, em paralelo a P1 e P2.
+1. Concluir etapas 12, 13 e 14 e revisar o núcleo. A 10C já foi entregue e integrada.
+2. P0 — projeto reutilizável, com P0.2 já concluído.
+3. P1 — modo escola.
 4. P2 — ferramenta de pesquisa.
-5. P3 — validação científica. Depende de P2 e das etapas 13 e 14.
-6. P4 — comunidade, contínua a partir de P1.
+5. P3 — validação científica, com dados e revisões externas.
+6. P4 — comunidade, após o início da fase educacional.
 7. P5 — clima real da localização do usuário, por último.
+
+Esta ordem substitui a proposta anterior de executar P0/P1 em paralelo às etapas 12–14. Rankings continuam sendo projeções editoriais; a entrega de itens não comprova superioridade sobre concorrentes.
 
 Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em ordem de dependência, testes do modelo, verificação no navegador, tag e publicação.
 
 ### P0. Projeto público e reutilizável
 
 - [ ] P0.1 Licenças: LICENSE aprovada pela OSI para o código (MIT ou Apache-2.0) e CC BY 4.0 para docs e imagens; campo license no package.json. Aceite: licença visível no GitHub e explicada no README.
-- [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Falta a tag v0.23.0.
+- [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [ ] P0.3 Site público e estável (por exemplo GitHub Pages ou Cloudflare Pages), com URL por tag. O Site privado continua para testes. Aceite: abre sem login e mostra a versão.
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
 
@@ -509,7 +511,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 
 ### Etapas do cronograma que entram no plano
 
-- [ ] 10C: concluir o PR #26, atualizar a situação desta etapa na tabela inicial, publicar e integrar.
+- [x] 10C: PR #26 integrado; 0.23.0 publicada no Site privado, tag e situação atualizadas.
 - [ ] 12: seleção local do microclima e da câmara, somente por sensores locais. Aceite adicional: experimento de aula pronto.
 - [ ] 13: espermateca, fertilidade e longevidade. Pré-requisito de P3.2.
 - [ ] 14: escala de tempo biológico e execução longa. Pré-requisito de P3.2 e P3.3; reaproveitar a linha de comando de P2.2.
@@ -558,7 +560,7 @@ Modelo local avaliado em novembro de 2026, num VPS de 8 vCPUs AMD EPYC (AVX-512)
 
 ### Prioridade com pouco tempo
 
-P0.1–P0.3, depois P1.1, P1.3 e P1.4, e a conclusão da 10C. As etapas 12–14 seguem no ritmo atual, desde que terminem antes de P3.
+Concluir primeiro 12–14, conforme orientação atual do usuário. Depois priorizar P0.1–P0.3, P1.1, P1.3 e P1.4. A 10C está entregue; P3 depende de dados externos e das ferramentas de pesquisa.
 
 ### P5. Clima real da localização do usuário — por último
 
