@@ -193,3 +193,11 @@ automaticamente.
 - Sete testes genéticos aprovados; regressões completas e revisão visual em andamento.
 - Não conclui a etapa 5: voo nupcial e fundação orgânica continuam em 5B.
 - Retomada horária nesta conversa configurada no app; checkpoint em docs/CONTINUAR.md.
+
+### Regressões complementares da 5A
+
+- Entrada no poço segue a borda real mesmo quando a velocidade projetada é pequena.
+- Progresso físico detecta oscilação que a troca de células não revela.
+- Uma escavadora retorna ao ponto físico de trabalho antes de declarar chegada.
+- Mordidas e apoio são acoplados por limite de avanço por frente e tick.
+- 20 casos dirigidos aprovados; suíte completa novamente em execução.

@@ -21,6 +21,7 @@ export interface DigProject {
   excavated: number;
   remainingSegments?: number;
   heading?: Vec3;
+  lastWorkedTick?: number;
 }
 export interface SoilPile extends Vec3 {
   id: number;

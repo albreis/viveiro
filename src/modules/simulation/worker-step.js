@@ -1,3 +1,4 @@
+import { recoverStall } from "../navigation/stall-recovery.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import { chooseForagingHeading } from "../chemistry/forage-heading.ts";
 import { depositPheromone } from "../chemistry/reaction-diffusion.ts";
@@ -41,6 +42,7 @@ export function updateWorkers(world, suitability) {
       ant.deathCause = ant.energy <= 0 ? "starvation" : "age";
       continue;
     }
+    if (recoverStall(world, ant)) continue;
     if (ant.soilTask && updateSoilWorker(world, ant)) continue;
     if (updateColonyWorker(world, ant)) continue;
     if (updateSoilWorker(world, ant)) continue;

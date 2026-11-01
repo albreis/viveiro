@@ -1,3 +1,4 @@
+import { approachDigFace } from "./approach.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
 import { proposeDig } from "./projects.ts";
@@ -67,6 +68,8 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     }
   }
   const task = ant.soilTask;
+  if (task.phase === "dig" && settleSupport(world, ant, ant.speed * 0.85))
+    return true;
   if (
     (ant.y || 0) >= -0.04 &&
     ant.node != null &&
@@ -192,12 +195,15 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     distance3({ x: ant.x, y: ant.y || 0, z: ant.z }, front) >
     Math.max(0.46, world.nest.nodes[project.from].r + 0.18)
   ) {
-    ant.route = [project.front];
-    world.moveInNest(ant);
+    approachDigFace(world, ant, project);
     return true;
   }
   ant.state = "Escavando a frente do túnel";
-  if (++task.digTicks % 4 === 0) digBite(world, ant, project);
+  if (++task.digTicks % 4 === 0 && project.lastWorkedTick !== world.tick) {
+    project.lastWorkedTick = world.tick;
+    digBite(world, ant, project);
+    settleSupport(world, ant, ant.speed * 0.85);
+  }
   if ((ant.carryingSoil || 0) >= CAPACITY) beginSoilHaul(world, ant);
   return true;
 }

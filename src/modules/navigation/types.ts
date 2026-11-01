@@ -5,6 +5,10 @@ export interface Vec3 {
 }
 
 export interface NavigationState {
+  progressAnchor?: Vec3;
+  progressSince?: number;
+  escapeDirection?: Vec3;
+  escapeUntil?: number;
   velocity: Vec3;
   contactTicks: number;
   stagnantTicks: number;

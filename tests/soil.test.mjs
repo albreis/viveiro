@@ -185,3 +185,38 @@ test("a detour ending at another entrance does not complete an excavation return
   );
   assert.notEqual(ant.route[0], project.front);
 });
+
+test("a digger with an advanced logical node walks its body to the workface before excavating", () => {
+  const w = new World("workface-return");
+  w.ants = [];
+  w.brood = [];
+  w.predators = [];
+  w.food = 100;
+  const project = proposeDig(w, 2);
+  assert.ok(project);
+  const from = w.nest.nodes[2],
+    to = w.nest.nodes[1],
+    center = lerp(from, to, 0.5);
+  const footing = tunnelFooting(w.nest, center, from, to, Math.PI);
+  const ant = w.makeAnt("worker", footing.x, footing.z);
+  Object.assign(ant, footing, {
+    node: project.front,
+    route: [],
+    tunnelCenter: { ...w.nest.nodes[project.front] },
+    tunnelY: w.nest.nodes[project.front].y,
+    soilTask: { phase: "dig", projectId: project.id, digTicks: 0 },
+  });
+  w.ants = [ant];
+  for (let i = 0; i < 600 && w.soil.removed === 0; i++) {
+    const old = { x: ant.x, y: ant.y, z: ant.z };
+    w.step();
+    assert.ok(
+      Math.hypot(ant.x - old.x, ant.y - old.y, ant.z - old.z) <=
+        ant.speed * 1.2 + 0.002,
+    );
+  }
+  assert.ok(
+    w.soil.removed > 0,
+    "a logical self-route must not leave the digger motionless",
+  );
+});

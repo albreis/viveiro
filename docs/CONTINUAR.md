@@ -56,3 +56,16 @@ aprovado. A versão de trabalho é 0.5.0; ainda não foi publicada. Próximo pas
 aguardar regressão completa, corrigir falhas reais, conferir o dev no navegador,
 abrir PR #7 sobre codex/terrario-procedural e publicar só depois da validação.
 Usar gravações atômicas já formatadas para evitar cache vazio do Vite.
+
+## Validação retomada em 01/11/2026
+
+A suíte inicial de 55 casos aprovou 54 e encontrou estagnação em uma entrada.
+Foram corrigidos: aproximação apoiada da borda do poço em baixa velocidade,
+recuperação por progresso físico e chegada real ao ponto de escavação. A última
+impedia escavar quando o nó lógico já era a frente, mas o corpo estava longe.
+O avanço por mordida foi limitado e uma frente só avança uma vez por tick,
+para o apoio dos demais agentes acompanhar a alteração da superfície.
+20 regressões dirigidas passaram: 30 saídas reais, maior estagnação de 113 ticks,
+gap de apoio máximo 0,0105 e deslocamento limitado por velocidade. Há dois
+novos casos específicos. A próxima ação é concluir a suíte completa de 57 casos
+e o build, salvar o resultado, abrir o PR genético e publicar a 0.5.0.

@@ -31,7 +31,18 @@ export function chooseSupportedStep(
   const handedness = ant.id % 2 ? 1 : -1;
   let best: ReturnType<typeof stepOnSupport> | null = null,
     bestScore = -Infinity;
-  for (const turn of [0, 0.45, -0.45, 0.9, -0.9, 1.4, -1.4, 2.1, -2.1]) {
+  for (const turn of [
+    0,
+    0.45,
+    -0.45,
+    0.9,
+    -0.9,
+    1.4,
+    -1.4,
+    2.1,
+    -2.1,
+    Math.PI,
+  ]) {
     const direction = add(
       scale(forward, Math.cos(turn)),
       scale(side, Math.sin(turn) * handedness),
