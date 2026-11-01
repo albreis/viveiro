@@ -1,3 +1,4 @@
+import { installClimateControls } from "./climate-status.ts";
 import { installGranularControls } from "./granular-controls.ts";
 import { presentFamily } from "../modules/colonies/presentation.ts";
 import { AntCameraControls } from "./AntCameraControls.ts";
@@ -262,6 +263,7 @@ $("focus-ecology").onclick = () => {
   $("viewport").scrollIntoView({ block: "center", behavior: "smooth" });
 };
 installGranularControls(intervention);
+installClimateControls(intervention);
 $("disturb").onclick = () => {
   intervention("collapse");
   toast("Observe a terra solta e o trabalho de recuperação.");

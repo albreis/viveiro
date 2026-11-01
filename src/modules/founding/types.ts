@@ -32,7 +32,13 @@ export interface FoundingState {
 export interface FoundingWorld extends ColonyWorld {
   founding?: FoundingState;
   landscape: import("../landscape/types.ts").Landscape;
-  params: { humidity: number; light: number };
+  params: {
+    humidity: number;
+    light: number;
+    temperatureC?: number;
+    reposeAngle?: number;
+    soilWaterInitial?: number;
+  };
 }
 export const isClaustral = (world: { founding?: FoundingState }) =>
   !!world.founding && !["established", "failed"].includes(world.founding.phase);

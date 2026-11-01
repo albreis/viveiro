@@ -4,17 +4,17 @@ Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação                         |
-| ----- | -------------------------------------------------------------------- | -------------------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1                |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                     |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado           |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado           |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado           |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado           |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado           |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A implementada; 7B/7C pendentes |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                        |
+| Etapa | Entrega                                                              | Situação                                        |
+| ----- | -------------------------------------------------------------------- | ----------------------------------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1                               |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                                    |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado                          |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado                          |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado                          |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado                          |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado                          |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A/7B1 implementadas; gases/estrutura pendentes |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                                       |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -276,6 +276,17 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Limites em docs/granular.md: porções agregadas, solo compacto implícito, depósitos visuais, sem cadeias de força ou soterramento.
 - Pendente 7B: umidade espacial, capilaridade, temperatura, O2/CO2, ventilação e respostas biológicas.
 - Pendente 7C: suporte estrutural local acoplado à escavação; calibração continua dependendo de dados externos.
+
+### Etapa 7B1 — água e calor espaciais (0.11.0)
+
+- Branch codex/agua-e-calor, base codex/solo-granular.
+- Grade 3D sob o relevo, saturação dos poros separada da umidade relativa do ar.
+- Redistribuição capilar reduzida, drenagem, infiltração, lagos, evaporação e captação vegetal com balanços.
+- Condução térmica, fronteiras e referência de temperatura do ar independente da luz.
+- Resposta local de plantas/materiais, leituras da formiga e mapas em corte de água/calor.
+- Estado compartilhado por colônias e snapshots reproduzíveis; 111 testes completos aprovados e TypeScript/Vite aprovados.
+- Modelo exploratório e limitações em docs/agua-e-calor.md; sem inundação, gelo ou solução completa de Richards.
+- Pendente 7B2: gases, ventilação e respostas biológicas; 7C: acoplamento estrutural do solo. Etapas 9–14 preservadas ao final.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 

@@ -4,6 +4,7 @@ export const ownerWorld = (world: object, id: number) =>
   owners.get(world)?.get(id);
 /** Shared habitat; food, brood, genome, RNG and health remain in each colony's own state. */
 export function bindHabitat(root: FamilyWorld, child: FamilyWorld) {
+  child.microclimate = root.microclimate;
   child.ecology = root.ecology;
   child.socialChemistry = root.socialChemistry;
   child.nest = root.nest;

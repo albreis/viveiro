@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.10.0</span
+        <span class="prototype">PROTÓTIPO 0.11.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -47,7 +47,7 @@
             <p class="muted small">Pequenas mudanças, novos caminhos.</p>
             <div class="slider-block">
               <label for="humidity"
-                ><span>◉ &nbsp; Umidade</span
+                ><span>◉ &nbsp; Umidade do ar</span
                 ><output id="humidity-value">58%</output></label
               ><input id="humidity" type="range" min="0" max="100" value="58" />
               <div class="range-labels">
@@ -90,6 +90,19 @@
               <p class="field-note">
                 Maior ângulo: menos deslizamento. Modelo exploratório.
               </p>
+            </div>
+            <div class="slider-block">
+              <label for="temperature"
+                ><span>☷ &nbsp; Temperatura do ar</span
+                ><output id="temperature-value">24 °C</output></label
+              ><input
+                id="temperature"
+                type="range"
+                min="5"
+                max="45"
+                value="24"
+              />
+              <p class="field-note">Referência térmica independente da luz.</p>
             </div>
             <button id="rain" class="rain-button">
               <span>☂</span> Fazer chover <span>+12% umidade</span>
@@ -195,7 +208,8 @@
                 <span class="eyebrow">NA PERSPECTIVA DE UMA FORMIGA</span
                 ><span id="ant-state"
                   >Escolha uma habitante para acompanhar.</span
-                ><span id="ant-genome">Herança não registrada</span>
+                ><span id="ant-genome">Herança não registrada</span
+                ><span id="ant-climate"></span>
               </div>
               <select
                 id="ant-select"
@@ -344,6 +358,39 @@
             <button id="focus-ecology" class="text-button" disabled>
               Observar relações de perto
             </button>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>ÁGUA E CALOR NO SOLO</span><span>◉</span>
+            </div>
+            <p id="climate-status"></p>
+            <div class="climate-tabs">
+              <button
+                class="text-button"
+                data-climate-map="water"
+                aria-pressed="true"
+              >
+                Ver água</button
+              ><button
+                class="text-button"
+                data-climate-map="heat"
+                aria-pressed="false"
+              >
+                Ver calor
+              </button>
+            </div>
+            <canvas
+              id="climate-map"
+              width="280"
+              height="112"
+              role="img"
+              aria-label="Corte central do solo"
+            ></canvas>
+            <p id="climate-map-caption" class="field-note"></p>
+            <p>
+              Água nos poros e umidade do ar são medidas diferentes. Modelo
+              espacial exploratório.
+            </p>
           </section>
           <section class="panel chart-panel">
             <div class="section-label">

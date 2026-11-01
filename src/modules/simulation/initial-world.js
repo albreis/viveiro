@@ -17,6 +17,7 @@ export function initializeWorld(world, seed, parameters, options = {}) {
     light: 72,
     randomness: 28,
     reposeAngle: 36,
+    temperatureC: 24,
     ...parameters,
   };
   Object.assign(world, {
