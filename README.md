@@ -76,3 +76,5 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 - [Gases e ventilação](docs/gases-e-ventilacao.md): rede de fluxo, respiração, balanços e sensores locais exploratórios.
 
 - [Suporte estrutural](docs/suporte-estrutural.md): amostras do teto, carga/capacidade, fissuras e desprendimento exploratórios.
+
+- [Aprendizado local](docs/aprendizado-local.md): SARSA neural opcional, cérebros individuais e avaliação contra ACO.

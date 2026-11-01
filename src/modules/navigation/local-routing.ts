@@ -1,3 +1,4 @@
+import { chooseLearnedExit } from "../learning/live.ts";
 import { adjacentAirComfort } from "../ventilation/sensing.ts";
 import type { AgentState, NavigationWorld } from "./types.ts";
 import { knownRoute } from "./route-memory.ts";
@@ -35,6 +36,7 @@ export function continueLocalRoute(
     blocked,
   );
   if (
+    !world.learning?.enabled &&
     known.length &&
     adjacentAirComfort(world, ant, known[0]) > 0.8 &&
     world.range(0, 1) > 0.04
@@ -76,7 +78,10 @@ export function continueLocalRoute(
           : node.type === intent.tag && (node.colonyId || 1) === intent.owner),
     };
   });
-  const choice = chooseLocalExit(options, () => world.range(0, 1));
+  const random = () => world.range(0, 1);
+  const choice = world.learning?.enabled
+    ? chooseLearnedExit(world, ant, options, random)
+    : chooseLocalExit(options, random);
   ant.route = choice === null ? [] : [choice];
   return choice !== null;
 }

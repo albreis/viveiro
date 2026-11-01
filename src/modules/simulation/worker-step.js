@@ -1,3 +1,4 @@
+import { learningTick } from "../learning/live.ts";
 import { airEnergyCost } from "../ventilation/sensing.ts";
 import { visitMimic } from "../ecology/mimic-worker.ts";
 import { visitAphids } from "../ecology/aphid-worker.ts";
@@ -60,6 +61,7 @@ export function updateWorkers(world, suitability) {
       }
       continue;
     }
+    learningTick(world, ant);
     ant.energy -=
       (0.025 + (1 - suitability) * 0.015) * (ant.metabolicCost ?? 1) +
       airEnergyCost(world, ant);

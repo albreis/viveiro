@@ -164,6 +164,13 @@ export class AntCameraControls {
     const gasLabel = document.getElementById("ant-gas");
     if (gasLabel)
       gasLabel.textContent = ant ? localGasLabel(selectedWorld, ant) : "";
+    const cognition = document.getElementById("ant-learning");
+    if (cognition)
+      cognition.textContent = selectedWorld.learning?.enabled
+        ? ant?.learningBrain
+          ? "Cérebro individual · " + (ant.learningUpdates ?? 0) + " ajuste(s)"
+          : "Aprendizado ativo · aguardando uma decisão de rota"
+        : "Navegação ACO";
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
     follow.hidden = !!scene?.followId;

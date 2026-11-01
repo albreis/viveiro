@@ -1,3 +1,4 @@
+import { applyLearningIntervention } from "../learning/intervention.ts";
 import { arriveMimic } from "../ecology/mimic-arrival.ts";
 import { applyOdorPulse } from "../social-chemistry/intervention.ts";
 import { arriveIntruder } from "../social-chemistry/intrusion-arrival.ts";
@@ -126,6 +127,8 @@ export class World {
     return true;
   }
   intervene(type, x = 0, z = 0, value) {
+    const learningAction = applyLearningIntervention(this, type, value);
+    if (learningAction !== null) return learningAction;
     x = clamp(Number(x) || 0, -BOUNDS.x, BOUNDS.x);
     z = clamp(Number(z) || 0, -BOUNDS.z, BOUNDS.z);
     if (type === "scent") return applyOdorPulse(this, x, z);

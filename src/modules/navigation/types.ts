@@ -23,6 +23,9 @@ export interface NavigationState {
 }
 
 export interface AgentState {
+  learningUpdates?: number;
+  learningBrain?: import("../learning/types.ts").TinyBrain;
+  learningTrace?: import("../learning/types.ts").LearningTrace;
   id: number;
   health?: number;
   bodyOdor?: number[];
@@ -111,6 +114,7 @@ export interface NestState {
 }
 
 export interface NavigationWorld {
+  learning?: import("../learning/types.ts").LearningState;
   neighborAgents?: AgentState[];
   landscape?: import("../landscape/types.ts").Landscape;
   tick: number;
