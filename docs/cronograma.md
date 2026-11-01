@@ -394,7 +394,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade) e 10B (tampão, isola
 - 10A implementada na branch codex/reservas-maternas, versão 0.19.0: 183/183 testes completos, 14 dirigidos finais, TypeScript/Vite e QA no navegador aprovados. Publicada no mesmo Site privado; PR [#22](https://github.com/albreis/viveiro/pull/22). Ver docs/reservas-maternas.md.
 - 10B publicada na versão 0.20.0, branch codex/selamento-fundacao e PR [#23](https://github.com/albreis/viveiro/pull/23): tampão físico conservativo, gases porosos, inspeção e reabertura pelas naníticas. Regressão 190/190 e 16 dirigidos finais aprovados. Ver docs/selamento.md.
 - Cronologia real e fundação semiclaustral continuam pendentes; não há isolamento térmico ou de umidade do ar calibrado.
-- 11A implementada na branch codex/maturacao-e-estacoes, versão 0.21.0: 199/199 testes, build e QA aprovados. PR e publicação em finalização; ver docs/maturacao.md. Próximo item: 11B, diapausa e casulos.
+- 11A implementada na branch codex/maturacao-e-estacoes, versão 0.21.0: 199/199 testes, build e QA aprovados. Publicada no mesmo Site privado, PR [#24](https://github.com/albreis/viveiro/pull/24); ver docs/maturacao.md. Próximo item: 11B, diapausa e casulos.
 
 - Estender a máquina de estados existente com tampão, isolamento e reabertura pelas naníticas.
 - Cronologia dependente de esforço, geometria, temperatura, condição e reservas; término físico da obra.

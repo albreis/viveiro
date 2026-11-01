@@ -2,9 +2,9 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Automação horária autorizada; não iniciar executor concorrente nem contornar cotas. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo em TypeScript e módulos pequenos.
 
-## Em finalização — etapa 11A (0.21.0)
+## Última entrega publicada — etapa 11A (0.21.0)
 
-Branch codex/maturacao-e-estacoes; base codex/selamento-fundacao (0cb17c1, PR #23). Núcleo enviado em 763ec4e; ajustes finais de catálogo e docs ainda devem ser commitados. PR próprio ainda não existe (consulta retornou vazio). Não duplicar PR #24 sobre #23.
+Branch codex/maturacao-e-estacoes; base codex/selamento-fundacao (0cb17c1, PR #23). Publicada a fonte 77508511daa910f53c0465e5cce52db4cfa3f1c9, tag v0.21.0. PR #24 aberto sobre #23. Deploy appgdep_6ae790ce6be48191bdfcc5addb611f64 concluído em 01/11/2026, 19:19:54 UTC. Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_420e33161dd8819190a6c31da10ca2c5. Mesmo Site privado, somente proprietário e zero externos. Arquivo G:\Projetos\viveiro-0.21.0.tar.gz.
 
 - Módulos TypeScript pequenos em src/modules/development, app/development-status e biology/development-records; nenhuma dependência nova. Modelo, coeficientes e limites em docs/maturacao.md.
 - Revisão 4 habilita curvas locais, água nos poros como proxy, alimento parcial, variação individual/genética, estresse/perdas e registro persistente. Revisões 1–3 e replay preservados. 100 passos/dia ainda demonstrativos; nenhuma faixa da outra IA foi instalada como medição.
@@ -16,9 +16,7 @@ Branch codex/maturacao-e-estacoes; base codex/selamento-fundacao (0cb17c1, PR #2
 
 ### Próximo passo concreto
 
-1. Confirmar restauração do original na UI e atualizar docs/maturacao.md e este checkpoint. Commit/push dos ajustes, abrir PR #24 sobre #23 se ausente.
-2. Publicar o HEAD exato no mesmo Site privado, arquivo G:\Projetos\viveiro-0.21.0.tar.gz. Credenciais só em memória/stdin. Registrar fonte/deploy/tag e enviar branch e tag específicas.
-3. Criar branch codex/ própria para 11B: diapausa com memória (não confundir com interrupção instantânea por frio), retomada gradual e casulos por perfil. Fundação semiclaustral e etapas 12–14 continuam pendentes. Não contornar limites ou iniciar outro executor.
+Criar branch codex/ própria para 11B: diapausa com memória (não confundir com interrupção instantânea por frio), retomada gradual e casulos por perfil. Fundação semiclaustral e etapas 12–14 continuam pendentes. Não contornar limites ou iniciar outro executor.
 
 ## Última entrega publicada — etapa 10B (0.20.0)
 
