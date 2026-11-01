@@ -45,6 +45,12 @@ export class CheckpointStore {
     }
     return result;
   }
+  protectWrites() {
+    this.blocked = true;
+  }
+  isProtected() {
+    return this.blocked;
+  }
   allowWrites() {
     this.blocked = false;
   }

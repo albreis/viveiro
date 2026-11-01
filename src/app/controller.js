@@ -4,7 +4,16 @@ import { installClimateControls } from "./climate-status.ts";
 import { installGranularControls } from "./granular-controls.ts";
 import { presentFamily } from "../modules/colonies/presentation.ts";
 import { AntCameraControls } from "./AntCameraControls.ts";
-import { readState, writeState } from "../services/state-store.ts";
+import {
+  readState,
+  writeState,
+  emergencyState,
+  storageNotice,
+  protectWrites,
+  checkpointStore,
+} from "../services/session-store.ts";
+import { captureSession, restoreSessionModels } from "./session-models.ts";
+import { installCheckpointControls } from "./checkpoint-controls.ts";
 import { renderStatus } from "./status-view.js";
 import { drawChart as renderChart } from "./chart-view.js";
 import { World, TICKS_PER_DAY, hashSeed } from "../modules/simulation/world.js";
@@ -36,51 +45,18 @@ let forecastPending = false,
 const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
-const antCamera = new AntCameraControls({
-  getScene: () => scene,
-  getWorld: () => presentFamily(active()),
-  getScenario: () => scenario,
-  getRunning: () => running,
-  toast,
-});
+let antCamera;
+
 function toast(message) {
   $("toast").textContent = message;
   $("toast").hidden = false;
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => ($("toast").hidden = true), 3800);
 }
-function load() {
-  try {
-    const saved = readState();
-    if (
-      saved?.version === 1 &&
-      saved.world?.seed &&
-      Array.isArray(saved.world.ants) &&
-      saved.world.ants.length <= 450
-    ) {
-      world = World.restore(saved.world);
-      initial = {
-        ...saved.initial,
-        startMode:
-          saved.initial?.startMode ||
-          (saved.world.founding ? "founding" : "established"),
-      };
-      interventions = saved.interventions || [];
-      comparison = saved.comparison ? World.restore(saved.comparison) : null;
-      scenario = saved.scenario === "b" && comparison ? "b" : "a";
-      replaying = !!saved.replaying;
-      replayIndex = saved.replayIndex || 0;
-      running = saved.running !== false;
-      return;
-    }
-  } catch {}
-  world = new World(initial.seed, initial.params);
-}
-function save() {
-  const ok = writeState({
-    version: 1,
-    world: world.snapshot(),
-    comparison: comparison?.snapshot(),
+function getSession() {
+  return captureSession({
+    world,
+    comparison,
     scenario,
     initial,
     interventions,
@@ -88,9 +64,70 @@ function save() {
     replayIndex,
     running,
   });
-  $("save-status").textContent = ok
-    ? "Progresso salvo neste navegador"
-    : "Armazenamento indispon�vel � use Exportar dados";
+}
+function applySavedSession(value, paused = false) {
+  const restored = restoreSessionModels(value),
+    next = restored.session;
+  const nextActive =
+    next.scenario === "b" && restored.comparison
+      ? restored.comparison
+      : restored.world;
+  const nextScene = scene
+    ? new Terrarium($("viewport"), presentFamily(nextActive), intervention)
+    : null;
+  const previousScene = scene;
+  world = restored.world;
+  comparison = restored.comparison;
+  initial = restored.initial;
+  scenario = next.scenario;
+  interventions = next.interventions;
+  replaying = next.replaying;
+  replayIndex = next.replayIndex;
+  running = paused ? false : next.running;
+  accumulator = 0;
+  forecastId++;
+  forecastPending = false;
+  forecastCache = null;
+  lastForecast = -1000;
+  if (nextScene) {
+    scene = nextScene;
+    previousScene?.dispose();
+    scene.showTrails = $("trails").checked;
+    configureAntCamera();
+    syncControls();
+    updateUi();
+  }
+}
+async function load() {
+  try {
+    const saved = await readState();
+    if (saved) {
+      applySavedSession(saved);
+      return;
+    }
+  } catch {
+    protectWrites(
+      "O save não pôde ser reconstruído. A gravação ficou protegida; importe um experimento ou inicie outro terrário.",
+    );
+  }
+  world = new World(initial.seed, initial.params);
+  if (checkpointStore.isProtected()) running = false;
+}
+let saveGeneration = 0;
+let lastCheckpointId;
+async function save() {
+  const generation = ++saveGeneration;
+  const result = await writeState(getSession());
+  if (generation !== saveGeneration || result.superseded) return;
+  if (result.ok && result.id !== lastCheckpointId) {
+    lastCheckpointId = result.id;
+    document.dispatchEvent(new Event("viveiro:saved"));
+  }
+  $("save-status").textContent =
+    result.message ||
+    (result.ok
+      ? "Progresso salvo neste navegador"
+      : "Não foi possível salvar — exporte o experimento em JSON");
 }
 function intervention(type, x = 0, z = 0, value) {
   if (replaying) {
@@ -110,6 +147,7 @@ function intervention(type, x = 0, z = 0, value) {
   save();
 }
 function reset(seed, params, replay = false) {
+  checkpointStore.allowWrites();
   world = new World(seed, params, {
     founding: !replay || initial.startMode !== "established",
   });
@@ -215,7 +253,15 @@ function handleError(error) {
     "Use um navegador com WebGL e aceleração de hardware ativada.";
   loading.append(title, message);
 }
-load();
+await load();
+antCamera = new AntCameraControls({
+  getScene: () => scene,
+  getWorld: () => presentFamily(active()),
+  getScenario: () => scenario,
+  getRunning: () => running,
+  toast,
+});
+if (storageNotice()) toast(storageNotice());
 try {
   scene = new Terrarium($("viewport"), presentFamily(active()), intervention);
   configureAntCamera();
@@ -265,6 +311,16 @@ $("focus-ecology").onclick = () => {
   $("viewport").scrollIntoView({ block: "center", behavior: "smooth" });
 };
 installGranularControls(intervention);
+installCheckpointControls({
+  capture: getSession,
+  apply: (value) => applySavedSession(value, true),
+  pause: () => {
+    running = false;
+    accumulator = 0;
+    syncControls();
+  },
+  save,
+});
 installLearningControls(intervention, active);
 installGasControls(intervention);
 installClimateControls(intervention);
@@ -483,9 +539,12 @@ function frame(now) {
 document.addEventListener("visibilitychange", () => {
   previous = performance.now();
   accumulator = 0;
-  if (document.hidden) save();
+  if (document.hidden) {
+    emergencyState(getSession());
+    void save();
+  }
 });
-window.addEventListener("pagehide", save);
+window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
 syncControls();
 updateUi();

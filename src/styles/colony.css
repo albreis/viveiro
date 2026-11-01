@@ -156,3 +156,26 @@ label[for="learning-mode"] {
   font: inherit;
   font-size: 11px;
 }
+
+label[for="checkpoint-name"],
+label[for="checkpoint-list"] {
+  display: block;
+  margin: 14px 0 7px;
+  font-size: 11px;
+  color: #617057;
+}
+#checkpoint-name,
+#checkpoint-list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #d8dfc9;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 11px;
+}
+#checkpoint-list {
+  text-overflow: ellipsis;
+}

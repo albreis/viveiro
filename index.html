@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.14.0</span
+        <span class="prototype">PROTÓTIPO 0.15.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -452,6 +452,41 @@
                 Aplicar política
               </button>
             </div>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>EXPERIMENTOS SALVOS</span><span>▣</span>
+            </div>
+            <p id="checkpoint-status" role="status" aria-live="polite">
+              Checkpoints ficam neste navegador. Exportar dados cria uma cópia
+              em JSON.
+            </p>
+            <label for="checkpoint-name">Nome do checkpoint</label
+            ><input
+              id="checkpoint-name"
+              type="text"
+              maxlength="60"
+              placeholder="Antes da chuva"
+            /><button id="create-checkpoint" class="text-button">
+              Criar checkpoint</button
+            ><label for="checkpoint-list">Checkpoint para recuperar</label
+            ><select id="checkpoint-list"></select
+            ><button id="restore-checkpoint" class="text-button" disabled>
+              Restaurar checkpoint</button
+            ><button id="import-checkpoint" class="text-button">
+              Importar experimento</button
+            ><input
+              id="import-experiment"
+              type="file"
+              accept=".json,application/json"
+              aria-label="Arquivo do experimento"
+              hidden
+            />
+            <p class="field-note">
+              Antes de recuperar, o estado atual ganha um checkpoint nomeado.
+              Automáticos: 8 recentes. Nomeados: preservados. Datas em São
+              Paulo.
+            </p>
           </section>
           <section class="panel chart-panel">
             <div class="section-label">
