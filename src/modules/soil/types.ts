@@ -1,3 +1,4 @@
+import type { GranularBody, GranularState } from "../granular/types.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "../navigation/types.ts";
 
 export interface SoilTask {
@@ -23,12 +24,9 @@ export interface DigProject {
   heading?: Vec3;
   lastWorkedTick?: number;
 }
-export interface SoilPile extends Vec3 {
-  id: number;
-  mass: number;
-  edge?: number;
-}
+export interface SoilPile extends GranularBody {}
 export interface SoilState {
+  granular?: GranularState;
   version: number;
   removed: number;
   eroded: number;
@@ -43,7 +41,7 @@ export interface SoilWorld extends NavigationWorld {
   colonies?: SoilWorld[];
   ants: SoilAgent[];
   soil: SoilState;
-  params: { humidity: number };
+  params: { humidity: number; reposeAngle?: number };
   brood: unknown[];
   random(): number;
   moveInNest(ant: AgentState): void;

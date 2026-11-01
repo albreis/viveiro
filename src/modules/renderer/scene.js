@@ -1,3 +1,4 @@
+import { GranularView } from "./GranularView.ts";
 import { EcologyView } from "./EcologyView.ts";
 import { focusEcology } from "./ecology-focus.ts";
 import { TrailView } from "./TrailView.ts";
@@ -86,6 +87,7 @@ export class Terrarium {
     this.buildGround(world.seed);
     this.soilMesher = new SoilMesher();
     this.soilView = new SoilView(this.scene, LIMIT);
+    this.granularView = new GranularView(this.scene);
     this.colonyView = new ColonyView(this.scene, LIMIT);
     this.antParts = this.buildInsects(LIMIT, false);
     this.predatorParts = this.buildInsects(10, true);

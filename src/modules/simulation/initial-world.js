@@ -12,7 +12,13 @@ import { timberLevel, surfaceHeight } from "../landscape/queries.ts";
 export function initializeWorld(world, seed, parameters, options = {}) {
   world.seed = String(seed);
   world.rng = hashSeed(seed);
-  world.params = { humidity: 58, light: 72, randomness: 28, ...parameters };
+  world.params = {
+    humidity: 58,
+    light: 72,
+    randomness: 28,
+    reposeAngle: 36,
+    ...parameters,
+  };
   Object.assign(world, {
     colonyId: 1,
     colonies: [],

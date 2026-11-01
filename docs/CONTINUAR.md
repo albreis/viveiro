@@ -2,6 +2,16 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
+## Entrega em preparação — 7A
+
+Branch codex/solo-granular, base codex/simbioses-e-mimetismo. Versão 0.10.0 preparada, ainda NÃO publicada. Dinâmica de agregados de terra solta em granular: gravidade, atrito de Coulomb, contato dissipativo e grade espacial. Modelo compacto ainda implícito; depósitos externos visuais. Não é solo inteiro discretizado nem cadeias de força. Controles de repouso da terra, replay, renderização móvel e docs/granular.md implementados.
+
+Seis testes granulares aprovados. O primeiro full teve 102/103: a reparadora perdia apoio ao cair/encolher o agregado e demorava no retorno. Corrigido com settleSupport também na fase repair. O caso agora limpa tudo em 1688 ticks; 14 testes dirigidos de granular/solo/apoio passaram, incluindo nova asserção de apoio durante o reparo. A suíte completa final passou: 103/103 testes em 367449 ms, com concorrência 2. Build TypeScript/Vite final aprovado.
+
+Navegador: seed a preservada, intervenção no dia 171 criou 0,047 u³. Um agregado foi observado em movimento; no dia 172,6 estava acomodado, e uma operária já retirou parte, restando 0,025 u³. Controle alterado para 20°, registrado no replay. IAB local tab 2 pausada, duas colônias e 115 formigas; interior ligado, vista esquerda. Screenshot viveiro-0.10.0-terra.png. Dev G PID 17752.
+
+Próximo passo imediato: coletar suíte completa, retomada por recarga e controle salvos conferidos, sem novos erros após a correção do carregamento parcial HMR; prova do painel em viveiro-0.10.0-bloqueio.png; commit/push restrito da branch, PR #13 se ainda não existir com base codex/simbioses-e-mimetismo, publicar 0.10.0 no Site privado com source helper atual, tag v0.10.0 e registrar IDs. Depois 7B umidade/capilaridade/calor/gases e 7C suporte estrutural.
+
 ## Última entrega publicada
 
 - Branch codex/simbioses-e-mimetismo; base codex/cronograma-biologia-fundacao. Versão 0.9.0.

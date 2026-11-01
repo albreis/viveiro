@@ -68,7 +68,10 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     }
   }
   const task = ant.soilTask;
-  if (task.phase === "dig" && settleSupport(world, ant, ant.speed * 0.85))
+  if (
+    (task.phase === "dig" || task.phase === "repair") &&
+    settleSupport(world, ant, ant.speed * 0.85)
+  )
     return true;
   if (
     (ant.y || 0) >= -0.04 &&

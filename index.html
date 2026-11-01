@@ -20,7 +20,7 @@
       >
       <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
       <div class="top-actions">
-        <span class="prototype">PROTÓTIPO 0.9.0</span
+        <span class="prototype">PROTÓTIPO 0.10.0</span
         ><button id="help" class="text-button">
           <span class="help-circle">?</span> Como funciona
         </button>
@@ -75,6 +75,21 @@
                 value="28"
               />
               <p class="field-note">Variação nas decisões de exploração.</p>
+            </div>
+            <div class="slider-block">
+              <label for="repose-angle"
+                ><span>▱ &nbsp; Repouso da terra</span
+                ><output id="repose-angle-value">36°</output></label
+              ><input
+                id="repose-angle"
+                type="range"
+                min="15"
+                max="55"
+                value="36"
+              />
+              <p class="field-note">
+                Maior ângulo: menos deslizamento. Modelo exploratório.
+              </p>
             </div>
             <button id="rain" class="rain-button">
               <span>☂</span> Fazer chover <span>+12% umidade</span>
@@ -310,6 +325,7 @@
             <p id="soil-status">
               As operárias organizam as frentes de trabalho.
             </p>
+            <p id="granular-status"></p>
             <button id="disturb" class="text-button">
               Abalar uma galeria vazia
             </button>

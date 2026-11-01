@@ -1,3 +1,4 @@
+import { sampleSupport } from "../src/modules/terrain/field.ts";
 import { undergroundEdge, lerp } from "./fixtures/geometry.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -144,6 +145,10 @@ test("a local repair worker clears a collapse through repeated trips to the surf
     assert.ok(
       Math.hypot(ant.x - p.x, ant.y - p.y, ant.z - p.z) <=
         ant.speed * 1.2 + 0.002,
+    );
+    assert.ok(
+      Math.abs(sampleSupport(w.nest, ant).distance - 0.008) < 0.035,
+      "repairer must follow its moving support",
     );
     assert.ok(Math.abs(soilBalance(w).error) < 1e-8);
   }

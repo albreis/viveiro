@@ -1,5 +1,14 @@
 # Versões
 
+## 0.10.0 — Terra solta dinâmica
+
+- Agregados com gravidade, velocidade, contato dissipativo e atrito de Coulomb.
+- Controle experimental do ângulo de repouso, persistência e replay.
+- Queda a partir do teto, apoio no mesmo campo físico e reparo conservativo pelas operárias.
+- Instâncias móveis fora da malha estática; depósitos visuais acompanham a altura real.
+- Testes de inclinação, queda, momento, estabilidade e restauração.
+- Etapa 7 parcial: capilaridade/gases e suporte estrutural continuam em 7B/7C.
+
 ## 0.9.0 — Simbioses e mimetismo
 
 - Pulgões associados a plantas, com custo de seiva, melaço, coleta e perdas contabilizadas.

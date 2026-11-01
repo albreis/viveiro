@@ -1,3 +1,4 @@
+import { renderGranularControls } from "./granular-controls.ts";
 import { renderEcologyStatus } from "./ecology-status.ts";
 import { renderChemicalStatus } from "./chemical-status.ts";
 import { renderFamilyStatus } from "./family-status.ts";
@@ -102,6 +103,7 @@ export function renderStatus(context, updateAntCamera) {
   renderChemicalStatus(w.socialChemistry);
   renderEcologyStatus(w.ecology);
   renderSoilStatus(w);
+  renderGranularControls(w);
   renderColonyStatus(w);
   updateAntCamera(w);
   if (forecastCache && forecastCache.scenario === scenario) {

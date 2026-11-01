@@ -13,6 +13,9 @@ export interface SoilMeshData {
   innerCount: number;
 }
 export function soilMeshData(nest: NestState): SoilMeshData {
+  // Moving aggregates are rendered as instances; their collision still uses the same spherical field.
+  if (nest.rubble?.some((p) => p.mobile))
+    nest = { ...nest, rubble: nest.rubble.filter((p) => !p.mobile) };
   const { walls, top, inner } = polygonize(buildMeshGrid(nest), (v) =>
     projectSoilVertex(nest, v),
   );
