@@ -2,25 +2,23 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Automação horária autorizada; não iniciar executor concorrente nem contornar cotas. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo em TypeScript e módulos pequenos.
 
-## Em andamento — etapa 11A (0.21.0)
+## Em finalização — etapa 11A (0.21.0)
 
-Branch codex/maturacao-e-estacoes, base codex/selamento-fundacao (0cb17c1, PR #23). Núcleo implementado, ainda NÃO publicado nem com PR próprio. GitHub deve receber este WIP e a entrega funcional validada deverá abrir PR sobre #23. 11B diapausa/casulos permanece pendente, assim como 12–14 e calibração externa.
+Branch codex/maturacao-e-estacoes; base codex/selamento-fundacao (0cb17c1, PR #23). Núcleo enviado em 763ec4e; ajustes finais de catálogo e docs ainda devem ser commitados. PR próprio ainda não existe (consulta retornou vazio). Não duplicar PR #24 sobre #23.
 
-- Revisão biológica 4 habilita maturação térmica, reservas e tampão. Revisões 1–3 preservadas. latestProfile agora 4; testes de latest atualizados, casos antigos continuam fixados em suas revisões.
-- src/modules/development: tipos, curvas, sensores, inicialização, avanço e validação. Brood.development persiste variação individual/genética (sem consumir RNG global), estresse, amostras locais e taxa.
-- Curva cardinal demonstrativa 10/25/38 °C, limitada a [0,1]. Água nos poros é proxy explícito, não RH da câmara. Durações 0,5/0,8/0,6 dias DO MODELO; não foram instaladas as faixas da outra IA como dados. 100 passos/dia permanece o relógio acelerado.
-- Larvas usam a fração efetivamente paga; não crescem sem alimento. Estresse sustentado causa perda, resíduo e liberação do portador sem reembolso de comida. Postura desacelera ou cessa conforme conforto térmico local. Mortes e taxas aparecem na UI, cores indicam estresse.
-- Validação de snapshots/JSON exige registros compatíveis para prole nova. AddWaste agora exportada para perdas de crias. Novos coeficientes em biology/development-records.ts, todos aproximações.
-- Fonte qualitativa primária lida: Kipyatkov & Lopatina 2015, doi10.1111/ens.12098, resumo no portal SPbU. Evidencia variação por estágio, táxon e origem; NÃO calibra esta curva ou durações. PDF EJE2002 deu timeout; não afirmar leitura integral. Registro/fonte e docs finais ainda faltam.
-- 19 dirigidos aprovados em 6483 ms: sete de desenvolvimento, cinco de reservas, sete de perfis; sessão 60400 encerrada. Build TypeScript/Vite aprovado: 237 módulos. Integração seed a v4: estabelecida no passo 3310, quatro naníticas, saldo 3,15055, terra −2,44e−15. Não repetir sem mudança relevante.
+- Módulos TypeScript pequenos em src/modules/development, app/development-status e biology/development-records; nenhuma dependência nova. Modelo, coeficientes e limites em docs/maturacao.md.
+- Revisão 4 habilita curvas locais, água nos poros como proxy, alimento parcial, variação individual/genética, estresse/perdas e registro persistente. Revisões 1–3 e replay preservados. 100 passos/dia ainda demonstrativos; nenhuma faixa da outra IA foi instalada como medição.
+- 19 dirigidos aprovados; suíte COMPLETA 199/199 em 268.553,8439 ms, log .runtime/development-suite.log. Sessão 18139 encerrada. TypeScript/Vite final aprovado após ajuste somente de UI (coeficientes pequenos e pontuação). Não há teste pendente.
+- QA TERMICO-QA, preset lab v4: quatro crias em D23,2 com entorno 20,9–21,2 °C. Ar 45 °C não reescreve amostras. Avanço a D24,4: entorno 20,9–21,4 °C, quatro sob estresse local, nenhuma perda; solo até 28,1 °C. Não atribuir o estresse só ao calor. Checkpoint Prole térmica · revisão 4 QA preservado. Recarga e catálogo aprovados; coeficiente 0,0005 confirmado.
+- Original RESTAURADO via checkpoint manual-691625be-84fe-4949-bf1f-68490114e3db: ACK confirmado, D267 / 97 adultos / 14 crias / duas colônias / aprendizado 4719/4607. Seletor do próximo terrário genérico v4; catálogo fechado, em pausa e previsão cancelada. Console final sem erros.
+- Screenshot viveiro-0.21.0-maturacao.png no diretório autorizado de visualizações. IAB local tab 2 mantida; Site tab 1 intocado. Dev G PID 17752 continua ativo.
+- Referência qualitativa primária: Kipyatkov & Lopatina 2015, doi10.1111/ens.12098, resumo lido no portal SPbU; não foram extraídos dados para calibrar a curva. PDF EJE2002 deu timeout; não afirmar leitura integral.
 
 ### Próximo passo concreto
 
-1. Executar/coletar regressão completa em .runtime/development-suite.log (ainda não iniciada neste checkpoint). Esperados 199 casos; não afirmar aprovação antes da saída.
-2. QA no navegador: original atual ainda seed a/D267/97 adultos/14 crias/duas colônias, em pausa. Checkpoint original manual-691625be-84fe-4949-bf1f-68490114e3db intacto. Criar TERMICO-QA com perfil lab v4 ou genérico v4, observar prole/taxas, recarga e catálogo; ao terminar RESTAURAR original e confirmar ACK/4719 escolhas/4607 ajustes.
-3. Finalizar docs/maturacao.md, CHANGELOG, README, cronograma e checkpoint. Commit/push, PR #24 sobre #23 somente se não existir, publicação owner-only 0.21.0, tag/checkpoint; depois branch 11B.
-
-Dev Vite PID 17752, porta 4173 em G. IAB local tab 2 marcado para permanecer; Site tab 1 intocado. Última publicação 0.20.0 abaixo. Nenhum teste paralelo deve ser iniciado se a regressão já estiver ativa.
+1. Confirmar restauração do original na UI e atualizar docs/maturacao.md e este checkpoint. Commit/push dos ajustes, abrir PR #24 sobre #23 se ausente.
+2. Publicar o HEAD exato no mesmo Site privado, arquivo G:\Projetos\viveiro-0.21.0.tar.gz. Credenciais só em memória/stdin. Registrar fonte/deploy/tag e enviar branch e tag específicas.
+3. Criar branch codex/ própria para 11B: diapausa com memória (não confundir com interrupção instantânea por frio), retomada gradual e casulos por perfil. Fundação semiclaustral e etapas 12–14 continuam pendentes. Não contornar limites ou iniciar outro executor.
 
 ## Última entrega publicada — etapa 10B (0.20.0)
 
