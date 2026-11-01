@@ -462,3 +462,99 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 - Checkpoints, migração, recuperação, avanço offline definido e comparação de execuções aceleradas.
 - Execução contínua em servidor é requisito futuro com custo e limites explícitos; o Site atual avança no navegador.
 - Aceite: continuidade entre sessões e resultados equivalentes sob aceleração para ações nos mesmos instantes biológicos.
+
+## Passos futuros para ultrapassar concorrentes
+
+⬜ Planejamento futuro: nenhum passo desta seção foi iniciado. A ordem abaixo é proposta para levar o Viveiro ao primeiro lugar em uso educacional, em escolas e universidades, frente a NetLogo, GAMA, Mesa, PhET, Avida-ED e simuladores comerciais. As notas são avaliações editoriais, não medições; servem para priorizar trabalho, não como afirmação pública de superioridade.
+
+### Situação do ranking
+
+| Contexto      | Líder atual  | Viveiro hoje | Só etapas 10C–14 | Etapas 10C–14 e P0–P2 | Após P3   |
+| ------------- | ------------ | ------------ | ---------------- | --------------------- | --------- |
+| Universidades | NetLogo 8,50 | 6,05 (6º)    | 6,40 (5º)        | 8,30 (2º)             | 8,90 (1º) |
+| Escolas       | PhET 8,70    | 6,70 (2º)    | 6,85 (2º)        | 9,10 (1º)             | 9,25 (1º) |
+
+Pesos em universidades: rigor e transparência 20%, reprodutibilidade 15%, validação e literatura 15%, aluno estende o modelo 15%, acesso e custo 10%, engajamento visual 10%, material didático e comunidade 15%. Pesos em escolas: engajamento visual 20%, facilidade de uso 20%, material didático 20%, acesso e hardware 15%, rigor conceitual 15%, português 10%.
+
+As etapas 10C–14 aprofundam o modelo, que já é o ponto forte. As maiores lacunas são validação, extensibilidade e material didático. Por isso P0 e P1 não esperam o fim das etapas 12–14; apenas P3 depende delas.
+
+### Ordem
+
+1. P0 — projeto público e reutilizável.
+2. P1 — modo escola. Concluído P1, o Viveiro passa o PhET em escolas.
+3. Etapas 10C, 12, 13 e 14 deste cronograma, em paralelo a P1 e P2.
+4. P2 — ferramenta de pesquisa.
+5. P3 — validação científica. Depende de P2 e das etapas 13 e 14.
+6. P4 — comunidade, contínua a partir de P1.
+
+Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em ordem de dependência, testes do modelo, verificação no navegador, tag e publicação.
+
+### P0. Projeto público e reutilizável
+
+- [ ] P0.1 Licenças: LICENSE aprovada pela OSI para o código (MIT ou Apache-2.0) e CC BY 4.0 para docs e imagens; campo license no package.json. Aceite: licença visível no GitHub e explicada no README.
+- [ ] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Aceite: main na versão atual, suíte completa aprovada e tag correspondente.
+- [ ] P0.3 Site público e estável (por exemplo GitHub Pages ou Cloudflare Pages), com URL por tag. O Site privado continua para testes. Aceite: abre sem login e mostra a versão.
+- [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
+
+### P1. Modo escola
+
+- [ ] P1.1 Perfil de desempenho leve: menos agentes e instâncias, malha mais grossa, previsão parcial por padrão. Aceite: 30 quadros/s ou mais em Chromebook ou notebook de entrada, medido e documentado, com o mesmo modelo e seed.
+- [ ] P1.2 Tour de primeira visita em módulo próprio de src/app. Aceite: aluno novo entra em primeira pessoa em menos de 2 minutos sem ajuda.
+- [ ] P1.3 Experimentos de um clique (seed, parâmetros, câmera e pergunta): feromônio com e sem vento; ângulo de repouso 15° × 55°; uma × duas entradas e ventilação; prole em solo frio × quente; claustral × semiclaustral; mesma seed com uma intervenção diferente; herança. Aceite: abre em menos de 10 s e tem teste do estado inicial.
+- [ ] P1.4 Guia do professor em docs/ensino/: objetivo, tempo, passos, perguntas, gabarito e "o que o modelo não representa", associado à BNCC de Ciências da Natureza. Aceite: 6 roteiros revisados por professores de biologia e física.
+- [ ] P1.5 PWA com cache offline, aproveitando o IndexedDB existente. Aceite: abre e salva checkpoint sem rede.
+- [ ] P1.6 Exportação CSV diária (população, prole, alimento, temperatura, gases) e acessibilidade WCAG 2.1 AA. Aceite: CSV abre em planilha; Lighthouse de acessibilidade acima de 90.
+- [ ] P1.7 Piloto com 2 ou 3 turmas, questionário SUS e pré/pós-teste curto. Aceite: SUS médio acima de 70 e relatório em docs/ensino/.
+
+### Etapas do cronograma que entram no plano
+
+- [ ] 10C: concluir o PR #26, atualizar a situação desta etapa na tabela inicial, publicar e integrar.
+- [ ] 12: seleção local do microclima e da câmara, somente por sensores locais. Aceite adicional: experimento de aula pronto.
+- [ ] 13: espermateca, fertilidade e longevidade. Pré-requisito de P3.2.
+- [ ] 14: escala de tempo biológico e execução longa. Pré-requisito de P3.2 e P3.3; reaproveitar a linha de comando de P2.2.
+
+### P2. Ferramenta de pesquisa
+
+- [ ] P2.1 docs/odd.md no protocolo ODD (Overview, Design concepts, Details), reunindo equações, ordem do loop, escalas e variáveis de estado. Aceite: um submodelo reimplementável só pelo ODD.
+- [ ] P2.2 Linha de comando sem interface: seed, dias, parâmetros e saída em CSV com manifesto. Aceite: arquivos idênticos byte a byte entre navegador e Node para a mesma seed.
+- [ ] P2.3 Varredura de parâmetros e réplicas em paralelo com retomada, equivalente ao BehaviorSpace. Aceite: 5 valores × 10 réplicas em um comando.
+- [ ] P2.4 Análise de sensibilidade (Morris) em docs/sensibilidade.md com dados brutos. Aceite: os 10 parâmetros mais influentes, que orientam P3.2.
+- [ ] P2.5 API tipada de extensões para políticas de decisão, sensores e submodelos (DecisionPolicy, SensorSystem). Aceite: política nova em um arquivo, testada e comparada com ACO na linha de comando.
+- [ ] P2.6 Editor de parâmetros com unidade, faixa e fonte do catálogo, salvo como perfil versionado. Aceite: exportar, reimportar e reproduzir por seed.
+- [ ] P2.7 Interface e documentação em inglês, mantendo português como padrão. Aceite: nenhuma tela com texto fixo no código.
+- [ ] P2.8 Instruções em português para uma formiga. Depende de P2.5. Detalhes abaixo.
+
+#### P2.8 Instruções em português para uma formiga
+
+O usuário escreve um pedido para uma formiga; um modelo de linguagem propõe uma regra numa linguagem de fórmulas fechada; o simulador valida, mostra, salva e aplica só àquela formiga. A IA nunca escreve código executável.
+
+- Entradas: somente sensores locais existentes (cheiro, CO₂, O₂, temperatura e água do solo, carga, energia, contato).
+- Saídas: somente parâmetros de decisão (peso das saídas, limiares de tarefa, preferência de câmara, exploração). Nunca posição, recursos ou mapa global.
+- Limites com nome definidos pelo modelo e registrados no catálogo (co2_alto, temperatura_alta, solo_encharcado...), em vez de números escolhidos pela IA.
+- Interpretador próprio em TypeScript, sem eval; rejeita sensores inexistentes, fórmulas grandes, valores fora da faixa, divisão por zero e NaN.
+- Teste de efeito: a fórmula é avaliada em situações típicas e na borda da faixa normal; cada sensor declarado precisa alterar o resultado. Falha gera uma nova tentativa com a mensagem do validador.
+- A explicação mostrada ao usuário é gerada pelo código a partir da fórmula, não pela IA.
+- O save guarda fórmula, pedido, modelo, versão e tick, como intervenção. O replay nunca chama a IA.
+- A regra entra no catálogo como hipótese gerada por IA, não como comportamento biológico.
+- Nenhuma credencial no repositório ou no bundle; o modelo fica atrás de um endpoint com token, fila, limite por usuário e cache de pedidos repetidos.
+
+Ordem: linguagem e validador; regras escritas à mão com save e replay; endpoint do modelo; painel na primeira pessoa com comparação pela mesma seed; testes de conservação, ausência de leitura global e replay idêntico.
+
+Modelo local avaliado em novembro de 2026, num VPS de 8 vCPUs AMD EPYC (AVX-512) com 3 núcleos reservados, Ollama, quantização de 4 bits e temperatura zero. Com esquema JSON, padrões de fórmula e exemplos, Qwen3 4B (sem modo de raciocínio) usou o padrão correto e explicação coerente; Qwen2.5 3B gerou fórmulas válidas mas com comportamento errado. Geração entre 8 e 17 tokens/s conforme a carga do servidor; carregamento de 7 a 25 s quando o modelo não está em memória. Foram poucas instruções: antes de escolher, executar um conjunto de 30 a 50 instruções com situações esperadas, várias repetições, taxa de acerto, tempo médio e pior tempo.
+
+### P3. Validação científica
+
+- [ ] P3.1 Espécie com dados de laboratório compatível com os mecanismos existentes (por exemplo Lasius niger: claustral, diapausa, casulo) e parceria com laboratório de mirmecologia. Aceite: acordo e conjuntos de dados com licença de uso.
+- [ ] P3.2 Calibração orientada a padrões (POM) com 3 ou mais padrões observados, ajustando só os parâmetros apontados em P2.4. Depende das etapas 13 e 14. Aceite: perfil calibrado no catálogo com fonte, amostra e incerteza.
+- [ ] P3.3 Validação com dados reservados antes da calibração, pelo protocolo de avaliação de previsões existente. Aceite: MAE e cobertura contra dados reais em docs/validacao.md, publicados mesmo se desfavoráveis.
+- [ ] P3.4 Publicação: Journal of Open Source Software, preprint do modelo calibrado e relato do piloto escolar. Aceite: JOSS aceito e preprint disponível.
+
+### P4. Comunidade
+
+- [ ] P4.1 GitHub Discussions, CONTRIBUTING.md com as regras deste projeto, modelos de issue e rótulo de primeira tarefa. Aceite: primeira contribuição externa integrada.
+- [ ] P4.2 Galeria pública de experimentos reproduzíveis por seed. Aceite: 20 experimentos, metade de fora da equipe.
+- [ ] P4.3 Oficinas para professores e minicursos em congressos. Aceite: uma por semestre, com gravação publicada.
+
+### Prioridade com pouco tempo
+
+P0.1–P0.3, depois P1.1, P1.3 e P1.4, e a conclusão da 10C. As etapas 12–14 seguem no ritmo atual, desde que terminem antes de P3.
