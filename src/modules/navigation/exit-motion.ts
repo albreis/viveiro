@@ -1,4 +1,5 @@
 import type { AgentState, NavigationWorld, NestNode, Vec3 } from "./types.ts";
+import { hitsLog } from "./surface-obstacles.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 import {
   startSupportedMotion,
@@ -19,12 +20,17 @@ export function leaveShaft(
   const heading = Math.hypot(dx, dz) > 0.01 ? Math.atan2(dz, dx) : ant.angle;
   const radius =
     Math.max(target.r, world.nest.linkWidths?.[edge] || 0.38) + 0.17;
-  for (const turn of [0, 0.3, -0.3, 0.6, -0.6]) {
+  for (const turn of [0, 0.3, -0.3, 0.6, -0.6, 1, -1, 1.6, -1.6, Math.PI]) {
     const goal = projectSupport(world.nest, {
       x: target.x + Math.cos(heading + turn) * radius,
       y: 0.008,
       z: target.z + Math.sin(heading + turn) * radius,
     });
+    if (
+      hitsLog(goal.point.x, goal.point.z) ||
+      world.inPond(goal.point.x, goal.point.z)
+    )
+      continue;
     if (goal.normal.y < 0.75 || Math.abs(goal.gap - 0.008) > 0.015) continue;
     startSupportedMotion(world, ant, goal.point, goal.normal, {
       x: target.x,

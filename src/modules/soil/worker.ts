@@ -10,6 +10,13 @@ import {
 
 const CAPACITY = 0.022;
 export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
+  if (
+    !ant.soilTask &&
+    (ant.carryingBrood ||
+      ant.carryingWaste ||
+      ("bioTask" in ant && ant.bioTask))
+  )
+    return false;
   if (!ant.soilTask) {
     const rubble = (world.nest.rubble || []).find(
       (p) =>

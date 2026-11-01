@@ -75,3 +75,18 @@ test("a crowded colony reaches the surface and no worker stays at one wall for d
     "a worker stayed within 0.25 units for two simulated days",
   );
 });
+
+test("an ant already inside a decorative log walks out with bounded steps", () => {
+  const w = new World("log-recovery"),
+    ant = w.makeAnt("worker", 3.42, 2.85);
+  w.ants = [ant];
+  for (let i = 0; i < 50; i++) {
+    const old = { x: ant.x, z: ant.z };
+    w.tick++;
+    w.moveSurface(ant, 0, ant.speed);
+    assert.ok(
+      Math.hypot(ant.x - old.x, ant.z - old.z) <= ant.speed * 1.2 + 0.002,
+    );
+  }
+  assert.ok(Math.hypot(ant.x - 3.42, ant.z - 2.85) > 1);
+});

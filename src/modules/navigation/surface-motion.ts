@@ -1,3 +1,4 @@
+import { logLevel, pondLevel, blocksObstacle } from "./surface-obstacles.ts";
 import { sampleSoil } from "../terrain/field.ts";
 import type {
   AgentState,
@@ -14,16 +15,6 @@ import {
 } from "./contact.ts";
 import { positionClear } from "./collision.ts";
 import { BOUNDS } from "../simulation/constants.js";
-
-function hitsLog(x: number, z: number) {
-  const dx = x - 4.3,
-    dz = z - 3.6;
-  return (
-    ((dx * Math.cos(0.5) + dz * Math.sin(0.5)) / 1.95) ** 2 +
-      ((-dx * Math.sin(0.5) + dz * Math.cos(0.5)) / 0.55) ** 2 <
-    1
-  );
-}
 
 export function moveSurface(
   world: NavigationWorld,
@@ -51,11 +42,11 @@ export function moveSurface(
     );
   }
   const blocked = (x: number, z: number, angle: number) =>
-    Math.abs(x) > BOUNDS.x ||
-    Math.abs(z) > BOUNDS.z ||
-    world.inPond(x, z) ||
+    (Math.abs(x) > BOUNDS.x && Math.abs(x) >= Math.abs(entity.x) - 0.00001) ||
+    (Math.abs(z) > BOUNDS.z && Math.abs(z) >= Math.abs(entity.z) - 0.00001) ||
+    blocksObstacle(pondLevel(x, z), pondLevel(entity.x, entity.z)) ||
     sampleSoil(world.nest, { x, y: -0.025, z }).distance > 0 ||
-    hitsLog(x, z) ||
+    blocksObstacle(logLevel(x, z), logLevel(entity.x, entity.z)) ||
     (predator
       ? world.nest.nodes.some(
           (n) => n.type === "entrance" && Math.hypot(x - n.x, z - n.z) < 1.3,

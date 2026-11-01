@@ -1,3 +1,4 @@
+import { renderColonyStatus } from "./colony-status.ts";
 import { renderSoilStatus } from "./soil-status.ts";
 import { drawChart as renderChart } from "./chart-view.js";
 const $ = (id) => document.getElementById(id);
@@ -86,6 +87,7 @@ export function renderStatus(context, updateAntCamera) {
       comparison.population +
       " formigas.";
   renderSoilStatus(w);
+  renderColonyStatus(w);
   updateAntCamera(w);
   if (forecastCache && forecastCache.scenario === scenario) {
     const f = forecastCache.result;

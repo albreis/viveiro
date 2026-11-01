@@ -1,3 +1,4 @@
+import { ColonyView } from "./ColonyView.ts";
 import { SoilMesher } from "../../services/SoilMesher.ts";
 import { SoilView } from "./SoilView.ts";
 import { buildGround, label } from "./environment.js";
@@ -79,20 +80,13 @@ export class Terrarium {
     this.buildGround(world.seed);
     this.soilMesher = new SoilMesher();
     this.soilView = new SoilView(this.scene, LIMIT);
+    this.colonyView = new ColonyView(this.scene, LIMIT);
     this.antParts = this.buildInsects(LIMIT, false);
     this.predatorParts = this.buildInsects(10, true);
     this.queen = this.buildQueen();
     this.scene.add(this.queen);
     this.male = this.buildMale();
     this.scene.add(this.male);
-    this.broodMesh = new THREE.InstancedMesh(
-      new THREE.SphereGeometry(0.075, 7, 5),
-      this.material("#ded7aa"),
-      LIMIT,
-    );
-    this.broodMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
-    this.broodMesh.count = 0;
-    this.scene.add(this.broodMesh);
     const trailPositions = new Float32Array(1040 * 3),
       trailColors = new Float32Array(1040 * 3);
     for (let z = 0; z < 26; z++)

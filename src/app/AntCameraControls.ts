@@ -1,4 +1,4 @@
-import type { AgentState } from "../modules/navigation/types.ts";
+import type { ColonyAgent as AgentState } from "../modules/colony/types.ts";
 
 interface SceneControls {
   followId: number | null;
@@ -13,7 +13,7 @@ interface SceneControls {
 
 interface CameraContext {
   getScene(): SceneControls | undefined;
-  getWorld(): { ants: AgentState[] };
+  getWorld(): { ants: AgentState[]; tick: number };
   getScenario(): string;
   getRunning(): boolean;
   toast(message: string): void;
@@ -90,7 +90,7 @@ export class AntCameraControls {
   }
 
   render() {
-    const { ants } = this.context.getWorld();
+    const { ants, tick } = this.context.getWorld();
     const scene = this.context.getScene();
     const key =
       this.context.getScenario() + ":" + ants.map((ant) => ant.id).join(",");
@@ -106,7 +106,9 @@ export class AntCameraControls {
               ? "Rainha"
               : ant.kind === "male"
                 ? "Macho"
-                : "Operária";
+                : ant.caste === "major"
+                  ? "Soldado"
+                  : "Operária";
           option.textContent = label + " #" + ant.id;
           return option;
         }),
@@ -121,10 +123,14 @@ export class AntCameraControls {
     element("ant-state").textContent = ant
       ? (this.context.getRunning() ? "" : "Pausada · ") +
         ((ant.y || 0) < -0.1 ? "Subsolo · " : "Superfície · ") +
-        ant.state +
+        ((ant.socialUntil || 0) > tick && ant.socialPartner
+          ? ant.state + " · contato com #" + ant.socialPartner
+          : ant.state) +
         " · percurso " +
         format(ant.distanceWalked || 0) +
-        " u."
+        " u. · idade " +
+        format(ant.age || 0) +
+        " d"
       : "Nenhuma formiga viva.";
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;

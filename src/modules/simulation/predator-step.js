@@ -30,6 +30,7 @@ export function updatePredators(world, dead) {
     if (target) {
       p.angle = Math.atan2(target.z - p.z, target.x - p.x);
       if (nearest < 0.4 && p.cooldown === 0 && world.random() < 0.24) {
+        target.deathCause = "predation";
         dead.add(target.id);
         world.deaths++;
         p.prey++;

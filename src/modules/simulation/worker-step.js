@@ -1,3 +1,5 @@
+import { soilEntrance } from "../soil/routing.ts";
+import { updateColonyWorker } from "../colony/worker.ts";
 import { updateSoilWorker } from "../soil/worker.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { nestPath } from "./nest.ts";
@@ -32,9 +34,31 @@ export function updateWorkers(world, suitability) {
     if (ant.energy <= 0 || ant.age > world.lifeLimit(ant)) {
       dead.add(ant.id);
       world.deaths++;
+      ant.deathCause = ant.energy <= 0 ? "starvation" : "age";
       continue;
     }
+    if (ant.soilTask && updateSoilWorker(world, ant)) continue;
+    if (updateColonyWorker(world, ant)) continue;
     if (updateSoilWorker(world, ant)) continue;
+    if (ant.node != null && !ant.route?.length) {
+      const node = world.nest.nodes[ant.node];
+      if (
+        (ant.y || 0) >= -0.04 &&
+        Math.hypot(ant.x - node.x, ant.z - node.z) > 1.2
+      ) {
+        ant.node = null;
+        ant.tunnelCenter = null;
+        ant.tunnelY = 0;
+      } else {
+        const destination =
+          (ant.carrying || ant.energy < 35) && ant.node !== 4
+            ? 4
+            : soilEntrance(world, ant);
+        ant.route = nestPath(world.nest, ant.node, destination);
+        if (!ant.route.length && node.type === "entrance")
+          ant.route = [ant.node];
+      }
+    }
     if (ant.route?.length) {
       world.moveInNest(ant);
       continue;

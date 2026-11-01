@@ -32,6 +32,8 @@ export interface AgentState {
   carrying: number;
   hasFood?: boolean;
   carryingBrood?: number;
+  carryingWaste?: number;
+  bodyScale?: number;
   carryingSoil?: number;
   normal?: Vec3;
   navigation?: NavigationState;
@@ -87,5 +89,6 @@ export interface NavigationWorld {
   log(message: string, type?: string): void;
   inPond(x: number, z: number): boolean;
   onNestArrival?(ant: AgentState, node: number): boolean;
+  onStorageVisit?(ant: AgentState): void;
   recordSoilRemoval?(ant: AgentState, mass: number): void;
 }

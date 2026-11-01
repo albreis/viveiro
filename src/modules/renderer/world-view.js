@@ -72,22 +72,7 @@ export function update(host, world, time, alpha = 1) {
     host.male.position.set(male.x, 0.18, male.z);
     host.male.rotation.y = Math.sin(time) * 0.3;
   }
-  const dummy = new THREE.Object3D();
-  host.broodMesh.count = Math.min(world.brood.length, LIMIT);
-  const nursery = world.nest.nodes[3];
-  for (let i = 0; i < host.broodMesh.count; i++) {
-    const a = i * 2.4,
-      r = 0.1 + Math.sqrt(i) * 0.032;
-    dummy.position.set(
-      nursery.x + Math.cos(a) * r,
-      nursery.y - 0.1,
-      nursery.z + Math.sin(a) * r,
-    );
-    dummy.scale.set(0.7, 0.7, 1.3);
-    dummy.updateMatrix();
-    host.broodMesh.setMatrixAt(i, dummy.matrix);
-  }
-  host.broodMesh.instanceMatrix.needsUpdate = true;
+  host.colonyView.update(world, (a) => host.pose(a), host.followId);
   host.trails.visible = host.showTrails;
   if (host.showTrails) {
     const colors = host.trails.geometry.attributes.color;
