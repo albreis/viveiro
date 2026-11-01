@@ -4,17 +4,17 @@ Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
-| Etapa | Entrega                                                              | Situação               |
-| ----- | -------------------------------------------------------------------- | ---------------------- |
-| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1      |
-| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0           |
-| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado |
-| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado |
-| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado |
-| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado |
-| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado |
-| 7     | Solo granular, capilaridade, termodinâmica e gases                   | Pesquisa e calibração  |
-| 8     | RL, persistência longa e avaliação das previsões                     | Planejada              |
+| Etapa | Entrega                                                              | Situação                         |
+| ----- | -------------------------------------------------------------------- | -------------------------------- |
+| 0     | Terrário, reprodução, previsões, túneis e primeira pessoa            | Publicada: v0.2.1                |
+| 1     | Navegação social 3D, piso, colisões, recuo, TypeScript e Vite        | Versão 0.3.0                     |
+| 2     | Escavação orgânica, transporte de terra, erosão, bloqueios e reparos | Protótipo implementado           |
+| 3     | Estoques, lixo, prole, trofalaxia, castas, personalidade e idade     | Protótipo implementado           |
+| 4     | Reação-difusão, ACO e limiares de estímulo                           | Protótipo implementado           |
+| 5     | Genética, voo nupcial e fundação de novas colônias                   | Protótipo implementado           |
+| 6     | Simbioses, odor, território e colônias vizinhas                      | Protótipo implementado           |
+| 7     | Solo granular, capilaridade, termodinâmica e gases                   | 7A implementada; 7B/7C pendentes |
+| 8     | RL, persistência longa e avaliação das previsões                     | Planejada                        |
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -264,6 +264,18 @@ Publicação 0.7.0 concluída em 01/11/2026: fonte e6e4790, tag v0.7.0, PR #9 so
 - Navegador: seed a, duas adoções e 1,51 u. cedidas às lagartas; 16,41 u. de melaço coletadas até o dia 171. Sem erros de console. São resultados do modelo.
 - Referências, orçamento e limites em docs/simbioses.md: agregação de pulgões, população inicial de lagartas e ausência de ciclo adulto de borboleta/calibração.
 - Próximo passo do cronograma original: 7 — granular, capilaridade e gases; depois 8 e as novas etapas 9–14.
+
+### Etapa 7A — dinâmica de terra solta (0.10.0)
+
+- Branch codex/solo-granular, base codex/simbioses-e-mimetismo.
+- Agregados com volume, velocidade, gravidade, contato dissipativo e atrito limitado por Coulomb.
+- Grade espacial para vizinhanças, subpassos e passos limitados; colisão com o campo real e vidro.
+- Queda a partir do teto, acomodação, reparo e balanço conservativo; snapshots de velocidades.
+- Controle experimental de repouso, diário/replay e instâncias móveis separadas da malha estática.
+- Testes de plano inclinado, queda, contatos, massa e restore; revisão visual com queda e retirada pelas operárias. Suíte completa: 103 aprovados; TypeScript e Vite aprovados.
+- Limites em docs/granular.md: porções agregadas, solo compacto implícito, depósitos visuais, sem cadeias de força ou soterramento.
+- Pendente 7B: umidade espacial, capilaridade, temperatura, O2/CO2, ventilação e respostas biológicas.
+- Pendente 7C: suporte estrutural local acoplado à escavação; calibração continua dependendo de dados externos.
 
 ## Novas etapas 9–14 — biologia, clima e vida longa
 

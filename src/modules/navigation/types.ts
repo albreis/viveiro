@@ -106,7 +106,7 @@ export interface NestState {
   revision: number;
   linkWidths?: number[];
   lastWidenTick?: number[];
-  rubble?: (Vec3 & { id: number; mass: number; edge?: number })[];
+  rubble?: import("../granular/types.ts").GranularBody[];
   erosionCuts?: (Vec3 & { r: number })[];
 }
 

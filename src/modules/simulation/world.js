@@ -203,6 +203,13 @@ export class World {
         pond.volume = Math.min(1, pond.volume + 0.18);
       this.params.humidity = clamp(this.params.humidity + 12, 0, 100);
       this.log("Chuva: a umidade do terrário aumentou.", "rain");
+    } else if (type === "reposeAngle") {
+      this.params.reposeAngle = clamp(Number(value) || 36, 15, 55);
+      this.log(
+        "Ângulo de repouso experimental ajustado para " +
+          this.params.reposeAngle +
+          "°.",
+      );
     } else if (["humidity", "light", "randomness"].includes(type)) {
       this.params[type] = clamp(Number(value) || 0, 0, 100);
       this.log(

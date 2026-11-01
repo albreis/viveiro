@@ -29,7 +29,8 @@ export function collapseEdge(
   const radius = pileRadius(mass);
   const rubble = {
     ...center,
-    y: center.y - width + radius * 0.7,
+    // Release the aggregate just below the roof so its finite radius fits the open gallery.
+    y: center.y + width - radius * 1.05,
     id: world.soil.nextId++,
     edge,
     mass,

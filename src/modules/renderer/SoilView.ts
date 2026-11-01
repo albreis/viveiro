@@ -59,7 +59,7 @@ export class SoilView {
     const piles = (world.soil?.deposits || []).slice(0, 64);
     piles.forEach((p, i) => {
       const radius = Math.min(0.32, 0.06 + Math.cbrt(p.mass) * 0.2);
-      d.position.set(p.x, radius * 0.2, p.z);
+      d.position.set(p.x, p.y + radius * 0.2, p.z);
       d.rotation.set(0, p.id, 0);
       d.scale.set(radius, radius * 0.45, radius);
       d.updateMatrix();
