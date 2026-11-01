@@ -2,9 +2,9 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Automação horária autorizada; não iniciar executor concorrente ou contornar cotas. Manter dev em G, arquivos pequenos em src, TypeScript e Vite, branches e PRs por entrega. Preservar saves, tags e o acesso privado do Site.
 
-## Em finalização — etapa 10B (0.20.0)
+## Última entrega publicada — etapa 10B (0.20.0)
 
-Branch codex/selamento-fundacao, base codex/reservas-maternas (8ec428e, PR #22). Implementação concluída e validada; falta commit, push, PR e publicação. Não duplicar PR: conferir antes de criar #23 sobre #22.
+Branch codex/selamento-fundacao, base codex/reservas-maternas (8ec428e, PR #22). Publicada a fonte ba99dc59772ccb398212f90d9307708b958431fc, tag v0.20.0. PR #23 aberto sobre #22. Deploy appgdep_6ae78c19142881918180656445fc1b22 concluído em 01/11/2026, 18:59:50 UTC. Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_001350877388819189898d73bbc133f5. Mesmo Site privado: somente proprietário, zero externos. Arquivo G:\Projetos\viveiro-0.20.0.tar.gz.
 
 - Novos módulos pequenos em src/modules/sealing, renderer/PlugView.ts, sealing-focus.ts e app/sealing-controls.ts. Sem dependência nova.
 - Revisão biológica 3 habilita tampão; 1 escalar e 2 reservas abertas mantêm seus futuros. Seleção de novos terrários oferece a revisão 3; legados e replay não mudam de versão.
@@ -23,9 +23,7 @@ Branch codex/selamento-fundacao, base codex/reservas-maternas (8ec428e, PR #22).
 
 ### Próximo passo concreto
 
-1. Commit/push da 0.20.0 e PR encadeado sobre codex/reservas-maternas. Diff e Git/PR devem ser conferidos antes.
-2. Publicar o HEAD exato no mesmo Site privado, arquivo G:\Projetos\viveiro-0.20.0.tar.gz. Credenciais só em memória/stdin. Fonte, deploy e tag específica devem ser registrados e enviados.
-3. Abrir branch codex/ própria para etapa 11: maturação, curvas térmicas, alimentação/umidade/estresse e diapausa por perfil. Não instalar as faixas da outra IA como dados validados. Mecanismo semiclaustral, casulos e cronologia real ainda pendentes. Etapas 12–14 e calibração externa seguem no cronograma.
+Abrir branch codex/ própria para etapa 11: maturação, curvas térmicas, alimentação/umidade/estresse e diapausa por perfil. Não instalar as faixas da outra IA como dados validados. Mecanismo semiclaustral, casulos e cronologia real ainda pendentes. Etapas 12–14 e calibração externa seguem no cronograma.
 
 Não repetir testes completos sem mudança que justifique. Main e PRs anteriores preservados. Não há executor paralelo nem teste pendente.
 
