@@ -64,6 +64,9 @@ export function spawnDaughter(
     colonyId: id,
     parentColonyId: source.colonyId || 1,
     colonies: [],
+    ...(source.biologicalProfile
+      ? { biologicalProfile: { ...source.biologicalProfile } }
+      : {}),
     capacityOffset: 0,
     tick: root.tick,
     nextId: root.nextId,

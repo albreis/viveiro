@@ -1,5 +1,13 @@
 # Versões
 
+## 0.18.0 — Perfis e proveniência biológica
+
+- Catálogo versionado de aproximações, hipóteses, condições de laboratório e medidas.
+- Seleção para novos terrários e preset opcional limitado ao clima de referência.
+- Identidade do perfil em snapshots/replay e cópia independente nas colônias filhas.
+- Saves legados preservados; versão de perfil desconhecida protege a gravação.
+- Dados não calibrados e dependências em docs/perfis-biologicos.md.
+
 ## 0.17.0 — Observação e avaliação das previsões
 
 - Modo por contagem e histórico, com transporte que exclui o estado interno.

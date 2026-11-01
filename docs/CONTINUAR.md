@@ -2,9 +2,17 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. O usuário autorizou continuar o cronograma com retomada horária nesta conversa após limites legítimos. Automação continuar-cronograma-do-viveiro ativa; não iniciar executor concorrente nem contornar cotas/aprovações.
 
-## Próximo passo — etapa9 perfis biológicos
+## Em andamento — etapa9 pronta para publicar0.18.0
 
-Criar codex/perfis-biologicos sobre codex/observacao-e-validacao após registrar0.17.0. Implementar registro versionado com unidade/fonte/amostra/incerteza e estado medido/hipótese/aproximação, catálogo visível e seleção de perfil demonstrativo. Não renomear o modelo genérico com castas/simbioses combinadas como espécie calibrada. Conectar novos perfis às etapas10–14 gradualmente; dados de outraIA continuam hipóteses. Fontes primárias verificadas: Majidifar2024doi10.1111/1365-2435.14536 (condições de laboratório não são ótimos/timers universais).
+Branch codex/perfis-biologicos, base codex/observacao-e-validacao9790422.0.18.0validada:176/176testes completos em307760ms (log.runtime/biology-suite.log),21dirigidos,TS/Vite ebrowser aprovados. Sessão82954concluída; não repetirsem mudança relevante. Falta commit/push/PR#21sobre#20(se nãoexistir), publicarowner-only,tag/checkpoint. Módulosnovospequenos: src/modules/biology eapp/biology-controls,parameters,markup; CSSpróprio. index sóplaceholder,catálogo emdialoglegível. Sem pacote novo. Mesmo modelo numérico; constantesreserva8/limiares.35/.9extraídas semmudança.
+
+Registro14parâmetros: aproximação/hipótese/condiçãoexperimental/medição com unidade/fonte/amostra/incerteza/uso. Perfisgenérico eAr dereferência(21°C/80%na criação,restogenérico),sem espéciecalibrada. FonteMajidifar2024doi10.1111/1365-2435.14536lida: condicionadores nãoótimos; medida17/22sobreviventescomoperáriasaté93dias(coorte24),n22,sóconsulta. FaixasoutraIAhipótesesinativas. Nãoatualizar timerscom essesvalores. Casulo/semiclaustral/diapausamecanismosnas próximas10/11, dadospor espécie pendentes. docs/perfis-biologicos.mdregistralimites.
+
+World.biologicalProfileopcional{schema:1,id,version}; snapshot/replay/initial preservamrefs+paramsresolvidos;filhascopiamfontedeorigemindependente;legadosnão reescritos. Unknownprofile/schema/version UnsupportedBiologicalProfile protegegravação: candidatoanteriorcompatívelabrepaused/blockedtrue,raworiginalpreservado. TestevalidCRCpassou. Testesdefault vsmetadata futuroexato200ticks+roundtrip+herança passaram.
+
+BrowserFINAL originalseed a/dia267 PAUSADO,97adultos/14crias/2colônias,35°C/92%RH,neural4719escolhas/4607ajustes preservados apósreload. ManualantesQA idmanual-691625be-84fe-4949-bf1f-68490114e3db nomeAntes de validar perfis · dia267preservado. TesteSEMENTE-81062criadocomref21°C/80%,v1persistiureload0,7dia. ORIGINALJÁRESTAURADOeconfirmado; pretesttambémfoi salvo automaticamenteantesrestore. Pickerpróximoterráriodevolvidogenérico. Catálogostudyconferido +hipóteses; últimodialogfechado,previsãocancelada. Screenshotviveiro-0.18.0-catalogo.png. Nenhumerronovo; doisHMR14:44:57antigospréQA. DevG PID17752HTTP200. Localtab2deliverable,Site1intocado.
+
+Próximo após publicar0.18.0: etapa10tampão/isolamento/reaberturafísicos e reservaslipídicas/proteicas/músculo com balanços; semtimersuniversais. 11–14depois; dadoscalibraçãoexternospendentes. SourcehelperOPENHEADfinal,archiveG:\Projetos\viveiro-0.18.0.tar.gzfora checkout,pushsomente branch/tag. Não contornarlimites;automaçãohoráriaativa atécritériosimplementáveisconcluídos.
 
 ## Última entrega publicada — 8C2 (0.17.0)
 

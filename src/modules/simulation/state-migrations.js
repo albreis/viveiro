@@ -1,3 +1,4 @@
+import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import { restoreColonies } from "../colonies/shared.ts";
 import { migrateGenetics } from "../genetics/reproduction.ts";
 import { legacyLandscape } from "../landscape/generate.ts";
@@ -15,6 +16,7 @@ import {
 export function restoreWorld(snapshot, prototype) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
+  resolveBiologicalProfile(world.biologicalProfile);
   world.landscape ??= legacyLandscape();
   if (!world.nest || world.nest.revision < 2) {
     world.nest = createNest(world.seed, world.landscape);

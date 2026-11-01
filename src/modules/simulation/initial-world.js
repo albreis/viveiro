@@ -1,3 +1,7 @@
+import {
+  resolveBiologicalProfile,
+  profileReference,
+} from "../biology/catalog.ts";
 import { createSocialChemistry } from "../social-chemistry/types.ts";
 import { initializeFounding } from "../founding/initialize.ts";
 import { createGenetics } from "../genetics/reproduction.ts";
@@ -10,6 +14,10 @@ import { projectSupport } from "../terrain/terrain.js";
 import { generateLandscape, generatePlants } from "../landscape/generate.ts";
 import { timberLevel, surfaceHeight } from "../landscape/queries.ts";
 export function initializeWorld(world, seed, parameters, options = {}) {
+  if (options.biologicalProfile !== undefined) {
+    const profile = resolveBiologicalProfile(options.biologicalProfile);
+    world.biologicalProfile = profileReference(profile.id, profile.version);
+  }
   world.seed = String(seed);
   world.rng = hashSeed(seed);
   world.params = {

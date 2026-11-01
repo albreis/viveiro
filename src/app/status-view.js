@@ -1,3 +1,4 @@
+import { renderBiologyStatus } from "./biology-controls.ts";
 import { renderLearningStatus } from "./learning-controls.ts";
 import { renderStructureStatus } from "./structure-status.ts";
 import { renderGasStatus } from "./gas-status.ts";
@@ -102,6 +103,7 @@ export function renderStatus(context, updateAntCamera) {
       " · B " +
       comparison.population +
       " formigas.";
+  renderBiologyStatus(w);
   renderFoundingStatus(w.founding);
   renderFamilyStatus(w);
   renderChemicalStatus(w.socialChemistry);

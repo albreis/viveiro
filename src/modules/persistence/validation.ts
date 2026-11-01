@@ -1,3 +1,4 @@
+import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type { SessionState, WorldWire } from "./types.ts";
 const dangerous = new Set(["__proto__", "prototype", "constructor"]);
 export function assertDataTree(value: unknown) {
@@ -53,6 +54,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       (c !== w && (c.colonies?.length ?? 0) > 0)
     )
       throw new Error("Registro de colônia inválido.");
+    resolveBiologicalProfile(c.biologicalProfile);
     population += c.ants.length;
     for (const a of c.ants)
       if (
@@ -103,6 +105,7 @@ export function normalizeSession(value: unknown): SessionState {
     typeof initial.params !== "object"
   )
     throw new Error("Configuração inicial inválida.");
+  resolveBiologicalProfile(initial.biologicalProfile);
   if (
     !Array.isArray(s.interventions ?? []) ||
     (s.interventions?.length ?? 0) > 20000

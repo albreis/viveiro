@@ -1,3 +1,11 @@
+import {
+  profileReference,
+  prepareBiologicalExperiment,
+} from "../modules/biology/catalog.ts";
+import {
+  installBiologyControls,
+  selectedBiologicalProfile,
+} from "./biology-controls.ts";
 import { installForecastBenchmark } from "./forecast-benchmark.ts";
 import { observeCounts } from "../modules/forecast/observations.ts";
 import { ForecastClient } from "../services/forecast-client.ts";
@@ -33,6 +41,7 @@ let world,
 let initial = {
   seed: "SEMENTE-42",
   startMode: "founding",
+  biologicalProfile: profileReference(),
   params: { humidity: 58, light: 72, randomness: 28 },
 };
 let interventions = [],
@@ -106,7 +115,10 @@ async function load() {
       "O save não pôde ser reconstruído. A gravação ficou protegida; importe um experimento ou inicie outro terrário.",
     );
   }
-  world = new World(initial.seed, initial.params);
+  world = new World(initial.seed, initial.params, {
+    biologicalProfile: initial.biologicalProfile,
+  });
+  initial.params = { ...world.params };
   if (checkpointStore.isProtected()) running = false;
 }
 let saveGeneration = 0;
@@ -144,14 +156,23 @@ function intervention(type, x = 0, z = 0, value) {
 }
 function reset(seed, params, replay = false) {
   checkpointStore.allowWrites();
-  world = new World(seed, params, {
+  const configuration = replay
+    ? { params, biologicalProfile: initial.biologicalProfile }
+    : prepareBiologicalExperiment(selectedBiologicalProfile(), params);
+  world = new World(seed, configuration.params, {
+    biologicalProfile: configuration.biologicalProfile,
     founding: !replay || initial.startMode !== "established",
   });
   comparison = null;
   scenario = "a";
   accumulator = 0;
   if (!replay) {
-    initial = { seed, params: { ...params }, startMode: "founding" };
+    initial = {
+      seed,
+      params: { ...configuration.params },
+      startMode: "founding",
+      biologicalProfile: configuration.biologicalProfile,
+    };
     interventions = [];
     replaying = false;
     replayIndex = 0;
@@ -290,6 +311,7 @@ $("focus-ecology").onclick = () => {
   updateUi();
   $("viewport").scrollIntoView({ block: "center", behavior: "smooth" });
 };
+installBiologyControls(active());
 installGranularControls(intervention);
 installCheckpointControls({
   capture: getSession,

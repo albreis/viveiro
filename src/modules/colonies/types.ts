@@ -1,5 +1,6 @@
 import type { FoundingWorld } from "../founding/types.ts";
 export interface FamilyWorld extends FoundingWorld {
+  biologicalProfile?: import("../biology/types.ts").BiologicalReference;
   colonies?: FamilyWorld[];
   nextColonyId?: number;
   colonyId?: number;
