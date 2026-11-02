@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.25.0**, PR [#33](https://github.com/albreis/viveiro/pull/33), etapa 12B. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.26.0**, PR [#34](https://github.com/albreis/viveiro/pull/34), etapa 12C. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -25,11 +25,11 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 10C   | Fundação semiclaustral com coleta externa da rainha                | ✅ Entregue · 0.23 · PR #26 integrado                            |
 | 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
-| 12    | Seleção local do microclima e da câmara                            | ✅ 12A/12B publicadas; 12C validada, em publicação               |
+| 12    | Seleção local do microclima e da câmara                            | ✅ Protótipos 12A–12C publicados · 0.24–0.26                     |
 | 13    | Espermateca, fertilidade e longevidade                             | ⬜ Pendente                                                      |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
 
-**Ordem restante:** publicar 12C → 13 → 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
+**Ordem restante:** 13 → 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -443,7 +443,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 - [x] 12A publicada em 0.24.0, PR [#32](https://github.com/albreis/viveiro/pull/32), branch codex/escolha-local-da-camara: sondagem física da rainha, memória de câmaras das cuidadoras e roteiro de aula. Ver [mecanismo e limites](escolha-local.md).
 - [x] 12B publicada em 0.25.0, PR [#33](https://github.com/albreis/viveiro/pull/33): estoque por câmara, preferência seca, deterioração local, fluxos e aproximação física para depositar/comer. Ver [estoques por câmara](estoques-por-camara.md).
-- [x] 12C implementada e validada, versão 0.26.0 em publicação: índices relativos de argila/compactação para água, calor e suporte. 240/240 testes, build e navegador aprovados. Porosidade fixa e coeficientes demonstrativos, sem calibração geotécnica. Ver [material e limites](solo-material.md).
+- [x] 12C publicada em 0.26.0, PR [#34](https://github.com/albreis/viveiro/pull/34), fonte609c26a, tag v0.26.0: índices relativos de argila/compactação para água, calor e suporte. 240/240 testes, build e navegador aprovados. Porosidade fixa e coeficientes demonstrativos, sem calibração geotécnica. Ver [material e limites](solo-material.md).
 - [ ] Dependências externas da etapa 12: calibração por material/espécie e revisão docente do roteiro de aula. Não confundir aceite do protótipo com validação científica.
 
 - Usar 52% de umidade e 68% de luz como cenário de investigação, sem deduzir temperatura ou estabilidade diretamente.
