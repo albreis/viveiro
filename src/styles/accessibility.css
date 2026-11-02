@@ -1,0 +1,166 @@
+/* Shared interaction rules. Text colors remain owned by each component. */
+:root {
+  --muted: #485743;
+}
+:focus-visible {
+  outline: 3px solid #24332b;
+  outline-offset: 3px;
+}
+.skip-links {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+}
+.skip-links a {
+  position: absolute;
+  transform: translateY(-160%);
+  white-space: nowrap;
+  padding: 12px;
+  background: #fafbf6;
+  color: #24332b;
+  border: 2px solid #426044;
+}
+.skip-links a:focus {
+  position: static;
+  transform: none;
+}
+#viewport:focus-visible {
+  outline-offset: -4px;
+}
+#scene-keyboard-hint,
+#chart-summary {
+  color: #485743;
+  font-size: 12px;
+  line-height: 1.6;
+}
+#scene-keyboard-hint {
+  margin: 0;
+  padding: 0 17px 12px;
+}
+.ant-camera #ant-state,
+.ant-camera #ant-genome {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+.ant-camera {
+  flex-wrap: wrap;
+}
+.ant-camera > div {
+  flex-basis: 100%;
+}
+button,
+select,
+input[type="text"],
+input[type="number"] {
+  min-height: 32px;
+}
+select,
+summary {
+  font: inherit;
+}
+.field-note,
+.small,
+.forecast-note,
+.ant-camera #ant-state,
+.ant-camera #ant-genome {
+  font-size: 12px;
+  line-height: 1.6;
+}
+#keyboard-placement {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--paper);
+}
+#keyboard-placement summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+#keyboard-placement p {
+  line-height: 1.6;
+}
+#placement-form {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+#placement-form input,
+#placement-form select {
+  width: 100%;
+  padding: 8px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid #78836f;
+  border-radius: 4px;
+}
+#placement-form button {
+  grid-column: 1/-1;
+  padding: 10px;
+  color: white;
+  background: #426044;
+  border: 1px solid #426044;
+  border-radius: 4px;
+}
+#placement-status {
+  color: #485743;
+}
+@media (max-width: 480px) {
+  .left-panel,
+  .right-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .events-panel #events {
+    display: block;
+    max-height: 240px;
+  }
+  .events-panel #events li {
+    min-width: 0;
+    max-width: none;
+  }
+  .forecast-card {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .topbar {
+    height: auto;
+    min-height: 66px;
+    flex-wrap: wrap;
+    padding: 12px 15px;
+    gap: 8px;
+  }
+  .top-actions {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+  .scene-controls {
+    flex-wrap: wrap;
+  }
+  .page-heading,
+  .legend {
+    flex-wrap: wrap;
+  }
+  .legend > .text-button {
+    margin-left: 0;
+  }
+  #placement-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  select {
+    max-width: 100%;
+  }
+}
+@media (forced-colors: active) {
+  :focus-visible {
+    outline-color: Highlight;
+  }
+  button[aria-pressed="true"] {
+    border: 3px solid Highlight;
+  }
+}

@@ -15,7 +15,7 @@ export function installDailyControls(context: DailyContext) {
   const host = document.querySelector<HTMLDetailsElement>("#daily-data");
   if (!host) return { render() {} };
   host.innerHTML = `
-    <summary>Dados observados · CSV diário</summary>
+    <summary id="daily-summary">Dados observados · CSV diário</summary>
     <p id="daily-description">Uma amostra ao final de cada dia do modelo (100 ticks), sem médias temporais nem previsões. A/B são exportados juntos. Vazios indicam ausência de leitura.</p>
     <button id="export-daily" type="button" aria-describedby="daily-description">Baixar CSV diário</button>
     <p id="daily-status" role="status"></p>

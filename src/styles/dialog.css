@@ -45,7 +45,7 @@ dialog::backdrop {
   background: none;
   border: 0;
   font-size: 27px;
-  color: #8b987c;
+  color: var(--muted);
 }
 dialog > h2 {
   font-size: 30px;
@@ -57,7 +57,7 @@ dialog > h2 {
 dialog > p {
   font-size: 12px;
   line-height: 1.8;
-  color: #758468;
+  color: var(--muted);
 }
 .help-columns {
   display: grid;
@@ -71,7 +71,7 @@ dialog > p {
 }
 .help-columns p {
   font-size: 11px;
-  color: #819071;
+  color: var(--muted);
   line-height: 1.8;
 }
 .help-note {

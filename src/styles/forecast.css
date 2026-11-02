@@ -8,7 +8,7 @@
 .forecast-card .section-label {
   font-size: 8px;
   margin-bottom: 14px;
-  color: #7e8e65;
+  color: var(--muted);
 }
 .forecast-card h2 {
   font-size: 14px;
@@ -17,7 +17,7 @@
 }
 .forecast-card > p {
   font-size: 9px;
-  color: #849270;
+  color: var(--muted);
   line-height: 1.6;
   margin: 7px 0;
 }
@@ -31,7 +31,7 @@
 }
 .forecast-value > span {
   font-size: 9px;
-  color: #8b9778;
+  color: var(--muted);
   font-family: var(--sans);
   letter-spacing: 0;
 }
@@ -72,7 +72,7 @@
   border-radius: 5px;
   font-size: 9px;
   padding: 10px;
-  color: #60794a;
+  color: var(--muted);
 }
 .forecast-card > button:hover {
   background: #faffee;
@@ -86,7 +86,7 @@
 }
 .forecast-options label {
   font-size: 10px;
-  color: #617057;
+  color: var(--muted);
 }
 .forecast-options label:last-child {
   grid-column: 1 / -1;
@@ -171,7 +171,7 @@
 }
 .forecast-benchmark caption {
   text-align: left;
-  color: #738361;
+  color: var(--muted);
   font-size: 9px;
   margin-bottom: 6px;
 }

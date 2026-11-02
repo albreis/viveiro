@@ -22,7 +22,7 @@
 }
 .observation-card p {
   margin: 7px 0 0;
-  color: #738066;
+  color: var(--muted);
   font-size: 11px;
   line-height: 1.6;
 }

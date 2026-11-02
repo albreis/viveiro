@@ -1,0 +1,66 @@
+{
+  "version": "0.37.0",
+  "stage": "P1.6B1",
+  "checkedAt": "2026-11-02T15:16:57.647239+00:00",
+  "tests": {
+    "passed": 28,
+    "failed": 0,
+    "durationMs": 6387.6789
+  },
+  "build": {
+    "strictTypeScript": true,
+    "modules": 345
+  },
+  "contrast": {
+    "method": "Solid computed DOM foreground/background with alpha compositing; excludes hidden/disabled/decorative elements",
+    "notLighthouse": true,
+    "states": {
+      "main": {
+        "checked": 259,
+        "candidatesBelowThreshold": 0
+      },
+      "help": {
+        "checked": 272,
+        "candidatesBelowThreshold": 0
+      },
+      "catalog": {
+        "checked": 367,
+        "candidatesBelowThreshold": 0
+      }
+    }
+  },
+  "keyboard": {
+    "summaryPreservesPause": true,
+    "coordinatesAccepted": [1, 1],
+    "outOfBoundsRejected": 99,
+    "firstPersonFocus": "viewport",
+    "exitFocus": "follow-ant",
+    "modalEscapePreservesFirstPerson": true,
+    "homeUpdatesPressedState": true,
+    "skipLinkFocus": "viewport"
+  },
+  "reflow": {
+    "requestedViewport": [320, 800],
+    "clientWidth": 305,
+    "scrollWidth": 305,
+    "viewportReset": true
+  },
+  "browser": {
+    "provider": "IAB",
+    "url": "http://127.0.0.1:4188/",
+    "consoleWarnings": 0,
+    "consoleErrors": 0
+  },
+  "lighthouse": {
+    "measured": false,
+    "score": null,
+    "baselineVersion": "0.36.0",
+    "httpStatus": 429,
+    "reason": "Official PageSpeed daily query quota exhausted",
+    "retryNotBefore": "2026-11-03T15:16:57.647239+00:00"
+  },
+  "spreadsheetApplicationTested": false,
+  "screenReaderTested": false,
+  "wcagConformanceClaimed": false,
+  "privateAudienceChanged": false
+}

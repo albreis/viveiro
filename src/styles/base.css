@@ -2,7 +2,7 @@
   --bg: #f1f2eb;
   --paper: #fafbf6;
   --ink: #24332b;
-  --muted: #82897c;
+  --muted: #485743;
   --line: #dfe3d6;
   --green: #426044;
   --lime: #dce8bc;
@@ -29,10 +29,8 @@ button {
   cursor: pointer;
   color: inherit;
 }
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-  outline: 2px solid #a7b96d;
+:focus-visible {
+  outline: 3px solid #24332b;
   outline-offset: 4px;
 }
 button {
@@ -74,7 +72,7 @@ main {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.6px;
-  color: #87917b;
+  color: var(--muted);
 }
 .panel {
   border: 1px solid var(--line);
@@ -89,14 +87,14 @@ main {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.2px;
-  color: #7b8672;
+  color: var(--muted);
   margin-bottom: 20px;
 }
 .tiny-number {
   font-family: var(--display);
   font-size: 10px;
   letter-spacing: 0;
-  color: #99a28f;
+  color: var(--muted);
 }
 h2 {
   font-family: var(--display);
@@ -106,7 +104,7 @@ h2 {
   margin: 0 0 7px;
 }
 .muted {
-  color: #8b9285;
+  color: var(--muted);
 }
 .small {
   font-size: 10px;

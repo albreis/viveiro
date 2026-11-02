@@ -12,6 +12,7 @@ interface SceneControls {
   setView(view: boolean | "side"): void;
   setInterior(visible: boolean): void;
   viewLabel?: string;
+  currentView?: boolean | "side";
   onSelect?: (id: number) => void;
   onFollowStarted?: (id: number) => void;
   onFollowEnded?: () => void;
@@ -96,7 +97,7 @@ export class AntCameraControls {
       );
       this.render();
     };
-    element("view-iso").classList.add("active");
+    this.markView(false);
     element("view-top").classList.remove("active");
     element("view-side").classList.remove("active");
     scene.setInterior(element<HTMLInputElement>("interior").checked);
@@ -178,10 +179,15 @@ export class AntCameraControls {
           ? "Cérebro individual · " + (ant.learningUpdates ?? 0) + " ajuste(s)"
           : "Aprendizado ativo · aguardando uma decisão de rota"
         : "Navegação ACO";
+    this.markView(scene?.followId ? null : (scene?.currentView ?? false));
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
+    const focused = document.activeElement;
     follow.hidden = !!scene?.followId;
     element("exit-ant").hidden = !scene?.followId;
+    if (focused === follow && follow.hidden) element("viewport").focus();
+    if (focused === element("exit-ant") && !scene?.followId)
+      (ant ? follow : select).focus();
     element("scene-guide").textContent = scene?.followId
       ? "Arraste para olhar · Esc para sair"
       : scene?.tool
@@ -191,11 +197,19 @@ export class AntCameraControls {
           : "Duplo clique na formiga · Arraste para orbitar";
   }
 
+  private markView(view: boolean | "side" | null) {
+    for (const [id, active] of [
+      ["view-top", view === true],
+      ["view-iso", view === false],
+      ["view-side", view === "side"],
+    ] as const) {
+      element(id).setAttribute("aria-pressed", String(active));
+      element(id).classList.toggle("active", active);
+    }
+  }
   private setView(view: boolean | "side") {
     this.context.getScene()?.setView(view);
-    element("view-top").classList.toggle("active", view === true);
-    element("view-iso").classList.toggle("active", view === false);
-    element("view-side").classList.toggle("active", view === "side");
+    this.markView(view);
     this.render();
   }
 }
