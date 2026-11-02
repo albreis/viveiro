@@ -1,0 +1,2 @@
+# Immutable raw browser/Node CSV evidence: preserve BOM and CRLF bytes.
+tests/fixtures/cli-native-039/*.csv binary

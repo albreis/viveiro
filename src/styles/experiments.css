@@ -1,0 +1,48 @@
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.9rem;
+  background: #fff;
+  color: #25342b;
+  border: 1px solid #8a9d82;
+  border-radius: 0.4rem;
+  font:
+    0.9rem/1.5 ui-monospace,
+    monospace;
+  resize: vertical;
+}
+.experiment-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+button {
+  padding: 0.65rem 1rem;
+  font: inherit;
+  border: 1px solid #365a29;
+  border-radius: 0.4rem;
+  background: #365a29;
+  color: white;
+  cursor: pointer;
+}
+button:disabled {
+  background: #e7ebdf;
+  color: #43513c;
+  border-color: #8a9d82;
+  cursor: default;
+}
+textarea:focus-visible,
+button:focus-visible,
+section:focus-visible {
+  outline: 3px solid #496d35;
+  outline-offset: 4px;
+}
+progress {
+  width: 100%;
+  margin-top: 1rem;
+  accent-color: #365a29;
+}
+#experiment-error {
+  color: #8b2f23;
+}
