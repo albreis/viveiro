@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-11-02T09:55:15.701Z",
+  "cookieSent": false,
+  "authorizationSent": false,
+  "sourceSha": "ed78e3fe56e7b863fc06ee0f69cef40aeb371507",
+  "records": [
+    {
+      "path": "",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/"
+    },
+    {
+      "path": "release-index.json",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/release-index.json"
+    },
+    {
+      "path": "releases/v0.33.0/",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.33.0/"
+    },
+    {
+      "path": "releases/v0.33.0/release.json",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.33.0/release.json"
+    }
+  ],
+  "checkedNonHtml": 11,
+  "htmlNote": "HTML conferido no navegador; a infraestrutura pode acrescentar JSD.",
+  "latest": "v0.33.0"
+}

@@ -79,3 +79,14 @@ O pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.
 O pacote0.31.0 também permanece em.runtime/deposits/deposit-wcJQPw.
 A versão atualizada do gerador exclui os testes operacionais explicitamente.
 O software continua exploratório e não calibrado por espécie.
+
+
+## Atualização 0.33.0
+
+CFF e rascunho referem a tag v0.33.0/ed78e3fe56e7b863fc06ee0f69cef40aeb371507,
+com autoria coletiva inalterada. Esquema oficial CFF validado e pacote verificado
+por leitor ZIP independente:476 arquivos/1.343.560bytes, SHA256
+6e1882ef2597fce385bf393cc06b76de6aaabb47da9f440a02ac8f34803dc292.
+Saída local .runtime/deposits/deposit-sFz0M3/viveiro-v0.33.0-source.zip.
+Os4 testes de depósito passaram. Nenhum upload ou DOI emitido.
+Ver validacoes/citacao-0.33.0.json. A tag publicada não foi alterada.
