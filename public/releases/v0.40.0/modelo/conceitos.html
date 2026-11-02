@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conceitos de desenho · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.40.0">
+<link rel="manifest" href="/releases/v0.40.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<main id="conteudo" tabindex="-1"><h1>Conceitos de desenho</h1>
+<p>Parte4 do <a href="index.html">ODD</a>. Os conceitos abaixo descrevem mecanismos concretos, sem atribuir intenção humana aos agentes ou validação científica às analogias.</p>
+<h2>Princípios, emergência e adaptação</h2>
+<p>Princípios: decisões por percepção limitada, regras probabilísticas, recursos finitos e balanços explicitados. Conservação numérica não implica química, geotecnia ou fisiologia realista. O cenário combina traços de demonstração.</p>
+<p>Emergem trilhas, congestionamentos, distribuição de tarefas, tráfego de cargas e desfechos populacionais. Papéis, castas, fontes de odor dos tipos de câmara, funções de recompensa, limites e regras fisiológicas são impostos pelo modelo; não emergem todos do zero nem foram todos inferidos de dados.</p>
+<p>Adaptação: a seleção de tarefa responde ao estímulo local e a limiares individuais; a escolha de saída pesa sinais, heurística e exploração. Rotas podem ser reconsideradas e gargalos podem estimular alargamento/recuperação. A seleção de local/câmara tem custos e memórias quando o perfil a habilita.</p>
+<h2>Objetivos, aprendizado e previsão</h2>
+<p>Objetivos implementados são coletar/entregar, alimentar/cuidar, manter o abrigo, defender/fugir e reproduzir sob custos. Não há função global de maximização consultada por todas as formigas nem planejamento da população futura por elas.</p>
+<p>Aprendizado: ACO e regras locais são o padrão. Uma política pequena de RL pode ser treinada em grafos e aplicada opcionalmente, com traços/atualizações individuais. Recompensas e baselines são escolhas do experimento; treino em geometrias sintéticas não comprova generalização biológica ao terrário.</p>
+<p>A previsão é ferramenta do observador, sem acesso dos agentes ao seu resultado. Réplicas de estado completo e extrapolação por contagens são métodos diferentes. Intervalos exploratórios e erros em continuações sintéticas não são cobertura empírica de uma colônia natural.</p>
+<h2>Percepção e interação</h2>
+<p>O adulto tem alcance limitado para alimento, perigo, química e contatos. No forrageamento superficial, alimento é procurado até2,3 unidades e três rumos de feromônio são amostrados a0,7. São alcances de demonstração, não visão real.</p>
+<p>O motor mantém o grafo completo para física e campos; a política de bifurcação usa saídas adjacentes, odor próximo e memória de até64 arestas percorridas. Conhecer uma entrada visitada não equivale a conhecer todo o mapa. A rotina nestPath existe para ferramentas/testes, não como oráculo padrão da operária.</p>
+<p>Contato, trofalaxia, transporte e encontros químicos exigem condições locais. Reconhecimento por distância entre assinaturas pode gerar intimidação, fuga ou conflito; camuflagem e mimetismo são hipóteses demonstrativas. Predadores, plantas e simbiontes também interagem por regras próprias, não por um LLM.</p>
+<h2>Estocasticidade e coletivos</h2>
+<p>Seed inicializa estados pseudoaleatórios. A sequência de chamadas do RNG de cada colônia é parte da trajetória; paisagem, atributos e alguns campos usam seeds derivadas. Não há aleatoriedade criptográfica ou ruído externo por frame.</p>
+<p>Escolhas de direção/tarefa, reprodução e riscos usam sorteios condicionais. Genes e diferenças de atividade/coragem/exploração geram heterogeneidade. Mutação e seleção no modelo não comprovam evolução calibrada de uma espécie.</p>
+<p>A colônia agrupa parentesco, recursos e odor. Filhas têm estado próprio num habitat comum. Não há uma mensagem central dizendo a cada operária para onde ir; há coordenação do motor para compartilhamento, limites, física e registro.</p>
+<h2>Observação</h2>
+<p>Contagens/diário/CSV são resultados do modelo; os painéis de campo mostram amostras ou faixas definidas, não leituras de sensores reais. Uma câmera em primeira pessoa muda apresentação. A pessoa pode intervir e comparar A/B. A seleção da informação disponível para previsão pertence ao experimento e precisa ser registrada, junto com versão, seed, perfil e intervenções.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li></ul></nav>
+<p><a href="conceitos.txt" download>Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>

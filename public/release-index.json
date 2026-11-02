@@ -1,0 +1,85 @@
+{
+  "format": "viveiro-release-index",
+  "version": 1,
+  "latest": "v0.40.1",
+  "releases": [
+    {
+      "tag": "v0.40.1",
+      "version": "0.40.1",
+      "sourceSha": "9b5d05761602c098e1a7bc5770b471dd5e7810f1",
+      "url": "releases/v0.40.1/"
+    },
+    {
+      "tag": "v0.40.0",
+      "version": "0.40.0",
+      "sourceSha": "7fdc46942283c82fd0402c76946ba016b251bd80",
+      "url": "releases/v0.40.0/"
+    },
+    {
+      "tag": "v0.39.0",
+      "version": "0.39.0",
+      "sourceSha": "92072e26ed9a18d9533503376fd037b183e2f4d4",
+      "url": "releases/v0.39.0/"
+    },
+    {
+      "tag": "v0.38.0",
+      "version": "0.38.0",
+      "sourceSha": "fbb0852820b9a34755a78b8bacd501b495348385",
+      "url": "releases/v0.38.0/"
+    },
+    {
+      "tag": "v0.37.0",
+      "version": "0.37.0",
+      "sourceSha": "30cc14ea82d8c7a20d0541641e07e5e3ad0cb432",
+      "url": "releases/v0.37.0/"
+    },
+    {
+      "tag": "v0.36.0",
+      "version": "0.36.0",
+      "sourceSha": "0e156836bd94aaa6a408017f597b11447f065a73",
+      "url": "releases/v0.36.0/"
+    },
+    {
+      "tag": "v0.35.2",
+      "version": "0.35.2",
+      "sourceSha": "2e978cfb8b86481063300e7556084b145e00e744",
+      "url": "releases/v0.35.2/"
+    },
+    {
+      "tag": "v0.34.0",
+      "version": "0.34.0",
+      "sourceSha": "34c41f532187119ae30f5c30fb0886e2e462aa11",
+      "url": "releases/v0.34.0/"
+    },
+    {
+      "tag": "v0.33.0",
+      "version": "0.33.0",
+      "sourceSha": "ed78e3fe56e7b863fc06ee0f69cef40aeb371507",
+      "url": "releases/v0.33.0/"
+    },
+    {
+      "tag": "v0.32.0",
+      "version": "0.32.0",
+      "sourceSha": "0b6bed31e8aafa7c4357c11138d35f003ea64542",
+      "url": "releases/v0.32.0/"
+    },
+    {
+      "tag": "v0.31.0",
+      "version": "0.31.0",
+      "sourceSha": "1a5fa67038c8fe244844136257f5328becbf5e4e",
+      "url": "releases/v0.31.0/"
+    },
+    {
+      "tag": "v0.30.1",
+      "version": "0.30.1",
+      "sourceSha": "d61a439980d32dcbae61bba5d2aeb274fbb75341",
+      "url": "releases/v0.30.1/"
+    },
+    {
+      "tag": "v0.30.0",
+      "version": "0.30.0",
+      "sourceSha": "a8c95f9c2fabb9372fa78542715af110cabcf16c",
+      "url": "releases/v0.30.0/"
+    }
+  ]
+}

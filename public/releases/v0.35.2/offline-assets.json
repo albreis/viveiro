@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "release": "0.35.2",
+  "base": "/releases/v0.35.2/",
+  "build": "ef373303cc60b754b13719cdd16db08d47dfb66ef4c56733a76f271f38246ed2",
+  "assets": [
+    {
+      "path": "app-manifest.json",
+      "sha256": "a1ce72b2d4e481027a6af150562ee914dc7c3b320cf9d4f960a507148a0001cb"
+    },
+    {
+      "path": "assets/advance.worker-HPgEFmbw.js",
+      "sha256": "fa9932d956dbefdffdb178c680375dc603a97b803506b9f2684418ed1f9a5955"
+    },
+    {
+      "path": "assets/forecast.worker-BpUMfeDG.js",
+      "sha256": "bb4915cf935549bbaf93623dd0a32b668ddae64e1da62a1c370258c2cded465e"
+    },
+    {
+      "path": "assets/index-B0EMnpcV.css",
+      "sha256": "a3e2ff6ffd97d75e5594f5e9e9682b868f874fe3e261e2db19e9e3c6a685ff83"
+    },
+    {
+      "path": "assets/index-BkBgk4ME.js",
+      "sha256": "6d82a1f377083ea5b1a509c0aa868c9a1f6a1e4d88342c0d1e67b8e161f49078"
+    },
+    {
+      "path": "assets/learning.worker-U0LQaA90.js",
+      "sha256": "6394dc5c344947e2c03496a7fd8f536a94e3617b9a7cb105974321e2038875f1"
+    },
+    {
+      "path": "assets/policy-BAw4YZ7a.js",
+      "sha256": "d69c31947e80fe9b0b24dba504d1954b759b6df9c519fde7ce4e5216b766cb06"
+    },
+    {
+      "path": "assets/soil.worker-DbtfhlLh.js",
+      "sha256": "91fee348b40aed081464b917bc5193cd2754abbc26a6483f886d6068571d74dc"
+    },
+    {
+      "path": "assets/three-BHEUeoRO.js",
+      "sha256": "ab73c4822bdb9eb1cfcc15749cb2b3e6b3fb47825fd00d85faea433e6f333f5a"
+    },
+    {
+      "path": "benchmarks/previsoes-v1.json",
+      "sha256": "d9c198fe258451673cc098c27f64e3c108f340f7dc7faada6d73ec590f75b2a4"
+    },
+    {
+      "path": "ensino/ensino.css",
+      "sha256": "c834208a66931daa6baffbe378924be6aa9e325e2a23b3b7ade215880dddf961"
+    },
+    {
+      "path": "ensino/entradas-e-ar.html",
+      "sha256": "b9950218149e0db1973e6a19411cc1dd97ae0f87c457704813a56357947aaf57"
+    },
+    {
+      "path": "ensino/entradas-e-ar.txt",
+      "sha256": "dc88eed4bc4b56cc3699b49dddc151f6fde37ad3a367286188cd6af31996d69f"
+    },
+    {
+      "path": "ensino/fundacao-e-energia.html",
+      "sha256": "430bbadd7078a5d19cf5e77dfc160fcee56df0fc4952f1d0dfb7fc244463588a"
+    },
+    {
+      "path": "ensino/fundacao-e-energia.txt",
+      "sha256": "115d232ed0ef137f0f968bc7f876cd1153792c8f9567df43c1fee37f59561f2a"
+    },
+    {
+      "path": "ensino/index.html",
+      "sha256": "02b132314a2603746bee718fbf03ecb22338b775ac739462eee101bb22b30c4e"
+    },
+    {
+      "path": "ensino/microclima-local.txt",
+      "sha256": "885155298ad82bb70adc3fa7dcafa8029ac43864da64734968c8c0c1a947d01d"
+    },
+    {
+      "path": "ensino/prole-e-temperatura.html",
+      "sha256": "758c0bc0cc0ff9acc84028ee465438a5aa50d05d3a5a9dac60a1a277492fda94"
+    },
+    {
+      "path": "ensino/prole-e-temperatura.txt",
+      "sha256": "1b1d459bfdeaa31896c486a37e7614b33ad2a0df556d80c08436a04a33bb0543"
+    },
+    {
+      "path": "ensino/README.txt",
+      "sha256": "c79e41b83ff95792d051d1caf81aefbf52fcc3d2b109eaaef37f1c68943680f2"
+    },
+    {
+      "path": "ensino/repouso-e-terra.html",
+      "sha256": "94b87a1f7c2dbf4655db982c1011ba07d79b2e9cb7f7543739a2b55bdf9fc0d7"
+    },
+    {
+      "path": "ensino/repouso-e-terra.txt",
+      "sha256": "b345d8ca8bce6eb3b8b1b217bd7fe6a29ad6e5de37d1e5c2b4ce2c263deb1950"
+    },
+    {
+      "path": "ensino/revisao-docente.txt",
+      "sha256": "e108f133f5e5f2240d964e25dd41a3d8a700709e909653a10053e67eb5f3e0b9"
+    },
+    {
+      "path": "ensino/seed-e-heranca.html",
+      "sha256": "4c80cf0ef5b239c6229cc526fcc2b69e9921617b4496440d67023cf1f598de91"
+    },
+    {
+      "path": "ensino/seed-e-heranca.txt",
+      "sha256": "94fd3f5925be8c3f16c02e21da44da6ad5433ee4e4d78226350ac7c9e448d4b5"
+    },
+    {
+      "path": "ensino/trilhas-e-vento.html",
+      "sha256": "ea1e50b093882df97553325f2bc1764efffe4ef451afaf4f197113486d30104e"
+    },
+    {
+      "path": "ensino/trilhas-e-vento.txt",
+      "sha256": "f9ced4d6bd396b3ed066885a11d07f6031707fe969762924ef10f8a26694c90e"
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "df97e300231f1bda5b8da7d8f286bb8a4a9f8b973e53d0f96ec205e4455bc1bb"
+    },
+    {
+      "path": "index.html",
+      "sha256": "aaf55a0d52d48222c1b50a73e66b6a0fa47af366e38797d634e0b4c2a374d0d5"
+    },
+    {
+      "path": "licencas.html",
+      "sha256": "a0316f3b48f040077139fbfea7724565408b343c181f56f727b18a9da1d54409"
+    },
+    {
+      "path": "offline-icon-192.png",
+      "sha256": "dbbd45085251ce4bcaefbbeb169aadcab0dc53c2fe0a3edf495fb8613f9ba37e"
+    },
+    {
+      "path": "offline-icon-512.png",
+      "sha256": "4cc21d1e22b3c680350e03acc5fab6bff5effe7d2d58b10ac33b4972b5a9cf1c"
+    },
+    {
+      "path": "THREE-LICENSE.txt",
+      "sha256": "f57eb9202058667d12aebd854fe8a86d6feaeab51078180df5615bfdbd5cff05"
+    },
+    {
+      "path": "VIVEIRO-LICENSE.txt",
+      "sha256": "07bdfa67441af0dac8f71b0d0dfcf99548edcb90e9685bb2b8e51c9838f0a392"
+    }
+  ]
+}

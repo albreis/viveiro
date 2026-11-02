@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#eff0e9" />
+    <meta
+      name="description"
+      content="Um terrário vivo em 3D. Observe uma colônia de formigas, transforme o ambiente e explore os limites da previsão."
+    />
+    <title>Viveiro — um pequeno mundo vivo</title>
+    <link rel="icon" href="/releases/v0.31.0/icon.svg" type="image/svg+xml" />
+    <script type="module" crossorigin src="/releases/v0.31.0/assets/index-B2cqd5Qf.js"></script>
+    <link rel="modulepreload" crossorigin href="/releases/v0.31.0/assets/three-BHEUeoRO.js">
+    <link rel="stylesheet" crossorigin href="/releases/v0.31.0/assets/index-DyEyN5lB.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="./" class="brand" aria-label="Viveiro, início"
+        ><span class="brand-symbol">v</span>viveiro<span class="brand-dot"
+          >.</span
+        ></a
+      >
+      <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
+      <div class="top-actions">
+        <span class="prototype" id="release-label">MODELO EXPLORATÓRIO</span
+        ><button id="help" class="text-button">
+          <span class="help-circle">?</span> Como funciona
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow">OBSERVATÓRIO / EXPERIMENTO 001</div>
+          <h1>A vida encontra caminhos<span>.</span></h1>
+          <p>Um ecossistema autônomo. Cada encontro muda o que vem depois.</p>
+        </div>
+        <button class="outline-button" id="new-world">
+          <span>↻</span> Novo terrário
+        </button>
+      </section>
+      <div class="workspace">
+        <aside class="left-panel">
+          <section class="panel environment">
+            <div class="section-label">
+              <span>O AMBIENTE</span><span class="tiny-number">01</span>
+            </div>
+            <h2>Condições de vida</h2>
+            <p class="muted small">Pequenas mudanças, novos caminhos.</p>
+            <div class="slider-block">
+              <label for="humidity"
+                ><span>◉ &nbsp; Umidade do ar</span
+                ><output id="humidity-value">58%</output></label
+              ><input id="humidity" type="range" min="0" max="100" value="58" />
+              <div class="range-labels">
+                <span>Seco</span><span>Úmido</span>
+              </div>
+            </div>
+            <div class="slider-block">
+              <label for="light"
+                ><span>☼ &nbsp; Luz solar</span
+                ><output id="light-value">72%</output></label
+              ><input id="light" type="range" min="0" max="100" value="72" />
+              <div class="range-labels">
+                <span>Sombra</span><span>Sol pleno</span>
+              </div>
+            </div>
+            <div class="slider-block">
+              <label for="randomness"
+                ><span>⤨ &nbsp; Aleatoriedade</span
+                ><output id="randomness-value">28%</output></label
+              ><input
+                id="randomness"
+                type="range"
+                min="0"
+                max="100"
+                value="28"
+              />
+              <p class="field-note">Variação nas decisões de exploração.</p>
+            </div>
+            <div class="slider-block">
+              <label for="repose-angle"
+                ><span>▱ &nbsp; Repouso da terra</span
+                ><output id="repose-angle-value">36°</output></label
+              ><input
+                id="repose-angle"
+                type="range"
+                min="15"
+                max="55"
+                value="36"
+              />
+              <p class="field-note">
+                Maior ângulo: menos deslizamento. Modelo exploratório.
+              </p>
+            </div>
+            <div id="soil-material-panel" hidden></div>
+            <div class="slider-block">
+              <label for="temperature"
+                ><span>☷ &nbsp; Temperatura do ar</span
+                ><output id="temperature-value">24 °C</output></label
+              ><input
+                id="temperature"
+                type="range"
+                min="5"
+                max="45"
+                value="24"
+              />
+              <p class="field-note">Referência térmica independente da luz.</p>
+            </div>
+            <button id="rain" class="rain-button">
+              <span>☂</span> Fazer chover <span>+12% umidade</span>
+            </button>
+          </section>
+          <section class="panel intervention-panel">
+            <div class="section-label">
+              <span>INTERVENÇÕES</span><span class="tiny-number">02</span>
+            </div>
+            <h2>Deixe sua marca</h2>
+            <p class="muted small" id="tool-hint">
+              Escolha um elemento e clique no solo.
+            </p>
+            <div class="tools">
+              <button data-tool="food" aria-pressed="false">
+                <span class="tool-icon food-icon">◒</span><span>Alimento</span>
+              </button>
+              <button data-tool="plant" aria-pressed="false">
+                <span class="tool-icon">⚘</span><span>Planta</span>
+              </button>
+              <button data-tool="predator" aria-pressed="false">
+                <span class="tool-icon predator-icon">✳</span
+                ><span>Predador</span>
+              </button>
+              <button data-tool="scent" aria-pressed="false">
+                <span class="tool-icon">◌</span><span>Odor estranho</span>
+              </button>
+            </div>
+            <p class="field-note">
+              Clique novamente no elemento para voltar à câmera.
+            </p>
+          </section>
+          <section id="biology-panel" class="panel biology-panel"></section>
+          <div class="seed-box">
+            <label for="seed">SEMENTE DO EXPERIMENTO</label>
+            <div>
+              <input
+                id="seed"
+                value="SEMENTE-42"
+                maxlength="40"
+                aria-label="Semente do experimento"
+              /><button
+                id="apply-seed"
+                title="Iniciar com esta semente"
+                aria-label="Iniciar com esta semente"
+              >
+                ↗
+              </button>
+            </div>
+            <button id="replay" class="text-button">
+              ↺ Repetir cenário e intervenções
+            </button>
+          </div>
+        </aside>
+        <section class="center-panel">
+          <div class="scene-card">
+            <div class="scene-toolbar">
+              <div class="live-status">
+                <i></i><span id="status-text">ECOSSISTEMA VIVO</span>
+              </div>
+              <div class="view-switch">
+                <button
+                  id="view-iso"
+                  class="active"
+                  aria-label="Vista em perspectiva"
+                  title="Perspectiva"
+                >
+                  ◇</button
+                ><button
+                  id="view-top"
+                  aria-label="Vista de cima"
+                  title="Vista de cima"
+                >
+                  ▦</button
+                ><button
+                  id="view-side"
+                  aria-label="Vista lateral dos túneis"
+                  title="Alternar entre os quatro lados do terrário"
+                >
+                  ▤</button
+                ><button
+                  id="fullscreen"
+                  aria-label="Tela cheia"
+                  title="Tela cheia"
+                >
+                  ⛶
+                </button>
+              </div>
+            </div>
+            <div
+              id="viewport"
+              role="img"
+              aria-label="Terrário tridimensional com formigas, plantas, lago e aranhas"
+            >
+              <div id="loading">
+                <span class="loading-leaf">⚘</span>Preparando um pequeno mundo…
+              </div>
+              <button id="resume-overlay" hidden>
+                Simulação pausada · Continuar ▶
+              </button>
+            </div>
+            <div class="ant-camera">
+              <div>
+                <span class="eyebrow">NA PERSPECTIVA DE UMA FORMIGA</span
+                ><span id="ant-state"
+                  >Escolha uma habitante para acompanhar.</span
+                ><span id="ant-genome">Herança não registrada</span
+                ><span id="ant-climate"></span><span id="ant-gas"></span
+                ><span id="ant-learning"></span>
+              </div>
+              <select
+                id="ant-select"
+                aria-label="Formiga para acompanhar"
+              ></select
+              ><button id="follow-ant">1ª pessoa ↗</button
+              ><button id="exit-ant" hidden>Sair da formiga</button>
+            </div>
+            <div class="scene-caption">
+              <span class="scene-tag"
+                ><i class="green-dot"></i>
+                <span id="biome-label">Terrário de floresta</span></span
+              ><span id="scene-guide"
+                >Arraste para orbitar · Role para aproximar</span
+              >
+            </div>
+            <div class="scene-controls">
+              <label class="toggle-label"
+                ><input type="checkbox" id="interior" /><span
+                  class="toggle-track"
+                ></span
+                >Ver túneis internos</label
+              >
+              <button
+                id="play"
+                class="play-button"
+                aria-label="Pausar simulação"
+              >
+                Ⅱ
+              </button>
+              <div class="time-display">
+                <strong id="day">Dia 0</strong
+                ><span id="time-of-day">A fundação</span>
+              </div>
+              <div class="speed-controls" aria-label="Velocidade da simulação">
+                <button data-speed="1" class="active">1×</button
+                ><button data-speed="3">3×</button
+                ><button data-speed="10">10×</button>
+              </div>
+              <div class="controls-divider"></div>
+              <label class="toggle-label"
+                ><input type="checkbox" id="trails" /><span
+                  class="toggle-track"
+                ></span
+                >Feromônios</label
+              >
+            </div>
+          </div>
+          <div id="comparison-panel" class="comparison-strip" hidden>
+            <div>
+              <span class="eyebrow">DOIS COMEÇOS, DOIS FUTUROS</span>
+              <p id="comparison-text">Cenário B: umidade inicial +1 ponto.</p>
+            </div>
+            <div class="scenario-switch">
+              <button data-scenario="a" class="active">A · original</button
+              ><button data-scenario="b">B · alterado</button>
+            </div>
+          </div>
+          <div class="observation-card">
+            <span class="observation-symbol">↗</span>
+            <div>
+              <span class="eyebrow">O QUE ESTÁ ACONTECENDO</span>
+              <p id="observation">
+                A rainha prepara o ninho. O primeiro ciclo de vida está
+                começando.
+              </p>
+            </div>
+            <span class="observation-line"></span>
+          </div>
+          <div class="legend">
+            <span><i class="legend-dot ant-dot"></i>Formigas</span
+            ><span><i class="legend-dot brood-dot"></i>Crias no ninho</span
+            ><span><i class="legend-dot food-dot"></i>Alimento</span
+            ><span><i class="legend-dot predator-dot"></i>Aranhas</span
+            ><button id="export" class="text-button">↓ Exportar dados</button>
+          </div>
+        </section>
+        <aside class="right-panel">
+          <section class="panel metrics-panel">
+            <div class="section-label">
+              <span>A COLÔNIA</span><span class="live-word"><i></i> AGORA</span>
+            </div>
+            <div class="population-line">
+              <strong id="population">2</strong>
+              <div>
+                formigas<span id="population-detail">1 rainha · 1 macho</span>
+              </div>
+              <span class="ant-glyph">♧</span>
+            </div>
+            <div class="metric-grid">
+              <div><span>Crias</span><strong id="brood">0</strong></div>
+              <div>
+                <span>Reserva</span><strong id="food">0<span> u.</span></strong>
+              </div>
+              <div>
+                <span>Vegetação</span
+                ><strong id="vegetation">32<span> plantas</span></strong>
+              </div>
+              <div>
+                <span>Predadores</span><strong id="predators">2</strong>
+              </div>
+            </div>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>FUNDAÇÃO E VIDA COLETIVA</span><span>↔</span>
+            </div>
+            <p id="family-status">1 colônia · 2 alados fundadores.</p>
+            <p id="daughter-status"></p>
+            <p id="founding-status" role="status" aria-live="off">
+              Aguardando o primeiro voo.
+            </p>
+            <button id="focus-sealing" class="text-button" disabled>
+              Observar entrada por dentro
+            </button>
+            <p id="fertility-status" class="field-note" hidden></p>
+            <div id="survival-panel" hidden></div>
+            <p id="store-status" class="field-note" hidden></p>
+            <p id="development-status" hidden></p>
+            <button id="focus-brood" class="text-button" disabled>
+              Observar crias de perto
+            </button>
+            <div id="season-panel" hidden>
+              <p id="season-status"></p>
+              <label for="photoperiod"
+                >Duração diária da luz
+                <strong id="photoperiod-value">12 h</strong></label
+              ><input
+                id="photoperiod"
+                type="range"
+                min="0"
+                max="24"
+                step="0.5"
+                value="12"
+                aria-label="Duração diária da luz"
+              />
+            </div>
+            <p id="chemical-status"></p>
+            <div
+              id="odor-legend"
+              class="odor-legend"
+              aria-label="Cores dos territórios"
+            ></div>
+            <p id="colony-status">
+              A divisão de tarefas começa com as primeiras operárias.
+            </p>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>TÚNEIS VIVOS</span><span>↓</span>
+            </div>
+            <p id="soil-status">
+              As operárias organizam as frentes de trabalho.
+            </p>
+            <p id="granular-status"></p>
+            <p id="structure-status"></p>
+            <button id="focus-structure" class="text-button" disabled>
+              Observar teto com menor suporte
+            </button>
+            <button id="disturb" class="text-button">
+              Abalar uma galeria vazia
+            </button>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>RELAÇÕES DO ECOSSISTEMA</span><span>⚘</span>
+            </div>
+            <p id="ecology-status">
+              As relações ecológicas aparecem conforme o tempo avança.
+            </p>
+            <p>
+              O melaço custa recursos da planta. O odor compatível pode permitir
+              a adoção de uma lagarta.
+            </p>
+            <button id="focus-ecology" class="text-button" disabled>
+              Observar relações de perto
+            </button>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>ÁGUA E CALOR NO SOLO</span><span>◉</span>
+            </div>
+            <p id="climate-status"></p>
+            <div class="climate-tabs">
+              <button
+                class="text-button"
+                data-climate-map="water"
+                aria-pressed="true"
+              >
+                Ver água</button
+              ><button
+                class="text-button"
+                data-climate-map="heat"
+                aria-pressed="false"
+              >
+                Ver calor
+              </button>
+            </div>
+            <canvas
+              id="climate-map"
+              width="280"
+              height="112"
+              role="img"
+              aria-label="Corte central do solo"
+            ></canvas>
+            <p id="climate-map-caption" class="field-note"></p>
+            <p>
+              Água nos poros e umidade do ar são medidas diferentes. Modelo
+              espacial exploratório.
+            </p>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>AR NAS GALERIAS</span><span>≈</span>
+            </div>
+            <p id="gas-status"></p>
+            <canvas
+              id="gas-map"
+              width="280"
+              height="112"
+              role="img"
+              aria-label="Diagrama das galerias, entradas e sentido do fluxo de ar"
+            ></canvas>
+            <p class="field-note">
+              Verde → ocre: mais CO₂. Círculos maiores: entradas. Setas:
+              circulação. Projeção esquemática, modelo exploratório.
+            </p>
+            <div class="slider-block">
+              <label for="wind"
+                ><span>Vento horizontal</span
+                ><output id="wind-value">0 u.</output></label
+              >
+              <input
+                id="wind"
+                type="range"
+                min="-4"
+                max="4"
+                step="0.5"
+                value="0"
+              />
+              <p class="field-note">
+                Intensidade em unidades do modelo; também transporta feromônios.
+              </p>
+            </div>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>APRENDIZADO LOCAL</span><span>◇</span>
+            </div>
+            <p id="learning-status"></p>
+            <label for="learning-mode">Navegação</label
+            ><select id="learning-mode">
+              <option value="aco">ACO</option>
+              <option value="neural" disabled>Política aprendida</option>
+            </select>
+            <p id="training-status">
+              Treino separado da renderização, com avaliação contra ACO. Modelo
+              exploratório.
+            </p>
+            <div class="climate-tabs">
+              <button id="train-policy" class="text-button">
+                Treinar e comparar</button
+              ><button id="apply-policy" class="text-button" disabled>
+                Aplicar política
+              </button>
+            </div>
+          </section>
+          <section class="panel soil-panel">
+            <div class="section-label">
+              <span>EXPERIMENTOS SALVOS</span><span>▣</span>
+            </div>
+            <p id="checkpoint-status" role="status" aria-live="polite">
+              Checkpoints ficam neste navegador. Exportar dados cria uma cópia
+              em JSON.
+            </p>
+            <label for="checkpoint-name">Nome do checkpoint</label
+            ><input
+              id="checkpoint-name"
+              type="text"
+              maxlength="60"
+              placeholder="Antes da chuva"
+            /><button id="create-checkpoint" class="text-button">
+              Criar checkpoint</button
+            ><label for="checkpoint-list">Checkpoint para recuperar</label
+            ><select id="checkpoint-list"></select
+            ><button id="restore-checkpoint" class="text-button" disabled>
+              Restaurar checkpoint</button
+            ><button id="import-checkpoint" class="text-button">
+              Importar experimento</button
+            ><input
+              id="import-experiment"
+              type="file"
+              accept=".json,application/json"
+              aria-label="Arquivo do experimento"
+              hidden
+            />
+            <p class="field-note">
+              Antes de recuperar, o estado atual ganha um checkpoint nomeado.
+              Automáticos: 8 recentes. Nomeados: preservados. Datas em São
+              Paulo.
+            </p>
+          </section>
+          <section class="panel chart-panel">
+            <div class="section-label">
+              <span>VIDA AO LONGO DO TEMPO</span
+              ><span id="chart-days">0 DIAS</span>
+            </div>
+            <canvas
+              id="chart"
+              height="130"
+              aria-label="Gráfico do número de formigas ao longo do tempo"
+            ></canvas>
+            <div class="chart-legend">
+              <span
+                ><i></i>Formigas
+                <span id="chart-b-legend" hidden> A</span></span
+              ><span id="chart-comparison-legend" hidden
+                ><i class="line-b"></i>Formigas B</span
+              ><span class="chart-axis-note">dias →</span>
+            </div>
+          </section>
+          <section class="forecast-card">
+            <div class="section-label">
+              <span>UM OLHAR ADIANTE</span><span>✧</span>
+            </div>
+            <h2>O futuro tem intervalos.</h2>
+            <p id="forecast-horizon">População estimada daqui a 3 dias:</p>
+            <div class="forecast-value" id="forecast-value">
+              — <span>formigas</span>
+            </div>
+            <div class="forecast-range"><span></span><i></i><span></span></div>
+            <p class="forecast-note" id="forecast-note">
+              Previsão aguardando início.
+            </p>
+            <p id="forecast-method-note" class="forecast-note">
+              Estado completo do modelo.
+            </p>
+            <progress
+              id="forecast-progress"
+              max="1"
+              value="0"
+              aria-label="Progresso da previsão"
+              hidden
+            ></progress>
+            <p id="forecast-cost" class="forecast-note"></p>
+            <div class="forecast-options">
+              <label
+                >Observação<select id="forecast-observation">
+                  <option value="complete">Estado completo (modelo 3D)</option>
+                  <option value="counts">
+                    Contagem e histórico (aproximação)
+                  </option>
+                </select></label
+              >
+              <label
+                >Horizonte<select id="forecast-days">
+                  <option value="1">1 dia</option>
+                  <option value="3" selected>3 dias</option>
+                  <option value="7">7 dias</option>
+                </select></label
+              >
+              <label
+                >Futuros<select id="forecast-runs">
+                  <option value="6">6 cenários</option>
+                  <option value="18" selected>18 cenários</option>
+                </select></label
+              >
+              <label
+                >Limite de cálculo<select id="forecast-budget">
+                  <option value="10">10 s de trabalho</option>
+                  <option value="30" selected>30 s de trabalho</option>
+                  <option value="120">120 s de trabalho</option>
+                </select></label
+              >
+            </div>
+            <div class="forecast-actions">
+              <button id="forecast-run">Recalcular previsão</button
+              ><button id="forecast-cancel" disabled>Cancelar previsão</button>
+            </div>
+            <details id="forecast-benchmark" class="forecast-benchmark">
+              <summary>Erros por horizonte · ensaio reservado</summary>
+              <label
+                >Métrica<select id="forecast-metric">
+                  <option value="mae">Erro absoluto médio (formigas)</option>
+                  <option value="rmse">
+                    Raiz do erro quadrático (formigas)
+                  </option>
+                  <option value="coverage">Faixa contém o desfecho (%)</option>
+                </select></label
+              >
+              <table>
+                <caption>
+                  Comparação com continuação sintética sem intervenções futuras
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Dias</th>
+                    <th scope="col">Completo</th>
+                    <th scope="col">Contagem</th>
+                    <th scope="col">Base</th>
+                  </tr>
+                </thead>
+                <tbody id="forecast-benchmark-rows"></tbody>
+              </table>
+              <p id="forecast-benchmark-note">
+                Abra para carregar o ensaio reservado.
+              </p>
+              <p id="forecast-benchmark-cost"></p>
+              <a href="/releases/v0.31.0/benchmarks/previsoes-v1.json" download
+                >Baixar relatório completo em JSON</a
+              >
+            </details>
+            <button id="compare">Comparar dois cenários <span>↗</span></button>
+          </section>
+          <section class="panel events-panel">
+            <div class="section-label">
+              <span>DIÁRIO DO TERRÁRIO</span><span class="tiny-number">↙</span>
+            </div>
+            <ol id="events" aria-live="off"></ol>
+          </section>
+        </aside>
+      </div>
+      <footer>
+        <span
+          ><i class="green-dot"></i> Autonomia individual. Vida coletiva.</span
+        ><span id="save-status">Salvo apenas neste navegador</span
+        ><span
+          >OBSERVAR TAMBÉM É DESCOBRIR. ·
+          <a href="/releases/v0.31.0/licencas.html" target="_blank" rel="noopener"
+            >Licenças</a
+          ></span
+        >
+      </footer>
+    </main>
+    <div id="toast" role="status" hidden></div>
+    <dialog id="help-dialog">
+      <button class="dialog-close" id="close-help" aria-label="Fechar">
+        ×
+      </button>
+      <div class="eyebrow">GUIA DE OBSERVAÇÃO</div>
+      <h2>Uma colônia.<br />Muitos futuros possíveis.</h2>
+      <p>
+        Cada formiga observa o que está perto e decide entre explorar, coletar,
+        seguir feromônios, fugir e voltar ao ninho. As interações formam o
+        comportamento da colônia.
+      </p>
+      <div class="help-columns">
+        <div>
+          <h3>O ciclo de vida</h3>
+          <p>
+            O terrário novo começa com dois alados e solo intacto. Umidade e luz
+            favoráveis após chuva permitem o voo. A rainha acasala, perde as
+            asas, escava e cria as primeiras naníticas com reservas maternas,
+            sem buscar alimento. Depois, as operárias precisam forragear. Os
+            tempos são acelerados; este não é um calendário biológico.
+          </p>
+        </div>
+        <div>
+          <h3>Novas colônias</h3>
+          <p>
+            Colônias maduras podem reservar alimento para princesas e zangões.
+            Os alados precisam sair do ninho e encontrar uma janela úmida e
+            quente após chuva. Uma filha funda outro abrigo com recursos e
+            parentesco próprios. Se perderem a janela, podem precisar de outra
+            chuva. Limite atual: quatro colônias por experimento.
+          </p>
+        </div>
+        <div>
+          <h3>Repetir e comparar</h3>
+          <p>
+            A mesma semente, condições e sequência de intervenções reproduzem a
+            execução. “Repetir” reaplica as intervenções nos mesmos instantes. O
+            cenário B começa do estado atual com 1 ponto a mais de umidade.
+          </p>
+        </div>
+        <div>
+          <h3>Prever com incerteza</h3>
+          <p>
+            A previsão executa 18 cenários com pequenas variações de luz e
+            umidade e novas escolhas aleatórias. O intervalo mostra os percentis
+            10–90 dessas simulações, não uma garantia. Compare previsões e
+            resultados.
+          </p>
+        </div>
+      </div>
+      <p class="help-note">
+        Aleatoriedade e caos são conceitos diferentes. Divergência entre
+        cenários, por si só, não comprova caos matemático. Este protótipo
+        explora um modelo ecológico simplificado; seus resultados não validam
+        previsões sobre um terrário real. Limite: 450 formigas e crias.
+      </p>
+      <button class="primary-button" id="start-observing">
+        Voltar ao terrário ↗
+      </button>
+    </dialog>
+  </body>
+</html>

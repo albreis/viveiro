@@ -1,0 +1,21 @@
+{
+  "format": "viveiro-release",
+  "version": "0.30.1",
+  "tag": "v0.30.1",
+  "sourceSha": "d61a439980d32dcbae61bba5d2aeb274fbb75341",
+  "files": {
+    "THREE-LICENSE.txt": "f57eb9202058667d12aebd854fe8a86d6feaeab51078180df5615bfdbd5cff05",
+    "VIVEIRO-LICENSE.txt": "07bdfa67441af0dac8f71b0d0dfcf99548edcb90e9685bb2b8e51c9838f0a392",
+    "assets/advance.worker-BBU3z0yv.js": "68c6046e4b050ca605975167eba7cbe806d73b45114e8695bf4f2fc5de1b82c1",
+    "assets/forecast.worker-BpUMfeDG.js": "bb4915cf935549bbaf93623dd0a32b668ddae64e1da62a1c370258c2cded465e",
+    "assets/index-Dj2fyiIp.css": "cbd6e28f51e02fd80a7724cd041ca22885648eb9226d2808d0165a3e0e49b36a",
+    "assets/index-Dp_wqYZp.js": "2c544ab16a117678cc8d40eb842f9e4a356d79023da29f80d990092f437599fe",
+    "assets/learning.worker-U0LQaA90.js": "6394dc5c344947e2c03496a7fd8f536a94e3617b9a7cb105974321e2038875f1",
+    "assets/soil.worker-BbuxrGp9.js": "9f25daed077a53d8bb255b28a3ac2fa720d2ce40016918ad86ac2d87ba3f1112",
+    "assets/three-BHEUeoRO.js": "ab73c4822bdb9eb1cfcc15749cb2b3e6b3fb47825fd00d85faea433e6f333f5a",
+    "benchmarks/previsoes-v1.json": "d9c198fe258451673cc098c27f64e3c108f340f7dc7faada6d73ec590f75b2a4",
+    "icon.svg": "df97e300231f1bda5b8da7d8f286bb8a4a9f8b973e53d0f96ec205e4455bc1bb",
+    "index.html": "317dcead5d903949ab1cb9fca2c41f24af41cc43236741306e662c8d5ec9c0b6",
+    "licencas.html": "ab3af756445a11b9174b4debcc37d09fb2136d012d42f88cd08166b6dafc76fb"
+  }
+}

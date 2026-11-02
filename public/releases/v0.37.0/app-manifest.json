@@ -1,0 +1,26 @@
+{
+  "id": "/releases/v0.37.0/",
+  "name": "Viveiro · laboratório de formigas",
+  "short_name": "Viveiro",
+  "lang": "pt-BR",
+  "start_url": "/releases/v0.37.0/",
+  "scope": "/releases/v0.37.0/",
+  "display": "standalone",
+  "background_color": "#eff0e9",
+  "theme_color": "#344e36",
+  "description": "Terrário 3D e experimentos reproduzíveis. Modelo exploratório.",
+  "icons": [
+    {
+      "src": "offline-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "offline-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
