@@ -1,3 +1,15 @@
+# Fonte completa em publicação /0.35.2
+
+Configuração Vite estava fora dos commits anteriores; incluída na0.35.2.
+Tags0.35.0 e0.35.1 preservadas noGit, semdeploy. PR47 único, base46.
+35 testes passaram eQA de0.35.1 com308/offline foi validada; código funcional
+mantido, versão e configuração completa agora acompanham a tag0.35.2.
+Conferir Gitlimpo antes da tag/pacote e usar o SHA real da0.35.2.
+Helperprivado86275 aguardando credencial; abertura pública7b3c073d... preservada.
+Publicar ambos Sites e atualizar citação/ZIP/checkpoint. Não repetir deploy.
+
+---
+
 # Ajuste antes da publicação /0.35.1
 
 Tag0.35.0/93eba21329c4726cfc9a4ed0c962f3d706998afc preservada, semdeploy.

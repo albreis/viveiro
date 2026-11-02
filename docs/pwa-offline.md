@@ -1,6 +1,6 @@
 # PWA e cache offline / P1.5
 
-Entrega0.35.1. No laboratório público, o botão Preparar para usar sem rede
+Entrega0.35.2. No laboratório público, o botão Preparar para usar sem rede
 registra um service worker com escopo da própria release. O preparo é opcional;
 a aplicação continua funcionando online sem registrar nada. Manifesto com
 start_url/id/scope da release, display standalone e PNGs reais192/512.
@@ -38,7 +38,7 @@ presença de todos os arquivos. Não há sincronização comservidor ou novaRNG.
 19 testes dirigidos passaram na primeira rodada final: falhas parciais,
 isolamento, login/privacidade, alteração de bytes, evicção, ícones reais,
 hashes finais, dois builds isolados e checkpoint codec/store. Rodada final com publicação/depósito:34/34 em3.026,0901ms.
-Build privado335 módulos, TypeScript estrito; build público isolado conferido.
+Build privado336 módulos, TypeScript estrito; build público isolado conferido.
 Módulos pequenos emsrc; ícones e manifesto gerados por código original,
 sem dependência adicional nem assets externos.
 
@@ -69,3 +69,8 @@ depois dopreparo: reload, guias e novo checkpoint funcionaram semservidor.
 A tag0.35.0 anterior é preservada noGit, sempublicação na galeria.
 
 P1.6/CSV diário e acessibilidade é o próximo item implementável.
+
+
+A0.35.2 inclui a configuração Vite no commit da fonte e reúne o ajuste de
+redirecionamentos. Tags0.35.0 e0.35.1 são preservadas apenas noGit; não foram
+publicadas nos Sites. A entrega é a fonte completa marcada0.35.2.
