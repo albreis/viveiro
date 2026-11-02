@@ -179,3 +179,24 @@ test("daughter retains her own physiology and does not reroll latent risks or co
   validateSurvival(copy, true);
   validateSurvival(copy.colonies[0], true);
 });
+
+test("combined family presentations count each physiological body once", async () => {
+  const { family } = await import("./fixtures/family.mjs"),
+    { presentFamily } = await import("../src/modules/colonies/presentation.ts"),
+    { survivalPopulation } =
+      await import("../src/modules/survival/population.ts");
+  const { w, child } = family("survival-presentation");
+  for (const a of [...w.ants, ...child.ants])
+    a.life = { version: 1, infection: a.id % 2 ? 0.5 : 0 };
+  const actual = survivalPopulation(w),
+    shown = survivalPopulation(presentFamily(w));
+  assert.equal(shown.length, w.ants.length + child.ants.length);
+  assert.deepEqual(
+    shown.map((a) => a.id),
+    actual.map((a) => a.id),
+  );
+  assert.equal(
+    shown.filter((a) => a.life.infection > 0).length,
+    actual.filter((a) => a.life.infection > 0).length,
+  );
+});

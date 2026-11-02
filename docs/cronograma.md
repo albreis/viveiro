@@ -455,7 +455,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 ### 13. Fertilidade e longevidade
 
 - [x] 13A publicada em0.27.0, PR [#37](https://github.com/albreis/viveiro/pull/37), fonte996d26a/tag v0.27.0: espermateca finita, viabilidade, parentesco, prole haploide após esgotamento e reservatórios independentes de filhas.260 testes completos, build288 módulos e QA/restore aprovados. Múltiplos lotes são suportados, mas o gerador ainda oferece um par por coorte. Ver [modelo e limites](espermateca.md).
-- [ ] 13B implementada e validada, em publicação0.28.0: saúde/energia separados, reparo pago, ingestão local da rainha, exposição local, curvas condicionais e mortalidade por causa.274 testes, build300 módulos e QA/restore aprovados. Ver [mecanismos e limites](saude-longevidade.md).
+- [ ] 13B implementada e validada, em publicação0.28.0: saúde/energia separados, reparo pago, ingestão local da rainha, exposição local, curvas condicionais e mortalidade por causa.274 testes completos,15 dirigidos finais, build301 módulos e QA/restore aprovados. Ver [mecanismos e limites](saude-longevidade.md).
 - [ ] Dependências externas13: calibração de sobrevivência/doença por espécie e verificação primária do relato28a8m. Os protótipos não comprovam a faixa15–30 anos.
 
 - Estoque/viabilidade de esperma, uso por ovo e possível contribuição de múltiplos machos.

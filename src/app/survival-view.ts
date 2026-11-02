@@ -1,7 +1,8 @@
+import { survivalPopulation } from "../modules/survival/population.ts";
 import { survivalMarkup } from "./survival-markup.ts";
 import { deathLabels as labels } from "../modules/survival/labels.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
-import { colonyWorlds, allAnts } from "../modules/colonies/types.ts";
+import { colonyWorlds } from "../modules/colonies/types.ts";
 import { ageScale, ageSurvival } from "../modules/survival/curves.ts";
 import { DEATH_CAUSES } from "../modules/survival/types.ts";
 export function installSurvivalControls(
@@ -54,7 +55,7 @@ export function renderSurvivalStatus(w: FamilyWorld): void {
   if (!worlds.length) return;
   const status = document.getElementById("survival-status");
   if (!status) return;
-  const ants = allAnts(w).filter((a) => a.life),
+  const ants = survivalPopulation(w),
     hurt = ants.filter((a) => (a.health ?? 100) < 99.9).length,
     infected = ants.filter((a) => (a.life?.infection ?? 0) > 0.0001).length;
   const causes = DEATH_CAUSES.map((k) => {
