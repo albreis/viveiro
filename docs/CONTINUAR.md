@@ -7,7 +7,8 @@ branches, tags, saves e audiência privada original. Código novo pequeno em TS.
 
 ## Estado atual
 
-P0.3 entregue: Site público separado, com URLs por versão e sem login.
+P0.3 entregue; P0.4A preparada na branch codex/citacao-e-deposito.
+P0.4B/DOI depende de conta autenticada e depósito reais, ainda ausentes.
 Branch codex/publicacao-por-tag; PR #41 sobre codex/licencas-e-revisao/#40.
 PRs32–41 ainda abertos na última checagem; main15781d2. Conferir merges do
 usuário antes da próxima etapa; ajustar a base se a anterior for integrada.
@@ -65,20 +66,32 @@ ação dessa tentativa executou. Após o horário permitido, a revisão normal
 voltou a permitir a execução; não houve contorno. A publicação já estava
 concluída e foi reconciliada sem repetição.
 
-## Próximo passo concreto: P0.4
+## Entrega atual: P0.4A
 
-1. Conferir Git/PRs e abrir branch codex/ própria, sobre#41 se ainda aberto.
-2. Preparar CITATION.cff com título, versão/tag real, data e autoria verificável;
-   conferir o esquema oficial. Não inventar nomes, ORCID ou DOI.
-3. Preparar depósito/release reproduzível para Zenodo. DOI depende de conta,
-   autorização e publicação reais; registrar dependências que faltarem.
-   Metadados preparados não equivalem a emitir DOI ou concluir todoP0.4.
-4. SeguirP1–P5, P5 por último. Dados de laboratório, revisão docente, pilotos,
-   hardware escolar e publicação científica continuam dependências externas.
-5. Entrega funcional: branch, testes adequados, QA, commit/push/PR e publicação
-   privada. Releases públicas novas exigem fonte limpa e NOVA versão;
-   scripts/build-public-release.ts preserva o espelho e as tags. Helper do
-   espelho: commands:[["node","build-static.ts"]]. Não trocar identidades.
+CITATION.cff e .zenodo.json apontam para0.30.1/d61a439, autoria coletiva já
+existente na licença. Esquema CFF1.2.0 validado com jsonschema4.26.0.
+Gerador node scripts/prepare-deposit.ts: ZIP selecionado da tag, metadados
+adicionados depois da tag, mapa SHA-256 e conferência de todas as entradas.
+6/6 testes dirigidos e reprodução byte a byte; Python zipfile independente:
+446 arquivos/1.265.595bytes, SHA018a0a1d0e68ff3adb04e214bf43e9ba86345ea9f3351d6fa09222f4cbd940d5.
+Pacote em.runtime/deposits/deposit-CqrgTm/viveiro-v0.30.1-source.zip.
+Nada enviado ao Zenodo. Ver docs/citacao-e-deposito.md.
+Metadados não alteram a aplicação; não republicar0.30.1 nem suas tags.
+PR da entrega: conferir por head codex/citacao-e-deposito, base#41 se aberto.
+
+## Próximo passo concreto: P1.1
+
+1. Conferir Git/PRs/merges e abrir branch codex/ própria depois do PR da citação.
+   Não duplicar PR. Repositório original continua privado.
+2. Implementar perfil leve de renderização e previsão parcial; não reduzir
+   população simulada em experimento existente nem trocar modelo/seed.
+   Limitar instâncias visuais e malha renderizada somente.
+3. Medir no navegador real. Aceite30fps em hardware escolar depende de ensaio
+   real em aparelho identificado; não chamar este PC de Chromebook.
+4. P0.4B/DOI e P0.4C/botão após merge permanecem pendentes. Autoria e conta
+   Zenodo perguntadas em chat; sem resposta até esta entrega. Sem token no chat.
+5. SeguirP1–P5, P5 por último. Dados de laboratório, revisão docente, pilotos e
+   hardware escolar são dependências externas. Automação permanece útil.
 
 Não desativar a automação: o cronograma segue. Histórico detalhado preservado
 em [índice de checkpoints](continuacao/0357f01/README.md).

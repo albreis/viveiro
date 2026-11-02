@@ -106,3 +106,9 @@ Divulgação: [kit técnico para redes, comparação e plano para o primeiro lug
 ## Licenças
 
 O código original do projeto usa [MIT](LICENSE), [aprovada pela OSI](https://opensource.org/license/mit), conforme P0.1 do cronograma. Documentação e imagens originais produzidas para o projeto usam [CC BY 4.0](LICENSE-DOCS.md). Preserve os créditos existentes; materiais de terceiros mantêm suas próprias licenças. O aviso do Three.js está integral e inalterado. Consulte [recursos de terceiros](docs/terceiros.md). Saves e dados do usuário não são publicados nem relicenciados automaticamente. O Site de testes continua privado.
+
+## Citar e arquivar
+
+Cite a versão e o commit descritos em [CITATION.cff](CITATION.cff).
+O pacote selecionado para depósito é gerado por `node scripts/prepare-deposit.ts`.
+[Processo e validação](docs/citacao-e-deposito.md). DOI ainda pendente de depósito real.
