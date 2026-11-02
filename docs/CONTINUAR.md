@@ -57,7 +57,8 @@ engines, replicação científica externa ou calibração por espécie.
 Privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
 ID appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/rev1, owner1/external0.
 Deploy appgdep_6ae8e505d9e081918acca66686b1388b, succeeded 19:31:32 UTC.
-Público: https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
+Público: https://viveiro.ersolucoesweb.com.br/ (GitHub Pages, branch site-publico; ver docs/publicacao-github-pages.md)
+Público antigo (Sites, manter até concluir a troca): https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
 ID appgprj_6ae80cd45fdc8191be8315696a383393, public/rev2, versão 11.
 Fonte bb06c318061e4e4df6ca483dd9311d07d58ba648,
 deploy appgdep_6ae8e571d5b081918cbc7652e9bdb988, succeeded 19:33:22 UTC.

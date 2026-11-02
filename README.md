@@ -2,7 +2,7 @@
 
 Terrário 3D de formigas no navegador. Cada formiga é um agente autônomo que só percebe o que está ao seu redor (cheiro, temperatura, umidade, CO₂, contato) e, a partir disso, cava túneis, transporta terra, cuida da prole e funda novas colônias. Tudo é reproduzível por _seed_.
 
-**[Abrir o laboratório público](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/)** · [Versões](CHANGELOG.md) · [Como citar](CITATION.cff)
+**[Abrir o laboratório público](https://viveiro.ersolucoesweb.com.br/)** · [Versões](CHANGELOG.md) · [Como citar](CITATION.cff)
 
 > O Viveiro é um modelo **exploratório**. Os ciclos são acelerados e simplificados e não foram calibrados para nenhuma espécie real. Não trate os resultados como biologia, geotecnia ou engenharia validadas. Consulte a [especificação ODD](docs/odd.md) para saber exatamente o que o modelo faz.
 

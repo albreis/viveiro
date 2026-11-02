@@ -63,7 +63,7 @@ pré/pós-teste ou validação pedagógica. Envie sugestões sem dados de alunos
 
 ## Preparar uma aula sem rede
 
-No [laboratório público](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/),
+No [laboratório público](https://viveiro.ersolucoesweb.com.br/),
 abra uma versão e use **Preparar para usar sem rede**. Aguarde a mensagem
 **Pronto para abrir sem rede** antes de sair. Reabra o endereço daquela versão;
 o catálogo e links externos continuam dependendo de conexão. Em navegadores

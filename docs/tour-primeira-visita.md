@@ -69,7 +69,7 @@ adequado. Não foi realizado estudo com aluno nesta entrega.
 
 0.32.0 publicada no Site privado original e no público separado, fonte/tag
 0b6bed31e8aafa7c4357c11138d35f003ea64542. O original permanece privado.
-[Versão pública](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.32.0/).
+[Versão pública](https://viveiro.ersolucoesweb.com.br/releases/v0.32.0/).
 QA real repetiu guia manual, primeira pessoa, retorno e reload emD2,6 sem
 repetição automática; console limpo. Catálogo mantém quatro versões e11
 assets da nova tag conferem por SHA-256 sem cookies/Authorization.
