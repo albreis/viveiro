@@ -5,7 +5,7 @@ Proposta para tirar o laboratório público do Sites do ChatGPT e servi-lo pelo 
 ## Como funciona
 
 - O branch `site-publico` deste repositório é o espelho (`mirror.json`, `build-static.ts` e `public/`). Ele substitui a pasta `G:\Projetos\viveiro-publico` como fonte da hospedagem.
-- O workflow [`pages.yml`](../.github/workflows/pages.yml) roda ao enviar uma tag `v*` (ou manualmente, com a tag como entrada). Ele faz checkout da tag, roda `node scripts/build-public-release.ts --mirror` contra o espelho, grava a nova release no branch e publica `public/` no Pages.
+- O workflow [`pages.yml`](../.github/workflows/pages.yml) roda ao enviar uma tag `v*` (ou manualmente, com a tag como entrada). Ele faz checkout da tag, roda `node scripts/build-public-release.ts --mirror` contra o espelho, grava a nova release no branch e dispara o workflow na `main`, que publica `public/` no Pages.
 - Rodar de novo a mesma tag não muda nada; tentar alterar uma tag já publicada falha, como hoje.
 - Rodar manualmente com a tag vazia só republica o espelho existente.
 
@@ -13,7 +13,7 @@ Proposta para tirar o laboratório público do Sites do ChatGPT e servi-lo pelo 
 
 1. **Domínio próprio na raiz.** Os builds usam base absoluta `/releases/vVERSAO/`, inclusive o service worker offline. No endereço padrão `albreis.github.io/viveiro/` tudo ficaria sob `/viveiro/` e os links quebrariam. O domínio escolhido é `viveiro.ersolucoesweb.com.br`: no DNS de `ersolucoesweb.com.br`, crie o registro `CNAME viveiro → albreis.github.io`.
 2. **Configurar o Pages** em Settings → Pages: origem "GitHub Actions" e Custom domain `viveiro.ersolucoesweb.com.br`, com "Enforce HTTPS" assim que o certificado sair. Para evitar que outra conta reivindique o subdomínio, verifique `ersolucoesweb.com.br` em Settings → Pages da sua conta (registro TXT).
-3. **Permitir tags no ambiente** em Settings → Environments → `github-pages`: acrescente a regra de tag `v*`, senão o deploy disparado por tag é recusado. O disparo manual a partir da `main` funciona sem isso.
+3. **Ambiente `github-pages` só na `main`.** A proteção padrão recusa deploy a partir de tags. Por isso o run da tag só grava a release no espelho e dispara o mesmo workflow na `main`, que publica. Não é preciso mudar a proteção.
 
 ## Importação inicial (uma vez, no Windows)
 
