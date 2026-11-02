@@ -48,26 +48,16 @@ uma migração incompleta.
 Políticas podem ser compartilhadas; estados e sensores permanecem individuais.
 Não criar uma rede neural pesada separada para cada formiga.
 
-## Loop
+## Loop implementado
 
-1. Aplicar intervenções ordenadas por tick e sequência.
-2. Atualizar índices espaciais e regiões alteradas.
-3. Atualizar campos químicos com estabilidade numérica.
-4. Ler sensores, memória, estímulos e tarefas.
-5. Integrar forças, resolver contatos e projetar no terreno.
-6. Aplicar escavação, transporte, suporte e colapsos.
-7. Atualizar alimentação, prole, idade e reprodução.
-8. Atualizar água, gases e temperatura em frequências adequadas.
-9. Registrar eventos, métricas e checkpoints.
-10. Renderizar entre estados; a renderização não modifica o modelo.
+O passo fixo e a ordem atual de colonies/update.ts estão descritos na [revisão do núcleo](revisao-nucleo-2026-11.md). Cada dia tem100 passos; a sequência dos sistemas é parte do modelo versionado. A ordem inclui atualizações sequenciais e não deve ser interpretada como física simultânea.
 
-Usar dt fixo. A velocidade de exibição muda a quantidade de passos, não sua
-física. Definir a ordem dos sistemas e como resolver atualizações simultâneas.
+O relógio de sessão e o avanço em Worker usam a mesma função stepSession, que aplica intervenções antes do passo e avança os cenários A/B juntos. [Ritmo e continuidade](ritmo-e-continuidade.md) registra fórmulas, dívida de processamento, limites e recuperação. A renderização interpola estados e não define o tamanho do passo biológico.
 
 ## Campos e terreno
 
 O terreno atual usa um campo implícito contínuo e malha arredondada.
-Arrays por célula/chunk são planejados para concentração, água, temperatura e gases.
+Já existem campos discretos de feromônio na superfície, água/calor no solo e gases nas câmaras. Chunks e refinamentos de resolução continuam possibilidades futuras, não implementações concluídas.
 O renderer recebe regiões sujas; a malha visual não é a fonte da física.
 
 Para difusão explícita em d dimensões, respeitar dt <= h²/(2 d D), ajustada
@@ -76,10 +66,9 @@ Para difusão explícita em d dimensões, respeitar dt <= h²/(2 d D), ajustada
 Na física granular, escolher uma resolução representativa: uma parcela
 numérica pode representar muitos grãos reais.
 
-## Banco de dados planejado
+## Persistência atual e banco planejado
 
-Hoje há armazenamento no navegador e exportação JSON. Para sessões longas,
-usar IndexedDB localmente e backend opcional SQLite/PostgreSQL.
+Hoje há IndexedDB com checkpoints atômicos, oito automáticos recentes, pontos nomeados preservados, integridade e fallback local; também existe exportação/importação JSON. Relógio e destino parcial do avanço integram a sessão. Não existe backend SQLite/PostgreSQL. A tabela abaixo é uma proposta para essa expansão.
 
 | Tabela          | Campos principais                                      |
 | --------------- | ------------------------------------------------------ |

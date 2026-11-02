@@ -102,3 +102,7 @@ Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validaç
 Fundação semiclaustral: [mecanismo e limites](docs/fundacao-semiclaustral.md).
 
 Divulgação: [kit técnico para redes, comparação e plano para o primeiro lugar](docs/divulgacao/kit-divulgacao.html). Abra o arquivo no navegador. Cada fórmula dos pilares técnicos tem explicação detalhada, exemplos e aplicações em [docs/divulgacao/formulas](docs/divulgacao/formulas/README.md).
+
+## Licenças
+
+O código original do projeto usa [MIT](LICENSE), [aprovada pela OSI](https://opensource.org/license/mit), conforme P0.1 do cronograma. Documentação e imagens originais produzidas para o projeto usam [CC BY 4.0](LICENSE-DOCS.md). Preserve os créditos existentes; materiais de terceiros mantêm suas próprias licenças. O aviso do Three.js está integral e inalterado. Consulte [recursos de terceiros](docs/terceiros.md). Saves e dados do usuário não são publicados nem relicenciados automaticamente. O Site de testes continua privado.

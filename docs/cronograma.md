@@ -29,7 +29,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 13    | Espermateca, fertilidade e longevidade                             | ✅ Protótipos 13A–13B publicados · 0.27–0.28                    |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ✅ Protótipo publicado · 0.29 · PR #39                      |
 
-**Ordem restante:** revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
+**Ordem restante:** P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -476,7 +476,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 ## Passos futuros para ultrapassar concorrentes
 
-⬜ Planejamento futuro: apenas P0.2 foi concluído; os demais passos desta seção não foram iniciados. A ordem abaixo é proposta para levar o Viveiro ao primeiro lugar em uso educacional, em escolas e universidades, frente a NetLogo, GAMA, Mesa, PhET, Avida-ED e simuladores comerciais. As notas são avaliações editoriais, não medições; servem para priorizar trabalho, não como afirmação pública de superioridade.
+🔧 FaseP0 iniciada após entregar12–14 e revisar o núcleo. P0.2 já estava concluído no lote anterior; P0.1 está validada e em publicação. Os demais itens continuam pendentes. Ver [revisão do núcleo](revisao-nucleo-2026-11.md). A ordem abaixo é proposta para levar o Viveiro ao primeiro lugar em uso educacional, em escolas e universidades, frente a NetLogo, GAMA, Mesa, PhET, Avida-ED e simuladores comerciais. As notas são avaliações editoriais, não medições; servem para priorizar trabalho, não como afirmação pública de superioridade.
 
 ### Situação do ranking
 
@@ -491,7 +491,7 @@ As etapas 10C–14 aprofundam o modelo, que já é o ponto forte. As maiores lac
 
 ### Ordem
 
-1. Concluir etapas 12, 13 e 14 e revisar o núcleo. A 10C já foi entregue e integrada.
+1. ✅ Etapas12–14 entregues como protótipos; revisão do núcleo concluída e documentada. A10C está integrada. Calibração científica permanece pendente.
 2. P0 — projeto reutilizável, com P0.2 já concluído.
 3. P1 — modo escola.
 4. P2 — ferramenta de pesquisa.
@@ -505,7 +505,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 
 ### P0. Projeto público e reutilizável
 
-- [ ] P0.1 Licenças: LICENSE aprovada pela OSI para o código (MIT ou Apache-2.0) e CC BY 4.0 para docs e imagens; campo license no package.json. Aceite: licença visível no GitHub e explicada no README.
+- [ ] P0.1 validada e em publicação0.29.1: MIT para código original, CC BY4.0 para documentação/imagens originais, campo license e página de avisos. Third-party integral preservado, exceções explícitas, README e recursos de terceiros documentados. Aceite final após publicação/PR.
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [ ] P0.3 Site público e estável (por exemplo GitHub Pages ou Cloudflare Pages), com URL por tag. O Site privado continua para testes. Aceite: abre sem login e mostra a versão.
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.

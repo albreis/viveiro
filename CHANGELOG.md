@@ -1,5 +1,11 @@
 # Versões
 
+## 0.29.1 — Licenças e revisão do núcleo
+
+- MIT para código original e CC BY 4.0 para documentação/imagens originais; direitos de terceiros e saves explicitamente separados.
+- Página de licenças pelo rodapé; aviso integral do Three.js preservado.
+- Documentação da arquitetura atualizada sem alterar a biologia ou a audiência privada.
+
 ## 0.29.0 — Ritmo e continuidade
 
 - Ritmos persistidos de10 s,1 min,5 min e1 h por dia, sem alterar os passos biológicos.
