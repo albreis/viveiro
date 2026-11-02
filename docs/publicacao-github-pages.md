@@ -44,6 +44,8 @@ Não copie `.openai/` nem `dist/` do espelho. Depois do push, rode o workflow ma
 - O `release.json` de cada versão é idêntico ao publicado no Sites.
 - Cena 3D, primeira pessoa, avanço em Worker e cache offline funcionam sob a base da tag.
 
+Conferido em 02/11/2026: as 13 releases (v0.30.0 a v0.40.1) têm `release.json` idêntico ao do Sites, e todos os arquivos servidos no domínio novo batem com o SHA-256 do manifesto. HTTP redireciona para HTTPS.
+
 Só depois disso troque os links em README, docs, `CITATION.cff` e `.zenodo.json`. Os registros já publicados no Zenodo citam o endereço antigo; a correção é editar os metadados lá. Mantenha o site no Sites no ar até a troca terminar.
 
 ## Diferenças em relação ao Sites

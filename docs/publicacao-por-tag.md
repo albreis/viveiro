@@ -1,6 +1,6 @@
 # Publicação por tag
 
-P0.3, versão0.30.1; entregue no [Site público](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/). O Site de testes conserva sua identidade e audiência privada. O build público usa um espelho separado de artefatos, sem copiar o histórico Git, docs privados, credenciais ou saves do checkout.
+P0.3, versão0.30.1; entregue no [Site público](https://viveiro.ersolucoesweb.com.br/), hoje no GitHub Pages ([migração](publicacao-github-pages.md)). O Site de testes conserva sua identidade e audiência privada. O build público usa um espelho separado de artefatos, sem copiar o histórico Git, docs privados, credenciais ou saves do checkout.
 
 ## Fonte e artefato
 
