@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist",
     emptyOutDir: true,
     rollupOptions: {
+      input: { index: "index.html", experiments: "experimentos.html" },
       output: {
         manualChunks(id) {
           if (id.includes("/node_modules/three/")) return "three";

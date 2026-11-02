@@ -8,8 +8,8 @@ Nenhum nome pessoal, ORCID, DOI ou vínculo institucional foi inferido.
 
 O arquivo usa JSON, também válido como YAML 1.2, para leitura nativa em JS.
 O teste local verifica consistência; a validação oficial foi feita à parte.
-Versão citada: v0.38.0, publicada em 02/11/2026, commit
-fbb0852820b9a34755a78b8bacd501b495348385. Metadados adicionados depois da tag;
+Versão citada: v0.39.0, publicada em 02/11/2026, commit
+92072e26ed9a18d9533503376fd037b183e2f4d4. Metadados adicionados depois da tag;
 a tag e suas URLs não foram alteradas.
 
 P0.4 ainda não está concluída: falta concluir o depósito e obter DOI publicado. O usuário autenticou a conta e
@@ -74,7 +74,7 @@ local própria; os testes e o build não precisam do Site privado.
 Referências: [CFF](https://citation-file-format.github.io/1.2.0/),
 [API e metadados do Zenodo](https://developers.zenodo.org/),
 [git archive](https://git-scm.com/docs/git-archive).
-[Evidência da versão atual](validacoes/citacao-0.38.0.json).
+[Evidência da versão atual](validacoes/citacao-0.39.0.json).
 O pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.
 O pacote0.31.0 também permanece em.runtime/deposits/deposit-wcJQPw.
 A versão atualizada do gerador exclui os testes operacionais explicitamente.
@@ -177,3 +177,12 @@ a tag anteriores não foram modificados. O CFF da raiz continua na0.38.0, sem
 atribuir a ele o DOI da0.36.0. P0.4 continua parcial até DOI da versão atual e
 conferência do botão GitHub após merge. Não republicar23891981 nem criar duplicata.
 Evidência em validacoes/zenodo-0.36.0.json.
+
+## Fonte0.39.0
+
+Tag92072e26ed9a18d9533503376fd037b183e2f4d4, CFF oficial válido,551 arquivos/
+1.568.012bytes, quatro testes e leitor Python conferindo todos os membros,
+CLI, Vite e bytes dos CSVs brutos. Pacote .runtime/deposits/deposit-IMjy1M/
+viveiro-v0.39.0-source.zip; SHA-256
+39d328ce9710a2a8f90b42be5d28701bfcbdbd626373ca7dd4d85aa8f7951e02.
+Não enviado ao Zenodo; DOI0.36.0 permanece específico daquela versão.

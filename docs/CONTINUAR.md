@@ -1,124 +1,105 @@
 # Continuação do Viveiro
 
-Atualizado em02/11/2026 após publicar P2.1 /0.38.0 e publicar com autorização o registro Zenodo0.36.0.
-Ler AGENTS.md e docs/cronograma.md. Trabalhar em G:\Projetos\viveiro.
-Manter dev4173 em G; preservar saves, branches, tags e privacidade.
-Não iniciar executor concorrente. Modelos exploratórios/não calibrados.
+Atualizado02/11/2026. Trabalhar em G:\Projetos\viveiro, ler AGENTS.md e cronograma.
+Usuário ACABA DE PRIORITIZAR P2.2B como URGENTE. Não avançar P2.3 antes de resolver.
+Não iniciar executor concorrente. Pequenos módulos TypeScript, Vite, branchcodex/,
+testes e QA NATIVA Cua, commit/push/PR por entrega. Preservar saves/refs/privacidade.
 
-## Git e publicação
+## Fonte, Git e Sites
 
-Branch codex/doi-036, baseada em codex/documentacao-odd/PR#50; abrir PR próprio
-após o commit deste registro externo. #50 tem base codex/acessibilidade/#49.
-Conferidos PRs32–50 em cadeia; main15781d2. Não criar PR duplicado ao retomar.
-Fonte/tag v0.38.0:fbb0852820b9a34755a78b8bacd501b495348385.
-Metadados/checkpoint posteriores à tag; nunca retag/recriar a mesma release.
-Conferir merges antes de agir, sem duplicar PRs ou sobrescrever refs.
+Branch codex/cli-experimentos, PR https://github.com/albreis/viveiro/pull/52,
+base main. Fonte/tagv0.39.0:92072e26ed9a18d9533503376fd037b183e2f4d4.
+Metadados posteriores não alteram a tag. Não retag/recriar release.
+Usuário integrou #50/#51 e anteriores à main043c158 em18:15UTC; branches remotas
+anteriores foram removidas externamente, preservadas localmente. PR52 ainda
+aberto na última consulta. Conferir novamente antes de commitar checkpoint;
+se integrado, criar branch própria de metadados em vez de empurrar em PR fechado.
+A tentativa de criar #52 sobrecodex/doi-036 falhou porque essa base já fora
+removida após merge; consulta confirmou merges e #52 foi criado contra main.
 
-Privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
-Projeto appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/revisão1, owner único,
-zero visitantes externos. Identidade/static dist preservados.
-Deploy appgdep_6ae8b6d6360881918763402c97897399, succeeded16:14:32UTC.
-Arquivo G:\Projetos\viveiro-0.38.0.tar.gz preservado.
+Privado original: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
+IDappgprj_6ae6364bc4488191b2757449ed3f7e94, custom/rev1, owner1/external0.
+Deployappgdep_6ae8d77151c08191ba871e7a27950b0e, succeeded18:33:37UTC.
+ArquivoG:\Projetos\viveiro-0.39.0.tar.gz preservado.
+Público separado: https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
+IDappgprj_6ae80cd45fdc8191be8315696a383393, public/rev2.
+EspelhoG:\Projetos\viveiro-publico, font ec3ff739657b6790f132b980acebb135be21add7d.
+Deployappgdep_6ae8d7ec68bc8191a76d09ee0931a63d, succeeded18:35:38UTC, versão10,
+334 arquivos/15.943.680bytes, hash8332976fe7cb2d86984a7431a0f39528435aa6c834c922c07865fb5c4f8bf5e5.
+ArquivoG:\Projetos\viveiro-publico-0.39.0.tar.gz. Galeria anterior preservada.
+QA pública da página experimentos:100ticks completos, console limpo. Não
+repetir save/deploy; IDs emvalidacoes/deploy-0.39.0.json. HTTP viaurllib na0.38
+recebeu403, não repetir para contornar; builds/hashes locais conferidos.
 
-Público: https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
-Projeto appgprj_6ae80cd45fdc8191be8315696a383393, public/revisão2.
-Espelho G:\Projetos\viveiro-publico, fonte2060c14bb251c333ba7f11dd93f095fd0c340891.
-Deploy appgdep_6ae8cdb2675481919042227937edcd72, succeeded17:52:03UTC,
-versão9, arquivo G:\Projetos\viveiro-publico-0.38.0.tar.gz.
-272 arquivos/14.141.440bytes, hash
-88b63b7f3559a72ec26b6fb9d73f41068637d54f5736c9dd16cdb192e6accda6.
-Galeria preserva releases anteriores. Não repetir save/deploy.
-IDs completos em validacoes/deploy-0.38.0.json.
-Nunca publicar o Site privado como público nem reutilizar seu ID no espelho.
+## P2.2A e problema urgente P2.2B
 
-## P2.1 entregue
+CLI: npm run experiment -- --seed SEMENTE-42 --days3 --out pasta-nova
+(usar --days 3 com espaço). Ou --plan configuracao.json --out pasta-nova.
+Módulos pequenos modules/experiments/{plan,run,result}, scripts/run-experiment,
+scripts/lib/experiment-args e app/experiment-page +workers/experiment.worker.
+experimentos.html é segunda entradaVite. Usa World real/dailyCsv, plano canônico
+com perfil fixado, sem datas ou CPU no resultado. NodeCLI exige pasta nova;
+JSON/BOM, limites, campos e cancelamento testados. PáginaWorker isolada não toca
+IndexedDB/saves.34 testes dirigidos +4 depósito, TS/build350 módulos, cache
+público inclui página/5ºWorker. Nenhum submodelo foi alterado na0.39.
 
-ODD em docs/odd.md e sete documentos complementares pequenos. Catálogo/gerador
-em módulos separados; Vite produz modelo/*.html e downloads dos mesmos Markdown.
-Rodapé do laboratório oferece acesso. Código/equações são texto escapado;
-regiões de código focáveis/roláveis. Parser de ensino agora suporta código seguro.
-Documenta sete elementos, onze conceitos, estados/escalas, perfil legado versus
-atual, ordem real de advanceFamily/intervenções e limites de dados/biologia.
+PARIDADE FALHOU DE VERDADE: seedQA-CLI-039,10dias, established, generic-demo@1,
+h68/l72/random28/repose36/temp24/windX.25/Z-.15. Node24.22.1 versus IABdev E
+bundle compilado. CSVs coincidem atéD6, diferem emD7 (38/16 vs37/17 adultos/crias).
+EmD10:Node51/8, browser56/4. RNG final4272229179 vs26050480. NodeCSV SHA
+1d6b3eb7535548bf93a5e5c66dd4bbf1cf9a93e2907d2e082fe103562d0dcf24,
+browser(dev=build) e3811efd9d504c729803153200adbbd4dc13d00cd7be98b32ff794d04c5180f1.
+Dados brutos imutáveis tests/fixtures/cli-native-039; .gitattributes marcaCSVbinary
+para preservar BOM/CRLF. Manifesto atual declara ecmascript-native-f64-v1.
+Não marcar P2.2 completo ou arredondar CSV: contagens inteiras divergem também.
 
-Submodelo completamente especificado: campo superficial de reação-difusão,
-fronteiras fechadas, vento upwind, CFL0.85, evaporação exponencial, fontes e ordem.
-Referência autônoma por balanço de taxas por célula, sem importar solver de
-produção; sete vetores analíticos fixos e36 casos variados. Erro analítico máximo
-1.1102230246251565e-16, tolerância1e-12. Verificação pelo mesmo projeto;
-NÃO replicação externa/calibração. Outros submodelos têm mapa, não especificação
-numérica suficiente para reimplementar o motor inteiro sem fonte.
+Diagnósticos ignorados peloGit: .runtime/cli-debug-model.ts, cli-debug.worker.ts,
+cli-debug.html, cli-debug-node.ts; snapshots node emcli-trace-node.json e browser
+emC:\Users\conta\Downloads\cli-trace-browser.json. Inicializaram/avançaram
+World igual, snapshots não consomemRNG. Primeira diferença no tick0:predators[0].y
+0.0233727329392504 vs0.023372732939250403. No tick1:soil.granular.friction
+0.7265425280053608 vs0.7265425280053609. RNG igual até600, diferente em650.
+Relief usaMath.exp; friction usaMath.tan. Várias funções nativas podem variar.
+Busca primária iniciada em github.com/stdlib-js/math-base-special-{exp,tan,sin,hypot},
+mas NENHUMA dependência foi instalada nem Math substituído até este checkpoint.
+Não usar patches globais. Plano concreto sugerido: serviço numérico explícito
+com funções portáteis versionadas só em workers de experimentos (Node worker_threads
++browserWorker), núcleo e exportador compartilhados. Preservar política nativa dos
+saves/3D legados. Auditar tambémhypot,atan2,sin,cos,log,expm1,tanh,atan,log1p,cbrt
+e expoentes fracionários **. Testar funções e trajetórias REAIS de várias seeds,
+fundação/ninho/solo/gases/operárias antes de declarar paridade. Reavaliar o plano
+pelas evidências, sem implementação gigante nem alegar calibração científica.
 
-37 testes dirigidos passaram, mais4 de depósito. TS estrito/build345 módulos;
-builds privado/público e cache verificaram hashes finais dos novos assets modelo/.
-QA IAB4173: atalho focou conteudo; fórmulas/JSON/links,320×800 com largura útil305
-=scrollWidth305; blocos de código rolam por teclado; viewport restaurado.
-QA pública confirmou comandos atualizados, autoria técnica e links, console limpo.
-Captura viveiro-0.38.0-odd-publicado.png na pasta de visualizações autorizada.
-Check HTTP anônimo adicional via urllib recebeu403 na origem. Não houve hashes
-remotos pós-deploy medidos; não contornar a proteção ou inventar resultados.
-Ver validacoes/odd-0.38.0.json e publicacao-0.38.0.json. Núcleo/RNG/clock intactos.
+## Evidências, DOI e ambiente
 
-## Citação e Zenodo
+ODD0.38.0/#50 entregue:8docs,7elementos; reação-difusão reimplementável com
+referência sem importarprodução,7vetores/36casos.37testes+4depósito; não é
+replicação externa. docs/odd.md evalidacoes/odd-0.38.0.json preservados.
+DOI0.36.0/#51 PUBLICADO com autorização explícita após revisar rascunho:
+https://doi.org/10.5281/zenodo.23891981 ->https://zenodo.org/records/23891981.
+Não criar duplicata/republicar. Autor “Viveiro contributors”. ZIP público baixado
+igual ao original:1.445.248bytes,SHA03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
+CFF específico docs/citacoes/v0.36.0.cff; raizCFF0.39.0 ainda semDOI próprio.
+Autorização de acesso/login e depósito0.36 foi dada; não pedir de novo. Não
+atribuir DOI0.36 à0.39. P0.4C/botãoGitHub ainda precisa observação após merge.
+Pacote0.39 .runtime/deposits/deposit-IMjy1M/viveiro-v0.39.0-source.zip,
+551arquivos/1.568.012bytes,SHA39d328ce9710a2a8f90b42be5d28701bfcbdbd626373ca7dd4d85aa8f7951e02.
+EsquemaCFF oficial válido e Pythonzipfile conferiu cada hash ebytesCSV; nada
+novo enviado aoZenodo. Pacotes/tags antigos preservados.
 
-CFF/.zenodo.json referem a tag0.38.0 real, autoria “Viveiro contributors”.
-Esquema oficial CFF válido, quatro testes; Pythonzipfile conferiu533 membros,
-1.518.779bytes, todos os hashes e fontes ODD. ZIP:
-.runtime/deposits/deposit-xaZnzI/viveiro-v0.38.0-source.zip,
-SHA2560b941e8c770832ca22778922cb4c6d1f10eaa6631a855e0c9ec3560a30b1ed76.
-Fonte da tag + metadados posteriores; docs públicos selecionados explicitamente,
-saves, docs operacionais, credenciais e identidade de hospedagem excluídos.
+DevPID17752/G/4173 HTTP200. AbaIAB20 mantém SEMENTE-50088/D62,5/14adultos
+pausados/perfil leve, reconferida apósreload0.38; aguardar inicialização seHTML
+mostrarSEMENTE-42. Saves, inclusive manual-2e91b636-785f-4f66-bb84-ff832aa62547,
+preservados. Vite ignora.runtime/.sites-runtime. NÃO encerrar4173.
+PreviewQA4189/session23666 ainda precisa ser encerrado ao final desta entrega.
+Aba30QA pública atual;31diagnóstico foi fechada. Aba28Zenodo publicada marcada
+entrega. Abas4/16erro antigas não usar/despejarURLdata. Capturas0.39cli/cli-publicado,
+0.38ODD,0.36Zenodopublicado na pasta de visualizações autorizada.
+Override320px da páginaCLI não se confirmou (DOMcontinuou1265px); reset feito,
+não declarar reflow estreito aprovado. Console limpo, erros/foco ecancelamento
+validados. Só Cua documentado parabrowser, semPlaywright externo/CDP/internals.
 
-A rejeição automática anterior de acesso ao Zenodo foi resolvida: usuário
-AUTORIZOU explicitamente acesso e rascunho0.36.0, confirmou autoria e fez login.
-NÃO pedir essas autorizações outra vez. Rascunho salvo23891981:
-https://zenodo.org/uploads/23891981
-https://zenodo.org/records/23891981?preview=1
-Título, versão0.36.0/data2026-11-02, autor coletivo, MIT, escopo documentalCC BY4.0,
-commit0e156836bd94aaa6a408017f597b11447f065a73 e limites conferidos na prévia.
-Upload100%,1.445.248bytes. Download do rascunho em
-C:\Users\conta\Downloads\viveiro-v0.36.0-source.zip,
-SHA25603c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2,
-idêntico ao pacote original .runtime/deposits/deposit-WhwuRb.
-Evidência validacoes/zenodo-rascunho-0.36.0.json; captura na pasta autorizada.
-Publicação permanente AUTORIZADA explicitamente pelo usuário após rever a prévia.
-Concluída: https://zenodo.org/records/23891981
-DOI10.5281/zenodo.23891981 realmente resolvido no navegador para esse registro.
-ZIP publicado baixado em Downloads/viveiro-v0.36.0-source (1).zip e SHA-256
-idêntico ao original. Evidência validacoes/zenodo-0.36.0.json. Não republicar,
-não criar duplicata nem refazer o depósito. Citação específica validada pelo CFF
-oficial em docs/citacoes/v0.36.0.cff; pacote/tag0.36.0 imutáveis. Não atribuir seu
-DOI ao CFF da raiz0.38.0. P0.4 continua parcial: versão atual sem DOI, botãoGitHub
-depende de merge. Nenhuma nova autorização de acesso/login é necessária para
-verificação do registro autorizado; não pedir senha/token ou inferir autoria.
-
-## Dependências reais e ambiente
-
-P1.1B/hardware escolar, P1.2B/participante novo, P1.4B/revisão docente,
-P1.7/turmas/SUS e P3/calibração exigem dados/pessoas reais; sem evidências fictícias.
-P1.6B2: planilha/leitor de tela/zoom/Lighthouse pendentes. PageSpeed oficial
-respondeu429/cota diária; nenhuma nota. Não repetir antes de
-2026-11-03T15:16:57UTC nem contornar por outra conta/chave. Não há selo WCAG AA.
-CSV real anterior preservado em Downloads/viveiro-diario-AULA-v2-entradas-ar.csv.
-365 testes biológicos passaram na0.36.0; não repetir por rotina sem mudar núcleo.
-
-DevPID17752/G/4173 HTTP200. AbaIAB20 preservada e reconferida após reload: SEMENTE-50088/D62,5,
-14adultos em pausa/perfil leve. Aguardar inicialização/release-label antes de
-confundir HTML inicialSEMENTE-42 com perda de save. Saves manuais preservados,
-incluindo manual-2e91b636-785f-4f66-bb84-ff832aa62547. Vite ignora.runtime/.sites-runtime.
-Não encerrar4173. Nenhum preview QA novo nesta etapa. Abas4/16 antigas em erro:
-não reutilizar nem despejar suas URLsdata. Aba27QA/28Zenodo criadas nesta etapa.
-Cua precisou de um reset após browser.user indisponível ao usuário fazer login;
-getTab28/browser2 recuperou. Usar apenas APIs documentadas, nunca internals/CDP.
-
-## Próximo item de implementação: P2.2 / CLI
-
-Registro Zenodo autorizado concluído; conferir Git/PRs e abrir codex/CLI
-sobre a última branch dependente. CLI em módulos pequenos TS: seed, dias,
-parâmetros tipados, perfil/receita versionados e saída CSV+manifesto determinístico.
-Reusar advanceFamily e o mesmo exportador do navegador; sem DOM/Three.js/Date
-no cálculo. Medir ticks explicitamente, validar limites e entradas antes de simular.
-Aceite exige CSV byte a byte igual no Node e em navegador REAL para mesma seed,
-perfil, parâmetros e janela observada; não vale comparar duas importaçõesNode.
-Testar repetição, parâmetros inválidos e dados ausentes; preservar saves e dev.
-Depois P2.3/varredura, P2.4/Morris, P2.5/extensões, P2.6/editor, P2.7/inglês,
-P2.8/instruções em português. P5 por último. Manter retomada ativa.
+P1.6B2 planilha/leitor/zoom/Lighthouse pendente; PageSpeed429/cota diária,
+retryNotBefore2026-11-03T15:16:57UTC, não contornar. P1ensaios/avaliações reais,
+P3calibração eP5clima exigem dados reais. Retomada continua útil: não desativar.
+Prioridade imediata éP2.2B, depoisP2.3 e seguintes. Não anunciar cronograma concluído.

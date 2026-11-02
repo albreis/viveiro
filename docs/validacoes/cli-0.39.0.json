@@ -1,0 +1,76 @@
+{
+  "version": "0.39.0",
+  "stage": "P2.2A",
+  "checkedAt": "2026-11-02T18:24:35.872094+00:00",
+  "tests": {
+    "passed": 34,
+    "failed": 0,
+    "scope": [
+      "experiment",
+      "experiment-cli",
+      "daily-observations",
+      "time-advance",
+      "odd-pages",
+      "offline-build",
+      "publication-files",
+      "publication-manifest"
+    ]
+  },
+  "build": {
+    "strictTypeScript": true,
+    "modules": 350,
+    "publicAndPrivateOfflineHashesVerified": true
+  },
+  "nativeParity": {
+    "passed": false,
+    "nodeVersion": "24.22.1",
+    "browserProvider": "IAB",
+    "ticks": 1000,
+    "rawFixture": "tests/fixtures/cli-native-039",
+    "filesSha256": {
+      "browser-built-manifest.json": "dd5257a1dbb9cc092615cf4c79cb0d965f96094d50f5fd272a3cee3b0c67dfba",
+      "browser-built.csv": "e3811efd9d504c729803153200adbbd4dc13d00cd7be98b32ff794d04c5180f1",
+      "browser.csv": "e3811efd9d504c729803153200adbbd4dc13d00cd7be98b32ff794d04c5180f1",
+      "node-manifest.json": "5bc5a551f364c9bb8e8dcd092fddae9fd8a59f199bc629c39da3f2bdcdf336a2",
+      "node.csv": "1d6b3eb7535548bf93a5e5c66dd4bbf1cf9a93e2907d2e082fe103562d0dcf24",
+      "plan.json": "d4e075ad07b82d5c16296bfd7a0a9b324cb2451b4ee78b5fa8b97d23765dfaef"
+    },
+    "firstCsvDifferentDay": 7,
+    "firstObservedStateDifference": {
+      "tick": 0,
+      "path": "predators[0].y",
+      "node": 0.0233727329392504,
+      "browser": 0.023372732939250403
+    },
+    "frictionDifference": {
+      "tick": 1,
+      "node": 0.7265425280053608,
+      "browser": 0.7265425280053609
+    },
+    "rngMatchesAtTick": 600,
+    "rngDiffersAtTick": 650,
+    "populationDay10": {
+      "node": 51,
+      "browser": 56
+    },
+    "pendingStage": "P2.2B: versioned portable arithmetic and real cross-runtime retest; no global Math patch or rounding the CSV to hide divergent model outcomes.",
+    "builtBrowserAlsoDifferent": true
+  },
+  "browserChecks": {
+    "invalidPlanErrorFocus": "experiment-error",
+    "cancelFocus": "experiment-run",
+    "cancelHidesResults": true,
+    "savedTerrariumUntouched": true,
+    "compiledWorkerCompletedTicks": 1000,
+    "compiledManifestHashMatchesCsv": true,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "requestedViewport": [320, 800],
+    "observedClientWidth": 1265,
+    "observedScrollWidth": 1265,
+    "narrowViewportVerified": false,
+    "viewportReset": true
+  },
+  "modelChanged": false,
+  "calibrated": false
+}

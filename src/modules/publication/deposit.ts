@@ -29,6 +29,8 @@ export const sourceFiles = [
   "tsconfig.json",
   "vite.config.ts",
   "index.html",
+  "experimentos.html",
+  "docs/cli.md",
   "LICENSE",
   "LICENSE-DOCS.md",
   ...modelDocumentSources,
