@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Experimentos reproduzíveis · Viveiro</title>
+    <script type="module" crossorigin src="/releases/v0.41.0/assets/experiments-CxhFXF8z.js"></script>
+    <link rel="modulepreload" crossorigin href="/releases/v0.41.0/assets/csv-CNT42s1r.js">
+    <link rel="stylesheet" crossorigin href="/releases/v0.41.0/assets/experiments-C7_AoKcu.css">
+  <meta name="viveiro-offline" content="0.41.0">
+<link rel="manifest" href="/releases/v0.41.0/app-manifest.json">
+</head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header>
+      <a href="./index.html">← Voltar ao laboratório</a
+      ><a href="./modelo/index.html">Como o modelo funciona</a>
+    </header>
+    <main id="conteudo" tabindex="-1">
+      <p id="experiment-version">Viveiro · Modelo exploratório</p>
+      <h1>Repita e compare os dados.</h1>
+      <p>
+        Execute uma configuração isolada e baixe as observações. A mesma
+        configuração pode ser repetida no terminal. Seu terrário e seus
+        checkpoints continuam preservados.
+      </p>
+      <label for="experiment-plan"
+        ><strong>Configuração do experimento (JSON)</strong></label
+      >
+      <textarea
+        id="experiment-plan"
+        rows="22"
+        spellcheck="false"
+        aria-describedby="experiment-help"
+      ></textarea>
+      <p id="experiment-help">
+        Informe seed, dias inteiros de 0 a 365, modo inicial e perfil com
+        versão. Parâmetros: umidade, luz e aleatoriedade de 0 a 100; repouso de
+        15 a 55°; temperatura de 5 a 45 °C; ventos X/Z de −4 a 4 unidades.
+        Valores omitidos recebem padrões explícitos no manifesto.
+      </p>
+      <div class="experiment-actions">
+        <button id="experiment-run" type="button">Rodar experimento</button
+        ><button id="experiment-cancel" type="button" disabled>Cancelar</button>
+      </div>
+      <progress
+        id="experiment-progress"
+        value="0"
+        max="1"
+        aria-label="Progresso do experimento"
+      ></progress>
+      <p id="experiment-status" role="status">Pronto para iniciar.</p>
+      <p id="experiment-error" role="alert" tabindex="-1"></p>
+      <section
+        id="experiment-results"
+        tabindex="-1"
+        aria-label="Resultados do experimento"
+        hidden
+      >
+        <h2>Observações prontas</h2>
+        <p>
+          CSV com estado inicial e fechamentos diários; manifesto com
+          configuração completa, versão e hash SHA-256 do CSV. Sem datas de
+          execução nos arquivos.
+        </p>
+        <ul>
+          <li><a id="experiment-csv" download="dados.csv">Baixar CSV</a></li>
+          <li>
+            <a id="experiment-manifest" download="manifesto.json"
+              >Baixar manifesto</a
+            >
+          </li>
+          <li>
+            <a id="experiment-config" download="configuracao.json"
+              >Baixar configuração</a
+            >
+          </li>
+        </ul>
+      </section>
+      <h2>Repetir no terminal</h2>
+      <p>
+        Na fonte desta mesma versão, com Node 24, salve a configuração baixada e
+        execute:
+      </p>
+      <pre
+        tabindex="0"
+        role="region"
+        aria-label="Comando para repetir o experimento"
+      ><code>npm run experiment -- --plan configuracao.json --out resultado-novo</code></pre>
+      <p>
+        A pasta de saída precisa ser nova. O comando gera dados.csv e
+        manifesto.json. Para configurar por argumentos:
+      </p>
+      <pre
+        tabindex="0"
+        role="region"
+        aria-label="Exemplo de configuração no terminal"
+      ><code>npm run experiment -- --seed SEMENTE-42 --days 3 --humidity 68 --profile generic-demo@5 --out resultado-novo</code></pre>
+      <p>
+        Um dia do modelo equivale a 100 ticks. Os valores são exploratórios e
+        não calibrados por espécie. Experimentos isolados usam a política
+        aritmética portátil stdlib-f64-v1. Para comparar arquivos, use a mesma
+        versão do Viveiro, configuração e política indicada no manifesto. O
+        terrário 3D e os saves existentes continuam usando a política nativa,
+        que pode gerar trajetórias diferentes. Sem consulta de clima real ou
+        continuidade em servidor.
+      </p>
+      <section id="varredura" aria-labelledby="sweep-title">
+        <h2 id="sweep-title">Uma pergunta, várias condições.</h2>
+        <p>
+          Varie um parâmetro e repita cada condição. O exemplo compara cinco
+          umidades com dez réplicas: 50 execuções independentes do terrário
+          salvo.
+        </p>
+        <p>
+          A mesma réplica usa a mesma seed entre valores para comparar condições
+          pareadas. Réplicas diferentes recebem outras seeds. São experimentos
+          do modelo, sem calibração por espécie.
+        </p>
+        <label for="sweep-plan">Configuração da varredura (JSON)</label>
+        <textarea
+          id="sweep-plan"
+          rows="16"
+          spellcheck="false"
+          aria-describedby="sweep-help"
+        ></textarea>
+        <p id="sweep-help">
+          Parâmetros: humidity, light, randomness, reposeAngle, temperatureC,
+          windX ou windZ. No navegador: até 200 execuções e 10.000 observações
+          diárias previstas. Baixe a retomada antes de fechar esta página; não
+          há salvamento automático da varredura.
+        </p>
+        <label for="sweep-jobs">Execuções paralelas</label>
+        <select id="sweep-jobs">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="4">4</option>
+        </select>
+        <div class="experiment-actions">
+          <button id="sweep-run">Executar / continuar varredura</button>
+          <button id="sweep-cancel" disabled>Interromper varredura</button>
+          <button id="sweep-reset">Limpar resultados da varredura</button>
+        </div>
+        <label for="sweep-import">Importar retomada da varredura</label>
+        <input id="sweep-import" type="file" accept=".json,application/json" />
+        <progress
+          id="sweep-progress"
+          max="50"
+          value="0"
+          aria-label="Progresso da varredura"
+        ></progress>
+        <p id="sweep-status" role="status" aria-live="polite">
+          Pronto para comparar cinco valores e dez réplicas.
+        </p>
+        <p id="sweep-error" role="alert" tabindex="-1"></p>
+        <div id="sweep-downloads" hidden>
+          <a id="sweep-checkpoint" download="retomada.json"
+            >Baixar resultados e retomada (JSON)</a
+          >
+          <a id="sweep-summary" download="resumo.csv"
+            >Baixar índice das execuções (CSV)</a
+          >
+          <p>
+            O JSON inclui os CSVs e manifestos de cada execução. Para arquivos
+            separados por execução, use o terminal.
+          </p>
+        </div>
+        <h3>Executar no terminal</h3>
+        <p>
+          Na fonte desta versão, este comando executa as 50 combinações do
+          exemplo:
+        </p>
+        <pre
+          tabindex="0"
+          role="region"
+          aria-label="Comando da varredura"
+        ><code>npm run sweep -- --out resultado-novo --jobs 2</code></pre>
+        <p>
+          Repita com <code>--resume</code> para continuar a mesma pasta, ou use
+          <code>--checkpoint retomada.json --out outra-pasta</code> para
+          importar os resultados baixados. Configurações personalizadas:
+          <code>--plan varredura.json</code>.
+        </p>
+        <p>
+          <a href="./modelo/varreduras.html"
+            >Plano, retomada e limites das varreduras</a
+          >
+        </p>
+      </section>
+    </main>
+    <footer>Viveiro · Código MIT · Documentação original CC BY 4.0</footer>
+  </body>
+</html>
