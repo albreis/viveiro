@@ -6,7 +6,8 @@
   "abstract": "Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima, ciclo de vida e experimentos reproduzíveis por seed. Os mecanismos não constituem calibração biológica ou validação de engenharia.",
   "authors": [
     {
-      "name": "Viveiro contributors"
+      "name": "Viveiro contributors",
+      "orcid": "https://orcid.org/0009-0008-0719-8722"
     }
   ],
   "version": "0.40.1",
