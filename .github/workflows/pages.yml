@@ -1,0 +1,94 @@
+name: Site público (GitHub Pages)
+
+# Acrescenta uma release ao espelho público (branch site-publico) e publica
+# o conteúdo de public/ no GitHub Pages. Releases já publicadas nunca são
+# reescritas: o build-public-release recusa alterar uma tag existente.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag a publicar (ex.: v0.40.1). Vazio = só republicar o espelho."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site-publico
+  cancel-in-progress: false
+
+env:
+  SITE_BRANCH: site-publico
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Escolher tag
+        id: tag
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then TAG="$GITHUB_REF_NAME"; else TAG="$INPUT_TAG"; fi
+          if [ -n "$TAG" ] && ! printf '%s' "$TAG" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Tag inválida: $TAG"; exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Baixar espelho público
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SITE_BRANCH }}
+          path: espelho
+
+      - name: Baixar fonte da tag
+        if: steps.tag.outputs.tag != ''
+        uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ steps.tag.outputs.tag }}
+          path: fonte
+
+      - uses: actions/setup-node@v4
+        if: steps.tag.outputs.tag != ''
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: fonte/package-lock.json
+
+      - name: Gerar release no espelho
+        if: steps.tag.outputs.tag != ''
+        working-directory: fonte
+        run: |
+          npm ci
+          node scripts/build-public-release.ts --mirror "$GITHUB_WORKSPACE/espelho"
+
+      - name: Gravar release no branch do espelho
+        if: steps.tag.outputs.tag != ''
+        working-directory: espelho
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "$TAG já estava no espelho com os mesmos arquivos."
+          else
+            git -c user.name="github-actions[bot]" \
+                -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+                commit -m "Publica $TAG no site público"
+            git push origin "HEAD:$SITE_BRANCH"
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: espelho/public
+      - id: deploy
+        uses: actions/deploy-pages@v4
