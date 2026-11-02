@@ -2,20 +2,19 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
-## Em andamento — etapa12B, 0.25.0
+## Etapa12B validada — publicação0.25.0 pendente
 
-Branch codex/estoques-por-camara, base ea0cf07 da12A / PR#32. Novos módulos pequenos em src/modules/stores, app/store-status e renderer/FoodStoresView; nenhuma dependência nova. Perfil generic-microclimate-demo@2, revisão8, conserva os anteriores.
+Branch codex/estoques-por-camara, base ea0cf07 / PR#32 (conferir se foi integrado). Núcleo preservado em b047fc8 e enviado; concluir commit documental antes do helper para referência final exata. Módulos pequenos em src/modules/stores, app/store-status e renderer/FoodStoresView; perfil opcional generic-microclimate-demo@2, revisão8. Nenhum pacote novo.
 
-- Lotes por câmara e fluxos explícitos para entregas, devoluções, prole, casulos, trofalaxia/alimentação, alados, perdas e furto. Alimento atual = inicial + entradas − retiradas = soma dos lotes. Só funções de estoque alteram food após inicialização; apresentação agregada é somente visual.
-- Câmaras secas conhecidas são preferidas por memórias locais; fallback legado de objetivo/odor continua sem ler clima remoto. Refeições diretas e depósitos verificam o corpo; chegada lógica adiantada usa aproximação apoiada. Nutrição da prole ainda é orçamento coletivo, sem transportar fisicamente cada crédito. Rainha não ganhou ingestão autônoma.
-- Deterioração por água/temperatura no ponto do lote vira resíduo contado. Marcadores são agregados visuais, não grãos físicos. Guardas de saves conferem balanço, nós, posição e propriedade também após reconstruir habitat compartilhado.
-- Primeira suíte228/228 em240.733 ms, sessão80984 encerrada. Depois novas guardas e três casos;15 dirigidos finais passaram, log .runtime/stores-recovery-final.log. Build final270 módulos aprovado. Suíte COMPLETA FINAL rodando na sessão9502, .runtime/stores-suite-final.log. Coletar; não iniciar outra. Esperados231 casos, confirmar contagem real.
-- QA atual ESTOQUES-QA v2 no IAB tab2, PAUSADA D215,8:0,339 crédito em primeira câmara, água~21,8%, balanço fechado, rainha viva. Checkpoint Estoque por câmara · QA preservado. Ainda conferir painel atualizado, visual/console e recuperar usuário. Não recriar um QA para forçar sobrevivência.
-- Recuperação obrigatória ao encerrar: manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf, SEMENTE-50088 /D62,5/labv5, ainda atual antes desta QA. Não restaurarD16,9 ouD267. Dev G PID17752 mantido, Sitetab1 intocado.
+- Lotes por câmara e fluxos explícitos: atual = inicial + entradas − retiradas = soma dos lotes. Guarda de posição corporal antes de depositar/comer e energia paga apenas pelo alimento acessível. Memória climática local para preferência seca; fallback de objetivo/odor legado sem clima remoto. Nutrição da prole ainda é orçamento coletivo e rainha não ganhou ingestão autônoma.
+- Deterioração local vira resíduo; marcadores são agregados visuais, sem física de grãos. Guardas de saves conferem saldo, posição, nós e propriedade também após reconstruir o habitat compartilhado.
+- Suíte COMPLETA FINAL231/231 em229.865 ms, log .runtime/stores-suite-final.log, sessão9502 coletada e encerrada. Primeira228 também passou;15 dirigidos finais de estoque/codec passaram. Build270 módulos aprovado. Depois apenas docs. Não repetir sem mudança relevante.
+- QA ESTOQUES-QA pausada emD215,8: rainha viva, quatro naníticas já nascidas,0,339 crédito na primeira câmara, água21,809%, entradas7,7 e retiradas7,361. Checkpoint manual-8bee3b23-be96-42ea-bf6a-e640ec8ed304 recuperado com os mesmos saldos. Catálogo13 registros (três de estoque), cena interna/1ª pessoa e console sem erros. Não é ensaio de longevidade calibrada.
+- Screenshot viveiro-0.25.0-estoques.png no diretório autorizado já mostrado. Usuário recuperado em pausa após QA: manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf /SEMENTE-50088/D62,5/labv5. Conferir ACK final. Dev G PID17752 mantido; Sitetab1 intocado.
 
 ### Próximo passo concreto
 
-Coletar sessão9502; finalizar QA e recuperação. Docs/estoques-por-camara.md, CHANGELOG e cronograma precisam de status final. Commit/push, PR próprio sobre#32 (ou main se integrado), publicação privada0.25.0 com helper aberto após commit final, tag e metadados. Depois12C para materiais/textura/compactação/água/suporte; depois13–14 e P0–P5. Não marcar12 inteira concluída nem desativar retomada.
+Commit/push final, PR próprio sobre#32 se aberto (senão main), sem duplicar. Credencial atual e helper aberto APÓS commit final; arquivo G:\Projetos\viveiro-0.25.0.tar.gz; publicar no mesmo Site privado, tag/metadados e cronograma. Depois branch12C: materiais/textura/compactação/transporte de água/suporte. Depois13,14 e P0–P5, mantendo P5 por último. Não marcar12 inteira concluída ou desativar retomada. Nenhum teste/helper/executor paralelo pendente.
 
 ## Última entrega publicada — etapa 12A (0.24.0)
 

@@ -442,7 +442,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 ### 12. Cenários climáticos e engenharia da câmara
 
 - [x] 12A publicada em 0.24.0, PR [#32](https://github.com/albreis/viveiro/pull/32), branch codex/escolha-local-da-camara: sondagem física da rainha, memória de câmaras das cuidadoras e roteiro de aula. Ver [mecanismo e limites](escolha-local.md).
-- [ ] 12B implementada, em validação: estoque por câmara, preferência seca, deterioração local, fluxos e aproximação física para depositar/comer. Ver [estoques por câmara](estoques-por-camara.md).
+- [ ] 12B implementada e validada, publicação em finalização: estoque por câmara, preferência seca, deterioração local, fluxos e aproximação física para depositar/comer. Ver [estoques por câmara](estoques-por-camara.md).
 - [ ] 12C pendente: materiais, textura/compactação, transporte de água e suporte. Não declarar toda a etapa 12 concluída.
 
 - Usar 52% de umidade e 68% de luz como cenário de investigação, sem deduzir temperatura ou estabilidade diretamente.

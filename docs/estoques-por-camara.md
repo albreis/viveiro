@@ -2,7 +2,7 @@
 
 ## Etapa 12B — 0.25.0
 
-O perfil opcional generic-microclimate-demo@2 acrescenta lotes alimentares por câmara à escolha local da revisão anterior. A revisão1 continua sem esses lotes e mantém seu futuro. O padrão genérico permanece v5. São créditos alimentares abstratos, sem dieta, fungo ou biomassa calibrados.
+O perfil opcional generic-microclimate-demo@2 acrescenta lotes alimentares por câmara à escolha local da revisão anterior. A revisão 1 continua sem esses lotes e mantém seu futuro. O padrão genérico permanece v5. São créditos alimentares abstratos, sem dieta, fungo ou biomassa calibrados.
 
 ## Balanço e fluxos
 
@@ -21,7 +21,7 @@ A distribuição coletiva para prole e custos reprodutivos ainda usa o orçament
 
 Forrageadoras preferem câmaras mais secas entre as leituras que guardaram de visitas recentes. A referência demonstrativa é 30% de água nos poros; não é umidade relativa do ar nem ótimo natural para sementes. Sem memória climática válida, o comportamento legado de procurar estoques pelo objetivo/odor continua como fallback, sem consultar temperaturas ou umidades remotas.
 
-A cada100 passos, cada lote usa a temperatura e a água no seu próprio ponto. O excesso acima de65% dos poros multiplica uma taxa de0,005, modulada pela temperatura. Perda de alimento vira resíduo contado no local. Referências, taxas e limites estão no catálogo como aproximações. Não é um modelo de crescimento real de fungos.
+A cada 100 passos, cada lote usa a temperatura e a água no seu próprio ponto. O excesso acima de 65% dos poros multiplica uma taxa de 0,005, modulada pela temperatura. Perda de alimento vira resíduo contado no local. Referências, taxas e limites estão no catálogo como aproximações. Não é um modelo de crescimento real de fungos.
 
 Marcadores volumétricos e o painel mostram quantidades, câmaras, água local, entradas, retiradas e fechamento do balanço. Os marcadores representam lotes agregados; não possuem física individual de grãos ou participação na colisão das formigas.
 
@@ -29,10 +29,10 @@ Marcadores volumétricos e o painel mostram quantidades, câmaras, água local, 
 
 Saves guardam lotes, pontos, fluxos e destino de entrega. São rejeitados saldos inválidos, duplicatas, câmaras inexistentes ou de outra colônia, posições incompatíveis e balanços abertos. O teste de habitat compartilhado confere também os dados após religar as referências das colônias filhas.
 
-A primeira suíte completa passou228/228 em240.733 ms. Depois foram adicionadas guardas de posição e propriedade e três testes novos; os15 dirigidos finais de estoque/codec passaram. A execução completa final está em andamento e deve ser coletada antes da publicação. O build final passou com270 módulos, sem dependências novas.
+A primeira suíte completa passou 228/228 em 240.733 ms. Depois foram adicionadas guardas de posição e propriedade e três testes novos; os 15 dirigidos finais de estoque/codec passaram. A suíte completa final passou: 231/231 em 229.865 ms, após todas as guardas e casos adicionais. O build final passou com 270 módulos, sem dependências novas.
 
-QA parcial ESTOQUES-QA, ar21°C/80%: fundação com quatro naníticas, estoque positivo de0,339 crédito na primeira câmara da rainha e balanço fechado. Checkpoint Estoque por câmara · QA emD215,8, rainha ainda viva e cerca de21,8% de água nos poros no lote. Não é um ensaio de longevidade calibrada. Conferir painel atualizado, representação, recarga, console e retorno ao terrário do usuário antes de publicar.
+QA ESTOQUES-QA, ar 21 °C/80%: fundação com quatro naníticas, estoque positivo de 0,339 crédito na primeira câmara da rainha e balanço fechado. Checkpoint Estoque por câmara · QA em D215,8, rainha ainda viva e cerca de 21,8% de água nos poros no lote. Não é um ensaio de longevidade calibrada. Painel, catálogo, cena interna e console conferidos sem erros. Foram registrados aproximadamente 7,7 créditos recebidos e 7,361 retirados, com 0,339 restantes. O checkpoint manual-8bee3b23-be96-42ea-bf6a-e640ec8ed304 recuperou os mesmos saldos em pausa; depois foi restaurado o experimento do usuário SEMENTE-50088 em D62,5.
 
-## Restante da etapa12
+## Restante da etapa 12
 
-Materiais, textura/compactação e ligação explícita ao transporte de água e suporte ficam na12C. Esta divisão preserva os critérios restantes; não declara a etapa12 inteira concluída. Calibração por espécie, contaminação e dieta continuam dependendo de dados externos reais. Depois seguem13,14 e as novas fasesP0–P5 na ordem do usuário.
+Materiais, textura/compactação e ligação explícita ao transporte de água e suporte ficam na 12C. Esta divisão preserva os critérios restantes; não declara a etapa 12 inteira concluída. Calibração por espécie, contaminação e dieta continuam dependendo de dados externos reais. Depois seguem 13, 14 e as novas fases P0–P5 na ordem do usuário.
