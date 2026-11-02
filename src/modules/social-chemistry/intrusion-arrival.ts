@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { takeStock, hasStockBin } from "../stores/ledger.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { ownerWorld } from "../colonies/shared.ts";
@@ -30,7 +31,7 @@ export function arriveIntruder(
     return true;
   }
   if (
-    Math.hypot(a.x - room.x, (a.y || 0) - room.y, a.z - room.z) >
+    modelMath.hypot(a.x - room.x, (a.y || 0) - room.y, a.z - room.z) >
     room.r + 0.25
   ) {
     const s = projectSupport(w.nest, {

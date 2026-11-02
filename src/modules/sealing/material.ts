@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FoundingWorld } from "../founding/types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
 import type { EntrancePlug } from "./types.ts";
@@ -8,7 +9,7 @@ export function reclaimSpoil(
   wanted: number,
 ): number {
   const pile = w.soil.deposits.find(
-    (p) => p.mass > 0 && Math.hypot(a.x - p.x, a.z - p.z) < 0.45,
+    (p) => p.mass > 0 && modelMath.hypot(a.x - p.x, a.z - p.z) < 0.45,
   );
   if (!pile) return 0;
   const amount = Math.min(pile.mass, Math.max(0, wanted));

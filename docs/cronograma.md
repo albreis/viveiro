@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada e pública: **0.39.0**, PR [#52](https://github.com/albreis/viveiro/pull/52), CLI e experimentos isolados (P2.2A). O aceite de paridade entre navegador e Node falhou na comparação real e permanece **P2.2B, urgente por solicitação do usuário**. ODD0.38.0/#50 e DOI0.36.0/#51 já integrados à main. P1.6B2 e ensaios externos continuam pendentes; próximo item implementável: corrigir P2.2B antes de P2.3. P0.3 concluída: [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/) com URLs por versão. A0.29.1/PR #40 entregou revisão e licenças. A0.29.0/PR #39 entregou a etapa14 de ritmo e continuidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada e pública: **0.40.1**, PR [#54](https://github.com/albreis/viveiro/pull/54), apoio das asas descartadas no terreno atual. Correção urgente **P2.2B concluída na 0.40.0/#53 nos cenários e runtimes ensaiados**. CSV e manifesto idênticos em Node, navegador dev, bundle compilado e regressão publicada. ODD 0.38.0/#50 e DOI 0.36.0/#51 integrados à main; #52 e #53 encadeados. P1.6B2 e ensaios externos continuam pendentes; próximo item implementável: **P2.3**. P0.3 concluída: [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/) com URLs por versão. A 0.29.1/PR #40 entregou revisão e licenças. A 0.29.0/PR #39 entregou a etapa 14 de ritmo e continuidade. A 0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -29,7 +29,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 13    | Espermateca, fertilidade e longevidade                             | ✅ Protótipos 13A–13B publicados · 0.27–0.28                    |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ✅ Protótipo publicado · 0.29 · PR #39                      |
 
-**Ordem restante:** P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
+**Ordem restante:** P0–P4 adicionados pelo usuário, com P2.8 e P5 retirados do plano ativo em 02/11/2026. P2.8 foi descartado e não será implementado; P5 foi descartado por enquanto. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -116,6 +116,12 @@ RL depende de sensores, ações, recompensas e física estáveis.
 ## Histórico das entregas
 
 Os registros abaixo descrevem cada momento do desenvolvimento. Menções antigas a “próximo” ou “pendente” são históricas; a tabela acima e o andamento das etapas 9–14 representam a situação atual.
+
+### Correção adicional — asas descartadas (0.40.1, 02/11/2026)
+
+- [x] PR [#54](https://github.com/albreis/viveiro/pull/54): asas apoiadas e orientadas na malha atual de solo/tampão, recalculadas após escavação ou mudança do tampão. Altura antiga de pouso não prende mais as asas no ar.
+- [x] 11 testes de regressão geométrica, 6 checks de integração/cache/paridade, TypeScript estrito e builds privado/público. QA nativa no save existente, sem alterar dia, população ou posições salvas; console limpo.
+- [x] Publicada nos dois Sites; fonte/tag 9b5d057. Evidências em validacoes/asas-0.40.1.json e validacoes/deploy-0.40.1.json. Apoio visual, sem modelo de massa ou aerodinâmica das asas. P2.2B permanece entregue; próximo item P2.3.
 
 ### Progresso da etapa 2 — 31/10/2026
 
@@ -497,7 +503,7 @@ As etapas 10C–14 aprofundam o modelo, que já é o ponto forte. As maiores lac
 4. P2 — ferramenta de pesquisa.
 5. P3 — validação científica, com dados e revisões externas.
 6. P4 — comunidade, após o início da fase educacional.
-7. P5 — clima real da localização do usuário, por último.
+P5 (clima real da localização) foi retirado desta ordem por solicitação do usuário em 02/11/2026.
 
 Esta ordem substitui a proposta anterior de executar P0/P1 em paralelo às etapas 12–14. Rankings continuam sendo projeções editoriais; a entrega de itens não comprova superioridade sobre concorrentes.
 
@@ -509,8 +515,8 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [x] P0.3 entregue em0.30.1/PR [#41](https://github.com/albreis/viveiro/pull/41): [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/), com URLs /releases/v0.30.0/ e /releases/v0.30.1/. Acesso sem login, versão real e QA3D/Workers/arquivos conferidos. O Site original segue privado. Ver [processo e limites](publicacao-por-tag.md).
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
-  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.39.0 exata (atualizada após P2.2A); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
-  - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Publicação permanente da0.36.0 autorizada e concluída: [DOI10.5281/zenodo.23891981](https://doi.org/10.5281/zenodo.23891981), registro23891981, ZIP baixado após publicar com SHA-256 idêntico. [Citação por versão](citacoes/README.md) e esquema CFF conferidos. A release atual0.39.0 ainda não tem DOI próprio; não atribuir a ela o DOI da0.36.0.
+  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.40.1 exata (atualizada após a correção das asas); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
+  - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Publicação permanente da0.36.0 autorizada e concluída: [DOI10.5281/zenodo.23891981](https://doi.org/10.5281/zenodo.23891981), registro23891981, ZIP baixado após publicar com SHA-256 idêntico. [Citação por versão](citacoes/README.md) e esquema CFF conferidos. A release atual 0.40.1 ainda não tem DOI próprio; não atribuir a ela o DOI da0.36.0.
   - [ ] P0.4C: após o PR chegar à branch padrão, conferir o botão do GitHub. Não concluído só por abrir PR.
   - A dependência externa de P0.4B não impede avançar P1; repo original e Site original continuam privados.
 
@@ -539,39 +545,24 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [x] 10C: PR #26 integrado; 0.23.0 publicada no Site privado, tag e situação atualizadas.
 - [x] 12: mecanismos12A–12C publicados, com roteiro de aula em docs/ensino/microclima-local.md. Revisão docente e calibração continuam abertas.
 - [x] 13: protótipos13A–13B publicados em0.27–0.28. Calibração científica exigida porP3.2 ainda pendente.
-- [x] 14: ritmo persistido e avanço headless no navegador publicados em0.29. A CLI deP2.2 continua pendente; não existe servidor contínuo.
+- [x] 14: ritmo persistido e avanço headless no navegador publicados em0.29. A CLI de P2.2 foi entregue em 0.39–0.40; não existe servidor contínuo.
 
 ### P2. Ferramenta de pesquisa
 
 - [x] P2.1 publicada em0.38.0/PR [#50](https://github.com/albreis/viveiro/pull/50): [ODD](odd.md) em oito documentos curtos, com sete elementos, estados/unidades, agendamento e hipóteses. Reação-difusão com fronteiras, discretização, fontes, sete vetores analíticos e referência autônoma suficiente para reimplementação.37 testes dirigidos +4 do depósito, TS estrito, builds privado/público, cache íntegro e QA real/320px. Conferência interna, sem alegar replicação externa ou calibração. Sites publicados e páginas confirmadas em produção; check HTTP adicional via urllib recebeu403, sem atribuir hashes remotos não medidos. Evidências em validacoes/odd-0.38.0.json e validacoes/deploy-0.38.0.json.
-- [ ] P2.2 Linha de comando sem interface: seed, dias, parâmetros e saída em CSV com manifesto. Aceite: arquivos idênticos byte a byte entre navegador e Node para a mesma seed.
+- [x] P2.2 Linha de comando sem interface: seed, dias, parâmetros e saída em CSV com manifesto. Aceite atendido para experimentos isolados com a mesma política portátil, versão e plano nos cenários/runtimes ensaiados; o terrário 3D e saves legados mantêm a política nativa.
   - [x] P2.2A publicada em0.39.0/PR [#52](https://github.com/albreis/viveiro/pull/52): CLI, plano canônico, CSV/manifesto com SHA-256, página isolada/Worker e cancelamento.34 testes dirigidos +4 de depósito, build350 módulos, QA real e save preservado. Ver [uso e evidência](cli.md). Bundle publicado executou100 ticks; console limpo. Fonte/tag92072e2.
-  - [ ] **P2.2B — prioridade urgente:** igualdade byte a byte não atendida. Caso QA-CLI-039/10dias tem diferenças desde estado inicial, RNG diverge até tick650 e população passa a diferir no dia7. Dados brutos reais preservados em tests/fixtures/cli-native-039. Implementar aritmética portátil versionada, testar as funções e repetir navegador REAL versus Node com múltiplas seeds/operárias/microclima. Manter interpretação de saves e evitar patches globais de Math; não arredondar dados para esconder divergência.
+  - [x] **P2.2B — urgente, entregue em 0.40.0/PR [#53](https://github.com/albreis/viveiro/pull/53):** aritmética portátil versionada `stdlib-f64-v1` em Workers isolados. Quatro cenários reais (4.400 ticks por ambiente), incluindo fundação, operárias e solo/gases, produziram CSV e manifesto byte a byte iguais em Node 24.22.1, navegador dev e bundle compilado. Regressão de 1.000 ticks confirmada também no Site privado publicado. Suíte completa: 396 testes, mais quatro regressões novas e checks dirigidos; TS estrito e builds aprovados. Math global e trajetória nativa preservados; nenhuma alteração cosmética do CSV. [Contrato e limites](aritmetica-portatil.md), dados brutos em tests/fixtures/cli-portable-040 e evidências em validacoes/paridade-0.40.0.json. Não equivale a garantia de todas as engines nem calibração científica.
 
 - [ ] P2.3 Varredura de parâmetros e réplicas em paralelo com retomada, equivalente ao BehaviorSpace. Aceite: 5 valores × 10 réplicas em um comando.
 - [ ] P2.4 Análise de sensibilidade (Morris) em docs/sensibilidade.md com dados brutos. Aceite: os 10 parâmetros mais influentes, que orientam P3.2.
 - [ ] P2.5 API tipada de extensões para políticas de decisão, sensores e submodelos (DecisionPolicy, SensorSystem). Aceite: política nova em um arquivo, testada e comparada com ACO na linha de comando.
 - [ ] P2.6 Editor de parâmetros com unidade, faixa e fonte do catálogo, salvo como perfil versionado. Aceite: exportar, reimportar e reproduzir por seed.
 - [ ] P2.7 Interface e documentação em inglês, mantendo português como padrão. Aceite: nenhuma tela com texto fixo no código.
-- [ ] P2.8 Instruções em português para uma formiga. Depende de P2.5. Detalhes abaixo.
-
-#### P2.8 Instruções em português para uma formiga
-
-O usuário escreve um pedido para uma formiga; um modelo de linguagem propõe uma regra numa linguagem de fórmulas fechada; o simulador valida, mostra, salva e aplica só àquela formiga. A IA nunca escreve código executável.
-
-- Entradas: somente sensores locais existentes (cheiro, CO₂, O₂, temperatura e água do solo, carga, energia, contato).
-- Saídas: somente parâmetros de decisão (peso das saídas, limiares de tarefa, preferência de câmara, exploração). Nunca posição, recursos ou mapa global.
-- Limites com nome definidos pelo modelo e registrados no catálogo (co2_alto, temperatura_alta, solo_encharcado...), em vez de números escolhidos pela IA.
-- Interpretador próprio em TypeScript, sem eval; rejeita sensores inexistentes, fórmulas grandes, valores fora da faixa, divisão por zero e NaN.
-- Teste de efeito: a fórmula é avaliada em situações típicas e na borda da faixa normal; cada sensor declarado precisa alterar o resultado. Falha gera uma nova tentativa com a mensagem do validador.
-- A explicação mostrada ao usuário é gerada pelo código a partir da fórmula, não pela IA.
-- O save guarda fórmula, pedido, modelo, versão e tick, como intervenção. O replay nunca chama a IA.
-- A regra entra no catálogo como hipótese gerada por IA, não como comportamento biológico.
-- Nenhuma credencial no repositório ou no bundle; o modelo fica atrás de um endpoint com token, fila, limite por usuário e cache de pedidos repetidos.
-
-Ordem: linguagem e validador; regras escritas à mão com save e replay; endpoint do modelo; painel na primeira pessoa com comparação pela mesma seed; testes de conservação, ausência de leitura global e replay idêntico.
-
-Modelo local avaliado em novembro de 2026, num VPS de 8 vCPUs AMD EPYC (AVX-512) com 3 núcleos reservados, Ollama, quantização de 4 bits e temperatura zero. Com esquema JSON, padrões de fórmula e exemplos, Qwen3 4B (sem modo de raciocínio) usou o padrão correto e explicação coerente; Qwen2.5 3B gerou fórmulas válidas mas com comportamento errado. Geração entre 8 e 17 tokens/s conforme a carga do servidor; carregamento de 7 a 25 s quando o modelo não está em memória. Foram poucas instruções: antes de escolher, executar um conjunto de 30 a 50 instruções com situações esperadas, várias repetições, taxa de acerto, tempo médio e pior tempo.
+P2.8 (instruções em português para uma formiga) foi descartado pelo usuário em
+02/11/2026 e não será implementado. Não integra o escopo nem os critérios de
+conclusão; não retomar sem novo pedido explícito. A proposta anterior está no
+[arquivo histórico](arquivo/instrucoes-formiga-descartadas.md).
 
 ### P3. Validação científica
 
@@ -590,27 +581,9 @@ Modelo local avaliado em novembro de 2026, num VPS de 8 vCPUs AMD EPYC (AVX-512)
 
 Concluir primeiro 12–14, conforme orientação atual do usuário. Depois priorizar P0.1–P0.3, P1.1, P1.3 e P1.4. A 10C está entregue; P3 depende de dados externos e das ferramentas de pesquisa.
 
-### P5. Clima real da localização do usuário — por último
+### P5. Clima real — descartado por enquanto
 
-⬜ Planejado para depois de todos os passos anteriores, inclusive P3 e P4. Depende da etapa 14 para a série diária.
-
-Usar o clima de um lugar e de uma data reais como cenário do terrário. O ganho é didático (estação, hemisfério, fotoperíodo e diapausa) e de engajamento. Não torna a biologia mais realista: os parâmetros das formigas continuam genéricos e devem ser apresentados como "terrário ao ar livre na sua cidade", não como simulação das formigas daquele lugar.
-
-| Parâmetro do modelo | Dado do serviço de clima      | Conversão                                 |
-| ------------------- | ----------------------------- | ----------------------------------------- |
-| humidity            | umidade relativa              | direta                                    |
-| temperatureC        | temperatura do ar a 2 m       | direta                                    |
-| windX, windZ        | velocidade e direção do vento | decomposição nos eixos e escala do modelo |
-| light               | radiação solar (W/m²)         | aproximação registrada no catálogo        |
-| photoperiodHours    | duração do dia                | direta                                    |
-| pulso de chuva      | precipitação                  | escala do modelo, registrada no catálogo  |
-
-Serviço sugerido: Open-Meteo, sem chave e com arquivo histórico; conferir os termos de uso antes de qualquer uso comercial.
-
-- [ ] P5.1 Clima inicial: ao criar o terrário, escolher "minha localização", "escolher cidade" ou "padrão"; os valores do dia viram condições iniciais, como o perfil de ar de referência. Aceite: valores brutos, convertidos, fonte, data e localização arredondada gravados no experimento.
-- [ ] P5.2 Reprodutibilidade: buscar uma vez e guardar o dado, nunca o pedido; o replay usa os valores gravados e não consulta o serviço. Aceite: mesma seed e mesmos dados gravados produzem o mesmo futuro, sem rede.
-- [ ] P5.3 Privacidade e acesso: permissão explícita de localização, coordenadas arredondadas ao nível de cidade, escolha manual obrigatória (navegadores escolares bloqueiam localização) e queda para o padrão sem internet, com aviso. Aceite: nenhuma coordenada exata salva ou exportada.
-- [ ] P5.4 Conversões no catálogo de parâmetros como aproximações, com unidade, fonte e limites. Aceite: cada conversão visível no catálogo.
-- [ ] P5.5 Série diária com dados históricos de um período fixo, seguindo o clima dia a dia. Depende da etapa 14. Aceite: série gravada no experimento e replay idêntico.
-- [ ] P5.6 Temperatura e umidade do solo do serviço para inicializar a grade de água e calor. Aceite: inicialização conservativa e documentada.
-- [ ] P5.7 Experimento de aula pronto: mesma seed em cidades e hemisférios diferentes na mesma data. Aceite: roteiro no guia do professor (P1.4).
+Retirado do plano ativo por solicitação do usuário em 02/11/2026. Os itens
+P5.1–P5.7 não são pendências nem critérios de conclusão. Não retomar
+automaticamente; somente uma nova solicitação explícita pode reativar a ideia.
+A proposta anterior permanece no [arquivo histórico](arquivo/clima-real-descartado.md).

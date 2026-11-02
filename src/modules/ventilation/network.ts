@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { plugTransport } from "../sealing/passage.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import { pileRadius } from "../soil/ledger.ts";
@@ -5,12 +6,12 @@ import type { GasWorld, AirNetwork } from "./types.ts";
 /** Compartment volumes approximate spheres plus half of each connecting cylinder. */
 export function airNetwork(w: GasWorld): AirNetwork {
   const volume = w.nest.nodes.map((n) =>
-    Math.max(0.01, (4 / 3) * Math.PI * n.r ** 3),
+    Math.max(0.01, (4 / 3) * Math.PI * modelMath.pow(n.r, 3)),
   );
   const edges = w.nest.links.map(([a, b], i) => {
     const p = w.nest.nodes[a],
       q = w.nest.nodes[b],
-      length = Math.max(0.1, Math.hypot(p.x - q.x, p.y - q.y, p.z - q.z));
+      length = Math.max(0.1, modelMath.hypot(p.x - q.x, p.y - q.y, p.z - q.z));
     const r = w.nest.linkWidths?.[i] ?? 0.38,
       area = Math.PI * r * r;
     volume[a] += (area * length) / 2;
@@ -32,14 +33,17 @@ export function airNetwork(w: GasWorld): AirNetwork {
             Math.max(l2, 0.0001),
         ),
       );
-      const offset = Math.hypot(
+      const offset = modelMath.hypot(
           rubble.x - p.x - t * dx,
           rubble.y - p.y - t * dy,
           rubble.z - p.z - t * dz,
         ),
         rr = pileRadius(rubble.mass);
       const overlap = Math.max(0, Math.min(1, (r + rr - offset) / (2 * r)));
-      clearance = Math.min(clearance, Math.max(0, 1 - (rr / r) ** 2 * overlap));
+      clearance = Math.min(
+        clearance,
+        Math.max(0, 1 - modelMath.pow(rr / r, 2) * overlap),
+      );
     }
     const temperature =
       ((sampleClimate(w.microclimate, p)?.temperature ?? 24) +
@@ -50,8 +54,14 @@ export function airNetwork(w: GasWorld): AirNetwork {
     return {
       a,
       b,
-      diffusion: ((0.0005 * area) / length) * clearance ** 2 * plug.diffusion,
-      conductance: ((0.02 * r ** 4) / length) * clearance ** 4 * plug.flow,
+      diffusion:
+        ((0.0005 * area) / length) *
+        modelMath.pow(clearance, 2) *
+        plug.diffusion,
+      conductance:
+        ((0.02 * modelMath.pow(r, 4)) / length) *
+        modelMath.pow(clearance, 4) *
+        plug.flow,
       head: ((0.02 * (temperature - air)) / (air + 273.15)) * (q.y - p.y),
     };
   });

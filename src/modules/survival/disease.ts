@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import { allAnts, colonyWorlds } from "../colonies/types.ts";
 import { neighborsOf, invalidateNeighbors } from "../navigation/sensors.ts";
@@ -22,7 +23,7 @@ export function diseaseExposure(w: FamilyWorld): Map<number, number> | null {
     distance = (
       a: { x: number; y?: number; z: number },
       b: { x: number; y?: number; z: number },
-    ) => Math.hypot(a.x - b.x, (a.y ?? 0) - (b.y ?? 0), a.z - b.z);
+    ) => modelMath.hypot(a.x - b.x, (a.y ?? 0) - (b.y ?? 0), a.z - b.z);
   for (const a of ants) {
     if (!a.life) continue;
     let exposure = 0;

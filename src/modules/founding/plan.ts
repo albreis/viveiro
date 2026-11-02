@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { DEMO_FOUNDING_RESERVE } from "../biology/demo-constants.ts";
 import type { FoundingState } from "./types.ts";
 import type { NestState } from "../navigation/types.ts";
@@ -11,7 +12,7 @@ export function foundingPlan(
     chamber = { ...nest.nodes[2] };
   const dx = chamber.x - site.x,
     dz = chamber.z - site.z,
-    d = Math.hypot(dx, dz) || 1,
+    d = modelMath.hypot(dx, dz) || 1,
     reach = Math.min(d, 0.8 + Math.abs(chamber.y) * 0.15);
   chamber.x = site.x + (dx * reach) / d;
   chamber.z = site.z + (dz * reach) / d;

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type {
   MaterialHost,
@@ -24,16 +25,16 @@ export function transportFactors(m: MaterialMix): TransportFactors {
     packing = m.packing - p.packingReference / 100;
   return {
     capillary: clamp(
-      Math.exp(p.capillaryClay * clay - p.capillaryPacking * packing),
+      modelMath.exp(p.capillaryClay * clay - p.capillaryPacking * packing),
       0.15,
       3,
     ),
     drainage: clamp(
-      Math.exp(-p.drainageClay * clay - p.drainagePacking * packing),
+      modelMath.exp(-p.drainageClay * clay - p.drainagePacking * packing),
       0.15,
       3,
     ),
-    heat: Math.exp(p.heatPacking * packing),
+    heat: modelMath.exp(p.heatPacking * packing),
   };
 }
 export function roofFactors(m: MaterialMix, water: number): RoofFactors {
@@ -46,7 +47,8 @@ export function roofFactors(m: MaterialMix, water: number): RoofFactors {
   return {
     density: 1 + p.densityPacking * packing,
     cohesion: clamp(
-      Math.exp(p.cohesionClay * clay + p.cohesionPacking * packing) * softening,
+      modelMath.exp(p.cohesionClay * clay + p.cohesionPacking * packing) *
+        softening,
       0.1,
       3,
     ),

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 export interface FieldParameters {
   width: number;
   height: number;
@@ -29,14 +30,14 @@ export function diffuseEvaporate(field: number[], p: FieldParameters) {
     throw new RangeError("Vento inválido.");
   if (!field.some((v) => v !== 0)) return;
   const rate =
-    (4 * p.diffusion) / p.cellSize ** 2 +
+    (4 * p.diffusion) / modelMath.pow(p.cellSize, 2) +
     (Math.abs(vx) + Math.abs(vz)) / p.cellSize;
   const steps = Math.max(1, Math.ceil((rate * p.dt) / 0.85)),
     dt = p.dt / steps;
-  const alpha = (p.diffusion * dt) / p.cellSize ** 2,
+  const alpha = (p.diffusion * dt) / modelMath.pow(p.cellSize, 2),
     bx = (vx * dt) / p.cellSize,
     bz = (vz * dt) / p.cellSize;
-  const decay = Math.exp(-p.decay * dt);
+  const decay = modelMath.exp(-p.decay * dt);
   let next = buffers.get(field);
   if (!next || next.length !== field.length) {
     next = new Float64Array(field.length);

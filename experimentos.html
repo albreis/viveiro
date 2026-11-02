@@ -95,11 +95,12 @@
       ><code>npm run experiment -- --seed SEMENTE-42 --days 3 --humidity 68 --profile generic-demo@5 --out resultado-novo</code></pre>
       <p>
         Um dia do modelo equivale a 100 ticks. Os valores são exploratórios e
-        não calibrados por espécie. A comparação atual encontrou divergência
-        entre navegador e Node em uma execução de dez dias. A igualdade de
-        arquivos entre ambientes ainda é um aceite pendente; funções matemáticas
-        nativas podem produzir diferenças que se amplificam. Sem consulta de
-        clima real ou continuidade em servidor.
+        não calibrados por espécie. Experimentos isolados usam a política
+        aritmética portátil stdlib-f64-v1. Para comparar arquivos, use a mesma
+        versão do Viveiro, configuração e política indicada no manifesto. O
+        terrário 3D e os saves existentes continuam usando a política nativa,
+        que pode gerar trajetórias diferentes. Sem consulta de clima real ou
+        continuidade em servidor.
       </p>
     </main>
     <footer>Viveiro · Código MIT · Documentação original CC BY 4.0</footer>

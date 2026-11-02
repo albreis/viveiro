@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { Plant } from "../landscape/types.ts";
 import { speciesOf } from "../landscape/species.ts";
 /** Ground-level stem/body clearance, not an impassable circle around the canopy. */
@@ -20,8 +21,8 @@ function penetration(plants: Plant[], x: number, z: number) {
   for (const p of plants) {
     const r = plantClearance(p);
     if (r) {
-      const d = Math.hypot(x - p.x, z - p.z);
-      if (d < r) sum += (1 - d / r) ** 2;
+      const d = modelMath.hypot(x - p.x, z - p.z);
+      if (d < r) sum += modelMath.pow(1 - d / r, 2);
     }
   }
   return sum;

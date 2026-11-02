@@ -1,3 +1,4 @@
+import { arithmeticPolicy } from "../../libs/model-math.ts";
 import metadata from "../../../package.json" with { type: "json" };
 import type { ExperimentPlan } from "./plan.ts";
 export interface ExperimentResult {
@@ -18,7 +19,7 @@ export async function experimentResult(
     schema: "viveiro-run-v1",
     modelVersion: metadata.version,
     calibrated: false,
-    arithmetic: "ecmascript-native-f64-v1",
+    arithmetic: arithmeticPolicy(),
     plan,
     clock: { ticksPerDay: 100, startTick: 0, endTick: plan.days * 100 },
     collection: {
@@ -40,7 +41,7 @@ export async function experimentResult(
     limitations: [
       "Model units; not calibrated for a species.",
       "No renderer, saved terrarium, real weather or wall-clock input.",
-      "Native Math may diverge across runtimes. Cross-runtime byte equality is an unmet acceptance criterion; see docs/cli.md.",
+      "Reproduce with the same model version and arithmetic policy; native and portable runs are distinct numerical contracts.",
     ],
   };
   return { csv, manifest: JSON.stringify(manifest, null, 2) + "\n" };

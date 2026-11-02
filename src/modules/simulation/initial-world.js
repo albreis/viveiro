@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { initializeSurvival } from "../survival/initialize.ts";
 import { initializeFertility } from "../fertility/model.ts";
 import { initializeSoilMaterial } from "../soil-material/initialize.ts";
@@ -113,7 +114,7 @@ export function initializeWorld(world, seed, parameters, options = {}) {
         world.inPond(x, z) ||
         timberLevel(world.landscape, x, z) < 1 ||
         world.nest.nodes.some(
-          (n) => n.type === "entrance" && Math.hypot(n.x - x, n.z - z) < 2,
+          (n) => n.type === "entrance" && modelMath.hypot(n.x - x, n.z - z) < 2,
         )
       )
         continue;

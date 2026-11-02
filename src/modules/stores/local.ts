@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { StockWorld } from "./types.ts";
 export function physicalStockVisit(
   w: StockWorld,
@@ -9,6 +10,7 @@ export function physicalStockVisit(
   const room = w.nest?.nodes[node];
   return (
     !!room &&
-    Math.hypot(a.x - room.x, (a.y ?? 0) - room.y, a.z - room.z) <= room.r + 0.15
+    modelMath.hypot(a.x - room.x, (a.y ?? 0) - room.y, a.z - room.z) <=
+      room.r + 0.15
   );
 }

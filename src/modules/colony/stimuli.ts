@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { roomNode } from "./rooms.ts";
 import { neighborsOf } from "../navigation/sensors.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
@@ -42,7 +43,7 @@ export function senseTaskStimuli(
         distance3(here, world.nest.nodes[p.from]) < 1),
   );
   const danger = world.predators.some(
-    (p) => Math.hypot(p.x - ant.x, p.z - ant.z) < 1.2,
+    (p) => modelMath.hypot(p.x - ant.x, p.z - ant.z) < 1.2,
   );
   const entrance = world.nest.nodes.some(
     (n) => n.type === "entrance" && distance3(here, n) < 1.2,

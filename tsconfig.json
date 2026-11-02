@@ -13,5 +13,11 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "vite.config.ts", "scripts/run-experiment.ts"]
+  "include": [
+    "src",
+    "vite.config.ts",
+    "scripts/run-experiment.ts",
+    "scripts/workers/experiment-thread.ts",
+    "scripts/generate-numeric-notices.ts"
+  ]
 }

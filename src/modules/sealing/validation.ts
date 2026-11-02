@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState } from "../navigation/types.ts";
 import type { FoundingState } from "../founding/types.ts";
 import { updatePlugRadius } from "./material.ts";
@@ -40,7 +41,7 @@ export function validatePlugMaterials(nest: unknown, soil: unknown): void {
       fail();
     ids.add(p.id);
     if (
-      Math.abs(Math.hypot(p.axis.x, p.axis.y, p.axis.z) - 1) > 1e-7 ||
+      Math.abs(modelMath.hypot(p.axis.x, p.axis.y, p.axis.z) - 1) > 1e-7 ||
       !finite(p.radius) ||
       p.radius <= 0 ||
       p.radius > 1.5 ||

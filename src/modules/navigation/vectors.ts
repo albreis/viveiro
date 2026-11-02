@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type {
   AgentState,
   NavigationWorld,
@@ -20,7 +21,7 @@ export const scale = (a: Vec3, k: number) => ({
   z: a.z * k,
 });
 export const dot = (a: Vec3, b: Vec3) => a.x * b.x + a.y * b.y + a.z * b.z;
-export const length = (a: Vec3) => Math.hypot(a.x, a.y, a.z);
+export const length = (a: Vec3) => modelMath.hypot(a.x, a.y, a.z);
 export const normalize = (a: Vec3) => scale(a, 1 / (length(a) || 1));
 export const cross = (a: Vec3, b: Vec3) => ({
   x: a.y * b.z - a.z * b.y,
@@ -37,8 +38,8 @@ export function limit(vector: Vec3, max: number) {
   return size > max ? scale(vector, max / size) : vector;
 }
 export function rotate(vector: Vec3, axis: Vec3, angle: number) {
-  const c = Math.cos(angle),
-    s = Math.sin(angle);
+  const c = modelMath.cos(angle),
+    s = modelMath.sin(angle);
   return add(
     add(scale(vector, c), scale(cross(axis, vector), s)),
     scale(axis, dot(axis, vector) * (1 - c)),

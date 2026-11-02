@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { MovingPredator } from "./types.ts";
 import type { Plant } from "../landscape/types.ts";
 import { plantClearance } from "./vegetation.ts";
@@ -23,7 +24,7 @@ export function predatorEscape(
   tick: number,
 ): number | undefined {
   const m = memory(p, tick);
-  if (Math.hypot(p.x - m.anchor.x, p.z - m.anchor.z) > 0.18)
+  if (modelMath.hypot(p.x - m.anchor.x, p.z - m.anchor.z) > 0.18)
     m.anchor = { x: p.x, z: p.z, tick };
   if (m.escape && m.escape.until > tick) return m.escape.angle;
   delete m.escape;
@@ -34,7 +35,7 @@ export function predatorEscape(
 export function approachPlant(p: MovingPredator, plant: Plant, tick: number) {
   const m = memory(p, tick);
   if (m.visit?.plant !== plant.id) m.visit = { plant: plant.id, since: tick };
-  const distance = Math.hypot(p.x - plant.x, p.z - plant.z),
+  const distance = modelMath.hypot(p.x - plant.x, p.z - plant.z),
     elapsed = tick - m.visit.since;
   if (
     distance <= Math.max(0.3, plantClearance(plant) + 0.035) ||
@@ -46,12 +47,16 @@ export function approachPlant(p: MovingPredator, plant: Plant, tick: number) {
         heading: escape(
           p,
           tick,
-          Math.atan2(p.z - plant.z, p.x - plant.x) + (p.id % 2 ? 1 : -1) * 0.3,
+          modelMath.atan2(p.z - plant.z, p.x - plant.x) +
+            (p.id % 2 ? 1 : -1) * 0.3,
         ),
       };
     p.state = "Procurando presas na planta";
     return { waiting: true, heading: p.angle };
   }
   p.state = "Aproximando da planta";
-  return { waiting: false, heading: Math.atan2(plant.z - p.z, plant.x - p.x) };
+  return {
+    waiting: false,
+    heading: modelMath.atan2(plant.z - p.z, plant.x - p.x),
+  };
 }

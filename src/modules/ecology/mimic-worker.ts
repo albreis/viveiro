@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { odorDistance } from "../social-chemistry/profile.ts";
 import { contactAcrossAir } from "../colony/contact.ts";
@@ -23,7 +24,7 @@ export function visitMimic(w: ColonyWorld, a: ColonyAgent) {
     (m) =>
       m.status === "searching" &&
       m.carrier === undefined &&
-      Math.hypot(m.x - a.x, m.y - (a.y || 0), m.z - a.z) < 0.5 &&
+      modelMath.hypot(m.x - a.x, m.y - (a.y || 0), m.z - a.z) < 0.5 &&
       contactAcrossAir(w.nest, a, m),
   );
   if (!m) return false;

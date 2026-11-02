@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState, SupportWaypoint, Vec3 } from "./types.ts";
 import { projectSupport, stepOnSupport } from "../terrain/surface-queries.ts";
 import { sampleSupport } from "../terrain/field.ts";
@@ -48,8 +49,8 @@ export function findSupportPath(
     for (let i = 0; i < 12; i++) {
       const angle = (i * Math.PI) / 6;
       const direction = add(
-        scale(forward, Math.cos(angle)),
-        scale(side, Math.sin(angle)),
+        scale(forward, modelMath.cos(angle)),
+        scale(side, modelMath.sin(angle)),
       );
       const target = add(current.position, scale(direction, 0.14));
       const next = stepOnSupport(
@@ -57,7 +58,7 @@ export function findSupportPath(
         current.position,
         target,
         0.145,
-        Math.atan2(direction.z, direction.x),
+        modelMath.atan2(direction.z, direction.x),
       );
       const travel = length(sub(next.position, current.position));
       if (

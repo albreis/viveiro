@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ClimateWorld, SoilClimate } from "./types.ts";
 import { climateCell } from "./grid.ts";
 export function climateBoundaries(
@@ -9,7 +10,7 @@ export function climateBoundaries(
   const h = w.params.humidity / 100,
     light = w.params.light / 100,
     air = w.params.temperatureC ?? 24,
-    daylight = Math.max(0, Math.sin((w.tick / 100) * 2 * Math.PI)),
+    daylight = Math.max(0, modelMath.sin((w.tick / 100) * 2 * Math.PI)),
     surfaceTarget = air + daylight * light * 8;
   for (let i = 0; i < s.width * s.rows; i++) {
     const rain = Math.max(

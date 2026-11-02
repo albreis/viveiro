@@ -1,0 +1,50 @@
+{
+  "version": "0.40.1",
+  "sourceSha": "9b5d05761602c098e1a7bc5770b471dd5e7810f1",
+  "private": {
+    "id": "appgdep_6ae8e8e4fa448191aa8515c0395b5a41",
+    "project_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "title": "Viveiro — laboratório de ecossistemas",
+    "version_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_02afcc534ff88191b2c401b60f08aa9c",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae6364bc4488191b2757449ed3f7e94",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T19:48:03.942253+00:00",
+    "archive": "G:/Projetos/viveiro-0.40.1.tar.gz",
+    "audience": "custom",
+    "revision": 1,
+    "externalVisitors": 0
+  },
+  "public": {
+    "id": "appgdep_6ae8e93394d88191abbd258b480fe767",
+    "project_id": "appgprj_6ae80cd45fdc8191be8315696a383393",
+    "title": "Viveiro — laboratório público",
+    "version_id": "appgprj_6ae80cd45fdc8191be8315696a383393~appgver_30f6741bebc48191a9d2bf08fbf2f5e3",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae80cd45fdc8191be8315696a383393",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T19:49:24.733327+00:00",
+    "sourceSha": "0488a2718cc35087a70c2e86d1a5293b73fc1803",
+    "versionNumber": 12,
+    "archive": "G:/Projetos/viveiro-publico-0.40.1.tar.gz",
+    "storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000d5f4820eb7ad7f528db60d55",
+      "content_hash": "sha256:160144266b9bb604ee26197d5810a0b3c55f672ee779b4f8d81feccfcbc5234a",
+      "size_bytes": 20797440,
+      "file_count": 834
+    },
+    "audience": "public",
+    "revision": 2
+  }
+}

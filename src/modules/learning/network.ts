@@ -1,10 +1,11 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { TinyBrain } from "./types.ts";
 import { hashSeed } from "../simulation/seed.ts";
 export function learningRng(seed: string) {
   let n = hashSeed(seed);
   return () => {
     n = (Math.imul(n, 1664525) + 1013904223) >>> 0;
-    return n / 2 ** 32;
+    return n / modelMath.pow(2, 32);
   };
 }
 export function createBrain(seed: string): TinyBrain {
@@ -21,7 +22,9 @@ export function createBrain(seed: string): TinyBrain {
 }
 export function forward(brain: TinyBrain, x: readonly number[]) {
   const hidden = brain.bias.map((b, i) =>
-    Math.tanh(x.reduce((sum, v, j) => sum + brain.input[i * 6 + j] * v, b)),
+    modelMath.tanh(
+      x.reduce((sum, v, j) => sum + brain.input[i * 6 + j] * v, b),
+    ),
   );
   return {
     hidden,
@@ -41,7 +44,8 @@ export function trainValue(
     error = Math.max(-1, Math.min(1, target - value)),
     bound = (v: number) => Math.max(-5, Math.min(5, v));
   for (let i = 0; i < 8; i++) {
-    const gradient = error * brain.output[i] * (1 - hidden[i] ** 2);
+    const gradient =
+      error * brain.output[i] * (1 - modelMath.pow(hidden[i], 2));
     for (let j = 0; j < 6; j++)
       brain.input[i * 6 + j] = bound(
         brain.input[i * 6 + j] + rate * gradient * x[j],

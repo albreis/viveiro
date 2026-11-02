@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { updateStructure } from "../structure/update.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import type { SoilWorld, SoilPile } from "./types.ts";
@@ -27,7 +28,9 @@ export function collapseEdge(
     return null;
   const width = world.nest.linkWidths?.[edge] || 0.38;
   const mass =
-    (4 / 3) * Math.PI * Math.min(width * 0.8, force ? 0.3 : 0.2) ** 3;
+    (4 / 3) *
+    Math.PI *
+    modelMath.pow(Math.min(width * 0.8, force ? 0.3 : 0.2), 3);
   const radius = pileRadius(mass);
   const rubble = {
     ...center,

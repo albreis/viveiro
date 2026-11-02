@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { seededRandom } from "../../libs/seeded-random.ts";
 import type { Landscape, Plant, Species } from "./types.ts";
 import type { NestState } from "../navigation/types.ts";
@@ -41,7 +42,7 @@ export function generateLandscape(seed: string): Landscape {
       };
       if (
         land.ponds.some(
-          (q) => Math.hypot(p.x - q.x, p.z - q.z) < p.rx + q.rx + 0.4,
+          (q) => modelMath.hypot(p.x - q.x, p.z - q.z) < p.rx + q.rx + 0.4,
         )
       )
         continue;
@@ -138,11 +139,11 @@ export function generatePlants(
         waterLevel(land, x, z, true) < 1.3 ||
         timberLevel(land, x, z) < 1.4 ||
         nest.nodes.some(
-          (n) => n.type === "entrance" && Math.hypot(n.x - x, n.z - z) < 1,
+          (n) => n.type === "entrance" && modelMath.hypot(n.x - x, n.z - z) < 1,
         )
       )
         continue;
-      const kind = i < 8 ? i : Math.floor(random() ** 1.5 * 8),
+      const kind = i < 8 ? i : Math.floor(modelMath.pow(random(), 1.5) * 8),
         type = species[kind];
       plants.push({
         id: nextId(),

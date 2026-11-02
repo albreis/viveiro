@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { DAUGHTER_RESERVE } from "../colonies/sexual-brood.ts";
 import type { ColonyWorld, Brood } from "./types.ts";
 import { roomNode } from "./rooms.ts";
@@ -43,7 +44,8 @@ export function hatchWorker(world: ColonyWorld, brood: Brood) {
     world.ants.filter(
       (a) =>
         a.kind === "worker" &&
-        Math.hypot(a.x - ant.x, (a.y || 0) - (ant.y || 0), a.z - ant.z) < 1.2,
+        modelMath.hypot(a.x - ant.x, (a.y || 0) - (ant.y || 0), a.z - ant.z) <
+          1.2,
     ).length >= 4 && ant.traits.exploration < 0.5;
   requestRoute(
     world,

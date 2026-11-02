@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { requestIntrusionRoute } from "./intrusion-route.ts";
 import { arriveIntruder } from "./intrusion-arrival.ts";
@@ -27,7 +28,7 @@ export function updateIntrusion(w: ColonyWorld, a: ColonyAgent) {
         (n) =>
           n.type === "entrance" &&
           (n.colonyId || 1) !== (a.colonyId || 1) &&
-          Math.hypot(n.x - a.x, n.z - a.z) < 1.3,
+          modelMath.hypot(n.x - a.x, n.z - a.z) < 1.3,
       );
     if (
       !entry ||
@@ -56,8 +57,12 @@ export function updateIntrusion(w: ColonyWorld, a: ColonyAgent) {
       delete a.intrusion;
       return false;
     }
-    if (Math.hypot(a.x - entry.x, a.z - entry.z) > entry.r + 0.4) {
-      w.moveSurface(a, Math.atan2(entry.z - a.z, entry.x - a.x), a.speed * 0.7);
+    if (modelMath.hypot(a.x - entry.x, a.z - entry.z) > entry.r + 0.4) {
+      w.moveSurface(
+        a,
+        modelMath.atan2(entry.z - a.z, entry.x - a.x),
+        a.speed * 0.7,
+      );
       a.state = "Aproximando-se do odor no solo";
       return true;
     }
@@ -88,8 +93,8 @@ export function updateIntrusion(w: ColonyWorld, a: ColonyAgent) {
       delete a.intrusion;
       return false;
     }
-    if (Math.hypot(a.x - entry.x, a.z - entry.z) > 0.6) {
-      w.moveSurface(a, Math.atan2(entry.z - a.z, entry.x - a.x), a.speed);
+    if (modelMath.hypot(a.x - entry.x, a.z - entry.z) > 0.6) {
+      w.moveSurface(a, modelMath.atan2(entry.z - a.z, entry.x - a.x), a.speed);
       return true;
     }
     a.node = t.entry;

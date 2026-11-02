@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import { allAnts } from "../colonies/types.ts";
 import { contactAcrossAir } from "../colony/contact.ts";
@@ -41,7 +42,7 @@ export function updateMimics(w: FamilyWorld) {
         a.energy > 0 &&
         (a.health ?? 100) > 0 &&
         a.crop > 0.003 &&
-        Math.hypot(a.x - m.x, (a.y || 0) - m.y, a.z - m.z) < 0.5 &&
+        modelMath.hypot(a.x - m.x, (a.y || 0) - m.y, a.z - m.z) < 0.5 &&
         contactAcrossAir(w.nest, a, m) &&
         profiles[String(a.colonyId || 1)] &&
         odorDistance(profiles[String(a.colonyId || 1)], m.profile) <

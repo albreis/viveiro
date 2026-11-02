@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { StockWorld, FoodFlow } from "./types.ts";
 import { stockBalance } from "./ledger.ts";
 const finite = (n: unknown) =>
@@ -59,7 +60,7 @@ export function validateRoomStores(
       nest &&
       nest.nodes[b.node] &&
       ((nest.nodes[b.node].colonyId ?? 1) !== (w.colonyId ?? 1) ||
-        Math.hypot(
+        modelMath.hypot(
           b.point.x - nest.nodes[b.node].x,
           b.point.y - nest.nodes[b.node].y,
           b.point.z - nest.nodes[b.node].z,

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
 import { stepOnSupport } from "../terrain/surface-queries.ts";
 import { positionClear } from "./collision.ts";
@@ -44,8 +45,8 @@ export function chooseSupportedStep(
     Math.PI,
   ]) {
     const direction = add(
-      scale(forward, Math.cos(turn)),
-      scale(side, Math.sin(turn) * handedness),
+      scale(forward, modelMath.cos(turn)),
+      scale(side, modelMath.sin(turn) * handedness),
     );
     const next = stepOnSupport(
       world.nest,
@@ -63,10 +64,10 @@ export function chooseSupportedStep(
     )
       continue;
     const heading =
-      Math.hypot(step.x, step.z) > 0.001
-        ? Math.atan2(step.z, step.x)
+      modelMath.hypot(step.x, step.z) > 0.001
+        ? modelMath.atan2(step.z, step.x)
         : ant.angle;
-    const pitch = Math.atan2(step.y, Math.hypot(step.x, step.z));
+    const pitch = modelMath.atan2(step.y, modelMath.hypot(step.x, step.z));
     if (!positionClear(world, ant, next.position, heading, pitch, next.normal))
       continue;
     const score =

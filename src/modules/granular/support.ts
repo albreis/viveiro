@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState, Vec3 } from "../navigation/types.ts";
 import type { GranularBody, GranularState } from "./types.ts";
 import { grainRadius } from "./types.ts";
@@ -12,7 +13,7 @@ function friction(v: Vec3, f: FieldSample, s: GranularState) {
   v.z -= f.z * vn * (1 + restitution);
   const normal = v.x * f.x + v.y * f.y + v.z * f.z,
     t = { x: v.x - normal * f.x, y: v.y - normal * f.y, z: v.z - normal * f.z },
-    speed = Math.hypot(t.x, t.y, t.z),
+    speed = modelMath.hypot(t.x, t.y, t.z),
     loss = Math.min(speed, s.friction * impulse);
   if (speed > 0) {
     v.x -= (t.x / speed) * loss;
@@ -32,7 +33,7 @@ export function integrateGrain(
   v.y -= s.gravity * dt;
   const before = query(nest, g);
   if (before.distance <= r + 0.00003) friction(v, before, s);
-  const speed = Math.hypot(v.x, v.y, v.z),
+  const speed = modelMath.hypot(v.x, v.y, v.z),
     scale = speed > 0.008 ? 0.008 / speed : 1;
   v.x *= scale;
   v.y *= scale;
@@ -49,5 +50,5 @@ export function integrateGrain(
     g.z += f.z * correction;
     friction(v, f, s);
   }
-  return Math.hypot(g.x - old.x, g.y - old.y, g.z - old.z);
+  return modelMath.hypot(g.x - old.x, g.y - old.y, g.z - old.z);
 }

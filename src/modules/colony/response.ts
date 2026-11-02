@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { weightedSample } from "../../libs/probability.ts";
 import { hashSeed } from "../simulation/seed.ts";
 import type { ColonyAgent, ColonyWorld, Role } from "./types.ts";
@@ -13,7 +14,7 @@ export const TASKS: readonly Role[] = [
 export function responseProbability(stimulus: number, threshold: number) {
   const s = Math.max(0, stimulus),
     t = Math.max(1e-8, threshold);
-  return s === 0 ? 0 : 1 / (1 + (t / s) ** 2);
+  return s === 0 ? 0 : 1 / (1 + modelMath.pow(t / s, 2));
 }
 export function taskThresholds(seed: string, id: number): Record<Role, number> {
   return Object.fromEntries(

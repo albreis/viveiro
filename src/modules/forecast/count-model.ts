@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { LIMIT, TICKS_PER_DAY } from "../simulation/constants.js";
 import { seededRandom } from "../../libs/seeded-random.ts";
 import { normalizeCounts } from "./observations.ts";
@@ -31,7 +32,7 @@ export function fitCounts(input: CountObservation): CountFit {
       (sum, p, i) => sum + (x[i] - meanX) * (p.population - meanY),
       0,
     ),
-    variance = x.reduce((sum, v) => sum + (v - meanX) ** 2, 0),
+    variance = x.reduce((sum, v) => sum + modelMath.pow(v - meanX, 2), 0),
     slope = covariance / variance;
   const residuals = points.slice(1).map((p, i) => {
     const dt = (p.tick - points[i].tick) / TICKS_PER_DAY;

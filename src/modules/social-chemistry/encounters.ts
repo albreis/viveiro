@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import { allAnts } from "../colonies/types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
@@ -9,7 +10,7 @@ const directionAway = (a: ColonyAgent, b: ColonyAgent) => {
   const dx = a.x - b.x,
     dy = (a.y || 0) - (b.y || 0),
     dz = a.z - b.z,
-    d = Math.hypot(dx, dy, dz) || 1;
+    d = modelMath.hypot(dx, dy, dz) || 1;
   return { x: dx / d, y: dy / d, z: dz / d };
 };
 /** Each contact is local, through air, and processed once for the pair in this global tick. */

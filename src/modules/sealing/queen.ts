@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type { FoundingWorld } from "../founding/types.ts";
 import { changePhase, founder, spendReserve } from "../founding/types.ts";
@@ -73,7 +74,7 @@ export function updateQueenSealing(w: FoundingWorld): void {
     (w.neighborAgents || w.ants).some((a) => {
       const d = { x: a.x - p.x, y: (a.y || 0) - p.y, z: a.z - p.z };
       const axial = d.x * p.axis.x + d.y * p.axis.y + d.z * p.axis.z;
-      const radius = Math.hypot(
+      const radius = modelMath.hypot(
         d.x - axial * p.axis.x,
         d.y - axial * p.axis.y,
         d.z - axial * p.axis.z,

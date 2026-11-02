@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
@@ -13,7 +14,8 @@ export function rememberRoomClimate(w: ColonyWorld, a: ColonyAgent): void {
     !node ||
     (node.colonyId ?? 1) !== (a.colonyId ?? 1) ||
     ["entrance", "front", "waste"].includes(node.type) ||
-    Math.hypot(a.x - node.x, (a.y ?? 0) - node.y, a.z - node.z) > node.r + 0.15
+    modelMath.hypot(a.x - node.x, (a.y ?? 0) - node.y, a.z - node.z) >
+      node.r + 0.15
   )
     return;
   const r = sampleClimate(w.microclimate, { x: a.x, y: a.y ?? 0, z: a.z });

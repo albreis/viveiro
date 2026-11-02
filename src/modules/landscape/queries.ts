@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { Landscape, Hill, Pond } from "./types.ts";
 export function ellipseLevel(
   x: number,
@@ -8,9 +9,12 @@ export function ellipseLevel(
 ) {
   const dx = x - p.x,
     dz = z - p.z,
-    c = Math.cos(p.angle),
-    s = Math.sin(p.angle);
-  return ((dx * c + dz * s) / rx) ** 2 + ((-dx * s + dz * c) / rz) ** 2;
+    c = modelMath.cos(p.angle),
+    s = modelMath.sin(p.angle);
+  return (
+    modelMath.pow((dx * c + dz * s) / rx, 2) +
+    modelMath.pow((-dx * s + dz * c) / rz, 2)
+  );
 }
 export const waterScale = (p: Pond) =>
   p.volume < 0.02 ? 0 : 0.35 + p.volume * 0.65;
@@ -52,7 +56,11 @@ export function surfaceHeight(
   let y = 0;
   for (const h of relief || [])
     y +=
-      h.height * Math.exp(-((x - h.x) ** 2 + (z - h.z) ** 2) / h.radius ** 2);
+      h.height *
+      modelMath.exp(
+        -(modelMath.pow(x - h.x, 2) + modelMath.pow(z - h.z, 2)) /
+          modelMath.pow(h.radius, 2),
+      );
   return y;
 }
 export function surfaceNormal(
@@ -67,7 +75,7 @@ export function surfaceNormal(
   const dz =
       (surfaceHeight(relief, x, z + e) - surfaceHeight(relief, x, z - e)) /
       (2 * e),
-    n = Math.hypot(dx, 1, dz);
+    n = modelMath.hypot(dx, 1, dz);
   return { x: -dx / n, y: 1 / n, z: -dz / n };
 }
 

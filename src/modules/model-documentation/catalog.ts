@@ -35,5 +35,10 @@ export const modelDocuments = [
     title: "Vetores e replicação",
     source: "docs/odd/replicacao.md",
   },
+  {
+    slug: "aritmetica",
+    title: "Aritmética portátil",
+    source: "docs/aritmetica-portatil.md",
+  },
 ] as const;
 export const modelDocumentSources = modelDocuments.map((d) => d.source);

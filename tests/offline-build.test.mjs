@@ -53,6 +53,8 @@ test("build público cacheia chunks, quatro Workers, guias e manifesto com hashe
     "assets/advance.worker-",
     "assets/experiment.worker-",
     "experimentos.html",
+    "notices/stdlib-index.txt",
+    "notices/apache-2.0.txt",
     "assets/learning.worker-",
     "assets/soil.worker-",
     "ensino/index.html",

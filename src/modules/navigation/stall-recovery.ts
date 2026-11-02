@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
 import { navigationState } from "./contact.ts";
 import { chooseSupportedStep } from "./support-step.ts";
@@ -43,9 +44,9 @@ export function recoverStall(world: NavigationWorld, ant: AgentState) {
   if (!nav.escapeDirection) {
     const forward = tangent(
       {
-        x: Math.cos(ant.angle) * Math.cos(ant.pitch || 0),
-        y: Math.sin(ant.pitch || 0),
-        z: Math.sin(ant.angle) * Math.cos(ant.pitch || 0),
+        x: modelMath.cos(ant.angle) * modelMath.cos(ant.pitch || 0),
+        y: modelMath.sin(ant.pitch || 0),
+        z: modelMath.sin(ant.angle) * modelMath.cos(ant.pitch || 0),
       },
       normal,
     );
@@ -76,8 +77,8 @@ export function recoverStall(world: NavigationWorld, ant: AgentState) {
     travel = length(delta);
   Object.assign(ant, step.position, {
     normal: step.normal,
-    angle: Math.atan2(delta.z, delta.x),
-    pitch: Math.atan2(delta.y, Math.hypot(delta.x, delta.z)),
+    angle: modelMath.atan2(delta.z, delta.x),
+    pitch: modelMath.atan2(delta.y, modelMath.hypot(delta.x, delta.z)),
     state: "Buscando espaço para liberar o fluxo",
     distanceWalked: (ant.distanceWalked || 0) + travel,
   });
