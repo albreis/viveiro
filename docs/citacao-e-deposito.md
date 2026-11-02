@@ -165,3 +165,15 @@ Nenhum DOI reservado/registrado, nenhuma integração automática do repo privad
 A próxima ação dependente é revisar esse rascunho concreto e obter autorização
 para publicação permanente. Não trocar silenciosamente seu ZIP pela0.38.0.
 Ver validacoes/zenodo-rascunho-0.36.0.json.
+
+## DOI publicado da0.36.0
+
+O usuário autorizou a publicação permanente do rascunho23891981 após a prévia.
+Registro [publicado](https://zenodo.org/records/23891981), DOI real
+[10.5281/zenodo.23891981](https://doi.org/10.5281/zenodo.23891981), resolvendo
+para esse registro. ZIP público baixado depois de publicar com SHA-256 idêntico.
+[CFF específico](citacoes/v0.36.0.cff) validado pelo esquema oficial; o pacote e
+a tag anteriores não foram modificados. O CFF da raiz continua na0.38.0, sem
+atribuir a ele o DOI da0.36.0. P0.4 continua parcial até DOI da versão atual e
+conferência do botão GitHub após merge. Não republicar23891981 nem criar duplicata.
+Evidência em validacoes/zenodo-0.36.0.json.

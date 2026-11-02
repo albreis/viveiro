@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-11-02T18:03:28.065807+00:00",
+  "version": "0.36.0",
+  "sourceSha": "0e156836bd94aaa6a408017f597b11447f065a73",
+  "author": "Viveiro contributors",
+  "recordId": "23891981",
+  "url": "https://zenodo.org/records/23891981",
+  "doi": "10.5281/zenodo.23891981",
+  "doiResolvesToRecord": true,
+  "status": "published",
+  "file": "viveiro-v0.36.0-source.zip",
+  "bytes": 1445248,
+  "sha256": "03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2",
+  "publishedDownloadHashMatchesOriginal": true,
+  "citationSchemaValid": true,
+  "currentVersionStillWithoutDoi": "0.38.0",
+  "authorization": "User explicitly approved permanent publication of record 23891981 / 0.36.0 after reviewing its concrete preview."
+}

@@ -1,14 +1,15 @@
 # Continuação do Viveiro
 
-Atualizado em02/11/2026 após publicar P2.1 /0.38.0 e preparar o rascunho Zenodo0.36.0.
+Atualizado em02/11/2026 após publicar P2.1 /0.38.0 e publicar com autorização o registro Zenodo0.36.0.
 Ler AGENTS.md e docs/cronograma.md. Trabalhar em G:\Projetos\viveiro.
 Manter dev4173 em G; preservar saves, branches, tags e privacidade.
 Não iniciar executor concorrente. Modelos exploratórios/não calibrados.
 
 ## Git e publicação
 
-Branch codex/documentacao-odd, PR https://github.com/albreis/viveiro/pull/50,
-base codex/acessibilidade/#49. Conferidos PRs32–50 em cadeia; main15781d2.
+Branch codex/doi-036, baseada em codex/documentacao-odd/PR#50; abrir PR próprio
+após o commit deste registro externo. #50 tem base codex/acessibilidade/#49.
+Conferidos PRs32–50 em cadeia; main15781d2. Não criar PR duplicado ao retomar.
 Fonte/tag v0.38.0:fbb0852820b9a34755a78b8bacd501b495348385.
 Metadados/checkpoint posteriores à tag; nunca retag/recriar a mesma release.
 Conferir merges antes de agir, sem duplicar PRs ou sobrescrever refs.
@@ -79,12 +80,16 @@ C:\Users\conta\Downloads\viveiro-v0.36.0-source.zip,
 SHA25603c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2,
 idêntico ao pacote original .runtime/deposits/deposit-WhwuRb.
 Evidência validacoes/zenodo-rascunho-0.36.0.json; captura na pasta autorizada.
-Nenhum DOI reservado/registrado até esta gravação; não publicar sem autorização
-específica. Usuário ACABA DE AUTORIZAR publicar permanentemente esta0.36.0:
-resposta “Publicar a versão0.36.0”. Próxima ação imediata: terminar checkpoint,
-branch codex/ própria, voltar a editar23891981 e publicar esse rascunho já revisto.
-Não trocar o ZIP pela0.38.0. Conferir DOI real e download antes de registrar.
-Não atribuir DOI da0.36.0 ao CITATION.cff atual0.38.0. P0.4C depende de merge.
+Publicação permanente AUTORIZADA explicitamente pelo usuário após rever a prévia.
+Concluída: https://zenodo.org/records/23891981
+DOI10.5281/zenodo.23891981 realmente resolvido no navegador para esse registro.
+ZIP publicado baixado em Downloads/viveiro-v0.36.0-source (1).zip e SHA-256
+idêntico ao original. Evidência validacoes/zenodo-0.36.0.json. Não republicar,
+não criar duplicata nem refazer o depósito. Citação específica validada pelo CFF
+oficial em docs/citacoes/v0.36.0.cff; pacote/tag0.36.0 imutáveis. Não atribuir seu
+DOI ao CFF da raiz0.38.0. P0.4 continua parcial: versão atual sem DOI, botãoGitHub
+depende de merge. Nenhuma nova autorização de acesso/login é necessária para
+verificação do registro autorizado; não pedir senha/token ou inferir autoria.
 
 ## Dependências reais e ambiente
 
@@ -96,7 +101,7 @@ respondeu429/cota diária; nenhuma nota. Não repetir antes de
 CSV real anterior preservado em Downloads/viveiro-diario-AULA-v2-entradas-ar.csv.
 365 testes biológicos passaram na0.36.0; não repetir por rotina sem mudar núcleo.
 
-DevPID17752/G/4173. AbaIAB20 preservada; último save confirmado SEMENTE-50088/D62,5,
+DevPID17752/G/4173 HTTP200. AbaIAB20 preservada e reconferida após reload: SEMENTE-50088/D62,5,
 14adultos em pausa/perfil leve. Aguardar inicialização/release-label antes de
 confundir HTML inicialSEMENTE-42 com perda de save. Saves manuais preservados,
 incluindo manual-2e91b636-785f-4f66-bb84-ff832aa62547. Vite ignora.runtime/.sites-runtime.
@@ -107,7 +112,7 @@ getTab28/browser2 recuperou. Usar apenas APIs documentadas, nunca internals/CDP.
 
 ## Próximo item de implementação: P2.2 / CLI
 
-Após concluir o registro Zenodo autorizado, conferir Git/PRs e abrir codex/CLI
+Registro Zenodo autorizado concluído; conferir Git/PRs e abrir codex/CLI
 sobre a última branch dependente. CLI em módulos pequenos TS: seed, dias,
 parâmetros tipados, perfil/receita versionados e saída CSV+manifesto determinístico.
 Reusar advanceFamily e o mesmo exportador do navegador; sem DOM/Three.js/Date

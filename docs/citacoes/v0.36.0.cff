@@ -1,0 +1,26 @@
+{
+  "cff-version": "1.2.0",
+  "message": "Cite esta versão do Viveiro usando os metadados abaixo. O modelo é exploratório e ainda não foi calibrado por espécie.",
+  "type": "software",
+  "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
+  "abstract": "Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima, ciclo de vida e experimentos reproduzíveis por seed. Os mecanismos não constituem calibração biológica ou validação de engenharia.",
+  "authors": [
+    {
+      "name": "Viveiro contributors"
+    }
+  ],
+  "version": "0.36.0",
+  "date-released": "2026-11-02",
+  "commit": "0e156836bd94aaa6a408017f597b11447f065a73",
+  "repository-code": "https://github.com/albreis/viveiro",
+  "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.36.0/",
+  "license": "MIT",
+  "keywords": [
+    "artificial life",
+    "agent-based modeling",
+    "ants",
+    "Three.js",
+    "education"
+  ],
+  "doi": "10.5281/zenodo.23891981"
+}
