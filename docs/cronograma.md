@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada: **0.30.1**, PR [#41](https://github.com/albreis/viveiro/pull/41), pipeline de releases por tag. P0.3 concluída: [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/) com URLs por versão. A0.29.1/PR #40 entregou revisão e licenças. A0.29.0/PR #39 entregou a etapa14 de ritmo e continuidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada e pública: **0.35.2**, PR [#47](https://github.com/albreis/viveiro/pull/47), PWA pública por release. P1.6A/CSV diário0.36.0 validada, aguardando publicação nesta branch. P0.3 concluída: [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/) com URLs por versão. A0.29.1/PR #40 entregou revisão e licenças. A0.29.0/PR #39 entregou a etapa14 de ritmo e continuidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -528,6 +528,8 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
   - [ ] P1.4B: receber pareceres reais de Biologia e Física, corrigir os roteiros e documentar os seis aceites. Fichas ainda sem parecer.
 - [x] P1.5 PWA com cache offline, aproveitando o IndexedDB existente. Aceite: abre e salva checkpoint sem rede. Publicada em0.35.2/PR [#47](https://github.com/albreis/viveiro/pull/47) no laboratório público: escopo por release, preparo íntegro, guias/Workers no cache e remoção sem apagar saves. QA abriu e salvou após desligar o servidor do preview; Site privado/dev seguem online, preservando autenticação. Ver [implementação e limites](pwa-offline.md).
 - [ ] P1.6 Exportação CSV diária (população, prole, alimento, temperatura, gases) e acessibilidade WCAG 2.1 AA. Aceite: CSV abre em planilha; Lighthouse de acessibilidade acima de 90.
+  - [x] P1.6A implementada e validada na0.36.0: série diária persistida, A/B, versões, ausência explícita, proteção de fórmulas, tabela por teclado e download real.365 testes completos/41 dirigidos e build342 módulos; CSV baixado lido por Python. Ver [observações e limites](csv-diario.md). Publicação e PR serão registrados após confirmação.
+  - [ ] P1.6B: abrir o CSV numa aplicação de planilha; auditar a interface inteira, corrigir contraste/teclado/semântica e medir Lighthouse real >90. Não há declaração de conformidade WCAG AA ou nota fabricada.
 - [ ] P1.7 Piloto com 2 ou 3 turmas, questionário SUS e pré/pós-teste curto. Aceite: SUS médio acima de 70 e relatório em docs/ensino/.
 
 ### Etapas do cronograma que entram no plano

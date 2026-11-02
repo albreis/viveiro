@@ -1,3 +1,4 @@
+import { recordDaily } from "../observations/record.ts";
 import { diseaseExposure } from "../survival/disease.ts";
 import { recordMortality } from "../survival/update.ts";
 import { updateFertility } from "../fertility/model.ts";
@@ -98,5 +99,6 @@ export function advanceFamily(root: FamilyWorld) {
     }
   }
   coordinateFlights(root);
+  recordDaily(root);
   if (root.tick - root.lastRecord >= 25) root.record();
 }

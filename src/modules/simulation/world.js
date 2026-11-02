@@ -1,3 +1,4 @@
+import { recordDaily } from "../observations/record.ts";
 import { survivalIntervention } from "../survival/intervention.ts";
 import { materialIntervention } from "../soil-material/intervention.ts";
 import { applyLearningIntervention } from "../learning/intervention.ts";
@@ -111,6 +112,7 @@ export class World {
     this.events.length = Math.min(this.events.length, 35);
   }
   record() {
+    recordDaily(this);
     this.history.push({
       tick: this.tick,
       day: this.day,

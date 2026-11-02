@@ -1,3 +1,4 @@
+import { installDailyControls } from "./daily-controls.ts";
 import { installLessonControls } from "./lesson-controls.ts";
 import { createLessonSession } from "../modules/lessons/recipe.ts";
 import { setLessonCamera } from "./lessons/camera.ts";
@@ -66,7 +67,12 @@ let interventions = [],
   replayIndex = 0,
   lastUi = 0,
   lastSave = 0;
-let forecaster, toastTimer, performanceControls, lessonControls, lesson;
+let forecaster,
+  toastTimer,
+  performanceControls,
+  lessonControls,
+  lesson,
+  dailyControls;
 const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
@@ -271,6 +277,7 @@ function syncControls() {
     );
 }
 function updateUi() {
+  dailyControls?.render();
   timeControls?.render();
   advanceControls?.refresh();
   renderStatus(
@@ -592,6 +599,13 @@ document.addEventListener("visibilitychange", () => {
 });
 window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
+dailyControls = installDailyControls({
+  scenarios: () => [
+    { id: "a", world },
+    ...(comparison ? [{ id: "b", world: comparison }] : []),
+  ],
+  lesson: () => (lesson ? lesson.id + "@" + lesson.version : ""),
+});
 syncControls();
 updateUi();
 lessonControls = installLessonControls({

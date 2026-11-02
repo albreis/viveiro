@@ -1,3 +1,4 @@
+import { validateDaily } from "../observations/validation.ts";
 import { validateSurvival } from "../survival/validation.ts";
 import { validateFertility } from "../fertility/validation.ts";
 import { validatePredatorMemory } from "../predators/validation.ts";
@@ -33,6 +34,7 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
   validatePredatorMemory(world.predators);
+  validateDaily(world.dailyObservations, world.tick);
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
   validateRoomStores(world, biologicalProfile.stockModel === "rooms-demo");
   validateSurvival(world, biologicalProfile.survivalModel === "risk-demo");

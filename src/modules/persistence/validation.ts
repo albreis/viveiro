@@ -1,3 +1,4 @@
+import { validateDaily } from "../observations/validation.ts";
 import { lessonReference } from "../lessons/reference.ts";
 import { validateSurvival } from "../survival/validation.ts";
 import { validateFertility } from "../fertility/validation.ts";
@@ -74,6 +75,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       (c !== w && (c.colonies?.length ?? 0) > 0)
     )
       throw new Error("Registro de colônia inválido.");
+    validateDaily(c.dailyObservations, w.tick);
     const profile = resolveBiologicalProfile(c.biologicalProfile);
     validateSoilMaterial(
       c,

@@ -1,0 +1,47 @@
+.daily-data {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.daily-data summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.daily-data p,
+.daily-data caption {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #465441;
+}
+.daily-data button {
+  background: #426044;
+  color: #fff;
+  border: 1px solid #426044;
+  padding: 10px 14px;
+  border-radius: 5px;
+}
+.daily-table {
+  overflow-x: auto;
+}
+.daily-data table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+.daily-data caption {
+  text-align: left;
+  margin: 10px 0;
+}
+.daily-data th,
+.daily-data td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.daily-data :focus-visible {
+  outline: 3px solid #24332b;
+  outline-offset: 3px;
+}
