@@ -24,7 +24,7 @@ export function installLessonControls(context: LessonContext) {
         "Preparando a comparação e preservando o terrário atual…";
       try {
         const d = lessonDefinition(button.dataset.lesson!);
-        const candidate = createLessonSession({ id: d.id, version: 1 });
+        const candidate = createLessonSession({ id: d.id, version: 2 });
         await switchLesson(candidate, context);
         document.dispatchEvent(new Event("viveiro:saved"));
         await context.save();

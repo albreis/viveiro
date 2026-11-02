@@ -54,3 +54,12 @@ não certificação em hardware escolar. Evidência: validacoes/aulas-0.33.0.jso
 
 P1.4 é a próxima etapa: roteiros docentes. Revisão por professores e piloto com
 alunos exigem participantes reais e continuam separados da QA de software.
+
+
+## Receitas v2 / 0.34.0
+
+Novas aulas preparam ar e solo no instante zero, sem passos ou consumo.
+O painel não anuncia ausência de galerias enquanto aguarda o primeiro tick.
+Receitas v1 e suas seeds continuam disponíveis para repetir saves anteriores;
+novas usam AULA-v2 e metadado de receita2. Não migrar silenciosamente uma
+experiência v1 para v2. Testes conferem balanços iniciais e replay de ambas.

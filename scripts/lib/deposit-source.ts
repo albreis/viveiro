@@ -193,7 +193,7 @@ export function archiveDeposit(
     ].map((file) => "--add-file=" + join(folder, file)),
     manifest.sourceSha,
     ...sourceRoots,
-    ...sourceFiles,
+    ...sourceFiles.filter((path) => Object.hasOwn(manifest.files, path)),
     ...excludedOperationalTests.map((path) => ":(exclude)" + path),
   ]);
   verifyDepositFile(

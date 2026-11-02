@@ -1,3 +1,6 @@
+import { ensureSoilClimate } from "../microclimate/initialize.ts";
+import { syncGases } from "../ventilation/state.ts";
+import { airNetwork } from "../ventilation/network.ts";
 import { World } from "../simulation/world.js";
 import type { FamilyWorld } from "../colonies/types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
@@ -84,7 +87,11 @@ export function populateLesson(w: LessonWorld) {
     "Condição inicial didática: colônia e prole preparadas, sem trajetória histórica.",
   );
 }
-export function finishLessonWorld(w: LessonWorld) {
+export function finishLessonWorld(w: LessonWorld, initialized = false) {
+  if (initialized) {
+    ensureSoilClimate(w);
+    syncGases(w, airNetwork(w));
+  }
   w.history = [];
   w.lastRecord = -25;
   w.record();

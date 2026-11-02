@@ -1,3 +1,16 @@
+# Em publicação / P1.4A /0.34.0
+
+Branch codex/guias-docentes sobre#45.39 testes e build333 módulos passaram;
+seis guias QA no preview4184. Receita2 inicializa ar/solo emD0 e preserva v1.
+Aba15/preview10754 encerrados. Dev17752 saudável; nova aba16 recupera
+SEMENTE-50088/D62,5 pausada. Aba4 antiga ficou presa emerro de conexão do
+navegador durante reinício automático; não houve perda de save.
+Próximo: commit/tag v0.34.0, push/PR, publicar ambos os Sites existentes,
+conferir os guias no público, atualizar citação/ZIP para o SHA real e checkpoint.
+Depois P1.5/PWA. P1.4B/revisão docente continua aberta, sem pareceres reais.
+
+---
+
 # Continuação do Viveiro
 
 Atualizado em02/11/2026 após publicação da0.33.0/P1.3.
