@@ -62,5 +62,21 @@
   "spreadsheetApplicationTested": false,
   "screenReaderTested": false,
   "wcagConformanceClaimed": false,
-  "privateAudienceChanged": false
+  "privateAudienceChanged": false,
+  "published": {
+    "sourceSha": "30cc14ea82d8c7a20d0541641e07e5e3ad0cb432",
+    "pr": 49,
+    "private": true,
+    "public": true,
+    "browser": {
+      "seed": "SEMENTE-42",
+      "dayDisplay": "2,6",
+      "paused": true,
+      "skipLinkFocus": "viewport",
+      "contrastChecked": 264,
+      "contrastCandidates": 0,
+      "consoleWarnings": 0,
+      "consoleErrors": 0
+    }
+  }
 }

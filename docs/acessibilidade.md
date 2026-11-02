@@ -72,3 +72,14 @@ Nenhuma planilha instalada apareceu no inventário consultado e não havia sess�
 Excel conectada. O CSV foi lido antes por Python; isso não foi promovido a teste
 em aplicação de planilha. Não foram instalados programas ou criados arquivos
 na conta Google do usuário apenas para esse ensaio. P1.6B2 permanece aberto.
+
+## Publicação confirmada
+
+Fonte/tag0.37.0:30cc14ea82d8c7a20d0541641e07e5e3ad0cb432;
+PR [#49](https://github.com/albreis/viveiro/pull/49), base #48.
+Site privado original e galeria pública publicados com audiências preservadas.
+HTTP anônimo conferiu27 arquivos nãoHTML por SHA256; URLs de ensino200.
+QA pública conservou SEMENTE-42/D2,64 em pausa, atalho focou a câmera,264 textos
+sem candidatos abaixo do limiar da checagem limitada e console limpo.
+Isso não substitui Lighthouse/WCAG ou ensaios com leitores de tela.
+IDs/proveniência em validacoes/deploy-0.37.0.json e publicacao-0.37.0.json.
