@@ -33,5 +33,15 @@
     }
   },
   "realNewStudentStudy": false,
-  "twoMinuteAcceptanceVerified": false
+  "twoMinuteAcceptanceVerified": false,
+  "publishedBrowser": {
+    "versionUrl": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.32.0/",
+    "existingExperimentDay": "2,6",
+    "manualGuide": true,
+    "firstPerson": true,
+    "return": true,
+    "reloadWithoutRepeatedTour": true,
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  }
 }
