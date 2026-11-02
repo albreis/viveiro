@@ -35,14 +35,18 @@ import { renderStatus } from "./status-view.js";
 import { drawChart as renderChart } from "./chart-view.js";
 import { World, TICKS_PER_DAY, hashSeed } from "../modules/simulation/world.js";
 import { Terrarium } from "../modules/renderer/scene.js";
+import { SimulationClock, normalizeClock } from "../modules/time/clock.ts";
+import { stepSession } from "../modules/time/session-step.ts";
+import { installTimeControls } from "./time-controls.ts";
+import { installAdvanceControls } from "./advance-controls.ts";
+const clock = new SimulationClock();
+let timeControls, advanceControls, advancePlan;
 const $ = (id) => document.getElementById(id);
 let world,
   comparison = null,
   scenario = "a",
   scene,
-  running = true,
-  speed = 1,
-  accumulator = 0;
+  running = true;
 let initial = {
   seed: "SEMENTE-42",
   startMode: "founding",
@@ -76,9 +80,12 @@ function getSession() {
     replaying,
     replayIndex,
     running,
+    clock: { ...clock.state },
+    ...(advancePlan ? { advance: advancePlan } : {}),
   });
 }
-function applySavedSession(value, paused = false) {
+function applySavedSession(value, paused = false, fromAdvance = false) {
+  if (!fromAdvance) advanceControls?.invalidate();
   const restored = restoreSessionModels(value),
     next = restored.session;
   const nextActive =
@@ -97,7 +104,8 @@ function applySavedSession(value, paused = false) {
   replaying = next.replaying;
   replayIndex = next.replayIndex;
   running = paused ? false : next.running;
-  accumulator = 0;
+  clock.state = normalizeClock(next.clock);
+  advancePlan = next.advance;
   forecaster?.invalidate();
   if (nextScene) {
     scene = nextScene;
@@ -143,6 +151,8 @@ async function save() {
       : "Não foi possível salvar — exporte o experimento em JSON");
 }
 function intervention(type, x = 0, z = 0, value) {
+  advanceControls?.invalidate();
+  advancePlan = undefined;
   if (replaying) {
     interventions = interventions.slice(0, replayIndex);
     replaying = false;
@@ -160,6 +170,8 @@ function intervention(type, x = 0, z = 0, value) {
   save();
 }
 function reset(seed, params, replay = false) {
+  advanceControls?.invalidate();
+  advancePlan = undefined;
   checkpointStore.allowWrites();
   const configuration = replay
     ? { params, biologicalProfile: initial.biologicalProfile }
@@ -170,7 +182,7 @@ function reset(seed, params, replay = false) {
   });
   comparison = null;
   scenario = "a";
-  accumulator = 0;
+  clock.state.pendingTicks = 0;
   if (!replay) {
     initial = {
       seed,
@@ -235,6 +247,8 @@ function syncControls() {
     );
 }
 function updateUi() {
+  timeControls?.render();
+  advanceControls?.refresh();
   renderStatus(
     {
       world: presentFamily(world),
@@ -323,7 +337,23 @@ installCheckpointControls({
   apply: (value) => applySavedSession(value, true),
   pause: () => {
     running = false;
-    accumulator = 0;
+    advanceControls?.invalidate();
+    syncControls();
+  },
+  save,
+});
+timeControls = installTimeControls(clock, () => {
+  advanceControls?.invalidate();
+  advancePlan = undefined;
+  void save();
+});
+advanceControls = installAdvanceControls({
+  capture: getSession,
+  plan: () => advancePlan,
+  apply: (value) => applySavedSession(value, true, true),
+  pause: () => {
+    running = false;
+    forecaster?.cancel();
     syncControls();
   },
   save,
@@ -350,23 +380,16 @@ $("disturb").onclick = () => {
   toast("Observe a terra solta e o trabalho de recuperação.");
 };
 $("play").onclick = () => {
+  advanceControls?.invalidate();
+  advancePlan = undefined;
   running = !running;
-  accumulator = 0;
+  previous = performance.now();
   syncControls();
   save();
 };
 $("resume-overlay").onclick = () => {
   if (!running) $("play").click();
 };
-document.querySelectorAll("[data-speed]").forEach(
-  (button) =>
-    (button.onclick = () => {
-      speed = Number(button.dataset.speed);
-      document
-        .querySelectorAll("[data-speed]")
-        .forEach((b) => b.classList.toggle("active", b === button));
-    }),
-);
 document.querySelectorAll("[data-tool]").forEach(
   (button) =>
     (button.onclick = () => {
@@ -414,6 +437,8 @@ $("replay").onclick = () => {
   toast("Repetindo o cenário com as mesmas intervenções nos mesmos instantes.");
 };
 $("compare").onclick = () => {
+  advanceControls?.invalidate();
+  advancePlan = undefined;
   if (comparison) {
     comparison = null;
     scenario = "a";
@@ -432,6 +457,7 @@ $("compare").onclick = () => {
 document.querySelectorAll("[data-scenario]").forEach(
   (button) =>
     (button.onclick = () => {
+      advanceControls?.invalidate();
       scenario = button.dataset.scenario;
       forecaster.invalidate();
       syncControls();
@@ -471,6 +497,7 @@ document.addEventListener("keydown", (e) => {
 });
 $("export").onclick = () => {
   const data = {
+    ...getSession(),
     version: 1,
     exportedAt: new Date().toISOString(),
     initial,
@@ -497,38 +524,23 @@ $("export").onclick = () => {
   toast("Dados, histórico e semente exportados em JSON.");
 };
 function tick() {
-  if (replaying) {
-    while (
-      replayIndex < interventions.length &&
-      interventions[replayIndex].tick <= world.tick
-    ) {
-      const action = interventions[replayIndex++];
-      forecaster?.invalidate();
-      world.intervene(action.type, action.x, action.z, action.value);
-      if (comparison)
-        comparison.intervene(action.type, action.x, action.z, action.value);
-    }
-  }
-  world.step();
-  comparison?.step();
+  const cursor = { interventions, replaying, replayIndex };
+  if (stepSession(world, comparison, cursor)) forecaster?.invalidate();
+  replayIndex = cursor.replayIndex;
 }
 let previous = performance.now();
 function frame(now) {
-  const dt = Math.min((now - previous) / 1000, 0.1);
+  const dt = Math.max(0, (now - previous) / 1000);
   previous = now;
   if (running && !document.hidden) {
-    accumulator += dt * 10 * speed;
-    let budget = 30;
-    while (accumulator >= 1 && budget-- > 0) {
-      tick();
-      accumulator--;
-    }
+    clock.credit(dt);
+    clock.drain(tick);
   }
   if (scene) {
     scene.update(
       presentFamily(active()),
       now / 1000,
-      running ? Math.min(1, accumulator) : 1,
+      running ? clock.alpha : 1,
     );
     scene.render();
   }
@@ -544,8 +556,10 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 document.addEventListener("visibilitychange", () => {
-  previous = performance.now();
-  accumulator = 0;
+  const now = performance.now();
+  if (document.hidden && running)
+    clock.credit(Math.max(0, (now - previous) / 1000));
+  previous = now;
   if (document.hidden) {
     emergencyState(getSession());
     void save();

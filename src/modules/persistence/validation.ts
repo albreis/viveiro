@@ -16,6 +16,8 @@ import {
 import { validateMaternalFounding } from "../maternal/validation.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type { SessionState, WorldWire } from "./types.ts";
+import { normalizeClock } from "../time/clock.ts";
+import { validateAdvancePlan } from "../time/advance-types.ts";
 const dangerous = new Set(["__proto__", "prototype", "constructor"]);
 export function assertDataTree(value: unknown) {
   let size = 0;
@@ -168,6 +170,10 @@ export function normalizeSession(value: unknown): SessionState {
     throw new Error("Posição de replay inválida.");
   return {
     version: 1,
+    ...(s.clock === undefined ? {} : { clock: normalizeClock(s.clock) }),
+    ...(s.advance === undefined
+      ? {}
+      : { advance: validateAdvancePlan(s.advance, s.world.tick) }),
     world: s.world,
     comparison: s.comparison ?? null,
     scenario: s.scenario === "b" && s.comparison ? "b" : "a",

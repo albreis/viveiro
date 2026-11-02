@@ -1,5 +1,13 @@
 # Versões
 
+## 0.29.0 — Ritmo e continuidade
+
+- Ritmos persistidos de10 s,1 min,5 min e1 h por dia, sem alterar os passos biológicos.
+- Dívida de processamento conservada e indicada quando o navegador fica atrás do ritmo nominal.
+- Avanço explícito em Worker, com checkpoint anterior, orçamento, cancelamento e retomada do destino salvo.
+- Replay e cenários A/B usam os mesmos passos nos modos visível e sem renderização.
+- Não há avanço automático com a página fechada ou servidor contínuo. Ver docs/ritmo-e-continuidade.md.
+
 ## 0.28.0 — Saúde, riscos e longevidade
 
 - Perfil opcional separa energia, ferimentos, carga infecciosa, riscos por idade/doença e fertilidade.
