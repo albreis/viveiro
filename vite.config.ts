@@ -4,7 +4,12 @@ import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => ({
   plugins: [teachingPlugin(), offlinePlugin(mode === "public")],
-  server: { host: "127.0.0.1", port: 4173, strictPort: true },
+  server: {
+    host: "127.0.0.1",
+    port: 4173,
+    strictPort: true,
+    watch: { ignored: ["**/.runtime/**", "**/.sites-runtime/**"] },
+  },
   build: {
     target: "es2022",
     outDir: "dist",

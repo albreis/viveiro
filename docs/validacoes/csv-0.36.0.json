@@ -1,0 +1,61 @@
+{
+  "version": "0.36.0",
+  "stage": "P1.6A",
+  "fullTests": {
+    "passed": 365,
+    "failed": 0,
+    "durationMs": 207575.6947,
+    "note": "Model source unchanged by subsequent presentation and Vite watcher adjustment"
+  },
+  "directedTests": {
+    "passed": 41,
+    "failed": 0,
+    "durationMs": 1705.9113,
+    "finalDurationMs": 3489.8603
+  },
+  "build": {
+    "strictTypeScript": true,
+    "modules": 342
+  },
+  "browser": {
+    "provider": "IAB",
+    "url": "http://127.0.0.1:4187/",
+    "lesson": "entradas-ar@2",
+    "seed": "AULA-v2-entradas-ar",
+    "tick": 100,
+    "scenarios": ["A", "B"],
+    "downloadVia": "Enter on focused export button",
+    "rowsAfterReload": 4,
+    "keyboardRegionFocus": "daily-table",
+    "consoleWarnings": 0,
+    "consoleErrors": 0
+  },
+  "csv": {
+    "reader": "Python csv.DictReader",
+    "rows": 4,
+    "columns": 22,
+    "sha256": "be603c33805fa95ea6a74719e46a819eb65664569e71e4a29974e976edf2cad6",
+    "encoding": "UTF-8 BOM",
+    "delimiter": ",",
+    "decimal": ".",
+    "spreadsheetApplicationTested": false
+  },
+  "accessibility": {
+    "wcagConformanceClaimed": false,
+    "lighthouseMeasured": false,
+    "next": "P1.6B"
+  },
+  "privateAudienceChanged": false,
+  "published": {
+    "private": true,
+    "public": true,
+    "pr": 48,
+    "sourceSha": "0e156836bd94aaa6a408017f597b11447f065a73",
+    "legacySaveChecked": true,
+    "legacyTick": 264,
+    "legacyDailyRows": 0,
+    "currentSampleRows": 1,
+    "consoleWarnings": 0,
+    "consoleErrors": 0
+  }
+}

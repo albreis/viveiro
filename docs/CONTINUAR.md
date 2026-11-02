@@ -1,99 +1,124 @@
 # Continuação do Viveiro
 
-Atualizado em02/11/2026 após publicação da0.35.2/P1.5.
-Ler AGENTS.md e docs/cronograma.md. Trabalhar emG:\Projetos\viveiro.
-Manter dev4173 emG, semexecutor concorrente; preservar saves, tags e privacidade.
+Atualizado em 02/11/2026, após publicar P1.6A /0.36.0.
+Ler AGENTS.md e docs/cronograma.md. Trabalhar em G:\Projetos\viveiro.
+Manter dev4173 em G, sem executor concorrente; preservar saves, tags e privacidade.
 
 ## Git e entrega atual
 
-Branch codex/pwa-offline, PR47 sobre codex/guias-docentes/#46.
-PRs32–47 ainda encadeados na última checagem; main15781d2. Conferir novos merges.
-Fonte/tag v0.35.2:2e978cfb8b86481063300e7556084b145e00e744.
-Metadados/checkpoint são posteriores à tag. Não retag/recriar versões.
-Tags0.35.0/93eba21329c4726cfc9a4ed0c962f3d706998afc e0.35.1/c31c041ef41d00f83a51f1abecf6e9221bce54ce
-ficam preservadas só noGit, semdeploy. A configuração Vite faltava nesses
-commits;0.35.2 contém a fonte completa. Evidências antigas marcadas previewOnly.
-A0.35.2 também normaliza Response redirecionada apósvalidação, semremover
-conteúdo ou cabeçalhos, para permitir navegação canônica offline.
+Branch codex/csv-diario; PR https://github.com/albreis/viveiro/pull/48
+sobre codex/pwa-offline/#47. PRs32–48 ainda encadeados na última conferência;
+main15781d2. Conferir novos merges antes de agir; não duplicar ou integrar sem
+considerar a ordem. Cada nova entrega deve ter branch codex/ própria.
 
-## P1.5 /PWA
+Fonte/tag v0.36.0:0e156836bd94aaa6a408017f597b11447f065a73.
+Metadados/checkpoint posteriores à tag; não retag ou recriar a mesma release.
+Todas as tags e arquivos anteriores ficam preservados. A0.35.2 contém o PWA
+completo;0.35.0 e0.35.1 são previews apenas no Git, não publicados na galeria
+(a configuração Vite não tinha sido incluída naqueles commits).
 
-Preparo opcional no build público, cache limitado a/release própria; inclui
-Three.js,4 Workers, guias e assets. PNG192/512 reais, manifesto standalone.
-Busca semcookies e rejeita privado/no-store/login/bytes alterados. HTML exige
-marcador da versão; não remove código deinfrastrutura que a hospedagem injeta.
-Marca completa porúltimo, checa presença e limpa apenas seu escopo. SemskipWaiting,
-semrecarga forçada ou acesso aIndexedDB pelo worker. Remover cópia preserva saves.
-Dev e Site privado semservice worker/manifesto, mantendo autenticação online.
+## P1.6A / CSV diário entregue
 
-35/35 testes dirigidos em2.270,6035ms, build privado336 módulos/TS estrito,
-build público isolado e hashes conferidos.4/4 de depósito depois da tag.
-QA IAB4185: servidor desligado, fechar/reabrir, aula/checkpoint/reload e guias.
-QA IAB4186: servidor com308 canônico e depois desligado; reload/guia/checkpoint
-passaram. Rede do computador não foi desligada; indisponibilidade do servidor
-foi real. Instalação noSO e outros navegadores não ensaiados.
-Público real:34 arquivos preparados, reload e guia/retorno, console limpo;
-SEMENTE-42/D2,6 pausada preservada. Cache dessa release deixado preparado.
-Ver pwa-offline.md e validacoes/offline-0.35.2.json.
+Módulos pequenos src/modules/observations, app/daily-controls.ts e daily.css.
+Observador após tick completo, dia a cada100 ticks e estado inicial no tick0.
+Totais da família, estágios reais da prole, reserva+fundo reprodutivo, ar de
+referência, média da grade do solo e gases ponderados pelo volume. Sem grade,
+leitura vazia; sem RNG, inicialização física ou avanço ao ler/exportar.
+Série opcional v1 persistida e validada. Saves antigos não ganham passado falso.
+Retém12.000 amostras por cenário com início/descartes explícitos.
+CSV22 colunas, UTF-8/BOM, vírgula/CRLF/ponto decimal, A/B, versões, seed/aula,
+estado inicial/fechamento diário/amostra atual. Texto protegido de fórmulas.
+Tabela sob o terrário: caption, cabeçalhos, região rotulada, Tab/setas/Enter.
+Isso não certifica WCAG da aplicação inteira.
+
+365/365 testes completos em207.575,6947ms. Após ajustes apenas visuais/watch,
+41/41 dirigidos finais em3.489,8603ms e build TS estrito/342 módulos.
+QA IAB/4187 isolado: AULA-v2-entradas-ar, tick100, duas amostras por cenário;
+download via Enter, CSV real lido por Python (quatro linhas/22 colunas), reload,
+foco daily-table/rolagem por teclado, console limpo.
+Arquivo baixado em C:\Users\conta\Downloads\viveiro-diario-AULA-v2-entradas-ar.csv,
+SHA256be603c33805fa95ea6a74719e46a819eb65664569e71e4a29974e976edf2cad6.
+Ainda NÃO foi aberto em aplicação de planilha. Não alegar Lighthouse/WCAGAA.
+Ver docs/csv-diario.md e validacoes/csv-0.36.0.json.
 
 ## Sites publicados
 
 Privado original: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
 Projeto appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/revisão1,
-proprietário único e zero externos. .openai/hosting.json mantém ID/staticdist.
-Deploy appgdep_6ae88a73452481919ed6acef01f5aa4b, succeeded,13:05:06UTC.
-ArquivoG:\Projetos\viveiro-0.35.2.tar.gz preservado.
+proprietário único, zero visitantes externos, ID/static dist preservados.
+Deploy appgdep_6ae8a08188948191b907528d3dc4a35b, succeeded14:39:12UTC.
+Arquivo G:\Projetos\viveiro-0.36.0.tar.gz preservado.
 
 Público: https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
 Projeto appgprj_6ae80cd45fdc8191be8315696a383393, public/revisão2.
-EspelhoG:\Projetos\viveiro-publico, fonte a11ec676b152e3b660fd185d7a0f0789adfe6134.
-Deploy appgdep_6ae88adf76e08191a611ac5b8f4d5d50, succeeded,13:06:52UTC.
-ArquivoG:\Projetos\viveiro-publico-0.35.2.tar.gz,141 arquivos/9.605.120bytes.
-Galeria mantém0.30.0/0.30.1/0.31.0/0.32.0/0.33.0/0.34.0 eacrescenta0.35.2.
-HTTP semcookies/Authorization: páginas200 e27 arquivos nãoHTML comhashes exatos.
-IDs deversão, datas e hashes completos emvalidacoes/deploy-0.35.2.json;
-HTTP emvalidacoes/publicacao-0.35.2.json. Não repetir save/deploy concluído.
-Não publicar Site privado como público, recriar projetos ou sobrescrever tags.
+Espelho G:\Projetos\viveiro-publico, fonte bcdb5a613f201590c2de4bcd509b33992a25caf2.
+Deploy appgdep_6ae8a0a20378819187f8792e188b1360, succeeded14:39:44UTC,
+versão7, arquivo G:\Projetos\viveiro-publico-0.36.0.tar.gz,
+178 arquivos/11.079.680bytes. Galeria acrescentou0.36.0 mantendo as anteriores.
+HTTP sem cookies/Authorization: páginas200,27 arquivos nãoHTML com hashes exatos.
+QA real: SEMENTE-42/D2,64 pausada preservada, zero dias históricos e uma amostra
+atual; console limpo. Não iniciar outra save/deploy desta versão concluída.
+IDs/hashes completos: validacoes/deploy-0.36.0.json e publicacao-0.36.0.json.
+Nunca mudar a audiência privada nem reutilizar sua identidade no espelho público.
 
-## Citação e pacote
+PWA público mantém escopo por release,34 arquivos, cache íntegro, remoção sem
+apagar saves e ausência de skipWaiting. Privado/dev sem worker/manifesto.
+QA offline com servidor indisponível e redirects foi concluída na0.35.2.
+Cache público da0.35.2 ficou preparado; da0.36.0 não foi preparado nesta QA.
+Não é necessário repetir a entrega offline. Ver docs/pwa-offline.md.
 
-CFF1.2.0/.zenodo.json para0.35.2/tag real, autoria coletiva mantida.
-Esquema oficial validado; PythonZIP conferiu todos os membros/hashes e configVite.
-.runtime/deposits/deposit-qpwRNb/viveiro-v0.35.2-source.zip,
-504 arquivos/1.422.413bytes, SHA256
-18ffa067b03d57262688025de147c0ef5b18caa1c70e253d6b3981b7c634c68c.
-Fonte selecionada da tag e metadados posteriores;9 textos públicos deensino
-incluídos para o build. Documentos operacionais e saves excluídos; detector
-preservado. Nenhum DOI/upload. Conta/autoria perguntadas antes, semresposta;
-não inferir nome/ORCID ou pedir token. P0.4B/C continuam externos/merge.
+## Citação e pacote local
 
-## Ambiente
+CFF/.zenodo.json apontam a tag0.36.0 real, autoria coletiva mantida.
+Esquema oficial validado e PythonZIP conferiu membros/hashes/configuração Vite.
+.runtime/deposits/deposit-WhwuRb/viveiro-v0.36.0-source.zip,
+512 arquivos/1.445.248bytes, SHA256
+03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
+Quatro testes do depósito aprovados; nenhum DOI/upload. Fonte da tag e metadados
+posteriores, nove textos públicos de ensino incluídos para o build. Operacionais,
+saves e credenciais excluídos; detector preservado.
+Usuário confirmou em02/11: manter “Viveiro contributors” e já possui conta
+Zenodo. Não repetir essas perguntas, não inferir nome/ORCID nem pedir token.
+Tentativa de abrir https://zenodo.org/uploads no IAB foi REJEITADA pela revisão
+automática: a área pode expor registros privados e ter conta não foi considerado
+autorização de acesso. Não contornar nem tentar outros caminhos para a conta.
+Foi solicitada autorização específica via pergunta assíncrona para acessar
+uploads e preparar o rascunho0.36.0. Aguardar resposta antes de trabalho dependente.
+Nenhum registro foi lido/criado, nenhum arquivo enviado, nenhum DOI emitido.
+P0.4B aguarda essa autorização/autenticação e revisão; P0.4C depende do merge.
+Ver citacao-e-deposito.md. Trabalho de P1.6B pode continuar sem a conta.
 
-DevPID17752, G/4173, HTTP200. AbaIAB20 marcada como entrega; SEMENTE-50088,
-D62,5,14 adultos, pausa e perfil leve preservados. Abas antigas4/16 emerro;
-preferir20, semrepetir APIs nas páginas deerro. Save não foi perdido.
-Manual manual-2e91b636-785f-4f66-bb84-ff832aa62547 preservado.
-Previews4185/58348/42706 e4186/28968 encerrados; abas18/19/21/22 deQA fechadas.
-Nenhum helper/teste pendente. Cópias deQA removidas, checkpoints deQA preservados.
-Capturas viveiro-0.35-offline-preview.png, viveiro-0.35.1-offline-redirects.png
-e viveiro-0.35.2-offline-publicado.png no diretório devisualizações autorizado.
-Npmci comdev aberto pode bloquear DLL; não reinstalar semnecessidade. Preferir
-escrita atômica emJSON/config para reduzir leituras parciais pelo watcher.
+## Ambiente e limpeza
 
-## Próximo passo concreto: P1.6 /CSV e acessibilidade
+Dev PID17752, G/4173, HTTP200. Aba IAB20 marcada como entrega, SEMENTE-50088,
+D62,5/14 adultos em pausa e perfil leve preservados. Ao observar só HTML inicial,
+aguardar a inicialização/release-label antes de concluir que o estado mudou.
+Vite agora ignora .runtime e .sites-runtime; artefatos dos testes provocavam
+recargas. Probe .runtime/csv-watch-check.html não gerou reload após esse ajuste.
+Saves existentes não foram apagados; manual-2e91b636-785f-4f66-bb84-ff832aa62547
+continua preservado. Abas antigas4/16 em erro não devem ser reutilizadas.
+Preview4187 (session31123) encerrado por PID/linha de comando verificados,
+abas23/24 de QA fechadas. Testes/helpers/HTTP terminaram. Dev nunca encerrado.
+Capturas viveiro-0.36.0-csv-diario.png e viveiro-0.36.0-csv-publicado.png no
+diretório de visualizações autorizado. Não usar npmci com dev aberto sem
+necessidade (DLL nativa pode ficar bloqueada). JSON/config por escrita atômica.
 
-1. Conferir Git/PRs; criar branch codex/ própria sobre#47 se ainda aberto.
-2. Inspecionar history/record, loop fixed e snapshot/restore. CSV diário deve
-usar observações reais no mesmo tick: população, prole, alimento, temperatura
-e gases, comunidades e metadados deversão/seed/cenário. Não inventar clima/gases
-históricos para saves antigos; declarar os limites da série disponível.
-3. Garantir exportação segura e comparação A/B, semconfundir previsões comdados
-observados ou alterar RNG/relógio. Testar determinismo e codec se mudar estado.
-4. Conferir teclado, foco, rótulos/contraste/semântica e realizar auditoria
-Lighthouse real quando disponível. Não declarar WCAGAA ou nota semmedição.
-5. Publicar entrega validada, tag/PR e checkpoint. Não rodar build-public da
-mesma versão após commit só demetadados; cada release temfonte imutável.
+## Próximo passo concreto: P1.6B / acessibilidade
 
-P1.1B/hardware escolar, P1.2B/aluno novo, P1.4B/revisão docente eP1.7/pilotos,
-calibração eZenodo exigem pessoas/dados reais. Continuam pendentes. P5 porúltimo.
-Não desativar retomada: ainda há itens implementáveis. Não contornar limites.
+1. Conferir Git/PRs; criar nova branch codex/ sobre #48 se ainda aberto.
+2. Abrir o CSV real em aplicação de planilha disponível com UTF-8/vírgula/ponto
+   decimal; registrar importação e dados sem alegar um ensaio que não ocorreu.
+3. Auditar teclado, foco, rótulos, estados dinâmicos, landmarks, contraste,
+   zoom/reflow, tabelas e alternativas textuais a gráficos/mapas. Priorizar
+   problemas observados; manter módulos pequenos e não alterar o modelo/RNG.
+4. Descobrir ferramenta permitida para medição Lighthouse real >90. Usar as
+   ferramentas nativas de navegador/computador; não improvisar automação externa
+   ou afirmar conformidade WCAG AA só por testes estáticos/uma pontuação.
+5. Registrar evidências/limites e publicar uma nova versão imutável, com PR
+   encadeado, testes adequados e o dev preservado. Não rodar build-public da
+   mesma versão após commit só de metadados, pois a fonte da release é imutável.
+
+Depois: P1.7 exige turmas reais; seguir os itens implementáveis P2 em ordem sem
+fabricar pilotos. P1.1B/hardware escolar, P1.2B/aluno novo, P1.4B/revisão docente,
+P1.7/SUS, calibração e Zenodo dependem de pessoas/dados/contas reais. P5 por último.
+Ainda há trabalho implementável: manter a retomada ativa e respeitar limites.

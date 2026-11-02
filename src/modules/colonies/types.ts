@@ -6,6 +6,7 @@ export interface FamilyWorld extends FoundingWorld {
   colonyId?: number;
   lastFlightRain?: number;
   parentColonyId?: number;
+  dailyObservations?: import("../observations/types.ts").DailySeries;
   rng: number;
   physicsVersion: number;
   localRoutingVersion: number;

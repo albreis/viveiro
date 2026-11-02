@@ -1,15 +1,15 @@
-# Citação e depósito da versão 0.32.0
+# Citação e depósito da versão atual
 
 ## Estado
 
 CITATION.cff preparado e validado pelo esquema oficial CFF 1.2.0.
-A autoria coletiva reproduz “Viveiro contributors” da licença existente.
+A autoria coletiva “Viveiro contributors” foi confirmada pelo usuário em02/11/2026.
 Nenhum nome pessoal, ORCID, DOI ou vínculo institucional foi inferido.
 
 O arquivo usa JSON, também válido como YAML 1.2, para leitura nativa em JS.
 O teste local verifica consistência; a validação oficial foi feita à parte.
-Versão citada: v0.32.0, publicada em 02/11/2026, commit
-0b6bed31e8aafa7c4357c11138d35f003ea64542. Metadados adicionados depois da tag;
+Versão citada: v0.36.0, publicada em 02/11/2026, commit
+0e156836bd94aaa6a408017f597b11447f065a73. Metadados adicionados depois da tag;
 a tag e suas URLs não foram alteradas.
 
 P0.4 ainda não está concluída: faltam conta autenticada responsável pelo
@@ -42,7 +42,7 @@ marcadores sintéticos que foram recusados pelo filtro, mantido intacto; os
 testes do modelo permanecem no pacote. Scripts de hospedagem precisam de configuração
 local própria; os testes e o build não precisam do Site privado.
 
-## Validação em 02/11/2026
+## Histórico da validação0.32.0 em 02/11/2026
 
 - [Esquema oficial](https://citation-file-format.github.io/1.2.0/schema.json),
   SHA-256 0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b.
@@ -74,7 +74,7 @@ local própria; os testes e o build não precisam do Site privado.
 Referências: [CFF](https://citation-file-format.github.io/1.2.0/),
 [API e metadados do Zenodo](https://developers.zenodo.org/),
 [git archive](https://git-scm.com/docs/git-archive).
-[Evidência da versão atual](validacoes/citacao-0.32.0.json).
+[Evidência da versão atual](validacoes/citacao-0.36.0.json).
 O pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.
 O pacote0.31.0 também permanece em.runtime/deposits/deposit-wcJQPw.
 A versão atualizada do gerador exclui os testes operacionais explicitamente.
@@ -115,3 +115,24 @@ Autoria coletiva mantida e esquema oficial validado. Pacote local
 LeitorZIP independente conferiu todos os hashes, membros e a configuração
 Vite offline da tag.4 testes do depósito passaram. Sem DOI/upload.
 Ver validacoes/citacao-0.35.2.json. Tags anteriores preservadas.
+
+## Atualização 0.36.0
+
+CFF/rascunho referem v0.36.0/0e156836bd94aaa6a408017f597b11447f065a73.
+Autoria coletiva preservada; esquema oficial CFF validado e512 arquivos
+conferidos por Python zipfile. Pacote de1.445.248bytes,
+.runtime/deposits/deposit-WhwuRb/viveiro-v0.36.0-source.zip,
+SHA25603c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
+Inclui observações diárias e configuração Vite da tag. Quatro testes do depósito
+passaram. Nenhum upload/DOI. Ver validacoes/citacao-0.36.0.json.
+
+## Conta Zenodo e autorização de acesso
+
+Em02/11/2026, o usuário confirmou autoria coletiva e informou que já possui
+conta no Zenodo. A abertura de /uploads pelo navegador foi recusada pela revisão
+automática de aprovação por possível exposição de registros privados da conta.
+Nenhum conteúdo da conta foi acessado e nenhum depósito/upload foi realizado.
+Foi solicitada autorização específica para acessar a área e preparar o rascunho
+com o ZIP0.36.0 verificado. Aguardar a resposta; não contornar o bloqueio.
+Não pedir senha, token ou códigos no chat. Autoria e existência da conta já foram
+respondidas; não repetir essas perguntas. P1.6B não depende deste acesso.
