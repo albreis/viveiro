@@ -30,8 +30,12 @@ export function prepareDeposit(root: string, outputRoot: string) {
   const folder = mkdtempSync(join(resolve(outputRoot), "deposit-"));
   plainParents(join(root, "CITATION.cff"));
   plainParents(join(root, ".zenodo.json"));
-  const citationBytes = readFileSync(join(root, "CITATION.cff"));
-  const zenodoBytes = readFileSync(join(root, ".zenodo.json"));
+  const citationBytes = Buffer.from(
+    readFileSync(join(root, "CITATION.cff"), "utf8").replace(/\r\n/g, "\n"),
+  );
+  const zenodoBytes = Buffer.from(
+    readFileSync(join(root, ".zenodo.json"), "utf8").replace(/\r\n/g, "\n"),
+  );
   const c = citationMetadata(JSON.parse(citationBytes.toString()));
   checkDepositMetadata(c, JSON.parse(zenodoBytes.toString()));
   const tag = "v" + c.version;
