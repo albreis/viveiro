@@ -9,11 +9,11 @@
       "name": "Viveiro contributors"
     }
   ],
-  "version": "0.40.0",
+  "version": "0.40.1",
   "date-released": "2026-11-02",
-  "commit": "7fdc46942283c82fd0402c76946ba016b251bd80",
+  "commit": "9b5d05761602c098e1a7bc5770b471dd5e7810f1",
   "repository-code": "https://github.com/albreis/viveiro",
-  "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.40.0/",
+  "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.40.1/",
   "license": "MIT",
   "keywords": [
     "artificial life",

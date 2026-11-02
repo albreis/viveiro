@@ -5,6 +5,32 @@ Uma entrega por branch codex/, módulos pequenos em src/TypeScript, Vite, testes
 QA nativa Cua, commit/push/PR. Preservar saves, branches, tags e audiência dos Sites.
 Não iniciar executor concorrente. Não usar modelos exploratórios como calibrados.
 
+## Entrega atual: asas apoiadas — 0.40.1
+
+Relato de asas flutuando corrigido e publicado. Branch codex/asas-apoiadas,
+PR https://github.com/albreis/viveiro/pull/54, base codex/aritmetica-portatil (#53).
+Fonte/tag 9b5d05761602c098e1a7bc5770b471dd5e7810f1. Não retag.
+Módulo renderer/discarded-wings.ts com menos de 120 linhas. Raycast no solo e
+no tampão desenhados, orientação pela face, apoio invalidado quando a malha
+muda. Cache entre quadros; nenhum RNG/regra biológica/save alterado.
+11 testes geométricos + 6 integração/offline/quatro casos P2.2B; TS/builds passam.
+Save local exportado por UI conferido também no Node: quatro asas acima do
+apoio atual, até 0,065 u.; representação corrigida sem mudar posições salvas.
+Apoio visual, sem alegar dinâmica de massa/aerodinâmica. Evidência asas-0.40.1.json.
+
+Privado: deploy appgdep_6ae8e8e4fa448191aa8515c0395b5a41,
+succeeded 19:48:03 UTC. Público: deploy appgdep_6ae8e93394d88191abbd258b480fe767,
+succeeded 19:49:24 UTC, versão 12, fonte 0488a2718cc35087a70c2e86d1a5293b73fc1803.
+Audiências preservadas. Recibos deploy-0.40.1.json; arquivos
+G:\Projetos\viveiro-0.40.1.tar.gz e viveiro-publico-0.40.1.tar.gz.
+Publicação privada confirmada no navegador (0.40.1, console limpo).
+
+CFF/.zenodo atuais descrevem 0.40.1, sem DOI próprio. ZIP selecionado:
+.runtime/deposits/deposit-shHqcJ/viveiro-v0.40.1-source.zip, 779 arquivos,
+2.114.066 bytes, SHA e73036ddc22276905d98a235baeb1aec88d80bbeb927d5b0a3b96c005885e8a7.
+Esquema CFF oficial e cada hash do ZIP conferidos; nada novo enviado ao Zenodo.
+Pacotes e metadados 0.36/0.39/0.40 preservados, sem atribuir DOI antigo à nova versão.
+
 ## Entrega urgente P2.2B concluída
 
 0.40.0, fonte/tag 7fdc46942283c82fd0402c76946ba016b251bd80.
@@ -48,7 +74,7 @@ Autor confirmado: Viveiro contributors. ZIP público igual ao original,
 1.445.248 bytes, SHA 03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
 Não criar duplicata nem atribuir esse DOI à release atual. Autorização de acesso
 já registrada; não pedir de novo. Nova publicação permanente exige seu próprio aceite.
-CFF raiz e .zenodo.json agora descrevem fonte 0.40.0; citação específica 0.36 em
+CFF raiz e .zenodo.json descrevem a entrega atual 0.40.1; citação específica 0.36 em
 docs/citacoes/v0.36.0.cff. Esquema oficial CFF válido.
 ZIP 0.40: .runtime/deposits/deposit-nxco6P/viveiro-v0.40.0-source.zip,
 777 arquivos, 2.106.864 bytes, SHA
@@ -65,14 +91,15 @@ P1 ensaios escolares/docentes, P3 calibração/JOSS e P5 clima exigem dados reai
 ## Ambiente e próximo passo
 
 Dev 4173 PID17752 em G continua rodando. Preview de QA 4189 encerrado.
-IAB aba33: SEMENTE-50088/D62,5/14 adultos, pausado, perfil leve, saves preservados.
-Aba30: experimento privado; aba32: público versionado. Marcadas como entrega.
-Abas antigas20/28 não estão mais nesta sessão; não reutilizar handles inválidos.
+IAB aba34: SEMENTE-50088/D62,48/14 adultos, pausado, perfil leve, saves preservados.
+Aba35: Site privado em 0.40.1, seed SEMENTE-70654 em fundação, rodando como
+no estado salvo desta origem. Abas34/35 marcadas como entrega. Abas antigas
+20/28/30/32/33 não estavam mais disponíveis nesta sessão; não reutilizar handles.
 Só Cua documentado para browser; nenhum Playwright externo/CDP/internals.
-Capturas 0.40 paridade/publicado na pasta de visualizações autorizada.
+Capturas 0.40 paridade/publicado e 0.40.1 asas na pasta de visualizações autorizada.
 
-Usuário acaba de relatar asas flutuando na entrada (imagem anexada). Próximo
-passo imediato: branch própria para investigar apoio/renderização das asas
-separadas da rainha, corrigir e validar. Depois retomar P2.3: varredura de
-5 valores × 10 réplicas em um comando, paralela e com retomada; então P2.4+.
+Próximo passo concreto: P2.3, varredura de 5 valores × 10 réplicas em um comando,
+paralela e com retomada; depois P2.4 e seguintes. P2.2B e asas já entregues:
+não duplicar PRs. Conferir merges antes de agir e rebasear a base do PR seguinte
+para main quando sua dependência for integrada. Não iniciar executor concorrente.
 Retomada automática ainda é útil; não desativar ou declarar cronograma concluído.
