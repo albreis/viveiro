@@ -9,7 +9,7 @@ export interface CitationMetadata {
   commit: string;
   "date-released": string;
   url: string;
-  authors: { name: string }[];
+  authors: { name: string; orcid?: string }[];
 }
 
 // Repository-publication tests contain deliberate credential markers and local fixtures.
@@ -73,6 +73,13 @@ export function citationMetadata(value: unknown): CitationMetadata {
   return c as CitationMetadata;
 }
 
+// CFF carries the ORCID as a URL; Zenodo expects the bare identifier.
+function zenodoCreators(citation: CitationMetadata) {
+  return citation.authors.map(({ name, orcid }) =>
+    orcid ? { name, orcid: orcid.replace("https://orcid.org/", "") } : { name },
+  );
+}
+
 export function checkDepositMetadata(
   citation: CitationMetadata,
   zenodo: Record<string, unknown>,
@@ -82,7 +89,7 @@ export function checkDepositMetadata(
     zenodo.title !== citation.title ||
     zenodo.upload_type !== "software" ||
     zenodo.publication_date !== citation["date-released"] ||
-    JSON.stringify(zenodo.creators) !== JSON.stringify(citation.authors)
+    JSON.stringify(zenodo.creators) !== JSON.stringify(zenodoCreators(citation))
   )
     throw Error("Citação e metadados de depósito divergem.");
 }

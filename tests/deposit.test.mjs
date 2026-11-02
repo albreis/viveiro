@@ -17,7 +17,12 @@ test("citação vincula a release real sem inventar DOI ou autoria pessoal", () 
   const c = citationMetadata(citation());
   assert.match(c.version, /^\d+\.\d+\.\d+$/);
   assert.match(c.commit, /^[a-f0-9]{40}$/);
-  assert.deepEqual(c.authors, [{ name: "Viveiro contributors" }]);
+  assert.deepEqual(c.authors, [
+    {
+      name: "Viveiro contributors",
+      orcid: "https://orcid.org/0009-0008-0719-8722",
+    },
+  ]);
   assert.equal("doi" in c, false);
   checkDepositMetadata(c, zenodo());
   assert.throws(
