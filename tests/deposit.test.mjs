@@ -39,6 +39,8 @@ test("seleção do depósito exclui histórico, saves e arquivos operacionais", 
   ])
     assert.ok(permittedSourcePath(path), path);
   for (const path of [
+    "tests/deposit.test.mjs",
+    "tests/publication-files.test.mjs",
     "docs/CONTINUAR.md",
     ".openai/hosting.json",
     ".git/config",

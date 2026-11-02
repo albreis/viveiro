@@ -1,4 +1,4 @@
-# Citação e depósito da versão 0.30.1
+# Citação e depósito da versão 0.31.0
 
 ## Estado
 
@@ -8,8 +8,8 @@ Nenhum nome pessoal, ORCID, DOI ou vínculo institucional foi inferido.
 
 O arquivo usa JSON, também válido como YAML 1.2, para leitura nativa em JS.
 O teste local verifica consistência; a validação oficial foi feita à parte.
-Versão citada: v0.30.1, publicada em 02/11/2026, commit
-d61a439980d32dcbae61bba5d2aeb274fbb75341. Metadados adicionados depois da tag;
+Versão citada: v0.31.0, publicada em 02/11/2026, commit
+1a5fa67038c8fe244844136257f5328becbf5e4e. Metadados adicionados depois da tag;
 a tag e suas URLs não foram alteradas.
 
 P0.4 ainda não está concluída: faltam conta autenticada responsável pelo
@@ -36,7 +36,7 @@ Links e padrões de credenciais detectáveis bloqueiam a preparação.
 A seleção não substitui revisão humana antes de depósito público permanente.
 
 Ficam fora: histórico Git, docs operacionais, AGENTS.md, .openai, .runtime,
-dependências, dist e saves. Scripts de hospedagem precisam de configuração
+dependências, dist e saves. Seis testes/fixture de publicação e depósito\nficam apenas no repositório, listados explicitamente no manifesto. Contêm\nmarcadores sintéticos que foram recusados pelo filtro, mantido intacto; os\ntestes do modelo permanecem no pacote. Scripts de hospedagem precisam de configuração
 local própria; os testes e o build não precisam do Site privado.
 
 ## Validação em 02/11/2026
@@ -44,11 +44,11 @@ local própria; os testes e o build não precisam do Site privado.
 - [Esquema oficial](https://citation-file-format.github.io/1.2.0/schema.json),
   SHA-256 0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b.
 - Python jsonschema 4.26.0, Draft7Validator e FormatChecker: válido.
-- 6/6 testes dirigidos, incluindo gerar o ZIP duas vezes com bytes iguais.
-- Python 3.14 zipfile independente: 446 arquivos, 1.265.595 bytes, hashes válidos.
-- ZIP: .runtime/deposits/deposit-CqrgTm/viveiro-v0.30.1-source.zip.
-- SHA-256: 018a0a1d0e68ff3adb04e214bf43e9ba86345ea9f3351d6fa09222f4cbd940d5.
-- Build TypeScript/Vite passou; aplicação 0.30.1 e sessão local preservadas.
+- 4/4 testes de depósito (incluídos nos24 finais da entrega), incluindo gerar o ZIP duas vezes com bytes iguais.
+- Python 3.14 zipfile independente: 455 arquivos, 1.285.685 bytes, hashes válidos.
+- ZIP: .runtime/deposits/deposit-wcJQPw/viveiro-v0.31.0-source.zip.
+- SHA-256: 5dd2cd029041c01f0a434005c3ebda497d9d1b4fcda0c93afeb9421cc813ee39.
+- Build TypeScript/Vite passou; aplicação 0.31.0 e sessão local preservadas.
 - Nada enviado ao Zenodo; DOI ausente, sem número fictício.
 
 ## Concluir o depósito real
@@ -71,4 +71,4 @@ local própria; os testes e o build não precisam do Site privado.
 Referências: [CFF](https://citation-file-format.github.io/1.2.0/),
 [API e metadados do Zenodo](https://developers.zenodo.org/),
 [git archive](https://git-scm.com/docs/git-archive).
-O software continua exploratório e não calibrado por espécie.
+[Evidência da versão atual](validacoes/citacao-0.31.0.json).\nO pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.\nA versão atualizada do gerador exclui os testes operacionais explicitamente.\nO software continua exploratório e não calibrado por espécie.

@@ -6,6 +6,7 @@ import { join, resolve } from "node:path";
 import { plainParents } from "./release-files.ts";
 import {
   sourceFiles,
+  excludedOperationalTests,
   sourceRoots,
   permittedSourcePath,
   checkDepositBytes,
@@ -66,6 +67,7 @@ export function prepareDeposit(root: string, outputRoot: string) {
     const tab = entry.indexOf("\t");
     const [mode, type, object] = entry.slice(0, tab).split(" ");
     const path = entry.slice(tab + 1);
+    if (excludedOperationalTests.includes(path)) continue;
     if (!permittedSourcePath(path)) {
       if (sourceRoots.includes(path.split("/")[0]))
         throw Error("Arquivo não permitido dentro da fonte: " + path);
@@ -117,6 +119,8 @@ export function prepareDeposit(root: string, outputRoot: string) {
     "O modelo vem da tag. Este README, CITATION.cff, .zenodo.json e o manifesto",
     "foram preparados posteriormente e não alteram a tag original.",
     "Não contém histórico Git, saves, documentos operacionais ou credenciais.",
+    "Testes de publicação/depósito e suas fixtures locais ficam no repositório;",
+    "os testes do modelo estão incluídos. Exclusões explícitas no manifesto.",
     "Código original MIT; documentação original CC BY 4.0; avisos de terceiros preservados.",
     "Consulte LICENSE, LICENSE-DOCS.md e public/THREE-LICENSE.txt.",
     "",
@@ -138,6 +142,7 @@ export function prepareDeposit(root: string, outputRoot: string) {
     tag,
     version: c.version,
     sourceSha: sha,
+    excludedOperationalTests,
     sourceSelection: [...sourceRoots.map((path) => path + "/"), ...sourceFiles],
     metadataAddedAfterTag: Object.keys(additions),
     files,
@@ -189,6 +194,7 @@ export function archiveDeposit(
     manifest.sourceSha,
     ...sourceRoots,
     ...sourceFiles,
+    ...excludedOperationalTests.map((path) => ":(exclude)" + path),
   ]);
   verifyDepositFile(
     output,

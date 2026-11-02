@@ -61,4 +61,4 @@ Registrar navegador, resolução, bateria/energia, atividade dos Workers e
 distribuição dos tempos; executar em movimento e com ninho mais populoso.
 A meta de30 quadros/s e a revisão por escola não estão certificadas.
 
-Publicação e fonte exatas devem ser registradas em docs/CONTINUAR.md.
+Publicado nos Sites privado original e público separado. Tag/fonte1a5fa67038c8fe244844136257f5328becbf5e4e.\n[Versão pública](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.31.0/).\nQA pública: leve/contagem, primeira pessoa, retorno e reload emD2,6; console\nlimpo. Onze assets com hashes exatos sem cookies/Authorization. Evidência\nem docs/validacoes/publicacao-0.31.0.json. IDs em docs/CONTINUAR.md.
