@@ -1,120 +1,99 @@
 # Continuação do Viveiro
 
-Atualizado em02/11/2026 após publicação da0.34.0/P1.4A.
+Atualizado em02/11/2026 após publicação da0.35.2/P1.5.
 Ler AGENTS.md e docs/cronograma.md. Trabalhar emG:\Projetos\viveiro.
-Manter dev4173 emG; preservar branches, tags, saves e audiência privada.
-Não iniciar executor concorrente nem contornar limites ou aprovações.
+Manter dev4173 emG, semexecutor concorrente; preservar saves, tags e privacidade.
 
-## Git
+## Git e entrega atual
 
-Branch codex/guias-docentes, PR #46 sobre codex/experimentos-de-aula/#45.
-PR #45 cobreP1.3 e depende de#44. Os PRs#32–#46 continuam encadeados.
-Main15781d2 na última conferência; buscar merges antes de agir.
-Fonte/tag v0.34.0: 34c41f532187119ae30f5c30fb0886e2e462aa11.
-Fonte/tag v0.33.0: ed78e3fe56e7b863fc06ee0f69cef40aeb371507, preservada.
-Citação/checkpoint são posteriores às tags; não reescrever tags ou releases.
+Branch codex/pwa-offline, PR47 sobre codex/guias-docentes/#46.
+PRs32–47 ainda encadeados na última checagem; main15781d2. Conferir novos merges.
+Fonte/tag v0.35.2:2e978cfb8b86481063300e7556084b145e00e744.
+Metadados/checkpoint são posteriores à tag. Não retag/recriar versões.
+Tags0.35.0/93eba21329c4726cfc9a4ed0c962f3d706998afc e0.35.1/c31c041ef41d00f83a51f1abecf6e9221bce54ce
+ficam preservadas só noGit, semdeploy. A configuração Vite faltava nesses
+commits;0.35.2 contém a fonte completa. Evidências antigas marcadas previewOnly.
+A0.35.2 também normaliza Response redirecionada apósvalidação, semremover
+conteúdo ou cabeçalhos, para permitir navegação canônica offline.
 
-## Entregas deste ciclo
+## P1.5 /PWA
 
-P1.3 entregue na0.33.0/#45: sete aulas com seed, A/B, câmera, pergunta,
-condições iniciais e backup nomeado obrigatório antes de substituir o mundo.
-38 testes dirigidos; abertura local em2,03–2,91s. Ver experimentos-de-aula.md
-ou validacoes/aulas-0.33.0.json. Emcaso de falha de gravação ou mudança
-concorrente, troca cancelada e mundo anterior pausado.
+Preparo opcional no build público, cache limitado a/release própria; inclui
+Three.js,4 Workers, guias e assets. PNG192/512 reais, manifesto standalone.
+Busca semcookies e rejeita privado/no-store/login/bytes alterados. HTML exige
+marcador da versão; não remove código deinfrastrutura que a hospedagem injeta.
+Marca completa porúltimo, checa presença e limpa apenas seu escopo. SemskipWaiting,
+semrecarga forçada ou acesso aIndexedDB pelo worker. Remover cópia preserva saves.
+Dev e Site privado semservice worker/manifesto, mantendo autenticação online.
 
-P1.4A entregue na0.34.0/#46: seis roteiros emdocs/ensino/ para as sete aulas,
-com objetivo, tempo, passos, perguntas, gabarito e limites. Associação proposta
-àBNCC conferida emfonte oficial. Fichas docentes sem pareceres inventados.
-Link Guia do professor abre páginas de leitura/impressão, geradas dos próprios
-Markdown pelo Vite; textos emTXT. Não há segunda fonte editável nem runtime novo.
-Tipos deNode24 adicionados apenas a devDependencies. npmci encontrou DLL
-aberta pelo dev; reparo incremental npm install --ignore-scripts concluído,
-build e servidor saudáveis, sem interromper o processo17752. Não repetir
-npmci enquanto o dev usar o binding nativo. Não apagar a pasta temporária
-binding bloqueada; não é pendência do modelo.
+35/35 testes dirigidos em2.270,6035ms, build privado336 módulos/TS estrito,
+build público isolado e hashes conferidos.4/4 de depósito depois da tag.
+QA IAB4185: servidor desligado, fechar/reabrir, aula/checkpoint/reload e guias.
+QA IAB4186: servidor com308 canônico e depois desligado; reload/guia/checkpoint
+passaram. Rede do computador não foi desligada; indisponibilidade do servidor
+foi real. Instalação noSO e outros navegadores não ensaiados.
+Público real:34 arquivos preparados, reload e guia/retorno, console limpo;
+SEMENTE-42/D2,6 pausada preservada. Cache dessa release deixado preparado.
+Ver pwa-offline.md e validacoes/offline-0.35.2.json.
 
-Receita v2 inicializa solo/ar no dia0 sem passos ou consumo; evita painel
-anunciar ausência de galerias emuma colônia preparada. v1 e suas seeds são
-preservadas para repetir saves antigos. Sessões comuns continuam payload1;
-aulas payload2, com referência de receita1 ou2. Não migrar v1 silenciosamente.
-39/39 testes dirigidos em2.686,0665ms e build TypeScript estrito/Vite333 módulos.
-Depois da tag,4/4 testes de depósito. Não é nova suíte biológica integral.
-QA IAB4184 percorreu6 páginas com8 seções e5–6 passos, retorno ao laboratório
-e recuperação da aula pausada. Ar noD0:20,90%O₂/0,04%CO₂, com entradas reais.
-QA pública: guia e roteiro deventilação, links e numeração, console limpo.
-Ver docs/guias-docentes.md e validacoes/guias-0.34.0.json.
-P1.4B/revisão deprofessores continua pendente; nenhum piloto realizado.
+## Sites publicados
 
-## Site privado original /0.34.0
-
-URL https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
+Privado original: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
 Projeto appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/revisão1,
-proprietário único e zero externos, conferido antes da publicação.
-Fonte 34c41f532187119ae30f5c30fb0886e2e462aa11/tag v0.34.0.
-Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_714be1aef6548191bbc2b66ebfc4330a.
-Deploy appgdep_6ae863d7e1048191a94bfb1610cc1164, succeeded,
-2026-11-02T10:20:21.787133+00:00. ArquivoG:\Projetos\viveiro-0.34.0.tar.gz.
-.openai/hosting.json mantém ID original/static.directory=dist.
-Não repetir save/deploy nem mudar audiência.
+proprietário único e zero externos. .openai/hosting.json mantém ID/staticdist.
+Deploy appgdep_6ae88a73452481919ed6acef01f5aa4b, succeeded,13:05:06UTC.
+ArquivoG:\Projetos\viveiro-0.35.2.tar.gz preservado.
 
-## Site público separado /0.34.0
-
-URL https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
+Público: https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
 Projeto appgprj_6ae80cd45fdc8191be8315696a383393, public/revisão2.
-EspelhoG:\Projetos\viveiro-publico, ID próprio/static.directory=dist.
-Fonte do espelho 7b3c073d1fadc08309fb00121496641fcfc40453.
-Versão5 appgprj_6ae80cd45fdc8191be8315696a383393~appgver_6f1386e022dc81918e9239d67c6f187d.
-Deploy appgdep_6ae86413292481919829cf241680ba9d, succeeded,
-2026-11-02T10:21:20.899981+00:00.
-ArquivoG:\Projetos\viveiro-publico-0.34.0.tar.gz,104 arquivos/8.140.800bytes,
-sha256:15be81e226ee75aee6fef02229337928c0001a58388a98e5baf80e8408d36353.
-Galeria mantém0.30.0/0.30.1/0.31.0/0.32.0/0.33.0 e acrescenta0.34.0.
-Raiz/catálogo/release/manifesto/guias200 semcookies/Authorization;21 arquivos
-nãoHTML comhashes exatos. Evidência validacoes/publicacao-0.34.0.json.
-HTML canonicaliza index.html para/ e nomes.html para nomes; links relativos
-conferidos no navegador. Original privado, sem distribuição de saves.
-Não recriar Sites nem sobrescrever releases antigas.
+EspelhoG:\Projetos\viveiro-publico, fonte a11ec676b152e3b660fd185d7a0f0789adfe6134.
+Deploy appgdep_6ae88adf76e08191a611ac5b8f4d5d50, succeeded,13:06:52UTC.
+ArquivoG:\Projetos\viveiro-publico-0.35.2.tar.gz,141 arquivos/9.605.120bytes.
+Galeria mantém0.30.0/0.30.1/0.31.0/0.32.0/0.33.0/0.34.0 eacrescenta0.35.2.
+HTTP semcookies/Authorization: páginas200 e27 arquivos nãoHTML comhashes exatos.
+IDs deversão, datas e hashes completos emvalidacoes/deploy-0.35.2.json;
+HTTP emvalidacoes/publicacao-0.35.2.json. Não repetir save/deploy concluído.
+Não publicar Site privado como público, recriar projetos ou sobrescrever tags.
 
-## Citação
+## Citação e pacote
 
-CFF1.2.0/.zenodo.json atualizados para0.34.0/tag real, autoria coletiva mantida.
-Esquema oficial validado comjsonschema4.26.0 e arquivo ZIP verificado porPython.
-Pacote .runtime/deposits/deposit-NYj0Pb/viveiro-v0.34.0-source.zip,
-491 arquivos/1.388.116bytes, SHA256
-0c13a4f5428b8383dc54217735f6647e82626f4df7bc91b733a75f93d6a48994.
-Os9 Markdown públicos necessários ao build são selecionados explicitamente;
-checkpoint e demais documentos operacionais continuam excluídos. Detector de
-credenciais preservado. Ver validacoes/citacao-0.34.0.json. Nenhum DOI/upload.
-Conta/autoria perguntadas anteriormente, sem resposta; não inferir nome/ORCID
-nem pedir token no chat. P0.4B/C continuam dependentes de conta/merge.
+CFF1.2.0/.zenodo.json para0.35.2/tag real, autoria coletiva mantida.
+Esquema oficial validado; PythonZIP conferiu todos os membros/hashes e configVite.
+.runtime/deposits/deposit-qpwRNb/viveiro-v0.35.2-source.zip,
+504 arquivos/1.422.413bytes, SHA256
+18ffa067b03d57262688025de147c0ef5b18caa1c70e253d6b3981b7c634c68c.
+Fonte selecionada da tag e metadados posteriores;9 textos públicos deensino
+incluídos para o build. Documentos operacionais e saves excluídos; detector
+preservado. Nenhum DOI/upload. Conta/autoria perguntadas antes, semresposta;
+não inferir nome/ORCID ou pedir token. P0.4B/C continuam externos/merge.
 
-## Ambiente e provas
+## Ambiente
 
-DevPID17752, G/4173, HTTP200 e módulos respondendo. Nova abaIAB16 marcada
-como entrega: SEMENTE-50088/D62,5,14 adultos, pausa e perfil leve preservados.
-Aba4 antiga ficou presa na página deerro deconexão durante reinício automático
-Vite; não usar APIs nela. A nova aba16 usa o mesmo save. Não houve perda.
-Checkpointmanual manual-2e91b636-785f-4f66-bb84-ff832aa62547 preservado.
-Preview4184/sessão10754 e abas15/17 deQA encerrados; nenhum helper pendente.
-Pública continua SEMENTE-42/D2,6 pausada, recuperada apósQA da0.33.0.
-Capturas viveiro-0.34-guia-preview.png e viveiro-0.34-guia-publicado.png em
-C:\Users\conta\.codex\visualizations\2026\10\31\01a19338-43de-7cc3-a8a9-a38475cf3ff2.
-Capturas e arquivos das versões anteriores preservados.
+DevPID17752, G/4173, HTTP200. AbaIAB20 marcada como entrega; SEMENTE-50088,
+D62,5,14 adultos, pausa e perfil leve preservados. Abas antigas4/16 emerro;
+preferir20, semrepetir APIs nas páginas deerro. Save não foi perdido.
+Manual manual-2e91b636-785f-4f66-bb84-ff832aa62547 preservado.
+Previews4185/58348/42706 e4186/28968 encerrados; abas18/19/21/22 deQA fechadas.
+Nenhum helper/teste pendente. Cópias deQA removidas, checkpoints deQA preservados.
+Capturas viveiro-0.35-offline-preview.png, viveiro-0.35.1-offline-redirects.png
+e viveiro-0.35.2-offline-publicado.png no diretório devisualizações autorizado.
+Npmci comdev aberto pode bloquear DLL; não reinstalar semnecessidade. Preferir
+escrita atômica emJSON/config para reduzir leituras parciais pelo watcher.
 
-## Próximo passo concreto: P1.5 /PWA
+## Próximo passo concreto: P1.6 /CSV e acessibilidade
 
-1. Conferir Git/PRs e abrir branch codex/ própria sobre#46 se continuar aberto.
-2. Planejar manifesto/cache comescopo da release: a galeria publica múltiplas
-versões na mesma origem, então cada service worker precisa deescopo/caches
-próprios. Não deixar uma versão remover os caches ou saves deoutra.
-3. Cachear o app, Three.js e todos osWorkers reais, guias e assets necessários.
-Preservar IndexedDB e a pausa do relógio emsegundo plano. Navegação autenticada
-do Site privado exige cuidado para não transformar privacidade emacesso público.
-4. Testar instalação/atualização, reabertura e checkpoint semrede comambiente
-isolado. Não desligar o dev4173 para testar offline; usar preview separado.
-5. Publicar entrega validada nos mesmos Sites, tag/PR e checkpoint. DepoisP1.6.
+1. Conferir Git/PRs; criar branch codex/ própria sobre#47 se ainda aberto.
+2. Inspecionar history/record, loop fixed e snapshot/restore. CSV diário deve
+usar observações reais no mesmo tick: população, prole, alimento, temperatura
+e gases, comunidades e metadados deversão/seed/cenário. Não inventar clima/gases
+históricos para saves antigos; declarar os limites da série disponível.
+3. Garantir exportação segura e comparação A/B, semconfundir previsões comdados
+observados ou alterar RNG/relógio. Testar determinismo e codec se mudar estado.
+4. Conferir teclado, foco, rótulos/contraste/semântica e realizar auditoria
+Lighthouse real quando disponível. Não declarar WCAGAA ou nota semmedição.
+5. Publicar entrega validada, tag/PR e checkpoint. Não rodar build-public da
+mesma versão após commit só demetadados; cada release temfonte imutável.
 
-P1.1B/hardware escolar, P1.2B/aluno novo, P1.4B/revisão docente, P1.7/pilotos,
-calibração e Zenodo exigem pessoas/dados reais. Não marcar como concluídos.
-P5/clima real entra por último. Não desativar a automação: ainda há critérios
-implementáveis pendentes. Não prometer retomada fora deuma execução permitida.
+P1.1B/hardware escolar, P1.2B/aluno novo, P1.4B/revisão docente eP1.7/pilotos,
+calibração eZenodo exigem pessoas/dados reais. Continuam pendentes. P5 porúltimo.
+Não desativar retomada: ainda há itens implementáveis. Não contornar limites.

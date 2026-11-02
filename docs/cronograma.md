@@ -509,7 +509,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [x] P0.3 entregue em0.30.1/PR [#41](https://github.com/albreis/viveiro/pull/41): [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/), com URLs /releases/v0.30.0/ e /releases/v0.30.1/. Acesso sem login, versão real e QA3D/Workers/arquivos conferidos. O Site original segue privado. Ver [processo e limites](publicacao-por-tag.md).
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
-  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.34.0 exata (atualizada após a entrega deP1.4A); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
+  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.35.2 exata (atualizada após a entrega deP1.5); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
   - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Nenhum DOI emitido.
   - [ ] P0.4C: após o PR chegar à branch padrão, conferir o botão do GitHub. Não concluído só por abrir PR.
   - A dependência externa de P0.4B não impede avançar P1; repo original e Site original continuam privados.
@@ -526,7 +526,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [ ] P1.4 Guia do professor em docs/ensino/: objetivo, tempo, passos, perguntas, gabarito e "o que o modelo não representa", associado à BNCC de Ciências da Natureza. Aceite: 6 roteiros revisados por professores de biologia e física.
   - [x] P1.4A: seis roteiros técnicos emdocs/ensino/, com objetivo, tempo, passos, perguntas, gabarito e limites; associação proposta à BNCC conferida na fonte oficial. Páginas geradas da mesma fonte, leitura/impressão e texto para baixar. Publicada em0.34.0/PR [#46](https://github.com/albreis/viveiro/pull/46); revisão real não incluída.
   - [ ] P1.4B: receber pareceres reais de Biologia e Física, corrigir os roteiros e documentar os seis aceites. Fichas ainda sem parecer.
-- [ ] P1.5 PWA com cache offline, aproveitando o IndexedDB existente. Aceite: abre e salva checkpoint sem rede.
+- [x] P1.5 PWA com cache offline, aproveitando o IndexedDB existente. Aceite: abre e salva checkpoint sem rede. Publicada em0.35.2/PR [#47](https://github.com/albreis/viveiro/pull/47) no laboratório público: escopo por release, preparo íntegro, guias/Workers no cache e remoção sem apagar saves. QA abriu e salvou após desligar o servidor do preview; Site privado/dev seguem online, preservando autenticação. Ver [implementação e limites](pwa-offline.md).
 - [ ] P1.6 Exportação CSV diária (população, prole, alimento, temperatura, gases) e acessibilidade WCAG 2.1 AA. Aceite: CSV abre em planilha; Lighthouse de acessibilidade acima de 90.
 - [ ] P1.7 Piloto com 2 ou 3 turmas, questionário SUS e pré/pós-teste curto. Aceite: SUS médio acima de 70 e relatório em docs/ensino/.
 

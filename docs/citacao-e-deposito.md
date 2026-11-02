@@ -103,3 +103,15 @@ Inclui somente9 Markdown públicos deensino usados no build. Documentação
 operacional continua excluída. Leitor ZIP independente conferiu todos os
 hashes;4 testes do depósito passaram. Sem DOI ou upload ao Zenodo.
 Ver validacoes/citacao-0.34.0.json. Tags/arquivos anteriores preservados.
+
+
+## Atualização 0.35.2
+
+CFF/rascunho referem v0.35.2/2e978cfb8b86481063300e7556084b145e00e744.
+Autoria coletiva mantida e esquema oficial validado. Pacote local
+.runtime/deposits/deposit-qpwRNb/viveiro-v0.35.2-source.zip:
+504 arquivos/1.422.413bytes, SHA256
+18ffa067b03d57262688025de147c0ef5b18caa1c70e253d6b3981b7c634c68c.
+LeitorZIP independente conferiu todos os hashes, membros e a configuração
+Vite offline da tag.4 testes do depósito passaram. Sem DOI/upload.
+Ver validacoes/citacao-0.35.2.json. Tags anteriores preservadas.
