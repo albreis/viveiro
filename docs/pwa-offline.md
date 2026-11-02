@@ -37,7 +37,7 @@ presença de todos os arquivos. Não há sincronização comservidor ou novaRNG.
 
 19 testes dirigidos passaram na primeira rodada final: falhas parciais,
 isolamento, login/privacidade, alteração de bytes, evicção, ícones reais,
-hashes finais, dois builds isolados e checkpoint codec/store. Rodada final com publicação/depósito:34/34 em3.026,0901ms.
+hashes finais, dois builds isolados e checkpoint codec/store. Rodada final com publicação/depósito:35/35 em2.270,6035ms.
 Build privado336 módulos, TypeScript estrito; build público isolado conferido.
 Módulos pequenos emsrc; ícones e manifesto gerados por código original,
 sem dependência adicional nem assets externos.
@@ -74,3 +74,13 @@ P1.6/CSV diário e acessibilidade é o próximo item implementável.
 A0.35.2 inclui a configuração Vite no commit da fonte e reúne o ajuste de
 redirecionamentos. Tags0.35.0 e0.35.1 são preservadas apenas noGit; não foram
 publicadas nos Sites. A entrega é a fonte completa marcada0.35.2.
+
+
+## Publicação e conferência final
+
+Fonte completa v0.35.2/2e978cfb8b86481063300e7556084b145e00e744, PR47.
+Ambos Sites publicados; original privado permanece comautenticação online.
+Público: preparo de34 arquivos e reload/guia/retorno conferidos noIAB,
+SEMENTE-42/D2,6 pausada, console semerros. A cópia pública ficou preparada.
+HTTP anônimo:27 arquivos nãoHTML comhashes exatos. Ver validacoes/offline-0.35.2.json,
+publicacao-0.35.2.json e deploy-0.35.2.json. Nenhum dado privado foi distribuído.

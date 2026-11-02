@@ -38,7 +38,7 @@
   },
   "build": {
     "typescript": "passed",
-    "privateViteModules": 335,
+    "privateViteModules": 336,
     "publicHashInventory": "passed in isolated build test"
   },
   "originalPreviewVersion": "0.35.0",
@@ -51,5 +51,8 @@
     "guidesOpened": true,
     "cacheRemoved": true,
     "consoleErrors": 0
-  }
+  },
+  "previewOnly": true,
+  "published": false,
+  "tagContainsCompleteBuildConfig": false
 }

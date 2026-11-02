@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-02T13:07:40.909140+00:00",
+  "version": "0.35.2",
+  "sourceSha": "2e978cfb8b86481063300e7556084b145e00e744",
+  "schema": "https://citation-file-format.github.io/1.2.0/schema.json",
+  "schemaSha256": "0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b",
+  "schemaValid": true,
+  "validator": "jsonschema 4.26.0 Draft7Validator + FormatChecker",
+  "zipReader": "Python 3.14 zipfile",
+  "files": 504,
+  "bytes": 1422413,
+  "archiveSha256": "18ffa067b03d57262688025de147c0ef5b18caa1c70e253d6b3981b7c634c68c",
+  "offlineBuildConfigIncluded": true,
+  "uploadedToZenodo": false,
+  "doi": null
+}

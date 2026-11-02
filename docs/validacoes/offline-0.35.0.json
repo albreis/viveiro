@@ -38,7 +38,10 @@
   },
   "build": {
     "typescript": "passed",
-    "privateViteModules": 335,
+    "privateViteModules": 336,
     "publicHashInventory": "passed in isolated build test"
-  }
+  },
+  "previewOnly": true,
+  "published": false,
+  "tagContainsCompleteBuildConfig": false
 }
