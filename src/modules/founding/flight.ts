@@ -1,3 +1,4 @@
+import { registerMating } from "../fertility/model.ts";
 import { beginSiteSurvey } from "../chambers/survey.ts";
 import { outsideSite } from "./site.ts";
 import type { FoundingState, FoundingWorld } from "./types.ts";
@@ -97,6 +98,8 @@ export function updateFlight(world: FoundingWorld) {
         queen.z - male.z,
       ) < 0.3
     ) {
+      for (const partner of world.ants)
+        if (partner.kind === "male") registerMating(world, queen, partner);
       f.matedTick = world.tick;
       changePhase(
         world,

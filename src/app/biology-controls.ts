@@ -76,19 +76,25 @@ export function installBiologyControls(world: FamilyWorld): void {
       'option[value="materials"]',
     );
     if (material) material.disabled = !p.materialModel;
-    topic.value = p.materialModel
-      ? "materials"
-      : p.chamberModel
-        ? "chambers"
-        : p.foundation === "semiclaustral"
-          ? "semiclaustral"
-          : p.dormancyModel
-            ? "seasonal"
-            : p.id === "lab-lniger-2024"
-              ? "study"
-              : p.maternalModel === "pools"
-                ? "maternal"
-                : "model";
+    const fertility = topic.querySelector<HTMLOptionElement>(
+      'option[value="fertility"]',
+    );
+    if (fertility) fertility.disabled = !p.fertilityModel;
+    topic.value = p.fertilityModel
+      ? "fertility"
+      : p.materialModel
+        ? "materials"
+        : p.chamberModel
+          ? "chambers"
+          : p.foundation === "semiclaustral"
+            ? "semiclaustral"
+            : p.dormancyModel
+              ? "seasonal"
+              : p.id === "lab-lniger-2024"
+                ? "study"
+                : p.maternalModel === "pools"
+                  ? "maternal"
+                  : "model";
     refresh();
   };
   select.onchange = changeProfile;

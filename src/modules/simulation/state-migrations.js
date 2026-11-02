@@ -1,3 +1,4 @@
+import { validateFertility } from "../fertility/validation.ts";
 import { validateSoilMaterial } from "../soil-material/validation.ts";
 import { validateRoomStores } from "../stores/validation.ts";
 import { validateChamberChoice } from "../chambers/validation.ts";
@@ -31,6 +32,7 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
   validateRoomStores(world, biologicalProfile.stockModel === "rooms-demo");
+  validateFertility(world, biologicalProfile.fertilityModel === "finite-demo");
   validateChamberChoice(world, biologicalProfile.chamberModel === "local-demo");
   validateFoundressForaging(
     world.founding,

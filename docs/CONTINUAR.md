@@ -2,6 +2,14 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
+## Trabalho preservado — 13A, ainda não publicado
+
+Branch codex/espermateca-e-fertilidade. Núcleo e UI implementados em arquivos pequenos: src/modules/fertility, app/fertility-status, biology/fertility-records. Perfil opcional generic-fertility-demo@1/revisão10, baseado nos mecanismos da12C. Recebimento80 créditos por macho efetivamente encontrado no voo; cenário estabelecido declara suposição inicial. Uso1 por fêmea, perda exponencial0,0005/dia, até8 machos na mesma ocasião; hipóteses demonstrativas, não contagens de células. Parentesco por ovo, haplodiploidia, machos após esgotamento sem morte instantânea, reembolso do orçamento sexual quando não pode gerar princesa. Filhas começam sem esperma e adquirem o próprio no voo. Sem alterações nos perfis antigos.
+
+251/251 testes completos passaram em239.738 ms (.runtime/fertility-suite.log), sessão59464 coletada e encerrada.11 dirigidos passaram; build com UI aprovado. Falta QA no navegador, documentação final e publicação0.27. O mundo do usuário continua SEMENTE-50088/D62,5/labv5 pausado; nenhuma QA13 iniciada. Não alegar13 concluída: saúde/longevidade13B ainda pendente. Fontes primárias verificadas: Chérasse/Aron2018 DOI10.1098/rspb.2018.2248 (texto PMC), denBoeretal2009 DOI10.1098/rspb.2009.1184 (resumo PubMed; PMC bloqueouCAPTCHA). Apoio qualitativo, sem coeficientes calibrados. Não transpor as taxas/expectativas dessas espécies.
+
+Usuário interrompeu com bug da borda de entradas: argolas toroidais independentes da malha dão a impressão de abertura redonda que não corresponde ao recorte. Corrigir em branch separada a partir da12C, preservando esta13A no GitHub. A malha uniforme pode perder pequenas aberturas entre células; reproduzir por raycast e alinhar amostras com centros/bordas. Remover argola artificial. Após publicar correção, incorporar à13A e retomar QA13; depois13B,14,P0–P5. Manter dev G e Site privados, saves preservados.
+
 ## Última entrega publicada — etapa 12C (0.26.0)
 
 Branch codex/materiais-e-compactacao; PR #34 sobre #33. Fonte publicada 609c26a531271975e183042c08fd815fc0f7fcd4, tag v0.26.0. Deploy appgdep_6ae7df533a188191ac6082f6efc038a6 succeeded em02/11/2026 00:54:55 UTC (01/11,21:54 em São Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_7a6f2ebc06e08191b9f33c2df9debb63. Mesmo Site privado, proprietário único, zero externos. Arquivo G:\Projetos\viveiro-0.26.0.tar.gz preservado.

@@ -114,6 +114,16 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
       "Variante demonstrativa com entrada aberta e coleta externa local pela rainha. Alimento finito separado das reservas iniciais; sem espécie calibrada.",
   }),
   ...createMicroclimateProfiles(generic),
+  Object.freeze({
+    ...createMicroclimateProfiles(generic)[2],
+    id: "generic-fertility-demo",
+    version: 1,
+    modelRevision: 10,
+    fertilityModel: "finite-demo" as const,
+    label: "Fertilidade · espermateca finita",
+    description:
+      "Créditos reprodutivos finitos por macho encontrado, perda de viabilidade e parentesco por ovo. Sem capacidade de armazenamento ou taxa de perda calibradas; esgotamento altera o sexo da prole, não mata a rainha.",
+  }),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

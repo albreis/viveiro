@@ -42,6 +42,7 @@ export interface ColonyAgent extends SoilAgent {
   socialPartner?: number;
 }
 export interface Brood extends Vec3 {
+  fertilization?: import("../fertility/types.ts").Fertilization;
   cocoon?: { version: 1; paid: number; built: boolean };
   development?: import("../development/types.ts").BroodDevelopment;
   kind?: "worker" | "gyne" | "male";
@@ -60,6 +61,7 @@ export interface Waste extends Vec3 {
   stored: boolean;
 }
 export interface ColonyState {
+  fertility?: import("../fertility/types.ts").FertilityState;
   stores?: import("../stores/types.ts").FoodStores;
   season?: import("../seasons/types.ts").SeasonState;
   broodLosses?: number;

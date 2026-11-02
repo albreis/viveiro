@@ -22,14 +22,19 @@ export function createGenetics(seed: string): GeneticsState {
     mutationEvents: 0,
   };
 }
-export function inheritGenome(world: GeneticWorld, id: number, male = false) {
+export function inheritGenome(
+  world: GeneticWorld,
+  id: number,
+  male = false,
+  sire?: GeneticsState["sire"],
+) {
   const state = world.genetics!;
   const mother = world.ants.find((a) => a.id === state.queen.id);
   return offspringGenome(
     mother?.genome ?? state.queen.genome,
-    male ? undefined : state.sire.genome,
+    male ? undefined : (sire ?? state.sire).genome,
     world.seed + ":embryo:" + id,
-    { motherId: state.queen.id, fatherId: state.sire.id },
+    { motherId: state.queen.id, fatherId: (sire ?? state.sire).id },
   );
 }
 export function genomeForAgent(

@@ -1,3 +1,4 @@
+import { canFertilize } from "../fertility/model.ts";
 import { addStock, takeStock } from "../stores/ledger.ts";
 import { layingComfort } from "../development/sensing.ts";
 import type { ColonyWorld } from "../colony/types.ts";
@@ -12,7 +13,7 @@ export const GYNE_COST = 9,
 export function laySexualBrood(w: ColonyWorld) {
   const queen = w.ants.find((a) => a.kind === "queen" && (a.health ?? 100) > 0);
   w.colony.reproductiveFood ??= 0;
-  if (w.remainingFoundations === 0) {
+  if (w.remainingFoundations === 0 || !canFertilize(w)) {
     addStock(w, w.colony.reproductiveFood, "refund");
     w.colony.reproductiveFood = 0;
     return false;
