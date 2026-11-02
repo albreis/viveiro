@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.28.0**, PR [#38](https://github.com/albreis/viveiro/pull/38), etapa13B de saúde e longevidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.29.0**, PR [#39](https://github.com/albreis/viveiro/pull/39), etapa14 de ritmo e continuidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -27,9 +27,9 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
 | 12    | Seleção local do microclima e da câmara                            | ✅ Protótipos 12A–12C publicados · 0.24–0.26                     |
 | 13    | Espermateca, fertilidade e longevidade                             | ✅ Protótipos 13A–13B publicados · 0.27–0.28                    |
-| 14    | Ritmo biológico e execução longa entre sessões                     | 🔧 Validada; em publicação · 0.29                      |
+| 14    | Ritmo biológico e execução longa entre sessões                     | ✅ Protótipo publicado · 0.29 · PR #39                      |
 
-**Ordem restante:** 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
+**Ordem restante:** revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -466,7 +466,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 ### 14. Ritmo biológico e execução longa
 
-- [ ] Mecanismos validados na branch codex/ritmo-e-avanco-entre-sessoes,0.29.0, em publicação: relógio persistido, avanço cooperativo, cancelamento, orçamento e destino recuperável.284 testes completos,18 dirigidos finais, build308 módulos e QA/restore aprovados. Ver [ritmo e limites](ritmo-e-continuidade.md).
+- [x] Mecanismos publicados em0.29.0, PR [#39](https://github.com/albreis/viveiro/pull/39), fonte df92cc3/tag v0.29.0: relógio persistido, avanço cooperativo, cancelamento, orçamento e destino recuperável.284 testes completos,18 dirigidos finais, build308 módulos e QA/restore aprovados. Ver [ritmo e limites](ritmo-e-continuidade.md).
 
 - Oferecer perfil de 1 minuto real por dia simulado e outros ritmos; separar relógio biológico de estabilidade numérica.
 - Exemplo: 365 dias = 6 h 5 min; 30 anos = 182,5 h nessa escala, sem obrigar o navegador a ficar aberto todo esse tempo.
@@ -523,9 +523,9 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 ### Etapas do cronograma que entram no plano
 
 - [x] 10C: PR #26 integrado; 0.23.0 publicada no Site privado, tag e situação atualizadas.
-- [ ] 12: seleção local do microclima e da câmara, somente por sensores locais. Aceite adicional: experimento de aula pronto.
-- [ ] 13: espermateca, fertilidade e longevidade. Pré-requisito de P3.2.
-- [ ] 14: escala de tempo biológico e execução longa. Pré-requisito de P3.2 e P3.3; reaproveitar a linha de comando de P2.2.
+- [x] 12: mecanismos12A–12C publicados, com roteiro de aula em docs/ensino/microclima-local.md. Revisão docente e calibração continuam abertas.
+- [x] 13: protótipos13A–13B publicados em0.27–0.28. Calibração científica exigida porP3.2 ainda pendente.
+- [x] 14: ritmo persistido e avanço headless no navegador publicados em0.29. A CLI deP2.2 continua pendente; não existe servidor contínuo.
 
 ### P2. Ferramenta de pesquisa
 
