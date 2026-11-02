@@ -1,0 +1,36 @@
+.time-panel {
+  margin-top: 16px;
+}
+.time-panel label {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.time-panel select,
+.time-panel input {
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0 4px;
+}
+.time-panel summary {
+  cursor: pointer;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.time-panel button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  margin-top: 12px;
+}
+.time-panel progress {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  accent-color: var(--olive, #637e49);
+}
+#advance-status {
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}

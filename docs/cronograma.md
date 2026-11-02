@@ -1,6 +1,6 @@
 # Cronograma de entregas
 
-Atualizado em 01/11/2026. Cada etapa tem branch própria, testes, publicação
+Atualizado em 02/11/2026. Cada etapa tem branch própria, testes, publicação
 no mesmo Site privado e registro de limitações. As próximas entregas dependem
 dos testes e do feedback; não há datas artificiais de conclusão.
 
@@ -27,7 +27,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
 | 12    | Seleção local do microclima e da câmara                            | ✅ Protótipos 12A–12C publicados · 0.24–0.26                     |
 | 13    | Espermateca, fertilidade e longevidade                             | ✅ Protótipos 13A–13B publicados · 0.27–0.28                    |
-| 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
+| 14    | Ritmo biológico e execução longa entre sessões                     | 🔧 Validada; em publicação · 0.29                      |
 
 **Ordem restante:** 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
@@ -465,6 +465,8 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 - Aceite: balanço espermático, parentesco, curvas de sobrevivência e desfechos emergentes testados.
 
 ### 14. Ritmo biológico e execução longa
+
+- [ ] Mecanismos validados na branch codex/ritmo-e-avanco-entre-sessoes,0.29.0, em publicação: relógio persistido, avanço cooperativo, cancelamento, orçamento e destino recuperável.284 testes completos,18 dirigidos finais, build308 módulos e QA/restore aprovados. Ver [ritmo e limites](ritmo-e-continuidade.md).
 
 - Oferecer perfil de 1 minuto real por dia simulado e outros ritmos; separar relógio biológico de estabilidade numérica.
 - Exemplo: 365 dias = 6 h 5 min; 30 anos = 182,5 h nessa escala, sem obrigar o navegador a ficar aberto todo esse tempo.

@@ -25,6 +25,8 @@ export function captureSession(value: {
   running: boolean;
   replaying: boolean;
   replayIndex: number;
+  clock?: SessionState["clock"];
+  advance?: SessionState["advance"];
 }): SessionState {
   return normalizeSession({
     version: 1,

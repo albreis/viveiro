@@ -53,6 +53,10 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Acompanhar
 
+- [Ritmo e continuidade](docs/ritmo-e-continuidade.md)
+- [Saúde e longevidade](docs/saude-longevidade.md)
+- [Espermateca e fertilidade](docs/espermateca.md)
+
 - [Memória sazonal e casulos](docs/sazonalidade.md)
 
 - [Maturação térmica](docs/maturacao.md)

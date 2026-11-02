@@ -5,6 +5,8 @@ export interface WorldWire extends Record<string, unknown> {
   colonies?: WorldWire[];
 }
 export interface SessionState {
+  clock?: import("../time/clock.ts").ClockState;
+  advance?: import("../time/advance-types.ts").AdvancePlan;
   version: 1;
   world: WorldWire;
   comparison?: WorldWire | null;
