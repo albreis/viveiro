@@ -60,3 +60,17 @@ concordância com a hipótese do professor. Resultados sem diferença contam.
 Para revisão, use [a ficha de revisão](revisao-docente.md): há 6 fichas sem parecer preenchido.
 Precisam de docentes reais de Biologia e Física; não houve revisão, SUS,
 pré/pós-teste ou validação pedagógica. Envie sugestões sem dados de alunos.
+
+## Preparar uma aula sem rede
+
+No [laboratório público](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/),
+abra uma versão e use **Preparar para usar sem rede**. Aguarde a mensagem
+**Pronto para abrir sem rede** antes de sair. Reabra o endereço daquela versão;
+o catálogo e links externos continuam dependendo de conexão. Em navegadores
+compatíveis, a instalação como aplicativo fica no menu do navegador.
+
+Checkpoints continuam locais, usando o mesmo navegador e origem. Exportar JSON
+permite levar uma cópia para outra origem. **Remover cópia offline** remove
+somente os arquivos desta versão, preservando os checkpoints. O navegador pode
+liberar armazenamento; a cópia local não substitui a exportação. O Site privado
+continua online para preservar a autenticação; o modo offline é da versão pública.

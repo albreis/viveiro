@@ -1,0 +1,23 @@
+.offline-panel h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+.offline-panel p {
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.offline-panel button {
+  margin: 0.3rem 0.5rem 0.3rem 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 7px;
+  border: 1px solid #84996e;
+  background: #eef4e3;
+  color: #30462b;
+}
+.offline-panel button:focus-visible {
+  outline: 3px solid #47682f;
+  outline-offset: 3px;
+}
+.offline-panel [hidden] {
+  display: none;
+}

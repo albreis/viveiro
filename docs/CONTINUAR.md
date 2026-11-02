@@ -1,3 +1,18 @@
+# P1.5 em publicação /0.35.0
+
+Branch codex/pwa-offline sobre#46; cache público implementado e QA offline passou.
+Preview4185/sessão58348 foi desligado; reabertura/novo checkpoint/reload/roteiros
+funcionaram sem servidor. Preview religado42706 só para remover a cópia de teste;
+checkpoint preservado. Ambas as sessões encerradas, abas18/19 fechadas.
+Dev17752/4173 HTTP200, nova abaIAB20 marcada, SEMENTE-50088/D62,5 pausada.
+Abas antigas4/16 emerro não devem ser usadas. Não houve perda de save.
+19 testes dirigidos passaram; conferir rodada publicação/depósito e build final.
+Próximo: commit/tag v0.35.0, push/PR sobre#46, publicar privado online e release
+pública offline nos Sites existentes. Atualizar citação/ZIP para o SHA da tag.
+Depois P1.6/CSV e acessibilidade. Não desativar a retomada.
+
+---
+
 # Continuação do Viveiro
 
 Atualizado em02/11/2026 após publicação da0.34.0/P1.4A.

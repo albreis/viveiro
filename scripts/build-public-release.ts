@@ -57,6 +57,7 @@ mkdirSync(join(checkout, ".runtime"), { recursive: true });
 const output = mkdtempSync(join(checkout, ".runtime", "public-build-"));
 await build({
   root: checkout,
+  mode: "public",
   base: releaseBase(version),
   build: { outDir: output, emptyOutDir: false },
 });
