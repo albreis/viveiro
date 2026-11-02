@@ -517,6 +517,8 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 ### P1. Modo escola
 
 - [ ] P1.1 Perfil de desempenho leve: menos agentes e instâncias, malha mais grossa, previsão parcial por padrão. Aceite: 30 quadros/s ou mais em Chromebook ou notebook de entrada, medido e documentado, com o mesmo modelo e seed.
+  - [x] P1.1A: seletor leve/completo, limite apenas visual de80 operárias com prioridade de câmera/seleção, malha reduzida no mesmo campo, sombras opcionais, previsão por contagem e medidor local. Seed, população e modelo preservados. Ver [implementação e medição local](perfil-leve.md).
+  - [ ] P1.1B: ensaio em equipamento escolar identificado, em movimento e sob carga maior. A medição local com14 adultos pausados não certifica esse aceite.
 - [ ] P1.2 Tour de primeira visita em módulo próprio de src/app. Aceite: aluno novo entra em primeira pessoa em menos de 2 minutos sem ajuda.
 - [ ] P1.3 Experimentos de um clique (seed, parâmetros, câmera e pergunta): feromônio com e sem vento; ângulo de repouso 15° × 55°; uma × duas entradas e ventilação; prole em solo frio × quente; claustral × semiclaustral; mesma seed com uma intervenção diferente; herança. Aceite: abre em menos de 10 s e tem teste do estado inicial.
 - [ ] P1.4 Guia do professor em docs/ensino/: objetivo, tempo, passos, perguntas, gabarito e "o que o modelo não representa", associado à BNCC de Ciências da Natureza. Aceite: 6 roteiros revisados por professores de biologia e física.

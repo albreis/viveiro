@@ -7,10 +7,11 @@ branches, tags, saves e audiência privada original. Código novo pequeno em TS.
 
 ## Estado atual
 
-P0.3 entregue; P0.4A preparada na branch codex/citacao-e-deposito.
+P0.3 entregue; P0.4A no PR#42, branch codex/citacao-e-deposito.
+P1.1A validada em codex/perfil-leve; publicação0.31.0 a concluir.
 P0.4B/DOI depende de conta autenticada e depósito reais, ainda ausentes.
 Branch codex/publicacao-por-tag; PR #41 sobre codex/licencas-e-revisao/#40.
-PRs32–41 ainda abertos na última checagem; main15781d2. Conferir merges do
+PRs32–42 ainda abertos na última checagem; main15781d2. Conferir merges do
 usuário antes da próxima etapa; ajustar a base se a anterior for integrada.
 
 ## Publicações válidas
@@ -77,21 +78,32 @@ adicionados depois da tag, mapa SHA-256 e conferência de todas as entradas.
 Pacote em.runtime/deposits/deposit-CqrgTm/viveiro-v0.30.1-source.zip.
 Nada enviado ao Zenodo. Ver docs/citacao-e-deposito.md.
 Metadados não alteram a aplicação; não republicar0.30.1 nem suas tags.
-PR da entrega: conferir por head codex/citacao-e-deposito, base#41 se aberto.
+PR#42 aberto sobre codex/publicacao-por-tag/#41. Push953fedb confirmado.
 
-## Próximo passo concreto: P1.1
+## Entrega atual: P1.1A /0.31.0
 
-1. Conferir Git/PRs/merges e abrir branch codex/ própria depois do PR da citação.
-   Não duplicar PR. Repositório original continua privado.
-2. Implementar perfil leve de renderização e previsão parcial; não reduzir
-   população simulada em experimento existente nem trocar modelo/seed.
-   Limitar instâncias visuais e malha renderizada somente.
-3. Medir no navegador real. Aceite30fps em hardware escolar depende de ensaio
-   real em aparelho identificado; não chamar este PC de Chromebook.
-4. P0.4B/DOI e P0.4C/botão após merge permanecem pendentes. Autoria e conta
-   Zenodo perguntadas em chat; sem resposta até esta entrega. Sem token no chat.
-5. SeguirP1–P5, P5 por último. Dados de laboratório, revisão docente, pilotos e
-   hardware escolar são dependências externas. Automação permanece útil.
+Perfil leve/completo; DPR1, sombras desligadas, 80 operárias desenhadas com
+seleção/câmera prioritárias. Todos os agentes continuam no modelo. Malha
+visual64×24×44 com refinamentos das entradas; mesmo campo de colisão.
+Previsão por contagem explícita e medidor10s. Preferência fora dos saves.
+24/24 dirigidos em4.718ms e build316 módulos. QA local: primeira pessoa,
+perfil persistido após reload, previsão por contagem e console limpo.
+SEMENTE-50088/D62,5 em pausa preservada. i5-1135G7/Iris Xe disponível,
+viewport571×465 CSS/DPR1,25: completo58,7fps/300344tri; leve60,0fps/206120tri.
+Não certifica30fps em hardware escolar ou carga grande. Ver docs/perfil-leve.md.
+Publicação e SHA/tag exatos devem ser reconciliados após sucesso do deploy.
+
+## Próximo passo concreto
+
+1. Concluir commit/push/PR codex/perfil-leve sobre#42 e publicação0.31.0 pelo
+   fluxo oficial do mesmo Site privado. Preservar público separado e tags.
+2. Depois, retomar P1.2/tour de primeira visita em branch codex/ própria.
+   O teste com aluno novo em2min é dependência de usuário real, não simulado.
+3. P0.4B/DOI, P0.4C/botão após merge e P1.1B/hardware continuam pendentes;
+   não impedem os próximos itens implementáveis. Conta/autoria Zenodo foram
+   perguntadas em chat, sem resposta. Não pedir tokens no chat nem inventar DOI.
+4. SeguirP1–P5, P5 por último. Revisão docente, pilotos e dados de laboratório
+   permanecem dependências externas. Automação continua útil.
 
 Não desativar a automação: o cronograma segue. Histórico detalhado preservado
 em [índice de checkpoints](continuacao/0357f01/README.md).

@@ -1,6 +1,6 @@
 import type { NestState } from "../navigation/types.ts";
 /** Rectilinear samples remain shared across cells, avoiding patch seams. */
-export function meshAxes(nest: NestState) {
+export function meshAxes(nest: NestState, detail: "full" | "light" = "full") {
   const axis = (min: number, max: number, count: number, extra: number[]) =>
     [
       ...new Set(
@@ -27,18 +27,20 @@ export function meshAxes(nest: NestState) {
   }
   // Prioritize narrow mouths; cap extra strips to bound mesh cost in mature nests.
   for (const n of [...entries].sort((a, b) => a.r - b.r).slice(0, 16))
-    for (const side of [-0.8, -0.4, 0.4, 0.8]) {
+    for (const side of detail === "light"
+      ? [-1, -0.8, -0.4, 0.4, 0.8, 1]
+      : [-0.8, -0.4, 0.4, 0.8]) {
       x.push(n.x + side * n.r);
       z.push(n.z + side * n.r);
     }
   return {
-    x: axis(-10.4, 10.4, 96, x),
+    x: axis(-10.4, 10.4, detail === "light" ? 64 : 96, x),
     y: axis(
       -4.5,
       0.3,
-      34,
+      detail === "light" ? 24 : 34,
       [-0.24, -0.18, -0.12, -0.06, 0, 0.06, 0.12, 0.18, 0.24],
     ),
-    z: axis(-6.9, 6.9, 64, z),
+    z: axis(-6.9, 6.9, detail === "light" ? 44 : 64, z),
   };
 }

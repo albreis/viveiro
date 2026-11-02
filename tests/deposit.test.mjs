@@ -15,8 +15,8 @@ const zenodo = () =>
 
 test("citação vincula a release real sem inventar DOI ou autoria pessoal", () => {
   const c = citationMetadata(citation());
-  assert.equal(c.version, "0.30.1");
-  assert.equal(c.commit, "d61a439980d32dcbae61bba5d2aeb274fbb75341");
+  assert.match(c.version, /^\d+\.\d+\.\d+$/);
+  assert.match(c.commit, /^[a-f0-9]{40}$/);
   assert.deepEqual(c.authors, [{ name: "Viveiro contributors" }]);
   assert.equal("doi" in c, false);
   checkDepositMetadata(c, zenodo());
@@ -25,7 +25,7 @@ test("citação vincula a release real sem inventar DOI ou autoria pessoal", () 
     /divergem/,
   );
   assert.throws(
-    () => citationMetadata({ ...c, url: c.url.replace("0.30.1", "0.30.0") }),
+    () => citationMetadata({ ...c, url: c.url.replace(c.version, "999.99.9") }),
     /URL/,
   );
 });

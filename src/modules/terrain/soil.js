@@ -16,6 +16,6 @@ export function geometryFromSoilData(data) {
   geometry.computeBoundingSphere();
   return geometry;
 }
-export function createSoilGeometry(nest) {
-  return geometryFromSoilData(soilMeshData(nest));
+export function createSoilGeometry(nest, detail = "full") {
+  return geometryFromSoilData(soilMeshData(nest, detail));
 }

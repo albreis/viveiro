@@ -30,7 +30,7 @@ export function buildGround(host, seed) {
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(2, 1.3);
   host.soil = host.mesh(
-    createSoilGeometry(host.world.nest),
+    createSoilGeometry(host.world.nest, host.performance.soilDetail),
     [
       host.material("#ffffff", { vertexColors: true }),
       host.material("#ffffff", { map: texture, vertexColors: true }),

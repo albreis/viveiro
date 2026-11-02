@@ -1,3 +1,4 @@
+import { visibleWorkers } from "./performance-profile.ts";
 import { updatePlant } from "./plants.js";
 import { surfaceHeight } from "../landscape/queries.ts";
 import * as THREE from "three";
@@ -64,11 +65,26 @@ export function update(host, world, time, alpha = 1) {
     m.visible = p.amount > 0.06;
     m.scale.setScalar(0.5 + Math.sqrt(p.amount) * 0.32);
   }
-  host.soilView.update(world, (a) => host.pose(a), host.followId);
+  host.visibleWorkers = visibleWorkers(
+    world.workers,
+    host.performance,
+    host.camera.position,
+    host.followId,
+    host.selectedId,
+  );
+  const ids = new Set(host.visibleWorkers.map((a) => a.id));
+  const drawnAnts = world.ants.filter(
+    (a) => a.kind !== "worker" || ids.has(a.id),
+  );
+  const visibleIds = new Set(drawnAnts.map((a) => a.id));
+  host.soilView.update(
+    { ...world, ants: drawnAnts },
+    (a) => host.pose(a),
+    host.followId,
+  );
   host.granularView.update(world.nest);
   host.structureView.update(world);
   host.plugView.update(world.nest);
-  host.visibleWorkers = world.workers.filter((a) => a.id !== host.followId);
   host.updateAnts(host.visibleWorkers, host.antParts, false, time);
   host.updateAnts(world.predators, host.predatorParts, true, time);
   host.foundersView.update(
@@ -79,11 +95,16 @@ export function update(host, world, time, alpha = 1) {
     time,
     world.foundings,
   );
-  host.colonyView.update(world, (a) => host.pose(a), host.followId);
-  host.ecologyView.update(world, (a) => host.pose(a), host.followId);
+  host.colonyView.update(world, (a) => host.pose(a), host.followId, visibleIds);
+  host.ecologyView.update(
+    world,
+    (a) => host.pose(a),
+    host.followId,
+    visibleIds,
+  );
   host.trailView.update(world, host.showTrails);
   host.chemicalView.update(
-    world.ants,
+    drawnAnts,
     world.tick,
     (a) => host.pose(a),
     host.followId,

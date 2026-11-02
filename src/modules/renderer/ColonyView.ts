@@ -66,6 +66,7 @@ export class ColonyView {
     world: ColonyWorld,
     pose: (a: ColonyAgent) => THREE.Vector3,
     followId: number | null,
+    visibleIds?: ReadonlySet<number>,
   ) {
     this.stocks.update(world);
     const d = this.dummy,
@@ -79,6 +80,7 @@ export class ColonyView {
         i = counts[index];
       if (i >= mesh.instanceMatrix.count) continue;
       const carrier = b.carrier === undefined ? null : ants.get(b.carrier);
+      if (carrier && visibleIds && !visibleIds.has(carrier.id)) continue;
       if (carrier) d.position.copy(this.mouth(carrier, pose));
       else d.position.set(b.x, b.y, b.z);
       d.rotation.set(0, b.id * 2.4, 0);
@@ -125,6 +127,7 @@ export class ColonyView {
     if (this.waste.instanceColor) this.waste.instanceColor.needsUpdate = true;
     let n = 0;
     for (const ant of world.ants) {
+      if (visibleIds && !visibleIds.has(ant.id)) continue;
       if ((!ant.carrying && !ant.carryingWaste) || ant.id === followId)
         continue;
       d.position.copy(this.mouth(ant, pose));
