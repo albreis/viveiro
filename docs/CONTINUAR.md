@@ -7,7 +7,8 @@ Preservar branches, tags, saves e a audiência privada original.
 
 ## Git e entregas
 
-Branch atual: codex/perfil-leve; PR#43 sobre codex/citacao-e-deposito/#42.
+Branch atual: codex/tour-primeira-visita, sobre codex/perfil-leve/#43.
+P1.2A implementada/validada; commit/push/PR e publicação0.32.0 a concluir.
 PR#42 sobre codex/publicacao-por-tag/#41. Main15781d2 na última checagem.
 PRs32–43 estavam abertos; conferir merges antes de agir. Não duplicar PRs.
 Tag v0.31.0: 1a5fa67038c8fe244844136257f5328becbf5e4e.
@@ -84,20 +85,32 @@ Autoria/conta foram perguntadas em chat, sem resposta até esta entrega.
 Ver docs/citacao-e-deposito.md e docs/validacoes/citacao-0.31.0.json.
 Pacote anterior0.30.1 e suas evidências continuam preservados.
 
-## Próximo passo concreto: P1.2
+## Em entrega: P1.2A /0.32.0
 
-1. Conferir Git/PRs e abrir branch codex/ sobre#43 se ainda aberto.
-2. Implementar tour de primeira visita em módulo pequeno de src/app, com
-   teclado, opção de pular/reabrir e guia até seleção/primeira pessoa, sem
-   reiniciar terrário, criar intervenções ou sobrescrever saves.
-3. Testar navegação/estado e QA real; aceite com aluno novo em menos de2min
-   depende de participante real. Não simular esse resultado.
-4. Continuar P1.3/experimentos e demais itens implementáveis, mantendo
-   dependências externas separadas. P5/clima real entra por último.
-5. Entrega funcional: branch/testes/QA/commit/push/PR e publicação privada.
-   Release pública exige fonte limpa e NOVA versão. Abrir espelho antes de
-   acrescentar artefatos; helper com commands:[["node","build-static.ts"]].
-   Não trocar IDs nem reescrever releases antigas.
+Tour guiado em módulos pequenos de src/app/tour e src/modules/onboarding.
+Oferta automática só em primeira visita sem save; pular/reabrir e teclado.
+Só confirma primeira pessoa após câmera real. Cartão evita o controle-alvo.
+Atalho de espaço protegido em SELECT/TEXTAREA/edição. Preferência fora do save.
+22/22 dirigidos finais em6.028ms, build324 módulos. QA dev preservou D62,5/seed50088.
+Preview isolado4182/aba10 confirmou primeira visita, pular/reload/reabrir,
+clique em primeira pessoa sem sobreposição e Esc em duas etapas; dia0,5 em pausa.
+Servidor preview4182/sessão28404 e aba10 encerrados; dev17752 preservado.
+Captura viveiro-0.32-tour-preview.png no diretório de visualizações autorizado.
+Aluno novo em2min é aceite externo pendente. Ver docs/tour-primeira-visita.md.
+
+## Próximo passo concreto
+
+1. Concluir fonte limpa, commit/push/tag0.32.0 e PR sobre#43 se ainda aberto.
+2. Publicar no Site privado original via fluxo oficial; atualizar o público
+   separado acrescentando tag, sem substituir versões anteriores. Não repetir
+   os deploys0.31.0 já concluídos.
+3. Sincronizar CFF e rascunho de depósito com SHA real da tag, sem inventar DOI.
+4. Fechar preview4182/aba10, manter dev4173 e registrar IDs/hashes reais.
+5. Depois retomar P1.3/experimentos de um clique em branch codex/ própria.
+   Criar seed/parametrização/câmera/pergunta reproduzíveis, com testes de estado
+   inicial e preservação do experimento anterior antes de trocar cenário.
+6. P0.4B/conta/DOI, P0.4C/botão após merge, P1.1B/hardware e P1.2B/aluno seguem
+   dependências externas; não impedem outros itens implementáveis. P5 por último.
 
 Histórico anterior: [índice de checkpoints](continuacao/0357f01/README.md).
 Commits anteriores preservam também os checkpoints de0.30/P0.4A.

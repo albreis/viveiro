@@ -1,0 +1,37 @@
+{
+  "version": "0.32.0",
+  "tests": {
+    "passed": 22,
+    "failed": 0,
+    "durationMs": 6027.6478
+  },
+  "build": {
+    "typeScript": "passed",
+    "viteModules": 324
+  },
+  "browser": {
+    "existingExperiment": {
+      "seed": "SEMENTE-50088",
+      "dayDisplayed": "62,5",
+      "paused": true,
+      "automaticTour": false,
+      "firstPersonConfirmed": true,
+      "spaceInSelectPreservesPause": true
+    },
+    "isolatedPreview": {
+      "origin": "http://127.0.0.1:4182/",
+      "automaticTour": true,
+      "skipSurvivesReload": true,
+      "manualReopen": true,
+      "actualCameraClick": true,
+      "targetOverlappedByCard": false,
+      "arrowKeys": true,
+      "escapeClosesGuideThenCamera": true,
+      "consoleWarnings": 0,
+      "consoleErrors": 0,
+      "closed": true
+    }
+  },
+  "realNewStudentStudy": false,
+  "twoMinuteAcceptanceVerified": false
+}

@@ -1,0 +1,101 @@
+.tour-panel {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 30;
+  width: min(370px, calc(100vw - 2.4rem));
+  max-height: calc(100dvh - 2.4rem);
+  overflow-y: auto;
+  padding: 1.15rem;
+  border: 1px solid #92a97c;
+  border-radius: 14px;
+  color: var(--ink);
+  background: #fafbf6;
+  box-shadow: 0 12px 44px #24332b26;
+}
+.tour-panel[data-dock$="left"] {
+  left: 1.2rem;
+  right: auto;
+}
+.tour-panel[data-dock$="right"] {
+  right: 1.2rem;
+  left: auto;
+}
+.tour-panel[data-dock^="top"] {
+  top: 1.2rem;
+  bottom: auto;
+}
+.tour-panel[data-dock^="bottom"] {
+  bottom: 1.2rem;
+  top: auto;
+}
+.tour-heading,
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+.tour-panel h2 {
+  margin: 0.7rem 0;
+  font: 600 1.1rem/1.4 var(--display);
+}
+.tour-panel p {
+  line-height: 1.65;
+}
+.tour-keyboard {
+  font-size: 0.7rem;
+  color: #52624d;
+}
+.tour-panel button {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #c1cdae;
+  border-radius: 6px;
+  color: #30442e;
+  background: #f2f6e9;
+}
+#tour-close {
+  border: 0;
+  background: none;
+  font-size: 1.25rem;
+  padding: 0.1rem 0.5rem;
+}
+#tour-jump {
+  width: 100%;
+  margin: 0.35rem 0 0.8rem;
+}
+#tour-next {
+  color: #fff;
+  background: #426044;
+}
+.tour-panel :focus-visible,
+.tour-target {
+  outline: 3px solid #5f7b3c !important;
+  outline-offset: 4px;
+}
+@media (max-width: 650px) {
+  .tour-panel {
+    right: 0.7rem;
+    bottom: 0.7rem;
+    width: calc(100vw - 1.4rem);
+    max-height: 42dvh;
+  }
+  .top-actions {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .tour-panel[data-dock$="left"] {
+    left: 0.7rem;
+  }
+  .tour-panel[data-dock$="right"] {
+    right: 0.7rem;
+  }
+  .tour-panel[data-dock^="top"] {
+    top: 0.7rem;
+  }
+  .tour-panel[data-dock^="bottom"] {
+    bottom: 0.7rem;
+  }
+}

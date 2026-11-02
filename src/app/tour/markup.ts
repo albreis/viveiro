@@ -1,0 +1,15 @@
+export const tourMarkup = [
+  '<div class="tour-heading">',
+  '  <span id="tour-progress" class="eyebrow"></span>',
+  '  <button id="tour-close" type="button" aria-label="Fechar guia">×</button>',
+  "</div>",
+  '<h2 id="tour-title" tabindex="-1"></h2>',
+  '<p id="tour-description" aria-live="polite"></p>',
+  '<p class="tour-keyboard">Esc fecha o guia · Tab navega · setas dentro do guia mudam o passo</p>',
+  '<button id="tour-jump" type="button"></button>',
+  '<div class="tour-actions">',
+  '  <button id="tour-back" type="button">Voltar</button>',
+  '  <button id="tour-next" type="button"></button>',
+  '  <button id="tour-skip" type="button">Pular guia</button>',
+  "</div>",
+].join("\n");
