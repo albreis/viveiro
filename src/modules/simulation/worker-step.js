@@ -1,3 +1,5 @@
+import { deathLabels } from "../survival/labels.ts";
+import { updateLife } from "../survival/update.ts";
 import { storageDestination } from "../stores/destination.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { seasonalShelter } from "../seasons/shelter.ts";
@@ -23,7 +25,7 @@ import { tunnelEnvelope } from "../terrain/terrain.js";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 
-export function updateWorkers(world, suitability) {
+export function updateWorkers(world, suitability, exposure) {
   const dead = new Set();
   for (const ant of world.ants) {
     ant.previousAngle = ant.angle;
@@ -35,6 +37,15 @@ export function updateWorkers(world, suitability) {
   updateFounding(world);
   for (const ant of world.ants) {
     ant.age += 0.01;
+    const cause = updateLife(world, ant, exposure?.get(ant.id) ?? 0);
+    if (cause) {
+      dead.add(ant.id);
+      world.deaths++;
+      ant.deathCause = cause;
+      if (ant.kind === "queen")
+        world.log("A rainha morreu por " + deathLabels[cause] + ".", "danger");
+      continue;
+    }
     if ((ant.health ?? 100) <= 0) {
       dead.add(ant.id);
       world.deaths++;
@@ -71,7 +82,7 @@ export function updateWorkers(world, suitability) {
         (ant.metabolicCost ?? 1) *
         seasonFactors(world).activity +
       airEnergyCost(world, ant);
-    if (ant.energy <= 0 || ant.age > world.lifeLimit(ant)) {
+    if (ant.energy <= 0 || (!ant.life && ant.age > world.lifeLimit(ant))) {
       dead.add(ant.id);
       world.deaths++;
       ant.deathCause = ant.energy <= 0 ? "starvation" : "age";

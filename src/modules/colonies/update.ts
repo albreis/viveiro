@@ -1,3 +1,5 @@
+import { diseaseExposure } from "../survival/disease.ts";
+import { recordMortality } from "../survival/update.ts";
 import { updateFertility } from "../fertility/model.ts";
 import { updateSeason } from "../seasons/update.ts";
 import { learningDeath } from "../learning/live.ts";
@@ -38,6 +40,7 @@ export function advanceFamily(root: FamilyWorld) {
   updateGranular(root);
   updateVentilation(root);
   for (const w of colonies) w.gases = root.gases;
+  const exposure = diseaseExposure(root);
   const dead = new Set<number>();
   for (const w of colonies) {
     w.nextId = root.nextId;
@@ -52,7 +55,7 @@ export function advanceFamily(root: FamilyWorld) {
     updateBroodLifecycle(w, suitability);
     invalidateNeighbors(w);
     bindNeighbors(root);
-    for (const id of updateWorkers(w, suitability)) dead.add(id);
+    for (const id of updateWorkers(w, suitability, exposure)) dead.add(id);
     root.nextId = w.nextId;
   }
   const habitat = Object.create(root) as FamilyWorld;
@@ -71,6 +74,7 @@ export function advanceFamily(root: FamilyWorld) {
   for (const w of colonies) {
     for (const a of w.ants)
       if (dead.has(a.id)) {
+        recordMortality(w, a);
         learningDeath(w, a);
         dropSoil(w, a);
         leaveCorpse(w, a);

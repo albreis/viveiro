@@ -151,9 +151,16 @@ export class AntCameraControls {
         format(ant.distanceWalked || 0) +
         " u. · idade " +
         format(ant.age || 0) +
-        " d · saúde " +
+        (ant.life ? " d · corpo " : " d · saúde ") +
         Math.round(ant.health ?? 100) +
-        "%"
+        "%" +
+        (ant.life
+          ? " · energia " +
+            Math.round(ant.energy) +
+            "% · infecção " +
+            Math.round(ant.life.infection * 100) +
+            "%"
+          : "")
       : "Nenhuma formiga viva.";
     element("ant-genome").textContent = describeGenome(ant?.genome);
     const local = document.getElementById("ant-climate");

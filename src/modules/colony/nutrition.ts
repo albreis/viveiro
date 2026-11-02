@@ -39,6 +39,7 @@ export function updateNutrition(world: ColonyWorld) {
     ensureIndividual(world.seed, ant);
     const queen = ant.kind === "queen";
     if (queen && isClaustral(world)) continue;
+    if (queen && ant.life && ant.crop < 0.04) feedFromStock(world, ant);
     if (queen) {
       const factor = seasonFactors(world).activity,
         need = 0.0006 * factor,

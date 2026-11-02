@@ -1,3 +1,4 @@
+import { survivalIntervention } from "../survival/intervention.ts";
 import { materialIntervention } from "../soil-material/intervention.ts";
 import { applyLearningIntervention } from "../learning/intervention.ts";
 import { arriveMimic } from "../ecology/mimic-arrival.ts";
@@ -140,6 +141,8 @@ export class World {
     return true;
   }
   intervene(type, x = 0, z = 0, value) {
+    const healthAction = survivalIntervention(this, type, value);
+    if (healthAction !== null) return healthAction;
     const materialAction = materialIntervention(this, type, value);
     if (materialAction !== null) return materialAction;
     const learningAction = applyLearningIntervention(this, type, value);

@@ -14,6 +14,7 @@ export interface ColonyTask {
   until?: number;
 }
 export interface ColonyAgent extends SoilAgent {
+  life?: import("../survival/types.ts").LifeState;
   stockGoal?: number;
   roomMemory?: import("../chambers/types.ts").RoomMemory;
   sexual?: boolean;
@@ -61,6 +62,7 @@ export interface Waste extends Vec3 {
   stored: boolean;
 }
 export interface ColonyState {
+  survival?: import("../survival/types.ts").SurvivalStats;
   fertility?: import("../fertility/types.ts").FertilityState;
   stores?: import("../stores/types.ts").FoodStores;
   season?: import("../seasons/types.ts").SeasonState;

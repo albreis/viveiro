@@ -80,21 +80,27 @@ export function installBiologyControls(world: FamilyWorld): void {
       'option[value="fertility"]',
     );
     if (fertility) fertility.disabled = !p.fertilityModel;
-    topic.value = p.fertilityModel
-      ? "fertility"
-      : p.materialModel
-        ? "materials"
-        : p.chamberModel
-          ? "chambers"
-          : p.foundation === "semiclaustral"
-            ? "semiclaustral"
-            : p.dormancyModel
-              ? "seasonal"
-              : p.id === "lab-lniger-2024"
-                ? "study"
-                : p.maternalModel === "pools"
-                  ? "maternal"
-                  : "model";
+    const survival = topic.querySelector<HTMLOptionElement>(
+      'option[value="survival"]',
+    );
+    if (survival) survival.disabled = !p.survivalModel;
+    topic.value = p.survivalModel
+      ? "survival"
+      : p.fertilityModel
+        ? "fertility"
+        : p.materialModel
+          ? "materials"
+          : p.chamberModel
+            ? "chambers"
+            : p.foundation === "semiclaustral"
+              ? "semiclaustral"
+              : p.dormancyModel
+                ? "seasonal"
+                : p.id === "lab-lniger-2024"
+                  ? "study"
+                  : p.maternalModel === "pools"
+                    ? "maternal"
+                    : "model";
     refresh();
   };
   select.onchange = changeProfile;

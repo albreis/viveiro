@@ -10,7 +10,8 @@ export type ParameterTopic =
   | "semiclaustral"
   | "chambers"
   | "materials"
-  | "fertility";
+  | "fertility"
+  | "survival";
 export interface BiologicalReference {
   schema: 1;
   id: string;
@@ -27,6 +28,7 @@ export interface ParameterRecord {
   readonly requiresRoomStores?: boolean;
   readonly requiresSoilMaterial?: boolean;
   readonly requiresFertility?: boolean;
+  readonly requiresSurvival?: boolean;
   readonly requiresEntrancePlug?: boolean;
   readonly value: number | null;
   readonly range?: readonly [number, number];
@@ -57,6 +59,7 @@ export interface BiologicalProfile {
   readonly modelRevision?: number;
   readonly materialModel?: "relative-demo";
   readonly fertilityModel?: "finite-demo";
+  readonly survivalModel?: "risk-demo";
   readonly stockModel?: "rooms-demo";
   readonly chamberModel?: "local-demo";
   readonly dormancyModel?: "obligate-demo";

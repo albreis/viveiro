@@ -9,7 +9,7 @@ export function updateSexualAgent(
 ) {
   if (!a.sexual) return false;
   a.energy -= 0.012;
-  if (a.energy <= 0 || a.age > 25) {
+  if (a.energy <= 0 || (!a.life && a.age > 25)) {
     dead.add(a.id);
     a.deathCause = "starvation";
     w.log("Um alado não sobreviveu até a próxima janela de voo.", "danger");

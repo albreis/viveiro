@@ -1,3 +1,4 @@
+import { renderSurvivalStatus } from "./survival-view.ts";
 import { renderFertilityStatus } from "./fertility-status.ts";
 import { renderMaterialStatus } from "./material-controls.ts";
 import { renderSeasonStatus } from "./season-controls.ts";
@@ -30,6 +31,7 @@ export function renderStatus(context, updateAntCamera) {
   renderSeasonStatus(current);
   renderMaterialStatus(current);
   renderFertilityStatus(current);
+  renderSurvivalStatus(current);
   const w = current,
     workers = w.workers.length,
     queen = w.ants.some((a) => a.kind === "queen"),
