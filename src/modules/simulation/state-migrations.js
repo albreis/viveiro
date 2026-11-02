@@ -1,3 +1,4 @@
+import { validateSurvival } from "../survival/validation.ts";
 import { validateFertility } from "../fertility/validation.ts";
 import { validatePredatorMemory } from "../predators/validation.ts";
 import { validateSoilMaterial } from "../soil-material/validation.ts";
@@ -34,6 +35,7 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   validatePredatorMemory(world.predators);
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
   validateRoomStores(world, biologicalProfile.stockModel === "rooms-demo");
+  validateSurvival(world, biologicalProfile.survivalModel === "risk-demo");
   validateFertility(world, biologicalProfile.fertilityModel === "finite-demo");
   validateChamberChoice(world, biologicalProfile.chamberModel === "local-demo");
   validateFoundressForaging(

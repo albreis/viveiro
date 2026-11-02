@@ -1,5 +1,13 @@
 # Versões
 
+## 0.28.0 — Saúde, riscos e longevidade
+
+- Perfil opcional separa energia, ferimentos, carga infecciosa, riscos por idade/doença e fertilidade.
+- Rainha consome estoque fisicamente acessível; reparo corporal paga nutrientes.
+- Exposição local por contato e resíduos, memória fisiológica e mortalidade por causa persistentes.
+- Curvas condicionais explícitas, desafio experimental e catálogo de parâmetros demonstrativos.
+- Sem limite universal de vida da rainha; calibração por espécie permanece aberta.
+
 ## 0.27.0 — Espermateca finita e parentesco
 
 - Perfil opcional com lotes reprodutivos por macho, perdas de viabilidade e débito por ovo fecundado.

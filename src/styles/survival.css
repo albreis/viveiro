@@ -1,0 +1,36 @@
+#survival-panel {
+  min-width: 0;
+  max-width: 100%;
+}
+#survival-panel label {
+  display: block;
+  margin: 12px 0 6px;
+  color: #617057;
+  font-size: 12px;
+  line-height: 1.6;
+}
+#survival-caste {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid #d8dfc9;
+  border-radius: 6px;
+  background: #f7f9ef;
+  color: #435b38;
+  font: inherit;
+  font-size: 11px;
+}
+#survival-curve {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+#survival-challenge {
+  display: block;
+  width: 100%;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.6;
+}

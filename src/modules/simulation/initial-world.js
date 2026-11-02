@@ -1,3 +1,4 @@
+import { initializeSurvival } from "../survival/initialize.ts";
 import { initializeFertility } from "../fertility/model.ts";
 import { initializeSoilMaterial } from "../soil-material/initialize.ts";
 import { initializeRoomStores } from "../stores/initialize.ts";
@@ -124,5 +125,6 @@ export function initializeWorld(world, seed, parameters, options = {}) {
   initializeSeason(world);
   initializeRoomStores(world);
   initializeFertility(world);
+  initializeSurvival(world);
   world.record();
 }

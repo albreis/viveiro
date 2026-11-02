@@ -1,3 +1,4 @@
+import { initializeLife } from "../survival/initialize.ts";
 import { genomeForAgent } from "../genetics/reproduction.ts";
 import { expressGenome } from "../genetics/phenotype.ts";
 import type { Genome } from "../genetics/genome.ts";
@@ -6,6 +7,8 @@ import { individualTraits } from "../colony/individual.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 type FactoryWorld = Pick<
   ColonyWorld,
+  | "biologicalProfile"
+  | "tick"
   | "nextId"
   | "seed"
   | "nest"
@@ -48,5 +51,6 @@ export function createAgent(
     ant.genome = genomeForAgent(world, id, kind, suppliedGenome);
     expressGenome(ant, ant.genome);
   }
+  initializeLife(world, ant);
   return ant;
 }

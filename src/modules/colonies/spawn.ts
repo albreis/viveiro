@@ -1,3 +1,4 @@
+import { initializeSurvival } from "../survival/initialize.ts";
 import { initializeFertility } from "../fertility/model.ts";
 import { initializeRoomStores } from "../stores/initialize.ts";
 import { initializeFoundressForaging } from "../semiclaustral/initialize.ts";
@@ -125,6 +126,7 @@ export function spawnDaughter(
   initializeSeason(child);
   initializeRoomStores(child);
   initializeFertility(child);
+  initializeSurvival(child);
   root.nextColonyId = id + 1;
   (root.colonies ??= []).push(child);
   bindNeighbors(root);
