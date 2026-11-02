@@ -2,6 +2,21 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
+## Em andamento — etapa12B, 0.25.0
+
+Branch codex/estoques-por-camara, base ea0cf07 da12A / PR#32. Novos módulos pequenos em src/modules/stores, app/store-status e renderer/FoodStoresView; nenhuma dependência nova. Perfil generic-microclimate-demo@2, revisão8, conserva os anteriores.
+
+- Lotes por câmara e fluxos explícitos para entregas, devoluções, prole, casulos, trofalaxia/alimentação, alados, perdas e furto. Alimento atual = inicial + entradas − retiradas = soma dos lotes. Só funções de estoque alteram food após inicialização; apresentação agregada é somente visual.
+- Câmaras secas conhecidas são preferidas por memórias locais; fallback legado de objetivo/odor continua sem ler clima remoto. Refeições diretas e depósitos verificam o corpo; chegada lógica adiantada usa aproximação apoiada. Nutrição da prole ainda é orçamento coletivo, sem transportar fisicamente cada crédito. Rainha não ganhou ingestão autônoma.
+- Deterioração por água/temperatura no ponto do lote vira resíduo contado. Marcadores são agregados visuais, não grãos físicos. Guardas de saves conferem balanço, nós, posição e propriedade também após reconstruir habitat compartilhado.
+- Primeira suíte228/228 em240.733 ms, sessão80984 encerrada. Depois novas guardas e três casos;15 dirigidos finais passaram, log .runtime/stores-recovery-final.log. Build final270 módulos aprovado. Suíte COMPLETA FINAL rodando na sessão9502, .runtime/stores-suite-final.log. Coletar; não iniciar outra. Esperados231 casos, confirmar contagem real.
+- QA atual ESTOQUES-QA v2 no IAB tab2, PAUSADA D215,8:0,339 crédito em primeira câmara, água~21,8%, balanço fechado, rainha viva. Checkpoint Estoque por câmara · QA preservado. Ainda conferir painel atualizado, visual/console e recuperar usuário. Não recriar um QA para forçar sobrevivência.
+- Recuperação obrigatória ao encerrar: manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf, SEMENTE-50088 /D62,5/labv5, ainda atual antes desta QA. Não restaurarD16,9 ouD267. Dev G PID17752 mantido, Sitetab1 intocado.
+
+### Próximo passo concreto
+
+Coletar sessão9502; finalizar QA e recuperação. Docs/estoques-por-camara.md, CHANGELOG e cronograma precisam de status final. Commit/push, PR próprio sobre#32 (ou main se integrado), publicação privada0.25.0 com helper aberto após commit final, tag e metadados. Depois12C para materiais/textura/compactação/água/suporte; depois13–14 e P0–P5. Não marcar12 inteira concluída nem desativar retomada.
+
 ## Última entrega publicada — etapa 12A (0.24.0)
 
 Branch codex/escolha-local-da-camara; PR #32 sobre main, após integração dos PRs #30/#31 pelo usuário. Fonte publicada 3cf90eeba5166f7a5f576f80255d402fe3b621e2, tag v0.24.0. Deploy appgdep_6ae7d12547cc81918be4cc9fc7c7122a succeeded em 01/11/2026 23:54:27 UTC. Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_6281f82bcedc81918980d0aea9321d5d. Mesmo Site privado, somente proprietário e zero externos. Arquivo G:\Projetos\viveiro-0.24.0.tar.gz preservado. Módulos pequenos em src/modules/chambers; perfil opcional generic-microclimate-demo@1, revisão7; genéricos anteriores preservados. Ver docs/escolha-local.md.

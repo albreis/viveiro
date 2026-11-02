@@ -1,13 +1,16 @@
+import { FoodStoresView } from "./FoodStoresView.ts";
 import * as THREE from "three";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { broodStage } from "../colony/brood.ts";
 
 export class ColonyView {
+  private stocks: FoodStoresView;
   private stages: THREE.InstancedMesh[];
   private waste: THREE.InstancedMesh;
   private loads: THREE.InstancedMesh;
   private dummy = new THREE.Object3D();
   constructor(scene: THREE.Scene, capacity: number) {
+    this.stocks = new FoodStoresView(scene);
     this.stages = [0xeee4b9, 0xd3c39c, 0xc9b389, 0xb39a70].map((color) =>
       this.mesh(scene, new THREE.SphereGeometry(0.075, 8, 6), color, capacity),
     );
@@ -64,6 +67,7 @@ export class ColonyView {
     pose: (a: ColonyAgent) => THREE.Vector3,
     followId: number | null,
   ) {
+    this.stocks.update(world);
     const d = this.dummy,
       ants = new Map(world.ants.map((a) => [a.id, a])),
       counts = [0, 0, 0, 0];

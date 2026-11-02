@@ -1,3 +1,6 @@
+import { settleStockArrival } from "../stores/arrival.ts";
+import { physicalStockVisit } from "../stores/local.ts";
+import { addStock, takeStock, hasStockBin } from "../stores/ledger.ts";
 import { finishLearningEdge } from "../learning/live.ts";
 import { roomNode, isStock } from "../colony/rooms.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
@@ -63,13 +66,31 @@ export function finishSegment(
   if (target.type === "entrance")
     ant.lastEntrance = { node: targetId, x: target.x, z: target.z };
   if (world.onNestArrival?.(ant, targetId)) return;
-  if (isStock(world.nest, targetId, ant.colonyId || 1)) {
-    world.food += ant.carrying;
+  if (
+    (!!world.colony?.stores &&
+      (ant as import("../colony/types.ts").ColonyAgent).stockGoal ===
+        targetId) ||
+    hasStockBin(world, targetId) ||
+    isStock(world.nest, targetId, ant.colonyId || 1)
+  ) {
+    if (settleStockArrival(world, ant, targetId)) return;
+    delete (ant as import("../colony/types.ts").ColonyAgent).stockGoal;
+    addStock(world, ant.carrying, "foraged", targetId, {
+      x: ant.x,
+      y: ant.y ?? 0,
+      z: ant.z,
+    });
     ant.carrying = 0;
     if (world.onStorageVisit) world.onStorageVisit(ant);
     else if (world.food > 0.15) {
-      world.food -= 0.15;
-      ant.energy = 100;
+      const paid = takeStock(
+        world,
+        physicalStockVisit(world, ant, targetId) ? 0.15 : 0,
+        "care",
+        targetId,
+        !!world.colony?.stores,
+      );
+      if (paid >= 0.15 - 1e-10) ant.energy = 100;
     }
     requestRoute(
       world,

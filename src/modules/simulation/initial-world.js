@@ -1,3 +1,4 @@
+import { initializeRoomStores } from "../stores/initialize.ts";
 import { initializeSeason } from "../seasons/update.ts";
 import {
   resolveBiologicalProfile,
@@ -118,5 +119,6 @@ export function initializeWorld(world, seed, parameters, options = {}) {
   if (!world.founding)
     world.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
   initializeSeason(world);
+  initializeRoomStores(world);
   world.record();
 }

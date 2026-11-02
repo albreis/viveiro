@@ -1,3 +1,4 @@
+import { addStock } from "../stores/ledger.ts";
 import type { FoundingState, ReserveUse } from "../founding/types.ts";
 import type { ColonyAgent, ColonyWorld } from "../colony/types.ts";
 /** Collected food is separate from the original maternal tissue ledger. */
@@ -16,7 +17,7 @@ export function withdrawForaged(
 export function exportFoundressPantry(w: ColonyWorld): void {
   const s = w.founding?.foraging;
   if (!s) return;
-  w.food += s.pantry;
+  addStock(w, s.pantry, "foundress");
   s.exported += s.pantry;
   s.pantry = 0;
 }

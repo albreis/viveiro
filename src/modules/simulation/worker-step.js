@@ -1,3 +1,4 @@
+import { storageDestination } from "../stores/destination.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { seasonalShelter } from "../seasons/shelter.ts";
 import { updateSealWorker } from "../sealing/worker.ts";
@@ -100,7 +101,11 @@ export function updateWorkers(world, suitability) {
           (ant.carrying ||
             (ant.energy < 35 && world.tick >= (ant.stockEmptyUntil || 0))) &&
           ant.node !== roomNode(world.nest, "storage", 0, ant.colonyId || 1)
-            ? roomNode(world.nest, "storage", 0, ant.colonyId || 1)
+            ? storageDestination(
+                world,
+                ant,
+                roomNode(world.nest, "storage", 0, ant.colonyId || 1),
+              )
             : soilEntrance(world, ant);
         requestRoute(world, ant, destination);
         if (!ant.route.length && node.type === "entrance")
@@ -146,7 +151,11 @@ export function updateWorkers(world, suitability) {
         requestRoute(
           world,
           ant,
-          roomNode(world.nest, "storage", 0, ant.colonyId || 1),
+          storageDestination(
+            world,
+            ant,
+            roomNode(world.nest, "storage", 0, ant.colonyId || 1),
+          ),
         );
         continue;
       }

@@ -1,3 +1,4 @@
+import { addStock, takeStock } from "../stores/ledger.ts";
 import { layingComfort } from "../development/sensing.ts";
 import type { ColonyWorld } from "../colony/types.ts";
 import { makeBrood } from "../colony/brood.ts";
@@ -12,7 +13,7 @@ export function laySexualBrood(w: ColonyWorld) {
   const queen = w.ants.find((a) => a.kind === "queen" && (a.health ?? 100) > 0);
   w.colony.reproductiveFood ??= 0;
   if (w.remainingFoundations === 0) {
-    w.food += w.colony.reproductiveFood;
+    addStock(w, w.colony.reproductiveFood, "refund");
     w.colony.reproductiveFood = 0;
     return false;
   }
@@ -21,7 +22,7 @@ export function laySexualBrood(w: ColonyWorld) {
       w.colony.reproductiveFood,
       Math.max(0, 1.2 - w.food),
     );
-    w.food += refund;
+    addStock(w, refund, "refund");
     w.colony.reproductiveFood -= refund;
   }
   if (
@@ -43,7 +44,7 @@ export function laySexualBrood(w: ColonyWorld) {
     Math.max(0, investment - w.colony.reproductiveFood),
     Math.max(0, w.food - 1.2),
   );
-  w.food -= deposit;
+  takeStock(w, deposit, "sexual");
   w.colony.reproductiveFood += deposit;
   if (w.colony.reproductiveFood < investment - 1e-9) return false;
   const nursery = roomNode(w.nest, "nursery", 0, w.colonyId || 1);

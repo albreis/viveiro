@@ -128,6 +128,23 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
     description:
       "Rainha visita o solo antes de escavar e cuidadoras comparam apenas câmaras visitadas. Água nos poros como proxy; sem clima de câmara ou espécie calibrados.",
   }),
+  Object.freeze({
+    ...generic,
+    id: "generic-microclimate-demo",
+    version: 2,
+    modelRevision: 8,
+    maternalModel: "pools" as const,
+    entranceModel: "plug" as const,
+    developmentModel: "thermal-demo" as const,
+    dormancyModel: "obligate-demo" as const,
+    seasonality: "seasonal" as const,
+    cocoon: "present" as const,
+    chamberModel: "local-demo" as const,
+    stockModel: "rooms-demo" as const,
+    label: "Microclima · estoques por câmara",
+    description:
+      "Sondagem local e estoque alimentar por câmara. Entregas procuram locais secos conhecidos; deterioração usa o clima da pilha. Nutrição da prole ainda usa orçamento coletivo. Sem espécie calibrada.",
+  }),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

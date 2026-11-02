@@ -1,3 +1,4 @@
+import { takeStock } from "../stores/ledger.ts";
 import type { Brood, ColonyWorld } from "../colony/types.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import { isClaustral, spendReserve } from "../founding/types.ts";
@@ -16,7 +17,7 @@ export function finishCocoon(w: ColonyWorld, b: Brood): void {
     amount = isClaustral(w)
       ? spendReserve(w, "larvae", needed)
       : Math.min(w.food, needed);
-  if (!isClaustral(w)) w.food -= amount;
+  if (!isClaustral(w)) takeStock(w, amount, "silk", b.node);
   c.paid += amount;
   if (c.paid >= COCOON_COST - 1e-10) c.built = true;
   else b.age = 0.9 - 1e-6;

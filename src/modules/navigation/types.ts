@@ -115,6 +115,7 @@ export interface NestState {
 }
 
 export interface NavigationWorld {
+  colony?: import("../colony/types.ts").ColonyState;
   learning?: import("../learning/types.ts").LearningState;
   neighborAgents?: AgentState[];
   landscape?: import("../landscape/types.ts").Landscape;

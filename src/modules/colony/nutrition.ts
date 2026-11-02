@@ -1,3 +1,5 @@
+import { physicalStockVisit } from "../stores/local.ts";
+import { takeStock } from "../stores/ledger.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { recognizes } from "../social-chemistry/profile.ts";
 import { isClaustral, spendReserve } from "../founding/types.ts";
@@ -19,10 +21,18 @@ export function shareCrop(donor: ColonyAgent, receiver: ColonyAgent) {
 }
 export function feedFromStock(world: ColonyWorld, ant: ColonyAgent) {
   ensureIndividual(world.seed, ant);
-  const amount = Math.max(0, Math.min(0.3, 0.6 - ant.crop, world.food));
+  const requested = physicalStockVisit(world, ant)
+    ? Math.max(0, Math.min(0.3, 0.6 - ant.crop, world.food))
+    : 0;
+  const amount = takeStock(
+    world,
+    requested,
+    "care",
+    ant.node ?? undefined,
+    !!world.colony.stores,
+  );
   ant.stockEmptyUntil = amount > 0 ? 0 : world.tick + 150;
   ant.crop += amount;
-  world.food -= amount;
 }
 export function updateNutrition(world: ColonyWorld) {
   for (const ant of world.ants) {

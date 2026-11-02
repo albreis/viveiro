@@ -1,3 +1,4 @@
+import { storeRecords } from "./store-records.ts";
 import { chamberRecords } from "./chamber-records.ts";
 import { semiclaustralRecords } from "./semiclaustral-records.ts";
 import { seasonalRecords } from "./seasonal-records.ts";
@@ -22,6 +23,7 @@ export const biologicalParameters = Object.freeze(
     ...seasonalRecords,
     ...semiclaustralRecords,
     ...chamberRecords,
+    ...storeRecords,
   ].map((record) =>
     Object.freeze({
       ...record,

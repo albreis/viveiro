@@ -1,3 +1,5 @@
+import { spoilRoomStocks } from "../stores/spoilage.ts";
+import { takeStock } from "../stores/ledger.ts";
 import { loseFoundressLoad } from "../semiclaustral/budget.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import { roomNode } from "./rooms.ts";
@@ -45,6 +47,10 @@ export function leaveCorpse(world: ColonyWorld, ant: ColonyAgent) {
 }
 export function spoilStocks(world: ColonyWorld) {
   if (world.tick % 100 || world.food <= 0) return;
+  if (world.colony.stores) {
+    spoilRoomStocks(world);
+    return;
+  }
   const storage =
     world.nest.nodes[roomNode(world.nest, "storage", 0, world.colonyId || 1)];
   if (!storage) return;
@@ -59,7 +65,7 @@ export function spoilStocks(world: ColonyWorld) {
     world.food * Math.max(0, water - 0.75) * 0.005 * thermal,
   );
   if (amount <= 0) return;
-  world.food -= amount;
+  takeStock(world, amount, "spoilage");
   world.colony.spoiled += amount;
   addWaste(world, {
     x: storage.x,
