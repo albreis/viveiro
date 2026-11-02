@@ -59,11 +59,7 @@ function intersect(grid: MeshGrid, a: number, b: number): Vertex {
     const row = Math.floor(index / (grid.nx + 1)),
       z = row % (grid.nz + 1),
       y = Math.floor(row / (grid.nz + 1));
-    return [
-      grid.minX + x * grid.sx,
-      grid.minY + y * grid.sy,
-      grid.minZ + z * grid.sz,
-    ];
+    return [grid.x[x], grid.y[y], grid.z[z]];
   };
   const pa = point(a),
     pb = point(b);

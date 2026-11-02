@@ -9,6 +9,10 @@ export function aphidPrey(w: FamilyWorld, p: EcologyPredator) {
     .filter(
       (v) =>
         v.plant &&
+        !(
+          p.predatorMemory?.avoid?.plant === v.a.plant &&
+          p.predatorMemory.avoid.until > w.tick
+        ) &&
         v.a.count >= 1 &&
         Math.hypot(v.plant.x - p.x, v.plant.z - p.z) < 1.8,
     );
