@@ -1,7 +1,8 @@
 # CLI e experimentos isolados
 
-Entrega P2.2A /0.39.0. A execução sem interface está implementada; o aceite de
-igualdade byte a byte entre navegador e Node permanece P2.2B. Não confundir
+Entregas P2.2A /0.39.0 e P2.2B /0.40.0. A execução sem interface usa uma
+política numérica portátil em Workers isolados. Quatro casos reais produziram
+CSV e manifesto idênticos byte a byte no navegador e Node24.22.1. Não confundir
 repetição na mesma implementação/runtime com portabilidade científica.
 
 ## Uso com Node24
@@ -64,7 +65,7 @@ biológico. A página não continua calculando depois de ser fechada.
   decimal. Inclui estado inicial e fechamento a cada100 ticks; não médias nem
   previsões. Sem temperatura/gases, campos vazios continuam ausências.
 - manifesto.json: schema viveiro-run-v1, versão real, plano canônico, intervalo,
-  contrato aritmético nativo, bytes/hash SHA-256 do CSV e RNG final da colônia raiz.
+  contrato aritmético versionado, bytes/hash SHA-256 do CSV e RNG final da colônia raiz.
   Filhas podem ter RNG próprio; esse único número não é hash do estado completo.
 - configuracao.json: download da página; a CLI usa o mesmo plano no manifesto.
 
@@ -74,7 +75,7 @@ permite localizar a tag da fonte após publicar; não certifica checkout sem edi
 O comando não cria checkpoint/replay completo nem aceita saves como estado inicial.
 Varredura/retomada pertence aP2.3; aulas A/B continuam na interface existente.
 
-## Limitação medida: P2.2B pendente
+## Histórico da divergência nativa na0.39.0
 
 Node24.22.1 e IAB real executaram QA-CLI-039,10 dias, established, generic-demo@1,
 humidity68/light72/randomness28/repose36/temperature24/windX0.25/windZ−0.15.
@@ -89,11 +90,9 @@ no tick650. Isso é evidência de divergência computacional, não de caos natur
 validado. O diagnóstico não alterou o CSV nem a ordem de draws do experimento.
 
 Não basta formatar ou arredondar o CSV: a população inteira também divergiu.
-A próxima subetapa deve definir uma aritmética portátil versionada, testar suas
-funções e integrá-la em cálculos isolados, mantendo a interpretação de saves
-legados. Evitar patches globais de Math e não substituir o motor por resultados
-pré-calculados. Retestar navegador REAL versus Node com trajetórias com operárias,
-microclima e mais de uma seed, antes de marcar o aceite. Limitações observadas
+A0.40.0 introduziu a política stdlib-f64-v1 em cálculos isolados, preservando
+a política nativa dos saves e do terrário3D. Funções e múltiplas trajetórias foram
+conferidas com navegador REAL e Node. Ver [contrato numérico](aritmetica-portatil.md). Limitações observadas
 não são selo de validação científica nem garantia entre motores arbitrários.
 
 Dados brutos sintéticos preservados em tests/fixtures/cli-native-039/ (plano e

@@ -2,7 +2,7 @@ import {
   exampleExperiment,
   normalizeExperiment,
 } from "../modules/experiments/plan.ts";
-import type { ExperimentResponse } from "../workers/experiment.worker.ts";
+import type { ExperimentResponse } from "../modules/experiments/messages.ts";
 import metadata from "../../package.json" with { type: "json" };
 const byId = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;

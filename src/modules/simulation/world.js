@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { recordDaily } from "../observations/record.ts";
 import { survivalIntervention } from "../survival/intervention.ts";
 import { materialIntervention } from "../soil-material/intervention.ts";
@@ -25,7 +26,7 @@ import { positionClear } from "../navigation/collision.ts";
 export { TICKS_PER_DAY, LIMIT, NEST, BOUNDS, createNest, nestPath };
 export { hashSeed } from "./seed.ts";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
+const distance = (a, b) => modelMath.hypot(a.x - b.x, a.z - b.z);
 export class World {
   constructor(seed = "SEMENTE-42", parameters = {}, options = {}) {
     initializeWorld(this, seed, parameters, options);

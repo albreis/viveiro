@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { SoilWorld, SoilPile } from "../soil/types.ts";
 import type { RoofPatch } from "./types.ts";
 import { sampleSoil } from "../terrain/field.ts";
@@ -24,7 +25,7 @@ export function solidVolume(
         )
           count++;
       }
-  return (count / n ** 3) * (2 * r) ** 3;
+  return (count / modelMath.pow(n, 3)) * modelMath.pow(2 * r, 3);
 }
 export function releaseRoof(w: SoilWorld, patch: RoofPatch): SoilPile | null {
   if (

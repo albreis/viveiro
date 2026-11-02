@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { chooseSupportedStep } from "../navigation/support-step.ts";
 export function updateEncounterMotion(w: ColonyWorld, a: ColonyAgent) {
@@ -23,10 +24,10 @@ export function updateEncounterMotion(w: ColonyWorld, a: ColonyAgent) {
     };
     Object.assign(a, step.position, {
       normal: step.normal,
-      angle: Math.atan2(d.z, d.x),
-      pitch: Math.atan2(d.y, Math.hypot(d.x, d.z)),
+      angle: modelMath.atan2(d.z, d.x),
+      pitch: modelMath.atan2(d.y, modelMath.hypot(d.x, d.z)),
     });
-    a.distanceWalked = (a.distanceWalked || 0) + Math.hypot(d.x, d.y, d.z);
+    a.distanceWalked = (a.distanceWalked || 0) + modelMath.hypot(d.x, d.y, d.z);
   }
   a.state = e.state;
   return true;

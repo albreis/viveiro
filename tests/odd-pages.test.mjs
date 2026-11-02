@@ -8,9 +8,9 @@ import { teachingMarkdown } from "../src/modules/teaching/markdown.ts";
 import { permittedSourcePath } from "../src/modules/publication/deposit.ts";
 import { validAssetPath } from "../src/modules/publication/release.ts";
 
-test("ODD: oito páginas, downloads íntegros e links locais resolvíveis", () => {
+test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
   const pages = modelDocPages(process.cwd());
-  assert.equal(modelDocuments.length, 8);
+  assert.equal(modelDocuments.length, 9);
   for (const d of modelDocuments) {
     assert.ok(permittedSourcePath(d.source));
     assert.equal(

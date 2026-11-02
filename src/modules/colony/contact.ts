@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState, Vec3 } from "../navigation/types.ts";
 import { sampleSoil } from "../terrain/field.ts";
 interface ContactBody {
@@ -11,9 +12,9 @@ interface ContactBody {
 function mouth(ant: ContactBody): Vec3 {
   const normal = ant.normal || { x: 0, y: 1, z: 0 };
   return {
-    x: ant.x + normal.x * 0.12 + Math.cos(ant.angle || 0) * 0.14,
-    y: (ant.y || 0) + normal.y * 0.12 + Math.sin(ant.pitch || 0) * 0.14,
-    z: ant.z + normal.z * 0.12 + Math.sin(ant.angle || 0) * 0.14,
+    x: ant.x + normal.x * 0.12 + modelMath.cos(ant.angle || 0) * 0.14,
+    y: (ant.y || 0) + normal.y * 0.12 + modelMath.sin(ant.pitch || 0) * 0.14,
+    z: ant.z + normal.z * 0.12 + modelMath.sin(ant.angle || 0) * 0.14,
   };
 }
 export function contactAcrossAir(

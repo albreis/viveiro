@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { FERTILITY_PARAMETERS as p } from "./types.ts";
@@ -63,7 +64,7 @@ export function registerMating(
     !w.ants.includes(male) ||
     (queen.health ?? 100) <= 0 ||
     (male.health ?? 100) <= 0 ||
-    Math.hypot(
+    modelMath.hypot(
       queen.x - male.x,
       (queen.y ?? 0) - (male.y ?? 0),
       queen.z - male.z,
@@ -75,7 +76,9 @@ export function registerMating(
 export function updateFertility(w: ColonyWorld): void {
   const s = w.colony.fertility;
   if (!s || w.tick <= s.lastTick) return;
-  const fraction = -Math.expm1((-p.decayPerDay * (w.tick - s.lastTick)) / 100);
+  const fraction = -modelMath.expm1(
+    (-p.decayPerDay * (w.tick - s.lastTick)) / 100,
+  );
   for (const pool of s.pools) {
     const loss = pool.viable * fraction;
     pool.viable -= loss;

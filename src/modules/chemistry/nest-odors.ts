@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState } from "../navigation/types.ts";
 export interface NestOdors {
   fields: Record<string, number[]>;
@@ -17,16 +18,16 @@ function graph(nest: NestState): Graph {
   const cached = graphs.get(nest);
   if (cached?.revision === nest.revision) return cached;
   const volumes = nest.nodes.map((n) =>
-    Math.max(0.03, (4 / 3) * Math.PI * n.r ** 3),
+    Math.max(0.03, (4 / 3) * Math.PI * modelMath.pow(n.r, 3)),
   );
   const edges = nest.links.map(([a, b], i) => ({
     a,
     b,
     g:
-      (0.03 * Math.PI * (nest.linkWidths?.[i] || 0.38) ** 2) /
+      (0.03 * Math.PI * modelMath.pow(nest.linkWidths?.[i] || 0.38, 2)) /
       Math.max(
         0.3,
-        Math.hypot(
+        modelMath.hypot(
           nest.nodes[a].x - nest.nodes[b].x,
           nest.nodes[a].y - nest.nodes[b].y,
           nest.nodes[a].z - nest.nodes[b].z,
@@ -84,7 +85,7 @@ export function updateNestOdors(nest: NestState, state: NestOdors, dt = 1) {
   }
   const steps = Math.max(1, Math.ceil((Math.max(...degree, 0) * dt) / 0.8)),
     step = dt / steps,
-    decay = Math.exp(-0.002 * step);
+    decay = modelMath.exp(-0.002 * step);
   for (const key of Object.keys(g.sources))
     state.fields[key] ??= nest.nodes.map(() => 0);
   for (const [key, mass] of Object.entries(state.fields)) {
@@ -125,7 +126,7 @@ export function routeOdorSignal(
   const g = graph(nest),
     a = nest.nodes[from],
     b = nest.nodes[to];
-  const length = Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+  const length = modelMath.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
   return (
     ((mass[to] || 0) / g.volumes[to] - (mass[from] || 0) / g.volumes[from]) *
     Math.min(1, range / Math.max(0.1, length))

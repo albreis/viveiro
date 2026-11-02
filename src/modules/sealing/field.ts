@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { EntrancePlug } from "./types.ts";
 import type { Vec3 } from "../navigation/types.ts";
 /** Distance to a finite annular cylinder. Positive outside the added solid. */
@@ -9,10 +10,10 @@ export function plugField(plug: EntrancePlug, p: Vec3) {
     y: d.y - axial * plug.axis.y,
     z: d.z - axial * plug.axis.z,
   };
-  const radius = Math.hypot(radial.x, radial.y, radial.z);
+  const radius = modelMath.hypot(radial.x, radial.y, radial.z);
   const r = radius - plug.radius,
     h = Math.abs(axial) - plug.depth / 2;
-  const outside = Math.hypot(Math.max(0, r), Math.max(0, h));
+  const outside = modelMath.hypot(Math.max(0, r), Math.max(0, h));
   const cylinder = outside + Math.min(Math.max(r, h), 0);
   const rn =
     radius > 1e-10

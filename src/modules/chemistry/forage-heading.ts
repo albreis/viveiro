@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ColonyAgent, ColonyWorld } from "../colony/types.ts";
 import { sampleACO } from "./aco.ts";
 interface TrailWorld extends ColonyWorld {
@@ -15,14 +16,17 @@ export function chooseForagingHeading(
     (a) =>
       world.pheromones[
         world.pheromoneIndex(
-          ant.x + Math.cos(a) * 0.7,
-          ant.z + Math.sin(a) * 0.7,
+          ant.x + modelMath.cos(a) * 0.7,
+          ant.z + modelMath.sin(a) * 0.7,
         )
       ],
   );
   const heuristic = angles.map(
     (a, i) =>
-      (world.inPond(ant.x + Math.cos(a) * 0.7, ant.z + Math.sin(a) * 0.7)
+      (world.inPond(
+        ant.x + modelMath.cos(a) * 0.7,
+        ant.z + modelMath.sin(a) * 0.7,
+      )
         ? 0.1
         : 1) * (i === 1 ? 1 : 0.85),
   );

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState, Vec3 } from "../navigation/types.ts";
 import { sampleSoil, sampleSupport } from "./field.ts";
 import {
@@ -83,14 +84,17 @@ export function tunnelFooting(
   let outward: Vec3;
   if (Math.abs(axis.y) > 0.8) {
     outward = {
-      x: Math.cos(angle),
+      x: modelMath.cos(angle),
       y: 0,
-      z: Math.sin(angle) * (axis.y > 0 ? -1 : 1),
+      z: modelMath.sin(angle) * (axis.y > 0 ? -1 : 1),
     };
   } else {
     const side = normalize(cross(axis, { x: 0, y: 1, z: 0 }));
     const up = normalize(sub({ x: 0, y: 1, z: 0 }, scale(axis, axis.y)));
-    outward = add(scale(side, Math.sin(angle)), scale(up, -Math.cos(angle)));
+    outward = add(
+      scale(side, modelMath.sin(angle)),
+      scale(up, -modelMath.cos(angle)),
+    );
   }
   const hit = trace(nest, center, outward);
   const forward = normalize(
@@ -98,8 +102,8 @@ export function tunnelFooting(
   );
   return {
     ...hit,
-    heading: Math.atan2(forward.z, forward.x),
-    pitch: Math.atan2(forward.y, Math.hypot(forward.x, forward.z)),
+    heading: modelMath.atan2(forward.z, forward.x),
+    pitch: modelMath.atan2(forward.y, modelMath.hypot(forward.x, forward.z)),
   };
 }
 
@@ -116,7 +120,11 @@ export function stepOnSupport(
   const delta = sub(target, start);
   let tangent = sub(delta, scale(normal, dot(delta, normal)));
   if (length(tangent) < 0.0001) {
-    const forward = { x: Math.cos(heading), y: 0, z: Math.sin(heading) };
+    const forward = {
+      x: modelMath.cos(heading),
+      y: 0,
+      z: modelMath.sin(heading),
+    };
     tangent = sub(forward, scale(normal, dot(forward, normal)));
     if (length(tangent) < 0.0001) tangent = cross(normal, { x: 0, y: 1, z: 0 });
     if (length(tangent) < 0.0001) tangent = cross(normal, { x: 1, y: 0, z: 0 });

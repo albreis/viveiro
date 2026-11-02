@@ -8,7 +8,7 @@ import {
 import { resolve, dirname } from "node:path";
 import { experimentArgs } from "./lib/experiment-args.ts";
 import { normalizeExperiment } from "../src/modules/experiments/plan.ts";
-import { runExperiment } from "../src/modules/experiments/run.ts";
+import { runExperimentProcess } from "./lib/experiment-process.ts";
 const usage = `Viveiro · experimento sem interface (Node24)
 Uso: npm run experiment -- --seed SEMENTE-42 --days 3 --out ./resultado-novo
 Ou: npm run experiment -- --plan configuracao.json --out ./resultado-novo
@@ -41,7 +41,7 @@ else
           readFileSync(options.planFile!, "utf8").replace(/^\uFEFF/, ""),
         ),
       );
-    const result = await runExperiment(plan);
+    const result = await runExperimentProcess(plan);
     mkdirSync(output);
     writeFileSync(resolve(output, "dados.csv"), result.csv, { flag: "wx" });
     writeFileSync(resolve(output, "manifesto.json"), result.manifest, {

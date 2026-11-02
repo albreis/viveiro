@@ -1,0 +1,52 @@
+{
+  "schema": "viveiro-run-v1",
+  "modelVersion": "0.40.0",
+  "calibrated": false,
+  "arithmetic": "stdlib-f64-v1",
+  "plan": {
+    "schema": "viveiro-experiment-v1",
+    "seed": "PORTABLE-SOIL-02",
+    "days": 12,
+    "startMode": "established",
+    "biologicalProfile": {
+      "schema": 1,
+      "id": "generic-survival-demo",
+      "version": 1
+    },
+    "parameters": {
+      "humidity": 82,
+      "light": 35,
+      "randomness": 64,
+      "reposeAngle": 22,
+      "temperatureC": 31,
+      "windX": -1.2,
+      "windZ": 0.6
+    }
+  },
+  "clock": {
+    "ticksPerDay": 100,
+    "startTick": 0,
+    "endTick": 1200
+  },
+  "collection": {
+    "kind": "observed endpoints",
+    "intervalTicks": 100,
+    "includesInitialState": true,
+    "scenario": "A",
+    "discardedDays": 0
+  },
+  "csv": {
+    "file": "dados.csv",
+    "encoding": "UTF-8 with BOM",
+    "delimiter": ",",
+    "lineEnding": "CRLF",
+    "bytes": 2723,
+    "sha256": "5de74e71964552ccee83c740974e15738dad23911d374b6a1898e8fa6f3b0ecd"
+  },
+  "finalRootRng": 1635039268,
+  "limitations": [
+    "Model units; not calibrated for a species.",
+    "No renderer, saved terrarium, real weather or wall-clock input.",
+    "Reproduce with the same model version and arithmetic policy; native and portable runs are distinct numerical contracts."
+  ]
+}

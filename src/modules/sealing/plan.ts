@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FoundingWorld } from "../founding/types.ts";
 import type { EntrancePlug } from "./types.ts";
 import { SEAL_PARAMETERS } from "./types.ts";
@@ -37,7 +38,10 @@ export function planPlug(w: FoundingWorld): EntrancePlug | null {
         const theta = (2 * Math.PI * (j + 0.5)) / 24;
         const p = add(
           add(center, scale(axis, depth * ((k + 0.5) / 8 - 0.5))),
-          add(scale(u, rho * Math.cos(theta)), scale(v, rho * Math.sin(theta))),
+          add(
+            scale(u, rho * modelMath.cos(theta)),
+            scale(v, rho * modelMath.sin(theta)),
+          ),
         );
         if (sampleSoil(w.nest, p).distance > 0) shells[r] += volume;
       }

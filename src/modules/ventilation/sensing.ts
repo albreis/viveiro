@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { ATMOSPHERE, type GasWorld, type GasState } from "./types.ts";
 import type { AgentState, NavigationWorld } from "../navigation/types.ts";
 import { agentGasCell } from "./respiration.ts";
@@ -20,7 +21,8 @@ export function adjacentAirComfort(
 ) {
   const a = ant.node == null ? undefined : w.nest.nodes[ant.node],
     b = w.nest.nodes[id];
-  if (!a || !b || Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z) > 1.2) return 1;
+  if (!a || !b || modelMath.hypot(a.x - b.x, a.y - b.y, a.z - b.z) > 1.2)
+    return 1;
   return 1 - 0.95 * airStress(gasFractions(w.gases, id));
 }
 export function airEnergyCost(

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { blocksVegetation } from "../predators/vegetation.ts";
 import { logLevel, pondLevel, blocksObstacle } from "./surface-obstacles.ts";
 import { surfaceHeight, surfaceNormal } from "../landscape/queries.ts";
@@ -28,7 +29,11 @@ export function moveSurface(
   if (!predator) {
     const nav = navigationState(entity),
       neighbors = neighborsOf(world, entity);
-    const forward = { x: Math.cos(heading), y: 0, z: Math.sin(heading) };
+    const forward = {
+      x: modelMath.cos(heading),
+      y: 0,
+      z: modelMath.sin(heading),
+    };
     const initial = socialForces(entity, neighbors, forward, speed);
     const preferred = contactResponse(world, entity, initial, forward, {
       x: 0,
@@ -37,10 +42,10 @@ export function moveSurface(
     });
     const forces = socialForces(entity, neighbors, preferred, speed);
     nav.velocity = { x: forces.velocity.x, y: 0, z: forces.velocity.z };
-    heading = Math.atan2(nav.velocity.z, nav.velocity.x);
+    heading = modelMath.atan2(nav.velocity.z, nav.velocity.x);
     speed = Math.max(
       speed * 0.22,
-      Math.min(speed * 1.15, Math.hypot(nav.velocity.x, nav.velocity.z)),
+      Math.min(speed * 1.15, modelMath.hypot(nav.velocity.x, nav.velocity.z)),
     );
   }
   const blocked = (x: number, z: number, angle: number) =>
@@ -65,8 +70,11 @@ export function moveSurface(
           (n) =>
             n.type === "entrance" &&
             blocksObstacle(
-              (Math.hypot(x - n.x, z - n.z) / 1.3) ** 2,
-              (Math.hypot(entity.x - n.x, entity.z - n.z) / 1.3) ** 2,
+              modelMath.pow(modelMath.hypot(x - n.x, z - n.z) / 1.3, 2),
+              modelMath.pow(
+                modelMath.hypot(entity.x - n.x, entity.z - n.z) / 1.3,
+                2,
+              ),
             ),
         )
       : !positionClear(world, entity, { x, y: 0, z }, angle));
@@ -88,8 +96,8 @@ export function moveSurface(
     Math.PI,
   ]) {
     const angle = heading + turn;
-    const x = entity.x + Math.cos(angle) * speed,
-      z = entity.z + Math.sin(angle) * speed;
+    const x = entity.x + modelMath.cos(angle) * speed,
+      z = entity.z + modelMath.sin(angle) * speed;
     if (!blocked(x, z, angle)) {
       candidate = { x, z, angle };
       if (turn) {
@@ -108,7 +116,7 @@ export function moveSurface(
   }
   entity.distanceWalked =
     (entity.distanceWalked || 0) +
-    Math.hypot(candidate.x - entity.x, candidate.z - entity.z);
+    modelMath.hypot(candidate.x - entity.x, candidate.z - entity.z);
   if (!predator) {
     navigationState(entity).velocity = {
       x: candidate.x - entity.x,
@@ -121,10 +129,10 @@ export function moveSurface(
   entity.z = candidate.z;
   entity.y = surfaceHeight(world.nest.relief, entity.x, entity.z) + 0.008;
   entity.normal = surfaceNormal(world.nest.relief, entity.x, entity.z);
-  entity.pitch = Math.atan(
+  entity.pitch = modelMath.atan(
     -(
-      entity.normal.x * Math.cos(candidate.angle) +
-      entity.normal.z * Math.sin(candidate.angle)
+      entity.normal.x * modelMath.cos(candidate.angle) +
+      entity.normal.z * modelMath.sin(candidate.angle)
     ) / entity.normal.y,
   );
   entity.angle = candidate.angle;

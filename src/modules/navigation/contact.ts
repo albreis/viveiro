@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type {
   AgentState,
   NavigationWorld,
@@ -101,8 +102,8 @@ export function widenCongestedTunnel(
         );
         const volume =
           Math.PI *
-          (after ** 2 - before ** 2) *
-          Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+          (modelMath.pow(after, 2) - modelMath.pow(before, 2)) *
+          modelMath.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
         world.recordSoilRemoval(ant, volume);
       } else ant.carryingSoil = (ant.carryingSoil || 0) + (after - before);
     }

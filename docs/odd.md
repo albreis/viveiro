@@ -74,3 +74,6 @@ fazem parte da versão: mudanças futuras precisam revisar este ODD.
 
 Fontes editáveis ficam em docs/odd.md e docs/odd/. Páginas e downloads são
 produzidos pelo Vite a partir desses mesmos arquivos, sem editar dist.
+
+Na0.40.0, experimentos isolados adotam uma [política aritmética portátil](aritmetica-portatil.md).
+O contrato nativo descrito acima permanece para o terrário e saves existentes.

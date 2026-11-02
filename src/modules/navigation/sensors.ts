@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type {
   AgentState,
   NavigationWorld,
@@ -45,7 +46,7 @@ export function neighborsOf(
         for (const other of index.cells.get(key(x, y, z)) || []) {
           if (other.id === agent.id) continue;
           if (
-            Math.hypot(
+            modelMath.hypot(
               other.x - agent.x,
               (other.y || 0) - (agent.y || 0),
               other.z - agent.z,

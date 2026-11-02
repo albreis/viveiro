@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { weightedSample } from "../../libs/probability.ts";
 export interface AcoParameters {
   alpha?: number;
@@ -17,11 +18,11 @@ export function sampleACO(
   const epsilon = Math.max(0, Math.min(1, p.exploration ?? 0.05));
   const log = pheromones.map(
     (v, i) =>
-      alpha * Math.log(Math.max(1e-6, v)) +
-      beta * Math.log(Math.max(1e-6, heuristics[i])),
+      alpha * modelMath.log(Math.max(1e-6, v)) +
+      beta * modelMath.log(Math.max(1e-6, heuristics[i])),
   );
   const max = Math.max(...log),
-    weights = log.map((v) => Math.exp(v - max));
+    weights = log.map((v) => modelMath.exp(v - max));
   const total = weights.reduce((a, b) => a + b, 0);
   return weightedSample(
     weights.map((v) => ((1 - epsilon) * v) / total + epsilon / weights.length),

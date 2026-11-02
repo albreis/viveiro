@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FoundingWorld } from "../founding/types.ts";
 import { founder, spendReserve } from "../founding/types.ts";
 import { haulFoundingSoil, travelToFront } from "../founding/travel.ts";
@@ -22,7 +23,7 @@ export function updateFoundressForaging(w: FoundingWorld): void {
     s.phase = "outbound";
     s.searchTicks = 0;
     const out = outsideSite(f, 0.72);
-    s.heading = Math.atan2(out.z - f.site.z, out.x - f.site.x);
+    s.heading = modelMath.atan2(out.z - f.site.z, out.x - f.site.x);
   }
   if (s.phase === "outbound") {
     const out = outsideSite(f, 0.72),
@@ -38,25 +39,25 @@ export function updateFoundressForaging(w: FoundingWorld): void {
       return;
     }
     const danger = w.predators.find(
-      (a) => Math.hypot(a.x - q.x, a.z - q.z) < 1.5,
+      (a) => modelMath.hypot(a.x - q.x, a.z - q.z) < 1.5,
     );
     let heading = s.heading;
     if (danger) {
-      heading = Math.atan2(q.z - danger.z, q.x - danger.x);
+      heading = modelMath.atan2(q.z - danger.z, q.x - danger.x);
       q.state = "Fugindo de predador durante a coleta";
       s.phase = "returning";
     } else {
       let best: number = p.sensorRadius,
         nearest: (typeof w.patches)[number] | undefined;
       for (const patch of w.patches) {
-        const d = Math.hypot(patch.x - q.x, patch.z - q.z);
+        const d = modelMath.hypot(patch.x - q.x, patch.z - q.z);
         if (patch.amount > 1e-9 && d < best) {
           best = d;
           nearest = patch;
         }
       }
       if (nearest) {
-        heading = Math.atan2(nearest.z - q.z, nearest.x - q.x);
+        heading = modelMath.atan2(nearest.z - q.z, nearest.x - q.x);
         q.state = "Rainha coletando alimento";
         if (
           best < p.contactRadius &&

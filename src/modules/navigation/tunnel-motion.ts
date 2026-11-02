@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { edgePassable } from "../sealing/passage.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { finishSegment } from "./tunnel-arrival.ts";
@@ -66,7 +67,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     return;
   }
   const top = surfaceHeight(world.nest.relief, ant.x, ant.z),
-    radial = Math.hypot(ant.x - target.x, ant.z - target.z);
+    radial = modelMath.hypot(ant.x - target.x, ant.z - target.z);
   if (
     !reversing &&
     target.type === "entrance" &&
@@ -86,7 +87,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   };
   const from = world.nest.nodes[reversing ? ant.route[0] : ant.node] || center;
   const delta = sub(target, center),
-    distance = Math.hypot(delta.x, delta.y, delta.z);
+    distance = modelMath.hypot(delta.x, delta.y, delta.z);
   if (distance < 0.001) {
     const top = surfaceHeight(world.nest.relief, target.x, target.z);
     if (
@@ -124,9 +125,9 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     ant.state = "Recuando para liberar passagem";
     return;
   }
-  const rest = Math.atan2(
-    Math.sin(0.35 - nav.wallAngle),
-    Math.cos(0.35 - nav.wallAngle),
+  const rest = modelMath.atan2(
+    modelMath.sin(0.35 - nav.wallAngle),
+    modelMath.cos(0.35 - nav.wallAngle),
   );
   nav.wallAngle +=
     force.pressure > 0.1 ? 0.035 : Math.max(-0.015, Math.min(0.015, rest));
@@ -139,7 +140,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   let bestCost = Infinity;
   const vertical =
     Math.abs(target.y - from.y) >
-    Math.hypot(target.x - from.x, target.z - from.z) * 1.5;
+    modelMath.hypot(target.x - from.x, target.z - from.z) * 1.5;
   for (const angle of [
     nav.wallAngle,
     nav.wallAngle + 0.08,
@@ -155,7 +156,8 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
       angle,
     ) as Footing;
     const heading =
-      candidate.heading ?? Math.atan2(target.z - from.z, target.x - from.x);
+      candidate.heading ??
+      modelMath.atan2(target.z - from.z, target.x - from.x);
     if (
       candidate.inside &&
       positionClear(
@@ -168,9 +170,9 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
       )
     ) {
       const cost =
-        (candidate.x - ant.x) ** 2 +
-        (candidate.y - (ant.y || 0)) ** 2 +
-        (candidate.z - ant.z) ** 2;
+        modelMath.pow(candidate.x - ant.x, 2) +
+        modelMath.pow(candidate.y - (ant.y || 0), 2) +
+        modelMath.pow(candidate.z - ant.z, 2);
       if (cost < bestCost) {
         footing = candidate;
         bestCost = cost;
@@ -184,7 +186,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     ant.state = "Contato Antenal";
     return;
   }
-  const physicalDistance = Math.hypot(
+  const physicalDistance = modelMath.hypot(
     footing.x - ant.x,
     footing.y - (ant.y || 0),
     footing.z - ant.z,
@@ -197,7 +199,11 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   nav.velocity = sub(footing, position(ant));
   ant.distanceWalked =
     (ant.distanceWalked || 0) +
-    Math.hypot(footing.x - ant.x, footing.y - (ant.y || 0), footing.z - ant.z);
+    modelMath.hypot(
+      footing.x - ant.x,
+      footing.y - (ant.y || 0),
+      footing.z - ant.z,
+    );
   Object.assign(ant, {
     x: footing.x,
     y: footing.y,
@@ -206,7 +212,8 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     tunnelCenter: next,
     normal: footing.normal,
     pitch: footing.pitch,
-    angle: footing.heading ?? Math.atan2(target.z - from.z, target.x - from.x),
+    angle:
+      footing.heading ?? modelMath.atan2(target.z - from.z, target.x - from.x),
   });
   if (reversing) ant.state = "Recuando para liberar passagem";
   else if (nav.contactTicks < 4)

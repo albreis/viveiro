@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { GranularBody, GranularState } from "./types.ts";
 import { grainRadius } from "./types.ts";
 /** Dissipative normal spring plus Coulomb-limited tangential impulse; model units. */
@@ -10,7 +11,7 @@ export function grainContact(
   const dx = a.x - b.x,
     dy = a.y - b.y,
     dz = a.z - b.z,
-    d = Math.hypot(dx, dy, dz),
+    d = modelMath.hypot(dx, dy, dz),
     overlap = grainRadius(a) + grainRadius(b) - d;
   if (overlap <= 0) return;
   const n =
@@ -28,7 +29,7 @@ export function grainContact(
       y: rv.y - n.y * vn,
       z: rv.z - n.z * vn,
     },
-    speed = Math.hypot(tangent.x, tangent.y, tangent.z),
+    speed = modelMath.hypot(tangent.x, tangent.y, tangent.z),
     friction = Math.min(speed * reduced, state.friction * impulse);
   for (const axis of ["x", "y", "z"] as const) {
     const j =

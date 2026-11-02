@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { SoilWorld } from "./types.ts";
 import type { Vec3 } from "../navigation/types.ts";
 import { sampleSoil } from "../terrain/field.ts";
@@ -16,16 +17,16 @@ export function chooseDigGoal(
   for (let attempt = 0; attempt < 36; attempt++) {
     const azimuth =
       previous && attempt < 12
-        ? Math.atan2(previous.z, previous.x) + world.range(-0.9, 0.9)
+        ? modelMath.atan2(previous.z, previous.x) + world.range(-0.9, 0.9)
         : world.range(0, Math.PI * 2);
     const rise =
       previous && attempt < 12
         ? previous.y + world.range(-0.35, 0.35)
         : world.range(-0.65, 0.75);
     const dir = normalize({
-      x: Math.cos(azimuth),
+      x: modelMath.cos(azimuth),
       y: rise,
-      z: Math.sin(azimuth),
+      z: modelMath.sin(azimuth),
     });
     const length = world.range(0.65, 0.95);
     const goal = {

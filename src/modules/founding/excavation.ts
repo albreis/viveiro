@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { beginSealing } from "../sealing/queen.ts";
 import { accessibleReserve } from "../maternal/pools.ts";
 import { outsideSite } from "./site.ts";
@@ -10,7 +11,7 @@ import { walkFoundress, settleFoundress } from "./motion.ts";
 const WIDTH = 0.42,
   CHAMBER = 0.68,
   CAPACITY = 0.12;
-const sphere = (r: number) => (4 * Math.PI * r ** 3) / 3;
+const sphere = (r: number) => (4 * Math.PI * modelMath.pow(r, 3)) / 3;
 /** A conservative material ledger with coarse capsule volumes, not grain physics. */
 export function updateFoundingDig(world: FoundingWorld) {
   const f = world.founding!,
@@ -128,7 +129,7 @@ export function updateFoundingDig(world: FoundingWorld) {
       front.y += ((f.chamber.y - front.y) * step) / remaining;
       front.z += ((f.chamber.z - front.z) * step) / remaining;
     };
-    mass = Math.PI * WIDTH ** 2 * step;
+    mass = Math.PI * modelMath.pow(WIDTH, 2) * step;
   } else {
     const r = Math.min(CHAMBER, front.r + 0.004);
     mass = sphere(r) - sphere(front.r);

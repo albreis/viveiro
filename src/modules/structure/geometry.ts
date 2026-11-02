@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestState, Vec3 } from "../navigation/types.ts";
 import type { RoofGeometry } from "./types.ts";
 import { sampleSoil } from "../terrain/field.ts";
@@ -38,7 +39,7 @@ export function roofGeometry(n: NestState): RoofGeometry[] {
   n.links.forEach(([a, b], edge) => {
     const p = n.nodes[a],
       q = n.nodes[b],
-      horizontal = Math.hypot(q.x - p.x, q.z - p.z),
+      horizontal = modelMath.hypot(q.x - p.x, q.z - p.z),
       dx = horizontal > 0.05 ? -(q.z - p.z) / horizontal : 1,
       dz = horizontal > 0.05 ? (q.x - p.x) / horizontal : 0;
     for (const fraction of [0.25, 0.5, 0.75]) {

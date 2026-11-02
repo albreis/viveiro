@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { resolveBiologicalProfile } from "../biology/catalog.ts";
 import { hashSeed } from "../simulation/seed.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
@@ -16,7 +17,7 @@ export function survivalEnabled(w: { biologicalProfile?: unknown }) {
 export function initializeLife(w: Context, a: ColonyAgent): void {
   if (!survivalEnabled(w) || a.life) return;
   const budget = (key: string) =>
-    -Math.log1p(
+    -modelMath.log1p(
       -(hashSeed(w.seed + ":" + a.id + ":survival:" + key) + 0.5) / 4294967296,
     );
   a.health ??= 100;

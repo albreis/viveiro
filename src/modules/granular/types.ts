@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { Vec3 } from "../navigation/types.ts";
 export interface GranularBody extends Vec3 {
   id: number;
@@ -28,4 +29,4 @@ export const createGranularState = (): GranularState => ({
   terrainRevision: -1,
 });
 export const grainRadius = (g: GranularBody) =>
-  Math.cbrt((Math.max(0, g.mass) * 3) / (4 * Math.PI));
+  modelMath.cbrt((Math.max(0, g.mass) * 3) / (4 * Math.PI));

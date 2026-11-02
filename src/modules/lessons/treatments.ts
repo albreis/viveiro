@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { LessonWorld } from "./world.ts";
 import { createNestOdors } from "../chemistry/nest-odors.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
@@ -35,7 +36,9 @@ export function ventilationNest(w: LessonWorld, second: boolean) {
   };
   w.nestOdors = createNestOdors(w.nest);
   w.plants = w.plants.filter(
-    (p) => Math.hypot(p.x + 3, p.z) > 0.7 && Math.hypot(p.x - 3, p.z) > 0.7,
+    (p) =>
+      modelMath.hypot(p.x + 3, p.z) > 0.7 &&
+      modelMath.hypot(p.x - 3, p.z) > 0.7,
   );
   const plantIds = new Set(w.plants.map((p) => p.id));
   w.patches = w.patches.filter(
@@ -77,8 +80,8 @@ export function initialTrail(w: LessonWorld) {
   const entry = w.nest.nodes[0];
   const food = [...w.patches].sort(
     (a, b) =>
-      Math.hypot(a.x - entry.x, a.z - entry.z) -
-      Math.hypot(b.x - entry.x, b.z - entry.z),
+      modelMath.hypot(a.x - entry.x, a.z - entry.z) -
+      modelMath.hypot(b.x - entry.x, b.z - entry.z),
   )[0];
   for (let i = 0; i <= 20; i++) {
     const x = entry.x + ((food.x - entry.x) * i) / 20,
