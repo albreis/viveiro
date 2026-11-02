@@ -10,7 +10,7 @@ import { validAssetPath } from "../src/modules/publication/release.ts";
 
 test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
   const pages = modelDocPages(process.cwd());
-  assert.equal(modelDocuments.length, 9);
+  assert.equal(modelDocuments.length, 10);
   for (const d of modelDocuments) {
     assert.ok(permittedSourcePath(d.source));
     assert.equal(

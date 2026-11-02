@@ -1,6 +1,6 @@
 {
   "name": "viveiro",
-  "version": "0.40.1",
+  "version": "0.41.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,8 @@
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "format": "prettier --write src index.html vite.config.ts tsconfig.json",
     "build:public": "node scripts/build-public-release.ts",
-    "experiment": "node scripts/run-experiment.ts"
+    "experiment": "node scripts/run-experiment.ts",
+    "sweep": "node scripts/run-sweep.ts"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",

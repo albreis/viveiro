@@ -40,5 +40,10 @@ export const modelDocuments = [
     title: "Aritmética portátil",
     source: "docs/aritmetica-portatil.md",
   },
+  {
+    slug: "varreduras",
+    title: "Varreduras e retomada",
+    source: "docs/varreduras.md",
+  },
 ] as const;
 export const modelDocumentSources = modelDocuments.map((d) => d.source);

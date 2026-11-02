@@ -1,0 +1,3 @@
+﻿"schema","versao_exportacao","versao_medicao","semente","cenario","aula","tipo_amostra","inicio_coleta_tick","dias_descartados","tick","dia_modelo","populacao_adulta_ind","prole_ind","ovos_ind","larvas_ind","pupas_ind","colonias","reserva_alimento_u","temperatura_ar_referencia_C","temperatura_media_grade_solo_C","O2_medio_galerias_pct_volume","CO2_medio_galerias_pct_volume"
+"viveiro-diario-v1","0.41.0","0.41.0","SWEEP-82e44c6e0cc40b90de354bc322d967982e18ceed48d0ca6ab21c640e7a960522","A","","estado_inicial",0,0,0,0,2,0,0,0,0,1,18,24,,,
+"viveiro-diario-v1","0.41.0","0.41.0","SWEEP-82e44c6e0cc40b90de354bc322d967982e18ceed48d0ca6ab21c640e7a960522","A","","fechamento_diario",0,0,100,1,1,10,6,4,0,1,15.708000000000022,24,23.18137764822861,20.89843288478043,0.04325369217566787
