@@ -46,3 +46,34 @@ progress {
 #experiment-error {
   color: #8b2f23;
 }
+
+#varredura {
+  margin-top: 3rem;
+  border-top: 1px solid #8a9d82;
+  padding-top: 1.5rem;
+}
+#sweep-error {
+  color: #8b2f23;
+}
+#sweep-downloads a {
+  display: block;
+  margin: 0.8rem 0;
+}
+#sweep-jobs,
+#sweep-import {
+  display: block;
+  max-width: 100%;
+  margin: 0.7rem 0 1.2rem;
+  font: inherit;
+}
+#sweep-jobs {
+  padding: 0.5rem;
+  color: #25342b;
+  background: #fff;
+  border: 1px solid #8a9d82;
+}
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid #496d35;
+  outline-offset: 4px;
+}

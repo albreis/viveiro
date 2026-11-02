@@ -98,3 +98,8 @@ não são selo de validação científica nem garantia entre motores arbitrário
 Dados brutos sintéticos preservados em tests/fixtures/cli-native-039/ (plano e
 CSVs reais de ambos os ambientes). Hashes e resultados em
 docs/validacoes/cli-0.39.0.json; nenhum dado do terrário pessoal foi usado.
+
+## Lotes e réplicas
+
+A partir da 0.41.0, `npm run sweep -- --out resultado-novo --jobs 2` executa
+cinco valores de umidade × dez réplicas. [Plano e retomada](varreduras.md).

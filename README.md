@@ -50,6 +50,13 @@ O botão **Tour guiado** apresenta a seleção de uma formiga e a visão em prim
 
 100 passos equivalem a um dia simulado.
 
+## Varreduras de parâmetros
+
+Na página de experimentos, compare cinco valores com dez réplicas e baixe uma
+retomada transportável. No terminal, `npm run sweep -- --out resultado-novo --jobs 2`
+executa as mesmas 50 condições; `--resume` reutiliza os resultados já verificados.
+[Configuração, arquivos e limites](docs/varreduras.md).
+
 ## Estrutura do código
 
 | Pasta                    | Conteúdo                                                     |

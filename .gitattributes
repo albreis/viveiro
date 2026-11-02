@@ -3,3 +3,4 @@ tests/fixtures/cli-native-039/*.csv binary
 tests/fixtures/cli-portable-040/**/*.csv binary
 # Preserve original third-party license whitespace without rewriting legal text.
 public/notices/**/*.txt -whitespace
+tests/fixtures/sweep-041/**/*.csv binary

@@ -1,0 +1,32 @@
+{
+  "schema": "viveiro-sweep-v1",
+  "base": {
+    "schema": "viveiro-experiment-v1",
+    "seed": "VARREDURA-41",
+    "days": 1,
+    "startMode": "established",
+    "biologicalProfile": {
+      "schema": 1,
+      "id": "generic-demo",
+      "version": 1
+    },
+    "parameters": {
+      "humidity": 58,
+      "light": 72,
+      "randomness": 28,
+      "reposeAngle": 36,
+      "temperatureC": 24,
+      "windX": 0,
+      "windZ": 0
+    }
+  },
+  "parameter": "humidity",
+  "values": [
+    40,
+    50,
+    60,
+    70,
+    80
+  ],
+  "replicates": 10
+}
