@@ -1,0 +1,55 @@
+{
+  "version": "0.40.0",
+  "sourceSha": "7fdc46942283c82fd0402c76946ba016b251bd80",
+  "private": {
+    "id": "appgdep_6ae8e505d9e081918acca66686b1388b",
+    "project_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "title": "Viveiro — laboratório de ecossistemas",
+    "version_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_0fe3e42a87ec81918045730518393638",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae6364bc4488191b2757449ed3f7e94",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T19:31:32.304836+00:00",
+    "archive": "G:/Projetos/viveiro-0.40.0.tar.gz",
+    "audience": "custom",
+    "revision": 1,
+    "externalVisitors": 0
+  },
+  "public": {
+    "id": "appgdep_6ae8e571d5b081918cbc7652e9bdb988",
+    "project_id": "appgprj_6ae80cd45fdc8191be8315696a383393",
+    "title": "Viveiro — laboratório público",
+    "version_id": "appgprj_6ae80cd45fdc8191be8315696a383393~appgver_995050e953288191a1aebb7ceb5c5aca",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae80cd45fdc8191be8315696a383393",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T19:33:22.518873+00:00",
+    "sourceSha": "bb06c318061e4e4df6ca483dd9311d07d58ba648",
+    "versionNumber": 11,
+    "archive": "G:/Projetos/viveiro-publico-0.40.0.tar.gz",
+    "storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000cb8c820e9df3c4e1730ff1c2",
+      "content_hash": "sha256:c00500a51dd430369c0210232d4fe2d91ef25549e279218a891055d1ee0a41ab",
+      "size_bytes": 18370560,
+      "file_count": 584
+    },
+    "audience": "public",
+    "revision": 2
+  },
+  "httpPostDeployHashCheck": {
+    "performed": false,
+    "priorAttemptStatus": 403,
+    "note": "No repeated request or access workaround; downloaded result bytes are independently checked through native browser."
+  }
+}

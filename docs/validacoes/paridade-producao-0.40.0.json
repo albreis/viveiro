@@ -1,0 +1,52 @@
+{
+  "version": "0.40.0",
+  "sourceSha": "7fdc46942283c82fd0402c76946ba016b251bd80",
+  "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/experimentos",
+  "scenario": "regression-01",
+  "ticks": 1000,
+  "policy": "stdlib-f64-v1",
+  "consoleWarnings": 0,
+  "consoleErrors": 0,
+  "comparisons": {
+    "csv": {
+      "equalBytes": true,
+      "bytes": 2296,
+      "sha256": "a4f9a5db06f5b1590148d4cf8d8b42fd746edd9ad3857cff2fa9d83dc6472f16",
+      "download": "C:\\Users\\conta\\Downloads\\dados (10).csv"
+    },
+    "manifest": {
+      "equalBytes": true,
+      "bytes": 1298,
+      "sha256": "97c5ffedc621b9e8db41485e712de0c5d86b56417abfabdeebf304a9179e4ea5",
+      "download": "C:\\Users\\conta\\Downloads\\manifesto (10).json"
+    }
+  },
+  "public": {
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.40.0/experimentos",
+    "ticks": 1000,
+    "consoleWarnings": 0,
+    "consoleErrors": 0,
+    "comparisons": {
+      "csv": {
+        "equalBytes": true,
+        "bytes": 2296,
+        "sha256": "a4f9a5db06f5b1590148d4cf8d8b42fd746edd9ad3857cff2fa9d83dc6472f16",
+        "download": "dados (11).csv"
+      },
+      "manifest": {
+        "equalBytes": true,
+        "bytes": 1298,
+        "sha256": "97c5ffedc621b9e8db41485e712de0c5d86b56417abfabdeebf304a9179e4ea5",
+        "download": "manifesto (11).json"
+      }
+    }
+  },
+  "localSave": {
+    "seed": "SEMENTE-50088",
+    "day": 62.5,
+    "adults": 14,
+    "paused": true,
+    "profile": "light",
+    "nativeBrowserVerified": true
+  }
+}
