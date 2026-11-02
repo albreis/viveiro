@@ -1,5 +1,11 @@
 # Versões
 
+## 0.30.1 — Artefato estático suportado
+
+- Espelho conserva fontes de releases em public e gera dist pelo adaptador estático, conforme contrato da hospedagem.
+- Catálogo recusa remoção de uma versão anteriormente registrada.
+- Preparação recusa junctions e arquivos desconhecidos na saída, sem remover arquivos ou relaxar validadores.
+
 ## 0.30.0 — Publicação isolada por versão
 
 - Rótulo da aplicação acompanha a versão real do pacote.

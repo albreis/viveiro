@@ -1,4 +1,10 @@
-import { readFileSync, mkdirSync, mkdtempSync, existsSync } from "node:fs";
+import {
+  readFileSync,
+  mkdirSync,
+  mkdtempSync,
+  existsSync,
+  copyFileSync,
+} from "node:fs";
 import { resolve, join, relative, isAbsolute, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -56,6 +62,10 @@ await build({
 });
 installRelease(output, mirror, version, sourceSha);
 const catalog = updateReleaseIndex(mirror);
+copyFileSync(
+  join(checkout, "scripts", "mirror-static-build.ts"),
+  join(mirror, "build-static.ts"),
+);
 console.log(
   JSON.stringify({
     mirror,
@@ -63,5 +73,7 @@ console.log(
     sourceSha,
     base: releaseBase(version),
     latest: catalog.latest,
+    staticDirectory: "dist",
+    buildCommand: ["node", "build-static.ts"],
   }),
 );

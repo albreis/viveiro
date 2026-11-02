@@ -1,6 +1,6 @@
 # Publicação por tag
 
-P0.3, versão0.30.0; pipeline validado, publicação em andamento. O Site de testes conserva sua identidade e audiência privada. O build público usa um espelho separado de artefatos, sem copiar o histórico Git, docs privados, credenciais ou saves do checkout.
+P0.3, versão0.30.1; pipeline validado, publicação em andamento. O Site de testes conserva sua identidade e audiência privada. O build público usa um espelho separado de artefatos, sem copiar o histórico Git, docs privados, credenciais ou saves do checkout.
 
 ## Fonte e artefato
 
@@ -16,7 +16,7 @@ O script exige caminho absoluto e fonte Git limpa; rejeita pastas desconhecidas,
 
 ## Hospedagem
 
-O espelho é um Site estático independente, registrado uma única vez com seu próprio .openai/hosting.json. O fluxo Sites deve abrir/puxar esse repositório antes de acrescentar versões quando for retomado em outra máquina. Nunca copiar o manifesto privado para ele. Fonte/arquivo/deploy usam o SHA devolvido pelo helper oficial. O acesso público será solicitado somente para esse Site separado, conforme P0.3, depois da validação do artefato. A origem privada continua servindo para testes e saves independentes.
+O espelho é um Site estático independente, registrado uma única vez com seu próprio .openai/hosting.json, static.directory=dist. O exportador copia build-static.ts para o espelho; node build-static.ts gera dist/ por cópia exata dos artefatos de public/, sem editar bundles. Dist é ignorado no Git; public/ guarda as releases e a fonte do espelho. O helper oficial recebe commands:[["node","build-static.ts"]]. Diretórios estáticos fora da lista suportada não devem ser usados: a tentativa inicial com public foi recusada e sua fonte e3641fd foi preservada, sem versão salva/deploy. A correção usa dist e mantém as verificações do serviço intactas. O fluxo Sites deve abrir/puxar esse repositório antes de acrescentar versões quando for retomado em outra máquina. Nunca copiar o manifesto privado para ele. Fonte/arquivo/deploy usam o SHA devolvido pelo helper oficial. O acesso público será solicitado somente para esse Site separado, conforme P0.3, depois da validação do artefato. A origem privada continua servindo para testes e saves independentes.
 
 As URLs por tag serão verificadas no navegador antes de marcar o aceite. O catálogo escolhe a maior versão numérica, sem rebaixar o link principal por exportar uma versão antiga. A versão da aplicação é lida de package.json, substituindo o rótulo estático desatualizado. Links de download/licenças e Workers devem funcionar sob a base da release.
 
@@ -28,4 +28,6 @@ Não há backend contínuo, PWA/cache offline completo, DOI ou calibração por 
 
 ## Validação em andamento
 
-Oito testes novos conferem manifestos, origem, repetição idêntica, recusa de reescrita, preservação de tags, ordem semver, adulteração/arquivos ausentes, caminhos desconhecidos, credenciais sintéticas e junctions reais no Windows. Quinze testes combinados com codec/sessão passaram em1.574 ms; build privado310 módulos aprovado. Modelo biológico inalterado. QA do bundle sob subpasta concluída: localhost4174/releases/v0.30.0/, versão correta, nova seed independente, primeira pessoa, malha e previsão/avanço em Workers. Avanço de1 dia terminou emD1,1 e permaneceu pausado após reload; checkpoint nomeado criado. Relatório reservado carregado e download com base correta; links de licença e retorno resolvem dentro da tag. Console sem erros. Não houve alteração do experimento na porta4173. Falta registro/publicação do Site público e conferência sem login.
+Onze testes novos conferem manifestos, origem, repetição idêntica, recusa de reescrita, preservação de tags, ordem semver, adulteração/arquivos ausentes, caminhos desconhecidos, credenciais sintéticas e junctions reais no Windows. Dezoito testes combinados com codec/sessão passaram em1.893 ms; build privado310 módulos aprovado. Modelo biológico inalterado. QA do bundle sob subpasta concluída: localhost4174/releases/v0.30.0/, versão correta, nova seed independente, primeira pessoa, malha e previsão/avanço em Workers. Avanço de1 dia terminou emD1,1 e permaneceu pausado após reload; checkpoint nomeado criado. Relatório reservado carregado e download com base correta; links de licença e retorno resolvem dentro da tag. Console sem erros. Não houve alteração do experimento na porta4173. Falta registro/publicação do Site público e conferência sem login.
+
+O catálogo também recusa o desaparecimento de uma release que constava no índice anterior. O adaptador recusa CWD desconhecido, junctions e arquivos extras de saída, preservando-os ao falhar. A0.30.0 privada/tag a8c95f9 permanece preservada; a correção de empacotamento integra0.30.1.

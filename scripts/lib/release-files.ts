@@ -140,6 +140,9 @@ export function installRelease(
     if (!current.split(/\r?\n/).includes(".runtime/"))
       writeFileSync(ignore, current + "\n.runtime/\n");
   }
+  const ignored = readFileSync(ignore, "utf8");
+  if (!ignored.split(/\r?\n/).includes("dist/"))
+    writeFileSync(ignore, ignored + "\ndist/\n");
   for (const p of [root, join(root, "public"), releases])
     if (existsSync(p) && lstatSync(p).isSymbolicLink())
       throw Error("Espelho não pode conter links nos diretórios de destino.");

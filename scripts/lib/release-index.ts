@@ -1,4 +1,10 @@
-import { readFileSync, readdirSync, writeFileSync, renameSync } from "node:fs";
+import {
+  readFileSync,
+  readdirSync,
+  writeFileSync,
+  renameSync,
+  existsSync,
+} from "node:fs";
 import { join } from "node:path";
 import {
   compareVersions,
@@ -37,6 +43,25 @@ export function updateReleaseIndex(mirror: string) {
       };
     })
     .sort((a, b) => compareVersions(b.version, a.version));
+  const previous = join(root, "release-index.json");
+  if (existsSync(previous)) {
+    const old = JSON.parse(readFileSync(previous, "utf8"));
+    if (
+      old.format !== "viveiro-release-index" ||
+      old.version !== 1 ||
+      !Array.isArray(old.releases)
+    )
+      throw Error("Catálogo anterior inválido.");
+    for (const item of old.releases) {
+      if (
+        releaseTag(item.version) !== item.tag ||
+        !entries.some(
+          (e) => e.tag === item.tag && e.sourceSha === item.sourceSha,
+        )
+      )
+        throw Error("Uma release anterior foi removida ou substituída.");
+    }
+  }
   if (!entries.length) throw Error("Nenhuma release para publicar.");
   const latest = entries[0],
     catalog = {
