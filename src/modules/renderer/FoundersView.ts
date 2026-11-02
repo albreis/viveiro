@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import type { ColonyAgent } from "../colony/types.ts";
 import type { FoundingState } from "../founding/types.ts";
-import { wingMesh, queenWings, poseFounder } from "./founder-pose.ts";
+import { queenWings, poseFounder } from "./founder-pose.ts";
+import { DiscardedWingsView } from "./discarded-wings.ts";
 interface FounderView {
   body: THREE.Group;
   wings?: THREE.Group;
@@ -9,7 +10,7 @@ interface FounderView {
 }
 export class FoundersView {
   private views = new Map<number, FounderView>();
-  private discarded: THREE.Mesh[] = [];
+  private discarded: DiscardedWingsView;
   private queenUsed = false;
   private maleUsed = false;
   constructor(
@@ -18,7 +19,10 @@ export class FoundersView {
     private male: THREE.Group,
     private buildQueen: () => THREE.Group,
     private buildMale: () => THREE.Group,
-  ) {}
+    private supports: () => THREE.Mesh[],
+  ) {
+    this.discarded = new DiscardedWingsView(scene);
+  }
   private view(a: ColonyAgent) {
     let v = this.views.get(a.id);
     if (v) return v;
@@ -93,17 +97,6 @@ export class FoundersView {
     const wings = foundings
       ? foundings.flatMap((f) => f.state.discardedWings)
       : founding?.discardedWings || [];
-    wings.forEach((p, i) => {
-      let m = this.discarded[i];
-      if (!m) {
-        m = wingMesh();
-        m.scale.multiplyScalar(0.7);
-        m.rotation.y = i * 1.2;
-        this.scene.add(m);
-        this.discarded.push(m);
-      }
-      m.position.set(p.x, p.y, p.z);
-    });
-    this.discarded.forEach((m, i) => (m.visible = i < wings.length));
+    this.discarded.update(wings, this.supports());
   }
 }

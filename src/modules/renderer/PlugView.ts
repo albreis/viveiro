@@ -59,6 +59,9 @@ export class PlugView {
         this.meshes.delete(id);
       }
   }
+  objects(): THREE.Mesh[] {
+    return [...this.meshes.values()].map((view) => view.mesh);
+  }
   dispose(): void {
     for (const { mesh } of this.meshes.values()) {
       this.scene.remove(mesh);

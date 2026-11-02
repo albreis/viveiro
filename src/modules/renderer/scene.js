@@ -120,6 +120,7 @@ export class Terrarium {
       this.male,
       () => this.buildQueen(),
       () => this.buildMale(),
+      () => [this.soil, ...this.plugView.objects()],
     );
     this.trailView = new TrailView(this.scene, world.nest);
     this.trails = this.trailView.points;
