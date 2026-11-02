@@ -1,5 +1,12 @@
 # Versões
 
+## 0.26.0 — Composição e compactação do solo
+
+- Perfil opcional com índices relativos de argila e compactação para transporte de água, calor e suporte do teto.
+- Referência neutra preserva o modelo anterior; fluxos conservativos e controles registrados no replay.
+- Catálogo, parâmetros compartilhados e validação de saves; perfis climáticos separados em módulo próprio.
+- Volume de poros fixo e coeficientes sem calibração geotécnica. Ver docs/solo-material.md.
+
 ## 0.25.0 — Estoques por câmara
 
 - Perfil opcional com lotes alimentares, entradas e retiradas conservativos por colônia.

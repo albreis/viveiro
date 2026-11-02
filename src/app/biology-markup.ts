@@ -13,6 +13,6 @@ export const biologyMarkup = `<div class="section-label"><span>PERFIL BIOLÓGICO
  <p id="biology-catalog-profile" class="field-note"></p>
  <p id="maternal-catalog-status" class="field-note" hidden></p>
  <label for="biology-topic">Grupo de parâmetros</label>
- <select id="biology-topic"><option value="model">Usados no modelo</option><option value="maternal">Reservas por nutrientes · v2+</option><option value="founding">Hipóteses de fundação</option><option value="development">Hipóteses de desenvolvimento</option><option value="seasonal">Estações e casulos</option><option value="chambers">Escolha local da câmara</option><option value="semiclaustral">Coleta na fundação semiclaustral</option><option value="study">Referência de laboratório</option></select>
+ <select id="biology-topic"><option value="model">Usados no modelo</option><option value="maternal">Reservas por nutrientes · v2+</option><option value="founding">Hipóteses de fundação</option><option value="development">Hipóteses de desenvolvimento</option><option value="seasonal">Estações e casulos</option><option value="materials">Material e compactação</option><option value="chambers">Escolha local da câmara</option><option value="semiclaustral">Coleta na fundação semiclaustral</option><option value="study">Referência de laboratório</option></select>
  <ul id="biology-records"></ul>
 </dialog>`;

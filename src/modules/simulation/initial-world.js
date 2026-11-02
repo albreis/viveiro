@@ -1,3 +1,4 @@
+import { initializeSoilMaterial } from "../soil-material/initialize.ts";
 import { initializeRoomStores } from "../stores/initialize.ts";
 import { initializeSeason } from "../seasons/update.ts";
 import {
@@ -30,6 +31,7 @@ export function initializeWorld(world, seed, parameters, options = {}) {
     temperatureC: 24,
     ...parameters,
   };
+  initializeSoilMaterial(world);
   Object.assign(world, {
     colonyId: 1,
     colonies: [],

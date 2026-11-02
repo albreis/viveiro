@@ -1,3 +1,4 @@
+import { validateSoilMaterial } from "../soil-material/validation.ts";
 import { validateRoomStores } from "../stores/validation.ts";
 import { validateChamberChoice } from "../chambers/validation.ts";
 import { validateFoundressForaging } from "../semiclaustral/validation.ts";
@@ -67,6 +68,11 @@ function validateWorld(value: unknown): asserts value is WorldWire {
     )
       throw new Error("Registro de colônia inválido.");
     const profile = resolveBiologicalProfile(c.biologicalProfile);
+    validateSoilMaterial(
+      c,
+      profile.materialModel === "relative-demo",
+      w.params,
+    );
     validateRoomStores(
       c,
       profile.stockModel === "rooms-demo",

@@ -8,7 +8,8 @@ export type ParameterTopic =
   | "maternal"
   | "seasonal"
   | "semiclaustral"
-  | "chambers";
+  | "chambers"
+  | "materials";
 export interface BiologicalReference {
   schema: 1;
   id: string;
@@ -23,6 +24,7 @@ export interface ParameterRecord {
   readonly requiresCocoon?: boolean;
   readonly requiresLocalChambers?: boolean;
   readonly requiresRoomStores?: boolean;
+  readonly requiresSoilMaterial?: boolean;
   readonly requiresEntrancePlug?: boolean;
   readonly value: number | null;
   readonly range?: readonly [number, number];
@@ -51,6 +53,7 @@ export interface BiologicalProfile {
   readonly cocoon: "present" | "absent" | "unspecified";
   readonly seasonality: "unmodelled" | "seasonal" | "nonseasonal";
   readonly modelRevision?: number;
+  readonly materialModel?: "relative-demo";
   readonly stockModel?: "rooms-demo";
   readonly chamberModel?: "local-demo";
   readonly dormancyModel?: "obligate-demo";

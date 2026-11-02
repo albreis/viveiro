@@ -48,6 +48,8 @@ export interface SoilWorld extends NavigationWorld {
     humidity: number;
     reposeAngle?: number;
     temperatureC?: number;
+    soilClayPercent?: number;
+    soilCompactionPercent?: number;
     photoperiodHours?: number;
   };
   brood: unknown[];

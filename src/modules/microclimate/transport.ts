@@ -1,3 +1,4 @@
+import type { TransportFactors } from "../soil-material/types.ts";
 import type { SoilClimate } from "./types.ts";
 import { climatePairs, cellHeight } from "./grid.ts";
 /** Reduced capillary redistribution plus gravitational drainage; not a calibrated Richards solver. */
@@ -5,6 +6,7 @@ export function transportSoilClimate(
   s: SoilClimate,
   dt: number,
   gravity = true,
+  material?: TransportFactors,
 ) {
   const substeps = Math.max(1, Math.ceil(dt / 2)),
     step = dt / substeps;
@@ -14,9 +16,13 @@ export function transportSoilClimate(
         sb = s.water[b] / s.capacity,
         mean = (sa + sb) / 2;
       const flux =
-        (0.0015 * (sa - sb) +
+        (0.0015 * (sa - sb) * (material?.capillary ?? 1) +
           (gravity
-            ? (0.00015 * mean * mean * (cellHeight(s, a) - cellHeight(s, b))) /
+            ? (0.00015 *
+                mean *
+                mean *
+                (cellHeight(s, a) - cellHeight(s, b)) *
+                (material?.drainage ?? 1)) /
               d
             : 0)) *
         step *
@@ -36,7 +42,8 @@ export function transportSoilClimate(
       const heat =
         ((s.temperature[b] - s.temperature[a]) *
           (0.0008 + 0.0012 * mean) *
-          step) /
+          step *
+          (material?.heat ?? 1)) /
         (d * d);
       s.temperature[a] += heat;
       s.temperature[b] -= heat;
