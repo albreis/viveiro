@@ -25,11 +25,14 @@ $tmp = Join-Path $env:TEMP "viveiro-site-publico"
 git clone --no-checkout https://github.com/albreis/viveiro.git $tmp
 Set-Location $tmp
 git checkout --orphan site-publico
+git rm -rf -q .
+Get-ChildItem -Force | Where-Object Name -ne ".git" | Remove-Item -Recurse -Force
 Set-Content .gitattributes "* -text" -NoNewline
 Copy-Item "$espelho\public" . -Recurse
 Copy-Item "$espelho\mirror.json", "$espelho\build-static.ts" .
 git -c core.autocrlf=false add -A
 git commit -m "Importa espelho público publicado no Sites"
+git ls-files  # só .gitattributes, build-static.ts, mirror.json e public/...
 git push -u origin site-publico
 ```
 
