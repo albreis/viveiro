@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { approachDigFace } from "./approach.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
@@ -76,7 +77,7 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
   if (
     (ant.y || 0) >= -0.04 &&
     ant.node != null &&
-    Math.hypot(
+    modelMath.hypot(
       ant.x - world.nest.nodes[ant.node].x,
       ant.z - world.nest.nodes[ant.node].z,
     ) > 1.2

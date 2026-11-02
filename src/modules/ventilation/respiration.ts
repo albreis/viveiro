@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import type { GasState, GasWorld } from "./types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
@@ -9,8 +10,8 @@ export function agentGasCell(w: GasWorld, a: ColonyAgent) {
   if (!from) return null;
   if (
     to &&
-    Math.hypot(a.x - to.x, (a.y ?? 0) - to.y, a.z - to.z) <
-      Math.hypot(a.x - from.x, (a.y ?? 0) - from.y, a.z - from.z)
+    modelMath.hypot(a.x - to.x, (a.y ?? 0) - to.y, a.z - to.z) <
+      modelMath.hypot(a.x - from.x, (a.y ?? 0) - from.y, a.z - from.z)
   )
     return head;
   return a.node;
@@ -23,7 +24,10 @@ export function respire(w: GasWorld, s: GasState, dt: number) {
       const i = agentGasCell(w, a);
       if (i != null)
         demand[i] +=
-          0.000002 * (a.bodyScale ?? 1) ** 3 * (a.metabolicCost ?? 1) * factor;
+          0.000002 *
+          modelMath.pow(a.bodyScale ?? 1, 3) *
+          (a.metabolicCost ?? 1) *
+          factor;
     }
     for (const b of c.brood) {
       const carrier =

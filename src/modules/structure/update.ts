@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import {
   readSoilMaterial,
   roofFactors,
@@ -33,7 +34,7 @@ export function updateStructure(w: SoilWorld) {
     );
     const same =
       previous &&
-      Math.hypot(
+      modelMath.hypot(
         previous.roof.x - g.roof.x,
         previous.roof.y - g.roof.y,
         previous.roof.z - g.roof.z,

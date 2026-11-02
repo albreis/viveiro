@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { SoilAgent, SoilState, SoilWorld } from "./types.ts";
 import type { Vec3 } from "../navigation/types.ts";
 
@@ -23,7 +24,9 @@ export function depositSoil(world: SoilWorld, ant: SoilAgent) {
   const mass = ant.carryingSoil || 0;
   if (!mass) return;
   const piles = world.soil.deposits;
-  let pile = piles.find((p) => Math.hypot(p.x - ant.x, p.z - ant.z) < 0.45);
+  let pile = piles.find(
+    (p) => modelMath.hypot(p.x - ant.x, p.z - ant.z) < 0.45,
+  );
   if (!pile) {
     pile = {
       id: world.soil.nextId++,
@@ -80,6 +83,6 @@ export function soilBalance(world: SoilWorld) {
   };
 }
 export const pileRadius = (mass: number) =>
-  Math.cbrt((Math.max(0, mass) * 3) / (4 * Math.PI));
+  modelMath.cbrt((Math.max(0, mass) * 3) / (4 * Math.PI));
 export const distance3 = (a: Vec3, b: Vec3) =>
-  Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+  modelMath.hypot(a.x - b.x, a.y - b.y, a.z - b.z);

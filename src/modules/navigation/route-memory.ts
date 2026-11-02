@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld } from "./types.ts";
 export type LearnedEdge = [number, number, number];
 export function knownRoute(
@@ -49,7 +50,7 @@ export function rememberSegment(
     (ant.lastNodeDistance ?? ant.distanceWalked ?? 0);
   const cost = Math.max(
     0.05,
-    walked || Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z),
+    walked || modelMath.hypot(a.x - b.x, a.y - b.y, a.z - b.z),
   );
   ant.knownEdges ??= [];
   const old = ant.knownEdges.find(

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { initializeSurvival } from "../survival/initialize.ts";
 import { initializeFertility } from "../fertility/model.ts";
 import { initializeRoomStores } from "../stores/initialize.ts";
@@ -48,8 +49,9 @@ export function spawnDaughter(
     if (
       root.nest.nodes.every(
         (n) =>
-          Math.hypot(n.x - candidate.site.x, n.z - candidate.site.z) > 2.5 &&
-          Math.hypot(
+          modelMath.hypot(n.x - candidate.site.x, n.z - candidate.site.z) >
+            2.5 &&
+          modelMath.hypot(
             n.x - candidate.chamber.x,
             n.y - candidate.chamber.y,
             n.z - candidate.chamber.z,

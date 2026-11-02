@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { ensureSoilClimate } from "../microclimate/initialize.ts";
 import { syncGases } from "../ventilation/state.ts";
 import { airNetwork } from "../ventilation/network.ts";
@@ -59,11 +60,11 @@ export function populateLesson(w: LessonWorld) {
         radius = 0.8 + attempt * 0.07;
       const x = Math.max(
         -9.4,
-        Math.min(9.4, entry.x + Math.cos(angle) * radius),
+        Math.min(9.4, entry.x + modelMath.cos(angle) * radius),
       );
       const z = Math.max(
         -5.9,
-        Math.min(5.9, entry.z + Math.sin(angle) * radius),
+        Math.min(5.9, entry.z + modelMath.sin(angle) * radius),
       );
       const point = { x, y: surfaceHeight(w.nest.relief, x, z) + 0.008, z };
       if (

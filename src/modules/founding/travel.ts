@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { outsideSite } from "./site.ts";
 import type { FoundingWorld } from "./types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
@@ -15,7 +16,7 @@ export function travelToFront(
     front = f.front!;
   const mouth = world.nest.nodes[entry];
   if (q.node === null) {
-    if (Math.hypot(q.x - mouth.x, q.z - mouth.z) > 0.58) {
+    if (modelMath.hypot(q.x - mouth.x, q.z - mouth.z) > 0.58) {
       const reached = walkFoundress(world, q, {
         ...outsideSite(world.founding!, 0.5),
         y: mouth.y,

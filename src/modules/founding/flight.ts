@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { registerMating } from "../fertility/model.ts";
 import { beginSiteSurvey } from "../chambers/survey.ts";
 import { outsideSite } from "./site.ts";
@@ -10,13 +11,13 @@ function fly(ant: ColonyAgent, target: Vec3, speed: number) {
   const dx = target.x - ant.x,
     dy = target.y - (ant.y || 0),
     dz = target.z - ant.z,
-    d = Math.hypot(dx, dy, dz);
+    d = modelMath.hypot(dx, dy, dz);
   const t = Math.min(1, speed / (d || 1));
   ant.x += dx * t;
   ant.y = (ant.y || 0) + dy * t;
   ant.z += dz * t;
-  ant.angle = Math.atan2(dz, dx);
-  ant.pitch = Math.atan2(dy, Math.hypot(dx, dz));
+  ant.angle = modelMath.atan2(dz, dx);
+  ant.pitch = modelMath.atan2(dy, modelMath.hypot(dx, dz));
   ant.normal = { x: 0, y: 1, z: 0 };
   return d <= speed;
 }
@@ -82,9 +83,9 @@ export function updateFlight(world: FoundingWorld) {
       orbit = Math.max(0, 1 - t / 55),
       angle = t * 0.08;
     const target = {
-      x: f.site.x + Math.cos(angle) * orbit * 0.7,
+      x: f.site.x + modelMath.cos(angle) * orbit * 0.7,
       y: f.site.y + 1.35,
-      z: f.site.z + Math.sin(angle) * orbit * 0.7,
+      z: f.site.z + modelMath.sin(angle) * orbit * 0.7,
     };
     fly(queen, target, 0.075);
     fly(male, { x: queen.x + 0.16, y: (queen.y || 0) + 0.04, z: queen.z }, 0.1);
@@ -92,7 +93,7 @@ export function updateFlight(world: FoundingWorld) {
     queen.state = male.state = "Voo nupcial";
     if (
       t >= 60 &&
-      Math.hypot(
+      modelMath.hypot(
         queen.x - male.x,
         (queen.y || 0) - (male.y || 0),
         queen.z - male.z,

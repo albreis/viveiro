@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { SoilWorld } from "../soil/types.ts";
 import { createGranularState } from "./types.ts";
 import { grainPairs } from "./neighbors.ts";
@@ -7,7 +8,7 @@ import { integrateGrain } from "./support.ts";
 export function updateGranular(w: SoilWorld) {
   const s = (w.soil.granular ??= createGranularState()),
     bodies = (w.nest.rubble || []).filter((g) => g.mass > 0.0000001);
-  s.friction = Math.tan(
+  s.friction = modelMath.tan(
     (Math.max(15, Math.min(55, w.params.reposeAngle ?? 36)) * Math.PI) / 180,
   );
   s.steps++;
@@ -32,7 +33,7 @@ export function updateGranular(w: SoilWorld) {
   }
   for (const g of bodies) {
     const v = g.velocity!,
-      speed = Math.hypot(v.x, v.y, v.z);
+      speed = modelMath.hypot(v.x, v.y, v.z);
     s.kinetic += 0.5 * g.mass * speed * speed;
     if (speed > 0.00005) s.moving++;
     else g.quiet = (g.quiet || 0) + 1;

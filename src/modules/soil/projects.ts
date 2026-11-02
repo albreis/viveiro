@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { DigProject, SoilWorld, SoilAgent } from "./types.ts";
 import { distance3, removedSoil } from "./ledger.ts";
 import { normalize, sub } from "../navigation/vectors.ts";
@@ -96,7 +97,7 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
   const front = world.nest.nodes[project.front],
     base = world.nest.nodes[project.from],
     delta = sub(project.goal, front),
-    remaining = Math.hypot(delta.x, delta.y, delta.z);
+    remaining = modelMath.hypot(delta.x, delta.y, delta.z);
   if (remaining < 0.001) {
     advanceFront(world, project);
     return;
@@ -114,7 +115,7 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
     0,
     distance3(front, base) - Math.max(0, base.r - front.r),
   );
-  const mass = Math.PI * front.r ** 2 * (after - before);
+  const mass = Math.PI * modelMath.pow(front.r, 2) * (after - before);
   project.excavated += mass;
   removedSoil(world, ant, mass);
   world.nest.revision++;

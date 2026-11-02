@@ -1,0 +1,168 @@
+{
+  "version": "0.40.0",
+  "stage": "P2.2B",
+  "checkedAt": "2026-11-02T19:21:01.089773+00:00",
+  "arithmetic": "stdlib-f64-v1",
+  "globalMathPatched": false,
+  "legacyNativeCsvExactAfterRouting": true,
+  "fullSuite": {
+    "passed": 396,
+    "failed": 0,
+    "durationMs": 157051.4816
+  },
+  "additionalGoldenCases": 4,
+  "targetedFinal": {
+    "passed": 11,
+    "failed": 0
+  },
+  "offlineFinal": {
+    "passed": 2,
+    "failed": 0
+  },
+  "strictTypeScript": true,
+  "clientModules": 351,
+  "ownedRoutedFiles": 90,
+  "routedOperations": 281,
+  "libraryNativeApproximateCallsFound": 0,
+  "dependencyNotices": {
+    "packages": 184,
+    "maxPackageNoticeLines": 109
+  },
+  "crossRuntime": {
+    "node": "24.22.1",
+    "browser": "IAB real",
+    "ticksPerEnvironment": 4400,
+    "development": {
+      "cases": 4,
+      "csvAndManifestByteEqual": true
+    },
+    "productionBundle": {
+      "verifiedCases": 4,
+      "complete": true,
+      "csvAndManifestByteEqual": true,
+      "origin": "http://127.0.0.1:4189",
+      "consoleErrors": 0,
+      "consoleWarnings": 0
+    },
+    "cases": [
+      {
+        "case": "regression-01",
+        "plan": {
+          "schema": "viveiro-experiment-v1",
+          "seed": "QA-CLI-039",
+          "days": 10,
+          "startMode": "established",
+          "biologicalProfile": {
+            "schema": 1,
+            "id": "generic-demo",
+            "version": 1
+          },
+          "parameters": {
+            "humidity": 68,
+            "light": 72,
+            "randomness": 28,
+            "reposeAngle": 36,
+            "temperatureC": 24,
+            "windX": 0.25,
+            "windZ": -0.15
+          }
+        },
+        "csvBytes": 2296,
+        "csvSha256": "a4f9a5db06f5b1590148d4cf8d8b42fd746edd9ad3857cff2fa9d83dc6472f16",
+        "manifestSha256": "97c5ffedc621b9e8db41485e712de0c5d86b56417abfabdeebf304a9179e4ea5",
+        "finalRootRng": 2422179969,
+        "equalCsv": true,
+        "equalManifest": true
+      },
+      {
+        "case": "soil-02",
+        "plan": {
+          "schema": "viveiro-experiment-v1",
+          "seed": "PORTABLE-SOIL-02",
+          "days": 12,
+          "startMode": "established",
+          "biologicalProfile": {
+            "schema": 1,
+            "id": "generic-survival-demo",
+            "version": 1
+          },
+          "parameters": {
+            "humidity": 82,
+            "light": 35,
+            "randomness": 64,
+            "reposeAngle": 22,
+            "temperatureC": 31,
+            "windX": -1.2,
+            "windZ": 0.6
+          }
+        },
+        "csvBytes": 2723,
+        "csvSha256": "5de74e71964552ccee83c740974e15738dad23911d374b6a1898e8fa6f3b0ecd",
+        "manifestSha256": "6cfb3747d9af54f23634b49c01483d2d0b5cdb3c569f248e956e1d31b368c657",
+        "finalRootRng": 1635039268,
+        "equalCsv": true,
+        "equalManifest": true
+      },
+      {
+        "case": "found-03",
+        "plan": {
+          "schema": "viveiro-experiment-v1",
+          "seed": "PORTABLE-FOUND-03",
+          "days": 12,
+          "startMode": "founding",
+          "biologicalProfile": {
+            "schema": 1,
+            "id": "generic-semiclaustral-demo",
+            "version": 1
+          },
+          "parameters": {
+            "humidity": 76,
+            "light": 85,
+            "randomness": 43,
+            "reposeAngle": 48,
+            "temperatureC": 29,
+            "windX": -0.35,
+            "windZ": -1.1
+          }
+        },
+        "csvBytes": 2501,
+        "csvSha256": "c1f81747d58a987e68ef4457b90119374992fb8315d84a3705b84e15275a176e",
+        "manifestSha256": "ade809aad75c2a6208604ec5dcc26150c896af0adc5b3a5137baeae32bc4a692",
+        "finalRootRng": 2732871021,
+        "equalCsv": true,
+        "equalManifest": true
+      },
+      {
+        "case": "workers-04",
+        "plan": {
+          "schema": "viveiro-experiment-v1",
+          "seed": "PORTABLE-WORKERS-04",
+          "days": 10,
+          "startMode": "established",
+          "biologicalProfile": {
+            "schema": 1,
+            "id": "generic-demo",
+            "version": 1
+          },
+          "parameters": {
+            "humidity": 44,
+            "light": 51,
+            "randomness": 36,
+            "reposeAngle": 39,
+            "temperatureC": 18,
+            "windX": 1.4,
+            "windZ": -0.8
+          }
+        },
+        "csvBytes": 2395,
+        "csvSha256": "3db673dd18d96e368bf3e81b038f03d84a9b17ed97db89be445ae36c928a99cc",
+        "manifestSha256": "58f10c9b0e26f46d051a3bd4033b6b3e1c31639a62335cd8404a86ce6f524321",
+        "finalRootRng": 1440444985,
+        "equalCsv": true,
+        "equalManifest": true
+      }
+    ]
+  },
+  "scientificallyCalibrated": false,
+  "independentScientificReplication": false
+}

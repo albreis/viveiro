@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import { allAnts } from "../colonies/types.ts";
 import { prepareSocialChemistry, odorDistance } from "./profile.ts";
@@ -7,10 +8,13 @@ export function applyOdorPulse(w: FamilyWorld, x: number, z: number) {
   const candidates = allAnts(w)
     .filter(
       (a) =>
-        a.node === null && !a.airborne && Math.hypot(a.x - x, a.z - z) < 1.2,
+        a.node === null &&
+        !a.airborne &&
+        modelMath.hypot(a.x - x, a.z - z) < 1.2,
     )
     .sort(
-      (a, b) => Math.hypot(a.x - x, a.z - z) - Math.hypot(b.x - x, b.z - z),
+      (a, b) =>
+        modelMath.hypot(a.x - x, a.z - z) - modelMath.hypot(b.x - x, b.z - z),
     );
   const a = candidates[0];
   if (!a) {

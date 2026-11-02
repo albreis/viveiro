@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, NestNode, Vec3 } from "./types.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { tunnelFooting } from "../terrain/surface-queries.ts";
@@ -24,7 +25,7 @@ export function enterShaft(
     z: from.z + (target.z - from.z) * t,
   };
   if (center.y <= below.y + 0.001) return false;
-  const angle = Math.atan2(ant.z - from.z, ant.x - from.x);
+  const angle = modelMath.atan2(ant.z - from.z, ant.x - from.x);
   let best: ReturnType<typeof tunnelFooting> | undefined,
     cost = Infinity;
   for (const turn of [
@@ -58,7 +59,7 @@ export function enterShaft(
       )
     )
       continue;
-    const distance = Math.hypot(
+    const distance = modelMath.hypot(
       candidate.x - ant.x,
       candidate.y - (ant.y || 0),
       candidate.z - ant.z,

@@ -1,10 +1,11 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { predatorEscape, approachPlant } from "../predators/foraging.ts";
 import { exposedFoundress } from "../semiclaustral/exposure.ts";
 import { aphidPrey } from "../ecology/predation.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
+const distance = (a, b) => modelMath.hypot(a.x - b.x, a.z - b.z);
 
 export function updatePredators(world, dead) {
   for (const p of world.predators) {
@@ -43,7 +44,7 @@ export function updatePredators(world, dead) {
         }
       }
     if (target) {
-      p.angle = Math.atan2(target.z - p.z, target.x - p.x);
+      p.angle = modelMath.atan2(target.z - p.z, target.x - p.x);
       if (nearest < 0.4 && p.cooldown === 0 && world.random() < 0.24) {
         target.deathCause = "predation";
         dead.add(target.id);

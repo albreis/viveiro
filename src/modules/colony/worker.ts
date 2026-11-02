@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import {
   rememberRoomClimate,
   knownBroodRoom,
@@ -103,14 +104,14 @@ export function updateColonyWorker(
       return false;
     }
     const danger = world.predators.find(
-      (p) => Math.hypot(p.x - ant.x, p.z - ant.z) < 1.2,
+      (p) => modelMath.hypot(p.x - ant.x, p.z - ant.z) < 1.2,
     );
     if (danger && ant.traits.courage > 0.3) {
       danger.energy = Math.max(0, danger.energy - 0.7);
       ant.energy -= 0.04;
       world.moveSurface(
         ant,
-        Math.atan2(danger.z - ant.z, danger.x - ant.x),
+        modelMath.atan2(danger.z - ant.z, danger.x - ant.x),
         ant.speed,
       );
       ant.state = "Defendendo a entrada";
@@ -122,12 +123,12 @@ export function updateColonyWorker(
         ],
       angle = world.tick * 0.012 + ant.id;
     const target = {
-      x: entrance.x + Math.cos(angle) * 0.8,
-      z: entrance.z + Math.sin(angle) * 0.8,
+      x: entrance.x + modelMath.cos(angle) * 0.8,
+      z: entrance.z + modelMath.sin(angle) * 0.8,
     };
     world.moveSurface(
       ant,
-      Math.atan2(target.z - ant.z, target.x - ant.x),
+      modelMath.atan2(target.z - ant.z, target.x - ant.x),
       ant.speed * 0.7,
     );
     ant.state = "Vigiando a entrada";

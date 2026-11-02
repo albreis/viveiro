@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { ColonyAgent, ColonyWorld } from "../colony/types.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import { colonyWorlds } from "../colonies/types.ts";
@@ -17,7 +18,9 @@ export function colonyProfile(w: ColonyWorld) {
   return values.map((v) => v / sum);
 }
 export function odorDistance(a: number[], b: number[]) {
-  return Math.sqrt(a.reduce((s, v, i) => s + (v - (b[i] || 0)) ** 2, 0));
+  return Math.sqrt(
+    a.reduce((s, v, i) => s + modelMath.pow(v - (b[i] || 0), 2), 0),
+  );
 }
 export function prepareSocialChemistry(root: FamilyWorld) {
   root.socialChemistry ??= createSocialChemistry();

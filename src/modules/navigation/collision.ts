@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type {
   AgentState,
   NavigationWorld,
@@ -15,9 +16,9 @@ export function positionClear(
   normal: Vec3 = { x: 0, y: 1, z: 0 },
 ) {
   const forward = {
-    x: Math.cos(heading) * Math.cos(pitch),
-    y: Math.sin(pitch),
-    z: Math.sin(heading) * Math.cos(pitch),
+    x: modelMath.cos(heading) * modelMath.cos(pitch),
+    y: modelMath.sin(pitch),
+    z: modelMath.sin(heading) * modelMath.cos(pitch),
   };
   const side = {
     x: forward.y * normal.z - forward.z * normal.y,
@@ -30,9 +31,9 @@ export function positionClear(
       z = point.z - other.z;
     const distance = x * x + y * y + z * z;
     const previous =
-      (entity.x - other.x) ** 2 +
-      ((entity.y || 0) - (other.y || 0)) ** 2 +
-      (entity.z - other.z) ** 2;
+      modelMath.pow(entity.x - other.x, 2) +
+      modelMath.pow((entity.y || 0) - (other.y || 0), 2) +
+      modelMath.pow(entity.z - other.z, 2);
     if (distance > previous + 0.0001) continue; // Escape from an existing overlap remains possible.
     const height = Math.abs(x * normal.x + y * normal.y + z * normal.z);
     const along = x * forward.x + y * forward.y + z * forward.z;
@@ -42,7 +43,10 @@ export function positionClear(
       (["queen", "gyne"].includes(other.kind || "") ? 0.53 : 0.38) * bodyScale;
     const width =
       (["queen", "gyne"].includes(other.kind || "") ? 0.25 : 0.14) * bodyScale;
-    if (height < 0.18 && (along / radius) ** 2 + (across / width) ** 2 < 1)
+    if (
+      height < 0.18 &&
+      modelMath.pow(along / radius, 2) + modelMath.pow(across / width, 2) < 1
+    )
       return false;
   }
   return true;

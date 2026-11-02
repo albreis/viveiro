@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, NestNode, Vec3 } from "./types.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { hitsLog } from "./surface-obstacles.ts";
@@ -18,19 +19,20 @@ export function leaveShaft(
   if (target.type !== "entrance" || center.y < -0.18) return false;
   const dx = ant.x - target.x,
     dz = ant.z - target.z;
-  const heading = Math.hypot(dx, dz) > 0.01 ? Math.atan2(dz, dx) : ant.angle;
+  const heading =
+    modelMath.hypot(dx, dz) > 0.01 ? modelMath.atan2(dz, dx) : ant.angle;
   const radius =
     Math.max(target.r, world.nest.linkWidths?.[edge] || 0.38) + 0.17;
   for (const turn of [0, 0.3, -0.3, 0.6, -0.6, 1, -1, 1.6, -1.6, Math.PI]) {
     const goal = projectSupport(world.nest, {
-      x: target.x + Math.cos(heading + turn) * radius,
+      x: target.x + modelMath.cos(heading + turn) * radius,
       y:
         surfaceHeight(
           world.nest.relief,
-          target.x + Math.cos(heading + turn) * radius,
-          target.z + Math.sin(heading + turn) * radius,
+          target.x + modelMath.cos(heading + turn) * radius,
+          target.z + modelMath.sin(heading + turn) * radius,
         ) + 0.008,
-      z: target.z + Math.sin(heading + turn) * radius,
+      z: target.z + modelMath.sin(heading + turn) * radius,
     });
     if (
       hitsLog(goal.point.x, goal.point.z, world.landscape) ||

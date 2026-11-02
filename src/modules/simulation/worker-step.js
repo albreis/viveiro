@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { deathLabels } from "../survival/labels.ts";
 import { updateLife } from "../survival/update.ts";
 import { storageDestination } from "../stores/destination.ts";
@@ -23,7 +24,7 @@ import { updateSoilWorker } from "../soil/worker.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
+const distance = (a, b) => modelMath.hypot(a.x - b.x, a.z - b.z);
 
 export function updateWorkers(world, suitability, exposure) {
   const dead = new Set();
@@ -102,7 +103,7 @@ export function updateWorkers(world, suitability, exposure) {
       const node = world.nest.nodes[ant.node];
       if (
         (ant.y || 0) >= -0.04 &&
-        Math.hypot(ant.x - node.x, ant.z - node.z) > 1.2
+        modelMath.hypot(ant.x - node.x, ant.z - node.z) > 1.2
       ) {
         ant.node = null;
         ant.tunnelCenter = null;
@@ -136,7 +137,7 @@ export function updateWorkers(world, suitability, exposure) {
     const danger = world.predators.find((p) => distance(ant, p) < 1.5);
     let heading = ant.angle;
     if (danger) {
-      heading = Math.atan2(ant.z - danger.z, ant.x - danger.x);
+      heading = modelMath.atan2(ant.z - danger.z, ant.x - danger.x);
       ant.state = "Fugindo";
     } else if (
       ant.carrying ||
@@ -153,7 +154,7 @@ export function updateWorkers(world, suitability, exposure) {
         ...world.nest.nodes[entranceIndex],
         index: entranceIndex,
       };
-      heading = Math.atan2(entrance.z - ant.z, entrance.x - ant.x);
+      heading = modelMath.atan2(entrance.z - ant.z, entrance.x - ant.x);
       ant.state = ant.carrying ? "Levando alimento" : "Voltando ao ninho";
       if (distance(ant, entrance) < 0.6) {
         ant.tunnelCenter = { x: entrance.x, y: entrance.y, z: entrance.z };
@@ -181,7 +182,7 @@ export function updateWorkers(world, suitability, exposure) {
         }
       }
       if (nearest) {
-        heading = Math.atan2(nearest.z - ant.z, nearest.x - ant.x);
+        heading = modelMath.atan2(nearest.z - ant.z, nearest.x - ant.x);
         ant.state = "Coletando";
         if (best < 0.38) {
           ant.carrying = Math.min(0.65, nearest.amount);

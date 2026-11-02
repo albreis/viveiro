@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
 import { sampleSupport } from "../terrain/field.ts";
@@ -89,8 +90,10 @@ export function advanceSupportedMotion(
   const next = projected?.position ?? position(ant);
   const step = sub(next, position(ant));
   const heading =
-    Math.hypot(step.x, step.z) > 0.001 ? Math.atan2(step.z, step.x) : ant.angle;
-  const pitch = Math.atan2(step.y, Math.hypot(step.x, step.z));
+    modelMath.hypot(step.x, step.z) > 0.001
+      ? modelMath.atan2(step.z, step.x)
+      : ant.angle;
+  const pitch = modelMath.atan2(step.y, modelMath.hypot(step.x, step.z));
   if (!projected) {
     ant.state = "Contato Antenal";
     motion.blockedTicks++;

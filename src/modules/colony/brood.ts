@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { fertilizeEgg } from "../fertility/egg.ts";
 import { initializeCocoon } from "../development/cocoon.ts";
 import { initializeBroodDevelopment } from "../development/initialize.ts";
@@ -19,9 +20,9 @@ export function broodPosition(world: ColonyWorld, id: number, nodeId: number) {
     (hashSeed(world.seed + ":brood:" + id) / 4294967296) * Math.PI * 2;
   const radius = 0.08 + (id % 5) * 0.025;
   return projectSupport(world.nest, {
-    x: node.x + Math.cos(angle) * radius,
+    x: node.x + modelMath.cos(angle) * radius,
     y: node.y - node.r * 0.92,
-    z: Math.max(-6.3, Math.min(6.3, node.z + Math.sin(angle) * radius)),
+    z: Math.max(-6.3, Math.min(6.3, node.z + modelMath.sin(angle) * radius)),
   });
 }
 export function makeBrood(

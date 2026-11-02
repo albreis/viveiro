@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { NestNode, NestState } from "../navigation/types.ts";
 import type { Landscape } from "../landscape/types.ts";
 import { seededRandom } from "../../libs/seeded-random.ts";
@@ -158,7 +159,7 @@ export function generateNest(
         const p = nodes[a],
           q = nodes[b],
           cost =
-            Math.hypot(p.x - q.x, p.y - q.y, p.z - q.z) *
+            modelMath.hypot(p.x - q.x, p.y - q.y, p.z - q.z) *
             (0.9 + random() * 0.2);
         if (!best || cost < best.cost) best = { a, b, cost };
       }

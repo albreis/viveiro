@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { plugField } from "../sealing/field.ts";
 import {
   surfaceHeight,
@@ -36,7 +37,7 @@ function cavity(nest: NestState, p: Vec3): FieldSample {
     const bound = node.r + 0.32;
     if (Math.abs(x) > bound || Math.abs(y) > bound || Math.abs(z) > bound)
       continue;
-    const distance = Math.hypot(x, y, z),
+    const distance = modelMath.hypot(x, y, z),
       inverse = 1 / (distance || 1);
     union(field, distance - node.r, x * inverse, y * inverse, z * inverse);
   }
@@ -65,7 +66,7 @@ function cavity(nest: NestState, p: Vec3): FieldSample {
     const x = p.x - a.x - t * dx,
       y = p.y - a.y - t * dy,
       z = p.z - a.z - t * dz;
-    const distance = Math.hypot(x, y, z),
+    const distance = modelMath.hypot(x, y, z),
       inverse = 1 / (distance || 1);
     union(field, distance - radius, x * inverse, y * inverse, z * inverse);
   }
@@ -73,7 +74,7 @@ function cavity(nest: NestState, p: Vec3): FieldSample {
     const x = p.x - cut.x,
       y = p.y - cut.y,
       z = p.z - cut.z,
-      d = Math.hypot(x, y, z);
+      d = modelMath.hypot(x, y, z);
     if (d < cut.r + 0.32)
       union(field, d - cut.r, x / (d || 1), y / (d || 1), z / (d || 1));
   }
@@ -90,7 +91,7 @@ export function sampleSoil(nest: NestState, p: Vec3): FieldSample {
   const ox = Math.max(qx, 0),
     oy = Math.max(qy, 0),
     oz = Math.max(qz, 0);
-  const outside = Math.hypot(ox, oy, oz);
+  const outside = modelMath.hypot(ox, oy, oz);
   const box = outside + Math.min(Math.max(qx, qy, qz), 0);
   let bx = 0,
     by = 0,
@@ -124,7 +125,7 @@ export function sampleSoil(nest: NestState, p: Vec3): FieldSample {
   const x = bx * h - voidField.x * (1 - h);
   const y = by * h - voidField.y * (1 - h);
   const z = bz * h - voidField.z * (1 - h);
-  const size = Math.hypot(x, y, z) || 1;
+  const size = modelMath.hypot(x, y, z) || 1;
   const result = {
     distance: cut + (base - cut) * h + k * h * (1 - h),
     x: x / size,
@@ -133,11 +134,11 @@ export function sampleSoil(nest: NestState, p: Vec3): FieldSample {
   };
   for (const pile of nest.rubble || []) {
     if (pile.mass <= 0) continue;
-    const r = Math.cbrt((pile.mass * 3) / (4 * Math.PI));
+    const r = modelMath.cbrt((pile.mass * 3) / (4 * Math.PI));
     const dx = p.x - pile.x,
       dy = p.y - pile.y,
       dz = p.z - pile.z,
-      d = Math.hypot(dx, dy, dz);
+      d = modelMath.hypot(dx, dy, dz);
     if (d - r < result.distance)
       Object.assign(result, {
         distance: d - r,

@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { edgePassable } from "../sealing/passage.ts";
 import { chooseLearnedExit } from "../learning/live.ts";
 import { adjacentAirComfort } from "../ventilation/sensing.ts";
@@ -65,7 +66,11 @@ export function continueLocalRoute(
   if (alternatives.length) neighbors = alternatives;
   const options = neighbors.map((id) => {
     const node = world.nest.nodes[id],
-      length = Math.hypot(node.x - from.x, node.y - from.y, node.z - from.z);
+      length = modelMath.hypot(
+        node.x - from.x,
+        node.y - from.y,
+        node.z - from.z,
+      );
     return {
       id,
       comfort: adjacentAirComfort(world, ant, id),
@@ -103,7 +108,8 @@ export function requestRoute(
   const underway =
     oldHead !== undefined &&
     center &&
-    Math.hypot(center.x - from.x, center.y - from.y, center.z - from.z) > 0.03;
+    modelMath.hypot(center.x - from.x, center.y - from.y, center.z - from.z) >
+      0.03;
   ant.routeIntent = {
     destination,
     tag: SEMANTIC.includes(node.type) ? node.type : "node",

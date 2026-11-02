@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { FoundingWorld } from "../founding/types.ts";
 import type { Vec3 } from "../navigation/types.ts";
 import { founder, changePhase, spendReserve } from "../founding/types.ts";
@@ -66,18 +67,18 @@ export function updateSiteSurvey(w: FoundingWorld): void {
   if (s.mode === "explore" && s.steps >= p.exploreTicks) s.mode = "return";
   if (s.mode === "explore") {
     let heading = s.heading;
-    if (Math.hypot(q.x - s.origin.x, q.z - s.origin.z) > p.roamRadius)
-      heading = Math.atan2(s.origin.z - q.z, s.origin.x - q.x);
+    if (modelMath.hypot(q.x - s.origin.x, q.z - s.origin.z) > p.roamRadius)
+      heading = modelMath.atan2(s.origin.z - q.z, s.origin.x - q.x);
     const choices = [-0.65, 0, 0.65].map((turn) => {
       const a = heading + turn,
         point = {
-          x: q.x + Math.cos(a) * p.sensorRadius,
+          x: q.x + modelMath.cos(a) * p.sensorRadius,
           y: 0,
-          z: q.z + Math.sin(a) * p.sensorRadius,
+          z: q.z + modelMath.sin(a) * p.sensorRadius,
         };
       point.y = surfaceHeight(w.nest.relief, point.x, point.z) + 0.008;
       const withinReach =
-        Math.hypot(
+        modelMath.hypot(
           point.x - here.x,
           point.y - p.probeDepth - here.y,
           point.z - here.z,
@@ -88,7 +89,9 @@ export function updateSiteSurvey(w: FoundingWorld): void {
       return {
         heading: a,
         weight:
-          r.quality < 0 ? 0 : Math.exp(3 * r.quality + (turn === 0 ? 0.15 : 0)),
+          r.quality < 0
+            ? 0
+            : modelMath.exp(3 * r.quality + (turn === 0 ? 0.15 : 0)),
       };
     });
     const sum = choices.reduce((n, c) => n + c.weight, 0);

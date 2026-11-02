@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { sampleACO } from "../chemistry/aco.ts";
 export interface RouteOption {
   id: number;
@@ -16,7 +17,7 @@ export function chooseLocalExit(
   if (!options.length) return null;
   if (options.length === 1) return options[0].id;
   const pheromone = options.map((o) =>
-    Math.exp(Math.max(-6, Math.min(6, o.signal * 60))),
+    modelMath.exp(Math.max(-6, Math.min(6, o.signal * 60))),
   );
   const heuristic = options.map(
     (o) =>

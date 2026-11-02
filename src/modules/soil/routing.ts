@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import { physicalStockVisit } from "../stores/local.ts";
 import { takeStock } from "../stores/ledger.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
@@ -29,15 +30,15 @@ export function soilEntrance(world: SoilWorld, ant: SoilAgent) {
       (n) =>
         n.type === "entrance" &&
         (n.colonyId || 1) === (ant.colonyId || 1) &&
-        Math.hypot(n.x - ant.x, n.z - ant.z) < 2.3 &&
+        modelMath.hypot(n.x - ant.x, n.z - ant.z) < 2.3 &&
         !(
           ant.avoidEntranceUntil! > world.tick && ant.avoidEntrance === n.index
         ),
     );
   visible.sort(
     (a, b) =>
-      Math.hypot(a.x - ant.x, a.z - ant.z) -
-      Math.hypot(b.x - ant.x, b.z - ant.z),
+      modelMath.hypot(a.x - ant.x, a.z - ant.z) -
+      modelMath.hypot(b.x - ant.x, b.z - ant.z),
   );
   return visible[0]?.index ?? -1;
 }
@@ -88,7 +89,7 @@ export function arriveWithSoil(
     const entrance = world.nest.nodes[node];
     const dx = ant.x - entrance.x,
       dz = ant.z - entrance.z,
-      size = Math.hypot(dx, dz) || 1;
+      size = modelMath.hypot(dx, dz) || 1;
     const target = {
       x: entrance.x + (dx / size || 1) * 0.68,
       y:
@@ -116,11 +117,11 @@ export function enterForSoil(world: SoilWorld, ant: SoilAgent, target: number) {
     return;
   }
   const entrance = world.nest.nodes[entranceId];
-  const d = Math.hypot(entrance.x - ant.x, entrance.z - ant.z);
+  const d = modelMath.hypot(entrance.x - ant.x, entrance.z - ant.z);
   if (d > 0.6) {
     world.moveSurface(
       ant,
-      Math.atan2(entrance.z - ant.z, entrance.x - ant.x),
+      modelMath.atan2(entrance.z - ant.z, entrance.x - ant.x),
       ant.speed,
     );
     ant.state = "Voltando à escavação";

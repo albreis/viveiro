@@ -1,3 +1,4 @@
+import { modelMath } from "../../libs/model-math.ts";
 import type { MeshGrid } from "./mesh-grid.ts";
 
 const EDGES = [
@@ -66,7 +67,7 @@ function intersect(grid: MeshGrid, a: number, b: number): Vertex {
   const nx = grid.normals[a * 3] * (1 - t) + grid.normals[b * 3] * t;
   const ny = grid.normals[a * 3 + 1] * (1 - t) + grid.normals[b * 3 + 1] * t;
   const nz = grid.normals[a * 3 + 2] * (1 - t) + grid.normals[b * 3 + 2] * t;
-  const size = Math.hypot(nx, ny, nz) || 1;
+  const size = modelMath.hypot(nx, ny, nz) || 1;
   return {
     x: pa[0] + (pb[0] - pa[0]) * t,
     y: pa[1] + (pb[1] - pa[1]) * t,
@@ -110,7 +111,9 @@ function triangle(
     output.normals.push(v.nx, v.ny, v.nz);
     output.uvs.push(v.x / 10, isTop ? v.z / 6.5 : v.y / 4.2);
     const strata =
-      0.94 + Math.sin(v.y * 18) * 0.035 + Math.sin(v.x * 0.9 + v.z) * 0.02;
+      0.94 +
+      modelMath.sin(v.y * 18) * 0.035 +
+      modelMath.sin(v.x * 0.9 + v.z) * 0.02;
     output.colors.push(
       isTop ? 1 : 0.46 * strata,
       isTop ? 1 : 0.3 * strata,
