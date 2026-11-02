@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.29.1**, PR [#40](https://github.com/albreis/viveiro/pull/40), revisão do núcleo eP0.1 de licenças. A0.29.0/PR #39 entregou a etapa14 de ritmo e continuidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada: **0.30.0**, PR [#41](https://github.com/albreis/viveiro/pull/41), pipeline de releases por tag. P0.3 ainda depende da publicação pública separada. A0.29.1/PR #40 entregou revisão e licenças. A0.29.0/PR #39 entregou a etapa14 de ritmo e continuidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
