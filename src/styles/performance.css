@@ -1,0 +1,23 @@
+.performance-panel {
+  display: grid;
+  gap: 0.6rem;
+}
+.performance-panel label {
+  font-size: 0.85rem;
+}
+.performance-panel select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #c7d2b5;
+  border-radius: 0.4rem;
+  color: #293c31;
+  background: #f8faef;
+}
+.performance-panel p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.8rem;
+}
+.performance-panel button {
+  justify-self: start;
+}

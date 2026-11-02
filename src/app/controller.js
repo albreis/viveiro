@@ -1,3 +1,6 @@
+import { installPerformanceControls } from "./performance-controls.ts";
+import { readPerformanceMode } from "../services/performance-preference.ts";
+import { renderProfile } from "../modules/renderer/performance-profile.ts";
 import { installSurvivalControls } from "./survival-view.ts";
 import { installMaterialControls } from "./material-controls.ts";
 import { installBroodInspection } from "./development-status.ts";
@@ -58,7 +61,7 @@ let interventions = [],
   replayIndex = 0,
   lastUi = 0,
   lastSave = 0;
-let forecaster, toastTimer;
+let forecaster, toastTimer, performanceControls;
 const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
@@ -304,7 +307,11 @@ try {
         type: "module",
       }),
   );
+  forecaster.options.observation = renderProfile(
+    readPerformanceMode(),
+  ).forecast;
   installForecastControls(forecaster, forecastSource, () => scenario);
+  performanceControls = installPerformanceControls(() => scene, forecaster);
   installForecastBenchmark();
   if (import.meta.hot) import.meta.hot.dispose(() => forecaster.dispose());
 } catch (error) {
@@ -543,6 +550,7 @@ function frame(now) {
       running ? clock.alpha : 1,
     );
     scene.render();
+    performanceControls?.frame(now);
   }
   if (now - lastUi > 350) {
     updateUi();
@@ -569,5 +577,5 @@ window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
 syncControls();
 updateUi();
-forecaster?.consider(() => active().snapshot(), scenario, active().tick);
+forecaster?.consider(forecastSource, scenario, active().tick);
 requestAnimationFrame(frame);

@@ -25,7 +25,9 @@ export function pickAnt(host, e) {
   const rect = host.element.getBoundingClientRect();
   let nearest = null,
     best = 12;
-  for (const ant of host.world.ants) {
+  for (const ant of host.world.ants.filter(
+    (a) => a.kind !== "worker" || host.visibleWorkers?.includes(a),
+  )) {
     const v = new THREE.Vector3(ant.x, (ant.y || 0) + 0.13, ant.z).project(
       host.camera,
     );

@@ -1,10 +1,10 @@
 {
   "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
   "upload_type": "software",
-  "version": "0.30.1",
+  "version": "0.31.0",
   "publication_date": "2026-11-02",
   "creators": [{ "name": "Viveiro contributors" }],
-  "description": "<p>Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia. Fonte do modelo: v0.30.1, commit d61a439980d32dcbae61bba5d2aeb274fbb75341.</p><p>O pacote de depósito contém código selecionado dessa tag e metadados preparados posteriormente, identificados em source-manifest.json. Exclui histórico Git, saves, documentação operacional e configuração de hospedagem. Código original: MIT; documentação original: CC BY 4.0. Avisos de terceiros preservados; consultar LICENSE e LICENSE-DOCS.md.</p>",
+  "description": "<p>Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia. Fonte do modelo: v0.31.0, commit 1a5fa67038c8fe244844136257f5328becbf5e4e.</p><p>O pacote de depósito contém código selecionado dessa tag e metadados preparados posteriormente, identificados em source-manifest.json. Exclui histórico Git, saves, documentação operacional e configuração de hospedagem. Código original: MIT; documentação original: CC BY 4.0. Avisos de terceiros preservados; consultar LICENSE e LICENSE-DOCS.md.</p>",
   "access_right": "open",
   "license": "MIT",
   "keywords": [
@@ -17,7 +17,7 @@
   "notes": "Metadados preparados para revisão e depósito manual. Nenhum registro ou DOI emitido por este arquivo. A data é a da release do software; ajustar a data do depósito se necessário. A autoria coletiva reproduz o crédito existente na licença.",
   "related_identifiers": [
     {
-      "identifier": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.30.1/",
+      "identifier": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.31.0/",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

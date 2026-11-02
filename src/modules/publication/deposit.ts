@@ -10,6 +10,16 @@ export interface CitationMetadata {
   authors: { name: string }[];
 }
 
+// Repository-publication tests contain deliberate credential markers and local fixtures.
+// The model source package retains model tests; these tooling tests stay in GitHub.
+export const excludedOperationalTests = [
+  "tests/deposit.test.mjs",
+  "tests/deposit-archive.test.mjs",
+  "tests/publication-files.test.mjs",
+  "tests/publication-manifest.test.mjs",
+  "tests/publication-static.test.mjs",
+  "tests/fixtures/public-release.mjs",
+];
 export const sourceRoots = ["src", "public", "scripts", "tests"];
 export const sourceFiles = [
   "package.json",
@@ -22,6 +32,7 @@ export const sourceFiles = [
 ];
 
 export function permittedSourcePath(path: string): boolean {
+  if (excludedOperationalTests.includes(path)) return false;
   const parts = path.split("/");
   if (
     parts.some(

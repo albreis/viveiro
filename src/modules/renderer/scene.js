@@ -1,3 +1,6 @@
+import { readPerformanceMode } from "../../services/performance-preference.ts";
+import { renderProfile } from "./performance-profile.ts";
+import { applyScenePerformance } from "./scene-performance.ts";
 import { focusBrood } from "./brood-focus.ts";
 import { PlugView } from "./PlugView.ts";
 import { focusSealing } from "./sealing-focus.ts";
@@ -27,6 +30,7 @@ import { tunnelEnvelope } from "../terrain/terrain.js";
 const UP = new THREE.Vector3(0, 1, 0);
 export class Terrarium {
   constructor(element, world, onPlace) {
+    this.performance = renderProfile(readPerformanceMode());
     this.element = element;
     this.onPlace = onPlace;
     this.world = world;
@@ -40,8 +44,10 @@ export class Terrarium {
       alpha: false,
       powerPreference: "high-performance",
     });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
-    this.renderer.shadowMap.enabled = true;
+    this.renderer.setPixelRatio(
+      Math.min(window.devicePixelRatio || 1, this.performance.pixelRatio),
+    );
+    this.renderer.shadowMap.enabled = this.performance.shadows;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -90,7 +96,7 @@ export class Terrarium {
     this.predatorGroup = new THREE.Group();
     this.scene.add(this.predatorGroup);
     this.buildGround(world.seed);
-    this.soilMesher = new SoilMesher();
+    this.soilMesher = new SoilMesher(this.performance.soilDetail);
     this.soilView = new SoilView(this.scene, LIMIT);
     this.granularView = new GranularView(this.scene);
     this.structureView = new StructureView(this.scene);
@@ -272,6 +278,9 @@ export class Terrarium {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
+  }
+  setPerformanceMode(mode) {
+    applyScenePerformance(this, mode);
   }
   render() {
     if (!this.followId) this.controls.update();

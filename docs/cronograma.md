@@ -509,7 +509,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [x] P0.3 entregue em0.30.1/PR [#41](https://github.com/albreis/viveiro/pull/41): [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/), com URLs /releases/v0.30.0/ e /releases/v0.30.1/. Acesso sem login, versão real e QA3D/Workers/arquivos conferidos. O Site original segue privado. Ver [processo e limites](publicacao-por-tag.md).
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
-  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.30.1 exata; rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
+  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.31.0 exata (atualizada após a entrega deP1.1A); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
   - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Nenhum DOI emitido.
   - [ ] P0.4C: após o PR chegar à branch padrão, conferir o botão do GitHub. Não concluído só por abrir PR.
   - A dependência externa de P0.4B não impede avançar P1; repo original e Site original continuam privados.
@@ -517,6 +517,8 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 ### P1. Modo escola
 
 - [ ] P1.1 Perfil de desempenho leve: menos agentes e instâncias, malha mais grossa, previsão parcial por padrão. Aceite: 30 quadros/s ou mais em Chromebook ou notebook de entrada, medido e documentado, com o mesmo modelo e seed.
+  - [x] P1.1A publicada em0.31.0, PR [#43](https://github.com/albreis/viveiro/pull/43): seletor leve/completo, limite apenas visual de80 operárias com prioridade de câmera/seleção, malha reduzida no mesmo campo, sombras opcionais, previsão por contagem e medidor local. Seed, população e modelo preservados. Ver [implementação e medição local](perfil-leve.md).
+  - [ ] P1.1B: ensaio em equipamento escolar identificado, em movimento e sob carga maior. A medição local com14 adultos pausados não certifica esse aceite.
 - [ ] P1.2 Tour de primeira visita em módulo próprio de src/app. Aceite: aluno novo entra em primeira pessoa em menos de 2 minutos sem ajuda.
 - [ ] P1.3 Experimentos de um clique (seed, parâmetros, câmera e pergunta): feromônio com e sem vento; ângulo de repouso 15° × 55°; uma × duas entradas e ventilação; prole em solo frio × quente; claustral × semiclaustral; mesma seed com uma intervenção diferente; herança. Aceite: abre em menos de 10 s e tem teste do estado inicial.
 - [ ] P1.4 Guia do professor em docs/ensino/: objetivo, tempo, passos, perguntas, gabarito e "o que o modelo não representa", associado à BNCC de Ciências da Natureza. Aceite: 6 roteiros revisados por professores de biologia e física.

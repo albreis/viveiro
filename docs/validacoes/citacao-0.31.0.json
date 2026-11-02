@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-02T08:01:00.202727+00:00",
+  "version": "0.31.0",
+  "sourceSha": "1a5fa67038c8fe244844136257f5328becbf5e4e",
+  "schema": "https://citation-file-format.github.io/1.2.0/schema.json",
+  "schemaSha256": "0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b",
+  "schemaValid": true,
+  "validator": "jsonschema 4.26.0 Draft7Validator + FormatChecker",
+  "zipReader": "Python 3.14 zipfile",
+  "files": 455,
+  "bytes": 1285685,
+  "archiveSha256": "5dd2cd029041c01f0a434005c3ebda497d9d1b4fcda0c93afeb9421cc813ee39",
+  "excludedOperationalTests": [
+    "tests/deposit.test.mjs",
+    "tests/deposit-archive.test.mjs",
+    "tests/publication-files.test.mjs",
+    "tests/publication-manifest.test.mjs",
+    "tests/publication-static.test.mjs",
+    "tests/fixtures/public-release.mjs"
+  ],
+  "uploadedToZenodo": false,
+  "doi": null
+}

@@ -11,8 +11,11 @@ export interface MeshGrid {
   values: Float32Array;
   normals: Float32Array;
 }
-export function buildMeshGrid(nest: NestState): MeshGrid {
-  const axes = meshAxes(nest),
+export function buildMeshGrid(
+  nest: NestState,
+  detail: "full" | "light" = "full",
+): MeshGrid {
+  const axes = meshAxes(nest, detail),
     nx = axes.x.length - 1,
     ny = axes.y.length - 1,
     nz = axes.z.length - 1,

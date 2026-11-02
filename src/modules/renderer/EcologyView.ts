@@ -28,6 +28,7 @@ export class EcologyView {
     w: FamilyWorld,
     pose: (a: ColonyAgent) => THREE.Vector3,
     follow: number | null,
+    visibleIds?: ReadonlySet<number>,
   ) {
     const e = w.ecology;
     let aphids = 0,
@@ -59,6 +60,8 @@ export class EcologyView {
       }
     }
     for (const m of e?.mimics || []) {
+      if (m.carrier !== undefined && visibleIds && !visibleIds.has(m.carrier))
+        continue;
       if (m.status === "dead" || m.carrier === follow) continue;
       const carrier = w.ants.find((a) => a.id === m.carrier),
         angle = carrier?.angle || m.id * 2.4,
