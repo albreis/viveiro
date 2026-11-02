@@ -1,3 +1,4 @@
+import { lessonReference } from "../lessons/reference.ts";
 import { validateSurvival } from "../survival/validation.ts";
 import { validateFertility } from "../fertility/validation.ts";
 import { validatePredatorMemory } from "../predators/validation.ts";
@@ -145,7 +146,12 @@ export function normalizeSession(value: unknown): SessionState {
   assertDataTree(value);
   if (!value || typeof value !== "object") throw new Error("Sessão ausente.");
   const s = value as Partial<SessionState>;
-  if (s.version !== 1) throw new Error("Versão de sessão não suportada.");
+  if (s.version !== 1 && s.version !== 2)
+    throw new Error("Versão de sessão não suportada.");
+  if ((s.version === 2) !== (s.lesson !== undefined))
+    throw new Error("Sessão de aula exige versão2 e referência compatível.");
+  if (s.lesson !== undefined && !s.comparison)
+    throw new Error("A comparação da aula está incompleta.");
   validateWorld(s.world);
   if (s.comparison) validateWorld(s.comparison);
   const initial = s.initial ?? { seed: s.world.seed, params: {} };
@@ -169,7 +175,8 @@ export function normalizeSession(value: unknown): SessionState {
   )
     throw new Error("Posição de replay inválida.");
   return {
-    version: 1,
+    version: s.lesson === undefined ? 1 : 2,
+    ...(s.lesson === undefined ? {} : { lesson: lessonReference(s.lesson) }),
     ...(s.clock === undefined ? {} : { clock: normalizeClock(s.clock) }),
     ...(s.advance === undefined
       ? {}

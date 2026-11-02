@@ -1,0 +1,47 @@
+{
+  "version": "0.33.0",
+  "date": "2026-11-02",
+  "stage": "P1.3",
+  "tests": {
+    "passed": 38,
+    "failed": 0,
+    "durationMs": 2075.568,
+    "scope": [
+      "recipes and initial conditions",
+      "durable backup and concurrent changes",
+      "checkpoint codec/store",
+      "session capture",
+      "headless equivalence and replay"
+    ]
+  },
+  "build": {
+    "typescript": "passed",
+    "viteModules": 333
+  },
+  "browser": {
+    "kind": "IAB",
+    "origin": "http://127.0.0.1:4183/",
+    "openingSeconds": {
+      "trilhas-vento": 2.03,
+      "repouso-solo": 2.91,
+      "entradas-ar": 2.11,
+      "crias-temperatura": 2.51,
+      "fundacao-coleta": 2.22,
+      "mesma-seed": 2.45,
+      "heranca": 2.52
+    },
+    "checks": [
+      "all seven paused A/B with actual labels and question",
+      "reload preserves lesson",
+      "replay reconstructs lesson",
+      "B ventilation has two real entrances and initial gases",
+      "pre-lesson checkpoint restores SEMENTE-42 and unlocks standard comparison"
+    ],
+    "consoleErrors": 0
+  },
+  "limits": [
+    "local timings are not school-hardware certification",
+    "prepared initial populations have no historical trajectory",
+    "biological and physical models remain exploratory"
+  ]
+}

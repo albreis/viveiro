@@ -1,0 +1,52 @@
+.lesson-panel {
+  margin-bottom: 1rem;
+}
+.lesson-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+.lesson-panel p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+.lesson-grid button {
+  display: grid;
+  gap: 0.3rem;
+  text-align: left;
+  padding: 0.7rem;
+  color: #30442e;
+  background: #f5f8ed;
+  border: 1px solid #c6d2b7;
+  border-radius: 8px;
+}
+.lesson-grid button[aria-pressed="true"],
+.lesson-grid button:hover {
+  background: #e8efdb;
+}
+.lesson-grid button:focus-visible {
+  outline: 3px solid #5f7b3c;
+  outline-offset: 2px;
+}
+.lesson-grid span {
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+#lesson-question {
+  font-weight: 600;
+}
+#lesson-setup {
+  color: #52624d;
+}
+#lesson-status {
+  margin-bottom: 0;
+}
+@media (max-width: 650px) {
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+}

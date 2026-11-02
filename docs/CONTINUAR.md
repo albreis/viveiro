@@ -1,3 +1,15 @@
+# Checkpoint em publicação / 0.33.0
+
+P1.3 validada na branch codex/experimentos-de-aula sobre codex/tour-primeira-visita/#44.
+38/38 testes dirigidos e build333 módulos; QA isolada4183 em2,03–2,91s.
+Preview4691/aba13 encerrados; dev17752/4173 e save SEMENTE-50088/D62,5 preservados.
+Próximo: commit/tag v0.33.0, push/PR, publicar no Site privado original e no
+catálogo público preservando as quatro versões existentes; atualizar CFF/ZIP
+com o SHA real da tag. Ainda não declarar a publicação concluída.
+Depois P1.4: guias docentes; revisão por professores permanece externa.
+
+---
+
 # Continuação do Viveiro
 
 Atualizado em 02/11/2026 após a publicação da 0.32.0.
