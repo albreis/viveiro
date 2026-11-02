@@ -1,0 +1,41 @@
+{
+  "version": "0.41.0",
+  "sourceSha": "0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f",
+  "private": {
+    "id": "appgdep_6ae91980319c81918c44f6f8805ab846",
+    "project_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "title": "Viveiro — laboratório de ecossistemas",
+    "version_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_232c3d612fb0819193359d411037c9e6",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae6364bc4488191b2757449ed3f7e94",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T23:15:26.335873+00:00",
+    "archive": "../viveiro-0.41.0.tar.gz",
+    "audience": "custom",
+    "revision": 1,
+    "externalVisitors": 0
+  },
+  "public": {
+    "provider": "GitHub Pages",
+    "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.41.0/",
+    "runId": 41544523508,
+    "runUrl": "https://github.com/albreis/viveiro/actions/runs/41544523508",
+    "status": "success",
+    "workflowRef": "main",
+    "workflowFixPr": 64,
+    "workflowFixMerge": "76c01783828bbf6ad4ce876bf2854a3ae2426875",
+    "initialTagRun": {
+      "id": 41543216838,
+      "status": "failure",
+      "reason": "Environment github-pages permits main only; tag deployment was rejected before build."
+    },
+    "environmentPolicyChanged": false
+  },
+  "legacyPublicSiteUpdated": false,
+  "zenodoManualDeposit": false
+}
