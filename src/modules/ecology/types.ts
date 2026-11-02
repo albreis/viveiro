@@ -38,6 +38,7 @@ export interface EcologyState {
   lastEvent: number;
 }
 export interface EcologyPredator {
+  predatorMemory?: import("../predators/types.ts").PredatorMemory;
   x: number;
   z: number;
   energy: number;

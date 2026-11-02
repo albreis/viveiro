@@ -1,5 +1,12 @@
 # Versões
 
+## 0.26.2 — Aranhas saem da vegetação
+
+- Aproximação aos pulgões com distância de trabalho e desistência temporária, corrigindo a oscilação infinita no centro de árvores e arbustos.
+- Desvio de caules acompanha a biomassa; copas e folhagem não viram paredes.
+- Recuperação por progresso líquido, saída gradual de sobreposições e de entradas surgidas sob o predador.
+- Memória de caça persistente, validação de saves e testes de continuidade.
+
 ## 0.26.1 — Bordas reais das entradas
 
 - Removida a argola decorativa que não acompanhava o relevo nem a escavação. A borda passa a ser a própria malha do solo.
