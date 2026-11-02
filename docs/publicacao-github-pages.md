@@ -11,8 +11,8 @@ Proposta para tirar o laboratório público do Sites do ChatGPT e servi-lo pelo 
 
 ## Requisitos
 
-1. **Domínio próprio na raiz.** Os builds usam base absoluta `/releases/vVERSAO/`, inclusive o service worker offline. No endereço padrão `albreis.github.io/viveiro/` tudo ficaria sob `/viveiro/` e os links quebrariam. Use um subdomínio, por exemplo `viveiro.albreis.com.br`, com um registro CNAME apontando para `albreis.github.io`.
-2. **Configurar o Pages** em Settings → Pages: origem "GitHub Actions" e o domínio próprio, com "Enforce HTTPS".
+1. **Domínio próprio na raiz.** Os builds usam base absoluta `/releases/vVERSAO/`, inclusive o service worker offline. No endereço padrão `albreis.github.io/viveiro/` tudo ficaria sob `/viveiro/` e os links quebrariam. O domínio escolhido é `viveiro.ersolucoesweb.com.br`: no DNS de `ersolucoesweb.com.br`, crie o registro `CNAME viveiro → albreis.github.io`.
+2. **Configurar o Pages** em Settings → Pages: origem "GitHub Actions" e Custom domain `viveiro.ersolucoesweb.com.br`, com "Enforce HTTPS" assim que o certificado sair. Para evitar que outra conta reivindique o subdomínio, verifique `ersolucoesweb.com.br` em Settings → Pages da sua conta (registro TXT).
 3. **Permitir tags no ambiente** em Settings → Environments → `github-pages`: acrescente a regra de tag `v*`, senão o deploy disparado por tag é recusado. O disparo manual a partir da `main` funciona sem isso.
 
 ## Importação inicial (uma vez, no Windows)
@@ -37,7 +37,7 @@ Não copie `.openai/` nem `dist/` do espelho. Depois do push, rode o workflow ma
 
 ## Conferência antes de trocar os links
 
-- `release-index.json`, `/releases/v0.40.1/` e `/releases/v0.40.1/release.json` respondem 200 no domínio novo.
+- `release-index.json`, `/releases/v0.40.1/` e `/releases/v0.40.1/release.json` respondem 200 em `https://viveiro.ersolucoesweb.com.br/`.
 - O `release.json` de cada versão é idêntico ao publicado no Sites.
 - Cena 3D, primeira pessoa, avanço em Worker e cache offline funcionam sob a base da tag.
 
