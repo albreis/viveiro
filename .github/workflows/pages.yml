@@ -3,6 +3,9 @@ name: Site público (GitHub Pages)
 # Acrescenta uma release ao espelho público (branch site-publico) e publica
 # o conteúdo de public/ no GitHub Pages. Releases já publicadas nunca são
 # reescritas: o build-public-release recusa alterar uma tag existente.
+#
+# O ambiente github-pages só aceita deploy a partir da main. Por isso uma tag
+# só grava a release no espelho e dispara este workflow na main, que publica.
 on:
   push:
     tags: ["v*"]
@@ -15,8 +18,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: site-publico
@@ -26,11 +27,10 @@ env:
   SITE_BRANCH: site-publico
 
 jobs:
-  publicar:
+  release:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
     steps:
       - name: Escolher tag
         id: tag
@@ -44,6 +44,7 @@ jobs:
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
       - name: Baixar espelho público
+        if: steps.tag.outputs.tag != ''
         uses: actions/checkout@v4
         with:
           ref: ${{ env.SITE_BRANCH }}
@@ -86,6 +87,36 @@ jobs:
             git push origin "HEAD:$SITE_BRANCH"
           fi
 
+  # Uma tag não pode publicar direto (proteção do ambiente); pede o deploy na main.
+  pedir-deploy:
+    needs: release
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Disparar publicação a partir da main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main
+
+  publicar:
+    needs: release
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Baixar espelho público
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SITE_BRANCH }}
+          path: espelho
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
