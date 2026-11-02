@@ -1,0 +1,61 @@
+{
+  "version": "0.39.0",
+  "sourceSha": "92072e26ed9a18d9533503376fd037b183e2f4d4",
+  "private": {
+    "id": "appgdep_6ae8d77151c08191ba871e7a27950b0e",
+    "project_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "title": "Viveiro — laboratório de ecossistemas",
+    "version_id": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_bae528456290819199cbdcc1f81ecdbe",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae6364bc4488191b2757449ed3f7e94",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T18:33:37.131098+00:00",
+    "archive": "G:/Projetos/viveiro-0.39.0.tar.gz",
+    "audience": "custom",
+    "revision": 1,
+    "externalVisitors": 0
+  },
+  "public": {
+    "id": "appgdep_6ae8d7ec68bc8191a76d09ee0931a63d",
+    "project_id": "appgprj_6ae80cd45fdc8191be8315696a383393",
+    "title": "Viveiro — laboratório público",
+    "version_id": "appgprj_6ae80cd45fdc8191be8315696a383393~appgver_3ad1f571ed508191a250ea82d9f5f521",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae80cd45fdc8191be8315696a383393",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-02T18:35:38.281818+00:00",
+    "sourceSha": "c3ff739657b6790f132b980acebb135be21add7d",
+    "versionNumber": 10,
+    "archive": "G:/Projetos/viveiro-publico-0.39.0.tar.gz",
+    "storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000000874820ea4b0f293114b3e4c",
+      "content_hash": "sha256:8332976fe7cb2d86984a7431a0f39528435aa6c834c922c07865fb5c4f8bf5e5",
+      "size_bytes": 15943680,
+      "file_count": 334
+    },
+    "audience": "public",
+    "revision": 2,
+    "nativeQa": {
+      "ticks": 100,
+      "status": "completed",
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "httpPostDeployHashCheck": {
+    "performed": false,
+    "priorAttemptStatus": 403,
+    "note": "No repeated request or access workaround."
+  }
+}

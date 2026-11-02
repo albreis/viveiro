@@ -22,7 +22,7 @@ DOI testado no navegador e ZIP publicado baixado com SHA-256 idêntico ao origin
 03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
 Ver docs/validacoes/zenodo-0.36.0.json para proveniência e limitações.
 
-## Versão atual0.38.0
+## Versão atual0.39.0
 
 Ainda não tem DOI próprio. O DOI acima não atende ao aceite de DOI da versão
 atual no cronograma. O botão Cite this repository depende do merge do CFF da
