@@ -1,3 +1,4 @@
+import { modelDocumentSources } from "../model-documentation/catalog.ts";
 import { teachingGuides } from "../teaching/catalog.ts";
 import { releaseTag, validateSourceSha } from "./release.ts";
 
@@ -30,6 +31,7 @@ export const sourceFiles = [
   "index.html",
   "LICENSE",
   "LICENSE-DOCS.md",
+  ...modelDocumentSources,
   "docs/ensino/README.md",
   "docs/ensino/microclima-local.md",
   "docs/ensino/revisao-docente.md",

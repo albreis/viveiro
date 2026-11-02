@@ -1,0 +1,53 @@
+{
+  "version": "0.38.0",
+  "stage": "P2.1",
+  "checkedAt": "2026-11-02T16:12:26.602157+00:00",
+  "documentation": {
+    "pages": 8,
+    "oddElements": 7,
+    "fullySpecifiedSubmodel": "surface reaction-diffusion",
+    "externalReplication": false,
+    "scientificallyCalibrated": false
+  },
+  "reference": {
+    "analyticCases": 7,
+    "variedGridCases": 36,
+    "absoluteTolerance": 1e-12,
+    "maximumAnalyticError": 1.1102230246251565e-16,
+    "productionSolverImportedByReference": false
+  },
+  "tests": {
+    "passed": 37,
+    "failed": 0,
+    "groups": [
+      "odd",
+      "odd-pages",
+      "chemistry",
+      "teaching",
+      "offline-build",
+      "publication-manifest",
+      "publication-files"
+    ]
+  },
+  "build": {
+    "strictTypeScript": true,
+    "modules": 345,
+    "bothAudiencesBuilt": true,
+    "offlineModelAssetsHashed": true
+  },
+  "browser": {
+    "provider": "IAB",
+    "origin": "http://127.0.0.1:4173",
+    "skipLinkFocus": "conteudo",
+    "warnings": 0,
+    "errors": 0,
+    "reflow": {
+      "requestedViewport": [320, 800],
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "codeRegionsScrollableAndFocusable": true,
+      "viewportReset": true
+    }
+  },
+  "scope": "No biological kernel, RNG, clock or persistence changes. Reference implementation is an internal cross-check by this project, not external validation."
+}

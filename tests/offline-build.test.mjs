@@ -54,6 +54,10 @@ test("build público cacheia chunks, quatro Workers, guias e manifesto com hashe
     "assets/learning.worker-",
     "assets/soil.worker-",
     "ensino/index.html",
+    "modelo/index.html",
+    "modelo/reacao-difusao.html",
+    "modelo/referencia.txt",
+    "modelo/vetores.json",
     "app-manifest.json",
   ])
     assert.ok(
