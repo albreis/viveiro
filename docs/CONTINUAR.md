@@ -77,8 +77,16 @@ Esquema oficial validado e PythonZIP conferiu membros/hashes/configuração Vite
 Quatro testes do depósito aprovados; nenhum DOI/upload. Fonte da tag e metadados
 posteriores, nove textos públicos de ensino incluídos para o build. Operacionais,
 saves e credenciais excluídos; detector preservado.
-Conta/autoria perguntadas antes, sem resposta; não inferir nome/ORCID ou pedir
-token. P0.4B/C continuam externos/merge. Ver citacao-e-deposito.md.
+Usuário confirmou em02/11: manter “Viveiro contributors” e já possui conta
+Zenodo. Não repetir essas perguntas, não inferir nome/ORCID nem pedir token.
+Tentativa de abrir https://zenodo.org/uploads no IAB foi REJEITADA pela revisão
+automática: a área pode expor registros privados e ter conta não foi considerado
+autorização de acesso. Não contornar nem tentar outros caminhos para a conta.
+Foi solicitada autorização específica via pergunta assíncrona para acessar
+uploads e preparar o rascunho0.36.0. Aguardar resposta antes de trabalho dependente.
+Nenhum registro foi lido/criado, nenhum arquivo enviado, nenhum DOI emitido.
+P0.4B aguarda essa autorização/autenticação e revisão; P0.4C depende do merge.
+Ver citacao-e-deposito.md. Trabalho de P1.6B pode continuar sem a conta.
 
 ## Ambiente e limpeza
 
