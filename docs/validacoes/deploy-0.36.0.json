@@ -1,0 +1,30 @@
+{
+  "version": "0.36.0",
+  "sourceSha": "0e156836bd94aaa6a408017f597b11447f065a73",
+  "private": {
+    "projectId": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "audience": "custom-owner-only",
+    "externalVisitors": 0,
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/",
+    "versionId": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_3ebff01d9c0c819198ec2777d1fc26d3",
+    "deploymentId": "appgdep_6ae8a08188948191b907528d3dc4a35b",
+    "status": "succeeded",
+    "updatedAt": "2026-11-02T14:39:12.083626+00:00",
+    "archive": "G:\\Projetos\\viveiro-0.36.0.tar.gz"
+  },
+  "public": {
+    "projectId": "appgprj_6ae80cd45fdc8191be8315696a383393",
+    "audience": "public",
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/",
+    "mirrorSha": "bcdb5a613f201590c2de4bcd509b33992a25caf2",
+    "versionId": "appgprj_6ae80cd45fdc8191be8315696a383393~appgver_acf89aa8798c81918e8a12a834082c2c",
+    "versionNumber": 7,
+    "deploymentId": "appgdep_6ae8a0a20378819187f8792e188b1360",
+    "status": "succeeded",
+    "updatedAt": "2026-11-02T14:39:44.933398+00:00",
+    "archive": "G:\\Projetos\\viveiro-publico-0.36.0.tar.gz",
+    "fileCount": 178,
+    "bytes": 11079680,
+    "archiveHash": "sha256:06b7be41a8d36235e9e44677cf5185919c99c27754a6b8a75a33b67e8914fe0b"
+  }
+}

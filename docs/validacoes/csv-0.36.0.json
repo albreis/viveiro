@@ -10,7 +10,8 @@
   "directedTests": {
     "passed": 41,
     "failed": 0,
-    "durationMs": 1705.9113
+    "durationMs": 1705.9113,
+    "finalDurationMs": 3489.8603
   },
   "build": {
     "strictTypeScript": true,
@@ -44,5 +45,17 @@
     "lighthouseMeasured": false,
     "next": "P1.6B"
   },
-  "privateAudienceChanged": false
+  "privateAudienceChanged": false,
+  "published": {
+    "private": true,
+    "public": true,
+    "pr": 48,
+    "sourceSha": "0e156836bd94aaa6a408017f597b11447f065a73",
+    "legacySaveChecked": true,
+    "legacyTick": 264,
+    "legacyDailyRows": 0,
+    "currentSampleRows": 1,
+    "consoleWarnings": 0,
+    "consoleErrors": 0
+  }
 }

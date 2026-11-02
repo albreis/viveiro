@@ -115,3 +115,13 @@ Autoria coletiva mantida e esquema oficial validado. Pacote local
 LeitorZIP independente conferiu todos os hashes, membros e a configuração
 Vite offline da tag.4 testes do depósito passaram. Sem DOI/upload.
 Ver validacoes/citacao-0.35.2.json. Tags anteriores preservadas.
+
+## Atualização 0.36.0
+
+CFF/rascunho referem v0.36.0/0e156836bd94aaa6a408017f597b11447f065a73.
+Autoria coletiva preservada; esquema oficial CFF validado e512 arquivos
+conferidos por Python zipfile. Pacote de1.445.248bytes,
+.runtime/deposits/deposit-WhwuRb/viveiro-v0.36.0-source.zip,
+SHA25603c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
+Inclui observações diárias e configuração Vite da tag. Quatro testes do depósito
+passaram. Nenhum upload/DOI. Ver validacoes/citacao-0.36.0.json.

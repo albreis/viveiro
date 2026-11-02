@@ -76,3 +76,13 @@ fórmula de planilha. Valores numéricos negativos legítimos continuam numéric
 A tabela tem caption, cabeçalhos, região rotulada, foco visível e estado textual.
 Isso não certifica a interface inteira. Falta auditoria real Lighthouse,
 contraste, navegação completa, leitores de tela e ensaio de importação em planilha.
+
+## Publicação confirmada
+
+PR [#48](https://github.com/albreis/viveiro/pull/48), base #47;
+fonte/tag0.36.0:0e156836bd94aaa6a408017f597b11447f065a73.
+Site privado original e galeria pública publicados sem mudar as audiências.
+HTTP anônimo conferiu páginas200 e27 arquivos nãoHTML por SHA256.
+Na publicação real, save antigo SEMENTE-42/D2,64 em pausa exibiu zero dias
+históricos e uma amostra atual. Console limpo; nenhuma leitura retroativa criada.
+Ver validacoes/deploy-0.36.0.json e validacoes/publicacao-0.36.0.json.
