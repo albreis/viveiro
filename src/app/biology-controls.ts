@@ -1,3 +1,4 @@
+import { renderStoreStatus } from "./store-status.ts";
 import { renderMaternalStatus } from "./maternal-status.ts";
 import { biologyMarkup } from "./biology-markup.ts";
 import {
@@ -92,6 +93,7 @@ export function renderBiologyStatus(world: FamilyWorld): void {
   const output = document.getElementById("biology-active");
   if (!output) return;
   renderMaternalStatus(world);
+  renderStoreStatus(world);
   const p = resolveBiologicalProfile(world.biologicalProfile);
   output.textContent =
     "Atual: " +

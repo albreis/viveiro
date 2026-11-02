@@ -1,3 +1,4 @@
+import { takeStock, hasStockBin } from "../stores/ledger.ts";
 import type { ColonyWorld, ColonyAgent } from "../colony/types.ts";
 import { ownerWorld } from "../colonies/shared.ts";
 import { isStock } from "../colony/rooms.ts";
@@ -17,9 +18,13 @@ export function arriveIntruder(
     return false;
   }
   if (t.phase !== "search") return true;
-  const room = w.nest.nodes[node];
+  const room = w.nest.nodes[node],
+    victim = ownerWorld(w, t.owner);
   if ((room.colonyId || 1) !== t.owner) return true;
-  if (!isStock(w.nest, node, t.owner)) {
+  if (
+    !(victim && hasStockBin(victim, node)) &&
+    !isStock(w.nest, node, t.owner)
+  ) {
     t.goal = "storage";
     requestIntrusionRoute(w, a, t);
     return true;
@@ -36,10 +41,16 @@ export function arriveIntruder(
     startSupportedMotion(w, a, s.point, s.normal, room);
     return true;
   }
-  const victim = ownerWorld(w, t.owner),
-    amount = victim ? Math.min(0.35, Math.max(0, victim.food - 0.2)) : 0;
+  const amount = victim
+    ? takeStock(
+        victim,
+        Math.min(0.35, Math.max(0, victim.food - 0.2)),
+        "stolen",
+        node,
+        !!victim.colony.stores,
+      )
+    : 0;
   if (victim) {
-    victim.food -= amount;
     a.carrying += amount;
     if (w.socialChemistry) w.socialChemistry.stolen += amount;
   }

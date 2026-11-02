@@ -1,5 +1,13 @@
 # Versões
 
+## 0.25.0 — Estoques por câmara
+
+- Perfil opcional com lotes alimentares, entradas e retiradas conservativos por colônia.
+- Preferência por câmaras secas conhecidas e deterioração no ponto do lote.
+- Depósitos e refeições diretas exigem presença física; guarda contra energia gratuita e transferências através do solo.
+- Marcadores agregados, painel, catálogo e recuperação do habitat compartilhado.
+- Etapa 12B; materiais/textura/compactação continuam na 12C.
+
 ## 0.24.0 — Sondagem e memória local de câmaras
 
 - Perfil opcional com exploração física da rainha antes da escavação.

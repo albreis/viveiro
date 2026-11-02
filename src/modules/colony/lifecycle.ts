@@ -1,3 +1,4 @@
+import { takeStock } from "../stores/ledger.ts";
 import { exportFoundressPantry } from "../semiclaustral/budget.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import { finishCocoon, discardCocoon } from "../development/cocoon.ts";
@@ -26,7 +27,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
   const paid = closed
     ? spendReserve(world, "larvae", consumption)
     : Math.min(world.food, consumption);
-  if (!closed) world.food -= paid;
+  if (!closed) takeStock(world, paid, "brood");
   const fed = paid >= consumption - 1e-10;
   laySexualBrood(world);
   if (queen) {
@@ -73,11 +74,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
       if (first) {
         spendReserve(world, "eggs", eggs * MATERNAL_PARAMETERS.eggCost);
         f!.firstClutch = true;
-      } else
-        world.food = Math.max(
-          0,
-          world.food - eggs * MATERNAL_PARAMETERS.eggCost,
-        );
+      } else takeStock(world, eggs * MATERNAL_PARAMETERS.eggCost, "brood");
       world.lastLaying = world.tick;
       world.log(
         "A rainha colocou " +

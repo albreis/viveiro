@@ -1,3 +1,4 @@
+import { initializeRoomStores } from "../stores/initialize.ts";
 import { initializeFoundressForaging } from "../semiclaustral/initialize.ts";
 import { initializeSeason } from "../seasons/update.ts";
 import { initializeMaternalReserves } from "../maternal/initialize.ts";
@@ -121,6 +122,7 @@ export function spawnDaughter(
     a.tunnelY = 0;
   }
   initializeSeason(child);
+  initializeRoomStores(child);
   root.nextColonyId = id + 1;
   (root.colonies ??= []).push(child);
   bindNeighbors(root);

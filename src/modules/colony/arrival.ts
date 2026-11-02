@@ -1,3 +1,4 @@
+import { hasStockBin } from "../stores/ledger.ts";
 import { localChambers } from "../chambers/memory.ts";
 import { isStock } from "./rooms.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
@@ -27,7 +28,8 @@ export function arriveColony(
     return true;
   }
   ant.route = [];
-  if (isStock(world.nest, node, ant.colonyId || 1)) feedFromStock(world, ant);
+  if (hasStockBin(world, node) || isStock(world.nest, node, ant.colonyId || 1))
+    feedFromStock(world, ant);
   if (task.kind === "brood" || task.kind === "waste") {
     const support = broodPosition(world, task.item!, node);
     task.placing = true;

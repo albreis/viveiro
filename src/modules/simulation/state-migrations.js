@@ -1,3 +1,4 @@
+import { validateRoomStores } from "../stores/validation.ts";
 import { validateChamberChoice } from "../chambers/validation.ts";
 import { validateFoundressForaging } from "../semiclaustral/validation.ts";
 import { validateSeason } from "../seasons/validation.ts";
@@ -28,6 +29,7 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
+  validateRoomStores(world, biologicalProfile.stockModel === "rooms-demo");
   validateChamberChoice(world, biologicalProfile.chamberModel === "local-demo");
   validateFoundressForaging(
     world.founding,
@@ -125,6 +127,14 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
     world.localRoutingVersion = 1;
   }
   restoreColonies(world, prototype, (raw, p) => restoreWorld(raw, p, false));
-  if (checkBudget) validateSealBudget(world);
+  if (checkBudget) {
+    validateSealBudget(world);
+    for (const c of [world, ...(world.colonies || [])])
+      validateRoomStores(
+        c,
+        resolveBiologicalProfile(c.biologicalProfile).stockModel ===
+          "rooms-demo",
+      );
+  }
   return world;
 }

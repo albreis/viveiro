@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.24.0**, PR [#32](https://github.com/albreis/viveiro/pull/32), etapa 12A. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.25.0**, PR [#33](https://github.com/albreis/viveiro/pull/33), etapa 12B. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -25,7 +25,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 10C   | Fundação semiclaustral com coleta externa da rainha                | ✅ Entregue · 0.23 · PR #26 integrado                            |
 | 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
-| 12    | Seleção local do microclima e da câmara                            | 🔧 12A entregue; 12B pendente                                    |
+| 12    | Seleção local do microclima e da câmara                            | 🔧 12A/12B entregues; 12C pendente                               |
 | 13    | Espermateca, fertilidade e longevidade                             | ⬜ Pendente                                                      |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
 
@@ -442,7 +442,8 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 ### 12. Cenários climáticos e engenharia da câmara
 
 - [x] 12A publicada em 0.24.0, PR [#32](https://github.com/albreis/viveiro/pull/32), branch codex/escolha-local-da-camara: sondagem física da rainha, memória de câmaras das cuidadoras e roteiro de aula. Ver [mecanismo e limites](escolha-local.md).
-- [ ] 12B pendente: estoque espacial com preferência seca, materiais, textura/compactação e suporte. Não declarar toda a etapa 12 concluída.
+- [x] 12B publicada em 0.25.0, PR [#33](https://github.com/albreis/viveiro/pull/33): estoque por câmara, preferência seca, deterioração local, fluxos e aproximação física para depositar/comer. Ver [estoques por câmara](estoques-por-camara.md).
+- [ ] 12C pendente: materiais, textura/compactação, transporte de água e suporte. Não declarar toda a etapa 12 concluída.
 
 - Usar 52% de umidade e 68% de luz como cenário de investigação, sem deduzir temperatura ou estabilidade diretamente.
 - Separar umidade do ar e água no solo, irradiância, temperatura, textura, compactação e suporte.

@@ -1,3 +1,5 @@
+import { physicalStockVisit } from "../stores/local.ts";
+import { takeStock } from "../stores/ledger.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
@@ -61,8 +63,19 @@ export function arriveWithSoil(
     ant.energy < 85 &&
     world.food >= 0.15
   ) {
-    world.food -= 0.15;
-    ant.energy = 100;
+    const paid = takeStock(
+      world,
+      physicalStockVisit(world, ant, node) ? 0.15 : 0,
+      "care",
+      node,
+      !!world.colony?.stores,
+    );
+    if (paid >= 0.15 - 1e-10) ant.energy = 100;
+    else
+      ant.energy = Math.min(
+        100,
+        ant.energy + (100 - ant.energy) * (paid / 0.15),
+      );
   }
   if (world.nest.nodes[node].type === "entrance" && task.phase === "haul") {
     ant.lastEntrance = {
