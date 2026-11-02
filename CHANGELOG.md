@@ -1,5 +1,13 @@
 # Versões
 
+## 0.27.0 — Espermateca finita e parentesco
+
+- Perfil opcional com lotes reprodutivos por macho, perdas de viabilidade e débito por ovo fecundado.
+- Pai efetivo no genoma e registro do ovo; esgotamento produz machos haploides sem matar instantaneamente a rainha.
+- Reservatórios independentes das filhas e guardas de recuperação; sem recarga após o pouso.
+- Créditos e taxas demonstrativos; geração de parceiros ainda limitada a um par por coorte. Ver docs/espermateca.md.
+- Incorpora as correções publicadas de bordas e aranhas.
+
 ## 0.26.2 — Aranhas saem da vegetação
 
 - Aproximação aos pulgões com distância de trabalho e desistência temporária, corrigindo a oscilação infinita no centro de árvores e arbustos.

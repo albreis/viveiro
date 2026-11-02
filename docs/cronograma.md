@@ -454,7 +454,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 
 ### 13. Fertilidade e longevidade
 
-- [ ] 13A em andamento: núcleo da espermateca finita, viabilidade, parentesco e prole após esgotamento preservado na branch codex/espermateca-e-fertilidade/46a1aaa. 251 testes completos passaram antes dos fixes de entradas/aranhas; falta incorporar essas correções, conferir regressão e realizar QA/publicação. Não é uma entrega concluída.
+- [ ] 13A implementada e validada, em publicação0.27.0: núcleo da espermateca finita, viabilidade, parentesco e prole após esgotamento preservado na branch codex/espermateca-e-fertilidade/46a1aaa. 260 testes completos finais, build288 módulos e QA com primeira postura/restore aprovados após incorporar os fixes de entradas/aranhas. Falta confirmar publicação. Ver [modelo e limites](espermateca.md).
 - [ ] 13B: saúde, danos, reservas, doença, idade e curvas exploratórias de longevidade. Calibração externa segue aberta.
 
 - Estoque/viabilidade de esperma, uso por ovo e possível contribuição de múltiplos machos.
