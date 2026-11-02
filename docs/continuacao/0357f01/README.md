@@ -1,0 +1,43 @@
+# Histórico da continuação
+
+Origem: commit 0357f01f67e270c6b9543dbc83040b66ce9bfe77, antigo docs/CONTINUAR.md.
+SHA-256 original: 4ee9330406fed073b82d5bdae1d6b7d11897b9f905b56bcc92c761db28a1edd6.
+
+Conteúdo preservado; somente quebras de linha reorganizadas. Próximos passos antigos são históricos.
+
+- [Orientações originais](001-orientacoes-originais.md)
+- [P0.3 — artefato separado salvo; falta acesso/deploy público](002-p0-3-artefato-separado-salvo-falta-acesso-deploy-publico.md)
+- [P0.3 — versão0.30.1 privada publicada; finalizar o Site separado](003-p0-3-versao0-30-1-privada-publicada-finalizar-o-site-separado.md)
+- [P0.3 — correção do empacotamento, versão0.30.1](004-p0-3-correcao-do-empacotamento-versao0-30-1.md)
+- [P0.3 em publicação — privado0.30 já entregue; Site separado registrado](005-p0-3-em-publicacao-privado0-30-ja-entregue-site-separado-registr.md)
+- [Em implementação — P0.3/publicação por tag (0.30.0)](006-em-implementacao-p0-3-publicacao-por-tag-0-30-0.md)
+- [Última entrega publicada — revisão do núcleo eP0.1 (0.29.1)](007-ultima-entrega-publicada-revisao-do-nucleo-ep0-1-0-29-1.md)
+- [Última entrega publicada — etapa14 (0.29.0)](008-ultima-entrega-publicada-etapa14-0-29-0.md)
+- [Última entrega publicada — etapa 13B (0.28.0)](009-ultima-entrega-publicada-etapa-13b-0-28-0.md)
+- [Última entrega publicada — etapa 13A (0.27.0)](010-ultima-entrega-publicada-etapa-13a-0-27-0.md)
+- [Última entrega publicada — aranhas e vegetação (0.26.2)](011-ultima-entrega-publicada-aranhas-e-vegetacao-0-26-2.md)
+- [Última entrega publicada — correção de entradas (0.26.1)](012-ultima-entrega-publicada-correcao-de-entradas-0-26-1.md)
+- [Última entrega publicada — etapa 12C (0.26.0)](013-ultima-entrega-publicada-etapa-12c-0-26-0.md)
+- [Última entrega publicada — etapa 12B (0.25.0)](014-ultima-entrega-publicada-etapa-12b-0-25-0.md)
+- [Última entrega publicada — etapa 12A (0.24.0)](015-ultima-entrega-publicada-etapa-12a-0-24-0.md)
+- [Sincronização e prioridades atuais](016-sincronizacao-e-prioridades-atuais.md)
+- [Última entrega publicada — etapa 10C (0.23.0)](017-ultima-entrega-publicada-etapa-10c-0-23-0.md)
+- [Última entrega publicada — etapa 11B (0.22.0)](018-ultima-entrega-publicada-etapa-11b-0-22-0.md)
+- [Última entrega publicada — etapa 11A (0.21.0)](019-ultima-entrega-publicada-etapa-11a-0-21-0.md)
+- [Última entrega publicada — etapa 10B (0.20.0)](020-ultima-entrega-publicada-etapa-10b-0-20-0.md)
+- [Última entrega publicada — etapa 10A (0.19.0)](021-ultima-entrega-publicada-etapa-10a-0-19-0.md)
+- [Última entrega publicada — etapa9 (0.18.0)](022-ultima-entrega-publicada-etapa9-0-18-0.md)
+- [Última entrega publicada — 8C2 (0.17.0)](023-ultima-entrega-publicada-8c2-0-17-0.md)
+- [Última entrega publicada — 8C1 previsões canceláveis (0.16.0)](024-ultima-entrega-publicada-8c1-previsoes-cancelaveis-0-16-0.md)
+- [Última entrega publicada — 0.15.0 (8B)](025-ultima-entrega-publicada-0-15-0-8b.md)
+- [Entrega anterior — 0.14.0 (8A)](026-entrega-anterior-0-14-0-8a.md)
+- [Entrega anterior — 0.13.0 (7C)](027-entrega-anterior-0-13-0-7c.md)
+- [Entrega anterior — 0.12.0 (7B2)](028-entrega-anterior-0-12-0-7b2.md)
+- [Entrega anterior — 0.11.0 (7B1)](029-entrega-anterior-0-11-0-7b1.md)
+- [Entrega anterior — 0.10.0](030-entrega-anterior-0-10-0.md)
+- [Entrega anterior — 0.9.0](031-entrega-anterior-0-9-0.md)
+- [Implementado](032-implementado.md)
+- [Verificação da 0.9.0](033-verificacao-da-0-9-0.md)
+- [Cronograma ampliado pelo usuário](034-cronograma-ampliado-pelo-usuario.md)
+- [Próximo passo concreto](035-proximo-passo-concreto.md)
+- [Ambiente e publicação](036-ambiente-e-publicacao.md)

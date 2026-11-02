@@ -1,5 +1,18 @@
 # Versões
 
+## 0.30.1 — Artefato estático suportado
+
+- Espelho conserva fontes de releases em public e gera dist pelo adaptador estático, conforme contrato da hospedagem.
+- Catálogo recusa remoção de uma versão anteriormente registrada.
+- Preparação recusa junctions e arquivos desconhecidos na saída, sem remover arquivos ou relaxar validadores.
+
+## 0.30.0 — Publicação isolada por versão
+
+- Rótulo da aplicação acompanha a versão real do pacote.
+- Exportador gera assets Vite em espelho separado com caminho por tag e manifesto SHA-256.
+- Tags antigas são preservadas e tentativas de reescrita, escapes por junction e arquivos inadequados são recusados.
+- Downloads, licenças e Workers funcionam sob o caminho da release. O Site de testes mantém a audiência privada.
+
 ## 0.29.1 — Licenças e revisão do núcleo
 
 - MIT para código original e CC BY 4.0 para documentação/imagens originais; direitos de terceiros e saves explicitamente separados.
