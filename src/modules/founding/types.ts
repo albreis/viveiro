@@ -46,6 +46,8 @@ export interface FoundingWorld extends ColonyWorld {
     humidity: number;
     light: number;
     temperatureC?: number;
+    soilClayPercent?: number;
+    soilCompactionPercent?: number;
     reposeAngle?: number;
     soilWaterInitial?: number;
     photoperiodHours?: number;

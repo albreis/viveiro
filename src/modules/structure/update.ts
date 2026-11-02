@@ -1,3 +1,7 @@
+import {
+  readSoilMaterial,
+  roofFactors,
+} from "../soil-material/coefficients.ts";
 import type { SoilWorld } from "../soil/types.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
 import { roofGeometry } from "./geometry.ts";
@@ -13,6 +17,7 @@ export function updateStructure(w: SoilWorld) {
     lastFailure: [],
     released: 0,
   });
+  const material = readSoilMaterial(w);
   const old = new Map(s.patches.map((p) => [p.key, p]));
   const geometry =
     s.revision === w.nest.revision ? s.patches : roofGeometry(w.nest);
@@ -24,6 +29,7 @@ export function updateStructure(w: SoilWorld) {
       water,
       w.params.reposeAngle ?? 36,
       w.soil.integrity[g.edge] ?? 1,
+      material ? roofFactors(material, water) : undefined,
     );
     const same =
       previous &&

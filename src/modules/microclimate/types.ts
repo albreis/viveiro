@@ -21,6 +21,7 @@ export interface SoilClimate {
   steps: number;
 }
 export interface ClimateWorld {
+  biologicalProfile?: unknown;
   seed: string;
   tick: number;
   params: {
@@ -28,6 +29,8 @@ export interface ClimateWorld {
     light: number;
     temperatureC?: number;
     soilWaterInitial?: number;
+    soilClayPercent?: number;
+    soilCompactionPercent?: number;
   };
   nest: NestState;
   landscape: Landscape;

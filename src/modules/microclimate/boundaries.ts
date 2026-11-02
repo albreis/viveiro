@@ -1,6 +1,11 @@
 import type { ClimateWorld, SoilClimate } from "./types.ts";
 import { climateCell } from "./grid.ts";
-export function climateBoundaries(w: ClimateWorld, s: SoilClimate, dt: number) {
+export function climateBoundaries(
+  w: ClimateWorld,
+  s: SoilClimate,
+  dt: number,
+  infiltration = 1,
+) {
   const h = w.params.humidity / 100,
     light = w.params.light / 100,
     air = w.params.temperatureC ?? 24,
@@ -11,7 +16,7 @@ export function climateBoundaries(w: ClimateWorld, s: SoilClimate, dt: number) {
       0,
       Math.min(
         s.capacity - s.water[i],
-        w.landscape.rainPulse * 0.0003 * dt * s.capacity,
+        w.landscape.rainPulse * 0.0003 * dt * s.capacity * infiltration,
       ),
     );
     s.water[i] += rain;

@@ -2,6 +2,16 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
+## Em conclusão — etapa 12C (0.26.0)
+
+Branch codex/materiais-e-compactacao sobre 6dfd1ba/#33. Implementação pronta; falta commit/push/PR e publicação privada. Código novo pequeno em src/modules/soil-material; perfil generic-microclimate-demo@3, revisão9, controles e catálogo. Sem pacote novo. Referência35/50 preserva futuro do perfil anterior; índices globais compartilhados. Volume de poros fixo, sem geotecnia calibrada. Ver docs/solo-material.md.
+
+240/240 testes completos em236.938 ms (.runtime/material-suite.log), sessão86252 coletada e encerrada;21 dirigidos também passaram. Build278 módulos aprovado. Nenhum teste/helper pendente. Nova semente já usa spread de world.params e preserva os índices; não criar coletor DOM duplicado. QA MATERIAIS-QA-2/D0,5/100–0, chuva0,4 u.; checkpoint manual-927f197c-1627-4baa-8f73-ed88ece6a7f4 restaurado. Catálogo11 registros. Screenshot viveiro-0.26.0-materiais.png já mostrado. Um erro transitório de montagem anterior ao painel completo está no histórico do console; nenhum novo na QA/reload.
+
+Usuário recuperado em pausa e confirmado após reload: SEMENTE-50088/D62,5/labv5, manual-b950fe52-33b4-4c6c-9265-d4b87ece98cf. Dev G mantido; Sitetab1 intocado. PRs32/33 abertos na última checagem. Nenhum trabalho remoto novo aplicado nesta branch ainda; conferir fetch antes de publicar. Novidades P0–P5 preservadas, após13/14; P5 por último.
+
+Próximo: enviar fonte, abrir PR sobre #33 (ou main se integrado), obter abertura Sites após commit final, empacotar/build exato e publicar0.26 no mesmo Site privado; tag e metadados. Depois criar branch para13. Não marcar cronograma todo concluído nem desativar retomada.
+
 ## Última entrega publicada — etapa 12B (0.25.0)
 
 Branch codex/estoques-por-camara, PR #33 sobre #32. Fonte publicada 5f48b2c237a2c0f548f9d770b9f09432bdc01e38, tag v0.25.0. Deploy appgdep_6ae7d977dde481919d309a034d0b577a succeeded em 02/11/2026 00:29:56 UTC (01/11, 21:29 em São Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_11ef1bcdfdac8191bb943d7426f07d55. Mesmo Site privado, somente proprietário, zero externos. Arquivo G:\Projetos\viveiro-0.25.0.tar.gz preservado. Núcleo em src/modules/stores, perfil opcional generic-microclimate-demo@2, revisão8; sem pacote novo.

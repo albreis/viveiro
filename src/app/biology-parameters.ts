@@ -26,6 +26,7 @@ export function renderBiologicalParameters(
     (p) =>
       p.topic === topic &&
       (p.minModelRevision ?? 1) <= revision &&
+      (!p.requiresSoilMaterial || profile.materialModel === "relative-demo") &&
       (!p.requiresRoomStores || profile.stockModel === "rooms-demo") &&
       (!p.requiresLocalChambers || profile.chamberModel === "local-demo") &&
       (!p.requiresCocoon || profile.cocoon === "present") &&

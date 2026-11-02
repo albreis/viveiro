@@ -1,3 +1,4 @@
+import { installMaterialControls } from "./material-controls.ts";
 import { installBroodInspection } from "./development-status.ts";
 import { installSeasonControls } from "./season-controls.ts";
 import { installSealingControls } from "./sealing-controls.ts";
@@ -330,6 +331,7 @@ installLearningControls(intervention, active);
 installGasControls(intervention);
 installClimateControls(intervention);
 installSeasonControls(intervention);
+installMaterialControls(intervention);
 installBroodInspection(() => scene, toast);
 installSealingControls(() => scene, toast);
 const focusStructureButton = $("focus-structure");

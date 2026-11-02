@@ -1,3 +1,4 @@
+import { validateSoilMaterial } from "../soil-material/validation.ts";
 import { validateRoomStores } from "../stores/validation.ts";
 import { validateChamberChoice } from "../chambers/validation.ts";
 import { validateFoundressForaging } from "../semiclaustral/validation.ts";
@@ -129,6 +130,12 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   restoreColonies(world, prototype, (raw, p) => restoreWorld(raw, p, false));
   if (checkBudget) {
     validateSealBudget(world);
+    for (const c of [world, ...(world.colonies || [])])
+      validateSoilMaterial(
+        c,
+        resolveBiologicalProfile(c.biologicalProfile).materialModel ===
+          "relative-demo",
+      );
     for (const c of [world, ...(world.colonies || [])])
       validateRoomStores(
         c,
