@@ -1,0 +1,55 @@
+{
+  "version": "0.35.1",
+  "stage": "P1.5",
+  "firstDirectedTests": {
+    "passed": 19,
+    "failed": 0,
+    "durationMs": 1767.6099
+  },
+  "browser": {
+    "kind": "IAB",
+    "previewOrigin": "http://127.0.0.1:4185/",
+    "scope": "/releases/v0.35.0/",
+    "cachedFiles": 34,
+    "applicationServerStopped": true,
+    "computerNetworkDisabled": false,
+    "closedAndReopened": true,
+    "offlineLesson": "AULA-v2-entradas-ar",
+    "offlineCheckpoint": "manual-82abb0cc-8d69-4155-a812-aea1ba619235",
+    "reloadRestoredPaused": true,
+    "guidesOpened": true,
+    "cacheRemovalPreservedCheckpoint": true,
+    "consoleErrors": 0
+  },
+  "privateBuild": {
+    "serviceWorker": false,
+    "manifestLink": false
+  },
+  "osInstalled": false,
+  "limits": [
+    "private Site stays online",
+    "OS installation and other-browser matrix not tested",
+    "browser may evict local storage"
+  ],
+  "finalDirectedTests": {
+    "passed": 34,
+    "failed": 0,
+    "durationMs": 3026.0901
+  },
+  "build": {
+    "typescript": "passed",
+    "privateViteModules": 335,
+    "publicHashInventory": "passed in isolated build test"
+  },
+  "originalPreviewVersion": "0.35.0",
+  "redirectPreview": {
+    "url": "http://127.0.0.1:4186/releases/v0.35.1/",
+    "canonicalRedirectStatus": 308,
+    "serverStopped": true,
+    "reloadPassed": true,
+    "checkpointCreated": true,
+    "guidesOpened": true,
+    "cacheRemoved": true,
+    "consoleErrors": 0
+  }
+}

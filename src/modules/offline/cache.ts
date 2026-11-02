@@ -28,8 +28,13 @@ export async function prepareOffline(
         cache: "reload",
         redirect: "follow",
       });
-      await checkedResponse(response, asset.path, scope, manifest);
-      await cache.put(url, response);
+      const verified = await checkedResponse(
+        response,
+        asset.path,
+        scope,
+        manifest,
+      );
+      await cache.put(url, verified);
     }
     await cache.put(readyUrl(scope), new Response(manifest.build));
   } catch (error) {

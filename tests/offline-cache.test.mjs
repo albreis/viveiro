@@ -12,6 +12,7 @@ import {
   cachePrefix,
   assetPath,
   htmlMarker,
+  checkedResponse,
 } from "../src/modules/offline/policy.ts";
 import { MemoryCaches, publicResponse } from "./fixtures/offline-cache.mjs";
 const scope = "https://example.org/releases/v0.35.0/";
@@ -137,4 +138,40 @@ test("evicção invalida pronto; rotas fora da lista, queries e métodos de escr
     );
     assert.equal(network, true);
   }
+});
+
+test("redirecionamento canônico é copiado sem perder corpo ou cabeçalhos", async () => {
+  const body = bodies["index.html"] + "<script>/* infrastructure */</script>";
+  const response = publicResponse(body, scope, {
+    "content-type": "text/html",
+    "x-test": "preserved",
+  });
+  Object.defineProperty(response, "redirected", { value: true });
+  const checked = await checkedResponse(
+    response,
+    "index.html",
+    scope,
+    manifest,
+  );
+  assert.equal(checked.redirected, false);
+  assert.equal(checked.headers.get("x-test"), "preserved");
+  assert.equal(await checked.text(), body);
+  const caches = new MemoryCaches(),
+    cache = await caches.open(cacheName(scope, manifest));
+  const put = cache.put.bind(cache);
+  cache.put = async (url, value) => {
+    if (String(url).endsWith("index.html"))
+      assert.equal(value.redirected, false);
+    await put(url, value);
+  };
+  await prepareOffline(
+    caches,
+    async (url, opts) => {
+      const r = await publicFetch(url, opts);
+      Object.defineProperty(r, "redirected", { value: true });
+      return r;
+    },
+    scope,
+    manifest,
+  );
 });

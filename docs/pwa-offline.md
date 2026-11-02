@@ -1,6 +1,6 @@
 # PWA e cache offline / P1.5
 
-Entrega0.35.0. No laboratório público, o botão Preparar para usar sem rede
+Entrega0.35.1. No laboratório público, o botão Preparar para usar sem rede
 registra um service worker com escopo da própria release. O preparo é opcional;
 a aplicação continua funcionando online sem registrar nada. Manifesto com
 start_url/id/scope da release, display standalone e PNGs reais192/512.
@@ -60,5 +60,12 @@ não são prometidas offline. O Site privado requer acesso online.
 - [Registro e escopo do service worker, MDN](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register).
 - [Manifesto e instalação, MDN](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable).
 - [Cache.put, MDN](https://developer.mozilla.org/en-US/docs/Web/API/Cache/put).
+
+A hospedagem canonicaliza index.html e nomes.html comredirecionamentos.
+A0.35.1 copia respostas validadas antes dearmazená-las, preservando corpo
+e cabeçalhos, para permitir navegação offline. O código deinfraestrutura
+permanece intacto. Novo teste unitário eQA emservidor com308, desligado
+depois dopreparo: reload, guias e novo checkpoint funcionaram semservidor.
+A tag0.35.0 anterior é preservada noGit, sempublicação na galeria.
 
 P1.6/CSV diário e acessibilidade é o próximo item implementável.

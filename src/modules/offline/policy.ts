@@ -62,5 +62,12 @@ export async function checkedResponse(
     if (hash !== manifest.assets.find((a) => a.path === expected)?.sha256)
       throw Error("Arquivo incompleto ou alterado: " + expected);
   }
-  return response;
+  // Navigation requests can reject redirected cached responses. Preserve bytes and headers.
+  return response.redirected
+    ? new Response(bytes, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: response.headers,
+      })
+    : response;
 }

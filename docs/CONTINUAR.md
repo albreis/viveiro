@@ -1,3 +1,16 @@
+# Ajuste antes da publicação /0.35.1
+
+Tag0.35.0/93eba21329c4726cfc9a4ed0c962f3d706998afc preservada, semdeploy.
+PR#47 já aberto sobre#46. A hospedagem redireciona HTML;0.35.1 normaliza
+somente os metadados deResponse apósvalidar, preservando conteúdo/cabeçalhos.
+7 testes focados eQA emservidor com308 passaram; servidor4186/sessão28968
+foidesligado e reload, guias/checkpoint funcionaram offline. Aba21 fechada,
+cache deQA removido. Dev17752 eaba20 saudáveis, mesmo save62,5 pausado.
+Próximo: rodada final, commit/tag0.35.1, atualizarPR47, sincronizar/publicar
+ambos Sites comfonte real;0.35.0 fica apenas noGit. Metadados depois da tag.
+
+---
+
 # P1.5 em publicação /0.35.0
 
 Branch codex/pwa-offline sobre#46; cache público implementado e QA offline passou.
