@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-11-02T04:48:50.904Z",
+  "origin": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site",
+  "cookiesOrAuthorizationSent": false,
+  "rootStatus": 200,
+  "latest": "v0.30.1",
+  "releases": [
+    {
+      "tag": "v0.30.0",
+      "sourceSha": "a8c95f9c2fabb9372fa78542715af110cabcf16c",
+      "anonymousStatus": 200,
+      "exactAssetHashes": 11,
+      "totalFiles": 13
+    },
+    {
+      "tag": "v0.30.1",
+      "sourceSha": "d61a439980d32dcbae61bba5d2aeb274fbb75341",
+      "anonymousStatus": 200,
+      "exactAssetHashes": 11,
+      "totalFiles": 13
+    }
+  ],
+  "canonicalRedirects": [
+    {
+      "from": "/releases/v0.30.0/licencas.html",
+      "to": "/releases/v0.30.0/licencas",
+      "status": 307
+    },
+    {
+      "from": "/releases/v0.30.0/index.html",
+      "to": "/releases/v0.30.0/",
+      "status": 307
+    },
+    {
+      "from": "/releases/v0.30.1/index.html",
+      "to": "/releases/v0.30.1/",
+      "status": 307
+    },
+    {
+      "from": "/releases/v0.30.1/licencas.html",
+      "to": "/releases/v0.30.1/licencas",
+      "status": 307
+    }
+  ],
+  "hostingHtml": [
+    {
+      "tag": "v0.30.0",
+      "path": "licencas.html",
+      "originalBuildHtmlPreserved": true,
+      "hostingAddition": "Cloudflare JavaScript Detections",
+      "addedBytes": 1114
+    },
+    {
+      "tag": "v0.30.0",
+      "path": "index.html",
+      "originalBuildHtmlPreserved": true,
+      "hostingAddition": "Cloudflare JavaScript Detections",
+      "addedBytes": 1114
+    },
+    {
+      "tag": "v0.30.1",
+      "path": "index.html",
+      "originalBuildHtmlPreserved": true,
+      "hostingAddition": "Cloudflare JavaScript Detections",
+      "addedBytes": 1114
+    },
+    {
+      "tag": "v0.30.1",
+      "path": "licencas.html",
+      "originalBuildHtmlPreserved": true,
+      "hostingAddition": "Cloudflare JavaScript Detections",
+      "addedBytes": 1114
+    }
+  ]
+}
