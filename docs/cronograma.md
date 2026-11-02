@@ -509,6 +509,10 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [x] P0.3 entregue em0.30.1/PR [#41](https://github.com/albreis/viveiro/pull/41): [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/), com URLs /releases/v0.30.0/ e /releases/v0.30.1/. Acesso sem login, versão real e QA3D/Workers/arquivos conferidos. O Site original segue privado. Ver [processo e limites](publicacao-por-tag.md).
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
+  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.30.1 exata; rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
+  - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Nenhum DOI emitido.
+  - [ ] P0.4C: após o PR chegar à branch padrão, conferir o botão do GitHub. Não concluído só por abrir PR.
+  - A dependência externa de P0.4B não impede avançar P1; repo original e Site original continuam privados.
 
 ### P1. Modo escola
 
