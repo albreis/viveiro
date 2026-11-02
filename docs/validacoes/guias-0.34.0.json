@@ -1,0 +1,40 @@
+{
+  "version": "0.34.0",
+  "stage": "P1.4A",
+  "tests": {
+    "passed": 39,
+    "failed": 0,
+    "durationMs": 2686.0665
+  },
+  "build": {
+    "typescript": "passed",
+    "viteModules": 333
+  },
+  "browser": {
+    "kind": "IAB",
+    "preview": "http://127.0.0.1:4184/",
+    "guideCount": 6,
+    "sectionsPerGuide": 8,
+    "steps": [5, 5, 5, 5, 5, 6],
+    "roundTrip": "AULA-v2-crias-temperatura / D0 / paused",
+    "initialAir": "O2 20.90% / CO2 0.04% / 2 entrances",
+    "consoleErrors": 0
+  },
+  "bncc": {
+    "source": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "checkedAt": "2026-11-02",
+    "pdfPages": [557, 559, 561],
+    "association": "editorial proposal"
+  },
+  "teacherReviews": 0,
+  "classroomPilots": 0,
+  "scientificallyCalibrated": false,
+  "publishedQa": {
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.34.0/ensino/",
+    "guide": "entradas-e-ar",
+    "sections": 8,
+    "steps": 5,
+    "consoleErrors": 0,
+    "anonymousNonHtmlHashes": 21
+  }
+}

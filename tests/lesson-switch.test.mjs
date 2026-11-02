@@ -66,38 +66,44 @@ test("mudança concorrente do experimento invalida uma troca em espera", async (
   );
   assert.equal(applied, false);
 });
-test("checkpoint e avanço headless preservam a aula e os dois cenários", async () => {
-  const s = createLessonSession({ id: "crias-temperatura", version: 1 });
-  s.interventions = [{ tick: 10, type: "humidity", value: 75 }];
-  s.replaying = true;
-  const a = World.restore(s.world),
-    b = World.restore(s.comparison);
-  const cursor = structuredClone(s);
-  for (let i = 0; i < 100; i++) stepSession(a, b, cursor);
-  const record = createCheckpoint(s, {
-    id: "lesson",
-    sequence: 1,
-    createdAt: 1,
-    kind: "manual",
-    label: "Aula",
-  });
-  const loaded = decodeCheckpoint(record);
-  assert.equal(loaded.version, 2);
-  assert.deepEqual(loaded.lesson, s.lesson);
-  const result = await runAdvance(
-    loaded,
-    { days: 1, budgetMs: 10000 },
-    {
-      cancelled: () => false,
-      progress() {},
-      pause: async () => {},
+for (const version of [1, 2])
+  test(
+    "checkpoint e avanço headless preservam a aula v" +
+      version +
+      " e os dois cenários",
+    async () => {
+      const s = createLessonSession({ id: "crias-temperatura", version });
+      s.interventions = [{ tick: 10, type: "humidity", value: 75 }];
+      s.replaying = true;
+      const a = World.restore(s.world),
+        b = World.restore(s.comparison);
+      const cursor = structuredClone(s);
+      for (let i = 0; i < 100; i++) stepSession(a, b, cursor);
+      const record = createCheckpoint(s, {
+        id: "lesson",
+        sequence: 1,
+        createdAt: 1,
+        kind: "manual",
+        label: "Aula",
+      });
+      const loaded = decodeCheckpoint(record);
+      assert.equal(loaded.version, 2);
+      assert.deepEqual(loaded.lesson, s.lesson);
+      const result = await runAdvance(
+        loaded,
+        { days: 1, budgetMs: 10000 },
+        {
+          cancelled: () => false,
+          progress() {},
+          pause: async () => {},
+        },
+      );
+      assert.equal(result.complete, true);
+      assert.equal(result.session.world.tick, 100);
+      assert.equal(result.session.comparison.tick, 100);
+      assert.deepEqual(result.session.lesson, s.lesson);
+      assert.equal(result.session.replayIndex, 1);
+      assert.deepEqual(result.session.world, a.snapshot());
+      assert.deepEqual(result.session.comparison, b.snapshot());
     },
   );
-  assert.equal(result.complete, true);
-  assert.equal(result.session.world.tick, 100);
-  assert.equal(result.session.comparison.tick, 100);
-  assert.deepEqual(result.session.lesson, s.lesson);
-  assert.equal(result.session.replayIndex, 1);
-  assert.deepEqual(result.session.world, a.snapshot());
-  assert.deepEqual(result.session.comparison, b.snapshot());
-});

@@ -12,7 +12,7 @@ import type { SessionState } from "../persistence/types.ts";
 
 export function createLessonSession(value: LessonReference): SessionState {
   const ref = lessonReference(value);
-  const seed = "AULA-v1-" + ref.id;
+  const seed = "AULA-v" + ref.version + "-" + ref.id;
   const founding = ref.id === "fundacao-coleta";
   const worlds = [false, true].map((b) => {
     const w = lessonWorld(seed, founding && b, founding);
@@ -38,7 +38,7 @@ export function createLessonSession(value: LessonReference): SessionState {
         w.intervene("food", first.x, first.z);
       }
     }
-    finishLessonWorld(w);
+    finishLessonWorld(w, ref.version >= 2);
     return w;
   });
   const [a, b] = worlds;

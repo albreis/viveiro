@@ -1,3 +1,4 @@
+import { teachingGuides } from "../teaching/catalog.ts";
 import { releaseTag, validateSourceSha } from "./release.ts";
 
 export interface CitationMetadata {
@@ -29,6 +30,10 @@ export const sourceFiles = [
   "index.html",
   "LICENSE",
   "LICENSE-DOCS.md",
+  "docs/ensino/README.md",
+  "docs/ensino/microclima-local.md",
+  "docs/ensino/revisao-docente.md",
+  ...teachingGuides.map((g) => "docs/ensino/" + g.slug + ".md"),
 ];
 
 export function permittedSourcePath(path: string): boolean {

@@ -12,25 +12,26 @@ import { geneValue } from "../src/modules/genetics/genome.ts";
 import { airNetwork } from "../src/modules/ventilation/network.ts";
 import { World } from "../src/modules/simulation/world.js";
 
-for (const d of lessons)
-  test("estado inicial reproduzível: " + d.id, () => {
-    const a = createLessonSession({ id: d.id, version: 1 });
-    assert.deepEqual(a, createLessonSession({ id: d.id, version: 1 }));
-    assert.equal(a.version, 2);
-    assert.equal(a.running, false);
-    assert.equal(a.world.seed, a.comparison.seed);
-    assert.equal(a.world.tick, 0);
-    assert.equal(a.comparison.tick, 0);
-    assert.equal(a.clock.secondsPerDay, 60);
-    const models = restoreSessionModels(a);
-    const b = restoreSessionModels(a);
-    for (let i = 0; i < 5; i++) {
-      stepSession(models.world, models.comparison, models.session);
-      stepSession(b.world, b.comparison, b.session);
-    }
-    assert.deepEqual(models.world.snapshot(), b.world.snapshot());
-    assert.deepEqual(models.comparison.snapshot(), b.comparison.snapshot());
-  });
+for (const version of [1, 2])
+  for (const d of lessons)
+    test("estado inicial reproduzível v" + version + ": " + d.id, () => {
+      const a = createLessonSession({ id: d.id, version });
+      assert.deepEqual(a, createLessonSession({ id: d.id, version }));
+      assert.equal(a.version, 2);
+      assert.equal(a.running, false);
+      assert.equal(a.world.seed, a.comparison.seed);
+      assert.equal(a.world.tick, 0);
+      assert.equal(a.comparison.tick, 0);
+      assert.equal(a.clock.secondsPerDay, 60);
+      const models = restoreSessionModels(a);
+      const b = restoreSessionModels(a);
+      for (let i = 0; i < 5; i++) {
+        stepSession(models.world, models.comparison, models.session);
+        stepSession(b.world, b.comparison, b.session);
+      }
+      assert.deepEqual(models.world.snapshot(), b.world.snapshot());
+      assert.deepEqual(models.comparison.snapshot(), b.comparison.snapshot());
+    });
 
 test("vento e repouso mudam apenas o parâmetro declarado no estado inicial", () => {
   for (const [id, key, lo, hi] of [
