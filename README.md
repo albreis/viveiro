@@ -40,6 +40,9 @@ A navegação e os controles novos são tipados. UI, biologia e partes do render
 
 ## Observar
 
+O botão “Tour guiado” apresenta a seleção de uma formiga e a visão em primeira pessoa.
+Você pode pular e reabrir sem reiniciar seu terrário.
+
 - Arraste para orbitar; role para aproximar.
 - Clique novamente na vista lateral para alternar os quatro lados.
 - Ative “Ver túneis internos” para observar galerias afastadas dos vidros.

@@ -1,3 +1,5 @@
+import { installTourControls } from "./tour-controls.ts";
+import { ownsSpaceKey } from "./keyboard.ts";
 import { installPerformanceControls } from "./performance-controls.ts";
 import { readPerformanceMode } from "../services/performance-preference.ts";
 import { renderProfile } from "../modules/renderer/performance-profile.ts";
@@ -66,6 +68,7 @@ const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
 let antCamera;
+let hadSavedExperiment = true;
 
 function toast(message) {
   $("toast").textContent = message;
@@ -122,6 +125,7 @@ function applySavedSession(value, paused = false, fromAdvance = false) {
 async function load() {
   try {
     const saved = await readState();
+    hadSavedExperiment = Boolean(saved);
     if (saved) {
       applySavedSession(saved);
       return;
@@ -493,11 +497,7 @@ document.addEventListener("keydown", (e) => {
     scene.stopFollowing();
     updateAntCamera(active());
   }
-  if (
-    e.code === "Space" &&
-    !/INPUT|BUTTON/.test(e.target.tagName) &&
-    !dialog.open
-  ) {
+  if (e.code === "Space" && !ownsSpaceKey(e.target) && !dialog.open) {
     e.preventDefault();
     $("play").click();
   }
@@ -577,5 +577,10 @@ window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
 syncControls();
 updateUi();
+const tourControls = installTourControls({
+  hadSavedExperiment: hadSavedExperiment || checkpointStore.isProtected(),
+  ready: () => !!scene,
+});
+if (import.meta.hot) import.meta.hot.dispose(() => tourControls.dispose());
 forecaster?.consider(forecastSource, scenario, active().tick);
 requestAnimationFrame(frame);

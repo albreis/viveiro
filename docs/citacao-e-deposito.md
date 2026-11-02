@@ -1,4 +1,4 @@
-# Citação e depósito da versão 0.31.0
+# Citação e depósito da versão 0.32.0
 
 ## Estado
 
@@ -8,8 +8,8 @@ Nenhum nome pessoal, ORCID, DOI ou vínculo institucional foi inferido.
 
 O arquivo usa JSON, também válido como YAML 1.2, para leitura nativa em JS.
 O teste local verifica consistência; a validação oficial foi feita à parte.
-Versão citada: v0.31.0, publicada em 02/11/2026, commit
-1a5fa67038c8fe244844136257f5328becbf5e4e. Metadados adicionados depois da tag;
+Versão citada: v0.32.0, publicada em 02/11/2026, commit
+0b6bed31e8aafa7c4357c11138d35f003ea64542. Metadados adicionados depois da tag;
 a tag e suas URLs não foram alteradas.
 
 P0.4 ainda não está concluída: faltam conta autenticada responsável pelo
@@ -36,7 +36,10 @@ Links e padrões de credenciais detectáveis bloqueiam a preparação.
 A seleção não substitui revisão humana antes de depósito público permanente.
 
 Ficam fora: histórico Git, docs operacionais, AGENTS.md, .openai, .runtime,
-dependências, dist e saves. Seis testes/fixture de publicação e depósito\nficam apenas no repositório, listados explicitamente no manifesto. Contêm\nmarcadores sintéticos que foram recusados pelo filtro, mantido intacto; os\ntestes do modelo permanecem no pacote. Scripts de hospedagem precisam de configuração
+dependências, dist e saves. Seis testes/fixture de publicação e depósito
+ficam apenas no repositório, listados explicitamente no manifesto. Contêm
+marcadores sintéticos que foram recusados pelo filtro, mantido intacto; os
+testes do modelo permanecem no pacote. Scripts de hospedagem precisam de configuração
 local própria; os testes e o build não precisam do Site privado.
 
 ## Validação em 02/11/2026
@@ -44,11 +47,11 @@ local própria; os testes e o build não precisam do Site privado.
 - [Esquema oficial](https://citation-file-format.github.io/1.2.0/schema.json),
   SHA-256 0b8d22140da702d766df318dcff3a91af2f39521298dcf36d76315fd99cc169b.
 - Python jsonschema 4.26.0, Draft7Validator e FormatChecker: válido.
-- 4/4 testes de depósito (incluídos nos24 finais da entrega), incluindo gerar o ZIP duas vezes com bytes iguais.
-- Python 3.14 zipfile independente: 455 arquivos, 1.285.685 bytes, hashes válidos.
-- ZIP: .runtime/deposits/deposit-wcJQPw/viveiro-v0.31.0-source.zip.
-- SHA-256: 5dd2cd029041c01f0a434005c3ebda497d9d1b4fcda0c93afeb9421cc813ee39.
-- Build TypeScript/Vite passou; aplicação 0.31.0 e sessão local preservadas.
+- 4/4 testes de depósito, em execução separada dos22 do tour, incluindo gerar o ZIP duas vezes com bytes iguais.
+- Python 3.14 zipfile independente: 465 arquivos, 1.309.191 bytes, hashes válidos.
+- ZIP: .runtime/deposits/deposit-WTwn9t/viveiro-v0.32.0-source.zip.
+- SHA-256: ac3c531825a92271a766d63c9be85d8e7d5b2c62d84ce73ec2d8cefc86f634b3.
+- Build TypeScript/Vite passou; aplicação 0.32.0 e sessão local preservadas.
 - Nada enviado ao Zenodo; DOI ausente, sem número fictício.
 
 ## Concluir o depósito real
@@ -71,4 +74,8 @@ local própria; os testes e o build não precisam do Site privado.
 Referências: [CFF](https://citation-file-format.github.io/1.2.0/),
 [API e metadados do Zenodo](https://developers.zenodo.org/),
 [git archive](https://git-scm.com/docs/git-archive).
-[Evidência da versão atual](validacoes/citacao-0.31.0.json).\nO pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.\nA versão atualizada do gerador exclui os testes operacionais explicitamente.\nO software continua exploratório e não calibrado por espécie.
+[Evidência da versão atual](validacoes/citacao-0.32.0.json).
+O pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.
+O pacote0.31.0 também permanece em.runtime/deposits/deposit-wcJQPw.
+A versão atualizada do gerador exclui os testes operacionais explicitamente.
+O software continua exploratório e não calibrado por espécie.
