@@ -8,7 +8,7 @@ Branch codex/selamento-fundacao, base codex/reservas-maternas (8ec428e, PR #22).
 ba99dc59772ccb398212f90d9307708b958431fc, tag v0.20.0. PR #23 aberto sobre #22. Deploy
 appgdep_6ae78c19142881918180656445fc1b22 concluído em 01/11/2026, 18:59:50 UTC. Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_001350877388819189898d73bbc133f5. Mesmo Site
-privado: somente proprietário, zero externos. Arquivo G:\Projetos\viveiro-0.20.0.tar.gz.
+privado: somente proprietário, zero externos. Arquivo ../viveiro-0.20.0.tar.gz.
 
 -  Novos módulos pequenos em src/modules/sealing, renderer/PlugView.ts, sealing-focus.ts e
   app/sealing-controls.ts. Sem dependência nova.

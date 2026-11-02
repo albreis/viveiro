@@ -1,117 +1,114 @@
 # Viveiro
 
-Terrário 3D em Three.js com agentes autônomos e experimentos por seed.
+Terrário 3D de formigas no navegador. Cada formiga é um agente autônomo que só percebe o que está ao seu redor (cheiro, temperatura, umidade, CO₂, contato) e, a partir disso, cava túneis, transporta terra, cuida da prole e funda novas colônias. Tudo é reproduzível por _seed_.
 
-## Desenvolvimento
+**[Abrir o laboratório público](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/)** · [Versões](CHANGELOG.md) · [Como citar](CITATION.cff)
+
+> O Viveiro é um modelo **exploratório**. Os ciclos são acelerados e simplificados e não foram calibrados para nenhuma espécie real. Não trate os resultados como biologia, geotecnia ou engenharia validadas. Consulte a [especificação ODD](docs/odd.md) para saber exatamente o que o modelo faz.
+
+## O que dá para fazer
+
+- Observar o terrário de fora, girar a câmera e ver as galerias internas.
+- Entrar em primeira pessoa numa formiga (duplo clique) e acompanhar o que ela sente.
+- Pausar, acelerar e intervir no solo, na água e no vento.
+- Repetir a mesma seed com intervenções diferentes e comparar os resultados.
+- Rodar experimentos prontos para sala de aula e exportar os dados em JSON ou CSV.
+- Rodar experimentos sem interface, pela linha de comando, com saída idêntica à do navegador.
+
+## Começar
 
 Requer Node.js 24.
 
-Nesta máquina, o projeto fica em `G:\Projetos\viveiro`. Execute os comandos nessa pasta.
-
 ```sh
+git clone https://github.com/albreis/viveiro.git
+cd viveiro
 npm ci
 npm run dev
 ```
 
-Abra http://127.0.0.1:4173. O Vite atualiza o navegador durante a edição.
+Abra http://127.0.0.1:4173. O Vite recarrega o navegador enquanto você edita.
 
-```sh
-npm test
-npm run build
-npm run preview
-```
+| Comando                        | O que faz                                                     |
+| ------------------------------ | ------------------------------------------------------------- |
+| `npm run dev`                  | Servidor de desenvolvimento em 127.0.0.1:4173.                |
+| `npm test`                     | Testes do modelo (`node --test`).                             |
+| `npm run build`                | Checa TypeScript e gera o bundle em `dist/`.                  |
+| `npm run preview`              | Serve o build na mesma porta. Rode só um entre dev e preview. |
+| `npm run experiment -- --help` | Experimentos sem interface. Veja [CLI](docs/cli.md).          |
 
-O build executa TypeScript e gera o bundle em dist. Não edite dist manualmente.
-Dev e preview usam a mesma porta: execute apenas um deles.
+`dist/` é gerado pelo Vite e não deve ser editado à mão.
 
-## Estrutura
+## Usar
 
-- src/app: interface e controle da experiência.
-- src/modules/navigation: TypeScript estrito, sensores, forças e locomoção.
-- src/modules/simulation: relógio fixo e ciclos biológicos.
-- src/modules/landscape: geração por seed, espécies, água e materiais dinâmicos.
-- src/modules/terrain: terreno compartilhado pela física e pelo desenho.
-- src/modules/renderer: cena, câmera, seleção, plantas e corpos.
-- src/services: persistência e serviços.
-- src/workers: previsões fora da renderização.
-- src/styles: CSS por componente e breakpoint.
+O botão **Tour guiado** apresenta a seleção de uma formiga e a visão em primeira pessoa. Dá para pular e reabrir sem reiniciar o terrário.
 
-A navegação e os controles novos são tipados. UI, biologia e partes do renderer legados seguem em JavaScript durante a migração incremental; não estão sob checagem estrita ainda.
+- Arraste para orbitar e role para aproximar.
+- Clique de novo na vista lateral para alternar entre os quatro lados.
+- **Ver túneis internos** mostra galerias afastadas dos vidros.
+- **Novo terrário** gera outra paisagem e outro ninho. Saves existentes são preservados.
+- Duplo clique numa formiga (ou escolha na lista) entra em primeira pessoa. Esc volta ao terrário.
 
-## Observar
+100 passos equivalem a um dia simulado.
 
-O botão “Tour guiado” apresenta a seleção de uma formiga e a visão em primeira pessoa.
-Você pode pular e reabrir sem reiniciar seu terrário.
+## Estrutura do código
 
-- Arraste para orbitar; role para aproximar.
-- Clique novamente na vista lateral para alternar os quatro lados.
-- Ative “Ver túneis internos” para observar galerias afastadas dos vidros.
-- “Novo terrário” gera outra paisagem e ninho pela seed. Saves existentes são preservados.
-- Duplo clique numa formiga ou escolha na lista para entrar em primeira pessoa.
-- Arraste para olhar; Esc retorna ao terrário.
-- Pause, altere a velocidade ou intervenha no solo.
-- Repita a seed com intervenções e exporte os dados JSON.
+| Pasta                    | Conteúdo                                                     |
+| ------------------------ | ------------------------------------------------------------ |
+| `src/app`                | Interface e controle da experiência.                         |
+| `src/modules/navigation` | Sensores, forças e locomoção (TypeScript estrito).           |
+| `src/modules/simulation` | Relógio fixo e ciclos biológicos.                            |
+| `src/modules/landscape`  | Geração por seed, espécies, água e materiais.                |
+| `src/modules/terrain`    | Terreno compartilhado entre física e desenho.                |
+| `src/modules/renderer`   | Cena, câmera, seleção, plantas e corpos.                     |
+| `src/services`           | Persistência (IndexedDB, checkpoints) e serviços.            |
+| `src/workers`            | Previsões, aprendizado e malha do solo fora da renderização. |
+| `src/styles`             | CSS por componente e breakpoint.                             |
+| `scripts`                | CLI de experimentos, release pública e depósito.             |
+| `tests`                  | Testes do modelo.                                            |
 
-100 passos representam um dia simulado. Os ciclos são acelerados e não equivalem a uma espécie real.
+A navegação e os controles novos são tipados. Partes legadas da interface, da biologia e do renderer ainda estão em JavaScript e são migradas aos poucos.
 
-## Acompanhar
+## Documentação
 
-- [Ritmo e continuidade](docs/ritmo-e-continuidade.md)
-- [Saúde e longevidade](docs/saude-longevidade.md)
-- [Espermateca e fertilidade](docs/espermateca.md)
+**Modelo**
 
-- [Memória sazonal e casulos](docs/sazonalidade.md)
+- [Especificação ODD](docs/odd.md) e [arquitetura](docs/arquitetura.md)
+- [Navegação](docs/navegacao.md), [campos e tarefas](docs/campos.md) e [odores e território](docs/odores-e-territorio.md)
+- [Solo e escavação](docs/solo.md), [terra solta](docs/granular.md) e [suporte estrutural](docs/suporte-estrutural.md)
+- [Água e calor](docs/agua-e-calor.md) e [gases e ventilação](docs/gases-e-ventilacao.md)
+- [Organização da colônia](docs/colonia.md) e [estoques por câmara](docs/estoques-por-camara.md)
+- [Aprendizado local](docs/aprendizado-local.md) e [paisagem procedural](docs/procedural.md)
 
-- [Maturação térmica](docs/maturacao.md)
+**Biologia**
 
-- [Selamento físico](docs/selamento.md)
-
-- [Reservas maternas](docs/reservas-maternas.md)
-
+- [Perfis biológicos](docs/perfis-biologicos.md) e [biologia planejada](docs/biologia-planejada.md)
+- [Fundação claustral](docs/fundacao.md), [semiclaustral](docs/fundacao-semiclaustral.md) e [colônias filhas](docs/colonias-filhas.md)
+- [Espermateca e fertilidade](docs/espermateca.md), [genética](docs/genetica.md) e [reservas maternas](docs/reservas-maternas.md)
+- [Saúde e longevidade](docs/saude-longevidade.md), [maturação térmica](docs/maturacao.md), [sazonalidade](docs/sazonalidade.md) e [selamento](docs/selamento.md)
 - [Simbioses e mimetismo](docs/simbioses.md)
-- [Biologia planejada](docs/biologia-planejada.md)
-- [Odores e território](docs/odores-e-territorio.md)
-- [Fundação claustral](docs/fundacao.md)
-- [Colônias filhas](docs/colonias-filhas.md)
-- [Genética digital](docs/genetica.md)
-- [Paisagem procedural](docs/procedural.md)
-- [Cronograma](docs/cronograma.md)
-- [Especificações](docs/especificacoes.md)
-- [Arquitetura](docs/arquitetura.md)
-- [Navegação](docs/navegacao.md)
-- [Solo e escavação](docs/solo.md)
-- [Dinâmica de terra solta](docs/granular.md)
-- [Água e calor espaciais](docs/agua-e-calor.md)
-- [Organização da colônia](docs/colonia.md)
-- [Campos e tarefas](docs/campos.md)
-- [Versões](CHANGELOG.md)
 
-Cada entrega usa branch e tag próprias. O modelo é exploratório, sem validação biológica/geotécnica. Alargamento local por congestionamento não equivale à escavação completa, transporte de terra ou física granular.
+**Experimentos e ensino**
 
-- [Gases e ventilação](docs/gases-e-ventilacao.md): rede de fluxo, respiração, balanços e sensores locais exploratórios.
+- [Experimentos de aula](docs/experimentos-de-aula.md) e [guias docentes](docs/ensino/README.md)
+- [Previsões](docs/previsoes.md) e [avaliação das previsões](docs/avaliacao-previsoes.md)
+- [CLI](docs/cli.md) e [CSV diário](docs/csv-diario.md)
+- [Persistência e recuperação](docs/persistencia.md) e [ritmo entre sessões](docs/ritmo-e-continuidade.md)
 
-- [Suporte estrutural](docs/suporte-estrutural.md): amostras do teto, carga/capacidade, fissuras e desprendimento exploratórios.
+**Projeto**
 
-- [Aprendizado local](docs/aprendizado-local.md): SARSA neural opcional, cérebros individuais e avaliação contra ACO.
+- [Cronograma](docs/cronograma.md) e [roadmap](ROADMAP.md)
+- [Acessibilidade](docs/acessibilidade.md), [PWA offline](docs/pwa-offline.md) e [perfil leve](docs/perfil-leve.md)
+- [Publicação por tag](docs/publicacao-por-tag.md) e [citação e depósito](docs/citacao-e-deposito.md)
+- [Kit de divulgação](docs/divulgacao/kit-divulgacao.html) e [fórmulas explicadas](docs/divulgacao/formulas/README.md)
 
-- [Persistência e recuperação](docs/persistencia.md): IndexedDB, checkpoints, importação e preservação dos saves antigos.
+## Contribuir
 
-- [Previsões](docs/previsoes.md): progresso, cancelamento, horizonte e orçamento do modelo completo.
-
-- [Observação e avaliação das previsões](docs/avaliacao-previsoes.md): contrato parcial, comparação por horizonte e ensaio sintético reproduzível.
-
-- [Perfis biológicos](docs/perfis-biologicos.md): parâmetros versionados, proveniência, hipóteses e cenários de referência.
-
-Fundação semiclaustral: [mecanismo e limites](docs/fundacao-semiclaustral.md).
-
-Divulgação: [kit técnico para redes, comparação e plano para o primeiro lugar](docs/divulgacao/kit-divulgacao.html). Abra o arquivo no navegador. Cada fórmula dos pilares técnicos tem explicação detalhada, exemplos e aplicações em [docs/divulgacao/formulas](docs/divulgacao/formulas/README.md).
+Cada etapa é desenvolvida numa branch própria e entra na `main` por pull request, com testes do modelo e verificação no navegador. Leia o [AGENTS.md](AGENTS.md) para as convenções do projeto. Nunca coloque tokens ou credenciais no repositório.
 
 ## Licenças
 
-O código original do projeto usa [MIT](LICENSE), [aprovada pela OSI](https://opensource.org/license/mit), conforme P0.1 do cronograma. Documentação e imagens originais produzidas para o projeto usam [CC BY 4.0](LICENSE-DOCS.md). Preserve os créditos existentes; materiais de terceiros mantêm suas próprias licenças. O aviso do Three.js está integral e inalterado. Consulte [recursos de terceiros](docs/terceiros.md). Saves e dados do usuário não são publicados nem relicenciados automaticamente. O Site de testes continua privado.
+O código usa a licença [MIT](LICENSE). A documentação e as imagens originais usam [CC BY 4.0](LICENSE-DOCS.md). Materiais de terceiros mantêm suas próprias licenças, e o aviso do Three.js está preservado sem alterações. Veja [recursos de terceiros](docs/terceiros.md).
 
-## Citar e arquivar
+## Citar
 
-Cite a versão e o commit descritos em [CITATION.cff](CITATION.cff).
-O pacote selecionado para depósito é gerado por `node scripts/prepare-deposit.ts`.
-[Processo e validação](docs/citacao-e-deposito.md). DOI ainda pendente de depósito real.
+Cite a versão e o commit descritos em [CITATION.cff](CITATION.cff). O pacote para depósito é gerado por `node scripts/prepare-deposit.ts`. Veja [citação e depósito](docs/citacao-e-deposito.md).

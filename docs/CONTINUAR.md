@@ -1,6 +1,6 @@
 # Continuação do Viveiro
 
-Atualizado em 02/11/2026. Trabalhar em G:\Projetos\viveiro e ler AGENTS.md e cronograma.
+Atualizado em 02/11/2026. Trabalhar na raiz do repositório e ler AGENTS.md e cronograma.
 Uma entrega por branch codex/, módulos pequenos em src/TypeScript, Vite, testes,
 QA nativa Cua, commit/push/PR. Preservar saves, branches, tags e audiência dos Sites.
 Não iniciar executor concorrente. Não usar modelos exploratórios como calibrados.
@@ -22,7 +22,7 @@ Privado: deploy appgdep_6ae8e8e4fa448191aa8515c0395b5a41,
 succeeded 19:48:03 UTC. Público: deploy appgdep_6ae8e93394d88191abbd258b480fe767,
 succeeded 19:49:24 UTC, versão 12, fonte 0488a2718cc35087a70c2e86d1a5293b73fc1803.
 Audiências preservadas. Recibos deploy-0.40.1.json; arquivos
-G:\Projetos\viveiro-0.40.1.tar.gz e viveiro-publico-0.40.1.tar.gz.
+../viveiro-0.40.1.tar.gz e viveiro-publico-0.40.1.tar.gz.
 Publicação privada confirmada no navegador (0.40.1, console limpo).
 
 CFF/.zenodo atuais descrevem 0.40.1, sem DOI próprio. ZIP selecionado:
@@ -61,8 +61,8 @@ Público: https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
 ID appgprj_6ae80cd45fdc8191be8315696a383393, public/rev2, versão 11.
 Fonte bb06c318061e4e4df6ca483dd9311d07d58ba648,
 deploy appgdep_6ae8e571d5b081918cbc7652e9bdb988, succeeded 19:33:22 UTC.
-Arquivos G:\Projetos\viveiro-0.40.0.tar.gz e viveiro-publico-0.40.0.tar.gz.
-Espelho em G:\Projetos\viveiro-publico, galeria anterior preservada.
+Arquivos ../viveiro-0.40.0.tar.gz e viveiro-publico-0.40.0.tar.gz.
+Espelho em ../viveiro-publico, galeria anterior preservada.
 Recibos completos em validacoes/deploy-0.40.0.json. Não repetir save/deploy.
 HTTP adicional recebeu 403 na 0.38: não repetir para contornar; QA nativa funciona.
 

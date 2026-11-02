@@ -132,7 +132,7 @@ Os registros abaixo descrevem cada momento do desenvolvimento. Menções antigas
 - Reconstrução da malha em Worker; arquivos de inicialização, migração e previsão separados.
 - Fundação do primeiro buraco ligada à etapa de novas rainhas (5), ainda pendente.
 - Solo por volumes aproximados, sem representar grãos reais.
-- Ferramenta do navegador retomada; conferência visual das etapas na versão 0.4.0. Dev continua no G:.
+- Ferramenta do navegador retomada; conferência visual das etapas na versão 0.4.0. Dev continua na máquina local.
 
 ### Progresso da etapa 3 — 31/10/2026
 
@@ -226,7 +226,7 @@ automaticamente.
 - Fonte publicada: ec9815c20b81de46039b97172cb610287b4e994b.
 - Tag de recuperação: v0.4.0, apontando exatamente para a fonte publicada.
 - PRs #1 a #6 continuam abertos e encadeados para revisão.
-- Dev mantido em G:\Projetos\viveiro, em http://127.0.0.1:4173/.
+- Dev mantido na raiz do repositório, em http://127.0.0.1:4173/.
 
 ### Etapa 5A — genética e herança
 

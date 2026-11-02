@@ -16,6 +16,6 @@ Checkpoint passado. Use docs/CONTINUAR.md para a prioridade atual.
   conferidos.
 -  Screenshots viveiro-0.9.0-pulgoes.png e viveiro-0.9.0-relacoes.png no diretório autorizado do
   Codex. Chrome do usuário intocado; IAB local tab 2, Site tab 1.
--  Dev foi religado no G: HTTP 200; PID atual em .runtime/dev.pid. Deixar rodando. Nenhum teste
+-  Dev foi religado na máquina local: HTTP 200; PID atual em .runtime/dev.pid. Deixar rodando. Nenhum teste
   pendente.
 

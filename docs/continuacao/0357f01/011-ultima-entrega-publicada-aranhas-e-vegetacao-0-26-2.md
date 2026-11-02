@@ -8,7 +8,7 @@ Branch codex/aranhas-e-vegetacao; PR #36 sobre #35. Fonte publicada
 e1865b19956d5ce64e73a59efd0f2a07007bc372, tag v0.26.2. Deploy
 appgdep_6ae7e85ec3188191baee5665cfda6955 succeeded em02/11/2026 01:33:30 UTC (01/11,22:33 São
 Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_0ba3ceac4130819186c70957dddf6735.
-Mesmo Site privado, acesso só do proprietário. Arquivo G:\Projetos\viveiro-0.26.2.tar.gz preservado.
+Mesmo Site privado, acesso só do proprietário. Arquivo ../viveiro-0.26.2.tar.gz preservado.
 Bug reproduzido: árvore/arbusto com pulgões,1.200 passos, raio0,02 u. e1.099 inversões. Corrigidos
 aproximação/distância de trabalho, desistência, desvio de caules e recuperação por progresso
 líquido; saída gradual de sobreposição e de entradas surgidas sob o corpo. Memória opcional

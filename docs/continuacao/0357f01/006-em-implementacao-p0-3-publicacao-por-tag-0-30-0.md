@@ -23,7 +23,7 @@ reset do cua por browser.user indisponível; devTab foi reconectada à aba4 pelo
 público criado/registrado, nenhum project_id novo ainda. Não alterar project_id/audiência privada.
 
 WIP e15bd653139674e348b80f680ed64f33ac38df7b enviado. Candidato
-G:\Projetos\viveiro\.runtime\public-candidate-030/public gerado com310 módulos; fonte e15bd65. Vite
+.runtime/public-candidate-030/public gerado com310 módulos; fonte e15bd65. Vite
 preview temporário4174 na sessão98236 ainda rodando. QA nativa IABtab7 concluiu versão/tag,
 cena/primeira pessoa, Workers (inclusive avanço1dia), relatório e download, licenças relativas e
 checkpoint/reload emD1,1 pausado. Console limpo. Tab7 está na página de licenças. Tab4
@@ -31,7 +31,7 @@ preservaoriginal62,5.
 
 Próximo imediato: commit final/PR sobre #40, build definitivo e registrar hashes iguais ao
 candidato. Publicar0.30 no Site privado e tag primeiro, antes dos metadados do Site público. Gerar
-espelho definitivo G:\Projetos\viveiro-publico da fonte final limpa. Só depois registrar um Site
+espelho definitivo ../viveiro-publico da fonte final limpa. Só depois registrar um Site
 separado (manifesto ausente nesse espelho), persistir ID imediatamente, helper oficial com
 credencial via stdin, salvar/publicar inicialmente privado e validar. Tornar PÚBLICO apenas o Site
 novo como último passo nativo deP0.3, conforme autorização do cronograma; usar aprovações nativas

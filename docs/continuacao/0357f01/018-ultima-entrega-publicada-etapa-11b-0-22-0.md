@@ -8,7 +8,7 @@ Branch codex/diapausa-e-casulos; base codex/maturacao-e-estacoes (PR #24). PR #2
 5af4191ea97787d2414c6faef30ac9adb91aa4ec, tag v0.22.0. Deploy
 appgdep_6ae79f3e3548819195ecf89a8c937020 succeeded em 01/11/2026 20:21:31 UTC. Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_f7390c6c4fb48191b1201e2c1e59d4a4. Mesmo Site
-privado, somente proprietário e zero externos. Arquivo G:\Projetos\viveiro-0.22.0.tar.gz.
+privado, somente proprietário e zero externos. Arquivo ../viveiro-0.22.0.tar.gz.
 
 -  Memória sazonal por colônia, frio acumulado, retomada gradual, atividade/energia/O₂ reduzidos e
   procura física de abrigo. Casulos com pagamento parcial persistente e resíduo sem reembolso.

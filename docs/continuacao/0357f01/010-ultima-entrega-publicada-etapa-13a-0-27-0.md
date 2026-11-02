@@ -8,7 +8,7 @@ Branch codex/espermateca-e-fertilidade; PR #37 sobre #36. Fonte
 publicada996d26a72b48b34f24d00c5da7a35025c45e14fb, tag v0.27.0. Deploy
 appgdep_6ae7ec7ad62c8191acef5e790d3421c5 succeeded em02/11/2026 01:51:02 UTC (01/11,22:51 São
 Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_c21bc798d50c81918eb43ddf03e257fd.
-Mesmo Site privado, proprietário único, zero externos. Arquivo G:\Projetos\viveiro-0.27.0.tar.gz
+Mesmo Site privado, proprietário único, zero externos. Arquivo ../viveiro-0.27.0.tar.gz
 preservado. WIP46a1aaa preservado, correções0.26.1/0.26.2 incorporadas no merge6dd516f. Conflitos
 resolvidos mantendo ambos os imports de validação e versão0.27; docs mais recentes mantidos. Perfil
 opcional generic-fertility-demo@1/revisão10; lotes finitos, decaimento conservativo, consumo por

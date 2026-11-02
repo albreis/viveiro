@@ -8,7 +8,7 @@ Branch codex/licencas-e-revisao sobre fee0109/#39; PR #40. Fonte/tag
 v0.29.1:fc31dd55df081b8f069c83fad7e37fcd8775f9c6. Deploy appgdep_6ae80477740081919d0c34e769eb744d
 succeeded em02/11/2026 03:33:23 UTC (00:33 São Paulo). Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_638b4b7c00f4819197b99128ec647eaf. Mesmo Site
-privado, proprietário único, zero externos. Arquivo G:\Projetos\viveiro-0.29.1.tar.gz preservado.
+privado, proprietário único, zero externos. Arquivo ../viveiro-0.29.1.tar.gz preservado.
 Nenhuma mudança no modelo; licenças e página estática pelo rodapé. MIT restrita ao código original e
 CC BY4.0 à documentação/imagens originais, exceções de terceiros/saves explícitas.
 public/THREE-LICENSE.txt integral e byte a byte inalterado; LICENSE e aviso público incluem o

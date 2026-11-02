@@ -14,4 +14,4 @@
 - Formate TypeScript, JavaScript e CSS. Não compacte código de origem em linhas enormes.
 - A navegação usa TypeScript estrito; migre módulos legados gradualmente, sem ts-nocheck.
 
-- Nesta máquina, use G:\Projetos\viveiro como pasta de trabalho. O usuário solicitou manter o dev rodando; não encerre o servidor ao terminar uma etapa. Logs locais ficam em .runtime/, ignorado pelo Git.
+- Use a raiz do repositório clonado como pasta de trabalho. O usuário solicitou manter o dev rodando; não encerre o servidor ao terminar uma etapa. Logs locais ficam em .runtime/, ignorado pelo Git.

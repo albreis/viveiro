@@ -8,7 +8,7 @@ Branch codex/perfis-biologicos, base
 codex/observacao-e-validacao9790422.0.18.0publicada:fonteadfa0fd87b42cc267b00a9869639216d384ec061,tagv0.18.0,PR#21
 https://github.com/albreis/viveiro/pull/21sobre#20.
 Deployappgdep_6ae760e625408191b8bd518379b117d7succeeded01/11/2026 15:55:30UTC.
-MesmoSiteprivadoowner-only/zeroexternos.ArquivoG:\Projetos\viveiro-0.18.0.tar.gz.176/176testes
+MesmoSiteprivadoowner-only/zeroexternos.Arquivo../viveiro-0.18.0.tar.gz.176/176testes
 completos em307760ms (log.runtime/biology-suite.log),21dirigidos,TS/Vite ebrowser aprovados.
 Sessão82954concluída; não repetirsem mudança relevante.
 Fonteadfa0fd+tag/checkpointenviados;mainintocada. Módulosnovospequenos: src/modules/biology
@@ -41,6 +41,6 @@ doisHMR14:44:57antigospréQA. DevG PID17752HTTP200. Localtab2deliverable,Site1in
 Próximo após publicar0.18.0: etapa10tampão/isolamento/reaberturafísicos e
 reservaslipídicas/proteicas/músculo com balanços; semtimersuniversais. 11–14depois;
 dadoscalibraçãoexternospendentes.
-SourcehelperOPENHEADfinal,archiveG:\Projetos\viveiro-0.18.0.tar.gzfora checkout,pushsomente
+SourcehelperOPENHEADfinal,archive../viveiro-0.18.0.tar.gzfora checkout,pushsomente
 branch/tag. Não contornarlimites;automaçãohoráriaativa atécritériosimplementáveisconcluídos.
 

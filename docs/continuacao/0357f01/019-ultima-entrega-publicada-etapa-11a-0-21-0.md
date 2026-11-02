@@ -8,7 +8,7 @@ Branch codex/maturacao-e-estacoes; base codex/selamento-fundacao (0cb17c1, PR #2
 fonte 77508511daa910f53c0465e5cce52db4cfa3f1c9, tag v0.21.0. PR #24 aberto sobre #23. Deploy
 appgdep_6ae790ce6be48191bdfcc5addb611f64 concluído em 01/11/2026, 19:19:54 UTC. Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_420e33161dd8819190a6c31da10ca2c5. Mesmo Site
-privado, somente proprietário e zero externos. Arquivo G:\Projetos\viveiro-0.21.0.tar.gz.
+privado, somente proprietário e zero externos. Arquivo ../viveiro-0.21.0.tar.gz.
 
 -  Módulos TypeScript pequenos em src/modules/development, app/development-status e
   biology/development-records; nenhuma dependência nova. Modelo, coeficientes e limites em
