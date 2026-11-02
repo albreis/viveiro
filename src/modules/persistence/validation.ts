@@ -1,3 +1,4 @@
+import { validatePredatorMemory } from "../predators/validation.ts";
 import { validateSoilMaterial } from "../soil-material/validation.ts";
 import { validateRoomStores } from "../stores/validation.ts";
 import { validateChamberChoice } from "../chambers/validation.ts";
@@ -57,6 +58,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
     throw new Error("Estado do mundo inválido.");
   if (!Array.isArray(w.colonies ?? []))
     throw new Error("Registros de colônia inválidos.");
+  validatePredatorMemory(w.predators);
   const colonies = [w, ...(w.colonies || [])];
   if (colonies.length > 4) throw new Error("Quantidade de colônias inválida.");
   let population = 0;

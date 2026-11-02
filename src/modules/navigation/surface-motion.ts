@@ -1,3 +1,4 @@
+import { blocksVegetation } from "../predators/vegetation.ts";
 import { logLevel, pondLevel, blocksObstacle } from "./surface-obstacles.ts";
 import { surfaceHeight, surfaceNormal } from "../landscape/queries.ts";
 import { sampleSoil } from "../terrain/field.ts";
@@ -58,9 +59,15 @@ export function moveSurface(
       logLevel(x, z, world.landscape),
       logLevel(entity.x, entity.z, world.landscape),
     ) ||
+    (predator && blocksVegetation(world.plants, entity, x, z)) ||
     (predator
       ? world.nest.nodes.some(
-          (n) => n.type === "entrance" && Math.hypot(x - n.x, z - n.z) < 1.3,
+          (n) =>
+            n.type === "entrance" &&
+            blocksObstacle(
+              (Math.hypot(x - n.x, z - n.z) / 1.3) ** 2,
+              (Math.hypot(entity.x - n.x, entity.z - n.z) / 1.3) ** 2,
+            ),
         )
       : !positionClear(world, entity, { x, y: 0, z }, angle));
   if ((entity.avoidTicks || 0) > 0) {

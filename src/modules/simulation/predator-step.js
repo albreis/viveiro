@@ -1,3 +1,4 @@
+import { predatorEscape, approachPlant } from "../predators/foraging.ts";
 import { exposedFoundress } from "../semiclaustral/exposure.ts";
 import { aphidPrey } from "../ecology/predation.ts";
 import { NEST, LIMIT, BOUNDS } from "./constants.js";
@@ -16,6 +17,12 @@ export function updatePredators(world, dead) {
     if (p.cooldown > 0) p.cooldown--;
     if (p.repelledUntil > world.tick) {
       world.moveSurface(p, p.angle, 0.055, true);
+      continue;
+    }
+    const escape = predatorEscape(p, world.tick);
+    if (escape !== undefined) {
+      p.angle = escape;
+      world.moveSurface(p, p.angle, 0.04, true);
       continue;
     }
     let target = null,
@@ -53,8 +60,11 @@ export function updatePredators(world, dead) {
       }
     } else {
       const aphid = aphidPrey(world, p);
-      if (aphid) p.angle = Math.atan2(aphid.z - p.z, aphid.x - p.x);
-      else if (world.random() < 0.07) p.angle += world.range(-1, 1);
+      if (aphid) {
+        const approach = approachPlant(p, aphid, world.tick);
+        p.angle = approach.heading;
+        if (approach.waiting) continue;
+      } else if (world.random() < 0.07) p.angle += world.range(-1, 1);
     }
     const speed = target?.kind ? 0.062 : 0.024;
     world.moveSurface(p, p.angle, speed, true);

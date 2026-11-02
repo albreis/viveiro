@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.26.1**, PR [#35](https://github.com/albreis/viveiro/pull/35), correção das bordas das entradas após a etapa 12C. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.26.2**, PR [#36](https://github.com/albreis/viveiro/pull/36), correção das aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -26,7 +26,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
 | 12    | Seleção local do microclima e da câmara                            | ✅ Protótipos 12A–12C publicados · 0.24–0.26                     |
-| 13    | Espermateca, fertilidade e longevidade                             | ⬜ Pendente                                                      |
+| 13    | Espermateca, fertilidade e longevidade                             | 🔧 Núcleo 13A preservado; QA e 13B pendentes                     |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
 
 **Ordem restante:** 13 → 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
@@ -453,6 +453,9 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 - Aceite: gradientes físicos, custos e decisões locais observáveis; estabilidade não é garantida por um slider.
 
 ### 13. Fertilidade e longevidade
+
+- [ ] 13A em andamento: núcleo da espermateca finita, viabilidade, parentesco e prole após esgotamento preservado na branch codex/espermateca-e-fertilidade/46a1aaa. 251 testes completos passaram antes dos fixes de entradas/aranhas; falta incorporar essas correções, conferir regressão e realizar QA/publicação. Não é uma entrega concluída.
+- [ ] 13B: saúde, danos, reservas, doença, idade e curvas exploratórias de longevidade. Calibração externa segue aberta.
 
 - Estoque/viabilidade de esperma, uso por ovo e possível contribuição de múltiplos machos.
 - Perda de fertilização altera a prole em perfis apropriados, sem morte instantânea da rainha.
