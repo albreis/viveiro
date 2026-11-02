@@ -86,7 +86,17 @@ P0.4 ainda depende de DOI atual/botão de citação GitHub após integração.
 P1.6B2: planilha real, leitor/zoom e Lighthouse >90 não concluídos.
 PageSpeed retornou 429/cota diária: não repetir antes de
 2026-11-03T15:16:57 UTC nem contornar com outra chave/conta/ferramenta.
-P1 ensaios escolares/docentes, P3 calibração/JOSS e P5 clima exigem dados reais.
+P1 ensaios escolares/docentes e P3 calibração/JOSS exigem dados reais.
+P5 foi descartado por enquanto em 02/11/2026: P5.1–P5.7 estão fora do escopo
+ativo e não impedem concluir o cronograma. Não reativar sem novo pedido explícito.
+Proposta arquivada em docs/arquivo/clima-real-descartado.md. Checkpoints antigos
+que mandavam executar P5 por último foram superados por esta decisão.
+
+## Atualização administrativa: retirada do P5
+
+Branch codex/cronograma-sem-clima, baseada na entrega das asas. Atualiza apenas
+o plano/checkpoint e arquiva a proposta; aplicativo e versão 0.40.1 preservados.
+A retomada automática também deve excluir P5. Próxima implementação segue P2.3.
 
 ## Ambiente e próximo passo
 
