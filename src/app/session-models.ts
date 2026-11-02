@@ -17,6 +17,7 @@ export function restoreSessionModels(value: unknown) {
   return { session, world, comparison, initial };
 }
 export function captureSession(value: {
+  lesson?: SessionState["lesson"];
   world: FamilyWorld;
   comparison: FamilyWorld | null;
   scenario: string;
@@ -29,7 +30,7 @@ export function captureSession(value: {
   advance?: SessionState["advance"];
 }): SessionState {
   return normalizeSession({
-    version: 1,
+    version: value.lesson ? 2 : 1,
     ...value,
     world: value.world.snapshot(),
     comparison: value.comparison?.snapshot() ?? null,

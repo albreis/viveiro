@@ -1,3 +1,6 @@
+import { installLessonControls } from "./lesson-controls.ts";
+import { createLessonSession } from "../modules/lessons/recipe.ts";
+import { setLessonCamera } from "./lessons/camera.ts";
 import { installTourControls } from "./tour-controls.ts";
 import { ownsSpaceKey } from "./keyboard.ts";
 import { installPerformanceControls } from "./performance-controls.ts";
@@ -63,7 +66,7 @@ let interventions = [],
   replayIndex = 0,
   lastUi = 0,
   lastSave = 0;
-let forecaster, toastTimer, performanceControls;
+let forecaster, toastTimer, performanceControls, lessonControls, lesson;
 const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
   new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
@@ -86,6 +89,7 @@ function getSession() {
     replaying,
     replayIndex,
     running,
+    ...(lesson ? { lesson } : {}),
     clock: { ...clock.state },
     ...(advancePlan ? { advance: advancePlan } : {}),
   });
@@ -105,6 +109,7 @@ function applySavedSession(value, paused = false, fromAdvance = false) {
   world = restored.world;
   comparison = restored.comparison;
   initial = restored.initial;
+  lesson = next.lesson;
   scenario = next.scenario;
   interventions = next.interventions;
   replaying = next.replaying;
@@ -177,6 +182,17 @@ function intervention(type, x = 0, z = 0, value) {
   save();
 }
 function reset(seed, params, replay = false) {
+  if (replay && lesson) {
+    const actions = interventions;
+    const candidate = createLessonSession(lesson);
+    candidate.interventions = actions;
+    candidate.replaying = true;
+    candidate.running = true;
+    applySavedSession(candidate);
+    setLessonCamera(scene, lesson);
+    save();
+    return;
+  }
   advanceControls?.invalidate();
   advancePlan = undefined;
   checkpointStore.allowWrites();
@@ -191,6 +207,7 @@ function reset(seed, params, replay = false) {
   scenario = "a";
   clock.state.pendingTicks = 0;
   if (!replay) {
+    lesson = undefined;
     initial = {
       seed,
       params: { ...configuration.params },
@@ -267,6 +284,7 @@ function updateUi() {
   );
   if (forecaster)
     renderForecast(forecaster.state, scenario, forecaster.options);
+  lessonControls?.render(lesson, interventions.length);
 }
 function configureAntCamera() {
   antCamera.configureScene();
@@ -505,7 +523,6 @@ document.addEventListener("keydown", (e) => {
 $("export").onclick = () => {
   const data = {
     ...getSession(),
-    version: 1,
     exportedAt: new Date().toISOString(),
     initial,
     interventions,
@@ -577,6 +594,27 @@ window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
 syncControls();
 updateUi();
+lessonControls = installLessonControls({
+  current: () => lesson,
+  actions: () => interventions.length,
+  capture: getSession,
+  pause: () => {
+    running = false;
+    advanceControls?.invalidate();
+    forecaster?.cancel();
+    syncControls();
+  },
+  backup: (session, label) => checkpointStore.save(session, label, "manual"),
+  apply: (session) => {
+    applySavedSession(session, true);
+    setLessonCamera(scene, session.lesson);
+    scene.update(presentFamily(active()), performance.now() / 1000, 1);
+    scene.render();
+  },
+  save,
+});
+lessonControls.render(lesson, interventions.length);
+if (lesson) setLessonCamera(scene, lesson);
 const tourControls = installTourControls({
   hadSavedExperiment: hadSavedExperiment || checkpointStore.isProtected(),
   ready: () => !!scene,
