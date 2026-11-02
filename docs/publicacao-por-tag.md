@@ -1,6 +1,6 @@
 # Publicação por tag
 
-P0.3 em preparação, versão0.30.0. O Site de testes conserva sua identidade e audiência privada. O build público usa um espelho separado de artefatos, sem copiar o histórico Git, docs privados, credenciais ou saves do checkout.
+P0.3, versão0.30.0; pipeline validado, publicação em andamento. O Site de testes conserva sua identidade e audiência privada. O build público usa um espelho separado de artefatos, sem copiar o histórico Git, docs privados, credenciais ou saves do checkout.
 
 ## Fonte e artefato
 
@@ -28,4 +28,4 @@ Não há backend contínuo, PWA/cache offline completo, DOI ou calibração por 
 
 ## Validação em andamento
 
-Oito testes novos conferem manifestos, origem, repetição idêntica, recusa de reescrita, preservação de tags, ordem semver, adulteração/arquivos ausentes, caminhos desconhecidos, credenciais sintéticas e junctions reais no Windows. Quinze testes combinados com codec/sessão passaram em1.574 ms; build privado310 módulos aprovado. Modelo biológico inalterado. Ainda falta QA do bundle sob subpasta, registro/publicação do Site público e conferência sem login.
+Oito testes novos conferem manifestos, origem, repetição idêntica, recusa de reescrita, preservação de tags, ordem semver, adulteração/arquivos ausentes, caminhos desconhecidos, credenciais sintéticas e junctions reais no Windows. Quinze testes combinados com codec/sessão passaram em1.574 ms; build privado310 módulos aprovado. Modelo biológico inalterado. QA do bundle sob subpasta concluída: localhost4174/releases/v0.30.0/, versão correta, nova seed independente, primeira pessoa, malha e previsão/avanço em Workers. Avanço de1 dia terminou emD1,1 e permaneceu pausado após reload; checkpoint nomeado criado. Relatório reservado carregado e download com base correta; links de licença e retorno resolvem dentro da tag. Console sem erros. Não houve alteração do experimento na porta4173. Falta registro/publicação do Site público e conferência sem login.

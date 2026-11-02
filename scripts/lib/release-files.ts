@@ -133,6 +133,13 @@ export function installRelease(
   const identity = JSON.parse(readFileSync(marker, "utf8"));
   if (identity.format !== "viveiro-public-mirror" || identity.version !== 1)
     throw Error("Espelho desconhecido.");
+  const ignore = join(root, ".gitignore");
+  if (!existsSync(ignore)) writeFileSync(ignore, ".runtime/\n", { flag: "wx" });
+  else {
+    const current = readFileSync(ignore, "utf8");
+    if (!current.split(/\r?\n/).includes(".runtime/"))
+      writeFileSync(ignore, current + "\n.runtime/\n");
+  }
   for (const p of [root, join(root, "public"), releases])
     if (existsSync(p) && lstatSync(p).isSymbolicLink())
       throw Error("Espelho não pode conter links nos diretórios de destino.");
