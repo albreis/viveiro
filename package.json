@@ -1,6 +1,6 @@
 {
   "name": "viveiro",
-  "version": "0.29.1",
+  "version": "0.30.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,7 +10,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
-    "format": "prettier --write src index.html vite.config.ts tsconfig.json"
+    "format": "prettier --write src index.html vite.config.ts tsconfig.json",
+    "build:public": "node scripts/build-public-release.ts"
   },
   "dependencies": {
     "three": "0.170.0"

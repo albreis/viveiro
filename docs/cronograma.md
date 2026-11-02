@@ -507,7 +507,7 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 
 - [x] P0.1 publicada em0.29.1, PR [#40](https://github.com/albreis/viveiro/pull/40), fonte fc31dd5/tag v0.29.1: MIT para código original, CC BY4.0 para documentação/imagens originais, campo license e página de avisos. Third-party integral preservado, exceções explícitas, README e recursos de terceiros documentados. Página/avisos e build308 módulos conferidos no navegador; README e licença estão no PR. Nenhuma alteração na audiência privada.
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
-- [ ] P0.3 Site público e estável (por exemplo GitHub Pages ou Cloudflare Pages), com URL por tag. O Site privado continua para testes. Aceite: abre sem login e mostra a versão.
+- [ ] P0.3 em preparação na branch codex/publicacao-por-tag,0.30.0: exportador/manifestos e rótulo real testados; falta QA sob subpasta e publicação pública separada. Ver [processo e limites](publicacao-por-tag.md). Site público e estável (por exemplo GitHub Pages ou Cloudflare Pages), com URL por tag. O Site privado continua para testes. Aceite: abre sem login e mostra a versão.
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
 
 ### P1. Modo escola
