@@ -1,3 +1,4 @@
+import { beginSiteSurvey } from "../chambers/survey.ts";
 import { outsideSite } from "./site.ts";
 import type { FoundingState, FoundingWorld } from "./types.ts";
 import { changePhase, founder } from "./types.ts";
@@ -129,6 +130,7 @@ export function updateFlight(world: FoundingWorld) {
         y: (queen.y || 0) + 0.012,
         z: queen.z + (i < 2 ? 0.13 : -0.13),
       });
+    if (beginSiteSurvey(world)) return;
     changePhase(
       world,
       "digging",

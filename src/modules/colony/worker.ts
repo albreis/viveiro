@@ -1,3 +1,8 @@
+import {
+  rememberRoomClimate,
+  knownBroodRoom,
+  localChambers,
+} from "../chambers/memory.ts";
 import { roomNode } from "./rooms.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import { allocateTask } from "./response.ts";
@@ -11,6 +16,7 @@ export function updateColonyWorker(
   ant: ColonyAgent,
 ): boolean {
   ensureIndividual(world.seed, ant);
+  rememberRoomClimate(world, ant);
   if (updateColonyTask(world, ant)) return true;
   if (ant.carrying || ant.soilTask || (ant.carryingSoil || 0) > 0) return false;
   ant.role = allocateTask(world, ant);
@@ -48,9 +54,13 @@ export function updateColonyWorker(
     return true;
   }
   if (ant.role === "nurse" && ant.node != null) {
+    const nursery = localChambers(world)
+      ? knownBroodRoom(world, ant)
+      : roomNode(world.nest, "nursery", 0, ant.colonyId || 1);
     const brood = world.brood.find(
       (b) =>
-        b.node !== roomNode(world.nest, "nursery", 0, ant.colonyId || 1) &&
+        nursery !== null &&
+        b.node !== nursery &&
         !b.carrier &&
         distance3(here, b) < 0.85,
     );
@@ -60,13 +70,9 @@ export function updateColonyWorker(
       ant.bioTask = {
         kind: "brood",
         item: brood.id,
-        destination: roomNode(world.nest, "nursery", 0, ant.colonyId || 1),
+        destination: nursery!,
       };
-      requestRoute(
-        world,
-        ant,
-        roomNode(world.nest, "nursery", 0, ant.colonyId || 1),
-      );
+      requestRoute(world, ant, nursery!);
       ant.state = "Transportando uma cria";
       return true;
     }

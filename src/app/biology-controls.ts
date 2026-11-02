@@ -67,8 +67,13 @@ export function installBiologyControls(world: FamilyWorld): void {
       'option[value="semiclaustral"]',
     );
     if (semi) semi.disabled = p.foundation !== "semiclaustral";
-    topic.value =
-      p.foundation === "semiclaustral"
+    const chambers = topic.querySelector<HTMLOptionElement>(
+      'option[value="chambers"]',
+    );
+    if (chambers) chambers.disabled = !p.chamberModel;
+    topic.value = p.chamberModel
+      ? "chambers"
+      : p.foundation === "semiclaustral"
         ? "semiclaustral"
         : p.dormancyModel
           ? "seasonal"

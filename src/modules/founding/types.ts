@@ -7,6 +7,7 @@ export type FoundingPhase =
   | "flight"
   | "landing"
   | "dealate"
+  | "surveying"
   | "digging"
   | "sealing"
   | "claustral"
@@ -24,6 +25,7 @@ export interface FoundingState {
   matedTick?: number;
   entry?: number;
   front?: number;
+  survey?: import("../chambers/types.ts").SiteSurvey;
   foraging?: import("../semiclaustral/types.ts").FoundressForaging;
   seal?: import("../sealing/types.ts").SealTask;
   maternal?: import("../maternal/types.ts").MaternalState;

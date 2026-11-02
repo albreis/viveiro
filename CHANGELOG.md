@@ -1,5 +1,13 @@
 # Versões
 
+## 0.24.0 — Sondagem e memória local de câmaras
+
+- Perfil opcional com exploração física da rainha antes da escavação.
+- Sensores rasos, memória de pontos visitados e custos explícitos.
+- Cuidadoras comparam somente câmaras conhecidas; transporte mantém o destino climático.
+- Catálogo e persistência próprios, sem atualizar os perfis anteriores.
+- Primeira parte da etapa 12; estoque espacial e materiais ainda pendentes.
+
 ## 0.23.0 — Fundação semiclaustral
 
 - Perfil separado com entrada aberta e rainha coletora por sensores locais.
