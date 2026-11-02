@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-02T17:59:11.623589+00:00",
+  "version": "0.36.0",
+  "sourceSha": "0e156836bd94aaa6a408017f597b11447f065a73",
+  "author": "Viveiro contributors",
+  "draftId": "23891981",
+  "draftUrl": "https://zenodo.org/uploads/23891981",
+  "previewUrl": "https://zenodo.org/records/23891981?preview=1",
+  "status": "unpublished draft",
+  "uploadComplete": true,
+  "file": "viveiro-v0.36.0-source.zip",
+  "bytes": 1445248,
+  "sha256": "03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2",
+  "downloadedFromDraftHashMatchesOriginal": true,
+  "license": "MIT; documentation scope CC BY 4.0 explained in description and package",
+  "published": false,
+  "doi": null,
+  "authorization": "User explicitly authorized account access and preparing only the 0.36.0 draft; user completed login."
+}

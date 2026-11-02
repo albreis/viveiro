@@ -8,12 +8,12 @@ Nenhum nome pessoal, ORCID, DOI ou vínculo institucional foi inferido.
 
 O arquivo usa JSON, também válido como YAML 1.2, para leitura nativa em JS.
 O teste local verifica consistência; a validação oficial foi feita à parte.
-Versão citada: v0.37.0, publicada em 02/11/2026, commit
-30cc14ea82d8c7a20d0541641e07e5e3ad0cb432. Metadados adicionados depois da tag;
+Versão citada: v0.38.0, publicada em 02/11/2026, commit
+fbb0852820b9a34755a78b8bacd501b495348385. Metadados adicionados depois da tag;
 a tag e suas URLs não foram alteradas.
 
-P0.4 ainda não está concluída: faltam conta autenticada responsável pelo
-depósito e DOI publicado. Falta conferir “Cite this repository” após merge na
+P0.4 ainda não está concluída: falta concluir o depósito e obter DOI publicado. O usuário autenticou a conta e
+autorizou o rascunho0.36.0; isso não é publicação permanente nem DOI da versão atual. Falta conferir “Cite this repository” após merge na
 branch padrão. Segundo a [documentação do GitHub](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files),
 o botão aparece com CFF na branch padrão. Abrir PR não cumpre esse aceite.
 
@@ -74,7 +74,7 @@ local própria; os testes e o build não precisam do Site privado.
 Referências: [CFF](https://citation-file-format.github.io/1.2.0/),
 [API e metadados do Zenodo](https://developers.zenodo.org/),
 [git archive](https://git-scm.com/docs/git-archive).
-[Evidência da versão atual](validacoes/citacao-0.37.0.json).
+[Evidência da versão atual](validacoes/citacao-0.38.0.json).
 O pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.
 O pacote0.31.0 também permanece em.runtime/deposits/deposit-wcJQPw.
 A versão atualizada do gerador exclui os testes operacionais explicitamente.
@@ -147,3 +147,21 @@ SHA2562f80f3318c601574534b435ea4b55a81fc605bd4388e38d085107d412ca9195b.
 Nenhum upload/DOI. Autorização de acesso ao Zenodo continua pendente; não repetir
 nem contornar a tentativa recusada. O pacote0.36.0 da pergunta já feita continua
 preservado. Ver validacoes/citacao-0.37.0.json.
+
+## Atualização 0.38.0 e rascunho autorizado
+
+Tag v0.38.0/fbb0852820b9a34755a78b8bacd501b495348385, ODD e referência
+incluídos explicitamente.533 arquivos/1.518.779bytes, SHA-256
+0b941e8c770832ca22778922cb4c6d1f10eaa6631a855e0c9ec3560a30b1ed76.
+Pacote .runtime/deposits/deposit-xaZnzI/viveiro-v0.38.0-source.zip.
+Esquema CFF válido, quatro testes e leitura ZIP/Python independente aprovados.
+
+Após autorização específica e login pelo usuário, foi salvo o rascunho0.36.0
+[23891981](https://zenodo.org/uploads/23891981), sem publicar. Autoria coletiva,
+versão, data do software, licença MIT e escopo documental CC BY4.0 conferidos na
+prévia. Upload100%; arquivo baixado do rascunho com SHA-256 idêntico ao original:
+03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
+Nenhum DOI reservado/registrado, nenhuma integração automática do repo privado.
+A próxima ação dependente é revisar esse rascunho concreto e obter autorização
+para publicação permanente. Não trocar silenciosamente seu ZIP pela0.38.0.
+Ver validacoes/zenodo-rascunho-0.36.0.json.

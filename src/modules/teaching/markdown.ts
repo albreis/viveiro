@@ -6,11 +6,11 @@ export const escapeHtml = (value: string) =>
         c
       ]!,
   );
-function inline(text: string) {
+function inlineText(text: string) {
   return escapeHtml(text)
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (all, label: string, href: string) => {
       if (
-        !/^(https?:\/\/|(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(?:html|md|txt)(?:#[a-z0-9-]+)?$)/i.test(
+        !/^(https?:\/\/|(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(?:html|md|txt|json)(?:#[a-z0-9-]+)?$)/i.test(
           href,
         )
       )
@@ -18,6 +18,16 @@ function inline(text: string) {
       return '<a href="' + href + '">' + label + "</a>";
     })
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+function inline(text: string) {
+  return text
+    .split(/(`[^`]+`)/g)
+    .map((part) =>
+      part.startsWith("`") && part.endsWith("`")
+        ? "<code>" + escapeHtml(part.slice(1, -1)) + "</code>"
+        : inlineText(part),
+    )
+    .join("");
 }
 /** Small trusted-document subset; raw HTML and executable link schemes stay text. */
 export function teachingMarkdown(markdown: string): string {
@@ -40,7 +50,31 @@ export function teachingMarkdown(markdown: string): string {
     if (list) html.push("</" + list + ">");
     list = undefined;
   };
+  let fenced = false,
+    code: string[] = [];
+  const closeCode = () => {
+    html.push(
+      '<pre tabindex="0" role="region" aria-label="Código ou equação em texto"><code>' +
+        escapeHtml(code.join("\n")) +
+        "</code></pre>",
+    );
+    code = [];
+    fenced = false;
+  };
   for (const raw of markdown.split(/\r?\n/)) {
+    if (/^```[a-z0-9-]*\s*$/i.test(raw.trim())) {
+      if (fenced) closeCode();
+      else {
+        flush();
+        closeList();
+        fenced = true;
+      }
+      continue;
+    }
+    if (fenced) {
+      code.push(raw);
+      continue;
+    }
     const line = raw.trim(),
       heading = /^(#{1,3}) (.+)$/.exec(line);
     const item = /^(?:([-*])|([0-9]+)\.) (.+)$/.exec(line);
@@ -78,6 +112,7 @@ export function teachingMarkdown(markdown: string): string {
       paragraph.push(line);
     }
   }
+  if (fenced) closeCode();
   flush();
   closeList();
   return html.join("\n");

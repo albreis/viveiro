@@ -1,9 +1,14 @@
+import { modelDocPlugin } from "./scripts/lib/model-doc-plugin.ts";
 import { offlinePlugin } from "./scripts/lib/offline-plugin.ts";
 import { teachingPlugin } from "./scripts/lib/teaching-plugin.ts";
 import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => ({
-  plugins: [teachingPlugin(), offlinePlugin(mode === "public")],
+  plugins: [
+    teachingPlugin(),
+    modelDocPlugin(),
+    offlinePlugin(mode === "public"),
+  ],
   server: {
     host: "127.0.0.1",
     port: 4173,

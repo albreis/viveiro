@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-02T17:56:52.288591+00:00",
+  "version": "0.38.0",
+  "sourceSha": "fbb0852820b9a34755a78b8bacd501b495348385",
+  "nativeBrowser": {
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.38.0/modelo/replicacao",
+    "equationsCommandsAndLinksVerified": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "anonymousHttp": {
+    "completed": false,
+    "status": 403,
+    "checkedNonHtml": 0,
+    "note": "urllib request to the public origin received 403. No claim of post-deploy remote hash verification and no access-control workaround. Build manifests and archive locally validated; native page loaded normally."
+  }
+}
