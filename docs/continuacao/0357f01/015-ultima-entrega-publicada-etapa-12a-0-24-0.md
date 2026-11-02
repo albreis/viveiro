@@ -8,7 +8,7 @@ Branch codex/escolha-local-da-camara; PR #32 sobre main, após integração dos 
 usuário. Fonte publicada 3cf90eeba5166f7a5f576f80255d402fe3b621e2, tag v0.24.0. Deploy
 appgdep_6ae7d12547cc81918be4cc9fc7c7122a succeeded em 01/11/2026 23:54:27 UTC. Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_6281f82bcedc81918980d0aea9321d5d. Mesmo Site
-privado, somente proprietário e zero externos. Arquivo G:\Projetos\viveiro-0.24.0.tar.gz preservado.
+privado, somente proprietário e zero externos. Arquivo ../viveiro-0.24.0.tar.gz preservado.
 Módulos pequenos em src/modules/chambers; perfil opcional generic-microclimate-demo@1, revisão7;
 genéricos anteriores preservados. Ver docs/escolha-local.md.
 

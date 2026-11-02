@@ -6,12 +6,12 @@ Checkpoint passado. Use docs/CONTINUAR.md para a prioridade atual.
 
 NÃO repetir save nem criar Site. Novo ID appgprj_6ae80cd45fdc8191be8315696a383393. A preparação
 corrigida gerou/pushou MirrorSHA c98bdf7200e38fb8c07ac9665c0ab1043355055d e arquivo
-G:\Projetos\viveiro-publico-0.30.1.tar.gz. Native save_site_version SUCCEEDED: versão1, ID
+../viveiro-publico-0.30.1.tar.gz. Native save_site_version SUCCEEDED: versão1, ID
 appgprj_6ae80cd45fdc8191be8315696a383393~appgver_55042887d3a481919851baaa9d5119f6.31
 arquivos/2.672.640 bytes, archive hash
 sha256:281fd45b379eb7ca682d14069096b8484f94e7793fd3cd81d386697d101cca9f. Deployment_id null: AINDA
 NÃO PUBLICADO. Acesso atual custom/owner; só o Site novo pode virar público. IDs e fonte no espelho
-G:\Projetos\viveiro-publico já persistidos. Root privado original
+../viveiro-publico já persistidos. Root privado original
 appgprj_6ae6364bc4488191b2757449ed3f7e94 continua privado0.30.1, tag d61a439 e publicação abaixo
 concluídos.
 

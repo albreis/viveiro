@@ -8,7 +8,7 @@ Fonte ee34b75bca62e4ebc65fb83d397ae429acb09e6c, branch codex/fundacao-semiclaust
 integrado em 01/11/2026 21:39:28 UTC. Tag v0.23.0 aponta à fonte publicada. Deploy
 appgdep_6ae7a30d9f148191936e0799569b39f8 succeeded em 01/11/2026 20:37:46 UTC. Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_824150d8d6d08191b718fd5f87337902, mesmo Site
-privado. Arquivo G:\Projetos\viveiro-0.23.0.tar.gz preservado. A interrupção ocorreu após o retorno
+privado. Arquivo ../viveiro-0.23.0.tar.gz preservado. A interrupção ocorreu após o retorno
 nativo e antes destes metadados; não repetir publicação.
 
 -  Rainha coletora, entrada aberta e alimento separado dos tecidos iniciais em

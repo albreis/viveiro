@@ -10,7 +10,7 @@ Checkpoint passado. Use docs/CONTINUAR.md para a prioridade atual.
 -  Deploy appgdep_6ae784be9d288191be36011eba00f5a5 concluído em 01/11/2026, 18:28:27 UTC. Versão
   appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_0ab0ee8cef848191816765fc594562e4. Mesmo Site
   privado, somente proprietário, zero externos.
-- Arquivo G:\Projetos\viveiro-0.19.0.tar.gz preservado fora do checkout.
+- Arquivo ../viveiro-0.19.0.tar.gz preservado fora do checkout.
 -  Novos módulos pequenos em src/modules/maternal e src/modules/biology, com UI própria. Nenhuma
   dependência nova.
 -  Revisões 1 continuam escalares; revisões 2 habilitam reservas. Legados e replay preservam sua

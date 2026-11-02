@@ -8,7 +8,7 @@ Branch codex/bordas-das-entradas; PR #35 sobre #34. Fonte dead04386ca186ee00711e
 tag v0.26.1. Deploy appgdep_6ae7e4ed4dfc8191aef149ab7056d0a7 succeeded em02/11/2026 01:18:49 UTC
 (01/11,22:18 São Paulo). Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_f5e27a70858081918c474f033985fca5. Mesmo Site
-privado. Arquivo G:\Projetos\viveiro-0.26.1.tar.gz preservado. Removido EntranceView.js com toros;
+privado. Arquivo ../viveiro-0.26.1.tar.gz preservado. Removido EntranceView.js com toros;
 módulo TypeScript pequeno conserva só o rótulo. A própria malha define a borda. Mesh-axes adiciona
 colunas de centros para todas as entradas e refina contornos de até16 (prioridade às estreitas), com
 planos do vidro e da superfície. Células compartilham os eixos; sem remendos independentes. Física e

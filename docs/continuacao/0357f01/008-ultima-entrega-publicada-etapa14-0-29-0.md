@@ -8,7 +8,7 @@ Branch codex/ritmo-e-avanco-entre-sessoes sobre f4e6410/#38; PR #39. Fonte/tag
 v0.29.0:df92cc32d58df237f6df909d41e5aaca61d1900b. Deploy appgdep_6ae800cdb6d08191b4d7fcb69400ea9e
 succeeded em02/11/2026 03:17:45 UTC (02/11,00:17 São Paulo). Versão
 appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_87873ae98b7c8191804d15d6c81103b3. Mesmo Site
-privado, proprietário único, zero externos. Arquivo G:\Projetos\viveiro-0.29.0.tar.gz preservado.
+privado, proprietário único, zero externos. Arquivo ../viveiro-0.29.0.tar.gz preservado.
 Módulos pequenos TypeScript em src/modules/time, services/advance-client, workers/advance.worker e
 app/time/advance-controls. Relógio de sessão separado de100 ticks/dia, base10/60/300/3600 s e
 multiplicadores1/3/10; dívida e fração salvas. Novas instalações60 s/dia; saves sem relógio

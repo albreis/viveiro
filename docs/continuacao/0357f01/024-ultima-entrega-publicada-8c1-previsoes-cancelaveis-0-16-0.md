@@ -8,7 +8,7 @@ Branch codex/previsoes-cancelaveis, base codex/checkpoints-e-recuperacao5ac9d83.
 publicada: fonte80fc8235bafdcb16b7f63e0ec59ab1edd2294fb7, tagv0.16.0, PR#19
 https://github.com/albreis/viveiro/pull/19 aberto sobre#18. Deploy
 appgdep_6ae7536aed448191b373f9e399ee378e succeeded em01/11/2026 14:57:59UTC. Mesmo Site privado,
-owner-only/zero externos. ArquivoG:\Projetos\viveiro-0.16.0.tar.gz. Módulos pequenos
+owner-only/zero externos. Arquivo../viveiro-0.16.0.tar.gz. Módulos pequenos
 src/modules/forecast (model/run/types), serviços forecast-client/runner, WorkerTS e painel próprio.
 Controller perdeu a lógica antiga; arquivo workerJS substituído. Sem mudanças biológicas. Cálculo
 cooperativo8ms/pausa40ms, um tick pode exceder8ms; último pedido pendente, cancelamento e
@@ -27,6 +27,6 @@ Localtab2 mantida; previsão deixada cancelada, opções1/6/120. Site tab1 intoc
 Próximo concreto: criar codex/observacao-e-validacao para8C2 para observações parciais/completas,
 erros por horizonte e baselines em séries reservadas, custo e métricas explícitos. Não tratar
 faixaP10–P90 sintética como confiança científica calibrada. Etapas9–14 ainda pendentes. Publicar com
-helper sourceOPEN no HEAD final, archiveG:\Projetos\viveiro-0.16.0.tar.gz fora do checkout,
+helper sourceOPEN no HEAD final, archive../viveiro-0.16.0.tar.gz fora do checkout,
 preservar acesso owner-only. Tags e saves antigos preservados. Push só branch/tag específicas.
 

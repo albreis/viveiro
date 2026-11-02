@@ -15,7 +15,7 @@
     "failure_message": null,
     "env_set_revision": 0,
     "updated_at": "2026-11-02T18:33:37.131098+00:00",
-    "archive": "G:/Projetos/viveiro-0.39.0.tar.gz",
+    "archive": "../viveiro-0.39.0.tar.gz",
     "audience": "custom",
     "revision": 1,
     "externalVisitors": 0
@@ -36,7 +36,7 @@
     "updated_at": "2026-11-02T18:35:38.281818+00:00",
     "sourceSha": "c3ff739657b6790f132b980acebb135be21add7d",
     "versionNumber": 10,
-    "archive": "G:/Projetos/viveiro-publico-0.39.0.tar.gz",
+    "archive": "../viveiro-publico-0.39.0.tar.gz",
     "storage": {
       "archive_format": "tar",
       "sediment_file_id": "file_000000000874820ea4b0f293114b3e4c",

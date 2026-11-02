@@ -8,7 +8,7 @@ Branch codex/observacao-e-validacao, base codex/previsoes-cancelaveis9f60d10.0.1
 e9ae0423f312482731e5d289ff44abb0faf85fdf, tagv0.17.0, PR#20
 https://github.com/albreis/viveiro/pull/20 sobre#19. Deploy appgdep_6ae7594743888191b3f32d3bff1e15b4
 succeeded em01/11/2026 15:23:00UTC. Mesmo Site privado, proprietário/zero externos.
-ArquivoG:\Projetos\viveiro-0.17.0.tar.gz.16testes dirigidos, TypeScript/Vite e browser aprovados.
+Arquivo../viveiro-0.17.0.tar.gz.16testes dirigidos, TypeScript/Vite e browser aprovados.
 Nenhuma mudança biológica, nenhum pacote novo. Módulos TS pequenos83–123linhas, testes232/233.
 src/modules/forecast/observations/count-model/count-run + avaliação/statistics; painel
 próprioforecast-benchmark.ts. Censo perfeito de adultos+3dias de histórico; sem
@@ -37,5 +37,5 @@ Próximo após publicar0.17.0: etapa9perfis/proveniência versionada (verdocs/bi
 ecronograma).9–14ainda pendentes. Separar hipótese de dado, genérico demonstrativo de espécie
 calibrada; não usar faixas de outraIA como timers científicos. Não alterar modelos para melhorar a
 tabela. Preservar saves/branches/tags/audiência. Publicar viahelper
-sourceOPENnoHEADfinal,archiveG:\Projetos\viveiro-0.17.0.tar.gzfora do checkout.
+sourceOPENnoHEADfinal,archive../viveiro-0.17.0.tar.gzfora do checkout.
 

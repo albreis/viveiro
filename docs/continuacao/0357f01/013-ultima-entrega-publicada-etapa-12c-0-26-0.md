@@ -8,7 +8,7 @@ Branch codex/materiais-e-compactacao; PR #34 sobre #33. Fonte publicada
 609c26a531271975e183042c08fd815fc0f7fcd4, tag v0.26.0. Deploy
 appgdep_6ae7df533a188191ac6082f6efc038a6 succeeded em02/11/2026 00:54:55 UTC (01/11,21:54 em São
 Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_7a6f2ebc06e08191b9f33c2df9debb63.
-Mesmo Site privado, proprietário único, zero externos. Arquivo G:\Projetos\viveiro-0.26.0.tar.gz
+Mesmo Site privado, proprietário único, zero externos. Arquivo ../viveiro-0.26.0.tar.gz
 preservado.
 
 -  Código novo pequeno em src/modules/soil-material, perfil generic-microclimate-demo@3/revisão9,

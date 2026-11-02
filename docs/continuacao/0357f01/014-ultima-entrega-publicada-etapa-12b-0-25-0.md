@@ -8,7 +8,7 @@ Branch codex/estoques-por-camara, PR #33 sobre #32. Fonte publicada
 5f48b2c237a2c0f548f9d770b9f09432bdc01e38, tag v0.25.0. Deploy
 appgdep_6ae7d977dde481919d309a034d0b577a succeeded em 02/11/2026 00:29:56 UTC (01/11, 21:29 em São
 Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_11ef1bcdfdac8191bb943d7426f07d55.
-Mesmo Site privado, somente proprietário, zero externos. Arquivo G:\Projetos\viveiro-0.25.0.tar.gz
+Mesmo Site privado, somente proprietário, zero externos. Arquivo ../viveiro-0.25.0.tar.gz
 preservado. Núcleo em src/modules/stores, perfil opcional generic-microclimate-demo@2, revisão8; sem
 pacote novo.
 

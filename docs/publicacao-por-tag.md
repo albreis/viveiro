@@ -6,7 +6,7 @@ P0.3, versão0.30.1; entregue no [Site público](https://viveiro-laboratorio-pub
 
 Com a fonte revisada e commitada, execute no checkout principal:
 
-node scripts/build-public-release.ts --mirror G:\Projetos\viveiro-publico
+node scripts/build-public-release.ts --mirror ../viveiro-publico
 
 O comando usa o Vite instalado com base /releases/vVERSAO/, gera arquivos em uma pasta temporária ignorada e instala somente os assets compilados. Não altera dist manualmente. No espelho, public/releases/vVERSAO/ guarda os arquivos e release.json com SHA de origem e SHA-256 de cada arquivo. A raiz public/ contém índice e catálogo para abrir a versão mais recente ou uma anterior. O espelho não reutiliza o project_id do Site privado.
 

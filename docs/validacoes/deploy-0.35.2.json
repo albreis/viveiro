@@ -10,7 +10,7 @@
     "deploymentId": "appgdep_6ae88a73452481919ed6acef01f5aa4b",
     "status": "succeeded",
     "updatedAt": "2026-11-02T13:05:06.794185+00:00",
-    "archive": "G:/Projetos/viveiro-0.35.2.tar.gz"
+    "archive": "../viveiro-0.35.2.tar.gz"
   },
   "public": {
     "projectId": "appgprj_6ae80cd45fdc8191be8315696a383393",
@@ -22,7 +22,7 @@
     "deploymentId": "appgdep_6ae88adf76e08191a611ac5b8f4d5d50",
     "status": "succeeded",
     "updatedAt": "2026-11-02T13:06:52.891222+00:00",
-    "archive": "G:/Projetos/viveiro-publico-0.35.2.tar.gz",
+    "archive": "../viveiro-publico-0.35.2.tar.gz",
     "fileCount": 141,
     "bytes": 9605120,
     "archiveHash": "sha256:1189aaa60c8eb188c9fd866ad0e9ea8cf04f0434505f1ba2706e11ef6ad0106b"
