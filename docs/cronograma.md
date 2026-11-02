@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada e pública: **0.40.0**, PR [#53](https://github.com/albreis/viveiro/pull/53), correção urgente **P2.2B concluída nos cenários e runtimes ensaiados**. CSV e manifesto idênticos em Node, navegador dev, bundle compilado e regressão publicada. ODD 0.38.0/#50 e DOI 0.36.0/#51 integrados à main; #52 e #53 encadeados. P1.6B2 e ensaios externos continuam pendentes; próximo item implementável: **P2.3**. P0.3 concluída: [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/) com URLs por versão. A 0.29.1/PR #40 entregou revisão e licenças. A 0.29.0/PR #39 entregou a etapa 14 de ritmo e continuidade. A 0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação privada e pública: **0.40.1**, PR [#54](https://github.com/albreis/viveiro/pull/54), apoio das asas descartadas no terreno atual. Correção urgente **P2.2B concluída na 0.40.0/#53 nos cenários e runtimes ensaiados**. CSV e manifesto idênticos em Node, navegador dev, bundle compilado e regressão publicada. ODD 0.38.0/#50 e DOI 0.36.0/#51 integrados à main; #52 e #53 encadeados. P1.6B2 e ensaios externos continuam pendentes; próximo item implementável: **P2.3**. P0.3 concluída: [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/) com URLs por versão. A 0.29.1/PR #40 entregou revisão e licenças. A 0.29.0/PR #39 entregou a etapa 14 de ritmo e continuidade. A 0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -116,6 +116,12 @@ RL depende de sensores, ações, recompensas e física estáveis.
 ## Histórico das entregas
 
 Os registros abaixo descrevem cada momento do desenvolvimento. Menções antigas a “próximo” ou “pendente” são históricas; a tabela acima e o andamento das etapas 9–14 representam a situação atual.
+
+### Correção adicional — asas descartadas (0.40.1, 02/11/2026)
+
+- [x] PR [#54](https://github.com/albreis/viveiro/pull/54): asas apoiadas e orientadas na malha atual de solo/tampão, recalculadas após escavação ou mudança do tampão. Altura antiga de pouso não prende mais as asas no ar.
+- [x] 11 testes de regressão geométrica, 6 checks de integração/cache/paridade, TypeScript estrito e builds privado/público. QA nativa no save existente, sem alterar dia, população ou posições salvas; console limpo.
+- [x] Publicada nos dois Sites; fonte/tag 9b5d057. Evidências em validacoes/asas-0.40.1.json e validacoes/deploy-0.40.1.json. Apoio visual, sem modelo de massa ou aerodinâmica das asas. P2.2B permanece entregue; próximo item P2.3.
 
 ### Progresso da etapa 2 — 31/10/2026
 
@@ -509,8 +515,8 @@ Cada passo segue as regras do projeto: branch própria com prefixo codex/, PR em
 - [x] P0.2 Integrar os PRs encadeados na main, em ordem, ajustando a base do seguinte a cada integração. Concluído em 01/11/2026: PRs #1 a #27 integrados com commits de merge, branches preservadas, main na 0.23.0 com 217/217 testes. Tag v0.23.0 preserva a fonte publicada ee34b75. Merges #28/#29 e kit de divulgação recebidos na sincronização da main 93e28d1.
 - [x] P0.3 entregue em0.30.1/PR [#41](https://github.com/albreis/viveiro/pull/41): [Site público separado](https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/), com URLs /releases/v0.30.0/ e /releases/v0.30.1/. Acesso sem login, versão real e QA3D/Workers/arquivos conferidos. O Site original segue privado. Ver [processo e limites](publicacao-por-tag.md).
 - [ ] P0.4 CITATION.cff e DOI por release via Zenodo. Aceite: "Cite this repository" e DOI da release atual.
-  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.40.0 exata (atualizada após P2.2B); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
-  - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Publicação permanente da0.36.0 autorizada e concluída: [DOI10.5281/zenodo.23891981](https://doi.org/10.5281/zenodo.23891981), registro23891981, ZIP baixado após publicar com SHA-256 idêntico. [Citação por versão](citacoes/README.md) e esquema CFF conferidos. A release atual 0.40.0 ainda não tem DOI próprio; não atribuir a ela o DOI da0.36.0.
+  - [x] P0.4A: CFF 1.2.0 válido, autoria coletiva da licença, fonte/tag 0.40.1 exata (atualizada após a correção das asas); rascunho de metadados e gerador de ZIP selecionado, com manifesto/hashes e testes de integridade/reprodução. Ver [citação e depósito](citacao-e-deposito.md).
+  - [ ] P0.4B: conta autenticada responsável, revisão e depósito de produção no Zenodo; conferir DOI resolvendo e incorporá-lo aos metadados. Publicação permanente da0.36.0 autorizada e concluída: [DOI10.5281/zenodo.23891981](https://doi.org/10.5281/zenodo.23891981), registro23891981, ZIP baixado após publicar com SHA-256 idêntico. [Citação por versão](citacoes/README.md) e esquema CFF conferidos. A release atual 0.40.1 ainda não tem DOI próprio; não atribuir a ela o DOI da0.36.0.
   - [ ] P0.4C: após o PR chegar à branch padrão, conferir o botão do GitHub. Não concluído só por abrir PR.
   - A dependência externa de P0.4B não impede avançar P1; repo original e Site original continuam privados.
 

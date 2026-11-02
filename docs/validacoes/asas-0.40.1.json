@@ -1,0 +1,57 @@
+{
+  "version": "0.40.1",
+  "cause": "discarded wings retained the landing altitude after relief/entrance geometry changed",
+  "tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "strictTypeScript": true,
+  "privateBuildModules": 352,
+  "nativeBrowser": {
+    "seed": "SEMENTE-50088",
+    "day": 62.48,
+    "adults": 14,
+    "paused": true,
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  },
+  "scope": "Presentation-only support on soil/plug meshes; no mass/air-drag dynamics or model/save migration.",
+  "groundingFromExportedSave": {
+    "method": "Node/Three.js applied to the JSON downloaded through the native browser UI",
+    "snapshotUnchangedByRendering": true,
+    "poses": [
+      {
+        "oldY": 0.023115086301327404,
+        "drawnY": -0.04154402502554557,
+        "deltaY": -0.06465911132687298,
+        "visible": true
+      },
+      {
+        "oldY": 0.023115086301327404,
+        "drawnY": 0.009362507486110743,
+        "deltaY": -0.013752578815216661,
+        "visible": true
+      },
+      {
+        "oldY": 0.023115086301327404,
+        "drawnY": 0.009053840083421444,
+        "deltaY": -0.01406124621790596,
+        "visible": true
+      },
+      {
+        "oldY": 0.023115086301327404,
+        "drawnY": 0.009918676105114203,
+        "deltaY": -0.0131964101962132,
+        "visible": true
+      }
+    ]
+  },
+  "integrationChecks": {
+    "passed": 6,
+    "failed": 0,
+    "coverage": [
+      "offline private/public build",
+      "four P2.2B Node/browser golden cases"
+    ]
+  }
+}
