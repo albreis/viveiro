@@ -1,3 +1,5 @@
+import { renderChartSummary } from "./chart-summary.ts";
+import { installAccessibleInterventions } from "./accessible-interventions.ts";
 import { installDailyControls } from "./daily-controls.ts";
 import { installLessonControls } from "./lesson-controls.ts";
 import { createLessonSession } from "../modules/lessons/recipe.ts";
@@ -270,13 +272,13 @@ function syncControls() {
   $("compare").firstChild.textContent = comparison
     ? "Encerrar comparação "
     : "Comparar dois cenários ";
-  document
-    .querySelectorAll("[data-scenario]")
-    .forEach((b) =>
-      b.classList.toggle("active", b.dataset.scenario === scenario),
-    );
+  document.querySelectorAll("[data-scenario]").forEach((b) => {
+    b.classList.toggle("active", b.dataset.scenario === scenario);
+    b.setAttribute("aria-pressed", String(b.dataset.scenario === scenario));
+  });
 }
 function updateUi() {
+  renderChartSummary(world, comparison);
   dailyControls?.render();
   timeControls?.render();
   advanceControls?.refresh();
@@ -516,13 +518,21 @@ dialog.onclick = (e) => {
   }
 };
 document.addEventListener("keydown", (e) => {
+  if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
   if (e.key === "Escape" && scene?.tool)
     document.querySelector("[data-tool].active")?.click();
   if (e.key === "Escape" && scene?.followId) {
     scene.stopFollowing();
     updateAntCamera(active());
   }
-  if (e.code === "Space" && !ownsSpaceKey(e.target) && !dialog.open) {
+  if (
+    e.code === "Space" &&
+    !e.altKey &&
+    !e.ctrlKey &&
+    !e.metaKey &&
+    !ownsSpaceKey(e.target) &&
+    !dialog.open
+  ) {
     e.preventDefault();
     $("play").click();
   }
@@ -599,6 +609,17 @@ document.addEventListener("visibilitychange", () => {
 });
 window.addEventListener("pagehide", () => emergencyState(getSession()));
 window.addEventListener("resize", () => renderChart(world, comparison));
+installAccessibleInterventions(intervention);
+$("viewport").addEventListener("keydown", (event) => {
+  if (
+    event.target === $("viewport") &&
+    !event.altKey &&
+    !event.ctrlKey &&
+    !event.metaKey &&
+    scene?.cameraKey(event.key)
+  )
+    event.preventDefault();
+});
 dailyControls = installDailyControls({
   scenarios: () => [
     { id: "a", world },

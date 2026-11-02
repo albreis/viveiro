@@ -19,7 +19,7 @@
   gap: 9px;
   padding: 0 0 13px;
   font-size: 9px;
-  color: #8e9782;
+  color: var(--muted);
   line-height: 1.6;
 }
 #events li:last-child {
@@ -30,7 +30,7 @@
   white-space: nowrap;
   min-width: 32px;
   padding-top: 2px;
-  color: #a4ad97;
+  color: var(--muted);
 }
 #events .event-dot {
   width: 4px;

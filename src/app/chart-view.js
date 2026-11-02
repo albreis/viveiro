@@ -48,7 +48,7 @@ export function drawChart(world, comparison) {
     ctx.moveTo(left, y);
     ctx.lineTo(width - right, y);
     ctx.stroke();
-    ctx.fillStyle = "#a4ad97";
+    ctx.fillStyle = "#485743";
     ctx.fillText(String(Math.round(max * (1 - i / 2))), left - 6, y);
   }
   histories.forEach((history, index) => {
@@ -70,7 +70,7 @@ export function drawChart(world, comparison) {
       ctx.closePath();
       ctx.fill();
     }
-    ctx.strokeStyle = index ? "#bd8c57" : "#698747";
+    ctx.strokeStyle = index ? "#80542e" : "#426044";
     ctx.lineWidth = 1.7;
     ctx.setLineDash(index ? [4, 3] : []);
     ctx.beginPath();
@@ -80,11 +80,11 @@ export function drawChart(world, comparison) {
     const last = coords.at(-1);
     ctx.beginPath();
     ctx.arc(...last, 2.4, 0, Math.PI * 2);
-    ctx.fillStyle = index ? "#bd8c57" : "#698747";
+    ctx.fillStyle = index ? "#80542e" : "#426044";
     ctx.fill();
   });
   ctx.textAlign = "left";
-  ctx.fillStyle = "#a4ad97";
+  ctx.fillStyle = "#485743";
   ctx.fillText(format(minTick / 100), left, height - 5);
   ctx.textAlign = "right";
   ctx.fillText(format(maxTick / 100), width - right, height - 5);

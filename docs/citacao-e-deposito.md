@@ -8,8 +8,8 @@ Nenhum nome pessoal, ORCID, DOI ou vínculo institucional foi inferido.
 
 O arquivo usa JSON, também válido como YAML 1.2, para leitura nativa em JS.
 O teste local verifica consistência; a validação oficial foi feita à parte.
-Versão citada: v0.36.0, publicada em 02/11/2026, commit
-0e156836bd94aaa6a408017f597b11447f065a73. Metadados adicionados depois da tag;
+Versão citada: v0.37.0, publicada em 02/11/2026, commit
+30cc14ea82d8c7a20d0541641e07e5e3ad0cb432. Metadados adicionados depois da tag;
 a tag e suas URLs não foram alteradas.
 
 P0.4 ainda não está concluída: faltam conta autenticada responsável pelo
@@ -74,7 +74,7 @@ local própria; os testes e o build não precisam do Site privado.
 Referências: [CFF](https://citation-file-format.github.io/1.2.0/),
 [API e metadados do Zenodo](https://developers.zenodo.org/),
 [git archive](https://git-scm.com/docs/git-archive).
-[Evidência da versão atual](validacoes/citacao-0.36.0.json).
+[Evidência da versão atual](validacoes/citacao-0.37.0.json).
 O pacote anterior0.30.1 permanece em.runtime/deposits/deposit-CqrgTm.
 O pacote0.31.0 também permanece em.runtime/deposits/deposit-wcJQPw.
 A versão atualizada do gerador exclui os testes operacionais explicitamente.
@@ -136,3 +136,14 @@ Foi solicitada autorização específica para acessar a área e preparar o rascu
 com o ZIP0.36.0 verificado. Aguardar a resposta; não contornar o bloqueio.
 Não pedir senha, token ou códigos no chat. Autoria e existência da conta já foram
 respondidas; não repetir essas perguntas. P1.6B não depende deste acesso.
+
+## Atualização 0.37.0
+
+CFF/rascunho referem v0.37.0/30cc14ea82d8c7a20d0541641e07e5e3ad0cb432.
+Autoria coletiva confirmada mantida. Esquema oficial válido, quatro testes de
+integridade/reprodução e leitorZIP independente aprovados.517 arquivos,
+1.464.006bytes, .runtime/deposits/deposit-A1Ldu4/viveiro-v0.37.0-source.zip,
+SHA2562f80f3318c601574534b435ea4b55a81fc605bd4388e38d085107d412ca9195b.
+Nenhum upload/DOI. Autorização de acesso ao Zenodo continua pendente; não repetir
+nem contornar a tentativa recusada. O pacote0.36.0 da pergunta já feita continua
+preservado. Ver validacoes/citacao-0.37.0.json.

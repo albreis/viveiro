@@ -22,7 +22,7 @@
   display: block;
   font-size: 8px;
   margin-top: 6px;
-  color: #9ba28f;
+  color: var(--muted);
 }
 .ant-glyph {
   margin-left: auto;
@@ -40,7 +40,7 @@
 }
 .metric-grid > div > span {
   font-size: 9px;
-  color: #939c87;
+  color: var(--muted);
   display: block;
   margin-bottom: 6px;
 }
@@ -53,7 +53,7 @@
 .metric-grid strong span {
   font-family: var(--sans);
   font-size: 8px;
-  color: #959d8b;
+  color: var(--muted);
   font-weight: 400;
   letter-spacing: 0;
 }
@@ -66,7 +66,7 @@
 }
 .chart-panel .section-label > span:last-child {
   font-size: 7px;
-  color: #a1a994;
+  color: var(--muted);
   letter-spacing: 0.5px;
 }
 #chart {
@@ -78,7 +78,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 8px;
-  color: #919a84;
+  color: var(--muted);
   margin-top: 9px;
   align-items: center;
   gap: 8px;
@@ -106,7 +106,7 @@
   flex-wrap: wrap;
   gap: 8px;
   font-size: 9px;
-  color: #7b866d;
+  color: var(--muted);
 }
 .odor-legend span {
   display: flex;
@@ -144,7 +144,7 @@ label[for="learning-mode"] {
   display: block;
   margin: 14px 0 7px;
   font-size: 11px;
-  color: #617057;
+  color: var(--muted);
 }
 #learning-mode {
   width: 100%;
@@ -162,7 +162,7 @@ label[for="checkpoint-list"] {
   display: block;
   margin: 14px 0 7px;
   font-size: 11px;
-  color: #617057;
+  color: var(--muted);
 }
 #checkpoint-name,
 #checkpoint-list {

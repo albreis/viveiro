@@ -12,9 +12,17 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   </head>
   <body>
+    <nav class="skip-links" aria-label="Atalhos da página">
+      <a href="#main-content">Ir para o conteúdo</a>
+      <a href="#viewport">Ir para a câmera</a>
+      <a href="#environment-controls">Ir para ambiente e intervenções</a>
+      <a href="#daily-summary">Ir para os dados observados</a>
+    </nav>
     <header class="topbar">
       <a href="./" class="brand" aria-label="Viveiro, início"
-        ><span class="brand-symbol">v</span>viveiro<span class="brand-dot"
+        ><span class="brand-symbol" aria-hidden="true">v</span>viveiro<span
+          class="brand-dot"
+          aria-hidden="true"
           >.</span
         ></a
       >
@@ -26,11 +34,11 @@
         </button>
       </div>
     </header>
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="page-heading">
         <div>
           <div class="eyebrow">OBSERVATÓRIO / EXPERIMENTO 001</div>
-          <h1>A vida encontra caminhos<span>.</span></h1>
+          <h1>A vida encontra caminhos<span aria-hidden="true">.</span></h1>
           <p>Um ecossistema autônomo. Cada encontro muda o que vem depois.</p>
         </div>
         <button class="outline-button" id="new-world">
@@ -38,7 +46,12 @@
         </button>
       </section>
       <div class="workspace">
-        <aside class="left-panel">
+        <aside
+          class="left-panel"
+          id="environment-controls"
+          aria-label="Ambiente e intervenções"
+          tabindex="-1"
+        >
           <section class="panel environment">
             <div class="section-label">
               <span>O AMBIENTE</span><span class="tiny-number">01</span>
@@ -119,17 +132,20 @@
             </p>
             <div class="tools">
               <button data-tool="food" aria-pressed="false">
-                <span class="tool-icon food-icon">◒</span><span>Alimento</span>
+                <span aria-hidden="true" class="tool-icon food-icon">◒</span
+                ><span>Alimento</span>
               </button>
               <button data-tool="plant" aria-pressed="false">
-                <span class="tool-icon">⚘</span><span>Planta</span>
+                <span aria-hidden="true" class="tool-icon">⚘</span
+                ><span>Planta</span>
               </button>
               <button data-tool="predator" aria-pressed="false">
-                <span class="tool-icon predator-icon">✳</span
+                <span aria-hidden="true" class="tool-icon predator-icon">✳</span
                 ><span>Predador</span>
               </button>
               <button data-tool="scent" aria-pressed="false">
-                <span class="tool-icon">◌</span><span>Odor estranho</span>
+                <span aria-hidden="true" class="tool-icon">◌</span
+                ><span>Odor estranho</span>
               </button>
             </div>
             <p class="field-note">
@@ -137,6 +153,7 @@
             </p>
           </section>
           <section id="biology-panel" class="panel biology-panel"></section>
+          <details id="keyboard-placement"></details>
           <div class="seed-box">
             <label for="seed">SEMENTE DO EXPERIMENTO</label>
             <div>
@@ -195,7 +212,9 @@
             </div>
             <div
               id="viewport"
-              role="img"
+              role="group"
+              tabindex="0"
+              aria-describedby="scene-keyboard-hint"
               aria-label="Terrário tridimensional com formigas, plantas, lago e aranhas"
             >
               <div id="loading">
@@ -221,6 +240,11 @@
               ><button id="follow-ant">1ª pessoa ↗</button
               ><button id="exit-ant" hidden>Sair da formiga</button>
             </div>
+            <p id="scene-keyboard-hint">
+              Na câmera: setas giram ou olham, +/− aproximam/afastam a visão
+              geral, Home centraliza e Esc sai da formiga. Use Tab para
+              continuar aos controles.
+            </p>
             <div class="scene-caption">
               <span class="scene-tag"
                 ><i class="green-dot"></i>
@@ -272,7 +296,7 @@
             </div>
           </div>
           <div class="observation-card">
-            <span class="observation-symbol">↗</span>
+            <span class="observation-symbol" aria-hidden="true">↗</span>
             <div>
               <span class="eyebrow">O QUE ESTÁ ACONTECENDO</span>
               <p id="observation">
@@ -291,7 +315,10 @@
           </div>
           <details id="daily-data" class="daily-data"></details>
         </section>
-        <aside class="right-panel">
+        <aside
+          class="right-panel"
+          aria-label="Indicadores e experimentos salvos"
+        >
           <section class="panel metrics-panel">
             <div class="section-label">
               <span>A COLÔNIA</span><span class="live-word"><i></i> AGORA</span>
@@ -301,7 +328,7 @@
               <div>
                 formigas<span id="population-detail">1 rainha · 1 macho</span>
               </div>
-              <span class="ant-glyph">♧</span>
+              <span class="ant-glyph" aria-hidden="true">♧</span>
             </div>
             <div class="metric-grid">
               <div><span>Crias</span><strong id="brood">0</strong></div>
@@ -523,9 +550,11 @@
             </div>
             <canvas
               id="chart"
+              aria-describedby="chart-summary"
               height="130"
               aria-label="Gráfico do número de formigas ao longo do tempo"
             ></canvas>
+            <p id="chart-summary"></p>
             <div class="chart-legend">
               <span
                 ><i></i>Formigas
@@ -632,7 +661,12 @@
             <div class="section-label">
               <span>DIÁRIO DO TERRÁRIO</span><span class="tiny-number">↙</span>
             </div>
-            <ol id="events" aria-live="off"></ol>
+            <ol
+              id="events"
+              aria-live="off"
+              tabindex="0"
+              aria-label="Eventos do terrário; use as setas para rolar"
+            ></ol>
           </section>
         </aside>
       </div>
@@ -650,12 +684,12 @@
       </footer>
     </main>
     <div id="toast" role="status" hidden></div>
-    <dialog id="help-dialog">
+    <dialog id="help-dialog" aria-labelledby="help-title">
       <button class="dialog-close" id="close-help" aria-label="Fechar">
         ×
       </button>
       <div class="eyebrow">GUIA DE OBSERVAÇÃO</div>
-      <h2>Uma colônia.<br />Muitos futuros possíveis.</h2>
+      <h2 id="help-title">Uma colônia.<br />Muitos futuros possíveis.</h2>
       <p>
         Cada formiga observa o que está perto e decide entre explorar, coletar,
         seguir feromônios, fugir e voltar ao ninho. As interações formam o

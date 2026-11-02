@@ -12,7 +12,7 @@
   margin-bottom: 12px;
 }
 .slider-block label span {
-  color: #617057;
+  color: var(--muted);
 }
 .slider-block output {
   font-size: 11px;
@@ -56,12 +56,12 @@
   justify-content: space-between;
   margin-top: 10px;
   font-size: 9px;
-  color: #959c8d;
+  color: var(--muted);
 }
 .field-note {
   font-size: 9px;
   line-height: 1.7;
-  color: #959e8a;
+  color: var(--muted);
   margin: 11px 0 0;
 }
 .rain-button {
@@ -125,7 +125,7 @@
   color: #5a7443;
 }
 .food-icon {
-  color: #b68c43;
+  color: var(--muted);
 }
 .predator-icon {
   color: #866254;
@@ -136,7 +136,7 @@
 .seed-box label {
   font-size: 8px;
   letter-spacing: 1.3px;
-  color: #8c9581;
+  color: var(--muted);
 }
 .seed-box > div {
   display: flex;
@@ -159,7 +159,7 @@
   background: none;
   border: 0;
   font-size: 18px;
-  color: #748764;
+  color: var(--muted);
 }
 .seed-box .text-button {
   font-size: 9px;
