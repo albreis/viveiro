@@ -92,6 +92,16 @@ ativo e não impedem concluir o cronograma. Não reativar sem novo pedido explí
 Proposta arquivada em docs/arquivo/clima-real-descartado.md. Checkpoints antigos
 que mandavam executar P5 por último foram superados por esta decisão.
 
+## Atualização administrativa: retirada do P2.8
+
+Usuário descartou P2.8 (instruções em português para uma formiga) em 02/11/2026:
+não será implementado. Não é pendência ou critério de conclusão. Não reativar
+sem novo pedido explícito, mesmo que documentos históricos tragam seu roteiro.
+Proposta arquivada em docs/arquivo/instrucoes-formiga-descartadas.md.
+Branch atual codex/cronograma-sem-instrucoes, baseada em codex/cronograma-sem-clima
+(PR #55). Atualização documental de escopo; versão publicada segue 0.40.1.
+A retomada automática exclui P2.8 e P5. Seguir P2.3–P2.7 e demais itens ativos.
+
 ## Atualização administrativa: retirada do P5
 
 Branch codex/cronograma-sem-clima, baseada na entrega das asas. Atualiza apenas
@@ -109,7 +119,7 @@ Só Cua documentado para browser; nenhum Playwright externo/CDP/internals.
 Capturas 0.40 paridade/publicado e 0.40.1 asas na pasta de visualizações autorizada.
 
 Próximo passo concreto: P2.3, varredura de 5 valores × 10 réplicas em um comando,
-paralela e com retomada; depois P2.4 e seguintes. P2.2B e asas já entregues:
+paralela e com retomada; depois P2.4–P2.7 e demais itens ativos, excluindo P2.8 e P5. P2.2B e asas já entregues:
 não duplicar PRs. Conferir merges antes de agir e rebasear a base do PR seguinte
 para main quando sua dependência for integrada. Não iniciar executor concorrente.
 Retomada automática ainda é útil; não desativar ou declarar cronograma concluído.
