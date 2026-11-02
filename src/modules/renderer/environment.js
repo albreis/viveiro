@@ -1,5 +1,5 @@
 import { LandscapeView } from "./LandscapeView.js";
-import { EntranceView } from "./EntranceView.js";
+import { EntranceView } from "./EntranceView.ts";
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
 import { createSoilGeometry } from "../terrain/soil.js";

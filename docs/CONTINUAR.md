@@ -2,6 +2,18 @@
 
 Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e docs/cronograma.md. Não iniciar executor concorrente, não contornar cotas/aprovações. Manter dev em G e preservar saves, branches, tags e audiência privada. Código novo pequeno em TypeScript.
 
+## Em conclusão — correção de entradas (0.26.1)
+
+Branch codex/bordas-das-entradas a partir de f1aee17/#34. Removido EntranceView.js com toros; módulo TypeScript pequeno conserva só o rótulo. A própria malha define a borda. Mesh-axes adiciona colunas de centros para todas as entradas e refina contornos de até16 (prioridade às estreitas), com planos do vidro e da superfície. Células compartilham os eixos; sem remendos independentes. Física e saves inalterados.
+
+Reprodução anterior: abertura r0,12 entre células tinha primeiro contato do raycast em y−0,01053 em vez do fundo−0,12. Teste corrigido exige fundo abaixo−0,10. Quatro lados conferidos também por raios horizontais/verticais, sem tampa falsa; amostras limitadas a menos de2 milhões no máximo atual48 nós.19/19 regressões passaram em4.186 ms (.runtime/entrance-regression.log), build279 módulos aprovado. Novo ensaio global712.140 vértices/erro máximo0,00015. A malha pode ter mais triângulos; não é medição de FPS em hardware escolar.
+
+Navegador: a/D267 recuperado em pausa para QA dos quatro lados; SEMENTE-50088/D62,5 recuperado depois e inspecionada sua entrada. Console sem erros. Screenshot viveiro-0.26.1-entradas.png preservado. Câmera devolvida à perspectiva, interior desligado; dev G e saves mantidos. IAB local atualtab4; a aba2 anterior foi liberada pelo navegador. Nenhuma alteração na audiência do Site.
+
+13A preservada e enviada ao GitHub: codex/espermateca-e-fertilidade, commit46a1aaa;251/251 testes completos e build passaram, falta QA/publicação. Não perder ou refazer. Nenhum teste pendente. Usuário pediu agora conferir aranhas presas em árvores/arbustos: após publicar esta correção, abrir branch própria para diagnóstico/correção antes de retomar13A. Atualizar13A com os fixes depois. Seguem13B,14,P0–P5;P5 último.
+
+Próximo imediato: commit/push/PR sobre #34 e publicação privada0.26.1, tag/metadados; depois analisar surface-obstacles.ts, surface-motion.ts e predator-step.js e reproduzir aranha encurralada por vegetação. Nenhum executor concorrente iniciado.
+
 ## Última entrega publicada — etapa 12C (0.26.0)
 
 Branch codex/materiais-e-compactacao; PR #34 sobre #33. Fonte publicada 609c26a531271975e183042c08fd815fc0f7fcd4, tag v0.26.0. Deploy appgdep_6ae7df533a188191ac6082f6efc038a6 succeeded em02/11/2026 00:54:55 UTC (01/11,21:54 em São Paulo). Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_7a6f2ebc06e08191b9f33c2df9debb63. Mesmo Site privado, proprietário único, zero externos. Arquivo G:\Projetos\viveiro-0.26.0.tar.gz preservado.

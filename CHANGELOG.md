@@ -1,5 +1,11 @@
 # Versões
 
+## 0.26.1 — Bordas reais das entradas
+
+- Removida a argola decorativa que não acompanhava o relevo nem a escavação. A borda passa a ser a própria malha do solo.
+- Amostragem alinhada aos centros das entradas, às faces do vidro e à camada superficial; detalhamento extra limitado para bocas estreitas.
+- Regressão por raycast de abertura pequena entre células e entradas nos quatro lados. Sem alterar física, escavação, seed ou saves.
+
 ## 0.26.0 — Composição e compactação do solo
 
 - Perfil opcional com índices relativos de argila e compactação para transporte de água, calor e suporte do teto.
