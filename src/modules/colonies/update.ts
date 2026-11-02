@@ -1,3 +1,4 @@
+import { updateFertility } from "../fertility/model.ts";
 import { updateSeason } from "../seasons/update.ts";
 import { learningDeath } from "../learning/live.ts";
 import { updateVentilation } from "../ventilation/update.ts";
@@ -46,6 +47,7 @@ export function advanceFamily(root: FamilyWorld) {
       allBrood(root).length -
       w.ants.length -
       w.brood.length;
+    updateFertility(w);
     updateSeason(w);
     updateBroodLifecycle(w, suitability);
     invalidateNeighbors(w);

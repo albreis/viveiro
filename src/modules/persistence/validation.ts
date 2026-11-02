@@ -1,3 +1,4 @@
+import { validateFertility } from "../fertility/validation.ts";
 import { validatePredatorMemory } from "../predators/validation.ts";
 import { validateSoilMaterial } from "../soil-material/validation.ts";
 import { validateRoomStores } from "../stores/validation.ts";
@@ -80,6 +81,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
       profile.stockModel === "rooms-demo",
       w.nest as import("../navigation/types.ts").NestState | undefined,
     );
+    validateFertility(c, profile.fertilityModel === "finite-demo");
     validateChamberChoice(c, profile.chamberModel === "local-demo");
     validateMaternalFounding(c.founding, profile.maternalModel === "pools");
     validateFoundressForaging(

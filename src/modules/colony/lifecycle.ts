@@ -68,7 +68,7 @@ export function updateBroodLifecycle(world: ColonyWorld, suitability: number) {
       );
       for (let i = 0; i < eggs; i++) {
         const b = makeBrood(world, world.nextId++);
-        if (first) b.nanitic = true;
+        if (first && b.kind !== "male") b.nanitic = true;
         world.brood.push(b);
       }
       if (first) {

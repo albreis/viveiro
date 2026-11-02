@@ -1,3 +1,4 @@
+import { initializeFertility } from "../fertility/model.ts";
 import { initializeSoilMaterial } from "../soil-material/initialize.ts";
 import { initializeRoomStores } from "../stores/initialize.ts";
 import { initializeSeason } from "../seasons/update.ts";
@@ -122,5 +123,6 @@ export function initializeWorld(world, seed, parameters, options = {}) {
     world.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
   initializeSeason(world);
   initializeRoomStores(world);
+  initializeFertility(world);
   world.record();
 }

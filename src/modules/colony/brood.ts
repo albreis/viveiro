@@ -1,3 +1,4 @@
+import { fertilizeEgg } from "../fertility/egg.ts";
 import { initializeCocoon } from "../development/cocoon.ts";
 import { initializeBroodDevelopment } from "../development/initialize.ts";
 import { DEMO_BROOD_STAGES } from "../biology/demo-constants.ts";
@@ -30,8 +31,10 @@ export function makeBrood(
   kind: "worker" | "gyne" | "male" = "worker",
 ): Brood {
   const support = broodPosition(world, id, node);
+  const result = fertilizeEgg(world, id, kind);
+  kind = result.kind;
   const genome = world.genetics
-    ? inheritGenome(world, id, kind === "male")
+    ? inheritGenome(world, id, kind === "male", result.sire)
     : undefined;
   if (genome && world.genetics) {
     world.genetics.embryos++;
@@ -45,6 +48,7 @@ export function makeBrood(
     y: support.point.y + 0.025,
     genome,
     kind,
+    ...(result.record ? { fertilization: result.record } : {}),
   };
   initializeBroodDevelopment(world, brood);
   initializeCocoon(world, brood);

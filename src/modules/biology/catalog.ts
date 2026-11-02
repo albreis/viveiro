@@ -1,3 +1,4 @@
+import { fertilityRecords } from "./fertility-records.ts";
 import { materialRecords } from "./material-records.ts";
 import { storeRecords } from "./store-records.ts";
 import { chamberRecords } from "./chamber-records.ts";
@@ -26,6 +27,7 @@ export const biologicalParameters = Object.freeze(
     ...chamberRecords,
     ...storeRecords,
     ...materialRecords,
+    ...fertilityRecords,
   ].map((record) =>
     Object.freeze({
       ...record,
