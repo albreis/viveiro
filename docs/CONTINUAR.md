@@ -1,107 +1,120 @@
-# Em publicação / P1.4A /0.34.0
-
-Branch codex/guias-docentes sobre#45.39 testes e build333 módulos passaram;
-seis guias QA no preview4184. Receita2 inicializa ar/solo emD0 e preserva v1.
-Aba15/preview10754 encerrados. Dev17752 saudável; nova aba16 recupera
-SEMENTE-50088/D62,5 pausada. Aba4 antiga ficou presa emerro de conexão do
-navegador durante reinício automático; não houve perda de save.
-Próximo: commit/tag v0.34.0, push/PR, publicar ambos os Sites existentes,
-conferir os guias no público, atualizar citação/ZIP para o SHA real e checkpoint.
-Depois P1.5/PWA. P1.4B/revisão docente continua aberta, sem pareceres reais.
-
----
-
 # Continuação do Viveiro
 
-Atualizado em02/11/2026 após publicação da0.33.0/P1.3.
+Atualizado em02/11/2026 após publicação da0.34.0/P1.4A.
 Ler AGENTS.md e docs/cronograma.md. Trabalhar emG:\Projetos\viveiro.
 Manter dev4173 emG; preservar branches, tags, saves e audiência privada.
 Não iniciar executor concorrente nem contornar limites ou aprovações.
 
 ## Git
 
-Branch codex/experimentos-de-aula; PR #45 sobre codex/tour-primeira-visita/#44.
-Main15781d2; fetch e PRs conferidos nesta entrega. #32–#45 seguem abertos,
-encadeados; não duplicar nem integrar sem conferir a intenção atual.
-Fonte/tag v0.33.0: ed78e3fe56e7b863fc06ee0f69cef40aeb371507.
-Citação e checkpoint são posteriores à tag; não reescrevê-la.
+Branch codex/guias-docentes, PR #46 sobre codex/experimentos-de-aula/#45.
+PR #45 cobreP1.3 e depende de#44. Os PRs#32–#46 continuam encadeados.
+Main15781d2 na última conferência; buscar merges antes de agir.
+Fonte/tag v0.34.0: 34c41f532187119ae30f5c30fb0886e2e462aa11.
+Fonte/tag v0.33.0: ed78e3fe56e7b863fc06ee0f69cef40aeb371507, preservada.
+Citação/checkpoint são posteriores às tags; não reescrever tags ou releases.
 
-## Entrega P1.3
+## Entregas deste ciclo
 
-Sete aulas com seed, A/B, câmera, pergunta e condições iniciais declaradas.
-Troca exige checkpoint nomeado emIndexedDB e estado anterior estável; falhas
-não substituem o mundo. Sessão de aula v2/receita v1; sessões comuns v1.
-Reload, replay e avanço headless preservam referência e ambos os cenários.
-Ninho didático emrevisão2 para não acionar migração que recria as entradas.
-Módulos novos pequenos emTypeScript estrito, sem dependência adicional.
-38/38 testes dirigidos em2.075,568ms e build333 módulos;4/4 de depósito.
-QA isolada4183: sete aberturas em2,03–2,91s, recuperação do backup e reload.
-Pública: aula térmica em1,50s, A18/B28°C, recuperação da SEMENTE-42/D2,6,
-pausada; console limpo. Ver docs/experimentos-de-aula.md e validacoes/aulas-0.33.0.json.
+P1.3 entregue na0.33.0/#45: sete aulas com seed, A/B, câmera, pergunta,
+condições iniciais e backup nomeado obrigatório antes de substituir o mundo.
+38 testes dirigidos; abertura local em2,03–2,91s. Ver experimentos-de-aula.md
+ou validacoes/aulas-0.33.0.json. Emcaso de falha de gravação ou mudança
+concorrente, troca cancelada e mundo anterior pausado.
 
-## Publicação privada original
+P1.4A entregue na0.34.0/#46: seis roteiros emdocs/ensino/ para as sete aulas,
+com objetivo, tempo, passos, perguntas, gabarito e limites. Associação proposta
+àBNCC conferida emfonte oficial. Fichas docentes sem pareceres inventados.
+Link Guia do professor abre páginas de leitura/impressão, geradas dos próprios
+Markdown pelo Vite; textos emTXT. Não há segunda fonte editável nem runtime novo.
+Tipos deNode24 adicionados apenas a devDependencies. npmci encontrou DLL
+aberta pelo dev; reparo incremental npm install --ignore-scripts concluído,
+build e servidor saudáveis, sem interromper o processo17752. Não repetir
+npmci enquanto o dev usar o binding nativo. Não apagar a pasta temporária
+binding bloqueada; não é pendência do modelo.
+
+Receita v2 inicializa solo/ar no dia0 sem passos ou consumo; evita painel
+anunciar ausência de galerias emuma colônia preparada. v1 e suas seeds são
+preservadas para repetir saves antigos. Sessões comuns continuam payload1;
+aulas payload2, com referência de receita1 ou2. Não migrar v1 silenciosamente.
+39/39 testes dirigidos em2.686,0665ms e build TypeScript estrito/Vite333 módulos.
+Depois da tag,4/4 testes de depósito. Não é nova suíte biológica integral.
+QA IAB4184 percorreu6 páginas com8 seções e5–6 passos, retorno ao laboratório
+e recuperação da aula pausada. Ar noD0:20,90%O₂/0,04%CO₂, com entradas reais.
+QA pública: guia e roteiro deventilação, links e numeração, console limpo.
+Ver docs/guias-docentes.md e validacoes/guias-0.34.0.json.
+P1.4B/revisão deprofessores continua pendente; nenhum piloto realizado.
+
+## Site privado original /0.34.0
 
 URL https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
 Projeto appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/revisão1,
-proprietário único, zero externos, conferido antes da publicação.
-Fonte ed78e3fe56e7b863fc06ee0f69cef40aeb371507/tag v0.33.0.
-Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_86eb4205c9388191b3e22d6d5b8549b9.
-Deploy appgdep_6ae85d87f004819192611947d9106626, succeeded,
-2026-11-02T09:53:24.380591+00:00. ArquivoG:\Projetos\viveiro-0.33.0.tar.gz.
+proprietário único e zero externos, conferido antes da publicação.
+Fonte 34c41f532187119ae30f5c30fb0886e2e462aa11/tag v0.34.0.
+Versão appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_714be1aef6548191bbc2b66ebfc4330a.
+Deploy appgdep_6ae863d7e1048191a94bfb1610cc1164, succeeded,
+2026-11-02T10:20:21.787133+00:00. ArquivoG:\Projetos\viveiro-0.34.0.tar.gz.
 .openai/hosting.json mantém ID original/static.directory=dist.
 Não repetir save/deploy nem mudar audiência.
 
-## Publicação pública separada
+## Site público separado /0.34.0
 
 URL https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
 Projeto appgprj_6ae80cd45fdc8191be8315696a383393, public/revisão2.
-EspelhoG:\Projetos\viveiro-publico; ID próprio, static.directory=dist.
-Fonte c3cf34a06859a283f2d7cfa4b72b7280930b7d64.
-Versão4 appgprj_6ae80cd45fdc8191be8315696a383393~appgver_3a1c22e29c7c81918b2dbde1bc0f5157.
-Deploy appgdep_6ae85ddf2a5881919519c1ac9c8d4c53, succeeded,
-2026-11-02T09:54:53.196951+00:00.
-ArquivoG:\Projetos\viveiro-publico-0.33.0.tar.gz,73 arquivos/6.707.200bytes,
-sha256:6fffc5de9f438df1ab6e510903e31f54945faae74be4bbb85804d48feea19679.
-Galeria mantém0.30.0/0.30.1/0.31.0/0.32.0 e acrescenta/releases/v0.33.0/.
-Raiz/catálogo/release/manifesto200 semcookies/Authorization;11 assets com
-hashes exatos. Evidência validacoes/publicacao-0.33.0.json.
-Não recriar Site nem sobrescrever releases anteriores. Repo original privado.
+EspelhoG:\Projetos\viveiro-publico, ID próprio/static.directory=dist.
+Fonte do espelho 7b3c073d1fadc08309fb00121496641fcfc40453.
+Versão5 appgprj_6ae80cd45fdc8191be8315696a383393~appgver_6f1386e022dc81918e9239d67c6f187d.
+Deploy appgdep_6ae86413292481919829cf241680ba9d, succeeded,
+2026-11-02T10:21:20.899981+00:00.
+ArquivoG:\Projetos\viveiro-publico-0.34.0.tar.gz,104 arquivos/8.140.800bytes,
+sha256:15be81e226ee75aee6fef02229337928c0001a58388a98e5baf80e8408d36353.
+Galeria mantém0.30.0/0.30.1/0.31.0/0.32.0/0.33.0 e acrescenta0.34.0.
+Raiz/catálogo/release/manifesto/guias200 semcookies/Authorization;21 arquivos
+nãoHTML comhashes exatos. Evidência validacoes/publicacao-0.34.0.json.
+HTML canonicaliza index.html para/ e nomes.html para nomes; links relativos
+conferidos no navegador. Original privado, sem distribuição de saves.
+Não recriar Sites nem sobrescrever releases antigas.
 
 ## Citação
 
-CFF1.2.0/.zenodo.json atualizados para0.33.0/tag real, autoria coletiva mantida.
-Validado no esquema oficial comjsonschema4.26.0 e porPython3.14 zipfile.
-Pacote .runtime/deposits/deposit-sFz0M3/viveiro-v0.33.0-source.zip,
-476 arquivos/1.343.560bytes, SHA256
-6e1882ef2597fce385bf393cc06b76de6aaabb47da9f440a02ac8f34803dc292.
-Metadados posteriores à tag; modelos/testes selecionados da tag; exclusões
-operacionais explícitas, detector de credenciais preservado. Sem DOI/upload.
-Conta e autoria foram perguntadas anteriormente, sem resposta. Não inferir
-nome/ORCID nem solicitar token emchat. P0.4B/C continuam externos/merge.
+CFF1.2.0/.zenodo.json atualizados para0.34.0/tag real, autoria coletiva mantida.
+Esquema oficial validado comjsonschema4.26.0 e arquivo ZIP verificado porPython.
+Pacote .runtime/deposits/deposit-NYj0Pb/viveiro-v0.34.0-source.zip,
+491 arquivos/1.388.116bytes, SHA256
+0c13a4f5428b8383dc54217735f6647e82626f4df7bc91b733a75f93d6a48994.
+Os9 Markdown públicos necessários ao build são selecionados explicitamente;
+checkpoint e demais documentos operacionais continuam excluídos. Detector de
+credenciais preservado. Ver validacoes/citacao-0.34.0.json. Nenhum DOI/upload.
+Conta/autoria perguntadas anteriormente, sem resposta; não inferir nome/ORCID
+nem pedir token no chat. P0.4B/C continuam dependentes de conta/merge.
 
-## Ambiente preservado
+## Ambiente e provas
 
-DevPID17752, G/4173, IABtab4 mantida e marcada. SEMENTE-50088/D62,5,
-14 adultos, pausada, perfil leve. Checkpointmanual
-manual-2e91b636-785f-4f66-bb84-ff832aa62547 preservado.
-Preview4183/sessão4691 encerrado; abas13/14 temporárias fechadas.
-Nenhum helper/teste pendente. Capturas viveiro-0.33-aulas-preview.png,
-viveiro-0.33-aulas-publicado.png e viveiro-0.33-galeria.png no diretório
+DevPID17752, G/4173, HTTP200 e módulos respondendo. Nova abaIAB16 marcada
+como entrega: SEMENTE-50088/D62,5,14 adultos, pausa e perfil leve preservados.
+Aba4 antiga ficou presa na página deerro deconexão durante reinício automático
+Vite; não usar APIs nela. A nova aba16 usa o mesmo save. Não houve perda.
+Checkpointmanual manual-2e91b636-785f-4f66-bb84-ff832aa62547 preservado.
+Preview4184/sessão10754 e abas15/17 deQA encerrados; nenhum helper pendente.
+Pública continua SEMENTE-42/D2,6 pausada, recuperada apósQA da0.33.0.
+Capturas viveiro-0.34-guia-preview.png e viveiro-0.34-guia-publicado.png em
 C:\Users\conta\.codex\visualizations\2026\10\31\01a19338-43de-7cc3-a8a9-a38475cf3ff2.
+Capturas e arquivos das versões anteriores preservados.
 
-## Próximo passo concreto: P1.4
+## Próximo passo concreto: P1.5 /PWA
 
-1. Conferir Git/PRs novamente; abrir branch codex/ própria sobre#45 se aberto.
-2. Ler docs/ensino/ e o catálogo de aulas. Preparar6 roteiros curtos com
-objetivo, tempo, passos, perguntas, gabarito e limites; associar à BNCC com
-fontes oficiais. Não inventar revisão docente, participantes ou resultados.
-3. A QA mostrou que aulas maduras, exceto ventilação, deixam gases sem células
-até o primeiro tick; o painel inicial diz incorretamente não haver galerias.
-Inicializar ar/solo da receita sem avançar o relógio, testar conservação e
-persistência antes de usar esses painéis nos roteiros. Preservar0.33.0/tag.
-4. Separar P1.4A/preparo técnico de P1.4B/revisão real de professores.
-5. Depois P1.5/PWA, P1.6/dados e acessibilidade. P5/clima real por último.
+1. Conferir Git/PRs e abrir branch codex/ própria sobre#46 se continuar aberto.
+2. Planejar manifesto/cache comescopo da release: a galeria publica múltiplas
+versões na mesma origem, então cada service worker precisa deescopo/caches
+próprios. Não deixar uma versão remover os caches ou saves deoutra.
+3. Cachear o app, Three.js e todos osWorkers reais, guias e assets necessários.
+Preservar IndexedDB e a pausa do relógio emsegundo plano. Navegação autenticada
+do Site privado exige cuidado para não transformar privacidade emacesso público.
+4. Testar instalação/atualização, reabertura e checkpoint semrede comambiente
+isolado. Não desligar o dev4173 para testar offline; usar preview separado.
+5. Publicar entrega validada nos mesmos Sites, tag/PR e checkpoint. DepoisP1.6.
 
-P1.1B/hardware escolar, P1.2B/aluno novo, revisão docente, pilotos, calibração
-e depósitoZenodo dependem de pessoas/dados reais. Não marcar como feitos.
-A automação continua útil: não a desativar enquanto houver itens implementáveis.
+P1.1B/hardware escolar, P1.2B/aluno novo, P1.4B/revisão docente, P1.7/pilotos,
+calibração e Zenodo exigem pessoas/dados reais. Não marcar como concluídos.
+P5/clima real entra por último. Não desativar a automação: ainda há critérios
+implementáveis pendentes. Não prometer retomada fora deuma execução permitida.

@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-11-02T10:22:08.444Z",
+  "cookieSent": false,
+  "authorizationSent": false,
+  "sourceSha": "34c41f532187119ae30f5c30fb0886e2e462aa11",
+  "records": [
+    {
+      "path": "",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/"
+    },
+    {
+      "path": "release-index.json",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/release-index.json"
+    },
+    {
+      "path": "releases/v0.34.0/",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.34.0/"
+    },
+    {
+      "path": "releases/v0.34.0/release.json",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.34.0/release.json"
+    },
+    {
+      "path": "releases/v0.34.0/ensino/index.html",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.34.0/ensino/"
+    },
+    {
+      "path": "releases/v0.34.0/ensino/entradas-e-ar.html",
+      "status": 200,
+      "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.34.0/ensino/entradas-e-ar"
+    }
+  ],
+  "checkedNonHtml": 21,
+  "htmlNote": "HTML conferido no navegador; a infraestrutura pode acrescentar JSD.",
+  "latest": "v0.34.0"
+}

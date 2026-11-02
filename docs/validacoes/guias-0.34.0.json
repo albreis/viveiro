@@ -28,5 +28,13 @@
   },
   "teacherReviews": 0,
   "classroomPilots": 0,
-  "scientificallyCalibrated": false
+  "scientificallyCalibrated": false,
+  "publishedQa": {
+    "url": "https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/releases/v0.34.0/ensino/",
+    "guide": "entradas-e-ar",
+    "sections": 8,
+    "steps": 5,
+    "consoleErrors": 0,
+    "anonymousNonHtmlHashes": 21
+  }
 }

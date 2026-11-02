@@ -90,3 +90,16 @@ por leitor ZIP independente:476 arquivos/1.343.560bytes, SHA256
 Saída local .runtime/deposits/deposit-sFz0M3/viveiro-v0.33.0-source.zip.
 Os4 testes de depósito passaram. Nenhum upload ou DOI emitido.
 Ver validacoes/citacao-0.33.0.json. A tag publicada não foi alterada.
+
+
+## Atualização 0.34.0
+
+CFF/rascunho referem v0.34.0/34c41f532187119ae30f5c30fb0886e2e462aa11.
+Autoria coletiva preservada; esquema oficial validado. Pacote local
+.runtime/deposits/deposit-NYj0Pb/viveiro-v0.34.0-source.zip:
+491 arquivos/1.388.116bytes, SHA256
+0c13a4f5428b8383dc54217735f6647e82626f4df7bc91b733a75f93d6a48994.
+Inclui somente9 Markdown públicos deensino usados no build. Documentação
+operacional continua excluída. Leitor ZIP independente conferiu todos os
+hashes;4 testes do depósito passaram. Sem DOI ou upload ao Zenodo.
+Ver validacoes/citacao-0.34.0.json. Tags/arquivos anteriores preservados.
