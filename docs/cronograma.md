@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.27.0**, PR [#37](https://github.com/albreis/viveiro/pull/37), etapa13A de fertilidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório. Não significa calibração científica por espécie, nem que os PRs já foram integrados à main. Última publicação: **0.28.0**, PR [#38](https://github.com/albreis/viveiro/pull/38), etapa13B de saúde e longevidade. A0.26.2/PR #36 corrigiu as aranhas junto à vegetação. A 0.26.1/PR #35 corrigiu as bordas das entradas. A 0.23.0 e o PR #26 já estão integrados à main.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -26,10 +26,10 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | 11A   | Maturação térmica, alimentação e estresse da prole                 | ✅ Entregue · 0.21 · PR #24                                      |
 | 11B   | Memória de diapausa, retomada e casulos por perfil                 | ✅ Entregue · 0.22 · PR #25                                      |
 | 12    | Seleção local do microclima e da câmara                            | ✅ Protótipos 12A–12C publicados · 0.24–0.26                     |
-| 13    | Espermateca, fertilidade e longevidade                             | 🔧 13A publicada; 13B validada, em publicação                    |
+| 13    | Espermateca, fertilidade e longevidade                             | ✅ Protótipos 13A–13B publicados · 0.27–0.28                    |
 | 14    | Ritmo biológico e execução longa entre sessões                     | ⬜ Pendente; checkpoints básicos já existem                      |
 
-**Ordem restante:** 13 → 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
+**Ordem restante:** 14 → revisão do núcleo → P0–P5 adicionados pelo usuário. Calibração por espécie depende de dados externos reais e permanece explicitamente aberta.
 
 ## 1. Locomoção e estrutura do projeto
 
@@ -455,7 +455,7 @@ Entrega dividida em 10A (reservas, custos e contabilidade), 10B (tampão e reabe
 ### 13. Fertilidade e longevidade
 
 - [x] 13A publicada em0.27.0, PR [#37](https://github.com/albreis/viveiro/pull/37), fonte996d26a/tag v0.27.0: espermateca finita, viabilidade, parentesco, prole haploide após esgotamento e reservatórios independentes de filhas.260 testes completos, build288 módulos e QA/restore aprovados. Múltiplos lotes são suportados, mas o gerador ainda oferece um par por coorte. Ver [modelo e limites](espermateca.md).
-- [ ] 13B implementada e validada, em publicação0.28.0: saúde/energia separados, reparo pago, ingestão local da rainha, exposição local, curvas condicionais e mortalidade por causa.274 testes completos,15 dirigidos finais, build301 módulos e QA/restore aprovados. Ver [mecanismos e limites](saude-longevidade.md).
+- [x] 13B publicada em0.28.0, PR [#38](https://github.com/albreis/viveiro/pull/38), fonte84cad2e/tag v0.28.0: saúde/energia separados, reparo pago, ingestão local da rainha, exposição local, curvas condicionais e mortalidade por causa.274 testes completos,15 dirigidos finais, build301 módulos e QA/restore aprovados. Ver [mecanismos e limites](saude-longevidade.md).
 - [ ] Dependências externas13: calibração de sobrevivência/doença por espécie e verificação primária do relato28a8m. Os protótipos não comprovam a faixa15–30 anos.
 
 - Estoque/viabilidade de esperma, uso por ovo e possível contribuição de múltiplos machos.
