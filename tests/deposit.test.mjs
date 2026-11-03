@@ -16,7 +16,9 @@ const zenodo = () =>
 test("citação vincula a release real sem inventar DOI ou autoria pessoal", () => {
   const c = citationMetadata(citation());
   assert.match(c.version, /^\d+\.\d+\.\d+$/);
-  assert.match(c.commit, /^[a-f0-9]{40}$/);
+  if (c.commit !== undefined) assert.match(c.commit, /^[a-f0-9]{40}$/);
+  assert.doesNotThrow(() => citationMetadata({ ...c, commit: undefined }));
+  assert.throws(() => citationMetadata({ ...c, commit: "invalid" }), /SHA/);
   assert.deepEqual(c.authors, [
     {
       name: "Viveiro contributors",

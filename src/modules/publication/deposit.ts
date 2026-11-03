@@ -6,7 +6,7 @@ export interface CitationMetadata {
   "cff-version": string;
   title: string;
   version: string;
-  commit: string;
+  commit?: string;
   "date-released": string;
   url: string;
   authors: { name: string; orcid?: string }[];
@@ -60,10 +60,10 @@ export function permittedSourcePath(path: string): boolean {
 /** Local consistency checks; the CFF schema is validated separately. */
 export function citationMetadata(value: unknown): CitationMetadata {
   const c = value as Partial<CitationMetadata> | null;
-  if (!c || c["cff-version"] !== "1.2.0" || !c.title || !c.version || !c.commit)
+  if (!c || c["cff-version"] !== "1.2.0" || !c.title || !c.version)
     throw Error("Citação incompleta.");
   releaseTag(c.version);
-  validateSourceSha(c.commit);
+  if (c.commit !== undefined) validateSourceSha(c.commit);
   if (!c["date-released"] || !/^\d{4}-\d{2}-\d{2}$/.test(c["date-released"]))
     throw Error("Data da release inválida.");
   if (!c.url || !c.url.endsWith("/releases/" + releaseTag(c.version) + "/"))

@@ -43,7 +43,7 @@ export function prepareDeposit(root: string, outputRoot: string) {
   const sha = gitBytes(root, ["rev-parse", tag + "^{commit}"])
     .toString()
     .trim();
-  if (sha !== c.commit)
+  if (c.commit !== undefined && sha !== c.commit)
     throw Error("A tag não corresponde à fonte da citação.");
   const packageVersion = JSON.parse(
     gitBytes(root, ["show", sha + ":package.json"]).toString(),
