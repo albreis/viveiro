@@ -1,3 +1,4 @@
+import { installParameterEditor } from "./parameter-profile-editor.ts";
 import "./policy-picker.ts";
 import "./sweep-page.ts";
 import {
@@ -18,6 +19,7 @@ const planField = byId<HTMLTextAreaElement>("experiment-plan"),
 let worker: Worker | null = null,
   urls: string[] = [];
 planField.value = JSON.stringify(exampleExperiment(), null, 2);
+installParameterEditor(planField);
 byId("experiment-version").textContent =
   "Viveiro " + metadata.version + " · Modelo exploratório";
 function clearResult() {
