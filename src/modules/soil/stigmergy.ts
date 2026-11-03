@@ -31,6 +31,11 @@ export interface StigmergyParams {
    */
   crowding: number;
   /**
+   * Steepness of the density brake (Hill exponent). 2 cuts digging sharply
+   * once galleries open up; 1 lets it fade gradually.
+   */
+  crowdingExponent: number;
+  /**
    * Chance that a worker who just dumped soil returns to the same open front,
    * before the density brake. A minority of persistent diggers does most of
    * the excavation in fire ants (Aguilar et al. 2018).
@@ -62,6 +67,7 @@ export const DEFAULT_STIGMERGY: Readonly<StigmergyParams> = Object.freeze({
   perFront: 6,
   biteScale: 4,
   crowding: 100,
+  crowdingExponent: 2,
   fidelity: 0.9,
   trailDeposit: 0.35,
 });
@@ -109,8 +115,11 @@ export function crowdingFactor(world: SoilWorld) {
   let workers = 0;
   for (const a of world.ants) if (a.kind === "worker") workers++;
   const density = workers / dug,
-    c = s.params.crowding;
-  return (density * density) / (density * density + c * c);
+    c = s.params.crowding,
+    n = s.params.crowdingExponent ?? 2;
+  if (n === 2) return (density * density) / (density * density + c * c);
+  const d = modelMath.pow(density, n);
+  return d / (d + modelMath.pow(c, n));
 }
 
 /** Buhl's recruitment response plus a small chance with no pheromone. */

@@ -127,6 +127,8 @@ test("argumentos inválidos falham antes de rodar", () => {
     idle: "original",
     realTime: undefined,
     parallel: false,
+    firstSeed: 1,
+    brake: {},
   });
   assert.deepEqual(buhlArgs(["--out", "x", "--horas", "72"]).realTime, {
     hours: 72,
@@ -308,4 +310,52 @@ test("modo de tempo real não deixa a energia de cada operária cair", () => {
   ant.energy = 95;
   holdDaily(world, new Map([[1, { age: 15, energy: 80 }]]));
   assert.equal(ant.energy, 95);
+});
+
+test("opções de freio e semente inicial", () => {
+  const o = buhlArgs([
+    "--out",
+    "x",
+    "--mode",
+    "estigmergia",
+    "--semente-inicial",
+    "4",
+    "--freio-expoente",
+    "1",
+    "--freio-c",
+    "30",
+  ]);
+  assert.equal(o.firstSeed, 4);
+  assert.deepEqual(o.brake, { crowdingExponent: 1, crowding: 30 });
+  assert.deepEqual(buhlArgs(["--out", "x"]).brake, {});
+  assert.throws(
+    () => buhlArgs(["--out", "x", "--freio-c", "30"]),
+    /estigmergia/,
+  );
+  assert.throws(
+    () =>
+      buhlArgs([
+        "--out",
+        "x",
+        "--mode",
+        "estigmergia",
+        "--freio-expoente",
+        "9",
+      ]),
+    /entre/,
+  );
+});
+
+test("freio com expoente 2 é o padrão e expoente 1 é mais suave", () => {
+  const world = {
+    soil: {
+      removed: 10,
+      stigmergy: { params: { ...DEFAULT_STIGMERGY }, removedAtStart: 0 },
+    },
+    ants: Array.from({ length: 200 }, () => ({ kind: "worker" })),
+  };
+  const hill2 = crowdingFactor(world);
+  assert.ok(Math.abs(hill2 - 400 / (400 + 10000)) < 1e-12);
+  world.soil.stigmergy.params.crowdingExponent = 1;
+  assert.ok(Math.abs(crowdingFactor(world) - 20 / 120) < 1e-12);
 });

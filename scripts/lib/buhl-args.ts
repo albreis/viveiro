@@ -10,6 +10,10 @@ export interface BuhlOptions {
   /** Real-time reading: hours of experiment and seconds per tick. */
   realTime?: { hours: number; secondsPerTick: number; ticks: number };
   parallel: boolean;
+  /** First seed number (BUHL-N), so tuning and test seeds can be kept apart. */
+  firstSeed: number;
+  /** Density brake overrides for the pheromone mode. */
+  brake: { crowdingExponent?: number; crowding?: number };
 }
 
 const integer = (name: string, raw: string, min: number, max: number) => {
@@ -41,6 +45,9 @@ export function buhlArgs(argv: string[]): BuhlOptions {
         "horas",
         "segundos-por-tick",
         "paralelo",
+        "semente-inicial",
+        "freio-expoente",
+        "freio-c",
       ].includes(name)
     )
       throw Error("Opção desconhecida: " + flag);
@@ -79,6 +86,26 @@ export function buhlArgs(argv: string[]): BuhlOptions {
       );
     realTime = { hours, secondsPerTick, ticks };
   }
+  const positive = (name: string, min: number, max: number) => {
+    const raw = seen.get(name);
+    if (raw === undefined) return undefined;
+    if (!/^\d+(\.\d+)?$/.test(raw))
+      throw Error(`--${name} deve ser um número positivo.`);
+    const value = Number(raw);
+    if (value < min || value > max)
+      throw Error(`--${name} deve estar entre ${min} e ${max}.`);
+    return value;
+  };
+  const brake: BuhlOptions["brake"] = {};
+  const exponent = positive("freio-expoente", 0.5, 4),
+    crowding = positive("freio-c", 1, 1000);
+  if (exponent !== undefined) brake.crowdingExponent = exponent;
+  if (crowding !== undefined) brake.crowding = crowding;
+  const mode = choice("mode", "projetos", ["projetos", "estigmergia"]);
+  if (Object.keys(brake).length && mode !== "estigmergia")
+    throw Error(
+      "--freio-expoente e --freio-c só valem com --mode estigmergia.",
+    );
   return {
     out,
     days: integer("days", seen.get("days") ?? "3", 1, 365),
@@ -91,10 +118,17 @@ export function buhlArgs(argv: string[]): BuhlOptions {
       1,
       100_000,
     ),
-    mode: choice("mode", "projetos", ["projetos", "estigmergia"]),
+    mode,
     protocol: choice("protocol", "terrario", ["terrario", "grupo-fixo"]),
     idle: choice("ociosas", "original", ["original", "cedem"]),
     realTime,
     parallel: choice("paralelo", "nao", ["nao", "sim"]) === "sim",
+    firstSeed: integer(
+      "semente-inicial",
+      seen.get("semente-inicial") ?? "1",
+      1,
+      1000,
+    ),
+    brake,
   };
 }

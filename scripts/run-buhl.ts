@@ -21,12 +21,16 @@ Uso: npm run benchmark:buhl -- --out ./buhl-novo [--days 3] [--seeds 1]
      [--mode projetos|estigmergia] [--protocol terrario|grupo-fixo]
      [--ociosas original|cedem]
      [--horas 72 --segundos-por-tick 1] [--paralelo sim]
+     [--semente-inicial 1] [--freio-expoente 2] [--freio-c 100]
 --mode estigmergia usa a escavação recrutada por feromônio (Buhl).
 --protocol grupo-fixo começa só com operárias, sem rainha, dentro do ninho.
 --ociosas cedem faz operárias ociosas darem passagem a quem trabalha.
 --horas lê cada tick como --segundos-por-tick segundos reais e roda as horas
 pedidas (72 h a 1 s por tick = 259.200 ticks), com idade, doença e comida
 congeladas. --paralelo sim roda cada grupo numa thread.
+--semente-inicial escolhe a primeira semente (BUHL-N), para separar sementes
+de ajuste e de teste. --freio-expoente e --freio-c mudam o freio por
+densidade do modo por feromônio (padrão 2 e 100).
 Roda grupos preparados de operárias e compara a forma da curva de escavação
 e a escala do volume final com os dados publicados. Unidades do modelo não
 são convertidas para cm³ nem horas. Modelo exploratório, não calibrado.
@@ -68,7 +72,7 @@ else
     )
       throw Error("A pasta pai da saída deve existir.");
     const jobs = [];
-    for (let s = 1; s <= options.seeds; s++)
+    for (let s = options.firstSeed; s < options.firstSeed + options.seeds; s++)
       for (const workers of options.groups)
         jobs.push({
           seed: "BUHL-" + s,
@@ -83,6 +87,7 @@ else
             idleYield: options.idle === "cedem",
             freezeDaily: !!options.realTime,
             noPredators: !!options.realTime,
+            stigmergy: options.brake,
           },
         });
     const started = Date.now();
@@ -136,7 +141,9 @@ else
           source: BUHL_SOURCE,
           options: { ...options, out: undefined },
           stigmergy:
-            options.mode === "estigmergia" ? DEFAULT_STIGMERGY : undefined,
+            options.mode === "estigmergia"
+              ? { ...DEFAULT_STIGMERGY, ...options.brake }
+              : undefined,
           ...comparison,
           porOrigem: sources,
         },
