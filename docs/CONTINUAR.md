@@ -30,8 +30,8 @@ Commits desta branch:
 Build estrito/Vite aprovado: .runtime/release-045-build.txt.
 Três testes de metadados aprovados: .runtime/release-045-metadata-tests.txt.
 QA nativa compilada em 4189 confirmou "Viveiro 0.45.0" e laboratório em inglês.
-A suíte completa da consolidação AINDA estava executando, sessão 33114:
-.runtime/release-045-tests.txt. Conferir o rodapé real antes de alegar resultado.
+A suíte completa da consolidação TERMINOU: 459/459 passaram em372,2s.
+Log .runtime/release-045-tests.txt. A sessão33114 já terminou.
 Suíte anterior do P2.7 passou 459/459, sem mudança nas regras biológicas agora.
 
 O teste real de depósito foi tentado antes da tag e falhou porque v0.45.0 não
@@ -41,7 +41,7 @@ push da tag. Não criar tag temporária nem reescrever tags. Não fazer depósit
 manual: GitHub/Zenodo integrados automaticamente.
 
 CI PR #71: Analyze(actions) e Analyze(javascript-typescript) passaram; check CodeQL
-falhou. Detalhes em .runtime/release-045-codeql.json e Actions 41707958532.
+falhou: 1 alerta novo de segurança com severidade ALTA. Detalhes em .runtime/release-045-codeql.json e Actions 41707958532.
 Investigar/corrigir essa falha antes do merge/publicação; não ignorar proteção.
 
 ## Próximos passos concretos
