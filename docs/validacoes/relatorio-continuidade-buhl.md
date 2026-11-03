@@ -494,3 +494,35 @@ cada tick fica mais pesado.
   igual à `origin/main`.
 - As contraprovas foram feitas numa cópia descartável sobre o commit
   `2a4c97e`. A diferença está em `anexos-buhl/contraprova/cf.patch`.
+
+## 11. Lugar no cronograma e motivo da pausa
+
+No `docs/cronograma.md`, este trabalho corresponde a três itens:
+
+- **P3.2, calibração orientada a padrões:** ajustar o modelo contra 3 ou
+  mais padrões observados. Aqui os padrões são atividade, saturação e escala
+  de Buhl.
+- **Seção 7, "Calibração por espécie e comparação com experimentos".**
+- A separação de sementes de ajuste e de teste já adianta a **P3.3**,
+  validação com dados reservados.
+
+Ele foi feito antes da ordem planejada. O cronograma prevê antes:
+
+- **P2.3:** varredura de parâmetros e réplicas em paralelo, com retomada.
+  Foi a falta dela que fez a varredura do freio se perder no limite de 2 h.
+- **P2.4:** análise de sensibilidade (Morris), que deve indicar quais
+  parâmetros a P3.2 pode ajustar. O freio por densidade foi escolhido pelo
+  diagnóstico das equações, não por análise de sensibilidade.
+
+**Esta branch está pausada por decisão do dono do projeto** até os itens P2,
+que outro agente está fazendo, terminarem. Eles podem afetar os resultados
+encontrados aqui. Ao retomar:
+
+1. Traga as mudanças da `main` para esta branch e rode
+   `node --test tests/buhl-benchmark.test.mjs` e `npm test`.
+2. Repita uma rodada de referência já conhecida para ver se os números
+   mudaram. Use `rt24b`: v2, 24 h, BUHL-1, energia mantida, resultado esperado
+   de 5,63 / 8,35 / 14,46 u³. Se os números mudarem, os resultados da seção
+   5 precisam ser refeitos antes de seguir.
+3. Use a P2.3 para a varredura do freio e a P2.4 para escolher os
+   parâmetros. Depois siga a seção 7 deste relatório.
