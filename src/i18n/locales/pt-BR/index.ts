@@ -1,3 +1,5 @@
+import services from "./services.json" with { type: "json" };
+import documents from "./documents.json" with { type: "json" };
 import ptCommon from "./common.json" with { type: "json" };
 import ptExperiments from "./experiments.json" with { type: "json" };
 import ptSweeps from "./sweeps.json" with { type: "json" };
@@ -22,6 +24,8 @@ import ptEvents from "./events.json" with { type: "json" };
 import ptScene from "./scene.json" with { type: "json" };
 
 const messages = {
+  ...services,
+  ...documents,
   ...ptCommon,
   ...ptExperiments,
   ...ptSweeps,

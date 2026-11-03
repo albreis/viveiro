@@ -1,3 +1,4 @@
+import { supportedLocales, defaultLocale } from "../../src/i18n/catalogs.ts";
 import type { Plugin } from "vite";
 import { teachingPages } from "./teaching-pages.ts";
 export function teachingPlugin(): Plugin {
@@ -10,7 +11,14 @@ export function teachingPlugin(): Plugin {
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const path = (req.url ?? "").split("?")[0].replace(/^\//, "");
-        if (!path.startsWith("ensino/")) return next();
+        if (
+          !supportedLocales.some((locale) =>
+            path.startsWith(
+              (locale === defaultLocale ? "" : locale + "/") + "ensino/",
+            ),
+          )
+        )
+          return next();
         const pages = teachingPages(process.cwd()),
           body = pages.get(path);
         if (body === undefined) return next();

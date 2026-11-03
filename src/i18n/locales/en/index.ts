@@ -1,3 +1,5 @@
+import services from "./services.json" with { type: "json" };
+import documents from "./documents.json" with { type: "json" };
 import enCommon from "./common.json" with { type: "json" };
 import enExperiments from "./experiments.json" with { type: "json" };
 import enSweeps from "./sweeps.json" with { type: "json" };
@@ -22,6 +24,8 @@ import enEvents from "./events.json" with { type: "json" };
 import enScene from "./scene.json" with { type: "json" };
 
 const messages = {
+  ...services,
+  ...documents,
   ...enCommon,
   ...enExperiments,
   ...enSweeps,

@@ -18,5 +18,5 @@ export const profileEditorTemplate = `
 <label><span data-i18n="profiles.import"></span> <input id="profile-import" type="file" accept="application/json,.json"></label>
 <label><span data-i18n="profiles.library"></span> <select id="profile-library"><option value="" data-i18n="profiles.choose"></option></select></label>
 <p id="profile-status" role="status"><span data-i18n="profiles.empty"></span></p><p id="profile-error" role="alert" tabindex="-1"></p>
-<p><span data-i18n="profiles.help"></span> <a href="./modelo/perfis.html"><span data-i18n="profiles.link"></span></a>.</p>
+<p><span data-i18n="profiles.help"></span> <a href="./modelo/perfis.html" data-i18n-href="./modelo/perfis.html"><span data-i18n="profiles.link"></span></a>.</p>
 </details>`;

@@ -38,41 +38,39 @@ Os PRs estavam abertos e encadeados na conferência de transferência; não dupl
 Preservar ACO padrão, paridade portátil e trajetória nativa. Os modelos e as
 faixas são exploratórios, sem calibração por espécie.
 
-## P2.7 em andamento — interface migrada, documentos pendentes
+## P2.7 — implementação e validação concluídas, publicação pendente
 
-src/i18n tem 1.131 mensagens por idioma, registradas em index.ts de cada locale.
-Seletor compartilhado sem reload, bindings explícitos, lookup de mensagens
-canônicas só na apresentação e fallback português. Templates HTML em fragmentos
-src/templates (maior ~150 linhas). Experimentos/perfis/varreduras, tela 3D,
-painéis especializados, catálogo com 100 parâmetros, 7 aulas e tour migrados.
+1.192 mensagens por idioma, módulos/JSONs de i18n menores que 250 linhas.
+Interface completa, 100 parâmetros, 7 aulas, tour e texturas da cena traduzidos.
+Documentos públicos: 13 do modelo + 9 fontes de ensino em inglês; rotas en/modelo,
+en/ensino e licenças, alternância na mesma página e fontes para baixar. README.en.
+IDs, arquivos científicos e nomes do usuário permanecem canônicos.
 
-Validação atual: 25 testes dirigidos de i18n/acessibilidade/tour, TS estrito e
-build Vite aprovados. QA nativa dev nos dois idiomas preservou seed em edição,
-nome de checkpoint, perfil/grupo consultado e estado pausado D11,3. Tour mudou
-idioma sem perder passo e entrou realmente em primeira pessoa. Evidência
-parcial docs/validacoes/i18n-ui-parcial.json. Não alegar suíte completa atual.
+459/459 testes completos; após o ajuste final do link de licença, 30/30 dirigidos
+(incluindo builds público/privado e todos os hashes offline), TS e build aprovados.
+Bundle com 436 módulos. QA nativa do bundle: 300 ticks, CSV/manifesto idênticos à
+CLI/dev; locale conserva resultados e inputs. Tela 320px: largura de documento
+305px no laboratório e no terrário; pausa em D0,6 preservada. Dados/evidências:
+public/experimentos/i18n-p27 e validacoes/i18n-p27.json. O evento de download de
+texto estático expirou no IAB; links/fontes conferidos em testes. CSV/JSON reais
+baixados com sucesso. Sem alegar aprovação externa ou calibração.
 
-QA científica anterior nesta mesma etapa: 300 ticks, CSV/manifesto idênticos em
-dev pt-BR, dev en e CLI; public/experimentos/i18n-p27 e evidência lab-parcial.
-.gitattributes preserva todos os bytes desses arquivos; testes conferem hashes.
-Mensagens/estados do modelo e nomes escritos pelo usuário continuam canônicos;
-somente a UI os apresenta traduzidos. Nenhuma regra de física/IA foi alterada.
+O usuário mudou o terrário dev durante o trabalho: agora há uma aula de herança
+AULA-v2-heranca em andamento. Não restaurar SEMENTE-42911 ou checkpoints antigos
+sobre ele. QA compilada usou outra origem (4189), preservando o dev em 4173.
+Fetch recente preservou novas mudanças remotas em claude/project-thread-kazijj.
+Não integrar nem sobrescrever o trabalho dessa outra branch.
 
 ## Próximo passo concreto
 
-1. Tradução integral de 13 documentos públicos do modelo + 9 arquivos de ensino
-   e página de licenças, em src/i18n/locales/en; preservar fontes portuguesas.
-2. Integrar rotas en/modelo e en/ensino nos geradores, alternância de idioma e
-   navegação/links/downloads corretos, incluindo subdiretórios do Pages e offline.
-3. Rever mensagens restantes de serviços/erros, códigos de protocolo e dados do
-   usuário; inventário é heurístico, não prova cobertura. Verificar tamanho de módulos.
-4. QA nativa responsiva e bundle compilado em ambos os idiomas, salvar evidências;
-   suíte completa/paridade/builds público e privado. Só então concluir P2.7/PR #68.
-5. Publicar no mesmo Site privado. Uma única tag consolidada apenas depois de
-   todos os P2 ativos concluírem e dos metadados CFF/Zenodo alinhados previamente.
-
-Comandos: npm run i18n:check; npm run i18n:inventory;
-node --test tests/i18n*.test.mjs; npm run build. Logs locais em .runtime ignorado.
+1. Terminar QA nativa do pacote público com base /releases/v0.44.0/ e guias em
+   inglês no cache; servidor temporário 4190, PID25456. Dev4173 segue ativo.
+2. Publicar o commit validado no mesmo Site privado owner-only, registrar recibo.
+3. Atualizar P2.7 no cronograma e PR #68 para pronto. Revisar TODOS os P2 ativos
+   conforme pedido novo: P2.1–P2.6 já têm mecanismos/evidências; P2.8 descartado.
+4. Reconciliar a integração dos PRs encadeados #65 → #66 → #67 → #68. Não criar
+   tag em branch parcial nem duplicar PR. Uma única release consolidada após a
+   integração e preparação dos metadados CFF/Zenodo; nenhuma publicação manual.
 
 ## Política de publicação
 

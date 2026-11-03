@@ -1,3 +1,4 @@
+import { localizedLink } from "./links.ts";
 import { translateSource } from "./source.ts";
 import type { LocaleController } from "./controller.ts";
 import type { MessageKey } from "./catalogs.ts";
@@ -31,6 +32,12 @@ export function createDomTranslations(controller: LocaleController) {
     render(element);
   };
   function render(element: Element) {
+    const href = element.getAttribute("data-i18n-href");
+    if (href !== null) {
+      const next = localizedLink(href, controller.locale);
+      if (element.getAttribute("href") !== next)
+        element.setAttribute("href", next);
+    }
     const source = element.getAttribute("data-i18n-source");
     if (source !== null) {
       const value = translateSource(source, controller.locale);
@@ -53,7 +60,7 @@ export function createDomTranslations(controller: LocaleController) {
     }
   }
   const selector =
-    "[data-i18n],[data-i18n-source],[data-i18n-aria-label],[data-i18n-title],[data-i18n-placeholder]";
+    "[data-i18n-href],[data-i18n],[data-i18n-source],[data-i18n-aria-label],[data-i18n-title],[data-i18n-placeholder]";
   function apply(root: ParentNode) {
     if (root instanceof Element) render(root);
     root.querySelectorAll(selector).forEach(render);

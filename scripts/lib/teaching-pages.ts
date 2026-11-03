@@ -5,35 +5,51 @@ import {
   teachingMarkdown,
   escapeHtml,
 } from "../../src/modules/teaching/markdown.ts";
-function page(title: string, body: string, download: string) {
+import {
+  supportedLocales,
+  type Locale,
+  type MessageKey,
+} from "../../src/i18n/catalogs.ts";
+import {
+  localePrefix,
+  documentText,
+  documentSource,
+  documentLanguages,
+  laboratoryLink,
+} from "./localized-docs.ts";
+function page(
+  locale: Locale,
+  slug: string,
+  title: string,
+  body: string,
+  download: string,
+) {
+  const text = (key: MessageKey) => documentText(locale, key);
   const links = teachingGuides
-    .map((g) => `<li><a href="${g.slug}.html">${escapeHtml(g.title)}</a></li>`)
+    .map(
+      (g) =>
+        '<li><a href="' +
+        g.slug +
+        '.html">' +
+        escapeHtml(text(("documents.school." + g.slug) as MessageKey)) +
+        "</a></li>",
+    )
     .join("\n");
   return `<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(title)} · Viveiro</title>
-  <link rel="stylesheet" href="ensino.css">
-</head>
-<body>
-  <a class="skip" href="#conteudo">Pular para o roteiro</a>
-  <header>
-    <a href="../index.html">← Voltar ao laboratório</a>
-    <a href="index.html">Guia do professor</a>
-  </header>
-  <main id="conteudo">${body}</main>
-  <nav aria-label="Roteiros"><h2>Outros roteiros</h2><ul>${links}</ul></nav>
-  <p><a href="${download}">Baixar este roteiro em texto</a></p>
-  <footer>Viveiro · Documentação original CC BY 4.0 · Revisão docente pendente.</footer>
-</body>
-</html>`;
+<html lang="${locale}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHtml(title)} · Viveiro</title><link rel="stylesheet" href="ensino.css"></head>
+<body><a class="skip" href="#conteudo">${escapeHtml(text("documents.school.skip"))}</a>
+<header><a href="${laboratoryLink(locale)}">${escapeHtml(text("documents.back"))}</a><a href="index.html">${escapeHtml(text("documents.school.index"))}</a></header>
+${documentLanguages("ensino/" + slug + ".html", locale)}
+<main id="conteudo">${body}</main>
+<nav aria-label="${escapeHtml(text("documents.school.nav"))}"><h2>${escapeHtml(text("documents.school.others"))}</h2><ul>${links}</ul></nav>
+<p><a href="${download}">${escapeHtml(text("documents.school.download"))}</a></p>
+<footer>${escapeHtml(text("documents.school.footer"))}</footer></body></html>`;
 }
 export function teachingPages(root: string) {
   const pages = new Map<string, string>();
   const docs = [
-    { slug: "index", title: "Guia do professor", file: "README.md" },
+    { slug: "index", file: "README.md" },
     ...teachingGuides.map((g) => ({ ...g, file: g.slug + ".md" })),
   ];
   const extra = ["microclima-local.md", "revisao-docente.md"];
@@ -41,25 +57,38 @@ export function teachingPages(root: string) {
     ...docs.map((d) => [d.file, d.slug + ".html"]),
     ...extra.map((file) => [file, file.replace(/\.md$/, ".txt")]),
   ] as [string, string][]);
-  for (const d of docs) {
-    const source = readFileSync(join(root, "docs", "ensino", d.file), "utf8");
-    const linked = source.replace(/\(([^)]+\.md)\)/g, (all, file: string) =>
-      localDocs.has(file) ? "(" + localDocs.get(file) + ")" : all,
-    );
+  for (const locale of supportedLocales) {
+    const prefix = localePrefix(locale) + "ensino/";
+    for (const d of docs) {
+      const source = documentSource(root, "docs/ensino/" + d.file, locale);
+      const linked = source.replace(/\(([^)]+\.md)\)/g, (all, file: string) =>
+        localDocs.has(file) ? "(" + localDocs.get(file) + ")" : all,
+      );
+      const title = documentText(
+        locale,
+        ("documents.school." + d.slug) as MessageKey,
+      );
+      pages.set(
+        prefix + d.slug + ".html",
+        page(
+          locale,
+          d.slug,
+          title,
+          teachingMarkdown(linked, locale),
+          d.file.replace(/\.md$/, ".txt"),
+        ),
+      );
+      pages.set(prefix + d.file.replace(/\.md$/, ".txt"), source);
+    }
+    for (const file of extra)
+      pages.set(
+        prefix + file.replace(/\.md$/, ".txt"),
+        documentSource(root, "docs/ensino/" + file, locale),
+      );
     pages.set(
-      "ensino/" + d.slug + ".html",
-      page(d.title, teachingMarkdown(linked), d.file.replace(/\.md$/, ".txt")),
+      prefix + "ensino.css",
+      readFileSync(join(root, "src/styles/teaching.css"), "utf8"),
     );
-    pages.set("ensino/" + d.file.replace(/\.md$/, ".txt"), source);
   }
-  for (const file of extra)
-    pages.set(
-      "ensino/" + file.replace(/\.md$/, ".txt"),
-      readFileSync(join(root, "docs", "ensino", file), "utf8"),
-    );
-  pages.set(
-    "ensino/ensino.css",
-    readFileSync(join(root, "src", "styles", "teaching.css"), "utf8"),
-  );
   return pages;
 }

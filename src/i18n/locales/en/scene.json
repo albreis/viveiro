@@ -22,5 +22,7 @@
   "scene.seal.summary": "Colony {id} entrance viewed from inside. Soil in the plug: {mass} u³.",
   "scene.structure.empty": "No ceilings have been evaluated yet.",
   "scene.structure.summary": "Least supported ceiling · margin {margin}× in the exploratory model.",
-  "scene.save.failed": "The save could not be reconstructed. Writing has been protected; import an experiment or start another terrarium."
+  "scene.save.failed": "The save could not be reconstructed. Writing has been protected; import an experiment or start another terrarium.",
+  "scene.label.water": "WATER",
+  "scene.label.entrance": "ENTRANCE"
 }

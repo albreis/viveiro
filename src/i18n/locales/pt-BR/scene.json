@@ -22,5 +22,7 @@
   "scene.seal.summary": "Entrada da colônia {id} vista pelo lado interno. Terra no tampão: {mass} u³.",
   "scene.structure.empty": "Ainda não há tetos avaliados.",
   "scene.structure.summary": "Teto com menor suporte · margem {margin}× no modelo exploratório.",
-  "scene.save.failed": "O save não pôde ser reconstruído. A gravação ficou protegida; importe um experimento ou inicie outro terrário."
+  "scene.save.failed": "O save não pôde ser reconstruído. A gravação ficou protegida; importe um experimento ou inicie outro terrário.",
+  "scene.label.water": "ÁGUA",
+  "scene.label.entrance": "ENTRADA"
 }
