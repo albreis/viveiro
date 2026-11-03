@@ -1,0 +1,29 @@
+name: Proposta / Feature
+description: Proponha uma melhoria concreta.
+title: "[Proposta] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema ou necessidade / Problem or need
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Comportamento desejado / Desired behavior
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Como verificar / How to verify
+      description: "Exemplo observável, cenário ou critério de aceite. / Observable example, scenario or acceptance criterion."
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Fontes e limites / Sources and limitations
+      description: "Para propostas biológicas, indique a fonte e o que ainda é hipótese. / For biological proposals, cite sources and remaining hypotheses."

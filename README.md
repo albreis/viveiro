@@ -113,6 +113,8 @@ A navegação e os controles novos são tipados. Partes legadas da interface, da
 
 ## Contribuir
 
+Leia o [guia de contribuição](CONTRIBUTING.md), escolha uma [primeira tarefa](https://github.com/albreis/viveiro/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) ou participe de [Discussions](https://github.com/albreis/viveiro/discussions).
+
 Cada etapa é desenvolvida numa branch própria e entra na `main` por pull request, com testes do modelo e verificação no navegador. Leia o [AGENTS.md](AGENTS.md) para as convenções do projeto. Nunca coloque tokens ou credenciais no repositório.
 
 ## Licenças

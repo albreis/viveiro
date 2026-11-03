@@ -1,0 +1,50 @@
+name: Defeito / Bug
+description: Relate um comportamento reproduzível do Viveiro.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Descreva o que observou. Um exemplo mínimo ajuda a investigar. / Describe the observed behavior and a minimal reproduction."
+  - type: input
+    id: version
+    attributes:
+      label: Versão / Version
+      placeholder: "Ex.: 0.45.0, tag ou commit"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir / Steps to reproduce
+      placeholder: "1. Abra... 2. Escolha... 3. Observe..."
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: O que aconteceu / Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: O que esperava / Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Navegador e sistema / Browser and OS
+    validations:
+      required: true
+  - type: input
+    id: seed
+    attributes:
+      label: Seed e dia do modelo / Seed and model day
+      description: "Se o defeito depende do cenário. / If relevant to the scenario."
+  - type: textarea
+    id: details
+    attributes:
+      label: Evidência adicional / Additional evidence
+      description: "Plano mínimo, mensagens e imagens relevantes; omita saves pessoais. / Minimal plan, messages or relevant screenshots; omit personal saves."

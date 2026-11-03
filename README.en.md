@@ -77,6 +77,8 @@ operations documents in this repository are in Portuguese.
 
 ## Source and contributions
 
+Read the [contribution guide](CONTRIBUTING.en.md), choose a [first task](https://github.com/albreis/viveiro/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or join [Discussions](https://github.com/albreis/viveiro/discussions).
+
 Small modules live in `src/app`, `src/modules`, `src/services`, `src/workers`,
 `src/styles` and [src/i18n](src/i18n/README.md). New modules use TypeScript;
 legacy JavaScript is migrated gradually. CLI tools are in `scripts/`.
