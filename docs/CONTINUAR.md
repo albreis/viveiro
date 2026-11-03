@@ -1,74 +1,65 @@
-# Continuação — P2 técnicos concluídos; integração pública pendente
+# Transferência manual — release 0.45.0 preparada, NÃO publicada
 
-Atualizado em 03/11/2026. Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md,
-docs/cronograma.md e docs/revisao-p2.md. Conferir Git/PRs antes de agir.
+03/11/2026. Parada solicitada pelo usuário quando restarem 3% da janela de 5h;
+a consulta já retornou 2%. Progresso commitado/enviado. Não retomar automaticamente
+após reset sem novo pedido explícito. Automação permanece PAUSED.
 
-## Estado preservado
+## Estado exato
 
-Branch codex/internacionalizacao, PR #68 sobre codex/editor-perfis (#67).
-P2.7 está implementado, testado e publicado no mesmo Site privado. Fonte da
-publicação: 7a24fd9720323cbe7f12f7b8f7175d78f2e8a7b7; recibo em
-validacoes/deploy-p2.7-dev.json. Commits posteriores apenas atualizam evidências.
-Audiência custom/revisão 1/um proprietário preservada. Público antigo não alterado.
+Trabalhar em G:\Projetos\viveiro, branch codex/release-p2-consolidada.
+PR https://github.com/albreis/viveiro/pull/71 aberto contra main.
+Usuário autorizou publicar a release única. Nenhuma tag v0.45.0, GitHub Release
+ou depósito Zenodo foi criado. NÃO anunciar como publicada.
 
-Dev http://127.0.0.1:4173/ ativo em G, PID 15348 conferido. Não encerrar.
-Preview 4189 pode servir dist. Servidor temporário 4190 foi desligado para QA
-offline e deve permanecer parado. Logs e pacotes locais não entram no Git.
+O usuário mesclou #65–#68, mas nas bases encadeadas. origin/main ficou em
+f09fc4f (só P2.4), origin/codex/editor-perfis contém o merge final 5e5f39e (#68).
+A branch de release partiu de origin/main e mesclou origin/codex/editor-perfis
+sem conflitos, com árvore idêntica à branch completa. Preserva todos os merges,
+branches/tags e o trabalho separado em claude/project-thread-kazijj (#69/#70).
 
-O usuário mudou a cena dev durante o trabalho para AULA-v2-heranca. Não restaurar
-SEMENTE-42911, SEMENTE-50088 ou checkpoints históricos sobre o estado atual.
-A QA do bundle usou origem 4189 e a de offline 4190; saves do dev preservados.
-Fetch preservou atualizações de claude/project-thread-kazijj (PR #69). Não mexer
-nessa branch nem incorporar seus commits nesta etapa.
+Commits desta branch:
+- Consolidação dos P2.4–P2.7 em merge próprio, sem alteração funcional.
+- 794848d872c72bfb67c1dd41c4e628dbe6853993: pacote/lock/licenças/changelog 0.45.0.
+- 1fe6f05: CFF/Zenodo preparados ANTES da tag; suporte a CFF sem commit explícito.
+  CFF usa versão/URL da tag, evitando hash autorreferente. O empacotador resolve
+  SHA pela tag; se CFF traz commit explícito, continua exigindo igualdade exata.
+  Testes rejeitam SHA inválido. Autoria/ORCID preservados; DOI antigo não reutilizado.
 
-## P2.7 entregue
+## Validação e bloqueios antes de publicar
 
-- 1.192 mensagens por idioma pt-BR/en; catálogos, TS e JSONs menores que 250 linhas.
-- Interface 3D, laboratório, painéis, 100 parâmetros, 7 aulas e tour traduzidos.
-- 13 documentos do modelo e 9 fontes de ensino em inglês, licenças, README.en;
-  rotas/links por idioma, alternância na mesma página e nomes de download claros.
-- 459/459 testes completos, 30 dirigidos após revisão e 16 do ajuste de downloads.
-  TS estrito, Vite 436 módulos e builds público/privado aprovados.
-- Bundle 300 ticks: CSV/manifesto iguais à CLI/dev; locale conserva resultados,
-  inputs e pausa. Tela 320 px: documento 305 px no laboratório e no terrário.
-- Cache 557 arquivos: guia inglês e troca pt-BR/en funcionaram com servidor parado.
-- QA do Site privado confirmou laboratório/ODD ingleses e atributo de download
-  da fonte final. O evento de texto estático expirou no IAB; fonte abre direto e
-  bytes/links passaram nos testes. CSV/manifesto reais baixados e comparados.
-- Evidências: validacoes/i18n-p27.json; dados: public/experimentos/i18n-p27.
-  Nomes do usuário, protocolo/RNG, números científicos e dados canônicos intactos.
+Build estrito/Vite aprovado: .runtime/release-045-build.txt.
+Três testes de metadados aprovados: .runtime/release-045-metadata-tests.txt.
+QA nativa compilada em 4189 confirmou "Viveiro 0.45.0" e laboratório em inglês.
+A suíte completa da consolidação AINDA estava executando, sessão 33114:
+.runtime/release-045-tests.txt. Conferir o rodapé real antes de alegar resultado.
+Suíte anterior do P2.7 passou 459/459, sem mudança nas regras biológicas agora.
 
-## Todos os P2 ativos revisados
+O teste real de depósito foi tentado antes da tag e falhou porque v0.45.0 não
+existe. A tag local pode ser criada APÓS validar/integrar o PR, sem enviar ainda;
+rodar node --test tests/deposit.test.mjs tests/deposit-archive.test.mjs antes do
+push da tag. Não criar tag temporária nem reescrever tags. Não fazer depósito
+manual: GitHub/Zenodo integrados automaticamente.
 
-P2.1–P2.3 já estão na main e foram publicados. P2.4–P2.7 têm mecanismos/evidências
-concluídos e publicação privada. Não existe outro mecanismo P2 ativo pendente.
-Ver docs/revisao-p2.md para critérios, limites e integração ainda necessária.
+CI PR #71: Analyze(actions) e Analyze(javascript-typescript) passaram; check CodeQL
+falhou. Detalhes em .runtime/release-045-codeql.json e Actions 41707958532.
+Investigar/corrigir essa falha antes do merge/publicação; não ignorar proteção.
 
-Os PRs permaneciam abertos, em ordem: #65 → main; #66 → #65; #67 → #66;
-#68 → #67. Não duplicar PRs, apagar branches ou reescrever tags. #68 já está
-pronto para revisão, com título e descrição finais. Preservar revisão do usuário.
+## Próximos passos concretos
 
-Próxima ação concreta de integração: conferir CI/revisões de #65; integrá-lo e
-retargetear #66 para main, repetindo em ordem até #68. Conferir mudanças remotas
-antes e resolver conflitos sem perder o trabalho do usuário. Depois executar
-checks da main integrada e preparar a única versão pública consolidada.
+1. Ler logs da suíte e CodeQL, resolver pendências e atualizar o PR #71. Preservar
+   o dev 4173 e saves do usuário. Publicação já autorizada, não pedir outra vez.
+2. Integrar #71 na main após validação. Atualizar main local sem perder branches.
+3. Criar tag local v0.45.0 no commit integrado; conferir pacote 0.45.0, CFF/Zenodo
+   e rodar o teste do pacote real. Só então enviar a tag e criar UMA GitHub Release
+   com notas P2.4–P2.7. gh release create --verify-tag ... --notes-file ... .
+4. A tag dispara pages.yml: grava site-publico e dispara deploy pela main, como
+   exige a proteção github-pages. Acompanhar até sucesso e conferir
+   https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/ no navegador.
+5. Integração Zenodo automática: não duplicar depósito. Registrar DOI só se real.
+   Atualizar cronograma/recibos após sucesso; manter Site privado owner-only.
 
-## Política de publicação e limites
-
-Público: https://viveiro.ersolucoesweb.com.br/ (GitHub Pages). A última tag pública
-é v0.41.0. Versão 0.44.0 na branch/privado é de desenvolvimento, sem tag/release.
-Não criar tag em branch parcial. Preparar pacote/changelog/CFF/.zenodo.json antes
-da tag final; preservar autoria/ORCID confirmados. DOI 10.5281/zenodo.23891981 é da
-0.36.0, não da versão nova. GitHub/Zenodo estão integrados automaticamente: nunca
-criar depósito manual, duplicado ou versões intermediárias. Não atualizar o
-antigo Site público do ChatGPT. Manter o original privado owner-only.
-
-P2.8 e P5 foram descartados. P1/P3 dependem de pessoas/dados reais: hardware
-escolar, participantes, professores, planilha/leitor de tela/Lighthouse, pilotos,
-calibração e validação externa. Não inventar resultados ou declarar ciência
-calibrada. Não repetir PageSpeed enquanto a cota estiver bloqueada.
-
-Automação continuar-cronograma-do-viveiro permanece PAUSED, sem executor paralelo.
-O usuário retomou esta entrega explicitamente. Ao restarem 3% na janela real de 5h,
-enviar tudo ao GitHub, atualizar este arquivo e parar para continuação manual.
-Não contornar limites nem retomar após reset sem novo pedido explícito.
+GitHub connector lê mas nega escrita com 403 Resource not accessible by integration.
+gh já configurado funciona e foi usado para criar o PR. Não expor credenciais.
+Dev 4173 ativo em G; preview 4189 serve dist 0.45.0. Não reiniciar/resetar o terrário
+atual. Site privado está no P2.7 publicado (fonte 7a24fd9), versão de desenvolvimento
+0.44.0, sem mudanças na audiência. P2.8 e P5 descartados; P1/P3 externos abertos.
