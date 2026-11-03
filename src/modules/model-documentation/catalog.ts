@@ -50,5 +50,15 @@ export const modelDocuments = [
     title: "Sensibilidade Morris",
     source: "docs/sensibilidade.md",
   },
+  {
+    slug: "extensoes",
+    title: "Extensões locais tipadas",
+    source: "docs/extensoes.md",
+  },
+  {
+    slug: "perfis",
+    title: "Editor e perfis de parâmetros",
+    source: "docs/perfis-parametros.md",
+  },
 ] as const;
 export const modelDocumentSources = modelDocuments.map((d) => d.source);

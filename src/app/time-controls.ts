@@ -1,3 +1,4 @@
+import { locale, t, messageSource } from "../i18n/runtime.ts";
 import { SimulationClock, normalizeClock } from "../modules/time/clock.ts";
 import { timeMarkup } from "./time-markup.ts";
 export function installTimeControls(clock: SimulationClock, save: () => void) {
@@ -12,20 +13,19 @@ export function installTimeControls(clock: SimulationClock, save: () => void) {
     pace.value = String(clock.state.secondsPerDay);
     const lag =
       clock.state.pendingTicks >= 1
-        ? " · " +
-          Math.floor(clock.state.pendingTicks) +
-          " passos aguardando processamento."
+        ? t("execution.clock.lag", {
+            ticks: Math.floor(clock.state.pendingTicks),
+          })
         : "";
-    const text =
-      "Ritmo nominal: " +
-      (clock.state.secondsPerDay / clock.state.speed).toLocaleString("pt-BR", {
-        maximumFractionDigits: 2,
-      }) +
-      " s/dia a " +
-      clock.state.speed +
-      "×. A página oculta pausa o relógio." +
-      lag;
-    if (status.textContent !== text) status.textContent = text;
+    messageSource(
+      status,
+      t("execution.clock", {
+        seconds: locale.number(clock.state.secondsPerDay / clock.state.speed, {
+          maximumFractionDigits: 2,
+        }),
+        speed: clock.state.speed,
+      }) + lag,
+    );
     document
       .querySelectorAll<HTMLButtonElement>("[data-speed]")
       .forEach((b) => {

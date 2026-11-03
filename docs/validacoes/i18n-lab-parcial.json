@@ -1,0 +1,31 @@
+{
+  "scope": "P2.7 parcial; demais painéis, tour e documentos pendentes",
+  "developmentVersion": "0.44.0",
+  "ticks": 300,
+  "seed": "I18N-QA-045-Árvore",
+  "startMode": "established",
+  "profile": "generic-demo@5",
+  "runtimeMatrix": [
+    "native IAB dev pt-BR",
+    "native IAB dev en",
+    "Node CLI"
+  ],
+  "csvByteIdentical": true,
+  "manifestByteIdentical": true,
+  "csvSha256": "d5c713b5842aa13d8171c23582d72200b6299abdb4590e97ea73e1a27d7eeb8b",
+  "manifestSha256": "30d5565502b105b5ac9bf3e0600cb1cc267711cf467ffd3065bbe238b65e968f",
+  "rawData": "public/experimentos/i18n-p27",
+  "uiChecks": [
+    "JSON e resultados preservados na troca de idioma",
+    "erros limpos não reaparecem",
+    "erro de validação volta ao português",
+    "nome do perfil, valor 67.5 e painel aberto preservados"
+  ],
+  "tests": "15 dirigidos: 9 i18n + 6 acessibilidade; suíte completa ainda não repetida",
+  "build": "TS estrito/Vite aprovados; 466 mensagens por idioma",
+  "limits": [
+    "Modelo exploratório, sem calibração",
+    "P2.7 não concluído",
+    "Nenhuma tag ou depósito no Zenodo"
+  ]
+}

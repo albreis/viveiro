@@ -1,3 +1,4 @@
+import { t } from "../../i18n/runtime.ts";
 import { updateSoilVisibility } from "./soil-visibility.js";
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
@@ -71,7 +72,14 @@ export function setView(host, view) {
       [-32, -1.2, 0],
     ];
     host.camera.position.set(...views[host.sideFace]);
-    host.viewLabel = ["Frente", "Direita", "Fundo", "Esquerda"][host.sideFace];
+    host.viewLabel = t(
+      [
+        "scene.side.front",
+        "scene.side.right",
+        "scene.side.back",
+        "scene.side.left",
+      ][host.sideFace],
+    );
   } else {
     host.camera.position.set(top ? 0.01 : 22, top ? 35 : 23, top ? 0.01 : 27);
     host.viewLabel = "";

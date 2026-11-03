@@ -1,75 +1,46 @@
 import type { FoundingState } from "../modules/founding/types.ts";
-const number = (n: number) =>
-  n.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
-const labels: Record<FoundingState["phase"], string> = {
-  weather: "Aguardando janela de voo",
-  flight: "Voo nupcial",
-  landing: "Acasalamento concluído · pouso",
-  dealate: "Perda das asas",
-  surveying: "Escolha local do abrigo",
-  digging: "Escavação do primeiro abrigo",
-  sealing: "Fechamento da entrada",
-  claustral: "Fundação claustral",
-  semiclaustral: "Fundação semiclaustral",
-  established: "Colônia fundada",
-  failed: "Fundação interrompida",
-};
+import type { MessageKey } from "../i18n/catalogs.ts";
+import { locale, t, messageSource } from "../i18n/runtime.ts";
+const number = (value: number) =>
+  locale.number(value, { maximumFractionDigits: 2 });
 export function foundingDescription(f?: FoundingState) {
   if (!f) return undefined;
-  const reserve = f.reserves.toLocaleString("pt-BR", {
-    maximumFractionDigits: 2,
-  });
   return (
-    labels[f.phase] +
-    " · reserva materna " +
-    reserve +
-    "/" +
-    f.initialReserves +
-    " u. · " +
-    f.nanitics +
-    " naníticas · " +
-    f.trips +
-    " viagens de terra." +
+    t("status.founding.summary", {
+      phase: t(("status.founding." + f.phase) as MessageKey),
+      reserve: number(f.reserves),
+      initial: f.initialReserves,
+      nanitics: f.nanitics,
+      trips: f.trips,
+    }) +
     (f.survey
-      ? " Sondagem: " +
-        f.survey.samples +
-        " amostras locais · solo " +
-        number(f.survey.last.temperature) +
-        " °C / " +
-        number(f.survey.last.water * 100) +
-        "% de água nos poros."
+      ? t("status.founding.survey", {
+          samples: f.survey.samples,
+          temperature: number(f.survey.last.temperature),
+          water: number(f.survey.last.water * 100),
+        })
       : "") +
     (f.foraging
-      ? " Coleta da rainha: " +
-        f.foraging.trips +
-        " viagem(ns) · alimento na câmara " +
-        number(f.foraging.pantry) +
-        " u. · carga " +
-        number(f.foraging.load) +
-        " u. · consumido " +
-        number(f.foraging.consumed) +
-        " u."
+      ? t("status.founding.foraging", {
+          trips: f.foraging.trips,
+          pantry: number(f.foraging.pantry),
+          load: number(f.foraging.load),
+          consumed: number(f.foraging.consumed),
+        })
       : "") +
     (f.seal
-      ? " Tampão: " +
-        {
-          collect: "recolhendo material",
-          return: "transportando",
-          build: "construindo",
-          closed: "fechado",
-          remove: "nanítica escavando",
-          haul: "retirando terra",
-          opened: "reaberto",
-        }[f.seal.phase] +
-        " · " +
-        f.seal.trips +
-        " viagens de reabertura."
+      ? t("status.founding.seal", {
+          phase: t(("status.seal." + f.seal.phase) as MessageKey),
+          trips: f.seal.trips,
+        })
       : "")
   );
 }
 export function renderFoundingStatus(f?: FoundingState) {
   const target = document.getElementById("founding-status");
-  if (!target) return;
-  target.textContent =
-    foundingDescription(f) || "Ninho de versão anterior preservado.";
+  if (target)
+    messageSource(
+      target,
+      foundingDescription(f) || t("status.founding.legacy"),
+    );
 }

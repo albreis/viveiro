@@ -1,3 +1,4 @@
+import { locale, t, message } from "../i18n/runtime.ts";
 import { drawClimateMap, type ClimateMode } from "./climate-map.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
 import type { SoilClimate } from "../modules/microclimate/types.ts";
@@ -48,26 +49,20 @@ export function renderClimateStatus(w: FamilyWorld) {
   const target = document.getElementById("climate-status");
   if (!target) return;
   if (!s) {
-    target.textContent =
-      "A água e o calor do solo serão acompanhados conforme o tempo avança.";
+    message(target, "panels.climate.wait");
     return;
   }
   const water = s.water.map((v) => (v / s.capacity) * 100),
-    f = (v: number) => v.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
-  target.textContent =
-    "Entorno do solo: " +
-    f(Math.min(...water)) +
-    "–" +
-    f(Math.max(...water)) +
-    "% de água nos poros · " +
-    f(Math.min(...s.temperature)) +
-    "–" +
-    f(Math.max(...s.temperature)) +
-    " °C. Chuva infiltrada: " +
-    f(s.rainIn) +
-    " u. · evaporação: " +
-    f(s.evaporated) +
-    " u.";
+    f = (v: number) =>
+      v.toLocaleString(locale.locale, { maximumFractionDigits: 1 });
+  message(target, "panels.climate.summary", {
+    waterMin: f(Math.min(...water)),
+    waterMax: f(Math.max(...water)),
+    tempMin: f(Math.min(...s.temperature)),
+    tempMax: f(Math.max(...s.temperature)),
+    rain: f(s.rainIn),
+    evaporated: f(s.evaporated),
+  });
 }
 export function localClimateLabel(
   s: SoilClimate | undefined,
@@ -75,9 +70,9 @@ export function localClimateLabel(
 ) {
   const v = sampleClimate(s, p);
   return v
-    ? v.temperature.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) +
-        " °C · água no entorno " +
-        Math.round(v.water * 100) +
-        "%"
+    ? t("panels.climate.local", {
+        temperature: locale.number(v.temperature, { maximumFractionDigits: 1 }),
+        water: Math.round(v.water * 100),
+      })
     : "";
 }

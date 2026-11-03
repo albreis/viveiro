@@ -1,3 +1,4 @@
+import { locale, message } from "../i18n/runtime.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
 import {
   readSoilMaterial,
@@ -7,13 +8,13 @@ const fields = [
   {
     id: "soil-clay",
     key: "soilClayPercent",
-    label: "Argila relativa",
+    label: "panels.material.clay",
     unit: "%",
   },
   {
     id: "soil-compaction",
     key: "soilCompactionPercent",
-    label: "Compactação relativa",
+    label: "panels.material.compaction",
     unit: "/100",
   },
 ] as const;
@@ -28,18 +29,19 @@ export function installMaterialControls(
         (f) =>
           '<label for="' +
           f.id +
-          '">' +
+          '"><span data-i18n="' +
           f.label +
+          '"></span>' +
           ' <strong id="' +
           f.id +
           '-value"></strong></label><input id="' +
           f.id +
-          '" type="range" min="0" max="100" step="1" aria-label="' +
+          '" type="range" min="0" max="100" step="1" data-i18n-aria-label="' +
           f.label +
           '">',
       )
       .join("") +
-    '<p id="soil-material-status" class="field-note"></p><p class="field-note">Índices do modelo para transporte e suporte. O volume de poros permanece fixo.</p>';
+    '<p id="soil-material-status" class="field-note"></p><p class="field-note" data-i18n="panels.material.note"></p>';
   for (const f of fields) {
     const input = document.getElementById(f.id) as HTMLInputElement;
     input.oninput = () => {
@@ -63,13 +65,10 @@ export function renderMaterialStatus(w: FamilyWorld): void {
   }
   const factors = transportFactors(mix),
     number = (n: number) =>
-      n.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
-  document.getElementById("soil-material-status")!.textContent =
-    "Redistribuição capilar " +
-    number(factors.capillary) +
-    "× · drenagem " +
-    number(factors.drainage) +
-    "× · condução térmica " +
-    number(factors.heat) +
-    "×. Referência relativa, sem ajuste experimental.";
+      n.toLocaleString(locale.locale, { maximumFractionDigits: 2 });
+  message(document.getElementById("soil-material-status")!, "panels.material", {
+    capillary: number(factors.capillary),
+    drainage: number(factors.drainage),
+    heat: number(factors.heat),
+  });
 }

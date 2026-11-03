@@ -10,7 +10,7 @@ import { validAssetPath } from "../src/modules/publication/release.ts";
 
 test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
   const pages = modelDocPages(process.cwd());
-  assert.equal(modelDocuments.length, 11);
+  assert.equal(modelDocuments.length, 13);
   for (const d of modelDocuments) {
     assert.ok(permittedSourcePath(d.source));
     assert.equal(
@@ -23,11 +23,13 @@ test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
     assert.equal((html.match(/<h1>/g) ?? []).length, 1);
     for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
       if (/^(https?:|#)/.test(href)) continue;
-      const target = posix.normalize(posix.join("modelo", href));
+      const target = posix.normalize(
+        posix.join("modelo", href.split(/[?#]/)[0]),
+      );
       assert.ok(
         target === "index.html" ||
           pages.has(target) ||
-          (target.startsWith("experimentos/morris-042/") &&
+          (target.startsWith("experimentos/") &&
             existsSync("public/" + target)),
         d.slug + ": " + href,
       );

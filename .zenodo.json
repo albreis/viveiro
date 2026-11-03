@@ -1,15 +1,15 @@
 {
   "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
   "upload_type": "software",
-  "version": "0.41.0",
-  "publication_date": "2026-11-02",
+  "version": "0.45.0",
+  "publication_date": "2026-11-03",
   "creators": [
     {
       "name": "Viveiro contributors",
       "orcid": "0009-0008-0719-8722"
     }
   ],
-  "description": "<p>Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia. Fonte do modelo: v0.41.0, commit 0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f.</p><p>O pacote de depósito contém código selecionado dessa tag e metadados preparados posteriormente, identificados em source-manifest.json. Exclui histórico Git, saves, documentação operacional e configuração de hospedagem. Código original: MIT; documentação original: CC BY 4.0. Avisos de terceiros preservados; consultar LICENSE e LICENSE-DOCS.md.</p>",
+  "description": "<p>Viveiro 0.45.0: release consolidada dos P2.4–P2.7, com análise de sensibilidade Morris, API local tipada de extensões, editor de perfis e interface/documentos públicos em português e inglês. Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia.</p><p>A integração automática GitHub–Zenodo arquiva a tag v0.45.0, incluindo os metadados da release. A tag identifica a fonte integral desta versão, incluindo a correção de segurança dos links traduzidos. Nenhum depósito manual ou versão intermediária integra esta entrega.</p><p>Código original MIT; documentação e imagens originais CC BY 4.0. Materiais de terceiros conservam suas licenças e avisos; consultar LICENSE e LICENSE-DOCS.md. Dados científicos brutos e limitações estão documentados no repositório.</p>",
   "access_right": "open",
   "license": "MIT",
   "keywords": [
@@ -21,7 +21,12 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.41.0/",
+      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/albreis/viveiro/tree/v0.45.0",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

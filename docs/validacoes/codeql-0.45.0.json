@@ -1,0 +1,27 @@
+{
+  "stage": "release 0.45.0",
+  "pr": 71,
+  "rule": "js/xss-through-dom",
+  "originalLocation": "src/i18n/dom.ts:39",
+  "originalSeverity": "high",
+  "source": "data-i18n-href read from DOM",
+  "sink": "href setAttribute",
+  "fixCommit": "d6939156331690848a521a1d79dbf4d515dd0181",
+  "fix": [
+    "Owned route registry; unsupported values return null",
+    "Only anchors are updated",
+    "Query and fragment components are encoded",
+    "No direct DOM path reaches the href destination"
+  ],
+  "regressionTests": 18,
+  "build": "strict TypeScript and Vite 438 modules passed",
+  "nativeBrowser": "compiled links switch pt-BR/en and open English ODD",
+  "codeql": {
+    "run": 41710258215,
+    "check": 126176576316,
+    "conclusion": "success",
+    "title": "No new alerts in code changed by this pull request"
+  },
+  "suppressionAdded": false,
+  "releasePublished": false
+}

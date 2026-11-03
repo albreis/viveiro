@@ -1,3 +1,5 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
+import { translateSource } from "../i18n/source.ts";
 import type { CountObservation } from "../modules/forecast/observations.ts";
 import type { ForecastClient } from "../services/forecast-client.ts";
 import type {
@@ -9,9 +11,10 @@ const element = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
 const duration = (value: number) =>
   value < 1000
-    ? value.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " ms"
-    : (value / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) +
-      " s";
+    ? value.toLocaleString(locale.locale, { maximumFractionDigits: 1 }) + " ms"
+    : (value / 1000).toLocaleString(locale.locale, {
+        maximumFractionDigits: 1,
+      }) + " s";
 export function renderForecast(
   state: ForecastState,
   scenario: string,
@@ -30,65 +33,69 @@ export function renderForecast(
           : result.low + "–" + result.high
         : "—",
     ),
-    Object.assign(document.createElement("span"), { textContent: " formigas" }),
+    Object.assign(document.createElement("span"), {
+      textContent: " " + t("terrarium.ants.unit"),
+    }),
   );
-  element("forecast-horizon").textContent =
-    "População estimada daqui a " +
-    options.days +
-    (options.days === 1 ? " dia:" : " dias:");
-  let note = "Previsão aguardando início.";
+  message(
+    element("forecast-horizon"),
+    options.days === 1 ? "forecast.horizon.one" : "forecast.horizon.many",
+    { days: options.days },
+  );
+  let note = t("terrarium.forecast.wait");
   if (running)
-    note =
-      "Calculando " +
-      (progress?.completedRuns ?? 0) +
-      "/" +
-      options.runs +
-      " futuros · " +
-      Math.floor(
+    note = t("forecast.running", {
+      completed: progress?.completedRuns ?? 0,
+      runs: options.runs,
+      percent: Math.floor(
         (100 * (progress?.doneTicks ?? 0)) / (progress?.totalTicks || 1),
-      ) +
-      "%";
+      ),
+    });
   else if (state.status === "complete" && result)
-    note =
-      "P10–P90 · " +
-      result.runs +
-      " cenários · início no dia " +
-      (result.tick / 100).toLocaleString("pt-BR", {
-        maximumFractionDigits: 1,
-      }) +
-      ". Intervalo exploratório, sem intervenções futuras.";
+    note = t("forecast.complete", {
+      runs: result.runs,
+      day: locale.number(result.tick / 100, { maximumFractionDigits: 1 }),
+    });
   else if (state.status === "budget")
     note =
-      "Limite de trabalho atingido · " +
-      (result?.runs ?? 0) +
-      "/" +
-      options.runs +
-      " futuros concluídos. " +
-      (result && result.runs >= 2
-        ? "Intervalo provisório; a interrupção pode causar viés."
-        : "Amostra insuficiente para exibir intervalo.");
-  else if (state.status === "cancelled")
-    note = "Previsão cancelada. Recalcule quando quiser.";
+      t("forecast.budget", {
+        completed: result?.runs ?? 0,
+        runs: options.runs,
+      }) +
+      t(
+        result && result.runs >= 2
+          ? "forecast.provisional"
+          : "forecast.insufficient",
+      );
+  else if (state.status === "cancelled") note = t("forecast.cancelled");
   else if (state.status === "error")
-    note = state.error ?? "Previsão indisponível.";
-  element("forecast-note").textContent = note;
-  element("forecast-method-note").textContent =
+    note = state.error
+      ? translateSource(state.error, locale.locale)
+      : t("forecast.unavailable");
+  messageSource(element("forecast-note"), note);
+  messageSource(
+    element("forecast-method-note"),
     options.observation === "counts"
-      ? (state.warning ??
-          "Extrapolação por contagem e histórico; não simula túneis ou genética.") +
-        (state.observedPoints
-          ? " " + state.observedPoints + " censos recentes."
-          : "")
-      : "Estado completo: agentes, prole, habitat e túneis. Faixa não calibrada cientificamente.";
+      ? (state.warning
+          ? translateSource(state.warning, locale.locale)
+          : t("forecast.counts")) +
+          (state.observedPoints
+            ? t("forecast.censuses", { count: state.observedPoints })
+            : "")
+      : t("forecast.full"),
+  );
   const bar = element<HTMLProgressElement>("forecast-progress");
   bar.value = (progress?.doneTicks ?? 0) / (progress?.totalTicks || 1);
   bar.hidden = !progress;
-  element("forecast-cost").textContent = progress
-    ? duration(progress.elapsedMs) +
-      " decorridos · " +
-      duration(progress.activeMs) +
-      " de cálculo"
-    : "";
+  messageSource(
+    element("forecast-cost"),
+    progress
+      ? t("forecast.cost", {
+          elapsed: duration(progress.elapsedMs),
+          active: duration(progress.activeMs),
+        })
+      : "",
+  );
   element<HTMLButtonElement>("forecast-cancel").disabled = !running;
   element<HTMLButtonElement>("forecast-run").disabled = running;
 }

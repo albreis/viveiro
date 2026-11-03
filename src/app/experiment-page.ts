@@ -1,3 +1,8 @@
+import { message, clearMessage, messageSource, t } from "../i18n/runtime.ts";
+import { installLocalePicker } from "../i18n/picker.ts";
+installLocalePicker();
+import { installParameterEditor } from "./parameter-profile-editor.ts";
+import "./policy-picker.ts";
 import "./sweep-page.ts";
 import {
   exampleExperiment,
@@ -17,8 +22,10 @@ const planField = byId<HTMLTextAreaElement>("experiment-plan"),
 let worker: Worker | null = null,
   urls: string[] = [];
 planField.value = JSON.stringify(exampleExperiment(), null, 2);
-byId("experiment-version").textContent =
-  "Viveiro " + metadata.version + " · Modelo exploratório";
+installParameterEditor(planField);
+message(byId("experiment-version"), "experiments.version", {
+  version: metadata.version,
+});
 function clearResult() {
   for (const url of urls) URL.revokeObjectURL(url);
   urls = [];
@@ -36,16 +43,15 @@ function finish() {
   cancel.disabled = true;
   planField.disabled = false;
 }
-function fail(message: string) {
+function fail(reason: string) {
   finish();
-  error.textContent = message;
+  messageSource(error, reason);
   error.focus();
-  status.textContent =
-    "Execução não concluída; nenhum resultado parcial foi exportado.";
+  message(status, "experiments.incomplete");
 }
 run.onclick = () => {
   clearResult();
-  error.textContent = "";
+  clearMessage(error);
   try {
     const plan = normalizeExperiment(JSON.parse(planField.value));
     planField.value = JSON.stringify(plan, null, 2);
@@ -54,7 +60,7 @@ run.onclick = () => {
     planField.disabled = true;
     progress.max = Math.max(1, plan.days * 100);
     progress.value = 0;
-    status.textContent = "Executando o experimento…";
+    message(status, "experiments.running");
     const activeWorker = new Worker(
       new URL("../workers/experiment.worker.ts", import.meta.url),
       { type: "module" },
@@ -65,7 +71,10 @@ run.onclick = () => {
       const value = event.data;
       if (value.type === "progress") {
         progress.value = value.tick;
-        status.textContent = `${value.tick} de ${value.total} ticks concluídos.`;
+        message(status, "experiments.runningProgress", {
+          ticks: value.tick,
+          total: value.total,
+        });
       } else if (value.type === "error") fail(value.message);
       else {
         finish();
@@ -82,15 +91,13 @@ run.onclick = () => {
           "application/json;charset=utf-8",
         );
         results.hidden = false;
-        status.textContent = `Concluído: ${plan.days} dias do modelo, sem alterar seu terrário salvo.`;
+        message(status, "experiments.completed", { days: plan.days });
         results.focus();
       }
     };
     activeWorker.onerror = () => {
       if (worker !== activeWorker) return;
-      fail(
-        "Não foi possível executar o modelo. Confira a configuração e tente novamente.",
-      );
+      fail(t("experiments.failed"));
     };
     worker.postMessage(plan);
   } catch (e) {
@@ -100,8 +107,7 @@ run.onclick = () => {
 cancel.onclick = () => {
   finish();
   clearResult();
-  status.textContent =
-    "Experimento cancelado. Seu terrário salvo não foi alterado.";
+  message(status, "experiments.cancelled");
   run.focus();
 };
 window.addEventListener("pagehide", () => {

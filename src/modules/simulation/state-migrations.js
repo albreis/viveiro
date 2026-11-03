@@ -1,3 +1,4 @@
+import { validateExtensionState } from "../extensions/world.ts";
 import { validateDaily } from "../observations/validation.ts";
 import { validateSurvival } from "../survival/validation.ts";
 import { validateFertility } from "../fertility/validation.ts";
@@ -33,6 +34,7 @@ import {
 export function restoreWorld(snapshot, prototype, checkBudget = true) {
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
+  validateExtensionState(world);
   validatePredatorMemory(world.predators);
   validateDaily(world.dailyObservations, world.tick);
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);

@@ -1,5 +1,16 @@
 # Versões
 
+## 0.45.0 — P2 consolidado — 03/11/2026
+
+- Sensibilidade Morris com 12 entradas, índices e 104 execuções reais arquivadas.
+- API local tipada de extensões e comparação pareada de política nova com ACO.
+- Editor de perfis com faixas/fontes, versões imutáveis e importação/exportação.
+- Interface, documentos do modelo e guias em português/inglês; src/i18n extensível.
+- Paridade CLI/navegador, persistência, arquivos científicos e saves preservados.
+- Integra os PRs #65–#68 em uma única release, sem versões intermediárias Zenodo.
+- Modelo exploratório; calibração científica e aceites externos continuam abertos.
+
+
 ## 0.30.1 — Artefato estático suportado
 
 - Espelho conserva fontes de releases em public e gera dist pelo adaptador estático, conforme contrato da hospedagem.

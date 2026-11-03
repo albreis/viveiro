@@ -1,3 +1,4 @@
+import { locale, message } from "../i18n/runtime.ts";
 import type {
   ErrorSummary,
   EvaluationRow,
@@ -16,7 +17,7 @@ interface BenchmarkReport {
 const get = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
 const number = (n: number) =>
-  n.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
+  n.toLocaleString(locale.locale, { maximumFractionDigits: 2 });
 export function installForecastBenchmark(): void {
   const details = get<HTMLDetailsElement>("forecast-benchmark");
   if (!details) return;
@@ -59,27 +60,23 @@ export function installForecastBenchmark(): void {
       meanCounts =
         report.rows.reduce((sum, row) => sum + row.countActiveMs, 0) /
         Math.max(1, report.rows.length);
-    get("forecast-benchmark-note").textContent =
-      n +
-      " origens em " +
-      report.seeds.length +
-      " seeds sintéticas; origens da mesma seed são correlacionadas. Base = contagem constante. Métodos distintos; comparação descritiva. Faixa não calibrada; base não tem intervalo.";
-    get("forecast-benchmark-cost").textContent =
-      "Modelo " +
-      report.modelVersion +
-      " · " +
-      new Date(report.generatedAt).toLocaleDateString("pt-BR", {
+    message(get("forecast-benchmark-note"), "forecast.benchmark.note", {
+      origins: n,
+      seeds: report.seeds.length,
+    });
+    message(get("forecast-benchmark-cost"), "forecast.benchmark.cost", {
+      version: report.modelVersion,
+      date: new Date(report.generatedAt).toLocaleDateString(locale.locale, {
         timeZone: "America/Sao_Paulo",
-      }) +
-      ". " +
-      number(meanFull / 1000) +
-      " s de cálculo completo por origem (todos os horizontes) vs " +
-      number(meanCounts) +
-      " ms de contagem por horizonte, em " +
-      report.runtime.node +
-      " sem desenho 3D. Não mede o erro deste terrário.";
+      }),
+      full: number(meanFull / 1000),
+      counts: number(meanCounts),
+      runtime: report.runtime.node,
+    });
   };
   metric.onchange = render;
+  const stopLocale = locale.subscribe(render);
+  window.addEventListener("pagehide", stopLocale, { once: true });
   details.ontoggle = async () => {
     if (!details.open || report || loading) return;
     loading = true;
@@ -98,8 +95,7 @@ export function installForecastBenchmark(): void {
       report = value;
       render();
     } catch {
-      get("forecast-benchmark-note").textContent =
-        "Relatório indisponível nesta versão. A previsão do terrário continua independente.";
+      message(get("forecast-benchmark-note"), "forecast.benchmark.unavailable");
     } finally {
       loading = false;
     }

@@ -1,0 +1,22 @@
+<section class="panel soil-panel">
+  <div class="section-label">
+    <span data-i18n="terrarium.gas.title"></span><span>≈</span>
+  </div>
+  <p id="gas-status"></p>
+  <canvas
+    id="gas-map"
+    width="280"
+    height="112"
+    role="img"
+    data-i18n-aria-label="terrarium.gas.map"
+  ></canvas>
+  <p class="field-note" data-i18n="terrarium.gas.help"></p>
+  <div class="slider-block">
+    <label for="wind"
+      ><span data-i18n="terrarium.wind"></span
+      ><output id="wind-value">0 u.</output></label
+    >
+    <input id="wind" type="range" min="-4" max="4" step="0.5" value="0" />
+    <p class="field-note" data-i18n="terrarium.wind.help"></p>
+  </div>
+</section>

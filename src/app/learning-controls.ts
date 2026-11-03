@@ -1,3 +1,4 @@
+import { message, messageSource } from "../i18n/runtime.ts";
 import { describeTraining, learningNumber } from "./learning-report.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
 import { colonyWorlds } from "../modules/colonies/types.ts";
@@ -24,7 +25,7 @@ export function installLearningControls(
     train.disabled = true;
     const id = ++job;
     const status = document.getElementById("training-status")!;
-    status.textContent = "Treinando em grafos separados do terrário…";
+    message(status, "execution.learning.running");
     worker = new Worker(
       new URL("../workers/learning.worker.ts", import.meta.url),
       { type: "module" },
@@ -37,20 +38,22 @@ export function installLearningControls(
     worker.onmessage = ({ data }) => {
       if (data.id !== job) return;
       if (data.episode)
-        status.textContent = "Treino: " + data.episode + "/1200 episódios.";
+        message(status, "execution.learning.progress", {
+          episode: data.episode,
+        });
       if (data.result) {
         candidate = data.result;
-        status.textContent = describeTraining(candidate!.report);
+        messageSource(status, describeTraining(candidate!.report));
         apply.disabled = false;
         finish();
       }
       if (data.error) {
-        status.textContent = "O treino não pôde terminar.";
+        message(status, "execution.learning.failed");
         finish();
       }
     };
     worker.onerror = () => {
-      status.textContent = "Treino indisponível neste navegador.";
+      message(status, "execution.learning.unavailable");
       finish();
     };
     worker.postMessage({
@@ -73,7 +76,7 @@ export function renderLearningStatus(w: FamilyWorld) {
   if (!target || !mode) return;
   if (!worker && !candidate && w.learning?.training) {
     const report = document.getElementById("training-status");
-    if (report) report.textContent = describeTraining(w.learning.training);
+    if (report) messageSource(report, describeTraining(w.learning.training));
   }
   const states = colonyWorlds(w).flatMap((c) =>
       c.learning ? [c.learning] : [],
@@ -82,18 +85,17 @@ export function renderLearningStatus(w: FamilyWorld) {
   mode.value = w.learning?.enabled ? "neural" : "aco";
   mode.querySelector<HTMLOptionElement>('option[value="neural"]')!.disabled =
     !w.learning;
-  target.textContent = active
-    ? "Aprendizado em " +
-      active +
-      " colônia(s) · " +
-      states.reduce((n, s) => n + s.decisions, 0) +
-      " escolhas locais · " +
-      states.reduce((n, s) => n + s.updates, 0) +
-      " ajustes individuais. Recompensa acumulada: " +
-      learningNumber(
+  message(
+    target,
+    active ? "execution.learning.active" : "execution.learning.aco",
+    {
+      colonies: active,
+      decisions: states.reduce((n, s) => n + s.decisions, 0),
+      updates: states.reduce((n, s) => n + s.updates, 0),
+      reward: learningNumber(
         states.reduce((n, s) => n + s.reward, 0),
         2,
-      ) +
-      "."
-    : "ACO ativo. A política aprendida é opcional e pode ser comparada no mesmo ambiente.";
+      ),
+    },
+  );
 }

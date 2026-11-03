@@ -1,0 +1,21 @@
+{
+  "forecast.horizon.one": "População estimada daqui a {days} dia:",
+  "forecast.horizon.many": "População estimada daqui a {days} dias:",
+  "forecast.running": "Calculando {completed}/{runs} futuros · {percent}%",
+  "forecast.complete": "P10–P90 · {runs} cenários · início no dia {day}. Intervalo exploratório, sem intervenções futuras.",
+  "forecast.budget": "Limite de trabalho atingido · {completed}/{runs} futuros concluídos. ",
+  "forecast.provisional": "Intervalo provisório; a interrupção pode causar viés.",
+  "forecast.insufficient": "Amostra insuficiente para exibir intervalo.",
+  "forecast.cancelled": "Previsão cancelada. Recalcule quando quiser.",
+  "forecast.unavailable": "Previsão indisponível.",
+  "forecast.counts": "Extrapolação por contagem e histórico; não simula túneis ou genética.",
+  "forecast.countsShort": "Extrapolação por contagem; não simula túneis ou genética.",
+  "forecast.censuses": " {count} censos recentes.",
+  "forecast.full": "Estado completo: agentes, prole, habitat e túneis. Faixa não calibrada cientificamente.",
+  "forecast.cost": "{elapsed} decorridos · {active} de cálculo",
+  "forecast.benchmark.note": "{origins} origens em {seeds} seeds sintéticas; origens da mesma seed são correlacionadas. Base = contagem constante. Métodos distintos; comparação descritiva. Faixa não calibrada; base não tem intervalo.",
+  "forecast.benchmark.cost": "Modelo {version} · {date}. {full} s de cálculo completo por origem (todos os horizontes) vs {counts} ms de contagem por horizonte, em {runtime} sem desenho 3D. Não mede o erro deste terrário.",
+  "forecast.benchmark.unavailable": "Relatório indisponível nesta versão. A previsão do terrário continua independente.",
+  "forecast.sourceInvalid": "Fonte de observação incompatível com o método.",
+  "forecast.browserUnavailable": "Este navegador não disponibilizou a previsão."
+}

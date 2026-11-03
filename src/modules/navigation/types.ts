@@ -115,6 +115,8 @@ export interface NestState {
 }
 
 export interface NavigationWorld {
+  decisionExtension?: import("../extensions/types.ts").ExtensionReference;
+  extensionDecisions?: number;
   plants?: import("../landscape/types.ts").Plant[];
   colony?: import("../colony/types.ts").ColonyState;
   learning?: import("../learning/types.ts").LearningState;

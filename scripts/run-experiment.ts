@@ -1,3 +1,4 @@
+import { prepareExtensionPlan } from "./lib/extension-module.ts";
 import {
   readFileSync,
   writeFileSync,
@@ -15,6 +16,7 @@ Ou: npm run experiment -- --plan configuracao.json --out ./resultado-novo
 Parâmetros: --humidity 0..100 --light 0..100 --randomness 0..100
 --repose-angle 15..55 --temperature 5..45 --wind-x -4..4 --wind-z -4..4
 --profile generic-demo@5 --start founding|established --days 0..365 (inteiros)
+--extension arquivo-local.ts (código de desenvolvedor de confiança)
 Saída: dados.csv e manifesto.json, sem sobrescrever pastas existentes.
 Modelo exploratório, não calibrado. Ctrl+C cancela; resultados só são gravados ao concluir.
 `;
@@ -41,7 +43,12 @@ else
           readFileSync(options.planFile!, "utf8").replace(/^\uFEFF/, ""),
         ),
       );
-    const result = await runExperimentProcess(plan);
+    const selected = await prepareExtensionPlan(plan, options.extensionFile);
+    const result = await runExperimentProcess(selected, {
+      extensionModule: options.extensionFile
+        ? resolve(options.extensionFile)
+        : undefined,
+    });
     mkdirSync(output);
     writeFileSync(resolve(output, "dados.csv"), result.csv, { flag: "wx" });
     writeFileSync(resolve(output, "manifesto.json"), result.manifest, {

@@ -1,0 +1,43 @@
+<section class="panel soil-panel">
+  <div class="section-label">
+    <span data-i18n="terrarium.checkpoints.title"></span><span>▣</span>
+  </div>
+  <p
+    id="checkpoint-status"
+    role="status"
+    aria-live="polite"
+    data-i18n="terrarium.checkpoints.help"
+  ></p>
+  <label for="checkpoint-name" data-i18n="terrarium.checkpoints.name"></label
+  ><input
+    id="checkpoint-name"
+    type="text"
+    maxlength="60"
+    data-i18n-placeholder="terrarium.checkpoints.placeholder"
+  /><button
+    id="create-checkpoint"
+    class="text-button"
+    data-i18n="terrarium.checkpoints.create"
+  ></button
+  ><label for="checkpoint-list" data-i18n="terrarium.checkpoints.select"></label
+  ><select id="checkpoint-list"></select
+  ><button
+    id="restore-checkpoint"
+    class="text-button"
+    disabled
+    data-i18n="terrarium.checkpoints.restore"
+  ></button
+  ><button
+    id="import-checkpoint"
+    class="text-button"
+    data-i18n="terrarium.checkpoints.import"
+  ></button
+  ><input
+    id="import-experiment"
+    type="file"
+    accept=".json,application/json"
+    data-i18n-aria-label="terrarium.checkpoints.file"
+    hidden
+  />
+  <p class="field-note" data-i18n="terrarium.checkpoints.note"></p>
+</section>

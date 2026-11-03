@@ -51,7 +51,7 @@ condições declaradas. Nenhuma espécie completa foi calibrada. Textura/água d
 solo, temperatura do ar, intensidade de luz e fotoperíodo são variáveis distintas.
 
 A execução atual não consulta clima, geolocalização ou bancos de laboratório
-pela rede a cada tick. Clima real está no planejamento posterior. Metadados de
+pela rede a cada tick. Clima real da localização foi retirado do escopo ativo pelo usuário em 02/11/2026. Metadados de
 exportação/data do checkpoint não são fonte de ruído para os agentes.
 
 ## Reproduzir uma trajetória

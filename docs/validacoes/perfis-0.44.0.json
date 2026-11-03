@@ -1,0 +1,45 @@
+{
+  "schema": "viveiro-validation-v1",
+  "stage": "P2.6",
+  "developmentVersion": "0.44.0",
+  "tagCreated": false,
+  "tests": {
+    "full": 444,
+    "passed": 444,
+    "log": ".runtime/profiles-full-tests.txt"
+  },
+  "catalogInputs": 12,
+  "catalogVersion": 1,
+  "preserved": [
+    "saved terrarium",
+    "IndexedDB",
+    "original behavior when optional inputs omitted",
+    "seed/duration/policy when applying profile"
+  ],
+  "profile": "qa-perfis-44@1",
+  "browser": {
+    "kind": "native Cua",
+    "exported": true,
+    "reimported": true,
+    "immutableVersionRejected": true,
+    "sweepBaseApplied": true,
+    "compiled": true,
+    "ticks": 300,
+    "csvSha256": "6a3512ca20ca6d8de69d4b945cbe73c5ae66500827b8738fdbc0c26f95890fb9",
+    "manifestSha256": "ad92e715e6b540fa3cd196857aaf32f143bb235d7825455db8b0423b65729347",
+    "byteEqualAcross": [
+      "node",
+      "browser-first",
+      "browser-imported",
+      "compiled"
+    ],
+    "consoleErrors": 0
+  },
+  "raw": "public/experimentos/profile-044",
+  "limits": [
+    "Model input catalog only; not all internal solver coefficients.",
+    "Origin profile and actual execution values are recorded separately.",
+    "Local browser library; transfer by file, not cloud synchronization.",
+    "Exploratory inputs, not a calibrated species profile."
+  ]
+}

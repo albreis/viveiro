@@ -1,0 +1,112 @@
+<aside
+  class="left-panel"
+  id="environment-controls"
+  data-i18n-aria-label="terrarium.environment.label"
+  tabindex="-1"
+>
+  <section class="panel environment">
+    <div class="section-label">
+      <span data-i18n="terrarium.environment.title"></span
+      ><span class="tiny-number">01</span>
+    </div>
+    <h2 data-i18n="terrarium.environment.conditions"></h2>
+    <p class="muted small" data-i18n="terrarium.environment.description"></p>
+    <div class="slider-block">
+      <label for="humidity"
+        ><span data-i18n="terrarium.humidity.label"></span
+        ><output id="humidity-value">58%</output></label
+      ><input id="humidity" type="range" min="0" max="100" value="58" />
+      <div class="range-labels">
+        <span data-i18n="terrarium.humidity.low"></span
+        ><span data-i18n="terrarium.humidity.high"></span>
+      </div>
+    </div>
+    <div class="slider-block">
+      <label for="light"
+        ><span data-i18n="terrarium.light.label"></span
+        ><output id="light-value">72%</output></label
+      ><input id="light" type="range" min="0" max="100" value="72" />
+      <div class="range-labels">
+        <span data-i18n="terrarium.light.low"></span
+        ><span data-i18n="terrarium.light.high"></span>
+      </div>
+    </div>
+    <div class="slider-block">
+      <label for="randomness"
+        ><span data-i18n="terrarium.randomness.label"></span
+        ><output id="randomness-value">28%</output></label
+      ><input id="randomness" type="range" min="0" max="100" value="28" />
+      <p class="field-note" data-i18n="terrarium.randomness.help"></p>
+    </div>
+    <div class="slider-block">
+      <label for="repose-angle"
+        ><span data-i18n="terrarium.soil.label"></span
+        ><output id="repose-angle-value">36°</output></label
+      ><input id="repose-angle" type="range" min="15" max="55" value="36" />
+      <p class="field-note" data-i18n="terrarium.soil.help"></p>
+    </div>
+    <div id="soil-material-panel" hidden></div>
+    <div class="slider-block">
+      <label for="temperature"
+        ><span data-i18n="terrarium.temperature.label"></span
+        ><output id="temperature-value">24 °C</output></label
+      ><input id="temperature" type="range" min="5" max="45" value="24" />
+      <p class="field-note" data-i18n="terrarium.temperature.help"></p>
+    </div>
+    <button id="rain" class="rain-button">
+      <span>☂</span> <span data-i18n="terrarium.rain"></span>
+      <span data-i18n="terrarium.rain.effect"></span>
+    </button>
+  </section>
+  <section class="panel intervention-panel">
+    <div class="section-label">
+      <span data-i18n="terrarium.tools.title"></span
+      ><span class="tiny-number">02</span>
+    </div>
+    <h2 data-i18n="terrarium.tools.heading"></h2>
+    <p class="muted small" id="tool-hint" data-i18n="terrarium.tools.help"></p>
+    <div class="tools">
+      <button data-tool="food" aria-pressed="false">
+        <span aria-hidden="true" class="tool-icon food-icon">◒</span
+        ><span data-i18n="terrarium.food"></span>
+      </button>
+      <button data-tool="plant" aria-pressed="false">
+        <span aria-hidden="true" class="tool-icon">⚘</span
+        ><span data-i18n="terrarium.plant"></span>
+      </button>
+      <button data-tool="predator" aria-pressed="false">
+        <span aria-hidden="true" class="tool-icon predator-icon">✳</span
+        ><span data-i18n="terrarium.predator"></span>
+      </button>
+      <button data-tool="scent" aria-pressed="false">
+        <span aria-hidden="true" class="tool-icon">◌</span
+        ><span data-i18n="terrarium.foreignOdor"></span>
+      </button>
+    </div>
+    <p class="field-note" data-i18n="terrarium.tools.reset"></p>
+  </section>
+  <section id="biology-panel" class="panel biology-panel"></section>
+  <details id="keyboard-placement"></details>
+  <div class="seed-box">
+    <label for="seed" data-i18n="terrarium.seed.title"></label>
+    <div>
+      <input
+        id="seed"
+        value="SEMENTE-42"
+        maxlength="40"
+        data-i18n-aria-label="terrarium.seed.label"
+      /><button
+        id="apply-seed"
+        data-i18n-title="terrarium.seed.apply"
+        data-i18n-aria-label="terrarium.seed.apply"
+      >
+        ↗
+      </button>
+    </div>
+    <button
+      id="replay"
+      class="text-button"
+      data-i18n="terrarium.seed.replay"
+    ></button>
+  </div>
+</aside>

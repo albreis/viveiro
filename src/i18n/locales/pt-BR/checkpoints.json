@@ -1,0 +1,12 @@
+{
+  "checkpoints.auto": "Salvamento automático",
+  "checkpoints.beforeFailed": "O estado anterior não pôde ser guardado como checkpoint. A recuperação não foi aplicada.",
+  "checkpoints.created": "Checkpoint criado neste navegador.",
+  "checkpoints.createFailed": "Não foi possível criar o checkpoint.",
+  "checkpoints.unavailable": "Checkpoint indisponível.",
+  "checkpoints.restored": "Checkpoint recuperado em pausa. O estado anterior foi preservado.",
+  "checkpoints.restoreFailed": "Não foi possível recuperar.",
+  "checkpoints.fileLimit": "O arquivo deve ter até 20 MB.",
+  "checkpoints.imported": "Experimento importado em pausa. O estado anterior foi preservado.",
+  "checkpoints.invalid": "Arquivo inválido."
+}

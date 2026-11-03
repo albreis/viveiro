@@ -1,9 +1,13 @@
+import {
+  normalizeParameterProfile,
+  type ParameterProfile,
+} from "../parameter-profiles/profile.ts";
+import { extensionReference } from "../extensions/registry.ts";
+import type { ExtensionReference } from "../extensions/types.ts";
 import { profileReference } from "../biology/catalog.ts";
 import type { BiologicalReference } from "../biology/types.ts";
 import {
-  baseParameterRanges,
-  parameterRanges,
-  type ExperimentParameter,
+  normalizeParameters,
   type ExperimentParameters,
 } from "./parameters.ts";
 export { parameterRanges, type ExperimentParameter } from "./parameters.ts";
@@ -14,6 +18,8 @@ export interface ExperimentPlan {
   startMode: "founding" | "established";
   biologicalProfile: BiologicalReference;
   parameters: ExperimentParameters;
+  extension?: ExtensionReference;
+  parameterProfile?: ParameterProfile;
 }
 const object = (value: unknown): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value))
@@ -34,6 +40,8 @@ export function normalizeExperiment(value: unknown): ExperimentPlan {
     "startMode",
     "biologicalProfile",
     "parameters",
+    "extension",
+    "parameterProfile",
   ]);
   if (v.schema !== "viveiro-experiment-v1")
     throw Error("Schema de experimento não suportado.");
@@ -69,18 +77,7 @@ export function normalizeExperiment(value: unknown): ExperimentPlan {
   )
     throw Error("Perfil deve informar schema1, id e versão.");
   const biologicalProfile = profileReference(ref.id, ref.version);
-  const supplied = object(v.parameters === undefined ? {} : v.parameters);
-  keys(supplied, Object.keys(parameterRanges));
-  const parameters = {} as ExperimentPlan["parameters"];
-  for (const key of Object.keys(parameterRanges) as ExperimentParameter[]) {
-    if (!Object.hasOwn(baseParameterRanges, key) && supplied[key] === undefined)
-      continue;
-    const [min, max, fallback] = parameterRanges[key],
-      n = supplied[key] === undefined ? fallback : supplied[key];
-    if (typeof n !== "number" || !Number.isFinite(n) || n < min || n > max)
-      throw Error(`${key}: use um número entre ${min} e ${max}.`);
-    parameters[key] = Object.is(n, -0) ? 0 : n;
-  }
+  const parameters = normalizeParameters(v.parameters);
   return {
     schema: "viveiro-experiment-v1",
     seed,
@@ -88,6 +85,12 @@ export function normalizeExperiment(value: unknown): ExperimentPlan {
     startMode,
     biologicalProfile,
     parameters,
+    ...(v.parameterProfile === undefined
+      ? {}
+      : { parameterProfile: normalizeParameterProfile(v.parameterProfile) }),
+    ...(v.extension === undefined
+      ? {}
+      : { extension: extensionReference(v.extension) }),
   };
 }
 export const exampleExperiment = () =>
