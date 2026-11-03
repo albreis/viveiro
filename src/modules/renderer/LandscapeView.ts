@@ -1,8 +1,23 @@
+import type { RenderWorld as World } from "./render-types.ts";
+import type { Terrarium } from "./scene.ts";
 import * as THREE from "three";
 import { surfaceHeight, waterScale } from "../landscape/queries.ts";
 import { seededRandom } from "../../libs/seeded-random.ts";
 export class LandscapeView {
-  constructor(host) {
+  host: Terrarium;
+  water: {
+    id: number;
+    mesh: THREE.Mesh<THREE.CircleGeometry, THREE.MeshPhysicalMaterial>;
+    base: ArrayLike<number>;
+  }[];
+  logs: { id: number; group: THREE.Group; bark: THREE.MeshStandardMaterial }[];
+  rocks: {
+    id: number;
+    mesh: THREE.Mesh<THREE.DodecahedronGeometry, THREE.MeshStandardMaterial>;
+  }[];
+  grass: THREE.Group;
+  grassMaterial: THREE.MeshStandardMaterial;
+  constructor(host: Terrarium) {
     this.host = host;
     this.water = [];
     this.logs = [];
@@ -41,7 +56,13 @@ export class LandscapeView {
       group.rotation.y = -p.angle;
       const bark = host.material("#76624b"),
         cut = host.material("#bea077");
-      const cylinder = (length, radius, x = 0, z = 0, angle = 0) => {
+      const cylinder = (
+        length: number,
+        radius: number,
+        x = 0,
+        z = 0,
+        angle = 0,
+      ) => {
         const m = host.mesh(
           new THREE.CylinderGeometry(radius * 0.88, radius, length, 14),
           [bark, cut, cut],
@@ -119,7 +140,7 @@ export class LandscapeView {
     }
     this.update(host.world, 0);
   }
-  update(world, time) {
+  update(world: World, time: number) {
     const land = world.landscape;
     for (const view of this.water) {
       const p = land.ponds.find((p) => p.id === view.id);

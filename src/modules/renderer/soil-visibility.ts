@@ -1,4 +1,5 @@
-export function updateSoilVisibility(host) {
+import type { Terrarium } from "./scene.ts";
+export function updateSoilVisibility(host: Terrarium) {
   const interior = host.showInterior && !host.followId;
   host.soil.material.forEach((mat, index) => {
     const transparent = !!interior && index !== 2,

@@ -20,7 +20,7 @@ pelo GitHub após71. PR69 é trabalho do usuário: preservar.
 ## Próximos passos concretos
 
 1. PR77 integrado. Galeria já publicada no privado, sem nova tag.
-2. Branch codex/auditoria-interface: auditoria nativa concluída e contraste A/B corrigido.27testes/build aprovados. Publicar correção e integrar PR antes de migrar. A checagem cobriu nomes,
+2. PR78 integrado e correção publicada no privado. Branch codex/auditoria-interface: auditoria nativa concluída e contraste A/B corrigido.27testes/build aprovados. Publicar correção e integrar PR antes de migrar. A checagem cobriu nomes,
    contraste, teclado, reflow e desempenho real em movimento no preview4189;
    corrigir problemas encontrados. Tentativa oficial PageSpeed em03/11 21:53UTC
    recebeu429, nenhuma nota. Não repetir antes de04/11 21:53:59UTC nem contornar
@@ -41,3 +41,17 @@ concorrente. Ao restarem3% da cota real de5h, push/checkpoint e parar para o usu
 
 Pendências externas não podem ser inventadas: dados/licença/parceria, calibração,
 pilotos/docentes/participantes, contribuição externa e medições de serviços/hardware.
+
+
+## Migração em curso
+
+codex/renderer-typescript migrou10JS do renderer, com scene-core/scene-input/
+scene-dispose e contratos RenderWorld/RenderAgent. Cena208linhas, núcleo162,
+LandscapeView198. Build estrito aprovado;3 regressões novas e2 Morris aprovados.
+QA nativa em4189: vista lateral alternada, primeira pessoa/setas/saída com foco,
+sem erro de console. Suíte completa em.runtime/renderer-suite.txt ainda rodando;
+Morris teve CRLF em104manifestos recuperados pelos hashes publicados e atributo
+-text adicionado; segunda falha foi mudança da fonte durante a rodada, corrigida
+reexecutando com fonte estável. Não voltar a editar módulos durante teste Morris.
+Próxima etapa: concluir UI(controller/chart/status) em branch própria e depois
+revisar suíte/privado/PRs. Sem nova tag intermediária.
