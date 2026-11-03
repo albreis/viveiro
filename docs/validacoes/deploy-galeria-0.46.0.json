@@ -1,0 +1,15 @@
+{
+  "source": "3698818bc7d90b6bc3c1e4ad2ca63c9751add4af",
+  "project": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+  "deployment": "appgdep_6aea593ffdcc8191acb19ae0336bc8fa",
+  "version": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_8f3b3d6d15ec819198d779faba9c1450",
+  "status": "succeeded",
+  "updatedAt": "2026-11-03T21:59:42.578237+00:00",
+  "audience": "custom, revision1, original owner only",
+  "nativeVerification": {
+    "heading": "Uma seed. Uma pergunta.",
+    "count": 10,
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/galeria?lang=pt-BR"
+  },
+  "noNewTagOrZenodoDeposit": true
+}

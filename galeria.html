@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="gallery.pageTitle"></title>
+    <link rel="stylesheet" href="./src/styles/teaching.css" />
+    <link rel="stylesheet" href="./src/styles/gallery.css" />
+  </head>
+  <body>
+    <a class="skip" href="#gallery-main" data-i18n="experiments.skip"></a>
+    <header>
+      <a
+        href="./index.html"
+        data-i18n-href="./index.html"
+        data-i18n="gallery.back"
+      ></a>
+      <a
+        href="./experimentos.html"
+        data-i18n-href="./experimentos.html"
+        data-i18n="gallery.lab"
+      ></a>
+    </header>
+    <main id="gallery-main" tabindex="-1">
+      <div class="gallery-hero">
+        <p class="gallery-eyebrow" data-i18n="gallery.eyebrow"></p>
+        <h1 data-i18n="gallery.heading"></h1>
+        <p data-i18n="gallery.intro"></p>
+        <p class="gallery-limits" data-i18n="gallery.limits"></p>
+        <p id="gallery-version"></p>
+      </div>
+      <form class="gallery-filters" role="search">
+        <label for="gallery-search"
+          ><span data-i18n="gallery.search"></span>
+          <input
+            id="gallery-search"
+            type="search"
+            data-i18n-placeholder="gallery.searchPlaceholder"
+          />
+        </label>
+        <label for="gallery-topic"
+          ><span data-i18n="gallery.filterTopic"></span>
+          <select id="gallery-topic">
+            <option value="" data-i18n="gallery.all"></option>
+            <option value="signals" data-i18n="gallery.topic.signals"></option>
+            <option value="soil" data-i18n="gallery.topic.soil"></option>
+            <option
+              value="development"
+              data-i18n="gallery.topic.development"
+            ></option>
+            <option
+              value="founding"
+              data-i18n="gallery.topic.founding"
+            ></option>
+            <option
+              value="resources"
+              data-i18n="gallery.topic.resources"
+            ></option>
+          </select>
+        </label>
+        <label for="gallery-origin"
+          ><span data-i18n="gallery.filterOrigin"></span>
+          <select id="gallery-origin">
+            <option value="" data-i18n="gallery.all"></option>
+            <option value="team" data-i18n="gallery.origin.team"></option>
+            <option
+              value="external"
+              data-i18n="gallery.origin.external"
+            ></option>
+          </select>
+        </label>
+      </form>
+      <p id="gallery-count" role="status" aria-live="polite"></p>
+      <div id="gallery-list" class="gallery-grid"></div>
+      <p id="gallery-empty" data-i18n="gallery.empty" hidden></p>
+      <aside class="gallery-contribute">
+        <h2 data-i18n="gallery.contribute"></h2>
+        <p data-i18n="gallery.contributeText"></p>
+        <a
+          href="https://github.com/albreis/viveiro/issues/new?template=experiment.yml"
+          data-i18n="gallery.contribute"
+        ></a>
+        <p data-i18n="gallery.portable"></p>
+      </aside>
+    </main>
+    <footer data-i18n="common.license"></footer>
+    <script type="module" src="./src/app/gallery-page.ts"></script>
+  </body>
+</html>

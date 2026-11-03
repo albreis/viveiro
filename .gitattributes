@@ -16,3 +16,7 @@ public/experimentos/i18n-p27/**/*.csv binary
 # Exact public-release/browser and CLI evidence.
 tests/fixtures/release-045/** -text
 tests/fixtures/release-045/**/*.csv binary
+
+# Gallery browser/CLI evidence.
+tests/fixtures/gallery-046/** -text
+tests/fixtures/gallery-046/**/*.csv binary

@@ -4,6 +4,7 @@ import { teachingGuides } from "../modules/teaching/catalog.ts";
 
 // Values come from owned source catalogs, never from the DOM lookup key.
 const pages = [
+  { path: "galeria.html", languageQuery: true, translated: false },
   { path: "index.html", languageQuery: true, translated: false },
   { path: "experimentos.html", languageQuery: true, translated: false },
   { path: "licencas.html", languageQuery: false, translated: true },
