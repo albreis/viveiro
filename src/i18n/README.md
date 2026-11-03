@@ -7,7 +7,8 @@ As traduções ficam em `locales/<idioma>/`, separadas por área. Português do 
 - `controller.ts`: idioma atual, assinaturas de mudança e formatação de números de apresentação.
 - `browser.ts`: preferência independente e seleção explícita por `?lang=`, sem recarregar a página ou acessar saves.
 - `core.ts`: interpolação pura e determinística, sem acessar o simulador ou armazenamento.
-- `locales/pt-BR/common.json` e `locales/en/common.json`: primeiro catálogo compartilhado.
+- `locales/pt-BR/common.json` e `locales/en/common.json`: catálogo compartilhado.
+- `locales/<idioma>/experiments.json`: primeiro catálogo de área, com rótulos e estados do laboratório isolado.
 
 Para adicionar idioma, copie os catálogos de referência para outra pasta, traduza os valores e registre o idioma em `catalogs.ts`. Preserve as chaves e as variáveis entre chaves, por exemplo `{version}`. Rode `npm run i18n:check`; o build também executa essa validação antes de compilar. IDs, seeds, valores científicos, arquivos CSV e textos escritos pelo usuário não devem ser traduzidos.
 

@@ -1,5 +1,9 @@
-import ptBR from "./locales/pt-BR/common.json" with { type: "json" };
-import en from "./locales/en/common.json" with { type: "json" };
+import ptCommon from "./locales/pt-BR/common.json" with { type: "json" };
+import enCommon from "./locales/en/common.json" with { type: "json" };
+import ptExperiments from "./locales/pt-BR/experiments.json" with { type: "json" };
+import enExperiments from "./locales/en/experiments.json" with { type: "json" };
+const ptBR = { ...ptCommon, ...ptExperiments };
+const en = { ...enCommon, ...enExperiments };
 /** Add a locale here after copying/translating all of its domain catalogs. */
 export const catalogs = { "pt-BR": ptBR, en } as const;
 export type Locale = keyof typeof catalogs;
