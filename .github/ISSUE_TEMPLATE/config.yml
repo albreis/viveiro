@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Perguntas e hipóteses / Questions and hypotheses
+    url: https://github.com/albreis/viveiro/discussions
+    about: Converse com a comunidade antes de transformar a ideia em uma tarefa.
+  - name: Como contribuir / Contribution guide
+    url: https://github.com/albreis/viveiro/blob/main/CONTRIBUTING.md
+    about: Ambiente, testes, experimentos, fontes e convenções do projeto.

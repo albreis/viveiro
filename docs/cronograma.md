@@ -575,6 +575,8 @@ conclusão; não retomar sem novo pedido explícito. A proposta anterior está n
 ### P4. Comunidade
 
 - [ ] P4.1 GitHub Discussions, CONTRIBUTING.md com as regras deste projeto, modelos de issue e rótulo de primeira tarefa. Aceite: primeira contribuição externa integrada.
+  - [x] P4.1A: guias pt-BR/en, três formulários, modelo de PR, Discussions habilitado e tarefas #73–#75 com good first issue. [Estrutura e verificação](comunidade.md). Sem alteração do modelo ou Site privado.
+  - [ ] P4.1B: primeira contribuição externa real revisada e integrada. Não se contam tarefas abertas pelo mantenedor como contribuição externa.
 - [ ] P4.2 Galeria pública de experimentos reproduzíveis por seed. Aceite: 20 experimentos, metade de fora da equipe.
 - [ ] P4.3 Oficinas para professores e minicursos em congressos. Aceite: uma por semestre, com gravação publicada.
 

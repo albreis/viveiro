@@ -1,0 +1,51 @@
+name: Experimento / Experiment
+description: Contribua um cenário reproduzível para a galeria.
+title: "[Experimento] "
+labels: [experiment]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Nome do experimento / Experiment name
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Pergunta / Research or teaching question
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versão do Viveiro / Viveiro version
+    validations:
+      required: true
+  - type: textarea
+    id: plan
+    attributes:
+      label: Plano JSON / JSON plan
+      description: "Baixe a configuração no laboratório isolado. / Download the configuration from the isolated laboratory."
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: Observações e método / Observations and method
+      description: "O que foi medido, por quanto tempo e como repetir. / What was measured, duration and reproduction steps."
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limites / Limitations
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Autoria, fonte e licença / Authorship, source and license
+      description: "Indique se é original ou adaptação e as fontes utilizadas. / State whether it is original or adapted and cite its sources."
+    validations:
+      required: true
