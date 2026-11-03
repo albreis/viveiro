@@ -45,8 +45,8 @@ concluídos e publicação privada. Não existe outro mecanismo P2 ativo pendent
 Ver docs/revisao-p2.md para critérios, limites e integração ainda necessária.
 
 Os PRs permaneciam abertos, em ordem: #65 → main; #66 → #65; #67 → #66;
-#68 → #67. Não duplicar PRs, apagar branches ou reescrever tags. #68 deve ficar
-pronto para revisão após o envio deste checkpoint. Preservar revisão do usuário.
+#68 → #67. Não duplicar PRs, apagar branches ou reescrever tags. #68 já está
+pronto para revisão, com título e descrição finais. Preservar revisão do usuário.
 
 Próxima ação concreta de integração: conferir CI/revisões de #65; integrá-lo e
 retargetear #66 para main, repetindo em ordem até #68. Conferir mudanças remotas
