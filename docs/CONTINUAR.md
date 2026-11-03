@@ -1,139 +1,107 @@
-# Continuação do Viveiro
+# Continuação do Viveiro — transferência manual
 
-Atualizado em 02/11/2026. Trabalhar na raiz do repositório (nesta máquina em G),
-ler AGENTS.md, cronograma e conferir Git/PRs. Não iniciar executor concorrente.
-Arquivos pequenos em src/TypeScript, Vite, testes adequados, QA nativa Cua,
-commit/push/PR por etapa. Preservar saves, branches, tags e Site privado.
+Atualizado em 02/11/2026, horário local. Trabalhar em G:\Projetos\viveiro.
+Ler AGENTS.md e docs/cronograma.md; conferir Git/PRs antes de alterar arquivos.
 
-## Prioridade e regras atuais do usuário
+## Estado de transferência
 
-Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 entregue; P2.6 entregue; seguir P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
-conclusão; não retomar propostas históricas sem novo pedido explícito.
+O desenvolvimento desta execução foi encerrado no critério de limite solicitado
+pelo usuário. O usuário continuará manualmente. Não retomar automaticamente
+após reset sem novo pedido explícito. Automação continuar-cronograma-do-viveiro
+está PAUSED; o prompt já registra essa orientação. Não consumir resets nem
+contornar limites. A janela deve ser consultada por get_usage_limits quando
+houver novo pedido; não publicar dados privados da conta no repositório.
 
-NÃO CRIAR/ENVIAR novas tags ou GitHub Releases até concluir todos os P2 ativos.
-A v0.41.0 já havia sido enviada antes dessa orientação: preservar, sem retag.
-O usuário vinculou GitHub ao Zenodo e não quer versões intermediárias ali.
-Não publicar depósitos manuais/duplicados nem uma versão por etapa no Zenodo.
-Antes da única próxima tag consolidada, alinhar versão e metadados para que
-uma integração automática não arquive metadados antigos. Durante as etapas,
-manter branches/PRs e dev disponíveis, sem releases intermediárias.
+Branch atual: codex/internacionalizacao, upstream origin/codex/internacionalizacao.
+PR de rascunho: https://github.com/albreis/viveiro/pull/68, base codex/editor-perfis.
+Último commit de código desta base: 1d83c4f; o commit de transferência é posterior.
+Código, evidências e checkpoint enviados ao GitHub. Logs em .runtime/ são locais;
+os inventários podem ser regenerados pelos comandos abaixo.
 
-O público agora é GitHub Pages: https://viveiro.ersolucoesweb.com.br/.
-NÃO atualizar o antigo Site público do ChatGPT. Não apagar o histórico.
-O Site original continua privado; dev 4173 deve continuar rodando em G.
+Dev http://127.0.0.1:4173/ continua em G, PID17752 na última conferência. Não parar.
+O preview 4189 foi usado apenas para QA; não depende dele para continuar.
+Preservar branches, tags, saves, IndexedDB e privacidade do Site original.
 
-## P2.3 entregue — 0.41.0
+## Entregas concluídas nesta sequência
 
-Branch codex/varreduras-retomaveis, PR https://github.com/albreis/viveiro/pull/63
-(base main), integrado pelo usuário em ba71e4d. Fonte/tag v0.41.0:
-0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f. Branch também recebeu a main com
-correção do workflow do usuário; merge local 1a71dc9, só workflow/docs.
+- P2.4: PR #65 contra main, codex/sensibilidade-morris, 0.42.0 de desenvolvimento.
+  432/432 testes, 104 simulações reais Morris, dados brutos e limites honestos.
+  Fonte privada publicada 7b3b4f9; recibo validacoes/deploy-p2.4-dev.json.
+- P2.5: PR #66 sobre #65, codex/extensoes-tipadas, 0.43.0 de desenvolvimento.
+  438/438 testes, API local tipada, política nova em um arquivo e comparação
+  real com ACO. CSV/manifesto iguais no bundle e CLI; fonte privada f4f9a39.
+  Recibo validacoes/deploy-p2.5-dev.json; dados public/experimentos/policies-043.
+- P2.6: PR #67 sobre #66, codex/editor-perfis, 0.44.0 de desenvolvimento.
+  444/444 testes, editor de 12 entradas com unidade/faixa/fonte, versões locais
+  imutáveis, exportação/reimportação e aplicação à varredura. CSV/manifesto
+  iguais na CLI, dev antes/depois da importação e bundle compilado (300 ticks).
+  Fonte privada ec7fc47; recibo validacoes/deploy-p2.6-dev.json. Dados brutos
+  public/experimentos/profile-044 e evidência validacoes/perfis-0.44.0.json.
 
-Módulos sweeps/{plan,jobs,checkpoint,run,summary}; CLI scripts/run-sweep.ts,
-adaptadores sweep-{args,files,directory}; controles app/sweep-page e Workers.
-Um comando executa 5 valores × 10 réplicas; --limit/--resume conserva execuções
-completas. Resultados atômicos por pasta, hash/plano/versão conferidos, lock por
-pasta. Após morte abrupta do SO, .sweep.lock pode exigir remoção manual depois
-de confirmar ausência de executor; não apagar bloqueios incertos.
+Os PRs estavam abertos e encadeados na conferência de transferência; não duplicar.
+Preservar ACO padrão, paridade portátil e trajetória nativa. Os modelos e as
+faixas são exploratórios, sem calibração por espécie.
 
-419/419 testes completos (162.256 ms), mais 4 testes de depósito. TS estrito,
-build privado 360 módulos, cache offline incluído. CLI real 50 em um comando,
-retomada 7+43 e importação. IAB dev 49+1, download/importação/retomada; bundle
-compilado 50, em 2 Workers. CSV, manifesto, checkpoint e índice idênticos byte a
-byte em todos os 50 casos. Dados brutos tests/fixtures/sweep-041; evidências
-validacoes/varreduras-0.41.0.json. Seeds pareadas por réplica entre valores;
-resultados internos do modelo, não observações naturais ou calibração.
+## P2.7 em andamento — ainda não concluído
 
-Privado publicado: appgprj_6ae6364bc4488191b2757449ed3f7e94, owner-only,
-custom/rev1/external0. Deploy appgdep_6ae91980319c81918c44f6f8805ab846,
-succeeded 23:15:26 UTC. Arquivo ../viveiro-0.41.0.tar.gz, fonte da tag 0edcf23.
-Público Pages: run https://github.com/albreis/viveiro/actions/runs/41544523508
-concluído com sucesso, --ref main, tag=v0.41.0.
+A pedido do usuário, internacionalização fica em src/i18n, em arquivos pequenos:
 
-O run inicial da tag 41543216838 falhou antes do build porque o ambiente
-aceitava apenas main. Usuário corrigiu no PR #64; revisão/CodeQL aprovados,
-PR integrado com merge 76c01783828bbf6ad4ce876bf2854a3ae2426875. Proteções
-mantidas. O novo workflow grava a tag no espelho e despacha publicação na main.
-Não duplicar correção, não afrouxar regras do ambiente. #63 antigo vermelho era
-esse run histórico, não falha do simulador. Recibo deploy-0.41.0.json.
+- locales/pt-BR e locales/en: common.json e experiments.json, 32 mensagens por idioma.
+- catalogs.ts: registro de idiomas e tipos derivados; core.ts: interpolação pura.
+- controller.ts: estado de idioma, assinaturas e números de apresentação.
+- browser.ts: preferência viveiro.locale.v1 e query lang, sem reload ou acesso a saves.
+- validation.ts: paridade de chaves/variáveis e rejeição de mensagens vazias.
+- README.md: como adicionar catálogos/idiomas e continuar a integração.
 
-## Citação e limites externos
+Validação desta base: seis testes de i18n e TypeScript estrito; build Vite com
+checagem de traduções. A suíte completa anterior tem 444 testes do P2.6; não
+atribuir uma execução completa de 450 testes à base atual. A interface ainda
+não usa o controlador e a documentação ainda não foi traduzida. Não marcar
+P2.7 como entregue, não liberar o rascunho como concluído e não criar tag.
 
-Somente a 0.36.0 foi enviada manualmente ao Zenodo por este agente após aceite:
-https://doi.org/10.5281/zenodo.23891981. Não duplicar nem atribuir esse DOI à 0.41.
-Autoria/ORCID do usuário recebidos da main preservados nos metadados atuais.
-CFF 0.41.0 validado pelo esquema oficial; ZIP somente LOCAL em
-.runtime/deposits/deposit-bIkp0h/viveiro-v0.41.0-source.zip, 1.097 arquivos,
-2.610.967 bytes, SHA 5a220b704c8369d19d86ee9bddb3547d1126f81df5088cdb4c880dfce37f9108.
-Todos os hashes e 150 CSVs brutos conferidos. Não enviado ao Zenodo.
-Não repetir empacotamento/deposito por etapa; seguir nova política acima.
+Comandos úteis:
 
-P1.6B2: planilha real/leitor/zoom/Lighthouse ainda pendentes. PageSpeed teve
-HTTP429/cota: não repetir antes de 2026-11-03T15:16:57 UTC nem contornar.
-P1 ensaios escolares/docentes e P3 calibração/JOSS dependem de dados reais.
-Nenhuma conformidade/calibração externa pode ser inventada para encerrar fases.
+```sh
+npm run i18n:check
+npm run i18n:inventory
+npm run i18n:inventory -- --json
+node --test tests/i18n.test.mjs tests/i18n-controller.test.mjs
+npm run build
+```
 
-## Ambiente e próximo passo concreto
+Inventário heurístico atual: 902 candidatos em 100 arquivos; também encontra
+falsos positivos e não mede cobertura. Saída local .runtime/i18n-inventory.json.
 
-P2.4 entregue: PR #65, codex/sensibilidade-morris, fonte privada 7b3b4f9,
-432/432 testes. P2.5 entregue: PR #66 sobre #65, codex/extensoes-tipadas,
-fonte privada f4f9a39, 438/438 testes. Ambos publicados no original owner-private,
-sem tags/releases. Recibos deploy-p2.4-dev e deploy-p2.5-dev. ACO e paridade
-portátil/nativa preservados. Não repetir ensaios já aceitos.
+## Próximo passo concreto
 
-P2.6 validado: codex/editor-perfis, desenvolvimento 0.44.0, SEM TAG.
-444/444 testes completos (331.082 ms), TS/build, QA Cua dev e bundle. Editor
-em app/parameter-profile-editor, parameter-fields, profile-file-io e template;
-model parameter-profiles/profile; service parameter-profile-store. Arquivos
-pequenos. Catálogo de 12 entradas (não todos coeficientes internos), unidade,
-faixa/fonte; cinco opcionais só aplicadas quando marcadas. Biblioteca local
-viveiro.parameter-profiles.v1 separada de IndexedDB/saves, versões id@v
-imutáveis; importação/guardar/aplicar/exportar recusam conflitos conhecidos.
-Plano/manifesto preservam perfil de origem e valores efetivamente executados,
-permitindo varreduras com overrides explícitos sem editar o perfil guardado.
-Exportar/reimportar por seed testado em Node, dev antes/depois e bundle:
-300 ticks, CSV e manifesto byte a byte iguais; dados public/experimentos/profile-044.
-Evidência validacoes/perfis-0.44.0.json. PR #67 aberto sobre #66; publicado
-no privado em 2026-11-03T00:49:45 UTC, fonte ec7fc47, recibo deploy-p2.6-dev.json.
-Sem GitHub release, tag ou depósito manual no Zenodo.
+1. Conectar um controlador compartilhado e seletor de idioma em src/main.ts e
+   src/app/experiment-page.ts; manter português como padrão e trocar idioma
+   sem recriar o World, recarregar a página ou perder entradas do usuário.
+2. Usar primeiro as 32 mensagens já preparadas no laboratório de experimentos;
+   migrar HTML/aria-labels/estados, perfis e varreduras para catálogos por área.
+   Depois cobrir index.html, demais controles, tour, diálogos, erros e gráficos.
+3. Traduzir na apresentação os eventos/estados e metadados do modelo. Preservar
+   IDs, seeds, valores científicos, CSV, snapshots e textos escritos pelo usuário.
+   Evitar que o idioma da UI altere mensagens persistidas ou decisões do modelo.
+4. Traduzir documentação pública modelo/ensino e licenças; integrar as versões
+   e links nos geradores scripts/lib/model-doc-pages.ts e teaching-pages.ts.
+5. Verificar todas as telas nos dois idiomas com Cua, inclusive acessibilidade,
+   dados do usuário e Workers. Rodar testes de paridade, suíte completa e build.
+   Atualizar o PR #68, cronograma e evidências só após os aceites reais.
 
-PRÓXIMO: P2.7, inglês mantendo português como padrão. Usuário pediu explicitamente
-centralizar traduções/internacionalização numa pasta i18n: usar src/i18n com
-catálogos pequenos por idioma/área, documentação para adicionar idiomas e
-checagem de chaves/variáveis. Criar branch codex/internacionalizacao. Inventariar textos da UI,
-centralizar mensagens/formatadores em catálogos pequenos, traduzir documentação
-pública gerada (modelo/ensino), permitir troca de idioma e verificar telas reais,
-acessibilidade dos rótulos, Workers/erros e preservação de seed/RNG/CSV. Não
-traduzir dados internos, IDs ou texto do usuário nem alterar contratos científicos
-para traduzir a apresentação. Nenhum aceite parcial como completo.
+## Política de publicação
 
-Dev 4173 PID17752 preservado; preview QA 4189 separado. Cua abas39/dev e40/bundle
-ensaiaram perfil. Downloads: qa-perfis-44-v1.json, configuracao (1).json,
-dados/manifesto (13) primeira, (14) reimportada, (15) compilada; CLI local
-.runtime/profiles-browser-cli-044. Screenshot editor salvo nas visualizações e
-mostrado ao usuário. PRs ainda encadeados, verificar estado/main antes de agir.
+Nenhuma nova tag ou GitHub Release até TODOS os P2 ativos terminarem. O público
+é GitHub Pages em https://viveiro.ersolucoesweb.com.br/; não atualizar o antigo
+Site público do ChatGPT. Última tag pública desta sequência: v0.41.0. O original
+owner-private está na entrega P2.6, com audiência custom/rev1/um proprietário.
 
-Nenhuma tag/release nova até TODOS os P2 ativos terminarem. Zenodo ligado
-automaticamente ao GitHub; não criar depósitos manuais/duplicados. Ao final,
-alinhar CFF/.zenodo e pacote antes da única próxima publicação consolidada.
-P2.8/P5 descartados. Pendências externas P1/P3 continuam abertas honestamente.
+GitHub está ligado automaticamente ao Zenodo. Não criar depósitos manuais,
+duplicados ou versões intermediárias. CFF/.zenodo ainda referenciam a 0.41.0:
+alinhar metadados antes da única próxima publicação consolidada. Autoria e ORCID
+confirmados devem ser preservados. DOI 10.5281/zenodo.23891981 pertence à 0.36.0,
+não à versão atual. Preservar todas as tags existentes.
 
-## Checkpoint P2.7 em andamento e transferência manual
-
-Branch atual codex/internacionalizacao, baseada na entrega P2.6. A pasta
-src/i18n já existe: locales/pt-BR/common.json, locales/en/common.json,
-catalogs.ts, core.ts, validation.ts e README. Tradutor puro com parâmetros,
-tipos derivados e validação de chaves/variáveis; npm run i18n:check entra no
-build. A migração dos textos da UI e das páginas para inglês ainda NÃO foi
-feita; não declarar P2.7 concluído nem criar tag. Próximo: inventariar src/app,
-HTML e dados apresentados, separar catálogos por área e integrar tradução de
-apresentação sem mudar snapshots, RNG, seed, CSV ou texto do usuário. Traduzir
-também as páginas públicas modelo/ensino; conferir todas as telas no navegador.
-
-Orientação mais recente: consultar o limite real compartilhado por get_usage_limits
-entre lotes e antes de trabalho grande. Ao restarem 3% ou menos da janela de
-300 minutos, encerrar desenvolvimento após commit/push e checkpoint. O usuário
-continuará manualmente; não retomar automaticamente depois do reset sem novo
-pedido. A retomada automática já estava PAUSED e foi mantida assim. Não consumir
-resets de cota nem contornar restrições. Não registrar dados privados da conta
-ou credenciais no repositório.
+P2.8 e P5 foram descartados, não são pendências. Aceites externos P1/P3 continuam
+abertos; não inventar dados, pareceres ou calibração. PageSpeed recebeu cota 429:
+não repetir antes de 2026-11-03T15:16:57 UTC nem contornar a restrição.
