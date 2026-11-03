@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viveiro ODD · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.46.0">
+<link rel="manifest" href="/releases/v0.46.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/index.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="index.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Viveiro ODD</h1>
+<p>Specification of the contract observed in version 0.38.0. The terrarium is an exploratory model in its own units, without species-specific biological calibration. This documentation follows the seven elements of the <a href="https://www.jasss.org/23/2/7.html">ODD protocol, 2020 update</a>. The short pages below describe implemented mechanisms; future proposals are not presented as mechanisms that already exist.</p>
+<h2>1. Purpose and patterns</h2>
+<p>Explore how local decisions, finite resources and environmental changes produce collective trajectories, and how observed information affects forecasts. Teaching experiments can use the same seed and interventions at known ticks. The model does not estimate a real colony’s future, demonstrate mathematical chaos merely through divergence, or combine several species as if they were one.</p>
+<p>Internal verification patterns include conservation with explicit sources/sinks, body support on terrain, tunnel connectivity, persistence/replay, probabilistic responses and the difference between forecasting and observation. These are not empirical patterns used for calibration. POM, held-out data and external validation remain dependencies of the research phase in the roadmap.</p>
+<h2>2. Entities, state variables and scales</h2>
+<p><a href="estados.html">States and units</a> distinguishes agents, brood, colonies, shared habitat, fields and session. The current limit is 450 adults/brood across colonies; this is not intended to represent an unlimited population. One model day contains 100 ticks. It is not equivalent to a calibrated biological day.</p>
+<h2>3. Process overview and scheduling</h2>
+<p><a href="agendamento.html">Scheduling</a> records the exact system order and what is updated sequentially. Recorded interventions precede the next step. Rendering and interface speed do not change the biological step.</p>
+<h2>4. Design concepts</h2>
+<p><a href="conceitos.html">Concepts</a> describes emergence, adaptation, objectives, learning, prediction, sensing, interaction, stochasticity, collectives, observation and the adopted principles. The engine knows the habitat to calculate physics; agents are not granted that global knowledge.</p>
+<h2>5. Initialization</h2>
+<p><a href="inicializacao.html">Initialization</a> separates founding, established nest, teaching experiment and restoration. Missing profiles in legacy saves/usage retain the old contract; the current interface default is explicitly chosen.</p>
+<h2>6. Input data</h2>
+<p>The same <a href="inicializacao.html">input page</a> records seed, parameters, versioned profile, recipe and interventions. There are no real-weather queries each tick. Laboratory air references do not calibrate physiology or soil.</p>
+<h2>7. Submodels</h2>
+<p>The <a href="submodelos.html">submodel map</a> brings together core equations, coupling and limits. <a href="reacao-difusao.html">Reaction–diffusion</a> specifies the domain, discretization, boundaries, sources, order, precision and vectors needed for reimplementation without consulting the main solver.</p>
+<p><a href="replicacao.html">Replication and vectors</a> provides an independent reference based on cell input/output balances. It does not import production chemistry. Comparing two implementations written by the same project is internal verification, not external replication or scientific validation.</p>
+<h2>Delivery scope</h2>
+<p>The map describes all main components; the complete numerical specification in this delivery covers the surface field. Notes on the other submodels are not sufficient to reconstruct all of Viveiro without its code. Order, profiles and constants belong to the version: future changes must revise this ODD.</p>
+<p>Editable Portuguese sources are docs/odd.md and docs/odd/. English translations are in src/i18n/locales/en/docs. Vite generates pages and downloads from these files; do not edit dist.</p>
+<p>In 0.40.0, isolated experiments adopted a <a href="aritmetica.html">portable arithmetic policy</a>. The native contract described above remains in use for the terrarium and existing saves.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="index.txt" download="viveiro-en-modelo-index.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

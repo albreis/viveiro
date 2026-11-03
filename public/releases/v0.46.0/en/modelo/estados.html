@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entities, states and scales · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.46.0">
+<link rel="manifest" href="/releases/v0.46.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/estados.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="estados.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Entities, states and scales</h1>
+<p>Part 2 of the <a href="index.html">ODD</a>. Field names below refer to serializable state, not future classes proposed in an architecture.</p>
+<h2>Agents and brood</h2>
+<ul>
+<li>Adult: id/colonyId, kind, x/y/z position, angle/pitch, support normal, speed, energy, health, age, food load and social crop. Body and trajectory use model spatial units; energy/health are indices; age uses model days. There is no universal conversion to millimeters, joules or real days.</li>
+<li>Worker: caste, role, traits, thresholds, task, memories of visited entrances and edges, local route, contact/reversal, and soil/brood/waste loads. Caste and genes affect parameters; no central intelligence distributes routes.</li>
+<li>Genome/parentage and, when enabled, learning policy/trace, chemical signature, odor disguise and encounter state are individual.</li>
+<li>Brood: id, age, kind, position/node, carrier, genome/fertilization and optional development/cocoon records. Stage follows development state; carried brood use the carrier’s position in the relevant couplings.</li>
+<li>Alates, queen, male and workers follow different update branches. The queen is not a larger worker using the same foraging routine.</li>
+</ul>
+<h2>Colonies and habitat</h2>
+<ul>
+<li>Colony: agents, brood, food, colony state, reproductive resources, waste, founding, genetics, profile-dependent health/fertility/seasonality, counters, colonyId and parentColonyId. Up to four colonies share one habitat.</li>
+<li>Each colony has its own RNG and resources. Daughter colonies share terrain, vegetation, outside food, predators, climate, gases, fields and tick by reference. The same habitat is not updated once per daughter.</li>
+<li>Nest: nodes with x/y/z/r/type/colonyId, links, widths and revision. The implicit field and obstacles define support/passability; the rendered mesh is derived.</li>
+<li>Soil: removal, loads, deposits, aggregates, plugs, collapses and balances. One parcel represents aggregated material, not each real physical grain.</li>
+<li>Landscape/plants/patches/predators and ecology include water, biomass, health, available resources, pursuit memory, and demonstration aphids and mimicry.</li>
+</ul>
+<h2>Spatial fields and units</h2>
+<ul>
+<li>Pheromones: 40×26 surface X/Z values, spacing 0.5. Index i=z×40+x; this field has no Y axis. Quantity/concentration is abstract chemistry. With equal cells, conservation can be checked by summing values.</li>
+<li>NestOdors: quantities per node and reference odor channel, volumes and emission/evaporation balances. This is not the surface pheromone grid.</li>
+<li>Microclimate: 20×8×13 cells, depth 4.2. Water is a porous quantity in field units; water/capacity is 0–1 saturation, distinct from relative humidity. Temperature uses model-reference °C, without calibrated thermal properties.</li>
+<li>Gases: volume, oxygen and carbon per compartment, pressure/flow and balances. oxygen/volume and carbon/volume are fractions; the interface shows percentages. Quantities have not been measured in liters/moles, and pressure is not in pascals.</li>
+</ul>
+<h2>Time, space and extent</h2>
+<p>The surface geometric box occupies approximately 20×13 units, with Y vertical and soil below the procedural surface. Agent/intervention centers are constrained by BOUNDS: X±9.3 and Z±5.8. Radii, terrain and support clearances use the same abstract scale. A larger visual mesh does not increase model resolution.</p>
+<p>Tick is an integer; 100 ticks = 1 model day. Adult age increases by 0.01 per tick; brood development can be modulated by food, temperature and profile. There are local chemical/physical substeps and systems integrating only every 10 ticks. Interface acceleration executes more ticks; it does not replace 100 steps with one chemical step lasting 100 units.</p>
+<h2>Session and observations</h2>
+<p>A session stores scenario A/B, initial, interventions/replay, running, clock and a partial advance target. Snapshots are JSON data, without DOM or Three.js objects. WeakMap caches, neighborhoods and meshes are rebuilt and are not authoritative save state.</p>
+<p>Chart history retains 500 censuses, normally 25 ticks apart. The optional daily series retains 12,000 samples per scenario, with collection start and discarded counts. These are instantaneous closing observations, not daily averages or reconstructed data. Model version, seed, profile and intervention order are part of provenance.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="estados.txt" download="viveiro-en-modelo-estados.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

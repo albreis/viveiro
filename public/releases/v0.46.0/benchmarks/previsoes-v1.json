@@ -1,0 +1,993 @@
+{
+  "version": 1,
+  "modelVersion": "0.17.0",
+  "seeds": [
+    "EVAL-VIVEIRO-01",
+    "EVAL-VIVEIRO-02",
+    "EVAL-VIVEIRO-03"
+  ],
+  "origins": [
+    300,
+    600
+  ],
+  "horizons": [
+    1,
+    3,
+    7
+  ],
+  "runs": 6,
+  "startMode": "established",
+  "params": {
+    "humidity": 58,
+    "light": 72,
+    "randomness": 28,
+    "temperatureC": 24,
+    "reposeAngle": 36
+  },
+  "futureInterventions": [],
+  "notes": "Synthetic paired origins; same-seed origins are correlated. No biological calibration. Partial method sees only perfect adult census and previous counts.",
+  "generatedAt": "2026-11-01T15:13:33.347Z",
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "win32",
+    "elapsedMs": 518453.5393
+  },
+  "summary": [
+    {
+      "method": "complete",
+      "days": 1,
+      "n": 6,
+      "mae": 0.8333333333333334,
+      "rmse": 1.35400640077266,
+      "bias": 0.16666666666666666,
+      "coverage": 0.8333333333333334,
+      "width": 2.3333333333333335
+    },
+    {
+      "method": "counts",
+      "days": 1,
+      "n": 6,
+      "mae": 1.3333333333333333,
+      "rmse": 1.9148542155126762,
+      "bias": -1.3333333333333333,
+      "coverage": 1,
+      "width": 9.666666666666666
+    },
+    {
+      "method": "persistence",
+      "days": 1,
+      "n": 6,
+      "mae": 6.666666666666667,
+      "rmse": 7.505553499465135,
+      "bias": -6.666666666666667,
+      "coverage": 0,
+      "width": 0
+    },
+    {
+      "method": "complete",
+      "days": 3,
+      "n": 6,
+      "mae": 0.3333333333333333,
+      "rmse": 0.5773502691896257,
+      "bias": -0.3333333333333333,
+      "coverage": 1,
+      "width": 4.333333333333333
+    },
+    {
+      "method": "counts",
+      "days": 3,
+      "n": 6,
+      "mae": 6,
+      "rmse": 6.97614984548545,
+      "bias": 0,
+      "coverage": 0.5,
+      "width": 15.666666666666666
+    },
+    {
+      "method": "persistence",
+      "days": 3,
+      "n": 6,
+      "mae": 21.333333333333332,
+      "rmse": 21.55612828563299,
+      "bias": -21.333333333333332,
+      "coverage": 0,
+      "width": 0
+    },
+    {
+      "method": "complete",
+      "days": 7,
+      "n": 6,
+      "mae": 1.1666666666666667,
+      "rmse": 1.224744871391589,
+      "bias": 0.16666666666666666,
+      "coverage": 0.8333333333333334,
+      "width": 6.666666666666667
+    },
+    {
+      "method": "counts",
+      "days": 7,
+      "n": 6,
+      "mae": 20.666666666666668,
+      "rmse": 22.79619851349489,
+      "bias": 6.333333333333333,
+      "coverage": 0.16666666666666666,
+      "width": 24
+    },
+    {
+      "method": "persistence",
+      "days": 7,
+      "n": 6,
+      "mae": 35.5,
+      "rmse": 36.65378561622251,
+      "bias": -35.5,
+      "coverage": 0,
+      "width": 0
+    }
+  ],
+  "rows": [
+    {
+      "seed": "EVAL-VIVEIRO-01",
+      "originTick": 300,
+      "days": 1,
+      "truth": 19,
+      "current": 15,
+      "complete": {
+        "low": 18,
+        "high": 20,
+        "median": 19,
+        "runs": 6,
+        "days": 1,
+        "tick": 300,
+        "values": [
+          18,
+          18,
+          19,
+          19,
+          20,
+          20
+        ]
+      },
+      "counts": {
+        "low": 14,
+        "high": 22,
+        "median": 17,
+        "runs": 6,
+        "days": 1,
+        "tick": 300,
+        "values": [
+          14,
+          15,
+          15,
+          17,
+          18,
+          22
+        ]
+      },
+      "persistence": {
+        "median": 15,
+        "low": 15,
+        "high": 15
+      },
+      "fullActiveMs": 44946.555400000034,
+      "fullElapsedMs": 65832.9614,
+      "countActiveMs": 0.841900000028545,
+      "countElapsedMs": 70.19809999999416
+    },
+    {
+      "seed": "EVAL-VIVEIRO-01",
+      "originTick": 300,
+      "days": 3,
+      "truth": 32,
+      "current": 15,
+      "complete": {
+        "low": 30,
+        "high": 34,
+        "median": 32,
+        "runs": 6,
+        "days": 3,
+        "tick": 300,
+        "values": [
+          30,
+          30,
+          32,
+          32,
+          33,
+          34
+        ]
+      },
+      "counts": {
+        "low": 17,
+        "high": 32,
+        "median": 27,
+        "runs": 6,
+        "days": 3,
+        "tick": 300,
+        "values": [
+          17,
+          20,
+          24,
+          27,
+          31,
+          32
+        ]
+      },
+      "persistence": {
+        "median": 15,
+        "low": 15,
+        "high": 15
+      },
+      "fullActiveMs": 44946.555400000034,
+      "fullElapsedMs": 65832.9614,
+      "countActiveMs": 0.34729999997944105,
+      "countElapsedMs": 76.69019999999728
+    },
+    {
+      "seed": "EVAL-VIVEIRO-01",
+      "originTick": 300,
+      "days": 7,
+      "truth": 58,
+      "current": 15,
+      "complete": {
+        "low": 55,
+        "high": 61,
+        "median": 59,
+        "runs": 6,
+        "days": 7,
+        "tick": 300,
+        "values": [
+          55,
+          59,
+          59,
+          59,
+          60,
+          61
+        ]
+      },
+      "counts": {
+        "low": 39,
+        "high": 55,
+        "median": 46,
+        "runs": 6,
+        "days": 7,
+        "tick": 300,
+        "values": [
+          39,
+          40,
+          41,
+          46,
+          51,
+          55
+        ]
+      },
+      "persistence": {
+        "median": 15,
+        "low": 15,
+        "high": 15
+      },
+      "fullActiveMs": 44946.555400000034,
+      "fullElapsedMs": 65832.9614,
+      "countActiveMs": 0.41999999998370185,
+      "countElapsedMs": 78.42710000000079
+    },
+    {
+      "seed": "EVAL-VIVEIRO-01",
+      "originTick": 600,
+      "days": 1,
+      "truth": 39,
+      "current": 32,
+      "complete": {
+        "low": 41,
+        "high": 43,
+        "median": 42,
+        "runs": 6,
+        "days": 1,
+        "tick": 600,
+        "values": [
+          41,
+          42,
+          42,
+          42,
+          43,
+          43
+        ]
+      },
+      "counts": {
+        "low": 33,
+        "high": 42,
+        "median": 38,
+        "runs": 6,
+        "days": 1,
+        "tick": 600,
+        "values": [
+          33,
+          33,
+          37,
+          38,
+          40,
+          42
+        ]
+      },
+      "persistence": {
+        "median": 32,
+        "low": 32,
+        "high": 32
+      },
+      "fullActiveMs": 62962.92319999967,
+      "fullElapsedMs": 90413.9748,
+      "countActiveMs": 0.27250000002095476,
+      "countElapsedMs": 78.37110000001849
+    },
+    {
+      "seed": "EVAL-VIVEIRO-01",
+      "originTick": 600,
+      "days": 3,
+      "truth": 56,
+      "current": 32,
+      "complete": {
+        "low": 54,
+        "high": 58,
+        "median": 55,
+        "runs": 6,
+        "days": 3,
+        "tick": 600,
+        "values": [
+          54,
+          54,
+          55,
+          55,
+          56,
+          58
+        ]
+      },
+      "counts": {
+        "low": 48,
+        "high": 63,
+        "median": 57,
+        "runs": 6,
+        "days": 3,
+        "tick": 600,
+        "values": [
+          48,
+          51,
+          54,
+          57,
+          57,
+          63
+        ]
+      },
+      "persistence": {
+        "median": 32,
+        "low": 32,
+        "high": 32
+      },
+      "fullActiveMs": 62962.92319999967,
+      "fullElapsedMs": 90413.9748,
+      "countActiveMs": 0.47669999999925494,
+      "countElapsedMs": 62.79459999999381
+    },
+    {
+      "seed": "EVAL-VIVEIRO-01",
+      "originTick": 600,
+      "days": 7,
+      "truth": 61,
+      "current": 32,
+      "complete": {
+        "low": 61,
+        "high": 64,
+        "median": 62,
+        "runs": 6,
+        "days": 7,
+        "tick": 600,
+        "values": [
+          61,
+          61,
+          61,
+          62,
+          63,
+          64
+        ]
+      },
+      "counts": {
+        "low": 61,
+        "high": 87,
+        "median": 77,
+        "runs": 6,
+        "days": 7,
+        "tick": 600,
+        "values": [
+          61,
+          69,
+          72,
+          77,
+          81,
+          87
+        ]
+      },
+      "persistence": {
+        "median": 32,
+        "low": 32,
+        "high": 32
+      },
+      "fullActiveMs": 62962.92319999967,
+      "fullElapsedMs": 90413.9748,
+      "countActiveMs": 0.41409999993629754,
+      "countElapsedMs": 78.08209999999963
+    },
+    {
+      "seed": "EVAL-VIVEIRO-02",
+      "originTick": 300,
+      "days": 1,
+      "truth": 17,
+      "current": 15,
+      "complete": {
+        "low": 15,
+        "high": 17,
+        "median": 16,
+        "runs": 6,
+        "days": 1,
+        "tick": 300,
+        "values": [
+          15,
+          15,
+          15,
+          16,
+          17,
+          17
+        ]
+      },
+      "counts": {
+        "low": 12,
+        "high": 23,
+        "median": 17,
+        "runs": 6,
+        "days": 1,
+        "tick": 300,
+        "values": [
+          12,
+          14,
+          17,
+          17,
+          21,
+          23
+        ]
+      },
+      "persistence": {
+        "median": 15,
+        "low": 15,
+        "high": 15
+      },
+      "fullActiveMs": 42097.7356999999,
+      "fullElapsedMs": 62207.7812,
+      "countActiveMs": 0.4099999999452848,
+      "countElapsedMs": 78.15059999999357
+    },
+    {
+      "seed": "EVAL-VIVEIRO-02",
+      "originTick": 300,
+      "days": 3,
+      "truth": 34,
+      "current": 15,
+      "complete": {
+        "low": 29,
+        "high": 36,
+        "median": 34,
+        "runs": 6,
+        "days": 3,
+        "tick": 300,
+        "values": [
+          29,
+          31,
+          33,
+          34,
+          34,
+          36
+        ]
+      },
+      "counts": {
+        "low": 20,
+        "high": 31,
+        "median": 31,
+        "runs": 6,
+        "days": 3,
+        "tick": 300,
+        "values": [
+          20,
+          21,
+          24,
+          31,
+          31,
+          31
+        ]
+      },
+      "persistence": {
+        "median": 15,
+        "low": 15,
+        "high": 15
+      },
+      "fullActiveMs": 42097.7356999999,
+      "fullElapsedMs": 62207.7812,
+      "countActiveMs": 0.4419999999227002,
+      "countElapsedMs": 78.47939999998198
+    },
+    {
+      "seed": "EVAL-VIVEIRO-02",
+      "originTick": 300,
+      "days": 7,
+      "truth": 59,
+      "current": 15,
+      "complete": {
+        "low": 55,
+        "high": 61,
+        "median": 60,
+        "runs": 6,
+        "days": 7,
+        "tick": 300,
+        "values": [
+          55,
+          57,
+          59,
+          60,
+          60,
+          61
+        ]
+      },
+      "counts": {
+        "low": 23,
+        "high": 50,
+        "median": 41,
+        "runs": 6,
+        "days": 7,
+        "tick": 300,
+        "values": [
+          23,
+          24,
+          35,
+          41,
+          49,
+          50
+        ]
+      },
+      "persistence": {
+        "median": 15,
+        "low": 15,
+        "high": 15
+      },
+      "fullActiveMs": 42097.7356999999,
+      "fullElapsedMs": 62207.7812,
+      "countActiveMs": 0.8924999999871943,
+      "countElapsedMs": 71.80989999999292
+    },
+    {
+      "seed": "EVAL-VIVEIRO-02",
+      "originTick": 600,
+      "days": 1,
+      "truth": 44,
+      "current": 34,
+      "complete": {
+        "low": 43,
+        "high": 44,
+        "median": 43,
+        "runs": 6,
+        "days": 1,
+        "tick": 600,
+        "values": [
+          43,
+          43,
+          43,
+          43,
+          43,
+          44
+        ]
+      },
+      "counts": {
+        "low": 36,
+        "high": 51,
+        "median": 40,
+        "runs": 6,
+        "days": 1,
+        "tick": 600,
+        "values": [
+          36,
+          38,
+          38,
+          40,
+          45,
+          51
+        ]
+      },
+      "persistence": {
+        "median": 34,
+        "low": 34,
+        "high": 34
+      },
+      "fullActiveMs": 55387.47830000188,
+      "fullElapsedMs": 80190.95180000001,
+      "countActiveMs": 0.3341999999829568,
+      "countElapsedMs": 77.06130000000121
+    },
+    {
+      "seed": "EVAL-VIVEIRO-02",
+      "originTick": 600,
+      "days": 3,
+      "truth": 59,
+      "current": 34,
+      "complete": {
+        "low": 55,
+        "high": 59,
+        "median": 58,
+        "runs": 6,
+        "days": 3,
+        "tick": 600,
+        "values": [
+          55,
+          57,
+          58,
+          58,
+          59,
+          59
+        ]
+      },
+      "counts": {
+        "low": 52,
+        "high": 69,
+        "median": 65,
+        "runs": 6,
+        "days": 3,
+        "tick": 600,
+        "values": [
+          52,
+          54,
+          63,
+          65,
+          67,
+          69
+        ]
+      },
+      "persistence": {
+        "median": 34,
+        "low": 34,
+        "high": 34
+      },
+      "fullActiveMs": 55387.47830000188,
+      "fullElapsedMs": 80190.95180000001,
+      "countActiveMs": 0.29829999996582046,
+      "countElapsedMs": 68.3684999999823
+    },
+    {
+      "seed": "EVAL-VIVEIRO-02",
+      "originTick": 600,
+      "days": 7,
+      "truth": 69,
+      "current": 34,
+      "complete": {
+        "low": 63,
+        "high": 67,
+        "median": 67,
+        "runs": 6,
+        "days": 7,
+        "tick": 600,
+        "values": [
+          63,
+          64,
+          64,
+          67,
+          67,
+          67
+        ]
+      },
+      "counts": {
+        "low": 87,
+        "high": 108,
+        "median": 94,
+        "runs": 6,
+        "days": 7,
+        "tick": 600,
+        "values": [
+          87,
+          90,
+          92,
+          94,
+          95,
+          108
+        ]
+      },
+      "persistence": {
+        "median": 34,
+        "low": 34,
+        "high": 34
+      },
+      "fullActiveMs": 55387.47830000188,
+      "fullElapsedMs": 80190.95180000001,
+      "countActiveMs": 0.26569999993080273,
+      "countElapsedMs": 78.05270000000019
+    },
+    {
+      "seed": "EVAL-VIVEIRO-03",
+      "originTick": 300,
+      "days": 1,
+      "truth": 18,
+      "current": 13,
+      "complete": {
+        "low": 15,
+        "high": 18,
+        "median": 18,
+        "runs": 6,
+        "days": 1,
+        "tick": 300,
+        "values": [
+          15,
+          16,
+          17,
+          18,
+          18,
+          18
+        ]
+      },
+      "counts": {
+        "low": 13,
+        "high": 22,
+        "median": 18,
+        "runs": 6,
+        "days": 1,
+        "tick": 300,
+        "values": [
+          13,
+          14,
+          14,
+          18,
+          18,
+          22
+        ]
+      },
+      "persistence": {
+        "median": 13,
+        "low": 13,
+        "high": 13
+      },
+      "fullActiveMs": 42315.555699999386,
+      "fullElapsedMs": 61644.7451,
+      "countActiveMs": 0.27419999992707744,
+      "countElapsedMs": 81.9368999999715
+    },
+    {
+      "seed": "EVAL-VIVEIRO-03",
+      "originTick": 300,
+      "days": 3,
+      "truth": 37,
+      "current": 13,
+      "complete": {
+        "low": 35,
+        "high": 39,
+        "median": 37,
+        "runs": 6,
+        "days": 3,
+        "tick": 300,
+        "values": [
+          35,
+          35,
+          35,
+          37,
+          37,
+          39
+        ]
+      },
+      "counts": {
+        "low": 13,
+        "high": 36,
+        "median": 27,
+        "runs": 6,
+        "days": 3,
+        "tick": 300,
+        "values": [
+          13,
+          21,
+          25,
+          27,
+          32,
+          36
+        ]
+      },
+      "persistence": {
+        "median": 13,
+        "low": 13,
+        "high": 13
+      },
+      "fullActiveMs": 42315.555699999386,
+      "fullElapsedMs": 61644.7451,
+      "countActiveMs": 1.0150000000139698,
+      "countElapsedMs": 73.16320000000997
+    },
+    {
+      "seed": "EVAL-VIVEIRO-03",
+      "originTick": 300,
+      "days": 7,
+      "truth": 56,
+      "current": 13,
+      "complete": {
+        "low": 52,
+        "high": 64,
+        "median": 57,
+        "runs": 6,
+        "days": 7,
+        "tick": 300,
+        "values": [
+          52,
+          55,
+          55,
+          57,
+          57,
+          64
+        ]
+      },
+      "counts": {
+        "low": 29,
+        "high": 55,
+        "median": 43,
+        "runs": 6,
+        "days": 7,
+        "tick": 300,
+        "values": [
+          29,
+          41,
+          42,
+          43,
+          49,
+          55
+        ]
+      },
+      "persistence": {
+        "median": 13,
+        "low": 13,
+        "high": 13
+      },
+      "fullActiveMs": 42315.555699999386,
+      "fullElapsedMs": 61644.7451,
+      "countActiveMs": 0.4328000000678003,
+      "countElapsedMs": 73.03009999997448
+    },
+    {
+      "seed": "EVAL-VIVEIRO-03",
+      "originTick": 600,
+      "days": 1,
+      "truth": 49,
+      "current": 37,
+      "complete": {
+        "low": 46,
+        "high": 50,
+        "median": 49,
+        "runs": 6,
+        "days": 1,
+        "tick": 600,
+        "values": [
+          46,
+          47,
+          48,
+          49,
+          50,
+          50
+        ]
+      },
+      "counts": {
+        "low": 44,
+        "high": 50,
+        "median": 48,
+        "runs": 6,
+        "days": 1,
+        "tick": 600,
+        "values": [
+          44,
+          46,
+          47,
+          48,
+          48,
+          50
+        ]
+      },
+      "persistence": {
+        "median": 37,
+        "low": 37,
+        "high": 37
+      },
+      "fullActiveMs": 58795.27970000089,
+      "fullElapsedMs": 84285.53170000005,
+      "countActiveMs": 0.18519999994896352,
+      "countElapsedMs": 54.25519999995595
+    },
+    {
+      "seed": "EVAL-VIVEIRO-03",
+      "originTick": 600,
+      "days": 3,
+      "truth": 56,
+      "current": 37,
+      "complete": {
+        "low": 54,
+        "high": 57,
+        "median": 56,
+        "runs": 6,
+        "days": 3,
+        "tick": 600,
+        "values": [
+          54,
+          55,
+          55,
+          56,
+          57,
+          57
+        ]
+      },
+      "counts": {
+        "low": 59,
+        "high": 72,
+        "median": 67,
+        "runs": 6,
+        "days": 3,
+        "tick": 600,
+        "values": [
+          59,
+          63,
+          66,
+          67,
+          70,
+          72
+        ]
+      },
+      "persistence": {
+        "median": 37,
+        "low": 37,
+        "high": 37
+      },
+      "fullActiveMs": 58795.27970000089,
+      "fullElapsedMs": 84285.53170000005,
+      "countActiveMs": 0.4276999999419786,
+      "countElapsedMs": 77.54430000000866
+    },
+    {
+      "seed": "EVAL-VIVEIRO-03",
+      "originTick": 600,
+      "days": 7,
+      "truth": 56,
+      "current": 37,
+      "complete": {
+        "low": 50,
+        "high": 59,
+        "median": 55,
+        "runs": 6,
+        "days": 7,
+        "tick": 600,
+        "values": [
+          50,
+          54,
+          54,
+          55,
+          57,
+          59
+        ]
+      },
+      "counts": {
+        "low": 86,
+        "high": 114,
+        "median": 96,
+        "runs": 6,
+        "days": 7,
+        "tick": 600,
+        "values": [
+          86,
+          91,
+          95,
+          96,
+          107,
+          114
+        ]
+      },
+      "persistence": {
+        "median": 37,
+        "low": 37,
+        "high": 37
+      },
+      "fullActiveMs": 58795.27970000089,
+      "fullElapsedMs": 84285.53170000005,
+      "countActiveMs": 0.24150000006193295,
+      "countElapsedMs": 77.36349999997765
+    }
+  ]
+}

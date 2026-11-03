@@ -1,0 +1,57 @@
+{
+  "schema": "viveiro-run-v1",
+  "modelVersion": "0.42.0",
+  "calibrated": false,
+  "arithmetic": "stdlib-f64-v1",
+  "plan": {
+    "schema": "viveiro-experiment-v1",
+    "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+    "days": 10,
+    "startMode": "established",
+    "biologicalProfile": {
+      "schema": 1,
+      "id": "generic-demo",
+      "version": 5
+    },
+    "parameters": {
+      "humidity": 71.66666666666666,
+      "light": 68.33333333333333,
+      "randomness": 43.33333333333333,
+      "reposeAngle": 40,
+      "temperatureC": 18,
+      "windX": 0.5,
+      "windZ": 1.5,
+      "photoperiodHours": 10.666666666666666,
+      "initialFood": 19.333333333333332,
+      "initialRainPulse": 0,
+      "surfaceDiffusionScale": 1.1666666666666665,
+      "surfaceEvaporationScale": 1.5
+    }
+  },
+  "clock": {
+    "ticksPerDay": 100,
+    "startTick": 0,
+    "endTick": 1000
+  },
+  "collection": {
+    "kind": "observed endpoints",
+    "intervalTicks": 100,
+    "includesInitialState": true,
+    "scenario": "A",
+    "discardedDays": 0
+  },
+  "csv": {
+    "file": "dados.csv",
+    "encoding": "UTF-8 with BOM",
+    "delimiter": ",",
+    "lineEnding": "CRLF",
+    "bytes": 2987,
+    "sha256": "4b08b4b221e8f3c7fc6e169253272bb7f6b60663d086eaf4a842eee1da1e8149"
+  },
+  "finalRootRng": 1595870727,
+  "limitations": [
+    "Model units; not calibrated for a species.",
+    "No renderer, saved terrarium, real weather or wall-clock input.",
+    "Reproduce with the same model version and arithmetic policy; native and portable runs are distinct numerical contracts."
+  ]
+}

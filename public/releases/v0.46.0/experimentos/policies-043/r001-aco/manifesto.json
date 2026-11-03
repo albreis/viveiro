@@ -1,0 +1,52 @@
+{
+  "schema": "viveiro-run-v1",
+  "modelVersion": "0.43.0",
+  "calibrated": false,
+  "arithmetic": "stdlib-f64-v1",
+  "plan": {
+    "schema": "viveiro-experiment-v1",
+    "seed": "POLICY-ba4ab9ecba9ff4cab2067d01809d6fbe052422962b72d5ae2eca027fc6f232c3",
+    "days": 5,
+    "startMode": "established",
+    "biologicalProfile": {
+      "schema": 1,
+      "id": "generic-demo",
+      "version": 1
+    },
+    "parameters": {
+      "humidity": 58,
+      "light": 72,
+      "randomness": 28,
+      "reposeAngle": 36,
+      "temperatureC": 24,
+      "windX": 0,
+      "windZ": 0
+    }
+  },
+  "clock": {
+    "ticksPerDay": 100,
+    "startTick": 0,
+    "endTick": 500
+  },
+  "collection": {
+    "kind": "observed endpoints",
+    "intervalTicks": 100,
+    "includesInitialState": true,
+    "scenario": "A",
+    "discardedDays": 0
+  },
+  "csv": {
+    "file": "dados.csv",
+    "encoding": "UTF-8 with BOM",
+    "delimiter": ",",
+    "lineEnding": "CRLF",
+    "bytes": 1759,
+    "sha256": "44f12c0146dbe59075fbe7fd44f0ec729039659f38130ec790933e20664ac2f3"
+  },
+  "finalRootRng": 2422157295,
+  "limitations": [
+    "Model units; not calibrated for a species.",
+    "No renderer, saved terrarium, real weather or wall-clock input.",
+    "Reproduce with the same model version and arithmetic policy; native and portable runs are distinct numerical contracts."
+  ]
+}

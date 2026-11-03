@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submodel map · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.46.0">
+<link rel="manifest" href="/releases/v0.46.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/submodelos.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="submodelos.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Submodel map</h1>
+<p>Part 7 of the <a href="index.html">ODD</a>. This page organizes coupling and core equations; the complete numerical specification in this delivery covers the surface field. Other components retain details in the code and technical source notes.</p>
+<h2>Chemistry, decisions and memory</h2>
+<p><a href="reacao-difusao.html">Surface reaction–diffusion</a>: conservative diffusion, upwind advection and exponential decay on an X/Z grid. Air humidity modulates D/lambda; wind transports the field. Deposits are capped; transport has no artificial saturation. The underground graph uses another solver and reference channels.</p>
+<p>Graph odor: quantities per node; fluxes proportional to quantity/volume differences. Chamber-type sources are replenished to their reference; evaporation and emission have counters. These marks are imposed environmental features.</p>
+<p>ACO: weight proportional to tau^alpha × eta^beta, a 1e-6 signal floor, logarithmic normalization and uniform epsilon mixing. Function defaults: alpha 1.4/beta 2/ epsilon 0.05; callers can modulate values. The function samples rather than always choosing the maximum. Stimulus/threshold uses S²/(S²+theta²), with numerical limits and age, caste and activity factors; tasks are reconsidered at intervals. Routing uses adjacent sensing and bounded visit memory.</p>
+<h2>Body, terrain and excavation</h2>
+<p>Movement combines desire, social repulsion, antennal contact, load priority, reversal and recovery. Support is queried from the implicit field and obstacles; a route does not authorize teleportation. The camera presents that body.</p>
+<p>Excavation removes local material, carries and deposits it; widening/branching and repair depend on tasks. Aggregates represent soil parcels. Repose, moisture, composition, compaction, span and damage modulate sliding/support through heuristics. This is neither DEM of all grains nor calibrated geotechnical analysis.</p>
+<h2>Water, heat and gases</h2>
+<p>Surrounding porous water exchanges conservatively between cells through saturation gradients and a reduced gravitational term. Flow is bounded by donor/capacity; rain/pond/evaporation/plants enter the balances. Heat diffuses and exchanges at boundaries; this is not a full Richards, vapor, ice or thermodynamics solver.</p>
+<p>Gases use a volume network and flow Q_ab=G_ab×(p_a−p_b+H_ab). Conductance scales with radius^4/length and opening; entrance pressure depends on wind. Diffusion/ advection and boundaries transport quantities; respiration consumes O2 and produces CO2 at an illustrative ratio of 0.8. New cells record geometric exchange without counting it as ventilation. A bottleneck affects the next solver update.</p>
+<h2>Collective life and reproduction</h2>
+<p>Nutrition transfers food from finite sources, reserves and crops; contacts share rather than clone resources. Brood/waste have a carrier and destination. Chamber stocks, spoilage and transport depend on profile.</p>
+<p>Founding: flight, encounter, wing shedding, shelter selection/excavation, plug and nanitics. Claustral and semiclaustral budgets differ. Maternal reserves, thermal development, diapause/cocoon memory, spermatheca and mortality risk are optional/ versioned; do not indiscriminately add rules from old profiles. Genes/parentage and mutations affect phenotypes with demonstration limits and costs.</p>
+<h2>Ecology, learning and observer</h2>
+<p>Plants respond to water/temperature/light; materials have moisture/decomposition. Predators use bounded movement and pursuit. Aphids/honeydew, protection, mimetic caterpillars and odor/territory relationships use local exploratory rules. A complete food web or realistic taxonomic diversity is not guaranteed.</p>
+<p>Optional RL has project-defined rewards and comparisons with baselines. Forecasts copy the world or extrapolate counts; they never change the observed past. CSVs store actual tick readings, not values from simulated futures.</p>
+<h2>Provenance and limits</h2>
+<p>Demonstration parameters, reference experimental conditions and unimplemented proposals are distinct catalog categories. Using a known equation does not automatically transfer its parameters or empirical validation. Documentation must change when formulas, boundaries, ordering or profiles change.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="submodelos.txt" download="viveiro-en-modelo-submodelos.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

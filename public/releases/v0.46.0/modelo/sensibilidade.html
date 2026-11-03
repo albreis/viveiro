@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sensibilidade Morris · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.46.0">
+<link rel="manifest" href="/releases/v0.46.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="sensibilidade.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/sensibilidade.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Sensibilidade do modelo: Morris</h1>
+<p>Versão 0.42.0; 4 trajetórias, 2 réplicas pareadas, 10 dias, 12 entradas e 104 execuções.</p>
+<p>Ranking por população adulta final (µ*). Efeitos por unidade normalizada da faixa, não por unidade física. Valores maiores dependem do horizonte, perfil e faixas escolhidos. Empates não indicam uma ordem causal distinta.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela de dados"><table><thead><tr><th scope="col">Ordem</th><th scope="col">Parâmetro</th><th scope="col">µ*</th><th scope="col">sigma</th></tr></thead><tbody><tr><td>1</td><td>temperatureC</td><td>29.0625</td><td>34.0645</td></tr><tr><td>2</td><td>initialFood</td><td>9.1875</td><td>10.7711</td></tr><tr><td>3</td><td>light</td><td>2.0625</td><td>2.4780</td></tr><tr><td>4</td><td>windZ</td><td>0.7500</td><td>1.5000</td></tr><tr><td>5</td><td>humidity</td><td>0.3750</td><td>0.7500</td></tr><tr><td>6</td><td>initialRainPulse</td><td>0.0000</td><td>0.0000</td></tr><tr><td>7</td><td>photoperiodHours</td><td>0.0000</td><td>0.0000</td></tr><tr><td>8</td><td>randomness</td><td>0.0000</td><td>0.0000</td></tr><tr><td>9</td><td>reposeAngle</td><td>0.0000</td><td>0.0000</td></tr><tr><td>10</td><td>surfaceDiffusionScale</td><td>0.0000</td><td>0.0000</td></tr></tbody></table></div>
+<p>Perfil generic-demo@5, ninho estabelecido. A janela de triagem é uma escolha exploratória dentro dos limites do catálogo, não uma faixa de confiança biológica. Todas as entradas e faixas são hipóteses/aproximações do modelo; não incertezas calibradas. Sigma combina não linearidade/interações e ruído residual. Quatro trajetórias não dão precisão de calibração; zeros podem significar mecanismo inativo nesse cenário.</p>
+<p>Conservamos entradas, respostas de cada réplica, CSVs/manifestos de cada World e índices de todos os parâmetros, inclusive os fora do top 10. Réplicas são promediadas por ponto antes de calcular cada efeito elementar. Dados ausentes permanecem ausentes.</p>
+<h2>Interpretação dos dez primeiros</h2>
+<p>O top 10 é uma ordenação de triagem das 12 entradas, não a descoberta de dez efeitos não nulos. Nesta execução, apenas cinco entradas alteraram a população final. Empates em zero são ordenados pelo identificador, sem prioridade científica. P3.2 deve também considerar outras métricas, horizontes e dados reais antes de escolher ajustes.</p>
+<h2>Proveniência das entradas</h2>
+<ul>
+<li>humidity: %; faixa [45, 85]; approximation; src/modules/simulation/environment-step.js; microclimate/boundaries.ts.</li>
+<li>light: %; faixa [35, 85]; approximation; src/modules/landscape/dynamics.ts.</li>
+<li>randomness: %; faixa [10, 60]; hypothesis; src/modules/simulation/worker-step.js.</li>
+<li>reposeAngle: graus; faixa [20, 50]; approximation; src/modules/granular/update.ts.</li>
+<li>temperatureC: °C; faixa [18, 30]; approximation; src/modules/microclimate/boundaries.ts.</li>
+<li>windX: u. do modelo; faixa [-1.5, 1.5]; approximation; src/modules/simulation/environment-step.js.</li>
+<li>windZ: u. do modelo; faixa [-1.5, 1.5]; approximation; src/modules/simulation/environment-step.js.</li>
+<li>photoperiodHours: h/dia do modelo; faixa [8, 16]; hypothesis; src/modules/seasons/update.ts.</li>
+<li>initialFood: u. de alimento; faixa [10, 24]; hypothesis; src/modules/experiments/initial-inputs.ts.</li>
+<li>initialRainPulse: 0–1 relativo; faixa [0, 0.4]; hypothesis; src/modules/experiments/initial-inputs.ts; landscape/dynamics.ts.</li>
+<li>surfaceDiffusionScale: multiplicador de D; faixa [0.5, 1.5]; approximation; src/modules/simulation/environment-step.js; chemistry/reaction-diffusion.ts.</li>
+<li>surfaceEvaporationScale: multiplicador de lambda; faixa [0.5, 1.5]; approximation; src/modules/simulation/environment-step.js; chemistry/reaction-diffusion.ts.</li>
+</ul>
+<h2>Método e reprodução</h2>
+<p>EE = (Y_depois − Y_antes)/(x_depois − x_antes), com x normalizado em [0,1]. µ é a média dos efeitos, µ* a média dos módulos e sigma o desvio amostral (n−1). Cada entrada tem quatro efeitos, após promediar as duas réplicas pareadas por ponto.</p>
+<p>Vanilla Morris, grid par, passo p/[2(p-1)], uma entrada por passo. Seeds comuns entre pontos de uma trajetória/réplica; outras trajetórias/réplicas recebem outras seeds. Não há otimização Campolongo ou bootstrap de confiança nesta implementação.</p>
+<p>Referências primárias: <a href="https://doi.org/10.1080/00401706.1991.10484804">Morris 1991</a>, <a href="https://salib.readthedocs.io/en/stable/_modules/SALib/sample/morris/morris.html">SALib amostragem</a> e <a href="https://salib.readthedocs.io/en/stable/_modules/SALib/analyze/morris.html">SALib análise</a>. A implementação do Viveiro usa seu próprio RNG de desenho; não promete amostras iguais às do NumPy.</p>
+<p><code>npm run sensitivity -- --out nova-pasta --jobs 4</code> reproduz o protocolo padrão. <code>--resume</code> verifica os arquivos existentes e a identidade da fonte antes de reutilizá-los. Mesmo modelo, versão, fonte, plano e seeds são necessários.</p>
+<p>Identidade de desenho: 953d4559c329bf56385f9230dc69712560baf1035a187be368d6cde10de44d23. Fonte normalizada: 43ddce7466fe4b4bd4459795ec9b75f9ab23ba75f17310eb2a5912021a62c156.</p>
+<h2>Dados brutos deste ensaio</h2>
+<p><a href="../experimentos/morris-042/desenho.json">Desenho e planos</a>, <a href="../experimentos/morris-042/entradas.csv">entradas</a>, <a href="../experimentos/morris-042/respostas.csv">respostas individuais</a>, <a href="../experimentos/morris-042/indices.csv">índices completos</a>, <a href="../experimentos/morris-042/resultados.json">efeitos elementares</a> e <a href="../experimentos/morris-042/arquivos.json">arquivos individuais com hashes</a>. Cada execução tem CSV e manifesto acessíveis na mesma pasta pelos nomes do índice.</p>
+<p>Os arquivos foram gerados na fonte identificada acima. Edições futuras da fonte devem usar outro diretório, preservando este ensaio. O primeiro ensaio com faixas amplas foi mantido localmente; mostrou apenas efeito térmico nessa métrica. A janela acima foi escolhida para investigar esse comportamento, sem seleção por dados biológicos externos.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="sensibilidade.txt" download="viveiro-pt-BR-modelo-sensibilidade.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor e perfis de parâmetros · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.46.0">
+<link rel="manifest" href="/releases/v0.46.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="perfis.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/perfis.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Perfis de parâmetros versionados</h1>
+<p>O editor do laboratório de experimentos mostra as 12 entradas do catálogo v1 com unidade, faixa permitida, fonte do código e classificação como hipótese ou aproximação. Esses limites são regras do protótipo, não intervalos de confiança calibrados por espécie.</p>
+<h2>Criar e repetir</h2>
+<p>Abra <strong>Experimentos</strong>, depois <strong>Editar e guardar um perfil de parâmetros</strong>. Informe identificador, nome e versão; escolha uma revisão biológica existente e ajuste as entradas. As cinco entradas opcionais podem ficar desmarcadas: nesse caso, conservam o comportamento original do modelo.</p>
+<p><strong>Aplicar ao experimento</strong> muda os parâmetros e o perfil biológico do plano isolado. Seed, duração, modo inicial e política de decisão permanecem os do plano. Nenhum save do terrário 3D ou registro do IndexedDB é alterado. <strong>Usar na varredura</strong> altera somente a base da varredura; os valores do eixo continuam definidos na configuração dela.</p>
+<p>Exporte o perfil JSON e guarde também a seed, a configuração executada, a versão do Viveiro e a política aritmética do manifesto. Importe o mesmo perfil no outro navegador, aplique ao experimento com a mesma seed e rode. O arquivo do perfil não é, sozinho, um snapshot do formigueiro nem um registro de todos os fatores de uma execução.</p>
+<h2>Versões imutáveis e armazenamento</h2>
+<p>O JSON usa <code>viveiro-parameter-profile-v1</code>, <code>catalogVersion: 1</code>, identificador, versão positiva, nome, referência biológica explícita e parâmetros canônicos. Na biblioteca local, um mesmo <code>id@version</code> só pode ser reutilizado com o mesmo conteúdo. Para guardar alterações, aumente a versão ou use outro identificador. Importações que conflitam com uma versão existente são recusadas; nada é sobrescrito.</p>
+<p>A biblioteca usa a chave independente <code>viveiro.parameter-profiles.v1</code> do localStorage, com até 100 versões e 256KiB. O importador aceita arquivos de até 64KiB. Erros de quota, corrupção ou formato são visíveis e preservam os dados anteriores. A biblioteca não é sincronizada pela rede: o arquivo exportado é a forma de transferência entre origens e navegadores. Não se migram ou apagam saves existentes.</p>
+<h2>Proveniência e variações</h2>
+<p>O plano e o manifesto guardam o perfil <strong>de origem</strong> completo em <code>parameterProfile</code>, além dos parâmetros e perfil biológico <strong>efetivamente executados</strong>. Essa distinção permite que uma varredura registre de qual perfil partiu e, ao mesmo tempo, execute valores diferentes no eixo escolhido. Editar o JSON do plano também pode produzir variações: os valores executados são os de <code>parameters</code>, e não os do perfil de origem.</p>
+<p>Aplicar um perfil pelo editor copia seus valores integralmente, incluindo a presença ou ausência das entradas opcionais. Não existe preenchimento invisível das cinco opcionais no arquivo exportado. Reimportar e aplicar a mesma configuração, versão do modelo e seed conserva a execução; importar um perfil não promete paridade entre versões diferentes do simulador.</p>
+<p>O editor cobre o catálogo de entradas do experimento, não todos os coeficientes internos da física e biologia. Os perfis biológicos publicados são referências imutáveis; este editor não cria uma espécie calibrada nem substitui os dados e revisões de P3.</p>
+<h2>Evidência de reprodução</h2>
+<p>O perfil qa-perfis-44@1 foi exportado, alterado no editor e reimportado no navegador. Com a mesma seed PROFILE-BROWSER-44 e três dias, CSV e manifesto foram idênticos byte a byte na primeira execução, na reimportação, na CLI e no bundle compilado. O ensaio também recusou conteúdo diferente na versão guardada e conferiu a aplicação à base da varredura.</p>
+<p><a href="../experimentos/profile-044/profile.json">Perfil exportado</a>, <a href="../experimentos/profile-044/plan.json">plano executado</a> e <a href="../experimentos/profile-044/arquivos.json">arquivos brutos e hashes</a>. Isso verifica os cenários ensaiados, não calibração biológica ou compatibilidade entre versões diferentes do modelo.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="perfis.txt" download="viveiro-pt-BR-modelo-perfis.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design concepts · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.46.0">
+<link rel="manifest" href="/releases/v0.46.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/conceitos.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="conceitos.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Design concepts</h1>
+<p>Part 4 of the <a href="index.html">ODD</a>. The concepts below describe concrete mechanisms, without assigning human intent to agents or scientific validation to analogies.</p>
+<h2>Principles, emergence and adaptation</h2>
+<p>Principles: decisions through limited sensing, probabilistic rules, finite resources and explicit balances. Numerical conservation does not imply realistic chemistry, geotechnics or physiology. The scenario combines demonstration traits.</p>
+<p>Trails, congestion, task allocation, load traffic and population outcomes emerge. Roles, castes, odor sources associated with chamber types, reward functions, limits and physiological rules are imposed by the model; they do not all emerge from nothing or derive from data.</p>
+<p>Adaptation: task selection responds to local stimuli and individual thresholds; exit choice weights signals, heuristics and exploration. Routes can be reconsidered, and bottlenecks can stimulate widening/recovery. Site/chamber selection has costs and memories when enabled by the profile.</p>
+<h2>Objectives, learning and prediction</h2>
+<p>Implemented objectives include collecting/delivering, feeding/caring, maintaining shelter, defending/fleeing and reproducing with costs. There is no global maximization function consulted by every ant, or ant planning of future population.</p>
+<p>Learning: ACO and local rules are the default. A small RL policy can be trained on graphs and optionally applied, with individual traces/updates. Rewards and baselines are experimental choices; training on synthetic geometries does not demonstrate biological generalization to the terrarium.</p>
+<p>Forecasting is an observer tool; agents cannot access its results. Full-state replicas and count extrapolation are different methods. Exploratory intervals and errors on synthetic continuations are not empirical coverage of a natural colony.</p>
+<h2>Sensing and interaction</h2>
+<p>Adults have limited ranges for food, danger, chemistry and contacts. In surface foraging, food is sought within 2.3 units and three pheromone directions are sampled at 0.7. These are demonstration ranges, not real vision.</p>
+<p>The engine maintains the full graph for physics and fields; junction policies use adjacent exits, nearby odor and memory of up to 64 traversed edges. Knowing a visited entrance is not knowing the entire map. nestPath exists for tools/tests, not as the default worker’s oracle.</p>
+<p>Contact, trophallaxis, carrying and chemical encounters require local conditions. Recognition through signature distance can generate intimidation, flight or conflict; camouflage and mimicry are demonstration hypotheses. Predators, plants and symbionts also interact through their own rules, not through an LLM.</p>
+<h2>Stochasticity and collectives</h2>
+<p>A seed initializes pseudorandom states. Each colony’s RNG call sequence is part of the trajectory; landscape, traits and some fields use derived seeds. There is no cryptographic randomness or external noise per frame.</p>
+<p>Direction/task choices, reproduction and hazards use conditional draws. Genes and differences in activity/boldness/exploration generate heterogeneity. Mutation and selection in the model do not demonstrate calibrated evolution of a species.</p>
+<p>The colony groups parentage, resources and odor. Daughters have their own states in a common habitat. No central message tells every worker where to go; the engine coordinates sharing, limits, physics and recording.</p>
+<h2>Observation</h2>
+<p>Counts/journal/CSV are model outputs; field panels show defined samples or ranges, not real sensor readings. A first-person camera changes presentation. The person can intervene and compare A/B. The choice of information available for forecasting belongs to the experiment and must be recorded along with version, seed, profile and interventions.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="conceitos.txt" download="viveiro-en-modelo-conceitos.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>
