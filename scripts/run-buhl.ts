@@ -6,7 +6,10 @@ import {
   runDigging,
   type DiggingRun,
 } from "../src/modules/benchmarks/digging-run.ts";
-import { compareWithBuhl } from "../src/modules/benchmarks/digging-compare.ts";
+import {
+  bySource,
+  compareWithBuhl,
+} from "../src/modules/benchmarks/digging-compare.ts";
 import { buhlArgs } from "./lib/buhl-args.ts";
 import { DEFAULT_STIGMERGY } from "../src/modules/soil/stigmergy.ts";
 import { TICKS_PER_DAY } from "../src/modules/simulation/constants.js";
@@ -25,7 +28,7 @@ Saída: serie.csv e comparacao.json numa pasta nova.
 
 function csv(runs: DiggingRun[]) {
   const head =
-    "semente,operarias_iniciais,tick,dia_modelo,volume_removido_u3,operarias,frentes_ativas,nos_do_ninho";
+    "semente,operarias_iniciais,tick,dia_modelo,volume_removido_u3,volume_transito_u3,operarias,frentes_ativas,nos_do_ninho";
   const rows = runs.flatMap((r) =>
     r.samples.map((s) =>
       [
@@ -34,6 +37,7 @@ function csv(runs: DiggingRun[]) {
         s.tick,
         s.tick / TICKS_PER_DAY,
         s.removed,
+        s.traffic,
         s.workers,
         s.activeProjects,
         s.nestNodes,
@@ -75,6 +79,10 @@ else
         );
       }
     const comparison = compareWithBuhl(runs);
+    const sources = {
+      frentes: compareWithBuhl(bySource(runs, "frentes")),
+      transito: compareWithBuhl(bySource(runs, "transito")),
+    };
     mkdirSync(output);
     writeFileSync(resolve(output, "serie.csv"), csv(runs), { flag: "wx" });
     writeFileSync(
@@ -88,6 +96,7 @@ else
           stigmergy:
             options.mode === "estigmergia" ? DEFAULT_STIGMERGY : undefined,
           ...comparison,
+          porOrigem: sources,
         },
         null,
         2,
@@ -97,6 +106,16 @@ else
     for (const c of comparison.criteria)
       process.stdout.write(
         `${c.passed ? "OK  " : "FALHA"} ${c.id}: modelo ${c.model} | referência ${c.reference}\n`,
+      );
+    for (const [name, c] of Object.entries(sources))
+      process.stdout.write(
+        `Só ${name === "frentes" ? "frentes" : "trânsito"}: volume ${c.groups
+          .map((g) => g.workers + "=" + g.meanFinal.toFixed(2))
+          .join(" ")} | ` +
+          c.criteria
+            .map((k) => (k.passed ? "OK " : "FALHA ") + k.id + " " + k.model)
+            .join(" | ") +
+          "\n",
       );
     process.stdout.write(
       (comparison.reproduced

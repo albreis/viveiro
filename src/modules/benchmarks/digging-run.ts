@@ -30,6 +30,12 @@ export interface DiggingSample {
   tick: number;
   /** Cumulative soil removed since the start, in model volume units. */
   removed: number;
+  /**
+   * Part of `removed` that came from widening crowded links
+   * (navigation/contact.ts) rather than from digging fronts. Measured only;
+   * the rules are unchanged.
+   */
+  traffic: number;
   workers: number;
   activeProjects: number;
   nestNodes: number;
@@ -130,10 +136,11 @@ function placeWorker(
   return false;
 }
 
-function sample(w: LessonWorld, start: number): DiggingSample {
+function sample(w: LessonWorld, start: number, traffic: number): DiggingSample {
   return {
     tick: w.tick,
     removed: w.soil.removed - start,
+    traffic,
     workers: w.ants.filter((a) => a.kind === "worker").length,
     activeProjects: w.soil.projects.filter((p) => !p.completed).length,
     nestNodes: w.nest.nodes.length,
@@ -153,14 +160,24 @@ export function runDigging(options: DiggingRunOptions): DiggingRun {
     options.setup,
   ) as LessonWorld & {
     step(): void;
+    recordSoilRemoval(ant: unknown, mass: number): void;
+  };
+  // Congestion widening is the only caller of recordSoilRemoval; a counting
+  // wrapper on this instance attributes its share without changing behaviour.
+  let traffic = 0;
+  const record = w.recordSoilRemoval.bind(w);
+  w.recordSoilRemoval = (ant, mass) => {
+    const before = w.soil.removed;
+    record(ant, mass);
+    traffic += w.soil.removed - before;
   };
   const start = w.soil.removed,
     total = options.days * TICKS_PER_DAY,
-    samples = [sample(w, start)];
+    samples = [sample(w, start, traffic)];
   while (w.tick < total) {
     w.step();
     if (w.tick % every === 0 || w.tick === total)
-      samples.push(sample(w, start));
+      samples.push(sample(w, start, traffic));
   }
   return {
     seed: options.seed,

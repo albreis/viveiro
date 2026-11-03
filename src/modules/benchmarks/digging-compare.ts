@@ -78,6 +78,19 @@ export function summarizeGroup(runs: DiggingRun[]): GroupSummary {
   };
 }
 
+export type SoilSource = "frentes" | "transito";
+
+/** Same runs with `removed` restricted to one source of excavation. */
+export function bySource(runs: DiggingRun[], source: SoilSource): DiggingRun[] {
+  return runs.map((r) => ({
+    ...r,
+    samples: r.samples.map((s) => ({
+      ...s,
+      removed: source === "transito" ? s.traffic : s.removed - s.traffic,
+    })),
+  }));
+}
+
 const fmt = (v: number | null) => (v === null ? "sem dados" : v.toFixed(2));
 
 /**

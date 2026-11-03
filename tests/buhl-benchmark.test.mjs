@@ -5,6 +5,7 @@ import {
   BUHL_CURVE_HOURS,
 } from "../src/modules/benchmarks/buhl-2005-data.ts";
 import {
+  bySource,
   compareWithBuhl,
   curveShape,
   logLogSlope,
@@ -77,6 +78,7 @@ test("comparação aceita série sintética parecida com Buhl", () => {
     samples: BUHL_CURVE_HOURS.map((h, i) => ({
       tick: h,
       removed: g.curveCm3[i],
+      traffic: 0,
       workers: g.workers,
       activeProjects: 0,
       nestNodes: 0,
@@ -170,4 +172,27 @@ test("freio por densidade cai quando há mais galeria por operária", () => {
   assert.ok(Math.abs(crowdingFactor(w) - 0.5) < 1e-12);
   w.soil.removed = 4;
   assert.ok(crowdingFactor(w) < 0.5);
+});
+
+test("medição separa terra das frentes e do trânsito sem mudar a execução", () => {
+  const options = {
+    seed: "BUHL-T",
+    workers: 30,
+    days: 2,
+    sampleEvery: 20,
+    setup: { mode: "estigmergia", workersOnly: true, insideNest: true },
+  };
+  const run = runDigging(options);
+  for (const s of run.samples)
+    assert.ok(s.traffic >= 0 && s.traffic <= s.removed + 1e-12);
+  const [fronts] = bySource([run], "frentes"),
+    [traffic] = bySource([run], "transito");
+  run.samples.forEach((s, i) =>
+    assert.ok(
+      Math.abs(
+        fronts.samples[i].removed + traffic.samples[i].removed - s.removed,
+      ) < 1e-12,
+    ),
+  );
+  assert.deepEqual(runDigging(options), run);
 });
