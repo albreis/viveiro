@@ -103,3 +103,40 @@ trânsito com 200 continua alto (1,4 a 1,5). A viagem lenta explica parte do
 problema, não todo. O alargamento só é feito por operárias sem carga paradas
 num túnel, então o próximo suspeito são as ociosas paradas nos túneis e perto
 das frentes.
+
+## Terceiro suspeito: ociosas nos túneis e perto das frentes
+
+Medição (BUHL-2, grupo fixo, 8 dias):
+
+- O alargamento por trânsito é feito 100% por operárias ociosas, nos túneis
+  principais entre câmaras e poços, não nas frentes.
+- Perto de cada frente (menos de 1 unidade) há de 2 a 4 ociosas com 50
+  operárias e de 17 a 24 com 200.
+- No modo por feromônio, cada frente tem equipe de cerca de 6, mas a fração
+  realmente cavando cai de 0,15 para 0,05 por frente com 200 operárias, e a
+  volta da escavadora até a frente sobe de 36 para 170 ticks (mediana).
+
+Contraprova na cópia descartável, comparação com Buhl (5 sementes, 20 dias,
+grupo fixo), volume final 50 / 100 / 200:
+
+| Variante | Modo | Só frentes | Trânsito | Escala total |
+| --- | --- | --- | --- | --- |
+| Código atual | feromônio | 0,98 / 1,10 / 0,50 | 0 / 0 / 1,22 | 0,40 |
+| Ociosas dão passagem a quem trabalha com solo | feromônio | 1,01 / 1,59 / 1,51 | 0 / 0,03 / 0,83 | 0,60 |
+| Idem, e ociosas não alargam túneis | feromônio | 1,01 / 1,52 / 1,67 | 0 / 0 / 0 | 0,36 |
+| Ociosas dão passagem a quem trabalha com solo | projetos | 0,47 / 0,52 / 0,44 | 0 / 0,10 / 1,16 | 0,89 |
+| Idem, e ociosas não alargam túneis | projetos | 0,47 / 0,52 / 0,50 | 0 / 0 / 0 | 0,05 |
+
+- **Confirmado.** Com as ociosas abrindo passagem, as frentes deixam de
+  render menos com 200 operárias. No modo por feromônio, sem o alargamento das
+  ociosas, o volume das frentes passa a crescer com o grupo (1,01, 1,52, 1,67).
+- A inclinação só das frentes (0,36) ainda fica abaixo da de Buhl (0,64), e a
+  curva ainda não desacelera como a dele (saturação falha nos três grupos).
+- No modo projetos as frentes ficam iguais em qualquer grupo, como esperado
+  pelos limites fixos de 2 frentes e 2 operárias por frente.
+- A escala de 0,60 na segunda linha passa no critério, mas vem em parte do
+  alargamento por trânsito, então não conta como reprodução.
+
+Próximo passo possível: transformar "ociosas dão passagem a quem trabalha com
+solo" em regra opcional e reajustar o modo por feromônio separando sementes de
+ajuste e de teste.
