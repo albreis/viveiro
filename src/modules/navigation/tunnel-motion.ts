@@ -26,6 +26,8 @@ import {
   widenCongestedTunnel,
 } from "./contact.ts";
 import { positionClear } from "./collision.ts";
+import { idleYieldOn, idleWorker, working } from "./idle-yield.ts";
+import { NAVIGATION } from "./social-forces.ts";
 import {
   startSupportedMotion,
   advanceSupportedMotion,
@@ -105,14 +107,29 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     normal = ant.normal || { x: 0, y: 1, z: 0 };
   const neighbors = neighborsOf(world, ant),
     speed = ant.speed * 0.85;
+  const idleYield = idleYieldOn(world);
+  if (
+    idleYield &&
+    idleWorker(ant) &&
+    world.tick >= (nav.yieldUntil || 0) &&
+    neighbors.some(
+      (o) =>
+        working(o) &&
+        modelMath.hypot(o.x - ant.x, (o.y || 0) - (ant.y || 0), o.z - ant.z) <
+          NAVIGATION.safetyRadius,
+    )
+  )
+    nav.yieldUntil = world.tick + 8 + (ant.id % 7);
   const initial = socialForces(ant, neighbors, forward, speed, {
     normal,
     climb: true,
+    idleYield,
   });
   const preferred = contactResponse(world, ant, initial, forward, normal);
   const force = socialForces(ant, neighbors, preferred, speed, {
     normal,
     climb: true,
+    idleYield,
   });
   nav.velocity = force.velocity;
   if (

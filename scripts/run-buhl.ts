@@ -18,8 +18,10 @@ const usage = `Viveiro · comparação com Buhl et al. (escavação em Messor sa
 Uso: npm run benchmark:buhl -- --out ./buhl-novo [--days 3] [--seeds 1]
      [--groups 50,100,200] [--sample-every 5]
      [--mode projetos|estigmergia] [--protocol terrario|grupo-fixo]
+     [--ociosas original|cedem]
 --mode estigmergia usa a escavação recrutada por feromônio (Buhl).
 --protocol grupo-fixo começa só com operárias, sem rainha, dentro do ninho.
+--ociosas cedem faz operárias ociosas darem passagem a quem trabalha.
 Roda grupos preparados de operárias e compara a forma da curva de escavação
 e a escala do volume final com os dados publicados. Unidades do modelo não
 são convertidas para cm³ nem horas. Modelo exploratório, não calibrado.
@@ -74,6 +76,7 @@ else
               mode: options.mode,
               workersOnly: options.protocol === "grupo-fixo",
               insideNest: options.protocol === "grupo-fixo",
+              idleYield: options.idle === "cedem",
             },
           }),
         );

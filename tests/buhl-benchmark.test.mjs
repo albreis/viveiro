@@ -121,6 +121,7 @@ test("argumentos inválidos falham antes de rodar", () => {
     sampleEvery: 5,
     mode: "projetos",
     protocol: "terrario",
+    idle: "original",
   });
   assert.equal(
     buhlArgs(["--out", "x", "--mode", "estigmergia"]).mode,
@@ -220,4 +221,41 @@ test("teste de fluxo no túnel é reprodutível e mede ida e volta", async () =>
     flowShape([fake(1, 1, 1), fake(2, 2, 1), fake(3, 2, 0.7)]).collapse,
     false,
   );
+});
+
+test("regra opcional: ociosa cede passagem e não alarga túnel", async () => {
+  const { enableIdleYield, idleYieldOn, working, idleWorker } =
+    await import("../src/modules/navigation/idle-yield.ts");
+  const { widenCongestedTunnel } =
+    await import("../src/modules/navigation/contact.ts");
+  const w = new World("SEMENTE-42");
+  assert.equal(idleYieldOn(w), false);
+  const idle = { kind: "worker", x: 0, z: 0 },
+    digger = { kind: "worker", x: 0, z: 0, soilTask: { phase: "return" } };
+  assert.equal(working(digger), true);
+  assert.equal(idleWorker(idle), true);
+  enableIdleYield(w);
+  assert.equal(idleYieldOn(w), true);
+  const stuck = {
+    kind: "worker",
+    x: 0,
+    z: 0,
+    navigation: { stagnantTicks: 100, velocity: { x: 0, y: 0, z: 0 } },
+  };
+  assert.equal(widenCongestedTunnel(w, stuck, 0), false);
+  const options = {
+    seed: "BUHL-T",
+    workers: 30,
+    days: 2,
+    sampleEvery: 20,
+    setup: {
+      mode: "estigmergia",
+      workersOnly: true,
+      insideNest: true,
+      idleYield: true,
+    },
+  };
+  const run = runDigging(options);
+  assert.deepEqual(runDigging(options), run);
+  assert.ok(run.samples.every((s) => s.traffic === 0));
 });

@@ -41,13 +41,25 @@ export const NAVIGATION = {
   lateralStrength: 0.028,
 };
 
+/** Under the optional rule, an idle worker presses less on one at work. */
+function idleYieldsTo(agent: AgentState, other: AgentState) {
+  const task = (a: AgentState) =>
+    loaded(a) || !!(a as AgentState & { soilTask?: unknown }).soilTask;
+  return (
+    task(agent) &&
+    other.kind === "worker" &&
+    !task(other) &&
+    !(other as AgentState & { bioTask?: unknown }).bioTask
+  );
+}
+
 // A locally sensed social-force adaptation, not a calibrated biological law.
 export function socialForces(
   agent: AgentState,
   neighbors: AgentState[],
   direction: Vec3,
   speed: number,
-  options: { normal?: Vec3; climb?: boolean } = {},
+  options: { normal?: Vec3; climb?: boolean; idleYield?: boolean } = {},
 ): SocialForceResult {
   const normal = options.normal || { x: 0, y: 1, z: 0 };
   const forward = normalize(direction);
@@ -68,7 +80,12 @@ export function socialForces(
       distance > 0.001
         ? scale(offset, 1 / distance)
         : scale(side, agent.id < other.id ? 1 : -1);
-    const weight = loaded(other) && !loaded(agent) ? 2 : 1;
+    const weight =
+      loaded(other) && !loaded(agent)
+        ? 2
+        : options.idleYield && idleYieldsTo(agent, other)
+          ? 0.25
+          : 1;
     const strength = Math.min(
       0.1,
       NAVIGATION.repulsion *

@@ -140,3 +140,35 @@ grupo fixo), volume final 50 / 100 / 200:
 Próximo passo possível: transformar "ociosas dão passagem a quem trabalha com
 solo" em regra opcional e reajustar o modo por feromônio separando sementes de
 ajuste e de teste.
+
+## Regra opcional: ociosas dão passagem (`--ociosas cedem`)
+
+`src/modules/navigation/idle-yield.ts`, ligada por `nest.traffic.idleYield`
+(salva com o ninho; mundos sem o campo seguem as regras originais). Com ela:
+
+- uma operária ociosa que sente outra trabalhando (com tarefa de solo ou
+  carga) a menos de 0,52 se afasta por 8 a 14 ticks, usando o mecanismo de
+  ceder passagem que já existia para quem carrega;
+- quem trabalha sente menos a pressão das ociosas (peso 0,25) e pode passar
+  espremida por uma ociosa que está se afastando ou descansando;
+- só quem tem tarefa de solo alarga túnel congestionado.
+
+O padrão não muda: as séries de escavação são idênticas com a regra desligada
+e a suíte tem a mesma única falha antiga da `main`.
+
+Resultado (feromônio, grupo fixo, 5 sementes, 20 dias), volume das frentes
+50 / 100 / 200:
+
+| Variante | Só frentes | Trânsito com 200 | Escala total | Saturação |
+| --- | --- | --- | --- | --- |
+| Regras originais | 0,98 / 1,10 / 0,50 | 1,22 | 0,40 | falha |
+| `--ociosas cedem` | 1,08 / 1,35 / 0,80 | 0,07 | −0,16 | falha |
+| Contraprova: quem trabalha atravessa qualquer ociosa | 1,18 / 1,38 / 1,22 | 0,01 | 0,03 | passa |
+| Contraprova: quem trabalha nem enxerga ociosas | 1,01 / 1,59 / 1,51 | 0,83 | 0,60 | falha |
+
+Com a regra, a viagem de quem carrega terra com 200 operárias cai de 232 para
+174 ticks e a distância andada na câmara de 8,15 para 1,06 (BUHL-2). O
+alargamento por ociosas some. Mas com 200 operárias as frentes ainda rendem
+menos que com 100, então a regra **não foi adotada como padrão** e a versão
+não foi publicada. A forma realista de "abrir caminho" recupera só parte do
+que as contraprovas idealizadas recuperam.

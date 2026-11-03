@@ -6,6 +6,7 @@ export interface BuhlOptions {
   sampleEvery: number;
   mode: "projetos" | "estigmergia";
   protocol: "terrario" | "grupo-fixo";
+  idle: "original" | "cedem";
 }
 
 const integer = (name: string, raw: string, min: number, max: number) => {
@@ -33,6 +34,7 @@ export function buhlArgs(argv: string[]): BuhlOptions {
         "sample-every",
         "mode",
         "protocol",
+        "ociosas",
       ].includes(name)
     )
       throw Error("Opção desconhecida: " + flag);
@@ -67,5 +69,6 @@ export function buhlArgs(argv: string[]): BuhlOptions {
     ),
     mode: choice("mode", "projetos", ["projetos", "estigmergia"]),
     protocol: choice("protocol", "terrario", ["terrario", "grupo-fixo"]),
+    idle: choice("ociosas", "original", ["original", "cedem"]),
   };
 }

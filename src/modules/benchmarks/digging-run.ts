@@ -8,6 +8,7 @@ import {
 } from "../lessons/world.ts";
 import { TICKS_PER_DAY } from "../simulation/constants.js";
 import { enableStigmergy, type StigmergyParams } from "../soil/stigmergy.ts";
+import { enableIdleYield } from "../navigation/idle-yield.ts";
 
 export type DiggingMode = "projetos" | "estigmergia";
 export interface DiggingSetup {
@@ -17,6 +18,8 @@ export interface DiggingSetup {
   /** Start every worker resting in a nest room instead of on the surface. */
   insideNest?: boolean;
   stigmergy?: Partial<StigmergyParams>;
+  /** Idle workers give way to workers on a task (optional traffic rule). */
+  idleYield?: boolean;
 }
 
 export interface DiggingRunOptions {
@@ -82,6 +85,7 @@ export function prepareDiggingWorld(
   w.born = workers;
   finishLessonWorld(w, true);
   if (setup.mode === "estigmergia") enableStigmergy(w, setup.stigmergy);
+  if (setup.idleYield) enableIdleYield(w);
   return w;
 }
 
