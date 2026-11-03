@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório; não calibração por espécie. Última release pública: **0.45.0**, consolidação dos P2.4–P2.7 pelo [PR #71](https://github.com/albreis/viveiro/pull/71), no [GitHub Pages](https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/). **Todos os P2 ativos (P2.1–P2.7) estão implementados e publicados.** CodeQL corrigido sem supressão; 462 testes únicos aprovados, builds e QA nativa. CSV/manifesto de 300 ticks publicados são idênticos à CLI. Site privado permanece owner-only. [Recibo](validacoes/release-0.45.0.json) e [revisão P2](revisao-p2.md). Uma única release consolidada, sem depósito manual ou versões intermediárias Zenodo. Falta conferir DOI automático (P0.4B); botão de citação no GitHub confirmado (P0.4C). validações P1/P3 e comunidade P4 permanecem abertas. P2.8/P5 descartados.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório; não calibração por espécie. Última release pública: **0.46.0**, [galeria e base TypeScript](https://github.com/albreis/viveiro/releases/tag/v0.46.0), no [GitHub Pages](https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/). **Todos os P2 ativos(P2.1–P2.7) continuam implementados e publicados desde0.45.0.** As quatro entregas de código posteriores foram concluídas: estrutura de contribuições, galeria com dez receitas da equipe, auditoria local/correção A/B e migração dos13JS da UI/renderer para TS estrito. PRs76–80 integrados em ordem;474 testes completos, build460módulos e CodeQL aprovados. Receita pública de300ticks gerou CSV/manifesto idênticos à CLI. Sites privado/Pages conferidos; owner-only preservado. [Recibo0.46.0](validacoes/release-0.46.0.json) e [arquitetura](arquitetura-interface.md). Uma única tag consolidada, metadados preparados antes dela e nenhum depósito manual Zenodo. DOI automático não conferido; validações P1/P3 e participação externa P4 permanecem abertas. P2.8/P5 descartados.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -41,7 +41,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 - [x] Alargamento local experimental por congestionamento.
 - [x] Sensores, forças, contato, superfície e túneis em módulos.
 - [x] TypeScript estrito na navegação e Vite para gerar o bundle.
-- [x] UI e renderização legadas migradas para TypeScript estrito:13JS substituídos, controlador e cena divididos em módulos pequenos. [Arquitetura e verificação](arquitetura-interface.md), PR79 e entrega da interface0.46.0. A simulação legada fora dessas pastas não foi declarada migrada.
+- [x] UI e renderização legadas migradas para TypeScript estrito:13JS substituídos, controlador e cena divididos em módulos pequenos. [Arquitetura e verificação](arquitetura-interface.md), PRs79/80 e release consolidada0.46.0. A simulação legada fora dessas pastas não foi declarada migrada.
 
 Aceite: reprodução pela seed, ausência de NaN, prioridade de carga testada,
 apoio correto, fluxo retomado em gargalos e verificação no navegador.
@@ -578,7 +578,7 @@ conclusão; não retomar sem novo pedido explícito. A proposta anterior está n
   - [x] P4.1A: guias pt-BR/en, três formulários, modelo de PR, Discussions habilitado e tarefas #73–#75 com good first issue. [Estrutura e verificação](comunidade.md). Sem alteração do modelo ou Site privado.
   - [ ] P4.1B: primeira contribuição externa real revisada e integrada. Não se contam tarefas abertas pelo mantenedor como contribuição externa.
 - [ ] P4.2 Galeria pública de experimentos reproduzíveis por seed. Aceite: 20 experimentos, metade de fora da equipe.
-  - [x] P4.2A: interface bilíngue, busca/filtros, créditos, receitas versionadas e dez planos da equipe; downloads e abertura no laboratório isolado, com paridade CLI/Worker conferida. Desenvolvimento0.46.0; publicação privada nesta entrega, sem tag intermediária. [Implementação](galeria.md).
+  - [x] P4.2A: interface bilíngue, busca/filtros, créditos, receitas versionadas e dez planos da equipe; downloads e abertura no laboratório isolado, com paridade CLI/Worker conferida. Publicada na release consolidada0.46.0, no Pages e no privado; sem tag intermediária. [Implementação](galeria.md).
   - [ ] P4.2B: receber e revisar dez contribuições externas reais, atingindo20 receitas. Exemplos internos não substituem esse aceite.
 - [ ] P4.3 Oficinas para professores e minicursos em congressos. Aceite: uma por semestre, com gravação publicada.
 

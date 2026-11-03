@@ -1,47 +1,55 @@
-# Continuação — código da entrega0.46.0 concluído
+# Continuação — entrega0.46.0 encerrada
 
-03/11/2026. Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md e cronograma.md;
+03/11/2026. Repositório G:\Projetos\viveiro. Ler AGENTS.md/cronograma.md e
 conferir Git/PRs antes de agir. Preservar saves, branches e tags.
 
-## Concluído nesta entrega autorizada
+## Concluído e publicado
 
-- PR76 integrado: CONTRIBUTING pt/en, formulários, Discussions, tarefas73–75.
-- PR77 integrado: dez receitas da equipe, galeria bilíngue versionada e isolada;
-  CSV/manifesto iguais à CLI em300ticks. Publicada no privado.
-- PR78 integrado: auditoria nativa e correção de contraste A/B2,83:1 para cor
-  auxiliar legível/fonte12px; publicado no privado. Medições reais locais em
-  movimento58,1fps completo/59,2leve, sem certificar hardware escolar.
-- PR79 integrado: dezJS do renderer para TS, cena/core/input/dispose separados.
-- PR80: UI completa em TS, sem JS restante em src/app/renderer. Controlador antigo
-  de665linhas substituído por módulos de até150linhas. Fábrica WebGL injetada.
-  Build460módulos e474/474 testes aprovados com fonte estável. QA de save, reset,
-  checkpoint/chuva/restore, A/B, aula/idioma, câmera, avanço1dia e exportação exata.
-  Evidência validacoes/typescript-0.46.0.json; arquitetura-interface.md.
+PRs76–80 integrados em ordem: comunidade(CONTRIBUTING pt/en, formulários,
+Discussions e tarefas73–75), galeria(dez receitas internas, filtros/idiomas/seed),
+auditoria nativa(contraste A/B corrigido) e migração dos13JS de UI/renderer para
+TS estrito. Não há JS restante nessas duas pastas; a simulação legada fora delas
+não foi declarada convertida. Controller136linhas, scene208, módulos focados.
 
-## Fechamento concreto ainda em andamento
+Suíte final474/474, nenhuma falha. Build460módulos,3 regressões novas de renderer,
+4 de UI,15dirigidos e QA real de save/reset/checkpoint/restore/A-B/aula/idioma/
+câmera/avanço/exportação. Manifestos Morris preservam os104hashes canônicos.
+CodeQL PR80 verde, sem suprimir regra. Detalhes em arquitetura-interface.md e
+validacoes/typescript-0.46.0.json.
 
-Conferir CI e integrar PR80. Publicar o conjunto validado no Site privado original
-(owner-only). Metadados CFF/Zenodo0.46.0 preparados antes da tag. Criar somente uma
-release consolidada v0.46.0 após CI verde, conferir Pages e pacote real da tag.
-Sem tags intermediárias nem depósitos manuais; integração GitHub–Zenodo automática.
-Atualizar este checkpoint com SHA/recibos e último resultado publicado.
+Uma única tag/release **v0.46.0**, fonte7f4d20674206916ea443ef2f359097da5ca18731.
+CFF/Zenodo preparados antes da tag; autoria/ORCID preservados. Pacote real da tag
+reproduzível e verificado antes de enviá-la. Nenhum depósito manual/duplicado.
+Integração GitHub–Zenodo automática; DOI da versão nova ainda não conferido.
+https://github.com/albreis/viveiro/releases/tag/v0.46.0
 
-P2.1–P2.7 já publicados na v0.45.0, fonte f433f80. P2.8 e P5 descartados.
-Correção CodeQL d693915 preservada, sem suprimir regra. PR70 consta MERGED;
-preservar branches. PR69 é trabalho do usuário: não tocar.
+Pages publicado pelos workflows41732963037(tag) e41733035201(main), ambos verdes:
+https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/
+Galeria pública com10receitas;3D v0.46.0 carregado e console sem erros. Receita
+solo-deslizante@1 executou300ticks; CSV/manifesto baixados iguais à CLI, em
+ tests/fixtures/gallery-046/public. Recibo validacoes/release-0.46.0.json.
 
-## Limitações externas explícitas
+Site privado original atualizado, fonte2ad7611(árvore equivalente à tag); save
+pausado existente carregou, sem substituir pelo cenário de QA. Audiência custom/
+revisão1/um proprietário/zero externos preservada. Não atualizar Site público
+antigo do ChatGPT. Público é GitHub Pages. Dev4173(PID15348) continua ativo em G.
+Preview4189 preservado; não restaurar snapshots de teste sobre saves do usuário.
 
-P4.1B exige primeira contribuição externa real. P4.2B exige dez receitas externas
-para atingir20. Docentes, pilotos, hardware escolar, leitores de tela, zoom real,
-planilha, parceria/dados licenciados, calibração e publicação científica dependem
-de execução/dados externos. PageSpeed oficial recebeu429 em03/11 21:53UTC; sem
-nota, sem contornar cota; não tentar novamente antes de04/11 21:53:59UTC.
-DOI automático0.45.0 ainda não conferido; DOI23891981 é apenas0.36.0.
+## Próximo passo e limites
 
-Dev4173 PID15348 continua em G. Preview4189 serve dist para QA isolada. Não
-restaurar snapshots de teste sobre o terrário atual do usuário. Site privado
-appgprj_6ae6364bc4488191b2757449ed3f7e94 mantido; público é GitHub Pages em
-https://viveiro.ersolucoesweb.com.br/. Não atualizar o Site público antigo.
-Automação PAUSED, sem executor concorrente. Ao restarem3% da cota real de5h,
-push/checkpoint e parar para transferência manual. Não contornar limites.
+Não há implementação pendente dentre as quatro entregas autorizadas nesta rodada.
+Aguardar feedback ou dados/participação externos reais. Não fabricar contribuições,
+pareceres, pilotos, métricas ou calibração para fechar o cronograma.
+
+P4.1B exige primeira contribuição externa; P4.2B precisa de dez receitas externas
+para atingir20. Docentes, participantes, hardware escolar, leitor de tela, zoom,
+planilha, dados licenciados/parceria, calibração e publicação científica continuam
+pendentes. PageSpeed oficial429 em03/11 21:53UTC: nenhuma nota, sem contornar a cota;
+nova tentativa somente permitida após04/11 21:53:59UTC. DOI23891981 é só0.36.0.
+P2.1–P2.7 publicados desde0.45.0. P2.8/P5 descartados. PR69 do usuário preservado;
+PR70 consta MERGED e sua branch permanece. Não duplicar/reabrir tarefas concluídas.
+
+Automação continuar-cronograma-do-viveiro **PAUSED**, confirmada no fechamento.
+Não iniciar executor concorrente nem retomar dependências externas sem novo pedido.
+Antes de3% restante da janela real de5h, push/checkpoint e parar se houver nova
+execução ativa. Não contornar limites ou aprovações.
