@@ -8,6 +8,7 @@ import { beginSoilHaul, enterForSoil } from "./routing.ts";
 import { depositSoil, distance3 } from "./ledger.ts";
 import {
   adoptFrontHere,
+  crowdingFactor,
   joinProbability,
   recruitingProject,
 } from "./stigmergy.ts";
@@ -30,7 +31,8 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     !ant.soilTask &&
     ant.node != null &&
     (stigmergy
-      ? !ant.carrying && world.random() < stigmergy.params.spontaneous
+      ? !ant.carrying &&
+        world.random() < stigmergy.params.spontaneous * crowdingFactor(world)
       : "role" in ant &&
         ant.role === "excavator" &&
         world.tick - world.soil.lastProject >= 450) &&

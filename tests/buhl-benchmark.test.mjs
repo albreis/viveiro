@@ -17,6 +17,7 @@ import {
   enableStigmergy,
   joinProbability,
   markAt,
+  crowdingFactor,
 } from "../src/modules/soil/stigmergy.ts";
 import { World } from "../src/modules/simulation/world.js";
 
@@ -132,7 +133,7 @@ test("argumentos inválidos falham antes de rodar", () => {
 });
 
 test("feromônio de escavação decai e recruta pela curva de Buhl", () => {
-  const w = { tick: 0, soil: {} };
+  const w = { tick: 0, ants: [], soil: { removed: 0 } };
   enableStigmergy(w, { k: 1, baseJoin: 0, deposit: 1, evaporation: 0.1 });
   const project = { id: 7 };
   assert.equal(joinProbability(w, project), 0);
@@ -158,4 +159,15 @@ test("modo por feromônio é opcional e o padrão não muda", () => {
   });
   assert.equal(run.samples[0].workers, 6);
   assert.ok(run.samples.every((s) => s.removed >= 0));
+});
+
+test("freio por densidade cai quando há mais galeria por operária", () => {
+  const ants = Array.from({ length: 100 }, () => ({ kind: "worker" }));
+  const w = { tick: 0, ants, soil: { removed: 2 } };
+  enableStigmergy(w, { crowding: 100 });
+  assert.equal(crowdingFactor(w), 1);
+  w.soil.removed = 3; // 1 u³ dug: 100 workers per u³
+  assert.ok(Math.abs(crowdingFactor(w) - 0.5) < 1e-12);
+  w.soil.removed = 4;
+  assert.ok(crowdingFactor(w) < 0.5);
 });

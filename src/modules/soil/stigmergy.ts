@@ -22,10 +22,20 @@ export interface StigmergyParams {
   maxFronts: number;
   maxNodes: number;
   perFront: number;
+  /** Multiplies the length dug per bite, so galleries grow at colony scale. */
+  biteScale: number;
+  /**
+   * Workers per unit of excavated volume at which the urge to dig halves.
+   * Buhl et al. propose falling density as the brake; this is that brake,
+   * sensed as crowding, not a stopping rule.
+   */
+  crowding: number;
 }
 export interface StigmergyState {
   version: 1;
   params: StigmergyParams;
+  /** Soil removed before the mode was enabled; only later digging counts. */
+  removedAtStart: number;
   /** Pheromone per project id, stored with the tick of its last update. */
   marks: Record<number, { value: number; tick: number }>;
 }
@@ -34,11 +44,13 @@ export const DEFAULT_STIGMERGY: Readonly<StigmergyParams> = Object.freeze({
   k: 1,
   deposit: 0.35,
   evaporation: 0.04,
-  spontaneous: 0.0015,
+  spontaneous: 0.006,
   baseJoin: 0.01,
   maxFronts: 12,
   maxNodes: 140,
-  perFront: 4,
+  perFront: 6,
+  biteScale: 4,
+  crowding: 100,
 });
 
 export function enableStigmergy(
@@ -48,6 +60,7 @@ export function enableStigmergy(
   world.soil.stigmergy = {
     version: 1,
     params: { ...DEFAULT_STIGMERGY, ...params },
+    removedAtStart: world.soil.removed,
     marks: {},
   };
 }
@@ -74,13 +87,28 @@ export function depositMark(world: SoilWorld, project: DigProject) {
   };
 }
 
+/** Hill response to workers per excavated volume: 1 while crowded, falls as galleries open up. */
+export function crowdingFactor(world: SoilWorld) {
+  const s = world.soil.stigmergy;
+  if (!s) return 1;
+  const dug = world.soil.removed - s.removedAtStart;
+  if (!(dug > 0)) return 1;
+  let workers = 0;
+  for (const a of world.ants) if (a.kind === "worker") workers++;
+  const density = workers / dug,
+    c = s.params.crowding;
+  return (density * density) / (density * density + c * c);
+}
+
 /** Buhl's recruitment response plus a small chance with no pheromone. */
 export function joinProbability(world: SoilWorld, project: DigProject) {
   const s = world.soil.stigmergy!;
   const x = markAt(world, project),
     k = s.params.k;
   const hill = (x * x) / (x * x + k * k);
-  return s.params.baseJoin + (1 - s.params.baseJoin) * hill;
+  return (
+    (s.params.baseJoin + (1 - s.params.baseJoin) * hill) * crowdingFactor(world)
+  );
 }
 
 /**
