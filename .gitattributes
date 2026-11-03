@@ -12,3 +12,7 @@ public/experimentos/profile-044/**/*.csv binary
 # Exact i18n browser/CLI evidence, including canonical JSON and CSV bytes.
 public/experimentos/i18n-p27/** -text
 public/experimentos/i18n-p27/**/*.csv binary
+
+# Exact public-release/browser and CLI evidence.
+tests/fixtures/release-045/** -text
+tests/fixtures/release-045/**/*.csv binary

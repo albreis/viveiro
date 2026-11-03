@@ -1,0 +1,64 @@
+{
+  "schema": "viveiro-release-validation-v1",
+  "version": "0.45.0",
+  "tag": "v0.45.0",
+  "sourceSha": "f433f805444d762d301f8babc365a83930982272",
+  "releaseUrl": "https://github.com/albreis/viveiro/releases/tag/v0.45.0",
+  "publishedAt": "2026-11-03T20:21:18Z",
+  "pages": {
+    "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/",
+    "tagRun": 41711790692,
+    "mainRun": 41712001832,
+    "conclusion": "success"
+  },
+  "private": {
+    "projectId": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "deploymentId": "appgdep_6aea4307e5bc81918460bbceac9f522b",
+    "versionId": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_a574e93d67308191b20b52e3c83933d7",
+    "status": "succeeded",
+    "updatedAt": "2026-11-03T20:24:53.930836+00:00",
+    "audience": "owner-private; custom revision 1 unchanged"
+  },
+  "tests": {
+    "integration": 461,
+    "releaseArchiveAdditional": 1,
+    "uniqueTotal": 462,
+    "tagMetadataRepeated": 3,
+    "directedI18nAndSecurity": 18,
+    "strictTypeScript": true,
+    "publicBuild": true
+  },
+  "codeql": {
+    "fixCommit": "d6939156331690848a521a1d79dbf4d515dd0181",
+    "finalPreMergeRun": 41711103434,
+    "conclusion": "success",
+    "suppressionAdded": false
+  },
+  "pullRequests": {
+    "consolidation": 71,
+    "consolidationMerged": true,
+    "redundant": 70,
+    "redundantState": "MERGED",
+    "branchesDeleted": false
+  },
+  "browser": {
+    "publicVersion": "0.45.0",
+    "ticks": 300,
+    "seed": "I18N-QA-045-Árvore",
+    "csvSha256": "0477f3747c7479d9bdfb6fd50f909df300032d8b01c65507d60d7dbc45288796",
+    "manifestSha256": "45f69acc4d5f132de576d61d13b5dd916e7747b463748297c2a400679bf15fda",
+    "publishedFilesEqualCli": true,
+    "rawFiles": "tests/fixtures/release-045"
+  },
+  "zenodo": {
+    "automaticGithubIntegration": true,
+    "manualDepositCreated": false,
+    "intermediateReleasesCreated": false,
+    "newDoiVerified": false
+  },
+  "limits": [
+    "Exploratory model, without species calibration or external scientific validation",
+    "P0.4 DOI/citation button and external P1/P3/P4 acceptances remain open",
+    "Operational records added after the immutable release tag; no tag rewrite"
+  ]
+}
