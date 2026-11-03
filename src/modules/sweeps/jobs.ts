@@ -1,5 +1,8 @@
 import metadata from "../../../package.json" with { type: "json" };
-import type { ExperimentPlan } from "../experiments/plan.ts";
+import {
+  normalizeExperiment,
+  type ExperimentPlan,
+} from "../experiments/plan.ts";
 import { normalizeSweep, type SweepPlan } from "./plan.ts";
 export const sweepVersion = metadata.version;
 export const sweepArithmetic = "stdlib-f64-v1";
@@ -40,11 +43,11 @@ export async function sweepJobs(value: unknown): Promise<SweepJob[]> {
       id: `v${String(v + 1).padStart(3, "0")}-r${String(r + 1).padStart(3, "0")}`,
       value: n,
       replicate: r + 1,
-      plan: {
+      plan: normalizeExperiment({
         ...p.base,
         seed: "SWEEP-" + seed,
         parameters: { ...p.base.parameters, [p.parameter]: n },
-      },
+      }),
     })),
   );
 }

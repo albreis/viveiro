@@ -11,8 +11,9 @@ export function updateEnvironment(world) {
     width: 40,
     height: 26,
     cellSize: 0.5,
-    diffusion: 0.008 + h * 0.008,
-    decay: 0.012 + (1 - h) * 0.012,
+    diffusion: (0.008 + h * 0.008) * (world.params.surfaceDiffusionScale ?? 1),
+    decay:
+      (0.012 + (1 - h) * 0.012) * (world.params.surfaceEvaporationScale ?? 1),
     dt: 1,
     windX: world.params.windX || 0,
     windZ: world.params.windZ || 0,

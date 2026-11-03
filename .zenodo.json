@@ -1,7 +1,7 @@
 {
   "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
   "upload_type": "software",
-  "version": "0.40.1",
+  "version": "0.41.0",
   "publication_date": "2026-11-02",
   "creators": [
     {
@@ -9,7 +9,7 @@
       "orcid": "0009-0008-0719-8722"
     }
   ],
-  "description": "<p>Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia. Fonte do modelo: v0.40.1, commit 9b5d05761602c098e1a7bc5770b471dd5e7810f1.</p><p>O pacote de depósito contém código selecionado dessa tag e metadados preparados posteriormente, identificados em source-manifest.json. Exclui histórico Git, saves, documentação operacional e configuração de hospedagem. Código original: MIT; documentação original: CC BY 4.0. Avisos de terceiros preservados; consultar LICENSE e LICENSE-DOCS.md.</p>",
+  "description": "<p>Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia. Fonte do modelo: v0.41.0, commit 0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f.</p><p>O pacote de depósito contém código selecionado dessa tag e metadados preparados posteriormente, identificados em source-manifest.json. Exclui histórico Git, saves, documentação operacional e configuração de hospedagem. Código original: MIT; documentação original: CC BY 4.0. Avisos de terceiros preservados; consultar LICENSE e LICENSE-DOCS.md.</p>",
   "access_right": "open",
   "license": "MIT",
   "keywords": [
@@ -21,7 +21,7 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.40.1/",
+      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.41.0/",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

@@ -1,0 +1,5021 @@
+{
+  "schema": "viveiro-morris-v1",
+  "modelVersion": "0.42.0",
+  "id": "953d4559c329bf56385f9230dc69712560baf1035a187be368d6cde10de44d23",
+  "options": {
+    "seed": "MORRIS-42",
+    "levels": 4,
+    "trajectories": 4,
+    "replicates": 2,
+    "days": 10
+  },
+  "dimensions": [
+    "humidity",
+    "light",
+    "randomness",
+    "reposeAngle",
+    "temperatureC",
+    "windX",
+    "windZ",
+    "photoperiodHours",
+    "initialFood",
+    "initialRainPulse",
+    "surfaceDiffusionScale",
+    "surfaceEvaporationScale"
+  ],
+  "bounds": {
+    "humidity": [
+      45,
+      85
+    ],
+    "light": [
+      35,
+      85
+    ],
+    "randomness": [
+      10,
+      60
+    ],
+    "reposeAngle": [
+      20,
+      50
+    ],
+    "temperatureC": [
+      18,
+      30
+    ],
+    "windX": [
+      -1.5,
+      1.5
+    ],
+    "windZ": [
+      -1.5,
+      1.5
+    ],
+    "photoperiodHours": [
+      8,
+      16
+    ],
+    "initialFood": [
+      10,
+      24
+    ],
+    "initialRainPulse": [
+      0,
+      0.4
+    ],
+    "surfaceDiffusionScale": [
+      0.5,
+      1.5
+    ],
+    "surfaceEvaporationScale": [
+      0.5,
+      1.5
+    ]
+  },
+  "points": [
+    {
+      "trajectory": 1,
+      "point": 0,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 30,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": null
+    },
+    {
+      "trajectory": 1,
+      "point": 1,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 30,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "surfaceDiffusionScale"
+    },
+    {
+      "trajectory": 1,
+      "point": 2,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 30,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "photoperiodHours"
+    },
+    {
+      "trajectory": 1,
+      "point": 3,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 30,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "surfaceEvaporationScale"
+    },
+    {
+      "trajectory": 1,
+      "point": 4,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "reposeAngle"
+    },
+    {
+      "trajectory": 1,
+      "point": 5,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "windX"
+    },
+    {
+      "trajectory": 1,
+      "point": 6,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "initialRainPulse"
+    },
+    {
+      "trajectory": 1,
+      "point": 7,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 1,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 85,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "randomness"
+    },
+    {
+      "trajectory": 1,
+      "point": 8,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.3333333333333333,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 51.666666666666664,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "light"
+    },
+    {
+      "trajectory": 1,
+      "point": 9,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.3333333333333333,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 51.666666666666664,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 10,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "initialFood"
+    },
+    {
+      "trajectory": 1,
+      "point": 10,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.3333333333333333,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 1,
+        "initialFood": 0,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 51.666666666666664,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 16,
+        "initialFood": 10,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "humidity"
+    },
+    {
+      "trajectory": 1,
+      "point": 11,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.3333333333333333,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 1,
+        "initialFood": 0,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 51.666666666666664,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": 0.5,
+        "photoperiodHours": 16,
+        "initialFood": 10,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "windZ"
+    },
+    {
+      "trajectory": 1,
+      "point": 12,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.3333333333333333,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 0.3333333333333333,
+        "windX": 0.6666666666666666,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 1,
+        "initialFood": 0,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 51.666666666666664,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 22,
+        "windX": 0.5,
+        "windZ": 0.5,
+        "photoperiodHours": 16,
+        "initialFood": 10,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "temperatureC"
+    },
+    {
+      "trajectory": 2,
+      "point": 0,
+      "normalized": {
+        "humidity": 1,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 85,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 26,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": null
+    },
+    {
+      "trajectory": 2,
+      "point": 1,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 26,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "humidity"
+    },
+    {
+      "trajectory": 2,
+      "point": 2,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 26,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "photoperiodHours"
+    },
+    {
+      "trajectory": 2,
+      "point": 3,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "temperatureC"
+    },
+    {
+      "trajectory": 2,
+      "point": 4,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "surfaceDiffusionScale"
+    },
+    {
+      "trajectory": 2,
+      "point": 5,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "surfaceEvaporationScale"
+    },
+    {
+      "trajectory": 2,
+      "point": 6,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "windZ"
+    },
+    {
+      "trajectory": 2,
+      "point": 7,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 1,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 85,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "windX"
+    },
+    {
+      "trajectory": 2,
+      "point": 8,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.3333333333333333,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 51.666666666666664,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 30,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "light"
+    },
+    {
+      "trajectory": 2,
+      "point": 9,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.3333333333333333,
+        "randomness": 0.3333333333333333,
+        "reposeAngle": 1,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 51.666666666666664,
+        "randomness": 26.666666666666664,
+        "reposeAngle": 50,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "reposeAngle"
+    },
+    {
+      "trajectory": 2,
+      "point": 10,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.3333333333333333,
+        "randomness": 1,
+        "reposeAngle": 1,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 51.666666666666664,
+        "randomness": 60,
+        "reposeAngle": 50,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "randomness"
+    },
+    {
+      "trajectory": 2,
+      "point": 11,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.3333333333333333,
+        "randomness": 1,
+        "reposeAngle": 1,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 51.666666666666664,
+        "randomness": 60,
+        "reposeAngle": 50,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 10,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "initialFood"
+    },
+    {
+      "trajectory": 2,
+      "point": 12,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.3333333333333333,
+        "randomness": 1,
+        "reposeAngle": 1,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0,
+        "initialFood": 0,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 51.666666666666664,
+        "randomness": 60,
+        "reposeAngle": 50,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 8,
+        "initialFood": 10,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "initialRainPulse"
+    },
+    {
+      "trajectory": 3,
+      "point": 0,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 35,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": null
+    },
+    {
+      "trajectory": 3,
+      "point": 1,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 35,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "randomness"
+    },
+    {
+      "trajectory": 3,
+      "point": 2,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 35,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "surfaceDiffusionScale"
+    },
+    {
+      "trajectory": 3,
+      "point": 3,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0.6666666666666666,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": 0.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "light"
+    },
+    {
+      "trajectory": 3,
+      "point": 4,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 8,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "windX"
+    },
+    {
+      "trajectory": 3,
+      "point": 5,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "photoperiodHours"
+    },
+    {
+      "trajectory": 3,
+      "point": 6,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "initialFood"
+    },
+    {
+      "trajectory": 3,
+      "point": 7,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 0.3333333333333333,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.13333333333333333,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "surfaceEvaporationScale"
+    },
+    {
+      "trajectory": 3,
+      "point": 8,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 1,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 50,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "initialRainPulse"
+    },
+    {
+      "trajectory": 3,
+      "point": 9,
+      "normalized": {
+        "humidity": 0.3333333333333333,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 58.33333333333333,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 30,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "reposeAngle"
+    },
+    {
+      "trajectory": 3,
+      "point": 10,
+      "normalized": {
+        "humidity": 1,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 1,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 85,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 30,
+        "temperatureC": 30,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "humidity"
+    },
+    {
+      "trajectory": 3,
+      "point": 11,
+      "normalized": {
+        "humidity": 1,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0.3333333333333333,
+        "windX": 0,
+        "windZ": 0,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 85,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 30,
+        "temperatureC": 22,
+        "windX": -1.5,
+        "windZ": -1.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "temperatureC"
+    },
+    {
+      "trajectory": 3,
+      "point": 12,
+      "normalized": {
+        "humidity": 1,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.3333333333333333,
+        "temperatureC": 0.3333333333333333,
+        "windX": 0,
+        "windZ": 0.6666666666666666,
+        "photoperiodHours": 0.6666666666666666,
+        "initialFood": 0,
+        "initialRainPulse": 1,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 85,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 30,
+        "temperatureC": 22,
+        "windX": -1.5,
+        "windZ": 0.5,
+        "photoperiodHours": 13.333333333333332,
+        "initialFood": 10,
+        "initialRainPulse": 0.4,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "windZ"
+    },
+    {
+      "trajectory": 4,
+      "point": 0,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 0.3333333333333333,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": -0.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 10,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": null
+    },
+    {
+      "trajectory": 4,
+      "point": 1,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 1,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": 1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 10,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "windZ"
+    },
+    {
+      "trajectory": 4,
+      "point": 2,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.6666666666666666,
+        "randomness": 0,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 1,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 68.33333333333333,
+        "randomness": 10,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": 1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "initialFood"
+    },
+    {
+      "trajectory": 4,
+      "point": 3,
+      "normalized": {
+        "humidity": 0,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 1,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 45,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": 1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "randomness"
+    },
+    {
+      "trajectory": 4,
+      "point": 4,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 1,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": 1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "humidity"
+    },
+    {
+      "trajectory": 4,
+      "point": 5,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0.6666666666666666,
+        "windZ": 1,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": 0.5,
+        "windZ": 1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "initialRainPulse"
+    },
+    {
+      "trajectory": 4,
+      "point": 6,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 0.3333333333333333,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 10.666666666666666,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "windX"
+    },
+    {
+      "trajectory": 4,
+      "point": 7,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0.6666666666666666,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 40,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "photoperiodHours"
+    },
+    {
+      "trajectory": 4,
+      "point": 8,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0,
+        "temperatureC": 0,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 20,
+        "temperatureC": 18,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "reposeAngle"
+    },
+    {
+      "trajectory": 4,
+      "point": 9,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 1
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 20,
+        "temperatureC": 26,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 1.5
+      },
+      "changed": "temperatureC"
+    },
+    {
+      "trajectory": 4,
+      "point": 10,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0.6666666666666666,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 20,
+        "temperatureC": 26,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 1.1666666666666665,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "surfaceEvaporationScale"
+    },
+    {
+      "trajectory": 4,
+      "point": 11,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0.6666666666666666,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 68.33333333333333,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 20,
+        "temperatureC": 26,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "surfaceDiffusionScale"
+    },
+    {
+      "trajectory": 4,
+      "point": 12,
+      "normalized": {
+        "humidity": 0.6666666666666666,
+        "light": 0,
+        "randomness": 0.6666666666666666,
+        "reposeAngle": 0,
+        "temperatureC": 0.6666666666666666,
+        "windX": 0,
+        "windZ": 1,
+        "photoperiodHours": 1,
+        "initialFood": 0.6666666666666666,
+        "initialRainPulse": 0.6666666666666666,
+        "surfaceDiffusionScale": 0,
+        "surfaceEvaporationScale": 0.3333333333333333
+      },
+      "parameters": {
+        "humidity": 71.66666666666666,
+        "light": 35,
+        "randomness": 43.33333333333333,
+        "reposeAngle": 20,
+        "temperatureC": 26,
+        "windX": -1.5,
+        "windZ": 1.5,
+        "photoperiodHours": 16,
+        "initialFood": 19.333333333333332,
+        "initialRainPulse": 0.26666666666666666,
+        "surfaceDiffusionScale": 0.5,
+        "surfaceEvaporationScale": 0.8333333333333333
+      },
+      "changed": "light"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "t001-p000-r001",
+      "trajectory": 1,
+      "point": 0,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t001-p000-r002",
+      "trajectory": 1,
+      "point": 0,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t001-p001-r001",
+      "trajectory": 1,
+      "point": 1,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t001-p001-r002",
+      "trajectory": 1,
+      "point": 1,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t001-p002-r001",
+      "trajectory": 1,
+      "point": 2,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t001-p002-r002",
+      "trajectory": 1,
+      "point": 2,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t001-p003-r001",
+      "trajectory": 1,
+      "point": 3,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p003-r002",
+      "trajectory": 1,
+      "point": 3,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p004-r001",
+      "trajectory": 1,
+      "point": 4,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p004-r002",
+      "trajectory": 1,
+      "point": 4,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p005-r001",
+      "trajectory": 1,
+      "point": 5,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p005-r002",
+      "trajectory": 1,
+      "point": 5,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p006-r001",
+      "trajectory": 1,
+      "point": 6,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p006-r002",
+      "trajectory": 1,
+      "point": 6,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p007-r001",
+      "trajectory": 1,
+      "point": 7,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p007-r002",
+      "trajectory": 1,
+      "point": 7,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 85,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p008-r001",
+      "trajectory": 1,
+      "point": 8,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p008-r002",
+      "trajectory": 1,
+      "point": 8,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p009-r001",
+      "trajectory": 1,
+      "point": 9,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p009-r002",
+      "trajectory": 1,
+      "point": 9,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p010-r001",
+      "trajectory": 1,
+      "point": 10,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p010-r002",
+      "trajectory": 1,
+      "point": 10,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p011-r001",
+      "trajectory": 1,
+      "point": 11,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": 0.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p011-r002",
+      "trajectory": 1,
+      "point": 11,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": 0.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p012-r001",
+      "trajectory": 1,
+      "point": 12,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-4e8f21a41190c2b2c296b091df6f5051c9d450590f467c18409f6d673597118c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 22,
+          "windX": 0.5,
+          "windZ": 0.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t001-p012-r002",
+      "trajectory": 1,
+      "point": 12,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-9e5edda7890537914a181f7cf36a9fbfe0c6db3724179db931359630f684682b",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 51.666666666666664,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 22,
+          "windX": 0.5,
+          "windZ": 0.5,
+          "photoperiodHours": 16,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p000-r001",
+      "trajectory": 2,
+      "point": 0,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 26,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p000-r002",
+      "trajectory": 2,
+      "point": 0,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 26,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p001-r001",
+      "trajectory": 2,
+      "point": 1,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 26,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p001-r002",
+      "trajectory": 2,
+      "point": 1,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 26,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p002-r001",
+      "trajectory": 2,
+      "point": 2,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 26,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p002-r002",
+      "trajectory": 2,
+      "point": 2,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 26,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p003-r001",
+      "trajectory": 2,
+      "point": 3,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p003-r002",
+      "trajectory": 2,
+      "point": 3,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p004-r001",
+      "trajectory": 2,
+      "point": 4,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p004-r002",
+      "trajectory": 2,
+      "point": 4,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t002-p005-r001",
+      "trajectory": 2,
+      "point": 5,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p005-r002",
+      "trajectory": 2,
+      "point": 5,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p006-r001",
+      "trajectory": 2,
+      "point": 6,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p006-r002",
+      "trajectory": 2,
+      "point": 6,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p007-r001",
+      "trajectory": 2,
+      "point": 7,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p007-r002",
+      "trajectory": 2,
+      "point": 7,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 85,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p008-r001",
+      "trajectory": 2,
+      "point": 8,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p008-r002",
+      "trajectory": 2,
+      "point": 8,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 30,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p009-r001",
+      "trajectory": 2,
+      "point": 9,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p009-r002",
+      "trajectory": 2,
+      "point": 9,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 26.666666666666664,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p010-r001",
+      "trajectory": 2,
+      "point": 10,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 60,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p010-r002",
+      "trajectory": 2,
+      "point": 10,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 60,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p011-r001",
+      "trajectory": 2,
+      "point": 11,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 60,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 10,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p011-r002",
+      "trajectory": 2,
+      "point": 11,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 60,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 10,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p012-r001",
+      "trajectory": 2,
+      "point": 12,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-344da0ac970c1588a14cf7584b8418579c3cc8969163c1f94347e078721746bd",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 60,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 10,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t002-p012-r002",
+      "trajectory": 2,
+      "point": 12,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-0dd336bb1dfc5e0b60bb423d4a974226456c666c7696a8abde65f18f5f6abd7e",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 51.666666666666664,
+          "randomness": 60,
+          "reposeAngle": 50,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 8,
+          "initialFood": 10,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p000-r001",
+      "trajectory": 3,
+      "point": 0,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 35,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p000-r002",
+      "trajectory": 3,
+      "point": 0,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 35,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p001-r001",
+      "trajectory": 3,
+      "point": 1,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 35,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p001-r002",
+      "trajectory": 3,
+      "point": 1,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 35,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p002-r001",
+      "trajectory": 3,
+      "point": 2,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 35,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p002-r002",
+      "trajectory": 3,
+      "point": 2,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 35,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p003-r001",
+      "trajectory": 3,
+      "point": 3,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p003-r002",
+      "trajectory": 3,
+      "point": 3,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": 0.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p004-r001",
+      "trajectory": 3,
+      "point": 4,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p004-r002",
+      "trajectory": 3,
+      "point": 4,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 8,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p005-r001",
+      "trajectory": 3,
+      "point": 5,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p005-r002",
+      "trajectory": 3,
+      "point": 5,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p006-r001",
+      "trajectory": 3,
+      "point": 6,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p006-r002",
+      "trajectory": 3,
+      "point": 6,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t003-p007-r001",
+      "trajectory": 3,
+      "point": 7,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p007-r002",
+      "trajectory": 3,
+      "point": 7,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.13333333333333333,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p008-r001",
+      "trajectory": 3,
+      "point": 8,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p008-r002",
+      "trajectory": 3,
+      "point": 8,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 50,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p009-r001",
+      "trajectory": 3,
+      "point": 9,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p009-r002",
+      "trajectory": 3,
+      "point": 9,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 58.33333333333333,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p010-r001",
+      "trajectory": 3,
+      "point": 10,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p010-r002",
+      "trajectory": 3,
+      "point": 10,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 30,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p011-r001",
+      "trajectory": 3,
+      "point": 11,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 22,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p011-r002",
+      "trajectory": 3,
+      "point": 11,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 22,
+          "windX": -1.5,
+          "windZ": -1.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p012-r001",
+      "trajectory": 3,
+      "point": 12,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-a76d63a5b687da039f19e70cadb7468547d57ff05fdbf235a4871837ba15c9fc",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 22,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t003-p012-r002",
+      "trajectory": 3,
+      "point": 12,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-e5fc01b77571fceffb029ce1aed38e57999cb42f4c24cb135e30e6084b60d10c",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 85,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 30,
+          "temperatureC": 22,
+          "windX": -1.5,
+          "windZ": 0.5,
+          "photoperiodHours": 13.333333333333332,
+          "initialFood": 10,
+          "initialRainPulse": 0.4,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t004-p000-r001",
+      "trajectory": 4,
+      "point": 0,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -0.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 10,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p000-r002",
+      "trajectory": 4,
+      "point": 0,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": -0.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 10,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p001-r001",
+      "trajectory": 4,
+      "point": 1,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 10,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p001-r002",
+      "trajectory": 4,
+      "point": 1,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 10,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p002-r001",
+      "trajectory": 4,
+      "point": 2,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p002-r002",
+      "trajectory": 4,
+      "point": 2,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 10,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p003-r001",
+      "trajectory": 4,
+      "point": 3,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p003-r002",
+      "trajectory": 4,
+      "point": 3,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 45,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p004-r001",
+      "trajectory": 4,
+      "point": 4,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p004-r002",
+      "trajectory": 4,
+      "point": 4,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p005-r001",
+      "trajectory": 4,
+      "point": 5,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p005-r002",
+      "trajectory": 4,
+      "point": 5,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": 0.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p006-r001",
+      "trajectory": 4,
+      "point": 6,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p006-r002",
+      "trajectory": 4,
+      "point": 6,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 10.666666666666666,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p007-r001",
+      "trajectory": 4,
+      "point": 7,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p007-r002",
+      "trajectory": 4,
+      "point": 7,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 40,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p008-r001",
+      "trajectory": 4,
+      "point": 8,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p008-r002",
+      "trajectory": 4,
+      "point": 8,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 18,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p009-r001",
+      "trajectory": 4,
+      "point": 9,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p009-r002",
+      "trajectory": 4,
+      "point": 9,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 1.5
+        }
+      }
+    },
+    {
+      "id": "t004-p010-r001",
+      "trajectory": 4,
+      "point": 10,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t004-p010-r002",
+      "trajectory": 4,
+      "point": 10,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 1.1666666666666665,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t004-p011-r001",
+      "trajectory": 4,
+      "point": 11,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t004-p011-r002",
+      "trajectory": 4,
+      "point": 11,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 68.33333333333333,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t004-p012-r001",
+      "trajectory": 4,
+      "point": 12,
+      "replicate": 1,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-733cab2f8a016d3f15b2fe4d94aa16456b5b9af62d55d4cad9add3325d0e7a65",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 35,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    },
+    {
+      "id": "t004-p012-r002",
+      "trajectory": 4,
+      "point": 12,
+      "replicate": 2,
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "MORRIS-3261f7dd0a0207bffda712d3a475feba1e9177112be2de523efb5dde43500fce",
+        "days": 10,
+        "startMode": "established",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "generic-demo",
+          "version": 5
+        },
+        "parameters": {
+          "humidity": 71.66666666666666,
+          "light": 35,
+          "randomness": 43.33333333333333,
+          "reposeAngle": 20,
+          "temperatureC": 26,
+          "windX": -1.5,
+          "windZ": 1.5,
+          "photoperiodHours": 16,
+          "initialFood": 19.333333333333332,
+          "initialRainPulse": 0.26666666666666666,
+          "surfaceDiffusionScale": 0.5,
+          "surfaceEvaporationScale": 0.8333333333333333
+        }
+      }
+    }
+  ],
+  "sourceFingerprint": "43ddce7466fe4b4bd4459795ec9b75f9ab23ba75f17310eb2a5912021a62c156"
+}

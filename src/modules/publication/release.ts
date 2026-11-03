@@ -30,7 +30,7 @@ export function validAssetPath(path: string) {
           s.endsWith(".") ||
           /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(s),
       ) &&
-    /\.(html|css|js|svg|png|txt|json|woff2?|ttf)$/.test(path)
+    /\.(html|css|js|svg|png|txt|json|csv|woff2?|ttf)$/.test(path)
   );
 }
 export function compareVersions(a: string, b: string) {

@@ -1,0 +1,33 @@
+{
+  "schema": "viveiro-validation-v1",
+  "stage": "P2.4",
+  "developmentVersion": "0.42.0",
+  "publishedTag": null,
+  "runs": 104,
+  "trajectories": 4,
+  "replicates": 2,
+  "days": 10,
+  "inputs": 12,
+  "designId": "953d4559c329bf56385f9230dc69712560baf1035a187be368d6cde10de44d23",
+  "sourceFingerprint": "43ddce7466fe4b4bd4459795ec9b75f9ab23ba75f17310eb2a5912021a62c156",
+  "raw": "public/experimentos/morris-042",
+  "individualFiles": 208,
+  "allRunsMatchPriorScreeningBytes": true,
+  "tests": {
+    "full": 432,
+    "passed": 432,
+    "log": ".runtime/morris-full-final.txt"
+  },
+  "browser": {
+    "kind": "native Cua",
+    "compiled": true,
+    "csvDownloadSha256": "f016956360eb07d0a074dcecbbb7111d4735ade5ca7ba508110289ee9a9b8e18",
+    "consoleErrors": 0
+  },
+  "limitations": [
+    "Exploratory parameter ranges, not calibrated uncertainty.",
+    "Five nonzero population effects; remaining top-10 positions include zero ties.",
+    "Four trajectories do not certify stable biological calibration rankings."
+  ],
+  "next": "P2.5; no tags or releases until all active P2 complete"
+}

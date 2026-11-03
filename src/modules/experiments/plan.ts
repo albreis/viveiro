@@ -1,22 +1,19 @@
 import { profileReference } from "../biology/catalog.ts";
 import type { BiologicalReference } from "../biology/types.ts";
-export const parameterRanges = {
-  humidity: [0, 100, 58],
-  light: [0, 100, 72],
-  randomness: [0, 100, 28],
-  reposeAngle: [15, 55, 36],
-  temperatureC: [5, 45, 24],
-  windX: [-4, 4, 0],
-  windZ: [-4, 4, 0],
-} as const;
-export type ExperimentParameter = keyof typeof parameterRanges;
+import {
+  baseParameterRanges,
+  parameterRanges,
+  type ExperimentParameter,
+  type ExperimentParameters,
+} from "./parameters.ts";
+export { parameterRanges, type ExperimentParameter } from "./parameters.ts";
 export interface ExperimentPlan {
   schema: "viveiro-experiment-v1";
   seed: string;
   days: number;
   startMode: "founding" | "established";
   biologicalProfile: BiologicalReference;
-  parameters: Record<ExperimentParameter, number>;
+  parameters: ExperimentParameters;
 }
 const object = (value: unknown): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value))
@@ -76,6 +73,8 @@ export function normalizeExperiment(value: unknown): ExperimentPlan {
   keys(supplied, Object.keys(parameterRanges));
   const parameters = {} as ExperimentPlan["parameters"];
   for (const key of Object.keys(parameterRanges) as ExperimentParameter[]) {
+    if (!Object.hasOwn(baseParameterRanges, key) && supplied[key] === undefined)
+      continue;
     const [min, max, fallback] = parameterRanges[key],
       n = supplied[key] === undefined ? fallback : supplied[key];
     if (typeof n !== "number" || !Number.isFinite(n) || n < min || n > max)

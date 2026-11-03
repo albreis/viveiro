@@ -1,0 +1,12 @@
+{
+  "output": ".runtime/deposits/deposit-bIkp0h/viveiro-v0.41.0-source.zip",
+  "sha256": "5a220b704c8369d19d86ee9bddb3547d1126f81df5088cdb4c880dfce37f9108",
+  "sourceSha": "0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f",
+  "files": 1097,
+  "published": false,
+  "sizeBytes": 2610967,
+  "independentZipVerified": true,
+  "officialCffSchemaValid": true,
+  "rawSweepCsvFiles": 150,
+  "permanentDepositSubmitted": false
+}

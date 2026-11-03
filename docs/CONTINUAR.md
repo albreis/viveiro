@@ -1,126 +1,98 @@
 # Continuação do Viveiro
 
-Atualizado em 02/11/2026. Trabalhar na raiz do repositório e ler AGENTS.md e cronograma.
-Uma entrega por branch codex/, módulos pequenos em src/TypeScript, Vite, testes,
-QA nativa Cua, commit/push/PR. Preservar saves, branches, tags e audiência dos Sites.
-Não iniciar executor concorrente. Não usar modelos exploratórios como calibrados.
+Atualizado em 02/11/2026. Trabalhar na raiz do repositório (nesta máquina em G),
+ler AGENTS.md, cronograma e conferir Git/PRs. Não iniciar executor concorrente.
+Arquivos pequenos em src/TypeScript, Vite, testes adequados, QA nativa Cua,
+commit/push/PR por etapa. Preservar saves, branches, tags e Site privado.
 
-## Entrega atual: asas apoiadas — 0.40.1
+## Prioridade e regras atuais do usuário
 
-Relato de asas flutuando corrigido e publicado. Branch codex/asas-apoiadas,
-PR https://github.com/albreis/viveiro/pull/54, base codex/aritmetica-portatil (#53).
-Fonte/tag 9b5d05761602c098e1a7bc5770b471dd5e7810f1. Não retag.
-Módulo renderer/discarded-wings.ts com menos de 120 linhas. Raycast no solo e
-no tampão desenhados, orientação pela face, apoio invalidado quando a malha
-muda. Cache entre quadros; nenhum RNG/regra biológica/save alterado.
-11 testes geométricos + 6 integração/offline/quatro casos P2.2B; TS/builds passam.
-Save local exportado por UI conferido também no Node: quatro asas acima do
-apoio atual, até 0,065 u.; representação corrigida sem mudar posições salvas.
-Apoio visual, sem alegar dinâmica de massa/aerodinâmica. Evidência asas-0.40.1.json.
+Concluir TODOS os P2 ativos com agilidade: P2.3 entregue; seguir P2.4, P2.5,
+P2.6 e P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
+conclusão; não retomar propostas históricas sem novo pedido explícito.
 
-Privado: deploy appgdep_6ae8e8e4fa448191aa8515c0395b5a41,
-succeeded 19:48:03 UTC. Público: deploy appgdep_6ae8e93394d88191abbd258b480fe767,
-succeeded 19:49:24 UTC, versão 12, fonte 0488a2718cc35087a70c2e86d1a5293b73fc1803.
-Audiências preservadas. Recibos deploy-0.40.1.json; arquivos
-../viveiro-0.40.1.tar.gz e viveiro-publico-0.40.1.tar.gz.
-Publicação privada confirmada no navegador (0.40.1, console limpo).
+NÃO CRIAR/ENVIAR novas tags ou GitHub Releases até concluir todos os P2 ativos.
+A v0.41.0 já havia sido enviada antes dessa orientação: preservar, sem retag.
+O usuário vinculou GitHub ao Zenodo e não quer versões intermediárias ali.
+Não publicar depósitos manuais/duplicados nem uma versão por etapa no Zenodo.
+Antes da única próxima tag consolidada, alinhar versão e metadados para que
+uma integração automática não arquive metadados antigos. Durante as etapas,
+manter branches/PRs e dev disponíveis, sem releases intermediárias.
 
-CFF/.zenodo atuais descrevem 0.40.1, sem DOI próprio. ZIP selecionado:
-.runtime/deposits/deposit-shHqcJ/viveiro-v0.40.1-source.zip, 779 arquivos,
-2.114.066 bytes, SHA e73036ddc22276905d98a235baeb1aec88d80bbeb927d5b0a3b96c005885e8a7.
-Esquema CFF oficial e cada hash do ZIP conferidos; nada novo enviado ao Zenodo.
-Pacotes e metadados 0.36/0.39/0.40 preservados, sem atribuir DOI antigo à nova versão.
+O público agora é GitHub Pages: https://viveiro.ersolucoesweb.com.br/.
+NÃO atualizar o antigo Site público do ChatGPT. Não apagar o histórico.
+O Site original continua privado; dev 4173 deve continuar rodando em G.
 
-## Entrega urgente P2.2B concluída
+## P2.3 entregue — 0.41.0
 
-0.40.0, fonte/tag 7fdc46942283c82fd0402c76946ba016b251bd80.
-Branch codex/aritmetica-portatil, PR https://github.com/albreis/viveiro/pull/53,
-base codex/cli-experimentos (#52). Ambos abertos na última consulta; verificar
-Git/PRs antes da próxima entrega, pois o usuário faz merges externamente.
-ODD #50 e DOI #51 já integrados à main 043c158. Não retag/recriar releases.
+Branch codex/varreduras-retomaveis, PR https://github.com/albreis/viveiro/pull/63
+(base main), integrado pelo usuário em ba71e4d. Fonte/tag v0.41.0:
+0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f. Branch também recebeu a main com
+correção do workflow do usuário; merge local 1a71dc9, só workflow/docs.
 
-Contrato stdlib-f64-v1 exclusivo dos Workers de experimentos (Node e navegador),
-serviço explícito sem patch global Math. Terrário 3D e saves continuam nativos.
-90 arquivos/281 operações encaminhadas; 13 dependências numéricas fixadas,
-184 avisos em arquivos pequenos. Documentação: docs/aritmetica-portatil.md.
-Os dados nativos divergentes da 0.39 foram preservados; não arredondar CSV.
+Módulos sweeps/{plan,jobs,checkpoint,run,summary}; CLI scripts/run-sweep.ts,
+adaptadores sweep-{args,files,directory}; controles app/sweep-page e Workers.
+Um comando executa 5 valores × 10 réplicas; --limit/--resume conserva execuções
+completas. Resultados atômicos por pasta, hash/plano/versão conferidos, lock por
+pasta. Após morte abrupta do SO, .sweep.lock pode exigir remoção manual depois
+de confirmar ausência de executor; não apagar bloqueios incertos.
 
-396 testes completos, mais quatro regressões de captura e checks dirigidos,
-TS estrito, build privado 351 módulos/público 353, cache offline conferido.
-Quatro cenários, 4.400 ticks por ambiente: CSV E manifesto idênticos em
-Node 24.22.1, IAB dev e bundle compilado. Mesma regressão de 1.000 ticks
-confirmada nos dois Sites publicados, com downloads byte a byte iguais.
-Evidências: validacoes/paridade-0.40.0.json e paridade-producao-0.40.0.json;
-dados brutos em tests/fixtures/cli-portable-040. Nenhuma garantia de todas as
-engines, replicação científica externa ou calibração por espécie.
+419/419 testes completos (162.256 ms), mais 4 testes de depósito. TS estrito,
+build privado 360 módulos, cache offline incluído. CLI real 50 em um comando,
+retomada 7+43 e importação. IAB dev 49+1, download/importação/retomada; bundle
+compilado 50, em 2 Workers. CSV, manifesto, checkpoint e índice idênticos byte a
+byte em todos os 50 casos. Dados brutos tests/fixtures/sweep-041; evidências
+validacoes/varreduras-0.41.0.json. Seeds pareadas por réplica entre valores;
+resultados internos do modelo, não observações naturais ou calibração.
 
-Privado: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/
-ID appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/rev1, owner1/external0.
-Deploy appgdep_6ae8e505d9e081918acca66686b1388b, succeeded 19:31:32 UTC.
-Público: https://viveiro.ersolucoesweb.com.br/ (GitHub Pages, branch site-publico; ver docs/publicacao-github-pages.md)
-Público antigo (Sites, manter até concluir a troca): https://viveiro-laboratorio-publico.everaldodev.chatgpt.site/
-ID appgprj_6ae80cd45fdc8191be8315696a383393, public/rev2, versão 11.
-Fonte bb06c318061e4e4df6ca483dd9311d07d58ba648,
-deploy appgdep_6ae8e571d5b081918cbc7652e9bdb988, succeeded 19:33:22 UTC.
-Arquivos ../viveiro-0.40.0.tar.gz e viveiro-publico-0.40.0.tar.gz.
-Espelho em ../viveiro-publico, galeria anterior preservada.
-Recibos completos em validacoes/deploy-0.40.0.json. Não repetir save/deploy.
-HTTP adicional recebeu 403 na 0.38: não repetir para contornar; QA nativa funciona.
+Privado publicado: appgprj_6ae6364bc4488191b2757449ed3f7e94, owner-only,
+custom/rev1/external0. Deploy appgdep_6ae91980319c81918c44f6f8805ab846,
+succeeded 23:15:26 UTC. Arquivo ../viveiro-0.41.0.tar.gz, fonte da tag 0edcf23.
+Público Pages: run https://github.com/albreis/viveiro/actions/runs/41544523508
+concluído com sucesso, --ref main, tag=v0.41.0.
 
-## Citação e limitações externas
+O run inicial da tag 41543216838 falhou antes do build porque o ambiente
+aceitava apenas main. Usuário corrigiu no PR #64; revisão/CodeQL aprovados,
+PR integrado com merge 76c01783828bbf6ad4ce876bf2854a3ae2426875. Proteções
+mantidas. O novo workflow grava a tag no espelho e despacha publicação na main.
+Não duplicar correção, não afrouxar regras do ambiente. #63 antigo vermelho era
+esse run histórico, não falha do simulador. Recibo deploy-0.41.0.json.
 
-DOI da 0.36.0 PUBLICADO após autorização explícita:
-https://doi.org/10.5281/zenodo.23891981, registro 23891981.
-Autor confirmado: Viveiro contributors. ZIP público igual ao original,
-1.445.248 bytes, SHA 03c497454a51e4d5aad6297490288d8e05b58b84575ad3fc2824f5145f1a67b2.
-Não criar duplicata nem atribuir esse DOI à release atual. Autorização de acesso
-já registrada; não pedir de novo. Nova publicação permanente exige seu próprio aceite.
-CFF raiz e .zenodo.json descrevem a entrega atual 0.40.1; citação específica 0.36 em
-docs/citacoes/v0.36.0.cff. Esquema oficial CFF válido.
-ZIP 0.40: .runtime/deposits/deposit-nxco6P/viveiro-v0.40.0-source.zip,
-777 arquivos, 2.106.864 bytes, SHA
-1e8c687bebedd3c9119e3d4e03ce86de142d14e828c8b4fa3a6fb0a2b1a92b3e.
-Python conferiu cada hash e 12 CSVs brutos; quatro testes do depósito aprovados.
-Nada novo enviado ao Zenodo. Pacotes/tags anteriores preservados.
+## Citação e limites externos
 
-P0.4 ainda depende de DOI atual/botão de citação GitHub após integração.
-P1.6B2: planilha real, leitor/zoom e Lighthouse >90 não concluídos.
-PageSpeed retornou 429/cota diária: não repetir antes de
-2026-11-03T15:16:57 UTC nem contornar com outra chave/conta/ferramenta.
-P1 ensaios escolares/docentes e P3 calibração/JOSS exigem dados reais.
-P5 foi descartado por enquanto em 02/11/2026: P5.1–P5.7 estão fora do escopo
-ativo e não impedem concluir o cronograma. Não reativar sem novo pedido explícito.
-Proposta arquivada em docs/arquivo/clima-real-descartado.md. Checkpoints antigos
-que mandavam executar P5 por último foram superados por esta decisão.
+Somente a 0.36.0 foi enviada manualmente ao Zenodo por este agente após aceite:
+https://doi.org/10.5281/zenodo.23891981. Não duplicar nem atribuir esse DOI à 0.41.
+Autoria/ORCID do usuário recebidos da main preservados nos metadados atuais.
+CFF 0.41.0 validado pelo esquema oficial; ZIP somente LOCAL em
+.runtime/deposits/deposit-bIkp0h/viveiro-v0.41.0-source.zip, 1.097 arquivos,
+2.610.967 bytes, SHA 5a220b704c8369d19d86ee9bddb3547d1126f81df5088cdb4c880dfce37f9108.
+Todos os hashes e 150 CSVs brutos conferidos. Não enviado ao Zenodo.
+Não repetir empacotamento/deposito por etapa; seguir nova política acima.
 
-## Atualização administrativa: retirada do P2.8
+P1.6B2: planilha real/leitor/zoom/Lighthouse ainda pendentes. PageSpeed teve
+HTTP429/cota: não repetir antes de 2026-11-03T15:16:57 UTC nem contornar.
+P1 ensaios escolares/docentes e P3 calibração/JOSS dependem de dados reais.
+Nenhuma conformidade/calibração externa pode ser inventada para encerrar fases.
 
-Usuário descartou P2.8 (instruções em português para uma formiga) em 02/11/2026:
-não será implementado. Não é pendência ou critério de conclusão. Não reativar
-sem novo pedido explícito, mesmo que documentos históricos tragam seu roteiro.
-Proposta arquivada em docs/arquivo/instrucoes-formiga-descartadas.md.
-Branch atual codex/cronograma-sem-instrucoes, baseada em codex/cronograma-sem-clima
-(PR #55). Atualização documental de escopo; versão publicada segue 0.40.1.
-A retomada automática exclui P2.8 e P5. Seguir P2.3–P2.7 e demais itens ativos.
+## Ambiente e próximo passo concreto
 
-## Atualização administrativa: retirada do P5
+P2.4 implementado em codex/sensibilidade-morris, versão de desenvolvimento
+0.42.0, SEM TAG. 432/432 testes completos (402.131 ms), TS/build, QA Cua do
+relatório compilado e download de índices com hash exato. 104 World reais,
+4 trajetórias × 13 pontos × 2 réplicas, 10 dias, 12 entradas. Triagem final
+em .runtime/morris-042-final; bytes individuais idênticos à janela anterior.
+Dados públicos em public/experimentos/morris-042, fonte/planos/hashes e
+relatório docs/sensibilidade.md. Cinco efeitos populacionais não nulos;
+empates de zero no top 10 não significam influência demonstrada. Nenhuma
+calibração por espécie ou depósito Zenodo. Próximo: P2.5, depois P2.6–P2.7.
 
-Branch codex/cronograma-sem-clima, baseada na entrega das asas. Atualiza apenas
-o plano/checkpoint e arquiva a proposta; aplicativo e versão 0.40.1 preservados.
-A retomada automática também deve excluir P5. Próxima implementação segue P2.3.
+Dev 4173 PID17752 preservado; preview de QA 4189 separado. Não encerrar o dev.
+Preparação do P2.5 em .runtime/p2-5-stage: contratos, registry, decisão,
+exemplo local e CLI pareada. NÃO estão instalados em src nem entregues ainda.
+Criar codex/extensoes-tipadas a partir da entrega P2.4, manter arquivos curtos,
+validar sensores locais, seleção passável, reprodução, restore e comparação
+real com ACO. Abrir PR encadeado se o anterior ainda não tiver sido integrado.
 
-## Ambiente e próximo passo
-
-Dev 4173 PID17752 em G continua rodando. Preview de QA 4189 encerrado.
-IAB aba34: SEMENTE-50088/D62,48/14 adultos, pausado, perfil leve, saves preservados.
-Aba35: Site privado em 0.40.1, seed SEMENTE-70654 em fundação, rodando como
-no estado salvo desta origem. Abas34/35 marcadas como entrega. Abas antigas
-20/28/30/32/33 não estavam mais disponíveis nesta sessão; não reutilizar handles.
-Só Cua documentado para browser; nenhum Playwright externo/CDP/internals.
-Capturas 0.40 paridade/publicado e 0.40.1 asas na pasta de visualizações autorizada.
-
-Próximo passo concreto: P2.3, varredura de 5 valores × 10 réplicas em um comando,
-paralela e com retomada; depois P2.4–P2.7 e demais itens ativos, excluindo P2.8 e P5. P2.2B e asas já entregues:
-não duplicar PRs. Conferir merges antes de agir e rebasear a base do PR seguinte
-para main quando sua dependência for integrada. Não iniciar executor concorrente.
-Retomada automática ainda é útil; não desativar ou declarar cronograma concluído.
+PR https://github.com/albreis/viveiro/pull/65 aberto contra main; CodeQL verde.
+Privado publicado com sucesso em 2026-11-03T00:07:26 UTC, fonte 7b3b4f9,
+recibo validacoes/deploy-p2.4-dev.json. Audiência custom/rev1, só proprietário. Não há tag/release 0.42; preservar a política consolidada do usuário.

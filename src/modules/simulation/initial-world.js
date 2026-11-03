@@ -1,3 +1,4 @@
+import { applyInitialInputs } from "../experiments/initial-inputs.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { initializeSurvival } from "../survival/initialize.ts";
 import { initializeFertility } from "../fertility/model.ts";
@@ -124,6 +125,7 @@ export function initializeWorld(world, seed, parameters, options = {}) {
   if (!world.founding)
     world.log("Uma rainha e um macho. O começo de uma colônia.", "birth");
   initializeSeason(world);
+  applyInitialInputs(world);
   initializeRoomStores(world);
   initializeFertility(world);
   initializeSurvival(world);
