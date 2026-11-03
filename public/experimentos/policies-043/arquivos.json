@@ -1,0 +1,96 @@
+{
+  "schema": "viveiro-policy-files-v1",
+  "calibrated": false,
+  "files": [
+    {
+      "file": "comparacao.csv",
+      "sha256": "4b0f64de5755754fad124269bc35342652884b57898c59e7ba2f95c22f648bbd",
+      "bytes": 2050
+    },
+    {
+      "file": "protocolo.json",
+      "sha256": "370d1bf466f6afb421ce6b4af03b07c25a4b849ee42998feee3ea419988e40df",
+      "bytes": 1287
+    },
+    {
+      "file": "r001-aco/dados.csv",
+      "sha256": "44f12c0146dbe59075fbe7fd44f0ec729039659f38130ec790933e20664ac2f3",
+      "bytes": 1759
+    },
+    {
+      "file": "r001-aco/manifesto.json",
+      "sha256": "712b743fcbfbdb6ceaa2ff8bca3a8ece7b52545c18acf9778888aec82ba03ffe",
+      "bytes": 1350
+    },
+    {
+      "file": "r001-extension/dados.csv",
+      "sha256": "ec34433bef718fb1cd96315ba0fc3c800f712dbf09b61d7f03a1dbfa772f22c5",
+      "bytes": 1759
+    },
+    {
+      "file": "r001-extension/manifesto.json",
+      "sha256": "61005d307ab1ea2d946244396ef936527d476efc1649fe887a97321cf75f8944",
+      "bytes": 1587
+    },
+    {
+      "file": "r002-aco/dados.csv",
+      "sha256": "6b74074db1536cf457852bfc76520e2e6bd909d6becdd0e1460c75fc1c13d215",
+      "bytes": 1752
+    },
+    {
+      "file": "r002-aco/manifesto.json",
+      "sha256": "09b9cd19c725925e7e5ba267f148fcd84f4f571b2ed8a4f26b9266ff00d66d5c",
+      "bytes": 1350
+    },
+    {
+      "file": "r002-extension/dados.csv",
+      "sha256": "2f3dacdf4064e867b5fd65617e8ef3dce2993a36eab04842a3c4fedec4f40846",
+      "bytes": 1749
+    },
+    {
+      "file": "r002-extension/manifesto.json",
+      "sha256": "71b4d4bea0b84913a5ba595392851bfec02a0b20df21f00d0628c6e5fa19d2ab",
+      "bytes": 1587
+    },
+    {
+      "file": "r003-aco/dados.csv",
+      "sha256": "23e10070887b69828d50ad367616332d46f1bba026c11f1f0b9026614cd4e231",
+      "bytes": 1756
+    },
+    {
+      "file": "r003-aco/manifesto.json",
+      "sha256": "f8da3f40cbaaa6305fc6bce87d75c60755b41b40f3f32375ffa04140e099e6a3",
+      "bytes": 1350
+    },
+    {
+      "file": "r003-extension/dados.csv",
+      "sha256": "abcee08c08de2ccc216ba5d9831e3a250343e47ccfa7035d6d946d238b3708a0",
+      "bytes": 1756
+    },
+    {
+      "file": "r003-extension/manifesto.json",
+      "sha256": "88a918e98fd14c45a8c1b8cf74eb75bb9ea1346b4d60ce50b8e4204d7f7b628e",
+      "bytes": 1587
+    },
+    {
+      "file": "r004-aco/dados.csv",
+      "sha256": "2e278dc9d2c7c6cc4d419816ee4c26ab7ca1392d428ed659829b56e0603d4157",
+      "bytes": 1760
+    },
+    {
+      "file": "r004-aco/manifesto.json",
+      "sha256": "23b8341d8d1880a6318e9801429dd0df201458d3c497bf6971faa6ae61d07fe9",
+      "bytes": 1350
+    },
+    {
+      "file": "r004-extension/dados.csv",
+      "sha256": "3edace4e8cf41ef2f905cb020b46c8a1532a866afc7e0d559c5f0de8c2e99af7",
+      "bytes": 1758
+    },
+    {
+      "file": "r004-extension/manifesto.json",
+      "sha256": "5b0f74b0cf30269410d69815621fe1f9c33fc757dcfe6e1b36abf687c65bbc97",
+      "bytes": 1587
+    }
+  ]
+}

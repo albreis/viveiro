@@ -5,7 +5,7 @@ import type { ExperimentResponse } from "../../src/modules/experiments/messages.
 /** Isolate the numeric backend and module caches, just as the browser worker does. */
 export function runExperimentProcess(
   value: unknown,
-  options: { signal?: AbortSignal } = {},
+  options: { signal?: AbortSignal; extensionModule?: string } = {},
 ): Promise<ExperimentResult> {
   const plan = normalizeExperiment(value);
   if (options.signal?.aborted)
@@ -15,7 +15,10 @@ export function runExperimentProcess(
   return new Promise((resolve, reject) => {
     const worker = new Worker(
       new URL("../workers/experiment-thread.ts", import.meta.url),
-      { workerData: plan, execArgv: [] },
+      {
+        workerData: { plan, extensionModule: options.extensionModule },
+        execArgv: [],
+      },
     );
     let completed = false;
     const cleanup = () => options.signal?.removeEventListener("abort", abort);

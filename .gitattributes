@@ -5,3 +5,5 @@ tests/fixtures/cli-portable-040/**/*.csv binary
 public/notices/**/*.txt -whitespace
 tests/fixtures/sweep-041/**/*.csv binary
 public/experimentos/morris-042/*.csv binary
+public/experimentos/policies-043/**/*.csv binary
+public/experimentos/policies-043/*.csv binary

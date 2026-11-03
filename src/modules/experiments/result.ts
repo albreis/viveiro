@@ -9,6 +9,7 @@ export async function experimentResult(
   plan: ExperimentPlan,
   csv: string,
   finalRng: number,
+  extensionDiagnostics?: { decisions: number },
 ): Promise<ExperimentResult> {
   const bytes = new TextEncoder().encode(csv);
   const digest = await crypto.subtle.digest("SHA-256", bytes);
@@ -38,6 +39,7 @@ export async function experimentResult(
       sha256,
     },
     finalRootRng: finalRng,
+    ...(extensionDiagnostics ? { extensionDiagnostics } : {}),
     limitations: [
       "Model units; not calibrated for a species.",
       "No renderer, saved terrarium, real weather or wall-clock input.",

@@ -21,6 +21,18 @@
         configuração pode ser repetida no terminal. Seu terrário e seus
         checkpoints continuam preservados.
       </p>
+      <label for="experiment-policy">Política de navegação</label>
+      <select id="experiment-policy" aria-describedby="policy-help">
+        <option value="aco">ACO padrão</option>
+        <option value="balanced">Conforto e carga (experimental)</option>
+        <option value="manual" disabled>Política informada no JSON</option>
+      </select>
+      <p id="policy-help">
+        A escolha altera somente este experimento.
+        <a href="./modelo/extensoes.html"
+          >Conhecer as hipóteses da política e criar uma extensão</a
+        >.
+      </p>
       <label for="experiment-plan"
         ><strong>Configuração do experimento (JSON)</strong></label
       >

@@ -1,0 +1,50 @@
+{
+  "schema": "viveiro-validation-v1",
+  "stage": "P2.5",
+  "developmentVersion": "0.43.0",
+  "tagCreated": false,
+  "tests": {
+    "full": 438,
+    "passed": 438,
+    "log": ".runtime/extensions-full-tests.txt"
+  },
+  "api": [
+    "DecisionPolicy",
+    "SensorSystem",
+    "DecisionSubmodel"
+  ],
+  "example": "src/extensions/balanced.ts",
+  "pairedComparison": {
+    "replicates": 4,
+    "runs": 8,
+    "days": 5,
+    "raw": "public/experimentos/policies-043",
+    "extensionDecisions": [
+      71,
+      89,
+      88,
+      88
+    ]
+  },
+  "browser": {
+    "kind": "native Cua",
+    "compiled": true,
+    "ticks": 500,
+    "csvSha256": "ec34433bef718fb1cd96315ba0fc3c800f712dbf09b61d7f03a1dbfa772f22c5",
+    "manifestSha256": "61005d307ab1ea2d946244396ef936527d476efc1649fe887a97321cf75f8944",
+    "byteEqualToCli": true,
+    "consoleErrors": 0
+  },
+  "preserved": [
+    "four archived portable parity cases",
+    "native routing trajectory",
+    "ACO default when no extension is provided",
+    "saved terrarium and IndexedDB"
+  ],
+  "limitations": [
+    "Trusted developer code, not a security sandbox.",
+    "Source digest covers the indicated module, not transitive external dependencies.",
+    "Pure local signal submodels; no replacement of physical solvers.",
+    "Model experiment, not species calibration or proof of superiority."
+  ]
+}
