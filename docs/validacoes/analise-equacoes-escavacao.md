@@ -120,3 +120,35 @@ O volume das frentes agora cresce com o grupo em todas as sementes de 50 para
 `--horas 72 --segundos-por-tick 1` lê cada tick como 1 segundo e roda 259.200
 ticks, com idade, doença e comida congeladas e sem predadores (o arranjo de
 Buhl não tinha). `--paralelo sim` roda cada grupo numa thread.
+
+### Piloto de 24 h em tempo real
+
+Uma semente (BUHL-1), modo por feromônio v2, grupo fixo, 1 s por tick (86.400
+ticks), cerca de 50 min na nuvem com `--paralelo sim`.
+
+| | 50 | 100 | 200 |
+| --- | --- | --- | --- |
+| Volume em 24 h (u³) | 6,97 | 11,79 | 13,37 |
+| Proporção (modelo) | 1 | 1,69 | 1,92 |
+| Proporção em Buhl, 24 h (12 / 19 / 31 cm³) | 1 | 1,58 | 2,58 |
+| Fração do volume de 24 h já feita em 1 h | 37% | 42% | 53% |
+
+O verificador marca OK nos três padrões (escala 0,47 contra 0,64; saturação
+0,63 / 0,89, 0,67 / 0,82 e 0,83 / 0,93), mas o resultado não deve ser lido
+como reprodução de Buhl:
+
+- **A forma está errada.** Quase metade da escavação acontece na primeira
+  hora; depois as frentes viram câmaras, o número de frentes abertas cai a
+  zero e a colônia fica horas parada, com surtos curtos depois. Em Buhl a
+  desaceleração é gradual ao longo de 72 h. A "saturação" medida aqui é esse
+  surto inicial seguido de parada.
+- **Os terços não são os de Buhl.** Em 24 h a saturação é medida em 8 h e
+  16 h; a referência de Buhl é em 24 h e 48 h de 72 h.
+- **Uma semente só.** O teto de 12 frentes continua limitando o grupo de 200
+  (1,92 contra 2,58).
+
+Conclusão: com o tick valendo 1 s, as taxas de abertura de frente, mordida e
+freio por densidade, que foram escritas por tick, ficam rápidas demais no
+começo e o freio desliga a escavação cedo. Antes de rodar 72 h vale converter
+essas taxas para unidades de tempo real (por segundo) a partir de medidas de
+formigas, e só então comparar com Buhl em várias sementes.
