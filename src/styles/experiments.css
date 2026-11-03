@@ -77,3 +77,47 @@ input:focus-visible {
   outline: 3px solid #496d35;
   outline-offset: 4px;
 }
+
+#parameter-editor {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid #99a88f;
+  border-radius: 8px;
+}
+#parameter-editor summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+.parameter-fields,
+.parameter-identity {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+.parameter-fields fieldset {
+  min-width: 0;
+  border: 1px solid #aebca5;
+  padding: 0.8rem;
+}
+.parameter-fields legend {
+  font-weight: 600;
+}
+.parameter-source {
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+.parameter-identity label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+#parameter-editor input[type="number"],
+#parameter-editor input:not([type]),
+#parameter-editor select {
+  max-width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+}
+#profile-error {
+  color: #8b2521;
+}

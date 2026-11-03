@@ -7,8 +7,7 @@ commit/push/PR por etapa. Preservar saves, branches, tags e Site privado.
 
 ## Prioridade e regras atuais do usuário
 
-Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 entregue; seguir
-P2.6 e P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
+Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 entregue; P2.6 validado; seguir P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
 conclusão; não retomar propostas históricas sem novo pedido explícito.
 
 NÃO CRIAR/ENVIAR novas tags ou GitHub Releases até concluir todos os P2 ativos.
@@ -76,33 +75,41 @@ Nenhuma conformidade/calibração externa pode ser inventada para encerrar fases
 
 ## Ambiente e próximo passo concreto
 
-P2.4: codex/sensibilidade-morris, PR #65 contra main (aberto ao iniciar P2.5).
-Fonte privada 7b3b4f9, publicado com sucesso sem tag; recibo deploy-p2.4-dev.json.
-432/432 testes; dados e limitações em sensibilidade.md. Não repetir o ensaio.
+P2.4 entregue: PR #65, codex/sensibilidade-morris, fonte privada 7b3b4f9,
+432/432 testes. P2.5 entregue: PR #66 sobre #65, codex/extensoes-tipadas,
+fonte privada f4f9a39, 438/438 testes. Ambos publicados no original owner-private,
+sem tags/releases. Recibos deploy-p2.4-dev e deploy-p2.5-dev. ACO e paridade
+portátil/nativa preservados. Não repetir ensaios já aceitos.
 
-P2.5: codex/extensoes-tipadas, desenvolvimento 0.43.0, SEM TAG. 438/438 testes
-completos (330.143 ms), TS/build, quatro casos de paridade portátil e trajetória
-nativa preservados. API extensions/{types,registry,decision,world}; exemplo
-src/extensions/balanced.ts; scripts/compare-policy.ts e --extension na CLI.
-Observações congeladas locais, pesos validados e identidade/hash persistidos.
-Submodelos são transformações locais de sinais, não troca arbitrária da física.
-Código local de desenvolvedor de confiança, sem sandbox; JSON não importa URLs.
-Comparação real ACO/extensão: 4 pares × 5 dias, decisões 71/89/88/88; dados brutos
-public/experimentos/policies-043. Nova política em um arquivo e fonte alterada
-testadas pela CLI. Restore e replay exatos. IAB compilado: 500 ticks, CSV e
-manifesto idênticos à CLI; evidência validacoes/extensoes-0.43.0.json. Laboratório
-isolado tem seletor opt-in; terrário/IndexedDB preservados. PR #66 aberto sobre #65; privado publicado com sucesso em 2026-11-03T00:24:47 UTC,
-fonte f4f9a39, recibo validacoes/deploy-p2.5-dev.json. Sem tag/release/Zenodo.
+P2.6 validado: codex/editor-perfis, desenvolvimento 0.44.0, SEM TAG.
+444/444 testes completos (331.082 ms), TS/build, QA Cua dev e bundle. Editor
+em app/parameter-profile-editor, parameter-fields, profile-file-io e template;
+model parameter-profiles/profile; service parameter-profile-store. Arquivos
+pequenos. Catálogo de 12 entradas (não todos coeficientes internos), unidade,
+faixa/fonte; cinco opcionais só aplicadas quando marcadas. Biblioteca local
+viveiro.parameter-profiles.v1 separada de IndexedDB/saves, versões id@v
+imutáveis; importação/guardar/aplicar/exportar recusam conflitos conhecidos.
+Plano/manifesto preservam perfil de origem e valores efetivamente executados,
+permitindo varreduras com overrides explícitos sem editar o perfil guardado.
+Exportar/reimportar por seed testado em Node, dev antes/depois e bundle:
+300 ticks, CSV e manifesto byte a byte iguais; dados public/experimentos/profile-044.
+Evidência validacoes/perfis-0.44.0.json. PR e recibo privado serão registrados
+na finalização, sem GitHub release ou depósito manual no Zenodo.
 
-Próximo concreto: P2.6, editor de 12 entradas com unidade/faixa/fonte, exportar e
-importar perfil versionado imutável, catálogo v1, biblioteca local separada dos
-saves; aplicar ao laboratório isolado e base de varredura. Registrar perfil de
-origem e valores efetivamente executados no plano, permitindo varreduras como
-variações explícitas. Testar colisão id/versão, entradas inválidas, exportação /
-reimportação e reprodução por seed em Node/navegador. Arquivos pequenos.
-Depois P2.7: inglês mantendo português; não declarar aceite parcial como completo.
+PRÓXIMO: P2.7, inglês mantendo português como padrão. Inventariar textos da UI,
+centralizar mensagens/formatadores em catálogos pequenos, traduzir documentação
+pública gerada (modelo/ensino), permitir troca de idioma e verificar telas reais,
+acessibilidade dos rótulos, Workers/erros e preservação de seed/RNG/CSV. Não
+traduzir dados internos, IDs ou texto do usuário nem alterar contratos científicos
+para traduzir a apresentação. Nenhum aceite parcial como completo.
 
-Dev 4173 PID17752 preservado; preview QA 4189 separado. Cua: aba38 concluiu o
-experimento compilado e baixou dados/manifesto (12) na pasta Downloads. Não
-encerrar o dev. Nenhuma tag/release até TODOS os P2 ativos terminarem. Zenodo
-ligado automaticamente ao GitHub, sem depósitos manuais ou intermediários.
+Dev 4173 PID17752 preservado; preview QA 4189 separado. Cua abas39/dev e40/bundle
+ensaiaram perfil. Downloads: qa-perfis-44-v1.json, configuracao (1).json,
+dados/manifesto (13) primeira, (14) reimportada, (15) compilada; CLI local
+.runtime/profiles-browser-cli-044. Screenshot editor salvo nas visualizações e
+mostrado ao usuário. PRs ainda encadeados, verificar estado/main antes de agir.
+
+Nenhuma tag/release nova até TODOS os P2 ativos terminarem. Zenodo ligado
+automaticamente ao GitHub; não criar depósitos manuais/duplicados. Ao final,
+alinhar CFF/.zenodo e pacote antes da única próxima publicação consolidada.
+P2.8/P5 descartados. Pendências externas P1/P3 continuam abertas honestamente.
