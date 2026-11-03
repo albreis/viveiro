@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sweeps and resuming · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.45.0">
+<link rel="manifest" href="/releases/v0.45.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/varreduras.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="varreduras.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Reproducible sweeps and resuming</h1>
+<p>P2.3, introduced in version 0.41.0. Exploratory experiments, without species calibration. Sweeps execute the same World and exporter as the individual CLI, using stdlib-f64-v1; they do not access the saved terrarium or its clock.</p>
+<h2>Example: five values and ten replicates</h2>
+<p>Using the source of this version, Node 24 and installed lockfile dependencies:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>npm run sweep -- --out resultado-novo --jobs 2</code></pre>
+<p>This runs 50 experiments: humidity [40,50,60,70,80], ten replicates, one model day, an established nest and profile generic-demo@1. The full configuration, including origin seed VARREDURA-41, is stored in varredura.json. --plan arquivo.json accepts a custom viveiro-sweep-v1 plan with base, parameter, values and replicates. The experimentos.html page edits that same plan.</p>
+<p>One parameter varies per batch. Base parameters: humidity, light, randomness, reposeAngle, temperatureC, windX and windZ. P2.4 added optional catalog inputs: photoperiodHours, initialFood, initialRainPulse, surfaceDiffusionScale and surfaceEvaporationScale. Ranges match the individual CLI. Limits: 50 distinct values, 100 replicates and 1,000 runs.</p>
+<h2>Paired seeds and ordering</h2>
+<p>Each replicate seed is SWEEP- followed by SHA-256 of JSON.stringify of [&quot;sweep-replica-v1&quot;, original seed, replicate number starting at 1]. The same replicate uses the same seed across values. This allows paired comparisons; it does not imply statistical independence between treatments. Different replicates receive different seed strings. World still uses its 32-bit RNG; SHA-256 seed derivation does not eliminate the possibility of collisions in that RNG.</p>
+<p>Identifiers v001-r001 etc. follow explicit value/replicate order. Outputs are ordered this way even when Workers finish out of order. Changing --jobs from 1 to 8 changes scheduling, not seeds or ticks. The browser offers 1, 2 or 4 Workers. There is no server-side computation.</p>
+<h2>Files and resuming</h2>
+<p>Every vNNN-rNNN directory contains dados.csv and manifesto.json. Complete results are published through directory renaming; incomplete .partial-* temporaries do not count as results and are not deleted during resuming.</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>npm run sweep -- --out resultado-novo --jobs 2 --limit 7
+npm run sweep -- --out resultado-novo --jobs 4 --resume</code></pre>
+<p>The first call completes seven runs and writes retomada-7.json; the second verifies and reuses them, calculating the remaining 43. For a custom plan, also repeat --plan with identical configuration. Only --resume allows an existing directory. Plan, version, policy, IDs, configuration per run, size and CSV SHA-256 are checked before computation. Different files are not overwritten. Changing value order changes the plan.</p>
+<p>On completion, resumo.csv indexes value, replicate, seed and CSV hash; concluido.json records hashes; retomada.json includes all CSVs/manifests for transfer. Biological metrics remain in individual daily CSVs. Hashes detect corruption; they are not signatures of scientific authenticity.</p>
+<p>Ctrl+C stops Workers and preserves completed directories. .sweep.lock prevents two commands from using one directory. After an abrupt process/OS termination, the lock may remain: confirm no executor is active and remove only that file before resuming. Uncertain locks are not removed automatically.</p>
+<h2>Browser and transfer</h2>
+<p>The experiment page runs the same batch in independent Workers. You can stop, resume and download checkpoint JSON whenever results have been validated. Download before closing the page: sweeps are not automatically persisted in IndexedDB and do not change terrarium saves.</p>
+<p>Browser limits: 200 runs, 10,000 planned daily observations, and JSON imports up to 20 MiB. The CLI accepts larger plans. JSON includes individual CSVs as text, preserving BOM/CRLF; the CSV index does not replace those data.</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>npm run sweep -- --checkpoint retomada.json --out resultado-importado --jobs 2</code></pre>
+<p>Imported results are checked before Workers start. Resuming requires the same model version and policy. With locally modified source under an unchanged version, that identifier does not prove code equality: do not mix different builds under one published version. Native saves are not migrated to the portable policy, and these batch outputs are not assigned biological calibration.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="varreduras.txt" download="viveiro-en-modelo-varreduras.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

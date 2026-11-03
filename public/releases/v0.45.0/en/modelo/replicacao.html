@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectors and replication · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.45.0">
+<link rel="manifest" href="/releases/v0.45.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/replicacao.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="replicacao.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Vectors and replication</h1>
+<p>The <a href="reacao-difusao.html">field specification</a> is sufficient to write another solver. These cases verify boundaries, indices, wind direction, substeps and evaporation. They are not laboratory observations.</p>
+<h2>Downloads and execution</h2>
+<ul>
+<li><a href="referencia.txt">Independent TypeScript reference</a>: save as reference-field.ts.</li>
+<li><a href="vetores.json">Input/output vectors</a>: JSON with schema and tolerance.</li>
+<li><a href="verificador.txt">Reference checker</a>: source of the repository’s small runner.</li>
+</ul>
+<p>In the full source, using Node 24 and no additional dependencies:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>node scripts/check-odd-reference.ts
+node --test tests/odd.test.mjs tests/odd-pages.test.mjs</code></pre>
+<p>The first command imports only the reference and vectors, not the production chemical solver. The second compares both through distinct calculation paths, and checks analytical examples and pages. The runner reports actual error per case. No results from a fictitious external reimplementer have been created.</p>
+<h2>Hand-calculable cases</h2>
+<p>Common parameters below are h=1, T=1, lambda=0 and zero wind unless stated otherwise.</p>
+<ol>
+<li>Grid 3×1, C=[0,1,0], D=0.1: N=1; output [0.1,0.8,0.1]. JSON uses decimal points.</li>
+<li>Grid 2×1, C=[1,0], D=0, vx=0.25: output [0.75,0.25]. With C=[0,1] and vx=−0.25, output is [0.25,0.75]. The closed boundary loses no mass through advection.</li>
+<li>Grid 1×1, C=[2], D=0, lambda=ln(2): output [1]. There are no internal faces.</li>
+<li>Grid 2×2, C=[1,0,0,0] by rows, D=0.1: output [0.8,0.1,0.1,0]. The diagonal cell receives no direct flux in that substep.</li>
+<li>Grid 2×1, C=[1,0], D=0.5, vx=1: R=3, N=4, delta=0.25. The per-substep matrix is:</li>
+</ol>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>[ 0.625  0.125 ]
+[ 0.375  0.875 ]</code></pre>
+<p>Applied four times, it produces [0.296875,0.703125]. With lambda=ln(2), the final output is half: [0.1484375,0.3515625], because each substep applies the same exponential factor. These seven cases, counting directions and evaporation separately, are fixed in the JSON without generating expectations through the production solver.</p>
+<h2>Tolerance and evidence limits</h2>
+<p>Use absolute component error ≤1e-12 for these small vectors. Do not require identical bytes from two differently ordered floating-point sums. CSV/replay identity of the same implementation is a separate CLI criterion.</p>
+<p>Additional tests vary rectangular dimensions, wind signs, spacing, diffusion and duration; they check input preservation, conservation and nonnegativity. Reference and comparison were written by the same project: they are internal consistency checks against the ODD. Scientific audit/external replication, physical scale and calibration with measurements remain open.</p>
+<p>Pages/documents use the same Markdown source. Equations/code are escaped text, not executed content. The source package explicitly includes these public documents; generators do not expose checkpoints or operational documents.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="replicacao.txt" download="viveiro-en-modelo-replicacao.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

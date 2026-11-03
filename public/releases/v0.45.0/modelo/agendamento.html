@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ordem dos processos · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.45.0">
+<link rel="manifest" href="/releases/v0.45.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="agendamento.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/agendamento.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Ordem dos processos</h1>
+<p>Parte3 do <a href="index.html">ODD</a>, conferida em colonies/update.ts e simulation/environment-step.js. Atualizações são sequenciais; trocar sua ordem muda o modelo, mesmo com a mesma seed. Operações locais podem usar buffers simultâneos, sem tornar simultâneo o tick inteiro.</p>
+<h2>Antes do tick</h2>
+<p>stepSession reaplica, na ordem do registro, todas as intervenções cujo tick é menor ou igual ao tick corrente de A. Aplica a mesma intervenção em B quando existe. Em seguida executa exatamente um passo de A e um de B. Intervir no tick t ocorre depois do fechamento já registrado em t e antes de avançar para t+1. Uma leitura atual separada pode, por isso, diferir do fechamento do mesmo tick.</p>
+<h2>Um avanço da família</h2>
+<ol>
+<li>updateEnvironment incrementa o tick. Atualiza água/calor do solo quando devido, calcula adequação pela umidade, atualiza paisagem e transporta/evapora o feromônio superficial. Depósitos de operárias ocorrerão mais tarde no tick.</li>
+<li>Captura a lista atual de colônias; recompõe referências de habitat/vizinhança.</li>
+<li>Prepara química social; atualiza ecologia, território e encontros químicos.</li>
+<li>Atualiza os odores de referência no grafo; depois erosão, agregados granulares e ventilação. Gases são compartilhados; calcula exposição a doença.</li>
+<li>Para cada colônia, na ordem da raiz seguida das filhas: sincroniza IDs/limites, atualiza fertilidade e sazonalidade, depois ciclo da prole e adultos.</li>
+<li>Predadores atuam sobre a lista conjunta. Mortes por predação e outras causas são registradas; cargas são largadas, resíduos gerados e mortos removidos.</li>
+<li>Recompõe vizinhança. Para cada colônia atualiza nutrição/trofalaxia, deterioração de estoques e avisos, sem redistribuição gratuita de reservas.</li>
+<li>Coordena encontros reprodutivos e alocação de novas colônias. Uma filha criada aqui não recebeu o bloco de atualização por colônia já encerrado neste tick.</li>
+<li>Registra o fechamento diário quando tick é múltiplo de100. Se passaram25 ticks desde o censo anterior, registra o ponto do gráfico. A leitura é observacional.</li>
+</ol>
+<h2>Ordem dos adultos dentro da colônia</h2>
+<p>Primeiro são guardadas poses anteriores para a interpolação, depois atualiza-se fundação. Os adultos são visitados na ordem do array, sem embaralhamento global. Idade, saúde/mortalidade e ramo sexual precedem o trabalho da operária.</p>
+<p>Para operárias vivas: aprendizado/custo energético; encontros, infiltração, abrigo sazonal, tampão, recuperação de travamento, mimetismo/pulgões, tarefa de solo já assumida, organização da colônia e nova tarefa de solo. Um ramo que consome a ação encerra o processamento daquele indivíduo no tick.</p>
+<p>Sem tarefa prioritária, a operária considera rota interna e depois movimento superficial. Sensores de perigo, retorno/coleta e ACO precedem deslocamento. Quando se move na superfície carregando alimento, deposita0,25 unidade química na célula final, limitada pela capacidade de depósito. Esse depósito será transportado no próximo updateEnvironment. Não há retroação antecipada.</p>
+<h2>Frequências e relógio</h2>
+<p>O ambiente/decisões principais avançam por tick. Água/calor e gases integram em janelas de10 ticks com seus próprios subpassos; granular/escavação e efeitos de perfil têm rotinas específicas. A reação-difusão superficial usa dt=1 por tick. O gráfico é amostragem de25 ticks; CSV diário usa100.</p>
+<p>O relógio visível acumula crédito de tempo real e drena ticks inteiros. Página oculta pausa o avanço normal; o Worker de avanço usa stepSession até atingir orçamento/destino, sem saltar ticks. Cancelamento não aplica um mundo parcial incompleto. Simular enquanto a página está fechada não está implementado.</p>
+<p>Previsões executam cópias, com sementes de réplica próprias. Render, câmera, exportação e leitura do ODD não devem consumir o RNG da execução observada.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="agendamento.txt" download="viveiro-pt-BR-modelo-agendamento.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>
