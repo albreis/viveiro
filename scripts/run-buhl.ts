@@ -1,4 +1,5 @@
 import { existsSync, mkdirSync, statSync, writeFileSync } from "node:fs";
+import { Worker } from "node:worker_threads";
 import { dirname, resolve } from "node:path";
 import metadata from "../package.json" with { type: "json" };
 import { BUHL_SOURCE } from "../src/modules/benchmarks/buhl-2005-data.ts";
@@ -19,18 +20,22 @@ Uso: npm run benchmark:buhl -- --out ./buhl-novo [--days 3] [--seeds 1]
      [--groups 50,100,200] [--sample-every 5]
      [--mode projetos|estigmergia] [--protocol terrario|grupo-fixo]
      [--ociosas original|cedem]
+     [--horas 72 --segundos-por-tick 1] [--paralelo sim]
 --mode estigmergia usa a escavação recrutada por feromônio (Buhl).
 --protocol grupo-fixo começa só com operárias, sem rainha, dentro do ninho.
 --ociosas cedem faz operárias ociosas darem passagem a quem trabalha.
+--horas lê cada tick como --segundos-por-tick segundos reais e roda as horas
+pedidas (72 h a 1 s por tick = 259.200 ticks), com idade, doença e comida
+congeladas. --paralelo sim roda cada grupo numa thread.
 Roda grupos preparados de operárias e compara a forma da curva de escavação
 e a escala do volume final com os dados publicados. Unidades do modelo não
 são convertidas para cm³ nem horas. Modelo exploratório, não calibrado.
 Saída: serie.csv e comparacao.json numa pasta nova.
 `;
 
-function csv(runs: DiggingRun[]) {
+function csv(runs: DiggingRun[], secondsPerTick?: number) {
   const head =
-    "semente,operarias_iniciais,tick,dia_modelo,volume_removido_u3,volume_transito_u3,operarias,frentes_ativas,nos_do_ninho";
+    "semente,operarias_iniciais,tick,dia_modelo,horas_reais,volume_removido_u3,volume_transito_u3,operarias,frentes_ativas,nos_do_ninho";
   const rows = runs.flatMap((r) =>
     r.samples.map((s) =>
       [
@@ -38,6 +43,7 @@ function csv(runs: DiggingRun[]) {
         r.workers,
         s.tick,
         s.tick / TICKS_PER_DAY,
+        secondsPerTick === undefined ? "" : (s.tick * secondsPerTick) / 3600,
         s.removed,
         s.traffic,
         s.workers,
@@ -61,23 +67,52 @@ else
       !statSync(dirname(output)).isDirectory()
     )
       throw Error("A pasta pai da saída deve existir.");
-    const runs: DiggingRun[] = [];
+    const jobs = [];
     for (let s = 1; s <= options.seeds; s++)
-      for (const workers of options.groups) {
-        const seed = "BUHL-" + s;
-        process.stderr.write(`Rodando ${seed} com ${workers} operárias...\n`);
+      for (const workers of options.groups)
+        jobs.push({
+          seed: "BUHL-" + s,
+          workers,
+          days: options.days,
+          ticks: options.realTime?.ticks,
+          sampleEvery: options.sampleEvery,
+          setup: {
+            mode: options.mode,
+            workersOnly: options.protocol === "grupo-fixo",
+            insideNest: options.protocol === "grupo-fixo",
+            idleYield: options.idle === "cedem",
+            freezeDaily: !!options.realTime,
+            noPredators: !!options.realTime,
+          },
+        });
+    const started = Date.now();
+    const report = (job: (typeof jobs)[number], tick: number, total: number) =>
+      process.stderr.write(
+        `${job.seed} ${job.workers} operárias: ${Math.round((100 * tick) / total)}% (${Math.round((Date.now() - started) / 60000)} min)\n`,
+      );
+    const runOne = (job: (typeof jobs)[number]) =>
+      new Promise<DiggingRun>((done, fail) => {
+        const worker = new Worker(
+          new URL("./lib/buhl-worker.ts", import.meta.url),
+          { workerData: job },
+        );
+        worker.on("message", (m) =>
+          m.type === "progress" ? report(job, m.tick, m.total) : done(m.run),
+        );
+        worker.on("error", fail);
+      });
+    const runs: DiggingRun[] = [];
+    if (options.parallel) runs.push(...(await Promise.all(jobs.map(runOne))));
+    else
+      for (const job of jobs) {
+        process.stderr.write(
+          `Rodando ${job.seed} com ${job.workers} operárias...\n`,
+        );
         runs.push(
           runDigging({
-            seed,
-            workers,
-            days: options.days,
-            sampleEvery: options.sampleEvery,
-            setup: {
-              mode: options.mode,
-              workersOnly: options.protocol === "grupo-fixo",
-              insideNest: options.protocol === "grupo-fixo",
-              idleYield: options.idle === "cedem",
-            },
+            ...job,
+            onProgress: (tick, total) => report(job, tick, total),
+            progressEvery: Math.max(1000, Math.round((job.ticks ?? 0) / 20)),
           }),
         );
       }
@@ -87,7 +122,11 @@ else
       transito: compareWithBuhl(bySource(runs, "transito")),
     };
     mkdirSync(output);
-    writeFileSync(resolve(output, "serie.csv"), csv(runs), { flag: "wx" });
+    writeFileSync(
+      resolve(output, "serie.csv"),
+      csv(runs, options.realTime?.secondsPerTick),
+      { flag: "wx" },
+    );
     writeFileSync(
       resolve(output, "comparacao.json"),
       JSON.stringify(

@@ -7,6 +7,9 @@ export interface BuhlOptions {
   mode: "projetos" | "estigmergia";
   protocol: "terrario" | "grupo-fixo";
   idle: "original" | "cedem";
+  /** Real-time reading: hours of experiment and seconds per tick. */
+  realTime?: { hours: number; secondsPerTick: number; ticks: number };
+  parallel: boolean;
 }
 
 const integer = (name: string, raw: string, min: number, max: number) => {
@@ -35,6 +38,9 @@ export function buhlArgs(argv: string[]): BuhlOptions {
         "mode",
         "protocol",
         "ociosas",
+        "horas",
+        "segundos-por-tick",
+        "paralelo",
       ].includes(name)
     )
       throw Error("Opção desconhecida: " + flag);
@@ -56,6 +62,23 @@ export function buhlArgs(argv: string[]): BuhlOptions {
       throw Error(`--${name} deve ser ${ok.join(" ou ")}.`);
     return value;
   };
+  let realTime: BuhlOptions["realTime"];
+  if (seen.has("horas") || seen.has("segundos-por-tick")) {
+    if (seen.has("days")) throw Error("Use --days ou --horas, não os dois.");
+    const hours = integer("horas", seen.get("horas") ?? "72", 1, 200);
+    const raw = seen.get("segundos-por-tick") ?? "1";
+    if (!/^\d+(\.\d+)?$/.test(raw))
+      throw Error("--segundos-por-tick deve ser um número positivo.");
+    const secondsPerTick = Number(raw);
+    if (secondsPerTick < 0.05 || secondsPerTick > 60)
+      throw Error("--segundos-por-tick deve estar entre 0,05 e 60.");
+    const ticks = (hours * 3600) / secondsPerTick;
+    if (!Number.isInteger(ticks) || ticks > 3_000_000)
+      throw Error(
+        "--horas × 3600 / --segundos-por-tick deve dar um número inteiro de até 3 milhões de ticks.",
+      );
+    realTime = { hours, secondsPerTick, ticks };
+  }
   return {
     out,
     days: integer("days", seen.get("days") ?? "3", 1, 365),
@@ -63,12 +86,15 @@ export function buhlArgs(argv: string[]): BuhlOptions {
     groups: groups.sort((a, b) => a - b),
     sampleEvery: integer(
       "sample-every",
-      seen.get("sample-every") ?? "5",
+      seen.get("sample-every") ??
+        (seen.has("horas") || seen.has("segundos-por-tick") ? "600" : "5"),
       1,
-      100,
+      100_000,
     ),
     mode: choice("mode", "projetos", ["projetos", "estigmergia"]),
     protocol: choice("protocol", "terrario", ["terrario", "grupo-fixo"]),
     idle: choice("ociosas", "original", ["original", "cedem"]),
+    realTime,
+    parallel: choice("paralelo", "nao", ["nao", "sim"]) === "sim",
   };
 }

@@ -86,3 +86,37 @@ com o grupo.
 
 Ajustar com sementes separadas para ajuste e para teste, e só então comparar
 com Buhl.
+
+## Correções no modo por feromônio (versão 2 do estado)
+
+O modo por feromônio é opcional e o padrão não muda (séries do modo projetos
+idênticas; suíte com a mesma única falha antiga da `main`). As correções seguem
+um princípio, não um ajuste para bater com Buhl:
+
+- **Recruta que chega a uma frente aberta trabalha nela**, em vez de seguir
+  andando atrás da frente que escolheu de longe.
+- **Fidelidade:** quem despejou terra volta para a mesma frente aberta com
+  probabilidade 0,9 × freio de densidade (ou a de recrutamento, se maior). Em
+  formigas-de-fogo, uma minoria persistente faz a maior parte da escavação
+  (Aguilar et al. 2018).
+- **Trilha:** quem despeja terra reforça a marca da sua frente (0,35), e a
+  evaporação passa de 0,04 para 0,0035 por tick (meia-vida de cerca de 200
+  ticks, a ordem de uma viagem de ida e volta).
+
+Resultado (5 sementes, 20 dias, grupo fixo), volume 50 / 100 / 200:
+
+| | Total | Só frentes | Escala total | Escala frentes |
+| --- | --- | --- | --- | --- |
+| Versão 1 | 0,98 / 1,10 / 1,71 | 0,98 / 1,10 / 0,50 | 0,40 | negativa |
+| Versão 2 | 1,74 / 3,37 / 4,65 | 1,74 / 3,37 / 3,68 | 0,71 | 0,54 |
+
+O volume das frentes agora cresce com o grupo em todas as sementes de 50 para
+100. De 100 para 200 o ganho é pequeno porque o teto de 12 frentes é atingido
+(10 a 12 frentes abertas com 200). A curva ainda não desacelera como em Buhl
+(saturação 0,25 / 0,67 com 50, contra 0,48 / 0,82).
+
+## Tempo real
+
+`--horas 72 --segundos-por-tick 1` lê cada tick como 1 segundo e roda 259.200
+ticks, com idade, doença e comida congeladas e sem predadores (o arranjo de
+Buhl não tinha). `--paralelo sim` roda cada grupo numa thread.

@@ -122,7 +122,24 @@ test("argumentos inválidos falham antes de rodar", () => {
     mode: "projetos",
     protocol: "terrario",
     idle: "original",
+    realTime: undefined,
+    parallel: false,
   });
+  assert.deepEqual(buhlArgs(["--out", "x", "--horas", "72"]).realTime, {
+    hours: 72,
+    secondsPerTick: 1,
+    ticks: 259200,
+  });
+  assert.equal(buhlArgs(["--out", "x", "--horas", "72"]).sampleEvery, 600);
+  assert.throws(
+    () =>
+      buhlArgs(["--out", "x", "--horas", "1", "--segundos-por-tick", "0.7"]),
+    /inteiro/,
+  );
+  assert.throws(
+    () => buhlArgs(["--out", "x", "--horas", "1", "--days", "2"]),
+    /não os dois/,
+  );
   assert.equal(
     buhlArgs(["--out", "x", "--mode", "estigmergia"]).mode,
     "estigmergia",
@@ -258,4 +275,22 @@ test("regra opcional: ociosa cede passagem e não alarga túnel", async () => {
   const run = runDigging(options);
   assert.deepEqual(runDigging(options), run);
   assert.ok(run.samples.every((s) => s.traffic === 0));
+});
+
+test("modo de tempo real congela idade e comida e roda os ticks pedidos", () => {
+  const run = runDigging({
+    seed: "BUHL-T",
+    workers: 6,
+    days: 1,
+    ticks: 250,
+    sampleEvery: 50,
+    setup: {
+      mode: "estigmergia",
+      workersOnly: true,
+      insideNest: true,
+      freezeDaily: true,
+    },
+  });
+  assert.equal(run.samples.at(-1).tick, 250);
+  assert.equal(run.samples.at(-1).workers, 6);
 });

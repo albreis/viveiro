@@ -30,9 +30,18 @@ export interface StigmergyParams {
    * sensed as crowding, not a stopping rule.
    */
   crowding: number;
+  /**
+   * Chance that a worker who just dumped soil returns to the same open front,
+   * before the density brake. A minority of persistent diggers does most of
+   * the excavation in fire ants (Aguilar et al. 2018).
+   */
+  fidelity: number;
+  /** Pheromone a carrier adds to its front's trail when it dumps a load. */
+  trailDeposit: number;
 }
 export interface StigmergyState {
-  version: 1;
+  /** 1: original experiment; 2: fidelity, carrier trail and front adoption. */
+  version: 1 | 2;
   params: StigmergyParams;
   /** Soil removed before the mode was enabled; only later digging counts. */
   removedAtStart: number;
@@ -43,7 +52,9 @@ export interface StigmergyState {
 export const DEFAULT_STIGMERGY: Readonly<StigmergyParams> = Object.freeze({
   k: 1,
   deposit: 0.35,
-  evaporation: 0.04,
+  // Half-life of about 200 ticks, the order of a digger's round trip, so a
+  // mark outlives the gap between visits instead of vanishing in 17 ticks.
+  evaporation: 0.0035,
   spontaneous: 0.006,
   baseJoin: 0.01,
   maxFronts: 12,
@@ -51,6 +62,8 @@ export const DEFAULT_STIGMERGY: Readonly<StigmergyParams> = Object.freeze({
   perFront: 6,
   biteScale: 4,
   crowding: 100,
+  fidelity: 0.9,
+  trailDeposit: 0.35,
 });
 
 export function enableStigmergy(
@@ -58,7 +71,7 @@ export function enableStigmergy(
   params: Partial<StigmergyParams> = {},
 ) {
   world.soil.stigmergy = {
-    version: 1,
+    version: 2,
     params: { ...DEFAULT_STIGMERGY, ...params },
     removedAtStart: world.soil.removed,
     marks: {},
@@ -146,6 +159,25 @@ export function adoptFrontHere(world: SoilWorld, ant: SoilAgent) {
   if (!here || !ant.soilTask) return false;
   ant.soilTask.projectId = here.id;
   return true;
+}
+
+/** A carrier returning from its front reinforces that front's trail. */
+export function depositTrail(world: SoilWorld, project: DigProject) {
+  const s = world.soil.stigmergy;
+  if (!s?.params.trailDeposit) return;
+  s.marks[project.id] = {
+    value: markAt(world, project) + s.params.trailDeposit,
+    tick: world.tick,
+  };
+}
+
+/** After dumping: return to the same open front, braked by density. */
+export function continueProbability(world: SoilWorld, project: DigProject) {
+  const s = world.soil.stigmergy!;
+  return Math.max(
+    joinProbability(world, project),
+    (s.params.fidelity ?? 0) * crowdingFactor(world),
+  );
 }
 
 export function forgetMark(world: SoilWorld, project: DigProject) {

@@ -20,14 +20,27 @@ export interface DiggingSetup {
   stigmergy?: Partial<StigmergyParams>;
   /** Idle workers give way to workers on a task (optional traffic rule). */
   idleYield?: boolean;
+  /**
+   * Hold day-scaled biology still (age, disease hazard, food) so a run of
+   * hundreds of thousands of ticks tests behaviour, not ageing. Used when a
+   * tick is read as a short real interval rather than 1/100 of a day.
+   */
+  freezeDaily?: boolean;
+  /** Remove predators, as in a laboratory arena (Buhl et al. had none). */
+  noPredators?: boolean;
 }
 
 export interface DiggingRunOptions {
   seed: string;
   workers: number;
   days: number;
+  /** Exact number of ticks to run; overrides `days` when given. */
+  ticks?: number;
   sampleEvery?: number;
   setup?: DiggingSetup;
+  /** Called with the current tick every `progressEvery` ticks. */
+  onProgress?: (tick: number, total: number) => void;
+  progressEvery?: number;
 }
 export interface DiggingSample {
   tick: number;
@@ -86,6 +99,7 @@ export function prepareDiggingWorld(
   finishLessonWorld(w, true);
   if (setup.mode === "estigmergia") enableStigmergy(w, setup.stigmergy);
   if (setup.idleYield) enableIdleYield(w);
+  if (setup.noPredators) w.predators.length = 0;
   return w;
 }
 
@@ -151,11 +165,36 @@ function sample(w: LessonWorld, start: number, traffic: number): DiggingSample {
   };
 }
 
+/** Keeps day-scaled biology where it started; behaviour still runs per tick. */
+function holdDaily(w: LessonWorld, ages: Map<number, number>) {
+  w.food = 1000;
+  for (const a of w.ants) {
+    const age = ages.get(a.id);
+    if (age !== undefined) a.age = age;
+    const life = (a as { life?: { diseaseHazard: number; infection?: number } })
+      .life;
+    if (life) {
+      life.diseaseHazard = 0;
+      life.infection = 0;
+    }
+  }
+}
+
 /** Runs the production step function; only the starting group is prepared. */
 export function runDigging(options: DiggingRunOptions): DiggingRun {
   const every = options.sampleEvery ?? 5;
-  if (!Number.isInteger(options.days) || options.days < 1 || options.days > 365)
+  if (
+    options.ticks === undefined &&
+    (!Number.isInteger(options.days) || options.days < 1 || options.days > 365)
+  )
     throw Error("Dias devem ser inteiros de 1 a 365.");
+  if (
+    options.ticks !== undefined &&
+    (!Number.isInteger(options.ticks) ||
+      options.ticks < 1 ||
+      options.ticks > 3_000_000)
+  )
+    throw Error("Ticks devem ser inteiros de 1 a 3.000.000.");
   if (!Number.isInteger(every) || every < 1)
     throw Error("Intervalo de amostragem deve ser inteiro positivo.");
   const w = prepareDiggingWorld(
@@ -176,12 +215,20 @@ export function runDigging(options: DiggingRunOptions): DiggingRun {
     traffic += w.soil.removed - before;
   };
   const start = w.soil.removed,
-    total = options.days * TICKS_PER_DAY,
-    samples = [sample(w, start, traffic)];
+    total = options.ticks ?? options.days * TICKS_PER_DAY,
+    samples = [sample(w, start, traffic)],
+    progressEvery = options.progressEvery ?? 10_000;
+  const frozen = options.setup?.freezeDaily
+    ? new Map(w.ants.map((a) => [a.id, a.age]))
+    : null;
   while (w.tick < total) {
     w.step();
+    if (frozen) holdDaily(w, frozen);
+    if (options.setup?.noPredators) w.predators.length = 0;
     if (w.tick % every === 0 || w.tick === total)
       samples.push(sample(w, start, traffic));
+    if (options.onProgress && w.tick % progressEvery === 0)
+      options.onProgress(w.tick, total);
   }
   return {
     seed: options.seed,

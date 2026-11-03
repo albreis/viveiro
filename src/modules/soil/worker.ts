@@ -8,7 +8,9 @@ import { beginSoilHaul, enterForSoil } from "./routing.ts";
 import { depositSoil, distance3 } from "./ledger.ts";
 import {
   adoptFrontHere,
+  continueProbability,
   crowdingFactor,
+  depositTrail,
   joinProbability,
   recruitingProject,
 } from "./stigmergy.ts";
@@ -176,9 +178,17 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     const worked = stigmergy
       ? world.soil.projects.find((p) => p.id === task.projectId)
       : undefined;
+    if (worked && !worked.completed && stigmergy!.version >= 2)
+      depositTrail(world, worked);
     if (
       (!task.projectId && !task.rubbleId) ||
-      (worked && world.random() >= joinProbability(world, worked))
+      (worked &&
+        world.random() >=
+          (stigmergy!.version >= 2
+            ? worked.completed
+              ? 0
+              : continueProbability(world, worked)
+            : joinProbability(world, worked)))
     )
       delete ant.soilTask;
     return true;
@@ -194,6 +204,19 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     }
     enterForSoil(world, ant, project?.front ?? task.sourceNode!);
     return true;
+  }
+  // A recruit that reaches any open front works there instead of walking on.
+  if (
+    stigmergy &&
+    stigmergy.version >= 2 &&
+    task.phase === "return" &&
+    ant.node != null &&
+    ant.node !== project?.front &&
+    world.soil.projects.some((p) => !p.completed && p.front === ant.node) &&
+    adoptFrontHere(world, ant)
+  ) {
+    ant.route = [];
+    delete ant.routeIntent;
   }
   if (ant.route?.length) {
     world.moveInNest(ant);
