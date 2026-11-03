@@ -21,6 +21,7 @@
     "scripts/generate-numeric-notices.ts",
     "scripts/run-sweep.ts",
     "scripts/run-sensitivity.ts",
-    "scripts/compare-policy.ts"
+    "scripts/compare-policy.ts",
+    "scripts/check-i18n.ts"
   ]
 }

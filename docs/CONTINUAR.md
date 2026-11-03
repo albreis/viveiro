@@ -117,3 +117,23 @@ Nenhuma tag/release nova até TODOS os P2 ativos terminarem. Zenodo ligado
 automaticamente ao GitHub; não criar depósitos manuais/duplicados. Ao final,
 alinhar CFF/.zenodo e pacote antes da única próxima publicação consolidada.
 P2.8/P5 descartados. Pendências externas P1/P3 continuam abertas honestamente.
+
+## Checkpoint P2.7 em andamento e transferência manual
+
+Branch atual codex/internacionalizacao, baseada na entrega P2.6. A pasta
+src/i18n já existe: locales/pt-BR/common.json, locales/en/common.json,
+catalogs.ts, core.ts, validation.ts e README. Tradutor puro com parâmetros,
+tipos derivados e validação de chaves/variáveis; npm run i18n:check entra no
+build. A migração dos textos da UI e das páginas para inglês ainda NÃO foi
+feita; não declarar P2.7 concluído nem criar tag. Próximo: inventariar src/app,
+HTML e dados apresentados, separar catálogos por área e integrar tradução de
+apresentação sem mudar snapshots, RNG, seed, CSV ou texto do usuário. Traduzir
+também as páginas públicas modelo/ensino; conferir todas as telas no navegador.
+
+Orientação mais recente: consultar o limite real compartilhado por get_usage_limits
+entre lotes e antes de trabalho grande. Ao restarem 3% ou menos da janela de
+300 minutos, encerrar desenvolvimento após commit/push e checkpoint. O usuário
+continuará manualmente; não retomar automaticamente depois do reset sem novo
+pedido. A retomada automática já estava PAUSED e foi mantida assim. Não consumir
+resets de cota nem contornar restrições. Não registrar dados privados da conta
+ou credenciais no repositório.

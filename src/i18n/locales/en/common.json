@@ -1,0 +1,12 @@
+{
+  "common.language": "Language",
+  "common.locale.pt-BR": "Português",
+  "common.locale.en": "English",
+  "common.close": "Close",
+  "common.cancel": "Cancel",
+  "common.loading": "Loading…",
+  "common.missing": "No data",
+  "common.back": "Back",
+  "common.model": "Exploratory model",
+  "common.version": "Version {version}"
+}
