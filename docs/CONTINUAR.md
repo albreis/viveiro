@@ -19,8 +19,8 @@ pelo GitHub após71. PR69 é trabalho do usuário: preservar.
 
 ## Próximos passos concretos
 
-1. Integrar PR77 se checks verdes e ainda aberto. Sem repetir a entrega.
-2. Branch própria codex/auditoria-interface: concluir auditoria nativa de nomes,
+1. PR77 integrado. Galeria já publicada no privado, sem nova tag.
+2. Branch codex/auditoria-interface: auditoria nativa concluída e contraste A/B corrigido.27testes/build aprovados. Publicar correção e integrar PR antes de migrar. A checagem cobriu nomes,
    contraste, teclado, reflow e desempenho real em movimento no preview4189;
    corrigir problemas encontrados. Tentativa oficial PageSpeed em03/11 21:53UTC
    recebeu429, nenhuma nota. Não repetir antes de04/11 21:53:59UTC nem contornar

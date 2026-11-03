@@ -83,3 +83,25 @@ QA pública conservou SEMENTE-42/D2,64 em pausa, atalho focou a câmera,264 text
 sem candidatos abaixo do limiar da checagem limitada e console limpo.
 Isso não substitui Lighthouse/WCAG ou ensaios com leitores de tela.
 IDs/proveniência em validacoes/deploy-0.37.0.json e publicacao-0.37.0.json.
+
+## Reavaliação de desenvolvimento0.46.0
+
+Auditoria nativa em03/11/2026: principal, ajuda, laboratório com editor aberto,
+galeria e principal a320px. Sem controles visíveis sem nome ou IDs duplicados.
+O texto da comparação A/B tinha razão2,83:1: passou a usar --muted e fonte12px.
+Após a correção, nenhum candidato abaixo do limiar nos textos sólidos examinados.
+Em320px a largura do documento foi305px. Primeira pessoa, setas, saída/foco e
+Escape na ajuda conferidos.27 testes dirigidos e build estrito aprovados.
+A checagem exclui canvas, fundos complexos e alguns estados: não certifica WCAG.
+
+Medições sequenciais com a aula de herança em movimento, após avançar cinco dias:
+58,1fps no completo(44operárias na leitura) e59,2fps no leve(45), P95 de16,8ms,
+10s por amostra. Computador i5-1135G7, IrisXe,15,8GiB. Não é comparação controlada,
+carga máxima ou ensaio de Chromebook. O modo leve reduziu triângulos, mas não
+reduziu chamadas de desenho nesse cenário. Nenhuma mudança biológica.
+
+Nova chamada permitida ao PageSpeed oficial, para v0.45.0 pública em03/11 às
+21:53UTC, também retornou429. Não produziu nota nem foi repetida; aguardar até
+04/11 às21:53:59UTC antes de nova tentativa permitida. Leitor de tela, zoom real,
+aplicação de planilha e equipamento escolar permanecem pendentes.
+Evidência: [auditoria](validacoes/auditoria-interface-0.46.0.json).
