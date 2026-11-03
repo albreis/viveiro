@@ -1,3 +1,5 @@
+import { extensionReference } from "../extensions/registry.ts";
+import type { ExtensionReference } from "../extensions/types.ts";
 import { profileReference } from "../biology/catalog.ts";
 import type { BiologicalReference } from "../biology/types.ts";
 import {
@@ -14,6 +16,7 @@ export interface ExperimentPlan {
   startMode: "founding" | "established";
   biologicalProfile: BiologicalReference;
   parameters: ExperimentParameters;
+  extension?: ExtensionReference;
 }
 const object = (value: unknown): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value))
@@ -34,6 +37,7 @@ export function normalizeExperiment(value: unknown): ExperimentPlan {
     "startMode",
     "biologicalProfile",
     "parameters",
+    "extension",
   ]);
   if (v.schema !== "viveiro-experiment-v1")
     throw Error("Schema de experimento não suportado.");
@@ -88,6 +92,9 @@ export function normalizeExperiment(value: unknown): ExperimentPlan {
     startMode,
     biologicalProfile,
     parameters,
+    ...(v.extension === undefined
+      ? {}
+      : { extension: extensionReference(v.extension) }),
   };
 }
 export const exampleExperiment = () =>

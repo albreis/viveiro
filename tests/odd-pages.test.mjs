@@ -10,7 +10,7 @@ import { validAssetPath } from "../src/modules/publication/release.ts";
 
 test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
   const pages = modelDocPages(process.cwd());
-  assert.equal(modelDocuments.length, 11);
+  assert.equal(modelDocuments.length, 12);
   for (const d of modelDocuments) {
     assert.ok(permittedSourcePath(d.source));
     assert.equal(
@@ -27,7 +27,7 @@ test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
       assert.ok(
         target === "index.html" ||
           pages.has(target) ||
-          (target.startsWith("experimentos/morris-042/") &&
+          (target.startsWith("experimentos/") &&
             existsSync("public/" + target)),
         d.slug + ": " + href,
       );

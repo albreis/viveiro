@@ -1,3 +1,4 @@
+import { extensionChoice, localInput } from "../extensions/decision.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { edgePassable } from "../sealing/passage.ts";
 import { chooseLearnedExit } from "../learning/live.ts";
@@ -38,6 +39,7 @@ export function continueLocalRoute(
     blocked,
   );
   if (
+    !world.decisionExtension &&
     !world.learning?.enabled &&
     known.length &&
     edgePassable(world.nest, ant.node, known[0], ant) &&
@@ -88,9 +90,13 @@ export function continueLocalRoute(
     };
   });
   const random = () => world.range(0, 1);
-  const choice = world.learning?.enabled
-    ? chooseLearnedExit(world, ant, options, random)
-    : chooseLocalExit(options, random);
+  const choice = world.decisionExtension
+    ? extensionChoice(world.decisionExtension, localInput(ant, options), random)
+    : world.learning?.enabled
+      ? chooseLearnedExit(world, ant, options, random)
+      : chooseLocalExit(options, random);
+  if (world.decisionExtension && options.length)
+    world.extensionDecisions = (world.extensionDecisions ?? 0) + 1;
   ant.route = choice === null ? [] : [choice];
   return choice !== null;
 }

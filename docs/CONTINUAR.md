@@ -7,7 +7,7 @@ commit/push/PR por etapa. Preservar saves, branches, tags e Site privado.
 
 ## Prioridade e regras atuais do usuário
 
-Concluir TODOS os P2 ativos com agilidade: P2.3 entregue; seguir P2.4, P2.5,
+Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 validado; seguir
 P2.6 e P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
 conclusão; não retomar propostas históricas sem novo pedido explícito.
 
@@ -76,23 +76,33 @@ Nenhuma conformidade/calibração externa pode ser inventada para encerrar fases
 
 ## Ambiente e próximo passo concreto
 
-P2.4 implementado em codex/sensibilidade-morris, versão de desenvolvimento
-0.42.0, SEM TAG. 432/432 testes completos (402.131 ms), TS/build, QA Cua do
-relatório compilado e download de índices com hash exato. 104 World reais,
-4 trajetórias × 13 pontos × 2 réplicas, 10 dias, 12 entradas. Triagem final
-em .runtime/morris-042-final; bytes individuais idênticos à janela anterior.
-Dados públicos em public/experimentos/morris-042, fonte/planos/hashes e
-relatório docs/sensibilidade.md. Cinco efeitos populacionais não nulos;
-empates de zero no top 10 não significam influência demonstrada. Nenhuma
-calibração por espécie ou depósito Zenodo. Próximo: P2.5, depois P2.6–P2.7.
+P2.4: codex/sensibilidade-morris, PR #65 contra main (aberto ao iniciar P2.5).
+Fonte privada 7b3b4f9, publicado com sucesso sem tag; recibo deploy-p2.4-dev.json.
+432/432 testes; dados e limitações em sensibilidade.md. Não repetir o ensaio.
 
-Dev 4173 PID17752 preservado; preview de QA 4189 separado. Não encerrar o dev.
-Preparação do P2.5 em .runtime/p2-5-stage: contratos, registry, decisão,
-exemplo local e CLI pareada. NÃO estão instalados em src nem entregues ainda.
-Criar codex/extensoes-tipadas a partir da entrega P2.4, manter arquivos curtos,
-validar sensores locais, seleção passável, reprodução, restore e comparação
-real com ACO. Abrir PR encadeado se o anterior ainda não tiver sido integrado.
+P2.5: codex/extensoes-tipadas, desenvolvimento 0.43.0, SEM TAG. 438/438 testes
+completos (330.143 ms), TS/build, quatro casos de paridade portátil e trajetória
+nativa preservados. API extensions/{types,registry,decision,world}; exemplo
+src/extensions/balanced.ts; scripts/compare-policy.ts e --extension na CLI.
+Observações congeladas locais, pesos validados e identidade/hash persistidos.
+Submodelos são transformações locais de sinais, não troca arbitrária da física.
+Código local de desenvolvedor de confiança, sem sandbox; JSON não importa URLs.
+Comparação real ACO/extensão: 4 pares × 5 dias, decisões 71/89/88/88; dados brutos
+public/experimentos/policies-043. Nova política em um arquivo e fonte alterada
+testadas pela CLI. Restore e replay exatos. IAB compilado: 500 ticks, CSV e
+manifesto idênticos à CLI; evidência validacoes/extensoes-0.43.0.json. Laboratório
+isolado tem seletor opt-in; terrário/IndexedDB preservados. PR e recibo privado
+serão registrados na finalização desta entrega, sem release ou depósito Zenodo.
 
-PR https://github.com/albreis/viveiro/pull/65 aberto contra main; CodeQL verde.
-Privado publicado com sucesso em 2026-11-03T00:07:26 UTC, fonte 7b3b4f9,
-recibo validacoes/deploy-p2.4-dev.json. Audiência custom/rev1, só proprietário. Não há tag/release 0.42; preservar a política consolidada do usuário.
+Próximo concreto: P2.6, editor de 12 entradas com unidade/faixa/fonte, exportar e
+importar perfil versionado imutável, catálogo v1, biblioteca local separada dos
+saves; aplicar ao laboratório isolado e base de varredura. Registrar perfil de
+origem e valores efetivamente executados no plano, permitindo varreduras como
+variações explícitas. Testar colisão id/versão, entradas inválidas, exportação /
+reimportação e reprodução por seed em Node/navegador. Arquivos pequenos.
+Depois P2.7: inglês mantendo português; não declarar aceite parcial como completo.
+
+Dev 4173 PID17752 preservado; preview QA 4189 separado. Cua: aba38 concluiu o
+experimento compilado e baixou dados/manifesto (12) na pasta Downloads. Não
+encerrar o dev. Nenhuma tag/release até TODOS os P2 ativos terminarem. Zenodo
+ligado automaticamente ao GitHub, sem depósitos manuais ou intermediários.

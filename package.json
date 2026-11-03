@@ -1,6 +1,6 @@
 {
   "name": "viveiro",
-  "version": "0.42.0",
+  "version": "0.43.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,8 @@
     "build:public": "node scripts/build-public-release.ts",
     "experiment": "node scripts/run-experiment.ts",
     "sweep": "node scripts/run-sweep.ts",
-    "sensitivity": "node scripts/run-sensitivity.ts"
+    "sensitivity": "node scripts/run-sensitivity.ts",
+    "compare:policy": "node scripts/compare-policy.ts"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",

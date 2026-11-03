@@ -1,3 +1,4 @@
+import { colonyWorlds } from "../colonies/types.ts";
 import { World } from "../simulation/world.js";
 import type { FamilyWorld } from "../colonies/types.ts";
 import type { ObservationWorld } from "../observations/types.ts";
@@ -22,6 +23,7 @@ export async function runExperiment(
     {
       founding: plan.startMode === "founding",
       biologicalProfile: { ...plan.biologicalProfile },
+      decisionExtension: plan.extension,
     },
   ) as unknown as FamilyWorld & ObservationWorld & { step(): void };
   const check = () => {
@@ -37,5 +39,17 @@ export async function runExperiment(
     }
   }
   check();
-  return experimentResult(plan, dailyCsv([{ id: "a", world: w }]), w.rng);
+  return experimentResult(
+    plan,
+    dailyCsv([{ id: "a", world: w }]),
+    w.rng,
+    plan.extension
+      ? {
+          decisions: colonyWorlds(w).reduce(
+            (n, c) => n + (c.extensionDecisions ?? 0),
+            0,
+          ),
+        }
+      : undefined,
+  );
 }

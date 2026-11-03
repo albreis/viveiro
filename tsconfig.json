@@ -3,15 +3,8 @@
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable",
-      "WebWorker"
-    ],
-    "types": [
-      "vite/client"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker"],
+    "types": ["vite/client"],
     "strict": true,
     "allowJs": true,
     "checkJs": false,
@@ -27,6 +20,7 @@
     "scripts/workers/experiment-thread.ts",
     "scripts/generate-numeric-notices.ts",
     "scripts/run-sweep.ts",
-    "scripts/run-sensitivity.ts"
+    "scripts/run-sensitivity.ts",
+    "scripts/compare-policy.ts"
   ]
 }

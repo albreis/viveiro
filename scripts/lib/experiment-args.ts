@@ -21,6 +21,7 @@ export function experimentArgs(args: string[]) {
         "--start",
         "--out",
         "--plan",
+        "--extension",
         ...Object.keys(flags),
       ].includes(key) ||
       value === undefined ||
@@ -33,11 +34,18 @@ export function experimentArgs(args: string[]) {
   const out = values.get("--out");
   if (!out) throw Error("Informe --out com uma pasta nova.");
   if (values.has("--plan")) {
-    if (values.size !== 2)
+    if (values.size !== (values.has("--extension") ? 3 : 2))
       throw Error(
-        "--plan combina somente com --out; não sobrescreve valores silenciosamente.",
+        "--plan combina somente com --out e --extension; não sobrescreve valores silenciosamente.",
       );
-    return { out, planFile: values.get("--plan")!, plan: null };
+    return {
+      out,
+      planFile: values.get("--plan")!,
+      plan: null,
+      ...(values.has("--extension")
+        ? { extensionFile: values.get("--extension") }
+        : {}),
+    };
   }
   const parameters: Record<string, number> = {};
   for (const [flag, key] of Object.entries(flags))
@@ -54,5 +62,12 @@ export function experimentArgs(args: string[]) {
     biologicalProfile: { schema: 1, id: match[1], version: Number(match[2]) },
     parameters,
   });
-  return { out, planFile: null, plan };
+  return {
+    out,
+    planFile: null,
+    plan,
+    ...(values.has("--extension")
+      ? { extensionFile: values.get("--extension") }
+      : {}),
+  };
 }
