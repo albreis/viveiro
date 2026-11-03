@@ -7,7 +7,7 @@ commit/push/PR por etapa. Preservar saves, branches, tags e Site privado.
 
 ## Prioridade e regras atuais do usuário
 
-Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 entregue; P2.6 validado; seguir P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
+Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 entregue; P2.6 entregue; seguir P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
 conclusão; não retomar propostas históricas sem novo pedido explícito.
 
 NÃO CRIAR/ENVIAR novas tags ou GitHub Releases até concluir todos os P2 ativos.
@@ -93,10 +93,14 @@ Plano/manifesto preservam perfil de origem e valores efetivamente executados,
 permitindo varreduras com overrides explícitos sem editar o perfil guardado.
 Exportar/reimportar por seed testado em Node, dev antes/depois e bundle:
 300 ticks, CSV e manifesto byte a byte iguais; dados public/experimentos/profile-044.
-Evidência validacoes/perfis-0.44.0.json. PR e recibo privado serão registrados
-na finalização, sem GitHub release ou depósito manual no Zenodo.
+Evidência validacoes/perfis-0.44.0.json. PR #67 aberto sobre #66; publicado
+no privado em 2026-11-03T00:49:45 UTC, fonte ec7fc47, recibo deploy-p2.6-dev.json.
+Sem GitHub release, tag ou depósito manual no Zenodo.
 
-PRÓXIMO: P2.7, inglês mantendo português como padrão. Inventariar textos da UI,
+PRÓXIMO: P2.7, inglês mantendo português como padrão. Usuário pediu explicitamente
+centralizar traduções/internacionalização numa pasta i18n: usar src/i18n com
+catálogos pequenos por idioma/área, documentação para adicionar idiomas e
+checagem de chaves/variáveis. Criar branch codex/internacionalizacao. Inventariar textos da UI,
 centralizar mensagens/formatadores em catálogos pequenos, traduzir documentação
 pública gerada (modelo/ensino), permitir troca de idioma e verificar telas reais,
 acessibilidade dos rótulos, Workers/erros e preservação de seed/RNG/CSV. Não
