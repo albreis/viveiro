@@ -3,7 +3,7 @@ import type { NestState } from "../navigation/types.ts";
 interface Host {
   nestLabel?: Object3D;
   followId?: number | null;
-  currentView?: string;
+  currentView?: string | boolean;
 }
 /** The rounded lip belongs to the soil mesh; a separate ring cannot track its opening. */
 export class EntranceView {
@@ -20,7 +20,9 @@ export class EntranceView {
     label.visible =
       !!entry &&
       !this.host.followId &&
-      !["sealing", "structure", "brood"].includes(this.host.currentView ?? "");
+      !["sealing", "structure", "brood"].includes(
+        typeof this.host.currentView === "string" ? this.host.currentView : "",
+      );
     if (entry) label.position.set(entry.x, entry.y + 0.6, entry.z);
   }
 }

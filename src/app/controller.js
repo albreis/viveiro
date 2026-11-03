@@ -53,7 +53,7 @@ import { installCheckpointControls } from "./checkpoint-controls.ts";
 import { renderStatus } from "./status-view.js";
 import { drawChart as renderChart } from "./chart-view.js";
 import { World, TICKS_PER_DAY, hashSeed } from "../modules/simulation/world.js";
-import { Terrarium } from "../modules/renderer/scene.js";
+import { Terrarium } from "../modules/renderer/scene.ts";
 import { SimulationClock, normalizeClock } from "../modules/time/clock.ts";
 import { stepSession } from "../modules/time/session-step.ts";
 import { installTimeControls } from "./time-controls.ts";

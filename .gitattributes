@@ -20,3 +20,6 @@ tests/fixtures/release-045/**/*.csv binary
 # Gallery browser/CLI evidence.
 tests/fixtures/gallery-046/** -text
 tests/fixtures/gallery-046/**/*.csv binary
+
+# Canonical Morris manifests are hashed along with the immutable CSV.
+public/experimentos/morris-042/*.manifest.json -text

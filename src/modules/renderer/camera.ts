@@ -1,12 +1,9 @@
+import type { Terrarium } from "./scene.ts";
 import { t } from "../../i18n/runtime.ts";
-import { updateSoilVisibility } from "./soil-visibility.js";
+import { updateSoilVisibility } from "./soil-visibility.ts";
 import * as THREE from "three";
-import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
-import { createSoilGeometry } from "../terrain/soil.js";
-import { tunnelEnvelope } from "../terrain/terrain.js";
-const UP = new THREE.Vector3(0, 1, 0);
 
-export function followAnt(host, id) {
+export function followAnt(host: Terrarium, id: number) {
   const ant = host.world.ants.find((a) => a.id === Number(id));
   if (!ant) return false;
   if (!host.followId)
@@ -27,7 +24,7 @@ export function followAnt(host, id) {
   return true;
 }
 
-export function stopFollowing(host) {
+export function stopFollowing(host: Terrarium) {
   if (!host.followId) return;
   host.followId = null;
   updateSoilVisibility(host);
@@ -43,7 +40,7 @@ export function stopFollowing(host) {
   host.controls.update();
 }
 
-export function setView(host, view) {
+export function setView(host: Terrarium, view: boolean | "side") {
   host.stopFollowing();
   host.camera.fov = 37;
   host.camera.updateProjectionMatrix();
@@ -52,7 +49,8 @@ export function setView(host, view) {
   const lateral = view === "side",
     top = view === true;
   if (lateral) {
-    if (host.currentView === "side") host.sideFace = (host.sideFace + 1) % 4;
+    if (host.currentView === "side")
+      host.sideFace = ((host.sideFace ?? 0) + 1) % 4;
     else if (host.sideFace === undefined) {
       const q = host.world.nest.nodes.find((n) => n.type === "royal") ||
         host.world.founding?.chamber || { x: 0, z: 0 };
@@ -65,20 +63,22 @@ export function setView(host, view) {
             ? 0
             : 2;
     }
-    const views = [
+    const views: [number, number, number][] = [
       [0, -1.2, 29],
       [32, -1.2, 0],
       [0, -1.2, -29],
       [-32, -1.2, 0],
     ];
-    host.camera.position.set(...views[host.sideFace]);
+    host.camera.position.set(...views[host.sideFace ?? 0]);
     host.viewLabel = t(
-      [
-        "scene.side.front",
-        "scene.side.right",
-        "scene.side.back",
-        "scene.side.left",
-      ][host.sideFace],
+      (
+        [
+          "scene.side.front",
+          "scene.side.right",
+          "scene.side.back",
+          "scene.side.left",
+        ] as const
+      )[host.sideFace ?? 0],
     );
   } else {
     host.camera.position.set(top ? 0.01 : 22, top ? 35 : 23, top ? 0.01 : 27);

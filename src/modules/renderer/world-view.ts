@@ -1,6 +1,8 @@
+import type { RenderWorld as World } from "./render-types.ts";
+import type { Terrarium } from "./scene.ts";
 import { message } from "../../i18n/runtime.ts";
 import { visibleWorkers } from "./performance-profile.ts";
-import { updatePlant } from "./plants.js";
+import { updatePlant } from "./plants.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
 import * as THREE from "three";
 import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
@@ -8,11 +10,11 @@ import { geometryFromSoilData } from "../terrain/soil.js";
 import { tunnelEnvelope } from "../terrain/terrain.js";
 const UP = new THREE.Vector3(0, 1, 0);
 
-export function update(host, world, time, alpha = 1) {
+export function update(host: Terrarium, world: World, time: number, alpha = 1) {
   host.alpha = alpha;
   message(
-    document.getElementById("biome-label"),
-    "scene.biome." + world.landscape.biome,
+    document.getElementById("biome-label")!,
+    `scene.biome.${world.landscape.biome}`,
   );
   if (
     (host.soilNest !== world.nest ||
@@ -132,12 +134,12 @@ export function update(host, world, time, alpha = 1) {
         .pose(ant)
         .addScaledVector(normal, 0.16)
         .addScaledVector(forward, 0.06);
-      if (ant.y < -0.1 && normal.y > 0.5) {
+      if ((ant.y ?? 0) < -0.1 && normal.y > 0.5) {
         const envelope = tunnelEnvelope(
           world.nest,
           eye.x,
           eye.z,
-          ant.tunnelY ?? ant.y,
+          ant.tunnelY ?? ant.y ?? 0,
         );
         if (envelope.inside)
           eye.y = Math.max(
@@ -159,7 +161,7 @@ export function update(host, world, time, alpha = 1) {
         0.24,
       );
       host.followLight.position.copy(eye);
-      host.followLight.intensity = ant.y < -0.1 ? 1.8 : 0;
+      host.followLight.intensity = (ant.y ?? 0) < -0.1 ? 1.8 : 0;
     }
   }
 }

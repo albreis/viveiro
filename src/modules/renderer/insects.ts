@@ -1,13 +1,13 @@
+import type { RenderAgent } from "./render-types.ts";
+import type { Terrarium } from "./scene.ts";
 import * as THREE from "three";
-import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
-import { createSoilGeometry } from "../terrain/soil.js";
-import { tunnelEnvelope } from "../terrain/terrain.js";
+
 const UP = new THREE.Vector3(0, 1, 0);
 
-export function buildInsects(host, max, spider) {
+export function buildInsects(host: Terrarium, max: number, spider: boolean) {
   const group = spider ? host.predatorGroup : host.antGroup,
     mat = host.material(spider ? "#51483d" : "#553b2c");
-  const parts = [],
+  const parts: THREE.InstancedMesh[] = [],
     counts = spider ? 11 : 9;
   for (let i = 0; i < counts; i++) {
     const geo =
@@ -25,7 +25,7 @@ export function buildInsects(host, max, spider) {
   return parts;
 }
 
-export function buildQueen(host) {
+export function buildQueen(host: Terrarium) {
   const g = new THREE.Group(),
     mat = host.material("#75432a", { roughness: 0.55 });
   const abdomen = host.mesh(
@@ -63,7 +63,7 @@ export function buildQueen(host) {
   return g;
 }
 
-export function buildMale(host) {
+export function buildMale(host: Terrarium) {
   const g = new THREE.Group(),
     mat = host.material("#816341");
   const body = host.mesh(new THREE.SphereGeometry(0.15, 8, 6), mat, g);
@@ -83,7 +83,13 @@ export function buildMale(host) {
   return g;
 }
 
-export function updateAnts(host, agents, parts, spider, time) {
+export function updateAnts(
+  host: Terrarium,
+  agents: RenderAgent[],
+  parts: THREE.InstancedMesh[],
+  spider: boolean,
+  time: number,
+) {
   const d = new THREE.Object3D(),
     q = new THREE.Quaternion(),
     axis = new THREE.Vector3(),

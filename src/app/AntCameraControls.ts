@@ -14,7 +14,7 @@ interface SceneControls {
   setView(view: boolean | "side"): void;
   setInterior(visible: boolean): void;
   viewLabel?: string;
-  currentView?: boolean | "side";
+  currentView?: import("../modules/renderer/render-types.ts").SceneView;
   onSelect?: (id: number) => void;
   onFollowStarted?: (id: number) => void;
   onFollowEnded?: () => void;
@@ -221,7 +221,7 @@ export class AntCameraControls {
     );
   }
 
-  private markView(view: boolean | "side" | null) {
+  private markView(view: boolean | string | null) {
     for (const [id, active] of [
       ["view-top", view === true],
       ["view-iso", view === false],

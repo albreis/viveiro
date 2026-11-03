@@ -1,10 +1,11 @@
+import type { PointerPosition } from "./render-types.ts";
+import type { Terrarium } from "./scene.ts";
 import * as THREE from "three";
-import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
-import { createSoilGeometry } from "../terrain/soil.js";
-import { tunnelEnvelope } from "../terrain/terrain.js";
-const UP = new THREE.Vector3(0, 1, 0);
 
-export function pickAnt(host, e) {
+export function pickAnt(
+  host: Terrarium,
+  e: PointerPosition,
+): number | null | undefined {
   host.groundPoint(e);
   const hits = host.raycaster.intersectObjects(
     [
@@ -16,8 +17,8 @@ export function pickAnt(host, e) {
   );
   if (hits.length) {
     const hit = hits[0];
-    if (host.antParts.includes(hit.object))
-      return host.visibleWorkers[hit.instanceId]?.id;
+    if (host.antParts.some((part) => part === hit.object))
+      return host.visibleWorkers[hit.instanceId ?? -1]?.id;
     const founder = host.foundersView.pickId(hit.object);
     if (founder) return founder;
   }
@@ -55,7 +56,7 @@ export function pickAnt(host, e) {
   return soil[0] && soil[0].distance < length - 0.15 ? null : nearest.id;
 }
 
-export function groundPoint(host, e) {
+export function groundPoint(host: Terrarium, e: PointerPosition) {
   const r = host.element.getBoundingClientRect();
   host.pointer.set(
     ((e.clientX - r.left) / r.width) * 2 - 1,

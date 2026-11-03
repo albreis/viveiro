@@ -1,13 +1,12 @@
+import type { Terrarium } from "./scene.ts";
 import { localizedLabelTexture } from "./localized-label.ts";
-import { LandscapeView } from "./LandscapeView.js";
+import { LandscapeView } from "./LandscapeView.ts";
 import { EntranceView } from "./EntranceView.ts";
 import * as THREE from "three";
-import { NEST, LIMIT, hashSeed } from "../simulation/world.js";
+import { hashSeed } from "../simulation/world.js";
 import { createSoilGeometry } from "../terrain/soil.js";
-import { tunnelEnvelope } from "../terrain/terrain.js";
-const UP = new THREE.Vector3(0, 1, 0);
 
-export function buildGround(host, seed) {
+export function buildGround(host: Terrarium, seed: string) {
   let state = hashSeed(seed + ":terrain");
   const rnd = () => {
     state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
@@ -15,7 +14,7 @@ export function buildGround(host, seed) {
   };
   const canvas = document.createElement("canvas");
   canvas.width = canvas.height = 512;
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d")!;
   ctx.fillStyle = "#6d7549";
   ctx.fillRect(0, 0, 512, 512);
   for (let i = 0; i < 20000; i++) {
@@ -82,7 +81,11 @@ export function buildGround(host, seed) {
     transparent: true,
     opacity: 0.4,
   });
-  const glassGeos = [
+  const glassGeos: {
+    size: [number, number, number];
+    p: [number, number, number];
+    top?: boolean;
+  }[] = [
     { size: [20, 0.01, 13], p: [0, 4.1, 0], top: true },
     { size: [20, 8.3, 0.035], p: [0, -0.05, -6.5] },
     { size: [0.035, 8.3, 13], p: [10, -0.05, 0] },
@@ -112,7 +115,13 @@ export function buildGround(host, seed) {
   );
 }
 
-export function label(host, text, x, y, z) {
+export function label(
+  host: Terrarium,
+  text: string,
+  x: number,
+  y: number,
+  z: number,
+) {
   const sprite = new THREE.Sprite(
     new THREE.SpriteMaterial({
       map: localizedLabelTexture(text),

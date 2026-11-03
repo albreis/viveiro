@@ -1,13 +1,34 @@
+import type { Species } from "../landscape/types.ts";
+import type { Terrarium } from "./scene.ts";
 import * as THREE from "three";
-export function buildPlantShape(host, g, type, leaf, stem, id) {
-  const mesh = (geo, mat, x = 0, y = 0, z = 0) =>
-    host.mesh(geo, mat, g, x, y, z);
-  const sphere = (x, y, z, sx, sy, sz) => {
+export function buildPlantShape(
+  host: Terrarium,
+  g: THREE.Group,
+  type: Species,
+  leaf: THREE.MeshStandardMaterial,
+  stem: THREE.MeshStandardMaterial,
+  id: number,
+) {
+  const mesh = (
+    geo: THREE.BufferGeometry,
+    mat: THREE.Material,
+    x = 0,
+    y = 0,
+    z = 0,
+  ) => host.mesh(geo, mat, g, x, y, z);
+  const sphere = (
+    x: number,
+    y: number,
+    z: number,
+    sx: number,
+    sy: number,
+    sz: number,
+  ) => {
     const m = mesh(new THREE.SphereGeometry(1, 12, 8), leaf, x, y, z);
     m.scale.set(sx, sy, sz);
     return m;
   };
-  const stalk = (height, radius = 0.025) =>
+  const stalk = (height: number, radius = 0.025) =>
     mesh(
       new THREE.CylinderGeometry(radius * 0.7, radius, height, 10),
       stem,
