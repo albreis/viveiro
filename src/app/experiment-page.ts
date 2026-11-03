@@ -1,3 +1,4 @@
+import { initializeGalleryPlan } from "./gallery-plan.ts";
 import { message, clearMessage, messageSource, t } from "../i18n/runtime.ts";
 import { installLocalePicker } from "../i18n/picker.ts";
 installLocalePicker();
@@ -22,6 +23,7 @@ const planField = byId<HTMLTextAreaElement>("experiment-plan"),
 let worker: Worker | null = null,
   urls: string[] = [];
 planField.value = JSON.stringify(exampleExperiment(), null, 2);
+initializeGalleryPlan(planField);
 installParameterEditor(planField);
 message(byId("experiment-version"), "experiments.version", {
   version: metadata.version,

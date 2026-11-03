@@ -1,3 +1,4 @@
+import gallery from "./gallery.json" with { type: "json" };
 import services from "./services.json" with { type: "json" };
 import documents from "./documents.json" with { type: "json" };
 import ptCommon from "./common.json" with { type: "json" };
@@ -24,6 +25,7 @@ import ptEvents from "./events.json" with { type: "json" };
 import ptScene from "./scene.json" with { type: "json" };
 
 const messages = {
+  ...gallery,
   ...services,
   ...documents,
   ...ptCommon,

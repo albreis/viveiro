@@ -1,3 +1,4 @@
+import gallery from "./gallery.json" with { type: "json" };
 import services from "./services.json" with { type: "json" };
 import documents from "./documents.json" with { type: "json" };
 import enCommon from "./common.json" with { type: "json" };
@@ -24,6 +25,7 @@ import enEvents from "./events.json" with { type: "json" };
 import enScene from "./scene.json" with { type: "json" };
 
 const messages = {
+  ...gallery,
   ...services,
   ...documents,
   ...enCommon,

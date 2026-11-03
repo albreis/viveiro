@@ -30,6 +30,7 @@ export const sourceFiles = [
   "vite.config.ts",
   "index.html",
   "experimentos.html",
+  "galeria.html",
   "docs/cli.md",
   "LICENSE",
   "LICENSE-DOCS.md",

@@ -1,0 +1,36 @@
+{
+  "scope": "P4.2A technical gallery, development 0.46.0, untagged",
+  "recipes": 10,
+  "teamRecipes": 10,
+  "externalRecipes": 0,
+  "topics": 5,
+  "recipeVersion": 1,
+  "tests": 25,
+  "realRecipeModelRuns": 11,
+  "ticksPerRun": 300,
+  "buildModules": 446,
+  "locales": [
+    "pt-BR",
+    "en"
+  ],
+  "nativeBrowser": [
+    "Topic soil produces two cards",
+    "External origin shows zero recipes and an empty-state message",
+    "Search and topic survive locale changes",
+    "320px viewport, document width305px",
+    "Download recipe JSON and open exact soil profile/version/seed",
+    "Recipe executes300 ticks in isolated Worker, without changing saved terrarium"
+  ],
+  "portableParity": {
+    "recipe": "solo-deslizante@1",
+    "csvSha256": "a3386d85b9b3bcf30be01e5bcaa7100e3d8a468780b19c3f1f1f1f47261cc945",
+    "manifestSha256": "29e9af5ea11480a2b7c18191056a171ff17f6cd6b2bc285c0ff6a12359ac69f3",
+    "browserEqualsCli": true,
+    "files": "tests/fixtures/gallery-046"
+  },
+  "limits": [
+    "P4.2 acceptance still needs ten actual external contributions and a total of20 recipes",
+    "No empirical calibration or predicted outcome was invented",
+    "Publication on the public Pages is consolidated after this work sequence; private deployment pending at this checkpoint"
+  ]
+}

@@ -578,6 +578,8 @@ conclusão; não retomar sem novo pedido explícito. A proposta anterior está n
   - [x] P4.1A: guias pt-BR/en, três formulários, modelo de PR, Discussions habilitado e tarefas #73–#75 com good first issue. [Estrutura e verificação](comunidade.md). Sem alteração do modelo ou Site privado.
   - [ ] P4.1B: primeira contribuição externa real revisada e integrada. Não se contam tarefas abertas pelo mantenedor como contribuição externa.
 - [ ] P4.2 Galeria pública de experimentos reproduzíveis por seed. Aceite: 20 experimentos, metade de fora da equipe.
+  - [x] P4.2A: interface bilíngue, busca/filtros, créditos, receitas versionadas e dez planos da equipe; downloads e abertura no laboratório isolado, com paridade CLI/Worker conferida. Desenvolvimento0.46.0; publicação privada nesta entrega, sem tag intermediária. [Implementação](galeria.md).
+  - [ ] P4.2B: receber e revisar dez contribuições externas reais, atingindo20 receitas. Exemplos internos não substituem esse aceite.
 - [ ] P4.3 Oficinas para professores e minicursos em congressos. Aceite: uma por semestre, com gravação publicada.
 
 ### Prioridade com pouco tempo
