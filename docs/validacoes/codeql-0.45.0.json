@@ -23,5 +23,7 @@
     "title": "No new alerts in code changed by this pull request"
   },
   "suppressionAdded": false,
-  "releasePublished": false
+  "releasePublished": true,
+  "releaseTag": "v0.45.0",
+  "releaseSha": "f433f805444d762d301f8babc365a83930982272"
 }
