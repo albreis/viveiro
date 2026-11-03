@@ -16,7 +16,8 @@
     "sweep": "node scripts/run-sweep.ts",
     "sensitivity": "node scripts/run-sensitivity.ts",
     "compare:policy": "node scripts/compare-policy.ts",
-    "i18n:check": "node scripts/check-i18n.ts"
+    "i18n:check": "node scripts/check-i18n.ts",
+    "i18n:inventory": "node scripts/inventory-i18n.ts"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",
