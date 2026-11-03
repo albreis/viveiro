@@ -1,0 +1,88 @@
+{
+  "version": "0.46.0",
+  "sourceTag": "v0.46.0",
+  "sourceSha": "7f4d20674206916ea443ef2f359097da5ca18731",
+  "release": "https://github.com/albreis/viveiro/releases/tag/v0.46.0",
+  "pullRequests": [
+    76,
+    77,
+    78,
+    79,
+    80
+  ],
+  "fullSuite": {
+    "tests": 474,
+    "pass": 474,
+    "fail": 0
+  },
+  "exactTagArchiveTest": "passed, reproducible bytes and tamper checks",
+  "metadataTests": 3,
+  "codeql": {
+    "pullRequest": 80,
+    "workflow": 41732395259,
+    "check": 126253090685,
+    "conclusion": "success",
+    "suppressedAlerts": false
+  },
+  "private": {
+    "project": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+    "source": "2ad76110d3e0db3ed1d5751c3ccfd020731d3f78",
+    "deployment": "appgdep_6aea62730f008191aac699b00cc6b143",
+    "version": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_e3551a9e6d588191bc0da8a99b5b8c2d",
+    "status": "succeeded",
+    "url": "https://viveiro-caos-formigueiro.everaldodev.chatgpt.site",
+    "updatedAt": "2026-11-03T22:38:58.381309+00:00",
+    "audience": {
+      "mode": "custom",
+      "revision": 1,
+      "allowedAccountCount": 1,
+      "externalVisitorCount": 0
+    },
+    "native": {
+      "existingPausedSaveLoaded": true,
+      "loadingHidden": true,
+      "consoleErrors": 0
+    }
+  },
+  "public": {
+    "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/",
+    "gallery": "https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/galeria.html?lang=pt-BR",
+    "tagWorkflow": 41732963037,
+    "mainWorkflow": 41733035201,
+    "bothConclusions": "success",
+    "nativeVersion": "PROTOTYPE v0.46.0",
+    "sceneLoaded": true,
+    "consoleErrors": 0,
+    "galleryCards": 10,
+    "portableModelTicks": 300,
+    "parity": {
+      "dados.csv": {
+        "sha256": "a3386d85b9b3bcf30be01e5bcaa7100e3d8a468780b19c3f1f1f1f47261cc945",
+        "publicEqualsCli": true
+      },
+      "manifesto.json": {
+        "sha256": "29e9af5ea11480a2b7c18191056a171ff17f6cd6b2bc285c0ff6a12359ac69f3",
+        "publicEqualsCli": true
+      }
+    },
+    "rawFiles": "tests/fixtures/gallery-046/public"
+  },
+  "publicationPolicy": {
+    "oneConsolidatedTag": true,
+    "manualZenodoDeposits": 0,
+    "doiVerified": false
+  },
+  "development": {
+    "port": 4173,
+    "pidAlive": 15348,
+    "launchRoot": "G:/Projetos/viveiro",
+    "automation": "PAUSED"
+  },
+  "limits": [
+    "Lighthouse official429; no score or WCAG certification",
+    "School hardware, screen reader, real zoom and spreadsheet application acceptance remain open",
+    "Ten gallery recipes are team contributions; ten actual external contributions still needed",
+    "Empirical calibration, licensed data, partners and school trials remain external",
+    "Automatic consolidated DOI has not been verified; DOI23891981 belongs to0.36.0"
+  ]
+}
