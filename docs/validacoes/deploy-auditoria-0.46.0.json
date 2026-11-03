@@ -1,0 +1,12 @@
+{
+  "source": "08b867756f280dec210e77cb77b5d1be47c70fff",
+  "deployment": "appgdep_6aea5bd697a48191b758ea70209eeb52",
+  "version": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_be59f66d8a50819195bfaed5174311ce",
+  "status": "succeeded",
+  "updatedAt": "2026-11-03T22:10:44.096274+00:00",
+  "privateAudiencePreserved": true,
+  "nativeStyle": {
+    "color": "rgb(72, 87, 67)",
+    "fontSize": "12px"
+  }
+}

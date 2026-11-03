@@ -50,8 +50,9 @@
   letter-spacing: 1px;
 }
 .comparison-strip p {
-  font-size: 9px;
-  color: #82916d;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
   margin: 5px 0 0;
 }
 .scenario-switch {

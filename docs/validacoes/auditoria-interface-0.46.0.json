@@ -1,0 +1,84 @@
+{
+  "target": "https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/?lang=en",
+  "checkedAt": "2026-11-03T21:53:59.487733+00:00",
+  "strategy": "desktop",
+  "categories": [
+    "accessibility",
+    "performance"
+  ],
+  "httpStatus": 429,
+  "measurementProduced": false,
+  "retryNotBefore": "2026-11-04T21:53:59.487733+00:00",
+  "localAudit": {
+    "method": "Native IAB read-only DOM check; direct text on solid backgrounds only",
+    "unnamedControls": 0,
+    "duplicateIds": 0,
+    "main": {
+      "textSamples": 288,
+      "complexSkipped": 9,
+      "contrastCandidates": 0
+    },
+    "help": {
+      "textSamples": 289,
+      "complexSkipped": 9,
+      "contrastCandidates": 0
+    },
+    "laboratoryExpanded": {
+      "textSamples": 127,
+      "contrastCandidates": 0
+    },
+    "gallery": {
+      "textSamples": 142,
+      "contrastCandidates": 0
+    },
+    "narrow": {
+      "viewport": 320,
+      "documentWidth": 305,
+      "textSamples": 283,
+      "complexSkipped": 8,
+      "contrastCandidates": 0
+    },
+    "fixed": {
+      "selector": ".comparison-strip p",
+      "previousContrast": 2.83,
+      "change": "Use shared muted color and12px/1.6 text"
+    },
+    "keyboard": [
+      "First person, arrow look and exit button restores follow-ant focus",
+      "Escape closes help without toggling simulation"
+    ],
+    "tests": 27,
+    "build": "strict TypeScript and Vite passed,446modules"
+  },
+  "localPerformance": {
+    "hardware": {
+      "cpu": "Intel Core i5-1135G7 @2.40GHz",
+      "gpu": "Intel Iris Xe Graphics",
+      "ramGiB": 15.8
+    },
+    "scenario": "Inheritance lesson, five days advanced, rendering active at1x, sequential samples",
+    "full": {
+      "fps": 58.1,
+      "p95FrameMs": 16.8,
+      "drawCalls": 841,
+      "triangles": 333970,
+      "durationSeconds": 10,
+      "workersAtRead": 44,
+      "dayAtRead": 5.2
+    },
+    "light": {
+      "fps": 59.2,
+      "p95FrameMs": 16.8,
+      "drawCalls": 841,
+      "triangles": 234862,
+      "durationSeconds": 10,
+      "workersAtRead": 45,
+      "dayAtRead": 5.5
+    },
+    "limits": [
+      "Sequential samples do not isolate mode as a causal variable",
+      "Not Chromebook certification or maximum colony load",
+      "App rAF meter, not Lighthouse"
+    ]
+  }
+}
