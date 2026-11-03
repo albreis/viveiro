@@ -4,6 +4,8 @@ As traduções ficam em `locales/<idioma>/`, separadas por área. Português do 
 
 - `catalogs.ts`: idiomas registrados e tipos derivados das chaves de referência.
 - `validation.ts`: chaves, mensagens vazias e variáveis conferidas antes do build.
+- `controller.ts`: idioma atual, assinaturas de mudança e formatação de números de apresentação.
+- `browser.ts`: preferência independente e seleção explícita por `?lang=`, sem recarregar a página ou acessar saves.
 - `core.ts`: interpolação pura e determinística, sem acessar o simulador ou armazenamento.
 - `locales/pt-BR/common.json` e `locales/en/common.json`: primeiro catálogo compartilhado.
 
@@ -16,3 +18,5 @@ A integração da interface e a tradução dos demais catálogos/documentos faze
 `npm run i18n:inventory` lista candidatos por arquivo. `npm run i18n:inventory -- --json` inclui linha, tipo e trecho do texto para revisão. O inventário é heurístico: também pode encontrar CSS, dados ou textos canônicos que devem permanecer estáveis; não mede cobertura nem substitui QA das telas.
 
 Priorize src/app e o HTML estático. Mensagens de eventos/estados e metadados biológicos precisam de tradução na apresentação, preservando os dados persistidos e os protocolos científicos. Não altere seed, RNG ou conteúdo de CSV para traduzir a interface.
+
+O controlador não se instala automaticamente na interface. O próximo passo é conectar um seletor e migrar os textos para os catálogos. `subscribe` permite atualizar a apresentação sem recriar o mundo; libere a assinatura ao desmontar controles. `number` formata somente a exibição e nunca deve ser usado para gravar valores científicos ou CSV.
