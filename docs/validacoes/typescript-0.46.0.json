@@ -1,0 +1,62 @@
+{
+  "developmentVersion": "0.46.0",
+  "source": "272b31e",
+  "migratedJavaScriptModules": 13,
+  "remainingJavaScriptInAppAndRenderer": 0,
+  "maxNewRendererModuleLines": 208,
+  "maxUiModuleLines": 149,
+  "fullSuite": {
+    "tests": 474,
+    "pass": 474,
+    "fail": 0,
+    "durationMs": 329232.4927
+  },
+  "directedUiTests": 15,
+  "newRendererRegressions": 3,
+  "newUiRegressions": 4,
+  "build": {
+    "strictTypeScript": true,
+    "viteModules": 460,
+    "localeMessagesEach": 1260
+  },
+  "nativeBrowser": {
+    "origin": "http://127.0.0.1:4189/",
+    "userDevAndPrivateSavesNotReplaced": true,
+    "checks": [
+      "previous saved lesson loads",
+      "seed reset creates reproductive pair",
+      "named checkpoint and rain68to80 restore68",
+      "manual A/B selects B and reports both counts",
+      "inheritance lesson opens paused in3.96s after preserving prior state",
+      "language changes without losing scene",
+      "first person, arrow look, exit focus",
+      "one day headless advance applies and recreates scene",
+      "real JSON export reconstructs exact world snapshot"
+    ],
+    "consoleErrors": 0
+  },
+  "export": {
+    "file": "viveiro-AULA-v2-heranca-dia-1.json",
+    "sha256": "641351bdedfbdf5d0614ee28a06931a33e41c9cb887075dc3bf2f70850a11ef8",
+    "seed": "AULA-v2-heranca",
+    "tick": 100,
+    "scenario": "a",
+    "paused": true,
+    "comparisonPreserved": true,
+    "lesson": {
+      "id": "heranca",
+      "version": 2
+    },
+    "exactWorldSnapshot": true
+  },
+  "morrisEvidence": {
+    "exactPublishedManifestHashes": 104,
+    "preservation": "LF bytes, -text attribute, no changed results",
+    "fullFinalMorrisTests": "passed with source stable"
+  },
+  "limits": [
+    "TypeScript migration scope is UI/renderer; unrelated simulation JavaScript remains",
+    "No biological or engineering calibration claimed",
+    "Lighthouse official429; no score; no school hardware certification"
+  ]
+}
