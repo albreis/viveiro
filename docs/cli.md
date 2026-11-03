@@ -109,3 +109,8 @@ cinco valores de umidade × dez réplicas. [Plano e retomada](varreduras.md).
 `npm run benchmark:buhl -- --out buhl-novo` compara a escavação de grupos de 50,
 100 e 200 operárias com Buhl et al. em _Messor sancta_. Critérios, fonte dos
 dados e resultado atual em [validacoes/buhl-2005.md](validacoes/buhl-2005.md).
+
+`npm run benchmark:fluxo -- --out fluxo.csv` mede fluxo e velocidade num túnel
+com 2 a 200 operárias indo e voltando, para comparar com a forma do trânsito de
+formigas de Poissonnier et al. (2019). Resultado em
+[validacoes/fluxo-tunel.md](validacoes/fluxo-tunel.md).

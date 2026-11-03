@@ -14,7 +14,8 @@
     "build:public": "node scripts/build-public-release.ts",
     "experiment": "node scripts/run-experiment.ts",
     "sweep": "node scripts/run-sweep.ts",
-    "benchmark:buhl": "node scripts/run-buhl.ts"
+    "benchmark:buhl": "node scripts/run-buhl.ts",
+    "benchmark:fluxo": "node scripts/run-fluxo.ts"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",

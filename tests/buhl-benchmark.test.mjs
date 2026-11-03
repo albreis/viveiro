@@ -196,3 +196,28 @@ test("medição separa terra das frentes e do trânsito sem mudar a execução",
   );
   assert.deepEqual(runDigging(options), run);
 });
+
+test("teste de fluxo no túnel é reprodutível e mede ida e volta", async () => {
+  const { runTunnelFlow, flowShape } =
+    await import("../src/modules/benchmarks/tunnel-flow.ts");
+  const a = runTunnelFlow({ seed: "FLUXO-T", workers: 8, ticks: 260 });
+  assert.deepEqual(
+    runTunnelFlow({ seed: "FLUXO-T", workers: 8, ticks: 260 }),
+    a,
+  );
+  assert.ok(a.flow > 0 && a.density > 0 && a.speed > 0);
+  assert.ok(a.speed <= a.nominalSpeed * 1.2);
+  assert.throws(
+    () => runTunnelFlow({ seed: "X", workers: 0, ticks: 200 }),
+    /Grupo/,
+  );
+  const fake = (workers, flow, speed) => ({ workers, flow, speed });
+  assert.equal(
+    flowShape([fake(1, 1, 1), fake(2, 2, 1), fake(3, 0.5, 0.2)]).collapse,
+    true,
+  );
+  assert.equal(
+    flowShape([fake(1, 1, 1), fake(2, 2, 1), fake(3, 2, 0.7)]).collapse,
+    false,
+  );
+});
