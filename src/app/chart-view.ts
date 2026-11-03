@@ -1,8 +1,9 @@
+import type { RenderWorld } from "../modules/renderer/render-types.ts";
 import { locale } from "../i18n/runtime.ts";
-const $ = (id) => document.getElementById(id);
-const format = (n) =>
+import { element as $ } from "./dom-elements.ts";
+const format = (n: number) =>
   new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 1 }).format(n);
-export function drawChart(world, comparison) {
+export function drawChart(world: RenderWorld, comparison: RenderWorld | null) {
   const canvas = $("chart"),
     r = canvas.getBoundingClientRect();
   if (!r.width || !r.height) return;
@@ -17,6 +18,7 @@ export function drawChart(world, comparison) {
     canvas.height = Math.round(height * dpr);
   }
   const ctx = canvas.getContext("2d");
+  if (!ctx) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, width, height);
   const left = 24,
@@ -55,7 +57,7 @@ export function drawChart(world, comparison) {
   histories.forEach((history, index) => {
     const points = history.filter((p) => p.tick >= minTick);
     if (points.length < 1) return;
-    const coords = points.map((p) => [
+    const coords = points.map((p): [number, number] => [
       left + ((p.tick - minTick) / (maxTick - minTick)) * w,
       top + h - (p.population / max) * h,
     ]);
@@ -67,7 +69,7 @@ export function drawChart(world, comparison) {
       ctx.beginPath();
       ctx.moveTo(coords[0][0], top + h);
       coords.forEach((p) => ctx.lineTo(...p));
-      ctx.lineTo(coords.at(-1)[0], top + h);
+      ctx.lineTo(coords.at(-1)![0], top + h);
       ctx.closePath();
       ctx.fill();
     }
@@ -78,7 +80,7 @@ export function drawChart(world, comparison) {
     coords.forEach((p, i) => (i ? ctx.lineTo(...p) : ctx.moveTo(...p)));
     ctx.stroke();
     ctx.setLineDash([]);
-    const last = coords.at(-1);
+    const last = coords.at(-1)!;
     ctx.beginPath();
     ctx.arc(...last, 2.4, 0, Math.PI * 2);
     ctx.fillStyle = index ? "#80542e" : "#426044";
