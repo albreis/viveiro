@@ -1,3 +1,12 @@
+import type { RenderWorld } from "../modules/renderer/render-types.ts";
+type Presented = RenderWorld &
+  import("../modules/colonies/presentation.ts").FamilyPresentation;
+interface StatusContext {
+  world: Presented;
+  comparison: Presented | null;
+  scenario: string;
+  current: Presented;
+}
 import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { renderSurvivalStatus } from "./survival-view.ts";
 import { renderFertilityStatus } from "./fertility-status.ts";
@@ -21,11 +30,14 @@ import {
 import { isClaustral } from "../modules/founding/types.ts";
 import { renderColonyStatus } from "./colony-status.ts";
 import { renderSoilStatus } from "./soil-status.ts";
-import { drawChart as renderChart } from "./chart-view.js";
-const $ = (id) => document.getElementById(id);
-const format = (n) =>
+import { drawChart as renderChart } from "./chart-view.ts";
+import { element as $ } from "./dom-elements.ts";
+const format = (n: number) =>
   new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 1 }).format(n);
-export function renderStatus(context, updateAntCamera) {
+export function renderStatus(
+  context: StatusContext,
+  updateAntCamera: (world: RenderWorld) => void,
+) {
   const { world, comparison, scenario, current } = context;
   renderSealingStatus(current);
   renderDevelopmentStatus(current);
@@ -37,13 +49,13 @@ export function renderStatus(context, updateAntCamera) {
     workers = w.workers.length,
     queen = w.ants.some((a) => a.kind === "queen"),
     male = w.ants.some((a) => a.kind === "male");
-  for (const key of ["humidity", "light", "randomness"])
+  for (const key of ["humidity", "light", "randomness"] as const)
     if (document.activeElement !== $(key)) {
-      $(key).value = world.params[key];
+      $(key).value = String(world.params[key]);
       $(key + "-value").textContent = world.params[key] + "%";
       $(key).style.setProperty("--range", world.params[key] + "%");
     }
-  $("population").textContent = w.population;
+  $("population").textContent = String(w.population);
   messageSource(
     $("population-detail"),
     (queen
@@ -57,18 +69,18 @@ export function renderStatus(context, updateAntCamera) {
           ? t("status.male")
           : ""),
   );
-  $("brood").textContent = w.brood.length;
+  $("brood").textContent = String(w.brood.length);
   $("food").replaceChildren(
     document.createTextNode(format(w.food)),
     Object.assign(document.createElement("span"), { textContent: " u." }),
   );
   $("vegetation").replaceChildren(
-    document.createTextNode(w.plants.length),
+    document.createTextNode(String(w.plants.length)),
     Object.assign(document.createElement("span"), {
       textContent: " " + t("terrarium.plants"),
     }),
   );
-  $("predators").textContent = w.predators.length;
+  $("predators").textContent = String(w.predators.length);
   message($("day"), "status.day", { day: format(w.day) });
   message(
     $("time-of-day"),

@@ -1,7 +1,7 @@
 {
   "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
   "upload_type": "software",
-  "version": "0.45.0",
+  "version": "0.46.0",
   "publication_date": "2026-11-03",
   "creators": [
     {
@@ -9,7 +9,7 @@
       "orcid": "0009-0008-0719-8722"
     }
   ],
-  "description": "<p>Viveiro 0.45.0: release consolidada dos P2.4–P2.7, com análise de sensibilidade Morris, API local tipada de extensões, editor de perfis e interface/documentos públicos em português e inglês. Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima e experimentos reproduzíveis por seed. Não calibrado por espécie, sem validação biológica ou de engenharia.</p><p>A integração automática GitHub–Zenodo arquiva a tag v0.45.0, incluindo os metadados da release. A tag identifica a fonte integral desta versão, incluindo a correção de segurança dos links traduzidos. Nenhum depósito manual ou versão intermediária integra esta entrega.</p><p>Código original MIT; documentação e imagens originais CC BY 4.0. Materiais de terceiros conservam suas licenças e avisos; consultar LICENSE e LICENSE-DOCS.md. Dados científicos brutos e limitações estão documentados no repositório.</p>",
+  "description": "<p>Viveiro0.46.0: galeria bilíngue com dez receitas reproduzíveis da equipe, busca/filtros, planos versionados e abertura em laboratório isolado; guias de contribuição e formulários; migração completa da interface e renderer legados para TypeScript estrito em módulos pequenos; auditoria local com correção do contraste A/B.</p><p>474 testes aprovados, build estrito e QA nativa de sessões, replay, câmera, idioma, avanço e exportação. Os experimentos continuam exploratórios e não calibrados por espécie. A galeria ainda não tem contribuições externas; as medições locais não certificam hardware escolar ou WCAG. O serviço oficial de auditoria retornou429 e não produziu nota.</p><p>Uma única release consolidada pela integração automática GitHub–Zenodo, fonte integral na tag v0.46.0. Sem depósito manual ou versões intermediárias. Código original MIT; documentação e imagens originais CC BY4.0; terceiros conservam suas licenças e avisos.</p>",
   "access_right": "open",
   "license": "MIT",
   "keywords": [
@@ -21,12 +21,12 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/",
+      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/",
       "relation": "isSupplementTo",
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/albreis/viveiro/tree/v0.45.0",
+      "identifier": "https://github.com/albreis/viveiro/tree/v0.46.0",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

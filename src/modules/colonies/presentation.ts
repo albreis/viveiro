@@ -9,10 +9,12 @@ export interface FamilyPresentation extends FamilyWorld {
   }[];
 }
 /** Render a combined habitat without merging the colonies' biological resource pools. */
-export function presentFamily(world: FamilyWorld): FamilyPresentation {
+export function presentFamily<T extends FamilyWorld>(
+  world: T,
+): FamilyPresentation & T {
   const colonies = colonyWorlds(world),
     ants = allAnts(world),
-    view = Object.create(world) as FamilyPresentation;
+    view = Object.create(world) as FamilyPresentation & T;
   view.ants = ants;
   view.brood = allBrood(world);
   view.food = colonies.reduce(

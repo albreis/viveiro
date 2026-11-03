@@ -11,7 +11,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
 | 0     | Terrário, túneis e primeira pessoa                                 | ✅ Entregue                                                      |
-| 1     | Navegação social 3D, apoio e TypeScript/Vite                       | ✅ Entregue; migração dos módulos legados continua gradual       |
+| 1     | Navegação social 3D, apoio e TypeScript/Vite                       | ✅ UI/renderer migrados para TS estrito; modelo legado segue gradual       |
 | 2     | Escavação, transporte, erosão, bloqueios e reparos                 | ✅ Entregue; primeiro abrigo incluído em 5B                      |
 | 3     | Estoques, lixo, prole, trofalaxia, castas e diferenças individuais | ✅ Entregue                                                      |
 | 4     | Reação-difusão, ACO, sensores locais e limiares de tarefas         | ✅ Entregue                                                      |
@@ -41,7 +41,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 - [x] Alargamento local experimental por congestionamento.
 - [x] Sensores, forças, contato, superfície e túneis em módulos.
 - [x] TypeScript estrito na navegação e Vite para gerar o bundle.
-- [ ] Migração gradual de UI e renderização legadas para TypeScript.
+- [x] UI e renderização legadas migradas para TypeScript estrito:13JS substituídos, controlador e cena divididos em módulos pequenos. [Arquitetura e verificação](arquitetura-interface.md), PR79 e entrega da interface0.46.0. A simulação legada fora dessas pastas não foi declarada migrada.
 
 Aceite: reprodução pela seed, ausência de NaN, prioridade de carga testada,
 apoio correto, fluxo retomado em gargalos e verificação no navegador.
