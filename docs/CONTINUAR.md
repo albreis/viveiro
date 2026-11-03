@@ -7,7 +7,7 @@ commit/push/PR por etapa. Preservar saves, branches, tags e Site privado.
 
 ## Prioridade e regras atuais do usuário
 
-Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 validado; seguir
+Concluir TODOS os P2 ativos com agilidade: P2.3 e P2.4 entregues; P2.5 entregue; seguir
 P2.6 e P2.7. P2.8 e P5 foram descartados: não são pendências nem critérios de
 conclusão; não retomar propostas históricas sem novo pedido explícito.
 
@@ -91,8 +91,8 @@ Comparação real ACO/extensão: 4 pares × 5 dias, decisões 71/89/88/88; dados
 public/experimentos/policies-043. Nova política em um arquivo e fonte alterada
 testadas pela CLI. Restore e replay exatos. IAB compilado: 500 ticks, CSV e
 manifesto idênticos à CLI; evidência validacoes/extensoes-0.43.0.json. Laboratório
-isolado tem seletor opt-in; terrário/IndexedDB preservados. PR e recibo privado
-serão registrados na finalização desta entrega, sem release ou depósito Zenodo.
+isolado tem seletor opt-in; terrário/IndexedDB preservados. PR #66 aberto sobre #65; privado publicado com sucesso em 2026-11-03T00:24:47 UTC,
+fonte f4f9a39, recibo validacoes/deploy-p2.5-dev.json. Sem tag/release/Zenodo.
 
 Próximo concreto: P2.6, editor de 12 entradas com unidade/faixa/fonte, exportar e
 importar perfil versionado imutável, catálogo v1, biblioteca local separada dos
