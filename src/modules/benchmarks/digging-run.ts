@@ -21,7 +21,8 @@ export interface DiggingSetup {
   /** Idle workers give way to workers on a task (optional traffic rule). */
   idleYield?: boolean;
   /**
-   * Hold day-scaled biology still (age, disease hazard, food) so a run of
+   * Hold day-scaled biology still (age, disease hazard, food and each
+   * worker's energy) so a run of
    * hundreds of thousands of ticks tests behaviour, not ageing. Used when a
    * tick is read as a short real interval rather than 1/100 of a day.
    */
@@ -166,11 +167,19 @@ function sample(w: LessonWorld, start: number, traffic: number): DiggingSample {
 }
 
 /** Keeps day-scaled biology where it started; behaviour still runs per tick. */
-function holdDaily(w: LessonWorld, ages: Map<number, number>) {
+export function holdDaily(
+  w: LessonWorld,
+  held: Map<number, { age: number; energy: number }>,
+) {
   w.food = 1000;
   for (const a of w.ants) {
-    const age = ages.get(a.id);
-    if (age !== undefined) a.age = age;
+    const start = held.get(a.id);
+    if (start) {
+      a.age = start.age;
+      // Buhl's workers did not starve in 72 h; a full store alone does not
+      // reach every worker in time when 200 share the nest.
+      if (a.energy < start.energy) a.energy = start.energy;
+    }
     const life = (a as { life?: { diseaseHazard: number; infection?: number } })
       .life;
     if (life) {
@@ -219,7 +228,7 @@ export function runDigging(options: DiggingRunOptions): DiggingRun {
     samples = [sample(w, start, traffic)],
     progressEvery = options.progressEvery ?? 10_000;
   const frozen = options.setup?.freezeDaily
-    ? new Map(w.ants.map((a) => [a.id, a.age]))
+    ? new Map(w.ants.map((a) => [a.id, { age: a.age, energy: a.energy }]))
     : null;
   while (w.tick < total) {
     w.step();

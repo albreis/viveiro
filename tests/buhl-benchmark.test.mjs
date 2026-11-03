@@ -10,7 +10,10 @@ import {
   curveShape,
   logLogSlope,
 } from "../src/modules/benchmarks/digging-compare.ts";
-import { runDigging } from "../src/modules/benchmarks/digging-run.ts";
+import {
+  holdDaily,
+  runDigging,
+} from "../src/modules/benchmarks/digging-run.ts";
 import { buhlArgs } from "../scripts/lib/buhl-args.ts";
 import {
   DEFAULT_STIGMERGY,
@@ -293,4 +296,16 @@ test("modo de tempo real congela idade e comida e roda os ticks pedidos", () => 
   });
   assert.equal(run.samples.at(-1).tick, 250);
   assert.equal(run.samples.at(-1).workers, 6);
+});
+
+test("modo de tempo real não deixa a energia de cada operária cair", () => {
+  const ant = { id: 1, age: 20, energy: 3 };
+  const world = { food: 0, ants: [ant] };
+  holdDaily(world, new Map([[1, { age: 15, energy: 80 }]]));
+  assert.equal(world.food, 1000);
+  assert.equal(ant.age, 15);
+  assert.equal(ant.energy, 80);
+  ant.energy = 95;
+  holdDaily(world, new Map([[1, { age: 15, energy: 80 }]]));
+  assert.equal(ant.energy, 95);
 });
