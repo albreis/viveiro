@@ -1,90 +1,74 @@
-# Continuação do Viveiro — P2.7 retomado
+# Continuação — P2 técnicos concluídos; integração pública pendente
 
-Atualizado em 02/11/2026, horário local. Trabalhar em G:\Projetos\viveiro.
-Ler AGENTS.md e docs/cronograma.md; conferir Git/PRs antes de alterar arquivos.
+Atualizado em 03/11/2026. Trabalhar em G:\Projetos\viveiro. Ler AGENTS.md,
+docs/cronograma.md e docs/revisao-p2.md. Conferir Git/PRs antes de agir.
 
-## Estado atual — 03/11/2026
+## Estado preservado
 
-Retomado por pedido explícito na branch codex/internacionalizacao. Automação
-continua PAUSED para evitar executor concorrente. Ao restarem 3% na janela de
-5h, enviar tudo ao GitHub, atualizar checkpoint e parar para continuação manual.
-Não retomar após reset sem novo pedido explícito nem publicar dados da conta.
+Branch codex/internacionalizacao, PR #68 sobre codex/editor-perfis (#67).
+P2.7 está implementado, testado e publicado no mesmo Site privado. Fonte da
+publicação: 7a24fd9720323cbe7f12f7b8f7175d78f2e8a7b7; recibo em
+validacoes/deploy-p2.7-dev.json. Commits posteriores apenas atualizam evidências.
+Audiência custom/revisão 1/um proprietário preservada. Público antigo não alterado.
 
-PR #68 permanece rascunho, base codex/editor-perfis. Fetch conferido: origin/main
-não tem novidades desde a base. Branch remota do usuário claude/project-thread-kazijj,
-PR #69 de escavação, preservada sem integrar nesta entrega.
+Dev http://127.0.0.1:4173/ ativo em G, PID 15348 conferido. Não encerrar.
+Preview 4189 pode servir dist. Servidor temporário 4190 foi desligado para QA
+offline e deve permanecer parado. Logs e pacotes locais não entram no Git.
 
-Dev http://127.0.0.1:4173/ reiniciado em G (PID15348). Não parar. QA pausou a cena
-existente SEMENTE-42911 em torno de D11,3; não restaurar estados históricos sobre
-o trabalho recente do usuário. Preservar branches, tags, saves e privacidade.
+O usuário mudou a cena dev durante o trabalho para AULA-v2-heranca. Não restaurar
+SEMENTE-42911, SEMENTE-50088 ou checkpoints históricos sobre o estado atual.
+A QA do bundle usou origem 4189 e a de offline 4190; saves do dev preservados.
+Fetch preservou atualizações de claude/project-thread-kazijj (PR #69). Não mexer
+nessa branch nem incorporar seus commits nesta etapa.
 
-## Entregas concluídas nesta sequência
+## P2.7 entregue
 
-- P2.4: PR #65 contra main, codex/sensibilidade-morris, 0.42.0 de desenvolvimento.
-  432/432 testes, 104 simulações reais Morris, dados brutos e limites honestos.
-  Fonte privada publicada 7b3b4f9; recibo validacoes/deploy-p2.4-dev.json.
-- P2.5: PR #66 sobre #65, codex/extensoes-tipadas, 0.43.0 de desenvolvimento.
-  438/438 testes, API local tipada, política nova em um arquivo e comparação
-  real com ACO. CSV/manifesto iguais no bundle e CLI; fonte privada f4f9a39.
-  Recibo validacoes/deploy-p2.5-dev.json; dados public/experimentos/policies-043.
-- P2.6: PR #67 sobre #66, codex/editor-perfis, 0.44.0 de desenvolvimento.
-  444/444 testes, editor de 12 entradas com unidade/faixa/fonte, versões locais
-  imutáveis, exportação/reimportação e aplicação à varredura. CSV/manifesto
-  iguais na CLI, dev antes/depois da importação e bundle compilado (300 ticks).
-  Fonte privada ec7fc47; recibo validacoes/deploy-p2.6-dev.json. Dados brutos
-  public/experimentos/profile-044 e evidência validacoes/perfis-0.44.0.json.
+- 1.192 mensagens por idioma pt-BR/en; catálogos, TS e JSONs menores que 250 linhas.
+- Interface 3D, laboratório, painéis, 100 parâmetros, 7 aulas e tour traduzidos.
+- 13 documentos do modelo e 9 fontes de ensino em inglês, licenças, README.en;
+  rotas/links por idioma, alternância na mesma página e nomes de download claros.
+- 459/459 testes completos, 30 dirigidos após revisão e 16 do ajuste de downloads.
+  TS estrito, Vite 436 módulos e builds público/privado aprovados.
+- Bundle 300 ticks: CSV/manifesto iguais à CLI/dev; locale conserva resultados,
+  inputs e pausa. Tela 320 px: documento 305 px no laboratório e no terrário.
+- Cache 557 arquivos: guia inglês e troca pt-BR/en funcionaram com servidor parado.
+- QA do Site privado confirmou laboratório/ODD ingleses e atributo de download
+  da fonte final. O evento de texto estático expirou no IAB; fonte abre direto e
+  bytes/links passaram nos testes. CSV/manifesto reais baixados e comparados.
+- Evidências: validacoes/i18n-p27.json; dados: public/experimentos/i18n-p27.
+  Nomes do usuário, protocolo/RNG, números científicos e dados canônicos intactos.
 
-Os PRs estavam abertos e encadeados na conferência de transferência; não duplicar.
-Preservar ACO padrão, paridade portátil e trajetória nativa. Os modelos e as
-faixas são exploratórios, sem calibração por espécie.
+## Todos os P2 ativos revisados
 
-## P2.7 — implementação e validação concluídas, publicação pendente
+P2.1–P2.3 já estão na main e foram publicados. P2.4–P2.7 têm mecanismos/evidências
+concluídos e publicação privada. Não existe outro mecanismo P2 ativo pendente.
+Ver docs/revisao-p2.md para critérios, limites e integração ainda necessária.
 
-1.192 mensagens por idioma, módulos/JSONs de i18n menores que 250 linhas.
-Interface completa, 100 parâmetros, 7 aulas, tour e texturas da cena traduzidos.
-Documentos públicos: 13 do modelo + 9 fontes de ensino em inglês; rotas en/modelo,
-en/ensino e licenças, alternância na mesma página e fontes para baixar. README.en.
-IDs, arquivos científicos e nomes do usuário permanecem canônicos.
+Os PRs permaneciam abertos, em ordem: #65 → main; #66 → #65; #67 → #66;
+#68 → #67. Não duplicar PRs, apagar branches ou reescrever tags. #68 deve ficar
+pronto para revisão após o envio deste checkpoint. Preservar revisão do usuário.
 
-459/459 testes completos; após o ajuste final do link de licença, 30/30 dirigidos
-(incluindo builds público/privado e todos os hashes offline), TS e build aprovados.
-Bundle com 436 módulos. QA nativa do bundle: 300 ticks, CSV/manifesto idênticos à
-CLI/dev; locale conserva resultados e inputs. Tela 320px: largura de documento
-305px no laboratório e no terrário; pausa em D0,6 preservada. Dados/evidências:
-public/experimentos/i18n-p27 e validacoes/i18n-p27.json. O evento de download de
-texto estático expirou no IAB; links/fontes conferidos em testes. CSV/JSON reais
-baixados com sucesso. Sem alegar aprovação externa ou calibração.
+Próxima ação concreta de integração: conferir CI/revisões de #65; integrá-lo e
+retargetear #66 para main, repetindo em ordem até #68. Conferir mudanças remotas
+antes e resolver conflitos sem perder o trabalho do usuário. Depois executar
+checks da main integrada e preparar a única versão pública consolidada.
 
-O usuário mudou o terrário dev durante o trabalho: agora há uma aula de herança
-AULA-v2-heranca em andamento. Não restaurar SEMENTE-42911 ou checkpoints antigos
-sobre ele. QA compilada usou outra origem (4189), preservando o dev em 4173.
-Fetch recente preservou novas mudanças remotas em claude/project-thread-kazijj.
-Não integrar nem sobrescrever o trabalho dessa outra branch.
+## Política de publicação e limites
 
-## Próximo passo concreto
+Público: https://viveiro.ersolucoesweb.com.br/ (GitHub Pages). A última tag pública
+é v0.41.0. Versão 0.44.0 na branch/privado é de desenvolvimento, sem tag/release.
+Não criar tag em branch parcial. Preparar pacote/changelog/CFF/.zenodo.json antes
+da tag final; preservar autoria/ORCID confirmados. DOI 10.5281/zenodo.23891981 é da
+0.36.0, não da versão nova. GitHub/Zenodo estão integrados automaticamente: nunca
+criar depósito manual, duplicado ou versões intermediárias. Não atualizar o
+antigo Site público do ChatGPT. Manter o original privado owner-only.
 
-1. Terminar QA nativa do pacote público com base /releases/v0.44.0/ e guias em
-   inglês no cache; servidor temporário 4190, PID25456. Dev4173 segue ativo.
-2. Publicar o commit validado no mesmo Site privado owner-only, registrar recibo.
-3. Atualizar P2.7 no cronograma e PR #68 para pronto. Revisar TODOS os P2 ativos
-   conforme pedido novo: P2.1–P2.6 já têm mecanismos/evidências; P2.8 descartado.
-4. Reconciliar a integração dos PRs encadeados #65 → #66 → #67 → #68. Não criar
-   tag em branch parcial nem duplicar PR. Uma única release consolidada após a
-   integração e preparação dos metadados CFF/Zenodo; nenhuma publicação manual.
+P2.8 e P5 foram descartados. P1/P3 dependem de pessoas/dados reais: hardware
+escolar, participantes, professores, planilha/leitor de tela/Lighthouse, pilotos,
+calibração e validação externa. Não inventar resultados ou declarar ciência
+calibrada. Não repetir PageSpeed enquanto a cota estiver bloqueada.
 
-## Política de publicação
-
-Nenhuma nova tag ou GitHub Release até TODOS os P2 ativos terminarem. O público
-é GitHub Pages em https://viveiro.ersolucoesweb.com.br/; não atualizar o antigo
-Site público do ChatGPT. Última tag pública desta sequência: v0.41.0. O original
-owner-private está na entrega P2.6, com audiência custom/rev1/um proprietário.
-
-GitHub está ligado automaticamente ao Zenodo. Não criar depósitos manuais,
-duplicados ou versões intermediárias. CFF/.zenodo ainda referenciam a 0.41.0:
-alinhar metadados antes da única próxima publicação consolidada. Autoria e ORCID
-confirmados devem ser preservados. DOI 10.5281/zenodo.23891981 pertence à 0.36.0,
-não à versão atual. Preservar todas as tags existentes.
-
-P2.8 e P5 foram descartados, não são pendências. Aceites externos P1/P3 continuam
-abertos; não inventar dados, pareceres ou calibração. PageSpeed recebeu cota 429:
-não repetir antes de 2026-11-03T15:16:57 UTC nem contornar a restrição.
+Automação continuar-cronograma-do-viveiro permanece PAUSED, sem executor paralelo.
+O usuário retomou esta entrega explicitamente. Ao restarem 3% na janela real de 5h,
+enviar tudo ao GitHub, atualizar este arquivo e parar para continuação manual.
+Não contornar limites nem retomar após reset sem novo pedido explícito.

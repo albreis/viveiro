@@ -28,7 +28,11 @@
       "englishModelSources": 13,
       "englishTeachingSources": 9
     },
-    "offlineManifestHashes": "all generated public assets verified; English model, guides, vectors and licenses included"
+    "offlineManifestHashes": "all generated public assets verified; English model, guides, vectors and licenses included",
+    "downloadFollowupTests": {
+      "tests": 16,
+      "passed": 16
+    }
   },
   "browser": {
     "engine": "native IAB",
@@ -53,7 +57,25 @@
       "English teaching guide rendered from translated source",
       "License navigation points to en/licencas.html in English",
       "Dev biological catalog covers all 100 records; tour and seven lessons covered by earlier UI evidence"
-    ]
+    ],
+    "publicOffline": {
+      "base": "/releases/v0.44.0/",
+      "cachedFiles": 557,
+      "serverStopped": true,
+      "checks": [
+        "English teacher index opens with HTTP server stopped",
+        "English inheritance guide opens from a cached local link",
+        "Same guide alternates pt-BR and en while server stays stopped"
+      ]
+    },
+    "publishedPrivate": {
+      "sourceSha": "7a24fd9720323cbe7f12f7b8f7175d78f2e8a7b7",
+      "checks": [
+        "English laboratory rendered in production",
+        "English ODD rendered in production",
+        "Final explicit localized download filename confirmed in deployed HTML"
+      ]
+    }
   },
   "portableExperiment": {
     "seed": "I18N-QA-045-Árvore",
@@ -76,8 +98,7 @@
     "Internal verification; no empirical calibration or external teacher/accessibility endorsement",
     "Canonical model text, scientific files and user-authored names remain unchanged",
     "Operational and historical repository documents remain Portuguese; public model/teaching pages and README have English versions",
-    "IAB static text download event timed out; source bytes/links validated by generators and route checks. Actual CSV/manifest downloads succeeded.",
-    "Public-origin offline navigation and private deployment still pending at this checkpoint"
+    "IAB static text download event timed out; source bytes/links validated by generators and route checks. Actual CSV/manifest downloads succeeded."
   ],
   "references": [
     "i18n-lab-parcial.json",
