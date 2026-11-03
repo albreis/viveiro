@@ -7,6 +7,11 @@ import { digBite } from "./projects.ts";
 import { beginSoilHaul, enterForSoil } from "./routing.ts";
 import { depositSoil, distance3 } from "./ledger.ts";
 import {
+  adoptFrontHere,
+  joinProbability,
+  recruitingProject,
+} from "./stigmergy.ts";
+import {
   advanceSupportedMotion,
   settleSupport,
 } from "../navigation/support-motion.ts";
@@ -20,15 +25,18 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
       ("bioTask" in ant && ant.bioTask))
   )
     return false;
+  const stigmergy = world.soil.stigmergy;
   if (
     !ant.soilTask &&
-    "role" in ant &&
-    ant.role === "excavator" &&
     ant.node != null &&
-    world.tick - world.soil.lastProject >= 450 &&
-    ["royal", "nursery", "storage", "chamber"].includes(
-      world.nest.nodes[ant.node].type,
-    ) &&
+    (stigmergy
+      ? !ant.carrying && world.random() < stigmergy.params.spontaneous
+      : "role" in ant &&
+        ant.role === "excavator" &&
+        world.tick - world.soil.lastProject >= 450) &&
+    ["royal", "nursery", "storage", "chamber", "junction"]
+      .slice(0, stigmergy ? 5 : 4)
+      .includes(world.nest.nodes[ant.node].type) &&
     (!ant.tunnelCenter ||
       distance3(ant.tunnelCenter, world.nest.nodes[ant.node]) < 0.03)
   )
@@ -51,15 +59,22 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
       ant.soilTask = { phase: "haul", digTicks: 0 };
       beginSoilHaul(world, ant);
     } else {
-      const project = world.soil.projects.find(
-        (p) =>
-          !p.completed &&
-          ant.node === p.from &&
-          world.ants.filter((a) => a.soilTask?.projectId === p.id).length < 2,
-      );
+      const project = stigmergy
+        ? recruitingProject(world, ant)
+        : world.soil.projects.find(
+            (p) =>
+              !p.completed &&
+              ant.node === p.from &&
+              world.ants.filter((a) => a.soilTask?.projectId === p.id).length <
+                2,
+          );
       if (
         !project ||
-        ("role" in ant ? ant.role !== "excavator" : ant.id % 4 !== 0) ||
+        (stigmergy
+          ? world.random() >= joinProbability(world, project)
+          : "role" in ant
+            ? ant.role !== "excavator"
+            : ant.id % 4 !== 0) ||
         ant.carrying ||
         ant.energy < 50
       )
@@ -156,7 +171,14 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     ant.tunnelY = 0;
     task.phase = "return";
     task.digTicks = 0;
-    if (!task.projectId && !task.rubbleId) delete ant.soilTask;
+    const worked = stigmergy
+      ? world.soil.projects.find((p) => p.id === task.projectId)
+      : undefined;
+    if (
+      (!task.projectId && !task.rubbleId) ||
+      (worked && world.random() >= joinProbability(world, worked))
+    )
+      delete ant.soilTask;
     return true;
   }
   const project = world.soil.projects.find((p) => p.id === task.projectId);
@@ -189,8 +211,13 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     return true;
   }
   if (ant.node !== project.front) {
-    task.phase = "return";
-    requestRoute(world, ant, project.front);
+    // The front odor leads to the nearest open front, not to a chosen one.
+    const reached = stigmergy && adoptFrontHere(world, ant);
+    if (!reached) {
+      task.phase = "return";
+      requestRoute(world, ant, project.front);
+      return true;
+    }
     return true;
   }
   task.phase = "dig";

@@ -1,17 +1,30 @@
 import { modelMath } from "../../libs/model-math.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
+import { projectSupport } from "../terrain/terrain.js";
 import {
   finishLessonWorld,
   lessonWorld,
   type LessonWorld,
 } from "../lessons/world.ts";
 import { TICKS_PER_DAY } from "../simulation/constants.js";
+import { enableStigmergy, type StigmergyParams } from "../soil/stigmergy.ts";
+
+export type DiggingMode = "projetos" | "estigmergia";
+export interface DiggingSetup {
+  mode?: DiggingMode;
+  /** Workers only, no queen: no new adults, as in Buhl's fixed groups. */
+  workersOnly?: boolean;
+  /** Start every worker resting in a nest room instead of on the surface. */
+  insideNest?: boolean;
+  stigmergy?: Partial<StigmergyParams>;
+}
 
 export interface DiggingRunOptions {
   seed: string;
   workers: number;
   days: number;
   sampleEvery?: number;
+  setup?: DiggingSetup;
 }
 export interface DiggingSample {
   tick: number;
@@ -32,14 +45,29 @@ export interface DiggingRun {
  * Prepared group of adult workers around the nest entrance, with the queen
  * kept and abundant food. This is a test condition, not a colony history.
  */
-export function prepareDiggingWorld(seed: string, workers: number) {
+export function prepareDiggingWorld(
+  seed: string,
+  workers: number,
+  setup: DiggingSetup = {},
+) {
   if (!Number.isInteger(workers) || workers < 1 || workers > 400)
     throw Error("Grupo deve ter de 1 a 400 operárias.");
   const w = lessonWorld(seed, false, false);
-  w.ants = w.ants.filter((a) => a.kind === "queen");
+  w.ants = setup.workersOnly ? [] : w.ants.filter((a) => a.kind === "queen");
+  if (setup.workersOnly) w.brood = [];
   const entry = w.nest.nodes.find((n) => n.type === "entrance")!;
+  const rooms = w.nest.nodes
+    .map((n, index) => ({ n, index }))
+    .filter(({ n }) =>
+      ["royal", "nursery", "storage", "chamber"].includes(n.type),
+    );
   for (let i = 0; i < workers; i++) {
     const ant = w.makeAnt("worker", entry.x, entry.z);
+    if (setup.insideNest && rooms.length) {
+      placeInRoom(w, ant, rooms[i % rooms.length], i);
+      w.ants.push(ant);
+      continue;
+    }
     if (!placeWorker(w, ant, entry, i))
       throw Error("Não há espaço para posicionar " + workers + " operárias.");
     w.ants.push(ant);
@@ -47,7 +75,30 @@ export function prepareDiggingWorld(seed: string, workers: number) {
   w.food = 1000;
   w.born = workers;
   finishLessonWorld(w, true);
+  if (setup.mode === "estigmergia") enableStigmergy(w, setup.stigmergy);
   return w;
+}
+
+function placeInRoom(
+  w: LessonWorld,
+  ant: LessonWorld["ants"][number],
+  room: { n: { x: number; y: number; z: number; r: number }; index: number },
+  i: number,
+) {
+  const angle = i * 2.39996,
+    reach = room.n.r * 0.5;
+  const support = projectSupport(w.nest, {
+    x: room.n.x + modelMath.cos(angle) * reach,
+    y: room.n.y - room.n.r * 0.85,
+    z: room.n.z + modelMath.sin(angle) * reach,
+  });
+  Object.assign(ant, support.point, {
+    normal: support.normal,
+    node: room.index,
+    tunnelY: room.n.y,
+    angle,
+    age: 20,
+  });
 }
 
 function placeWorker(
@@ -99,6 +150,7 @@ export function runDigging(options: DiggingRunOptions): DiggingRun {
   const w = prepareDiggingWorld(
     options.seed,
     options.workers,
+    options.setup,
   ) as LessonWorld & {
     step(): void;
   };

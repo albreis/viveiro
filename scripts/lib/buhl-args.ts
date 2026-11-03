@@ -4,6 +4,8 @@ export interface BuhlOptions {
   seeds: number;
   groups: number[];
   sampleEvery: number;
+  mode: "projetos" | "estigmergia";
+  protocol: "terrario" | "grupo-fixo";
 }
 
 const integer = (name: string, raw: string, min: number, max: number) => {
@@ -22,7 +24,17 @@ export function buhlArgs(argv: string[]): BuhlOptions {
       value = argv[i + 1];
     if (!flag.startsWith("--")) throw Error("Argumento inesperado: " + flag);
     const name = flag.slice(2);
-    if (!["out", "days", "seeds", "groups", "sample-every"].includes(name))
+    if (
+      ![
+        "out",
+        "days",
+        "seeds",
+        "groups",
+        "sample-every",
+        "mode",
+        "protocol",
+      ].includes(name)
+    )
       throw Error("Opção desconhecida: " + flag);
     if (seen.has(name)) throw Error("Opção repetida: " + flag);
     if (value === undefined || value.startsWith("--"))
@@ -36,6 +48,12 @@ export function buhlArgs(argv: string[]): BuhlOptions {
     .map((g) => integer("groups", g.trim(), 1, 400));
   if (new Set(groups).size !== groups.length || groups.length < 2)
     throw Error("--groups precisa de ao menos dois tamanhos diferentes.");
+  const choice = <T extends string>(name: string, fallback: T, ok: T[]) => {
+    const value = (seen.get(name) ?? fallback) as T;
+    if (!ok.includes(value))
+      throw Error(`--${name} deve ser ${ok.join(" ou ")}.`);
+    return value;
+  };
   return {
     out,
     days: integer("days", seen.get("days") ?? "3", 1, 365),
@@ -47,5 +65,7 @@ export function buhlArgs(argv: string[]): BuhlOptions {
       1,
       100,
     ),
+    mode: choice("mode", "projetos", ["projetos", "estigmergia"]),
+    protocol: choice("protocol", "terrario", ["terrario", "grupo-fixo"]),
   };
 }

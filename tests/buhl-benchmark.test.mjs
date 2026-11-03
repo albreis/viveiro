@@ -11,6 +11,14 @@ import {
 } from "../src/modules/benchmarks/digging-compare.ts";
 import { runDigging } from "../src/modules/benchmarks/digging-run.ts";
 import { buhlArgs } from "../scripts/lib/buhl-args.ts";
+import {
+  DEFAULT_STIGMERGY,
+  depositMark,
+  enableStigmergy,
+  joinProbability,
+  markAt,
+} from "../src/modules/soil/stigmergy.ts";
+import { World } from "../src/modules/simulation/world.js";
 
 test("dados de referência de Buhl conferem com a tabela publicada", () => {
   assert.deepEqual(
@@ -108,10 +116,46 @@ test("argumentos inválidos falham antes de rodar", () => {
     seeds: 1,
     groups: [50, 100, 200],
     sampleEvery: 5,
+    mode: "projetos",
+    protocol: "terrario",
   });
+  assert.equal(
+    buhlArgs(["--out", "x", "--mode", "estigmergia"]).mode,
+    "estigmergia",
+  );
+  assert.throws(() => buhlArgs(["--out", "x", "--mode", "outro"]), /deve ser/);
   assert.throws(() => buhlArgs([]), /--out/);
   assert.throws(() => buhlArgs(["--out", "x", "--out", "y"]), /repetida/);
   assert.throws(() => buhlArgs(["--out", "x", "--dias", "3"]), /desconhecida/);
   assert.throws(() => buhlArgs(["--out", "x", "--groups", "50"]), /dois/);
   assert.throws(() => buhlArgs(["--out", "x", "--days", "0"]), /entre/);
+});
+
+test("feromônio de escavação decai e recruta pela curva de Buhl", () => {
+  const w = { tick: 0, soil: {} };
+  enableStigmergy(w, { k: 1, baseJoin: 0, deposit: 1, evaporation: 0.1 });
+  const project = { id: 7 };
+  assert.equal(joinProbability(w, project), 0);
+  depositMark(w, project);
+  assert.equal(markAt(w, project), 1);
+  assert.equal(joinProbability(w, project), 0.5);
+  w.tick = 10;
+  assert.ok(Math.abs(markAt(w, project) - Math.exp(-1)) < 1e-12);
+  depositMark(w, project);
+  assert.ok(markAt(w, project) > 1 && joinProbability(w, project) > 0.5);
+});
+
+test("modo por feromônio é opcional e o padrão não muda", () => {
+  const w = new World("SEMENTE-42");
+  assert.equal(w.soil.stigmergy, undefined);
+  assert.ok(DEFAULT_STIGMERGY.maxFronts > 2);
+  const run = runDigging({
+    seed: "BUHL-T",
+    workers: 6,
+    days: 1,
+    sampleEvery: 20,
+    setup: { mode: "estigmergia", workersOnly: true, insideNest: true },
+  });
+  assert.equal(run.samples[0].workers, 6);
+  assert.ok(run.samples.every((s) => s.removed >= 0));
 });

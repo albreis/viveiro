@@ -8,11 +8,15 @@ import {
 } from "../src/modules/benchmarks/digging-run.ts";
 import { compareWithBuhl } from "../src/modules/benchmarks/digging-compare.ts";
 import { buhlArgs } from "./lib/buhl-args.ts";
+import { DEFAULT_STIGMERGY } from "../src/modules/soil/stigmergy.ts";
 import { TICKS_PER_DAY } from "../src/modules/simulation/constants.js";
 
 const usage = `Viveiro · comparação com Buhl et al. (escavação em Messor sancta)
 Uso: npm run benchmark:buhl -- --out ./buhl-novo [--days 3] [--seeds 1]
      [--groups 50,100,200] [--sample-every 5]
+     [--mode projetos|estigmergia] [--protocol terrario|grupo-fixo]
+--mode estigmergia usa a escavação recrutada por feromônio (Buhl).
+--protocol grupo-fixo começa só com operárias, sem rainha, dentro do ninho.
 Roda grupos preparados de operárias e compara a forma da curva de escavação
 e a escala do volume final com os dados publicados. Unidades do modelo não
 são convertidas para cm³ nem horas. Modelo exploratório, não calibrado.
@@ -62,6 +66,11 @@ else
             workers,
             days: options.days,
             sampleEvery: options.sampleEvery,
+            setup: {
+              mode: options.mode,
+              workersOnly: options.protocol === "grupo-fixo",
+              insideNest: options.protocol === "grupo-fixo",
+            },
           }),
         );
       }
@@ -76,6 +85,8 @@ else
           modelVersion: metadata.version,
           source: BUHL_SOURCE,
           options: { ...options, out: undefined },
+          stigmergy:
+            options.mode === "estigmergia" ? DEFAULT_STIGMERGY : undefined,
           ...comparison,
         },
         null,

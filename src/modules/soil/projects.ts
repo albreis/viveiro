@@ -4,12 +4,14 @@ import { distance3, removedSoil } from "./ledger.ts";
 import { normalize, sub } from "../navigation/vectors.ts";
 import { chooseDigGoal } from "./dig-direction.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
+import { depositMark, frontLimit, nodeLimit } from "./stigmergy.ts";
 export function proposeDig(world: SoilWorld, from: number): DigProject | null {
   const node = world.nest.nodes[from];
   if (
     !node ||
-    world.soil.projects.filter((p) => !p.completed).length >= 2 ||
-    world.nest.nodes.length >= 46
+    world.soil.projects.filter((p) => !p.completed).length >=
+      frontLimit(world) ||
+    world.nest.nodes.length >= nodeLimit(world, 46)
   )
     return null;
   if (world.soil.projects.some((p) => !p.completed && p.from === from))
@@ -49,7 +51,7 @@ function advanceFront(world: SoilWorld, project: DigProject) {
   const goal =
     !emerged &&
     (project.remainingSegments || 0) > 0 &&
-    world.nest.nodes.length < 48
+    world.nest.nodes.length < nodeLimit(world, 46) + 2
       ? chooseDigGoal(world, project.front, project.heading)
       : null;
   if (goal) {
@@ -118,5 +120,6 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
   const mass = Math.PI * modelMath.pow(front.r, 2) * (after - before);
   project.excavated += mass;
   removedSoil(world, ant, mass);
+  depositMark(world, project);
   world.nest.revision++;
 }
