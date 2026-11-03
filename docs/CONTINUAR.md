@@ -1,65 +1,46 @@
-# Transferência manual — release 0.45.0 preparada, NÃO publicada
+# Continuação — CodeQL corrigido; release 0.45.0 em publicação
 
-03/11/2026. Parada solicitada pelo usuário quando restarem 3% da janela de 5h;
-a consulta já retornou 2%. Progresso commitado/enviado. Não retomar automaticamente
-após reset sem novo pedido explícito. Automação permanece PAUSED.
+03/11/2026. Usuário retomou explicitamente e autorizou publicação da release.
+Trabalhar em G:\Projetos\viveiro; branch codex/release-p2-consolidada, PR #71.
+Nenhuma tag/release criada ainda neste checkpoint. Dev4173 preservado em G.
+Automação PAUSED; transferir novamente aos3% se necessário, sem contornar limites.
 
-## Estado exato
+## Segurança resolvida
 
-Trabalhar em G:\Projetos\viveiro, branch codex/release-p2-consolidada.
-PR https://github.com/albreis/viveiro/pull/71 aberto contra main.
-Usuário autorizou publicar a release única. Nenhuma tag v0.45.0, GitHub Release
-ou depósito Zenodo foi criado. NÃO anunciar como publicada.
+CodeQL js/xss-through-dom detectou DOM→href em src/i18n/dom.ts:39. Correção real
+em d693915: registro de rotas internas, rejeição de destinos não registrados,
+componentes de query/fragmento codificados e atualização só em âncoras.
+18 testes dirigidos e TS/build438 módulos aprovados. QA nativa do bundle confirmou
+alternância pt-BR/en e abertura da ODD inglesa. CI41710258215: todas as análises e
+CodeQL SUCCESS, título "No new alerts". Sem supressão, dismissal ou regra relaxada.
+Evidência validacoes/codeql-0.45.0.json. Ajuste posterior só em metadados/docs.
 
-O usuário mesclou #65–#68, mas nas bases encadeadas. origin/main ficou em
-f09fc4f (só P2.4), origin/codex/editor-perfis contém o merge final 5e5f39e (#68).
-A branch de release partiu de origin/main e mesclou origin/codex/editor-perfis
-sem conflitos, com árvore idêntica à branch completa. Preserva todos os merges,
-branches/tags e o trabalho separado em claude/project-thread-kazijj (#69/#70).
+## Consolidação e publicação pendentes
 
-Commits desta branch:
-- Consolidação dos P2.4–P2.7 em merge próprio, sem alteração funcional.
-- 794848d872c72bfb67c1dd41c4e628dbe6853993: pacote/lock/licenças/changelog 0.45.0.
-- 1fe6f05: CFF/Zenodo preparados ANTES da tag; suporte a CFF sem commit explícito.
-  CFF usa versão/URL da tag, evitando hash autorreferente. O empacotador resolve
-  SHA pela tag; se CFF traz commit explícito, continua exigindo igualdade exata.
-  Testes rejeitam SHA inválido. Autoria/ORCID preservados; DOI antigo não reutilizado.
+P2.1–P2.7 técnicos concluídos. #65–#68 foram mesclados em bases intermediárias;
+main ficou só em P2.4. PR #71 reúne o conteúdo completo e prepara0.45.0, pacote,
+lock, changelog, licenças, CFF e .zenodo.json ANTES da tag. CFF referencia versão
+por URL da tag, sem SHA autorreferente. O empacotador resolve o SHA da tag; commits
+explícitos em CFF continuam sujeitos à igualdade estrita. Autoria/ORCID preservados.
 
-## Validação e bloqueios antes de publicar
+Suíte completa atual (sem deposit-archive.test.mjs) executando, sessão22924:
+.runtime/release-045-fixed-tests.txt. Esse único teste precisa da tag local e será
+executado antes de enviar a tag. Três testes novos de segurança somam aos459 prévios.
+Não alegar teste concluído antes de conferir o rodapé. Build/18 dirigidos aprovados.
 
-Build estrito/Vite aprovado: .runtime/release-045-build.txt.
-Três testes de metadados aprovados: .runtime/release-045-metadata-tests.txt.
-QA nativa compilada em 4189 confirmou "Viveiro 0.45.0" e laboratório em inglês.
-A suíte completa da consolidação TERMINOU: 459/459 passaram em372,2s.
-Log .runtime/release-045-tests.txt. A sessão33114 já terminou.
-Suíte anterior do P2.7 passou 459/459, sem mudança nas regras biológicas agora.
+1. Aguardar suíte e CI do head atual; integrar #71 sem apagar branches.
+2. Atualizar main local por fast-forward. Criar tag LOCAL v0.45.0 no merge integrado.
+3. Rodar node --test tests/deposit.test.mjs tests/deposit-archive.test.mjs; gerar
+   espelho de teste com build-public-release.ts em .runtime, sem publicar Site antigo.
+4. Enviar tag e criar UMA GitHub Release com .runtime/release-045-notes.md. CFF e
+   Zenodo já atualizados; nenhum depósito manual ou versão intermediária.
+5. Conferir pages.yml: tag grava site-publico, que dispara deploy na main. Verificar
+   https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/ no navegador e registrar.
+6. Usuário pediu revisar/apagar #70 se redundante: é redundante, head5e5f39e já é
+   ancestral de #71. Fechar #70 após integrar #71, se GitHub não o fechar sozinho.
+   Preservar a branch codex/editor-perfis. Não alterar #69/trabalho do usuário.
+7. Atualizar cronograma/checkpoint/recibos e Site privado owner-only se necessário.
 
-O teste real de depósito foi tentado antes da tag e falhou porque v0.45.0 não
-existe. A tag local pode ser criada APÓS validar/integrar o PR, sem enviar ainda;
-rodar node --test tests/deposit.test.mjs tests/deposit-archive.test.mjs antes do
-push da tag. Não criar tag temporária nem reescrever tags. Não fazer depósito
-manual: GitHub/Zenodo integrados automaticamente.
-
-CI PR #71: Analyze(actions) e Analyze(javascript-typescript) passaram; check CodeQL
-falhou: 1 alerta novo de segurança com severidade ALTA. Detalhes em .runtime/release-045-codeql.json e Actions 41707958532.
-Investigar/corrigir essa falha antes do merge/publicação; não ignorar proteção.
-
-## Próximos passos concretos
-
-1. Ler logs da suíte e CodeQL, resolver pendências e atualizar o PR #71. Preservar
-   o dev 4173 e saves do usuário. Publicação já autorizada, não pedir outra vez.
-2. Integrar #71 na main após validação. Atualizar main local sem perder branches.
-3. Criar tag local v0.45.0 no commit integrado; conferir pacote 0.45.0, CFF/Zenodo
-   e rodar o teste do pacote real. Só então enviar a tag e criar UMA GitHub Release
-   com notas P2.4–P2.7. gh release create --verify-tag ... --notes-file ... .
-4. A tag dispara pages.yml: grava site-publico e dispara deploy pela main, como
-   exige a proteção github-pages. Acompanhar até sucesso e conferir
-   https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/ no navegador.
-5. Integração Zenodo automática: não duplicar depósito. Registrar DOI só se real.
-   Atualizar cronograma/recibos após sucesso; manter Site privado owner-only.
-
-GitHub connector lê mas nega escrita com 403 Resource not accessible by integration.
-gh já configurado funciona e foi usado para criar o PR. Não expor credenciais.
-Dev 4173 ativo em G; preview 4189 serve dist 0.45.0. Não reiniciar/resetar o terrário
-atual. Site privado está no P2.7 publicado (fonte 7a24fd9), versão de desenvolvimento
-0.44.0, sem mudanças na audiência. P2.8 e P5 descartados; P1/P3 externos abertos.
+O conector GitHub lê mas não pode escrever (403); gh configurado funciona.
+Última tag públicav0.41.0. P2.8/P5 descartados. Calibração, revisão docente e
+outros aceites externos P1/P3 continuam abertos. Saves e privacidade preservados.
