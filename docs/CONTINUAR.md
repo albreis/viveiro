@@ -93,5 +93,6 @@ Criar codex/extensoes-tipadas a partir da entrega P2.4, manter arquivos curtos,
 validar sensores locais, seleção passável, reprodução, restore e comparação
 real com ACO. Abrir PR encadeado se o anterior ainda não tiver sido integrado.
 
-Git/PR e recibo de publicação privada serão registrados na finalização desta
-entrega. Não há tag/release 0.42; preservar a política consolidada do usuário.
+PR https://github.com/albreis/viveiro/pull/65 aberto contra main; CodeQL verde.
+Privado publicado com sucesso em 2026-11-03T00:07:26 UTC, fonte 7b3b4f9,
+recibo validacoes/deploy-p2.4-dev.json. Audiência custom/rev1, só proprietário. Não há tag/release 0.42; preservar a política consolidada do usuário.
