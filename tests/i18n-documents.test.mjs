@@ -79,7 +79,7 @@ test("English editable documents are downloaded intact; reference code, vectors 
   assert.ok(!all.get("en/licencas.html").includes("{{version}}"));
 });
 
-test("navigation preserves queries, anchors, downloads and authored URLs", () => {
+test("owned navigation preserves queries and anchors; other URLs are not rewritten", () => {
   assert.equal(
     localizedLink("./modelo/index.html", "en"),
     "./en/modelo/index.html",
@@ -98,7 +98,7 @@ test("navigation preserves queries, anchors, downloads and authored URLs", () =>
     "custom.html",
     "modelo.txt",
   ])
-    assert.equal(localizedLink(url, "en"), url);
+    assert.equal(localizedLink(url, "en"), null);
   const html = teachingMarkdown(
     "```text\n<x>\n```\n\n| A | B |\n| --- | --- |\n| 1 | 2 |",
     "en",

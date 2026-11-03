@@ -33,9 +33,9 @@ export function createDomTranslations(controller: LocaleController) {
   };
   function render(element: Element) {
     const href = element.getAttribute("data-i18n-href");
-    if (href !== null) {
+    if (href !== null && element.tagName === "A") {
       const next = localizedLink(href, controller.locale);
-      if (element.getAttribute("href") !== next)
+      if (next !== null && element.getAttribute("href") !== next)
         element.setAttribute("href", next);
     }
     const source = element.getAttribute("data-i18n-source");
