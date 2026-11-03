@@ -48,6 +48,14 @@ test("localized documents resolve all links under the Pages base and retain a si
     }
   }
   assert.equal(count, 41);
+  assert.match(
+    all.get("en/modelo/index.html"),
+    /download="viveiro-en-modelo-index.txt"/,
+  );
+  assert.match(
+    all.get("en/ensino/index.html"),
+    /download="viveiro-en-ensino-README.txt"/,
+  );
 });
 
 test("English editable documents are downloaded intact; reference code, vectors and scientific values stay canonical", () => {

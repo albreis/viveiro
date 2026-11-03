@@ -56,7 +56,7 @@ export function modelDocPages(root: string) {
 ${documentLanguages("modelo/" + d.slug + ".html", locale)}
 <main id="conteudo" tabindex="-1">${documentAssets(teachingMarkdown(linked, locale), locale)}</main>
 <nav aria-label="${escapeHtml(text("documents.model.nav"))}"><h2>${escapeHtml(text("documents.model.nav"))}</h2><ul>${nav}</ul></nav>
-<p><a href="${d.slug}.txt" download>${escapeHtml(text("documents.model.download"))}</a></p>
+<p><a href="${d.slug}.txt" download="viveiro-${locale}-modelo-${d.slug}.txt">${escapeHtml(text("documents.model.download"))}</a></p>
 <footer>${escapeHtml(text("documents.model.footer"))}</footer></body></html>`,
       );
       pages.set(prefix + d.slug + ".txt", source);

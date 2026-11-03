@@ -41,9 +41,9 @@ function page(
 <body><a class="skip" href="#conteudo">${escapeHtml(text("documents.school.skip"))}</a>
 <header><a href="${laboratoryLink(locale)}">${escapeHtml(text("documents.back"))}</a><a href="index.html">${escapeHtml(text("documents.school.index"))}</a></header>
 ${documentLanguages("ensino/" + slug + ".html", locale)}
-<main id="conteudo">${body}</main>
+<main id="conteudo" tabindex="-1">${body}</main>
 <nav aria-label="${escapeHtml(text("documents.school.nav"))}"><h2>${escapeHtml(text("documents.school.others"))}</h2><ul>${links}</ul></nav>
-<p><a href="${download}">${escapeHtml(text("documents.school.download"))}</a></p>
+<p><a href="${download}" download="viveiro-${locale}-ensino-${download}">${escapeHtml(text("documents.school.download"))}</a></p>
 <footer>${escapeHtml(text("documents.school.footer"))}</footer></body></html>`;
 }
 export function teachingPages(root: string) {
