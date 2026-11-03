@@ -1,0 +1,93 @@
+<div class="scene-card">
+  <div class="scene-toolbar">
+    <div class="live-status">
+      <i></i><span id="status-text" data-i18n="terrarium.status.live"></span>
+    </div>
+    <div class="view-switch">
+      <button
+        id="view-iso"
+        class="active"
+        data-i18n-aria-label="terrarium.camera.perspective.label"
+        data-i18n-title="terrarium.camera.perspective"
+      >
+        ◇</button
+      ><button
+        id="view-top"
+        data-i18n-aria-label="terrarium.camera.top"
+        data-i18n-title="terrarium.camera.top"
+      >
+        ▦</button
+      ><button
+        id="view-side"
+        data-i18n-aria-label="terrarium.camera.side"
+        data-i18n-title="terrarium.camera.sides"
+      >
+        ▤</button
+      ><button
+        id="fullscreen"
+        data-i18n-aria-label="terrarium.camera.fullscreen"
+        data-i18n-title="terrarium.camera.fullscreen"
+      >
+        ⛶
+      </button>
+    </div>
+  </div>
+  <div
+    id="viewport"
+    role="group"
+    tabindex="0"
+    aria-describedby="scene-keyboard-hint"
+    data-i18n-aria-label="terrarium.camera.label"
+  >
+    <div id="loading">
+      <span class="loading-leaf">⚘</span
+      ><span data-i18n="terrarium.loading"></span>
+    </div>
+    <button id="resume-overlay" hidden data-i18n="terrarium.paused"></button>
+  </div>
+  <div class="ant-camera">
+    <div>
+      <span class="eyebrow" data-i18n="terrarium.ant.title"></span
+      ><span id="ant-state" data-i18n="terrarium.ant.choose"></span
+      ><span id="ant-genome" data-i18n="terrarium.ant.noGenome"></span
+      ><span id="ant-climate"></span><span id="ant-gas"></span
+      ><span id="ant-learning"></span>
+    </div>
+    <select id="ant-select" data-i18n-aria-label="terrarium.ant.select"></select
+    ><button id="follow-ant" data-i18n="terrarium.ant.enter"></button
+    ><button id="exit-ant" hidden data-i18n="terrarium.ant.exit"></button>
+  </div>
+  <p id="scene-keyboard-hint" data-i18n="terrarium.camera.keyboard"></p>
+  <div class="scene-caption">
+    <span class="scene-tag"
+      ><i class="green-dot"></i>
+      <span id="biome-label" data-i18n="terrarium.biome.forest"></span></span
+    ><span id="scene-guide" data-i18n="terrarium.camera.guide"></span>
+  </div>
+  <div class="scene-controls">
+    <label class="toggle-label"
+      ><input type="checkbox" id="interior" /><span class="toggle-track"></span
+      ><span data-i18n="terrarium.camera.interior"></span
+    ></label>
+    <button
+      id="play"
+      class="play-button"
+      data-i18n-aria-label="terrarium.pause"
+    >
+      Ⅱ
+    </button>
+    <div class="time-display">
+      <strong id="day" data-i18n="terrarium.dayZero"></strong
+      ><span id="time-of-day" data-i18n="terrarium.founding"></span>
+    </div>
+    <div class="speed-controls" data-i18n-aria-label="terrarium.speed">
+      <button data-speed="1" class="active">1×</button
+      ><button data-speed="3">3×</button><button data-speed="10">10×</button>
+    </div>
+    <div class="controls-divider"></div>
+    <label class="toggle-label"
+      ><input type="checkbox" id="trails" /><span class="toggle-track"></span
+      ><span data-i18n="terrarium.pheromones"></span
+    ></label>
+  </div>
+</div>

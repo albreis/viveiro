@@ -1,0 +1,121 @@
+<section class="forecast-card">
+  <div class="section-label">
+    <span data-i18n="terrarium.forecast.title"></span><span>✧</span>
+  </div>
+  <h2 data-i18n="terrarium.forecast.heading"></h2>
+  <p id="forecast-horizon" data-i18n="terrarium.forecast.horizon"></p>
+  <div class="forecast-value" id="forecast-value">
+    — <span data-i18n="terrarium.ants.unit"></span>
+  </div>
+  <div class="forecast-range"><span></span><i></i><span></span></div>
+  <p
+    class="forecast-note"
+    id="forecast-note"
+    data-i18n="terrarium.forecast.wait"
+  ></p>
+  <p
+    id="forecast-method-note"
+    class="forecast-note"
+    data-i18n="terrarium.forecast.complete"
+  ></p>
+  <progress
+    id="forecast-progress"
+    max="1"
+    value="0"
+    data-i18n-aria-label="terrarium.forecast.progress"
+    hidden
+  ></progress>
+  <p id="forecast-cost" class="forecast-note"></p>
+  <div class="forecast-options">
+    <label
+      ><span data-i18n="terrarium.forecast.observation"></span
+      ><select id="forecast-observation">
+        <option value="complete" data-i18n="terrarium.forecast.full"></option>
+        <option
+          value="counts"
+          data-i18n="terrarium.forecast.counts"
+        ></option></select
+    ></label>
+    <label
+      ><span data-i18n="terrarium.forecast.days"></span
+      ><select id="forecast-days">
+        <option value="1" data-i18n="terrarium.forecast.oneDay"></option>
+        <option
+          value="3"
+          selected
+          data-i18n="terrarium.forecast.threeDays"
+        ></option>
+        <option
+          value="7"
+          data-i18n="terrarium.forecast.sevenDays"
+        ></option></select
+    ></label>
+    <label
+      ><span data-i18n="terrarium.forecast.futures"></span
+      ><select id="forecast-runs">
+        <option value="6" data-i18n="terrarium.forecast.sixRuns"></option>
+        <option
+          value="18"
+          selected
+          data-i18n="terrarium.forecast.eighteenRuns"
+        ></option></select
+    ></label>
+    <label
+      ><span data-i18n="terrarium.forecast.budget"></span
+      ><select id="forecast-budget">
+        <option value="10" data-i18n="terrarium.forecast.tenSeconds"></option>
+        <option
+          value="30"
+          selected
+          data-i18n="terrarium.forecast.thirtySeconds"
+        ></option>
+        <option
+          value="120"
+          data-i18n="terrarium.forecast.twoMinutes"
+        ></option></select
+    ></label>
+  </div>
+  <div class="forecast-actions">
+    <button id="forecast-run" data-i18n="terrarium.forecast.run"></button
+    ><button
+      id="forecast-cancel"
+      disabled
+      data-i18n="terrarium.forecast.cancel"
+    ></button>
+  </div>
+  <details id="forecast-benchmark" class="forecast-benchmark">
+    <summary data-i18n="terrarium.benchmark.title"></summary>
+    <label
+      ><span data-i18n="terrarium.benchmark.metric"></span
+      ><select id="forecast-metric">
+        <option value="mae" data-i18n="terrarium.benchmark.mae"></option>
+        <option value="rmse" data-i18n="terrarium.benchmark.rmse"></option>
+        <option
+          value="coverage"
+          data-i18n="terrarium.benchmark.coverage"
+        ></option></select
+    ></label>
+    <table>
+      <caption data-i18n="terrarium.benchmark.caption"></caption>
+      <thead>
+        <tr>
+          <th scope="col" data-i18n="terrarium.benchmark.days"></th>
+          <th scope="col" data-i18n="terrarium.benchmark.full"></th>
+          <th scope="col" data-i18n="terrarium.benchmark.counts"></th>
+          <th scope="col" data-i18n="terrarium.benchmark.baseline"></th>
+        </tr>
+      </thead>
+      <tbody id="forecast-benchmark-rows"></tbody>
+    </table>
+    <p id="forecast-benchmark-note" data-i18n="terrarium.benchmark.open"></p>
+    <p id="forecast-benchmark-cost"></p>
+    <a
+      href="%BASE_URL%benchmarks/previsoes-v1.json"
+      download
+      data-i18n="terrarium.benchmark.download"
+    ></a>
+  </details>
+  <button id="compare">
+    <span data-i18n="terrarium.comparison.run"></span> <span>↗</span>
+  </button>
+</section>

@@ -1,3 +1,4 @@
+import { messageAttribute } from "../../i18n/runtime.ts";
 import { keyboardCamera } from "./keyboard-camera.ts";
 import { readPerformanceMode } from "../../services/performance-preference.ts";
 import { renderProfile } from "./performance-profile.ts";
@@ -54,10 +55,7 @@ export class Terrarium {
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.22;
     this.renderer.domElement.setAttribute("role", "img");
-    this.renderer.domElement.setAttribute(
-      "aria-label",
-      "Cena 3D do terrário: formigas, túneis e vegetação. Indicadores e dados observados estão disponíveis em texto.",
-    );
+    messageAttribute(this.renderer.domElement, "aria-label", "scene.canvas");
     element.appendChild(this.renderer.domElement);
     this.camera = new THREE.PerspectiveCamera(37, 1, 0.1, 130);
     this.camera.position.set(22, 23, 27);

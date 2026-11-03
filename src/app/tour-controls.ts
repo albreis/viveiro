@@ -1,3 +1,4 @@
+import { locale, message } from "../i18n/runtime.ts";
 import {
   initialTour,
   shouldOfferTour,
@@ -20,7 +21,7 @@ export function installTourControls(context: {
   opener.id = "tour-open";
   opener.type = "button";
   opener.className = "text-button";
-  opener.textContent = "Tour guiado";
+  message(opener, "tour.open");
   opener.setAttribute("aria-controls", "tour-panel");
   opener.setAttribute("aria-expanded", "false");
   document.getElementById("help")!.before(opener);
@@ -96,8 +97,10 @@ export function installTourControls(context: {
     shouldOfferTour(context.hadSavedExperiment, readTourChoice())
   )
     start();
+  const stopLocale = locale.subscribe(() => render(false));
   return {
     dispose() {
+      stopLocale();
       observer.disconnect();
       window.removeEventListener("resize", resized);
       window.removeEventListener("scroll", resized);

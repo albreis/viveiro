@@ -19,8 +19,9 @@ um plano personalizado do schema viveiro-sweep-v1, com base, parameter, values
 e replicates. A página experimentos.html permite editar o mesmo plano.
 
 Um único parâmetro varia por lote. Parâmetros aceitos: humidity, light,
-randomness, reposeAngle, temperatureC, windX e windZ. Faixas são as da CLI
-individual. Máximo de 50 valores distintos, 100 réplicas e 1.000 execuções.
+randomness, reposeAngle, temperatureC, windX e windZ. P2.4 acrescentou as
+entradas opcionais photoperiodHours, initialFood, initialRainPulse,
+surfaceDiffusionScale e surfaceEvaporationScale. Faixas são as da CLI individual. Máximo de 50 valores distintos, 100 réplicas e 1.000 execuções.
 
 ## Seeds pareadas e ordem
 

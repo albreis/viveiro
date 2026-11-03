@@ -1,3 +1,4 @@
+import { message } from "../../i18n/runtime.ts";
 import { visibleWorkers } from "./performance-profile.ts";
 import { updatePlant } from "./plants.js";
 import { surfaceHeight } from "../landscape/queries.ts";
@@ -9,11 +10,10 @@ const UP = new THREE.Vector3(0, 1, 0);
 
 export function update(host, world, time, alpha = 1) {
   host.alpha = alpha;
-  document.getElementById("biome-label").textContent = {
-    woodland: "Bosque",
-    scrub: "Vegetação árida",
-    meadow: "Pradaria",
-  }[world.landscape.biome];
+  message(
+    document.getElementById("biome-label"),
+    "scene.biome." + world.landscape.biome,
+  );
   if (
     (host.soilNest !== world.nest ||
       host.soilRevision !== world.nest.revision) &&

@@ -1,3 +1,4 @@
+import { i18nPlugin } from "./scripts/lib/i18n-plugin.ts";
 import { modelDocPlugin } from "./scripts/lib/model-doc-plugin.ts";
 import { offlinePlugin } from "./scripts/lib/offline-plugin.ts";
 import { teachingPlugin } from "./scripts/lib/teaching-plugin.ts";
@@ -5,6 +6,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
+    i18nPlugin(),
     teachingPlugin(),
     modelDocPlugin(),
     offlinePlugin(mode === "public"),

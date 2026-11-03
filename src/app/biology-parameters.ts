@@ -1,3 +1,6 @@
+import { locale, t } from "../i18n/runtime.ts";
+import { translateSource } from "../i18n/source.ts";
+import type { MessageKey } from "../i18n/catalogs.ts";
 import { biologicalParameters } from "../modules/biology/catalog.ts";
 import { biologicalSources } from "../modules/biology/sources.ts";
 import type {
@@ -5,14 +8,8 @@ import type {
   EvidenceKind,
   ParameterTopic,
 } from "../modules/biology/types.ts";
-const labels: Record<EvidenceKind, string> = {
-  approximation: "Aproximação do modelo",
-  hypothesis: "Hipótese não verificada",
-  protocol: "Condição experimental",
-  measurement: "Medido no estudo",
-};
 const number = (n: number) =>
-  n.toLocaleString("pt-BR", {
+  n.toLocaleString(locale.locale, {
     maximumFractionDigits: Math.abs(n) > 0 && Math.abs(n) < 0.001 ? 6 : 3,
   });
 export function renderBiologicalParameters(
@@ -40,30 +37,33 @@ export function renderBiologicalParameters(
       kind = document.createElement("em"),
       context = document.createElement("p"),
       origin = document.createElement("p");
-    name.textContent = record.label;
+    name.textContent = translateSource(record.label, locale.locale);
     value.textContent =
       (record.range
         ? record.range.map(number).join("–")
         : record.value !== null
           ? number(record.value)
-          : "Não informado") +
+          : t("biology.missing")) +
       " " +
-      record.unit;
-    kind.textContent = labels[record.evidence] + " · v" + record.version;
+      translateSource(record.unit, locale.locale);
+    kind.textContent =
+      t(("biology.evidence." + record.evidence) as MessageKey) +
+      " · v" +
+      record.version;
     kind.dataset.evidence = record.evidence;
     context.textContent =
-      record.context +
+      translateSource(record.context, locale.locale) +
       " " +
       (record.application === "simulation"
-        ? "Usado no modelo."
+        ? t("biology.simulation")
         : record.application === "preset"
-          ? "Só clima inicial do perfil de referência."
-          : "Não altera a simulação.");
+          ? t("biology.preset")
+          : t("biology.none"));
     const source = biologicalSources.find((s) => s.id === record.source)!,
       link = source.url
         ? document.createElement("a")
         : document.createElement("span");
-    link.textContent = source.title;
+    link.textContent = translateSource(source.title, locale.locale);
     if (link instanceof HTMLAnchorElement) {
       link.href = source.url!;
       link.target = "_blank";
@@ -76,10 +76,13 @@ export function renderBiologicalParameters(
           (record.sample !== null
             ? "n=" + record.sample
             : record.evidence === "approximation"
-              ? "sem aferição"
-              : "n não informado") +
+              ? t("biology.unmeasured")
+              : t("biology.noSample")) +
           ". " +
-          record.uncertainty.replace(/\.+$/, "") +
+          translateSource(record.uncertainty, locale.locale).replace(
+            /\.+$/,
+            "",
+          ) +
           ".",
       ),
     );

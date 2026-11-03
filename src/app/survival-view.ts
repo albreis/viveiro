@@ -1,6 +1,7 @@
+import { locale, t, message } from "../i18n/runtime.ts";
+import type { MessageKey } from "../i18n/catalogs.ts";
 import { survivalPopulation } from "../modules/survival/population.ts";
 import { survivalMarkup } from "./survival-markup.ts";
-import { deathLabels as labels } from "../modules/survival/labels.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
 import { colonyWorlds } from "../modules/colonies/types.ts";
 import { ageScale, ageSurvival } from "../modules/survival/curves.ts";
@@ -27,7 +28,8 @@ function renderCurve(): void {
     svg = document.getElementById("survival-curve");
   if (!select || !svg) return;
   const kind = select.value;
-  if (svg.dataset.caste === kind) return;
+  if (svg.dataset.caste === kind && svg.dataset.locale === locale.locale)
+    return;
   const scale = ageScale(kind),
     points = Array.from({ length: 61 }, (_, i) => {
       const age = (2 * scale * i) / 60;
@@ -38,14 +40,15 @@ function renderCurve(): void {
       );
     }).join(" ");
   svg.dataset.caste = kind;
+  svg.dataset.locale = locale.locale;
   svg.innerHTML =
     '<path d="M25 15 V95 H285" stroke="#a6b298" fill="none"/><polyline points="' +
     points +
     '" fill="none" stroke="#607e43" stroke-width="2"/><g fill="#61714e" font-size="9"><text x="0" y="18">100%</text><text x="8" y="98">0</text><text x="25" y="111">0</text><text x="150" y="111">' +
     scale +
     '</text><text x="255" y="111">' +
-    scale * 2 +
-    " dias</text></g>";
+    t("data.survival.days", { days: scale * 2 }) +
+    "</text></g>";
 }
 export function renderSurvivalStatus(w: FamilyWorld): void {
   const panel = document.getElementById("survival-panel");
@@ -60,17 +63,14 @@ export function renderSurvivalStatus(w: FamilyWorld): void {
     infected = ants.filter((a) => (a.life?.infection ?? 0) > 0.0001).length;
   const causes = DEATH_CAUSES.map((k) => {
     const n = worlds.reduce((n, c) => n + c.colony.survival!.causes[k], 0);
-    return n ? labels[k] + ": " + n : "";
+    return n ? t(("data.death." + k) as MessageKey) + ": " + n : "";
   }).filter(Boolean);
-  status.textContent =
-    ants.length +
-    " adulta(s) acompanhadas · " +
-    hurt +
-    " ferida(s) · " +
-    infected +
-    " com carga infecciosa modelada. Mortes: " +
-    (causes.join(" · ") || "nenhuma registrada") +
-    ". Energia e ferimentos são estados diferentes.";
+  message(status, "data.survival.summary", {
+    adults: ants.length,
+    hurt,
+    infected,
+    causes: causes.join(" · ") || t("data.survival.none"),
+  });
   renderCurve();
   const button = document.getElementById(
       "survival-challenge",

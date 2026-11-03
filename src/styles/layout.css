@@ -67,7 +67,7 @@
   margin: 10px 0 9px;
   line-height: 1.2;
 }
-.page-heading h1 span {
+.page-heading h1 span[aria-hidden="true"] {
   color: #8aa16c;
 }
 .page-heading p {
@@ -86,7 +86,7 @@
 .outline-button:hover {
   background: #e5eadc;
 }
-.outline-button > span {
+.outline-button > span:not([data-i18n]) {
   font-size: 17px;
   margin-right: 8px;
 }

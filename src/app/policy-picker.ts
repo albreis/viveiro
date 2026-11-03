@@ -1,3 +1,4 @@
+import { messageSource } from "../i18n/runtime.ts";
 import { balancedReference } from "../modules/extensions/registry.ts";
 import { normalizeExperiment } from "../modules/experiments/plan.ts";
 const field = document.getElementById("experiment-plan") as HTMLTextAreaElement;
@@ -31,7 +32,10 @@ picker.addEventListener("change", () => {
     field.dispatchEvent(new Event("input", { bubbles: true }));
   } catch (error) {
     const target = document.getElementById("experiment-error")!;
-    target.textContent = error instanceof Error ? error.message : String(error);
+    messageSource(
+      target,
+      error instanceof Error ? error.message : String(error),
+    );
     target.focus();
     sync();
   }

@@ -1,3 +1,4 @@
+import { message, messageAttribute } from "../i18n/runtime.ts";
 import type { SoilClimate } from "../modules/microclimate/types.ts";
 import { cellIndex } from "../modules/microclimate/grid.ts";
 export type ClimateMode = "water" | "heat";
@@ -25,17 +26,17 @@ export function drawClimateMap(s: SoilClimate | undefined, mode: ClimateMode) {
           : "hsl(" + (240 - v * 240) + " 52% 59%)";
       ctx.fillRect(x * dx, y * dy, Math.ceil(dx), Math.ceil(dy));
     }
-  canvas.setAttribute(
+  messageAttribute(
+    canvas,
     "aria-label",
-    mode === "water"
-      ? "Corte central do solo: saturação dos poros por água, de zero a cem por cento"
-      : "Corte central do solo: temperatura de menos cinco a quarenta e cinco graus Celsius",
+    mode === "water" ? "panels.climate.waterLabel" : "panels.climate.heatLabel",
   );
   const caption = document.getElementById("climate-map-caption");
   if (caption)
-    caption.textContent =
-      (mode === "water"
-        ? "Água nos poros: claro 0% → azul 100%"
-        : "Temperatura: azul ≤−5 °C → vermelho ≥45 °C") +
-      " · superfície acima, fundo abaixo.";
+    message(
+      caption,
+      mode === "water"
+        ? "panels.climate.waterCaption"
+        : "panels.climate.heatCaption",
+    );
 }

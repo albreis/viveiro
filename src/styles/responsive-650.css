@@ -43,7 +43,7 @@
     white-space: nowrap;
     margin-top: 20px;
   }
-  .outline-button > span {
+  .outline-button > span:not([data-i18n]) {
     margin-right: 3px;
   }
   .workspace {

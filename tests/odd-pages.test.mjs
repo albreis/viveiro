@@ -23,7 +23,9 @@ test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
     assert.equal((html.match(/<h1>/g) ?? []).length, 1);
     for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
       if (/^(https?:|#)/.test(href)) continue;
-      const target = posix.normalize(posix.join("modelo", href));
+      const target = posix.normalize(
+        posix.join("modelo", href.split(/[?#]/)[0]),
+      );
       assert.ok(
         target === "index.html" ||
           pages.has(target) ||

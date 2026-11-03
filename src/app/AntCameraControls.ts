@@ -1,3 +1,5 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
+import { translateSource } from "../i18n/source.ts";
 import { localGasLabel } from "./gas-status.ts";
 import type { GasWorld } from "../modules/ventilation/types.ts";
 import { localClimateLabel } from "./climate-status.ts";
@@ -29,7 +31,7 @@ interface CameraContext {
 const element = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
 const format = (n: number) =>
-  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
+  new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 1 }).format(n);
 
 export class AntCameraControls {
   private selectedId: number | null = null;
@@ -52,7 +54,7 @@ export class AntCameraControls {
           button.setAttribute("aria-pressed", "false");
         });
         this.render();
-        context.toast("Arraste para olhar ao redor · Esc para sair.");
+        context.toast(t("controls.camera.drag"));
       }
     };
     element("exit-ant").onclick = () => {
@@ -74,7 +76,7 @@ export class AntCameraControls {
             .querySelector<HTMLElement>(".scene-card")
             ?.requestFullscreen();
       } catch {
-        context.toast("Tela cheia indisponível neste navegador.");
+        context.toast(t("controls.camera.unavailable"));
       }
     };
   }
@@ -89,12 +91,10 @@ export class AntCameraControls {
     scene.onFollowStarted = (id) => {
       this.selectedId = id;
       this.render();
-      this.context.toast("Visão da formiga #" + id + " · Esc para sair.");
+      this.context.toast(t("controls.camera.started", { id }));
     };
     scene.onFollowEnded = () => {
-      this.context.toast(
-        "Esta formiga não está mais na colônia. A câmera voltou ao terrário.",
-      );
+      this.context.toast(t("controls.camera.ended"));
       this.render();
     };
     this.markView(false);
@@ -109,7 +109,11 @@ export class AntCameraControls {
     const { ants, tick, microclimate } = selectedWorld;
     const scene = this.context.getScene();
     const key =
-      this.context.getScenario() + ":" + ants.map((ant) => ant.id).join(",");
+      locale.locale +
+      ":" +
+      this.context.getScenario() +
+      ":" +
+      ants.map((ant) => ant.id).join(",");
     const select = element<HTMLSelectElement>("ant-select");
     if (key !== this.listKey) {
       this.listKey = key;
@@ -119,19 +123,21 @@ export class AntCameraControls {
           option.value = String(ant.id);
           const label =
             ant.kind === "gyne"
-              ? "Princesa"
+              ? t("controls.camera.gyne")
               : ant.kind === "queen"
-                ? "Rainha"
+                ? t("controls.camera.queen")
                 : ant.kind === "male"
-                  ? "Macho"
+                  ? t("controls.camera.male")
                   : ant.caste === "major"
-                    ? "Soldado"
-                    : "Operária";
+                    ? t("controls.camera.soldier")
+                    : t("controls.camera.worker");
           option.textContent =
             label +
             " #" +
             ant.id +
-            ((ant.colonyId || 1) > 1 ? " · colônia " + ant.colonyId : "");
+            ((ant.colonyId || 1) > 1
+              ? t("controls.camera.colony", { id: ant.colonyId ?? 1 })
+              : "");
           return option;
         }),
       );
@@ -142,28 +148,38 @@ export class AntCameraControls {
     }
     select.value = String(this.selectedId ?? "");
     const ant = ants.find((ant) => ant.id === this.selectedId);
-    element("ant-state").textContent = ant
-      ? (this.context.getRunning() ? "" : "Pausada · ") +
-        ((ant.y || 0) < -0.1 ? "Subsolo · " : "Superfície · ") +
-        ((ant.socialUntil || 0) > tick && ant.socialPartner
-          ? ant.state + " · contato com #" + ant.socialPartner
-          : ant.state) +
-        " · percurso " +
-        format(ant.distanceWalked || 0) +
-        " u. · idade " +
-        format(ant.age || 0) +
-        (ant.life ? " d · corpo " : " d · saúde ") +
-        Math.round(ant.health ?? 100) +
-        "%" +
-        (ant.life
-          ? " · energia " +
-            Math.round(ant.energy) +
-            "% · infecção " +
-            Math.round(ant.life.infection * 100) +
-            "%"
-          : "")
-      : "Nenhuma formiga viva.";
-    element("ant-genome").textContent = describeGenome(ant?.genome);
+    const state = ant ? translateSource(ant.state ?? "", locale.locale) : "";
+    messageSource(
+      element("ant-state"),
+      ant
+        ? (this.context.getRunning() ? "" : t("controls.camera.paused")) +
+            ((ant.y || 0) < -0.1
+              ? t("controls.camera.underground")
+              : t("controls.camera.surface")) +
+            t("controls.camera.state", {
+              state:
+                (ant.socialUntil || 0) > tick && ant.socialPartner
+                  ? t("controls.camera.contact", {
+                      state,
+                      id: ant.socialPartner,
+                    })
+                  : state,
+              distance: format(ant.distanceWalked || 0),
+              age: format(ant.age || 0),
+              healthLabel: t(
+                ant.life ? "controls.camera.body" : "controls.camera.health",
+              ),
+              health: Math.round(ant.health ?? 100),
+            }) +
+            (ant.life
+              ? t("controls.camera.energy", {
+                  energy: Math.round(ant.energy),
+                  infection: Math.round(ant.life.infection * 100),
+                })
+              : "")
+        : t("controls.camera.empty"),
+    );
+    messageSource(element("ant-genome"), describeGenome(ant?.genome));
     const local = document.getElementById("ant-climate");
     if (local)
       local.textContent = ant
@@ -174,11 +190,15 @@ export class AntCameraControls {
       gasLabel.textContent = ant ? localGasLabel(selectedWorld, ant) : "";
     const cognition = document.getElementById("ant-learning");
     if (cognition)
-      cognition.textContent = selectedWorld.learning?.enabled
-        ? ant?.learningBrain
-          ? "Cérebro individual · " + (ant.learningUpdates ?? 0) + " ajuste(s)"
-          : "Aprendizado ativo · aguardando uma decisão de rota"
-        : "Navegação ACO";
+      message(
+        cognition,
+        selectedWorld.learning?.enabled
+          ? ant?.learningBrain
+            ? "controls.camera.brain"
+            : "controls.camera.learning"
+          : "controls.camera.aco",
+        { count: ant?.learningUpdates ?? 0 },
+      );
     this.markView(scene?.followId ? null : (scene?.currentView ?? false));
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
@@ -188,13 +208,17 @@ export class AntCameraControls {
     if (focused === follow && follow.hidden) element("viewport").focus();
     if (focused === element("exit-ant") && !scene?.followId)
       (ant ? follow : select).focus();
-    element("scene-guide").textContent = scene?.followId
-      ? "Arraste para olhar · Esc para sair"
-      : scene?.tool
-        ? "Clique no solo · Esc para sair"
-        : scene?.viewLabel
-          ? scene.viewLabel + " · Clique em vista lateral para girar"
-          : "Duplo clique na formiga · Arraste para orbitar";
+    message(
+      element("scene-guide"),
+      scene?.followId
+        ? "controls.camera.look"
+        : scene?.tool
+          ? "controls.camera.place"
+          : scene?.viewLabel
+            ? "controls.camera.side"
+            : "controls.camera.orbit",
+      { side: translateSource(scene?.viewLabel || "", locale.locale) },
+    );
   }
 
   private markView(view: boolean | "side" | null) {

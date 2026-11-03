@@ -1,3 +1,4 @@
+import { message } from "../../i18n/runtime.ts";
 import { dockForTarget } from "../../modules/onboarding/placement.ts";
 import type { TourState } from "../../modules/onboarding/tour.ts";
 import { tourSteps } from "./steps.ts";
@@ -28,19 +29,24 @@ export class TourView {
     this.panel.hidden = !state.open;
     if (!state.open) return;
     const step = tourSteps[state.step];
-    this.title.textContent = step.title;
-    this.panel.querySelector("#tour-progress")!.textContent =
-      state.step === 0 ? "UM OLHAR DE PERTO" : "PASSO " + state.step + " DE 3";
-    this.panel.querySelector("#tour-description")!.textContent =
+    message(this.title, step.title);
+    message(
+      this.panel.querySelector("#tour-progress")!,
+      state.step === 0 ? "tour.intro" : "tour.progress",
+      { step: state.step },
+    );
+    message(
+      this.panel.querySelector("#tour-description")!,
       state.step > 0 && state.step < 3 && !agentAvailable
-        ? "Este terrário não tem formigas vivas. Você pode fechar o guia e reabri-lo quando houver uma habitante. Seu experimento não será reiniciado."
-        : step.description;
+        ? "tour.empty"
+        : step.description,
+    );
     this.back.hidden = state.step === 0 || state.step === 3;
-    this.next.textContent = step.next;
+    message(this.next, step.next);
     this.next.disabled =
       (state.step === 1 && !agentAvailable) ||
       (state.step === 2 && !state.enteredFirstPerson);
-    this.jump.textContent = step.jump;
+    message(this.jump, step.jump);
     this.jump.setAttribute("aria-controls", step.target);
     this.target = document.getElementById(step.target);
     this.jump.disabled =

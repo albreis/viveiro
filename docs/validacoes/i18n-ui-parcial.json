@@ -1,0 +1,23 @@
+{
+  "scope": "P2.7 UI implementada; documentos/rotas inglesas e revisão final pendentes",
+  "version": "0.44.0 development, untagged",
+  "catalogMessagesPerLocale": 1131,
+  "tests": "25 directed passed (i18n, accessibility, tour), strict TypeScript and Vite build passed",
+  "browser": "native IAB dev 127.0.0.1:4173",
+  "checks": [
+    "Terrário original permaneceu pausado em D11.3 nas trocas pt-BR/en",
+    "Seed em edição e nome de checkpoint preservados sem iniciar mundo novo",
+    "Perfil e grupo fertility preservados na troca de idioma; valores/fontes/ressalvas visíveis em ambas",
+    "Tour conserva passo 1 ao trocar idioma, alcança passo 3 pela entrada real em primeira pessoa",
+    "Câmera retornou à visão geral; perfil do próximo terrário restaurado ao anterior",
+    "Todos os 100 parâmetros têm label/context/unit/uncertainty cobertos por catálogo",
+    "Fragmentos HTML montam mesmos IDs e inputs em pt-BR/en",
+    "Dados CSV/JSON de QA preservados byte a byte no Git por .gitattributes"
+  ],
+  "limits": [
+    "Documentos públicos ainda em português",
+    "QA responsiva/compilada e suíte completa final ainda pendentes",
+    "Sem calibração biológica ou revisão externa implícitas",
+    "Nomes escritos pelo usuário, seeds e mensagens canônicas exportadas não são reescritos"
+  ]
+}

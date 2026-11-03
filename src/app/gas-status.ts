@@ -1,10 +1,11 @@
+import { locale, t, message } from "../i18n/runtime.ts";
 import type { GasWorld } from "../modules/ventilation/types.ts";
 import { gasFractions } from "../modules/ventilation/sensing.ts";
 import { agentGasCell } from "../modules/ventilation/respiration.ts";
 import { drawGasMap } from "./gas-map.ts";
 import type { ColonyAgent } from "../modules/colony/types.ts";
 const format = (n: number, digits = 2) =>
-  n.toLocaleString("pt-BR", {
+  n.toLocaleString(locale.locale, {
     maximumFractionDigits: digits,
     minimumFractionDigits: digits,
   });
@@ -36,37 +37,26 @@ export function renderGasStatus(w: GasWorld) {
     document.getElementById("wind-value")!.textContent = input.value + " u.";
   }
   if (!s || !s.cells.length) {
-    target.textContent =
-      "Sem galerias abertas. O ar externo envolve os alados.";
+    message(target, "panels.gas.empty");
     return;
   }
   const air = s.cells.map((_, i) => gasFractions(s, i));
-  target.textContent =
-    "O₂: " +
-    format(Math.min(...air.map((c) => c.oxygen)) * 100) +
-    "–" +
-    format(Math.max(...air.map((c) => c.oxygen)) * 100) +
-    "% · CO₂: " +
-    format(Math.min(...air.map((c) => c.carbon)) * 100) +
-    "–" +
-    format(Math.max(...air.map((c) => c.carbon)) * 100) +
-    "%. " +
-    w.nest.nodes.filter((n) => n.type === "entrance").length +
-    " entrada(s) · respiração acumulada: " +
-    format(s.consumed, 3) +
-    " u. de O₂.";
+  message(target, "panels.gas.summary", {
+    oxygenMin: format(Math.min(...air.map((c) => c.oxygen)) * 100),
+    oxygenMax: format(Math.max(...air.map((c) => c.oxygen)) * 100),
+    carbonMin: format(Math.min(...air.map((c) => c.carbon)) * 100),
+    carbonMax: format(Math.max(...air.map((c) => c.carbon)) * 100),
+    entrances: w.nest.nodes.filter((n) => n.type === "entrance").length,
+    consumed: format(s.consumed, 3),
+  });
   drawGasMap(w);
 }
 export function localGasLabel(w: GasWorld, a: ColonyAgent) {
   const i = agentGasCell(w, a),
     g = gasFractions(w.gases, i);
-  return (
-    "Ar " +
-    (i == null ? "externo" : "local") +
-    ": O₂ " +
-    format(g.oxygen * 100) +
-    "% · CO₂ " +
-    format(g.carbon * 100) +
-    "%"
-  );
+  return t("panels.gas.agent", {
+    location: t(i == null ? "panels.gas.external" : "panels.gas.local"),
+    oxygen: format(g.oxygen * 100),
+    carbon: format(g.carbon * 100),
+  });
 }
