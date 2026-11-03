@@ -26,7 +26,7 @@ O Site original continua privado; dev 4173 deve continuar rodando em G.
 ## P2.3 entregue — 0.41.0
 
 Branch codex/varreduras-retomaveis, PR https://github.com/albreis/viveiro/pull/63
-(base main), aberto na última consulta. Fonte/tag v0.41.0:
+(base main), integrado pelo usuário em ba71e4d. Fonte/tag v0.41.0:
 0edcf234dfdf3bef8b40bd1312c6bf3f0c71229f. Branch também recebeu a main com
 correção do workflow do usuário; merge local 1a71dc9, só workflow/docs.
 
@@ -76,21 +76,22 @@ Nenhuma conformidade/calibração externa pode ser inventada para encerrar fases
 
 ## Ambiente e próximo passo concreto
 
-Dev 4173 PID17752 preservado. Preview QA 4189/session72523 ainda em execução:
-encerrar só esse preview ao terminar a QA, nunca o dev. IAB aba36 era bundle
-compilado de experimentos; pode ter sido liberada na interrupção. Usar apenas
-Cua documentado, sem Playwright externo/CDP/internals. Captura 0.41-varredura
-na pasta de visualizações autorizada já mostrada ao usuário.
+P2.4 implementado em codex/sensibilidade-morris, versão de desenvolvimento
+0.42.0, SEM TAG. 432/432 testes completos (402.131 ms), TS/build, QA Cua do
+relatório compilado e download de índices com hash exato. 104 World reais,
+4 trajetórias × 13 pontos × 2 réplicas, 10 dias, 12 entradas. Triagem final
+em .runtime/morris-042-final; bytes individuais idênticos à janela anterior.
+Dados públicos em public/experimentos/morris-042, fonte/planos/hashes e
+relatório docs/sensibilidade.md. Cinco efeitos populacionais não nulos;
+empates de zero no top 10 não significam influência demonstrada. Nenhuma
+calibração por espécie ou depósito Zenodo. Próximo: P2.5, depois P2.6–P2.7.
 
-Próximo: P2.4 Morris com dados brutos e limites honestos. Referências primárias
-já lidas: SALib código analyze/morris e sample/morris, em
-https://salib.readthedocs.io/en/stable/_modules/SALib/analyze/morris.html e
-https://salib.readthedocs.io/en/stable/_modules/SALib/sample/morris/morris.html.
-Mu* é média dos valores absolutos, não absoluto da média. Grid par, delta
-p/[2(p-1)], uma variável por passo, réplicas pareadas. Ainda NÃO implementado.
-A CLI expõe só 7 entradas hoje: não fingir ranking de 10. Investigar entradas
-reais adicionais (fotoperíodo e condições iniciais) ou catálogo biológico com
-proveniência e medições explícitas. Preservar trajetórias quando omitidas.
-Depois P2.5 API de extensões, P2.6 editor versionado, P2.7 inglês mantendo PT.
-Retomada automática ativa e atualizada com descartes, Pages e proibição de
-publicações intermediárias; aguardar se limites legítimos voltarem.
+Dev 4173 PID17752 preservado; preview de QA 4189 separado. Não encerrar o dev.
+Preparação do P2.5 em .runtime/p2-5-stage: contratos, registry, decisão,
+exemplo local e CLI pareada. NÃO estão instalados em src nem entregues ainda.
+Criar codex/extensoes-tipadas a partir da entrega P2.4, manter arquivos curtos,
+validar sensores locais, seleção passável, reprodução, restore e comparação
+real com ACO. Abrir PR encadeado se o anterior ainda não tiver sido integrado.
+
+Git/PR e recibo de publicação privada serão registrados na finalização desta
+entrega. Não há tag/release 0.42; preservar a política consolidada do usuário.

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { posix } from "node:path";
 import { modelDocuments } from "../src/modules/model-documentation/catalog.ts";
 import { modelDocPages } from "../scripts/lib/model-doc-pages.ts";
@@ -10,7 +10,7 @@ import { validAssetPath } from "../src/modules/publication/release.ts";
 
 test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
   const pages = modelDocPages(process.cwd());
-  assert.equal(modelDocuments.length, 10);
+  assert.equal(modelDocuments.length, 11);
   for (const d of modelDocuments) {
     assert.ok(permittedSourcePath(d.source));
     assert.equal(
@@ -25,7 +25,10 @@ test("ODD: páginas, downloads íntegros e links locais resolvíveis", () => {
       if (/^(https?:|#)/.test(href)) continue;
       const target = posix.normalize(posix.join("modelo", href));
       assert.ok(
-        target === "index.html" || pages.has(target),
+        target === "index.html" ||
+          pages.has(target) ||
+          (target.startsWith("experimentos/morris-042/") &&
+            existsSync("public/" + target)),
         d.slug + ": " + href,
       );
     }
@@ -65,4 +68,14 @@ test("ODD: Markdown mantém fórmulas legíveis e escapa conteúdo executável",
     teachingMarkdown("```\n<strong>"),
     /&lt;strong&gt;<\/code><\/pre>/,
   );
+});
+
+test("ODD: real semantic table, relative data links and safe escaping", () => {
+  const h = teachingMarkdown(
+    "| Input | Value |\n| --- | --- |\n| <img> | 42 |\n\n[data](../experimentos/morris-042/indices.csv) [bad](javascript:alert(1))",
+  );
+  assert.match(h, /<th scope="col">Input<\/th>/);
+  assert.match(h, /<td>&lt;img&gt;<\/td>/);
+  assert.match(h, /href="..\/experimentos\/morris-042\/indices.csv"/);
+  assert.ok(!h.includes('href="javascript:'));
 });

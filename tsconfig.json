@@ -26,6 +26,7 @@
     "scripts/run-experiment.ts",
     "scripts/workers/experiment-thread.ts",
     "scripts/generate-numeric-notices.ts",
-    "scripts/run-sweep.ts"
+    "scripts/run-sweep.ts",
+    "scripts/run-sensitivity.ts"
   ]
 }

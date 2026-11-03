@@ -45,5 +45,10 @@ export const modelDocuments = [
     title: "Varreduras e retomada",
     source: "docs/varreduras.md",
   },
+  {
+    slug: "sensibilidade",
+    title: "Sensibilidade Morris",
+    source: "docs/sensibilidade.md",
+  },
 ] as const;
 export const modelDocumentSources = modelDocuments.map((d) => d.source);

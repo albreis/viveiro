@@ -104,3 +104,22 @@ pre:focus-visible {
     white-space: pre-wrap;
   }
 }
+
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.6rem;
+  border-bottom: 1px solid #aebca5;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid #24332b;
+  outline-offset: 3px;
+}

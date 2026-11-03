@@ -34,7 +34,7 @@ export async function emptyCheckpoint(
 }
 export async function validateRecord(
   value: unknown,
-  job: SweepJob,
+  job: Pick<SweepJob, "id" | "plan">,
 ): Promise<SweepRecord> {
   const r = value as Partial<SweepRecord> | null;
   const csv = r?.result?.csv,

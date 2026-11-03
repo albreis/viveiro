@@ -1,3 +1,4 @@
+import { validateOptionalInputs } from "../experiments/parameters.ts";
 import { validateDaily } from "../observations/validation.ts";
 import { lessonReference } from "../lessons/reference.ts";
 import { validateSurvival } from "../survival/validation.ts";
@@ -64,6 +65,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
     throw new Error("Estado do mundo inválido.");
   if (!Array.isArray(w.colonies ?? []))
     throw new Error("Registros de colônia inválidos.");
+  validateOptionalInputs(w.params as unknown as Record<string, unknown>);
   validatePredatorMemory(w.predators);
   const colonies = [w, ...(w.colonies || [])];
   if (colonies.length > 4) throw new Error("Quantidade de colônias inválida.");
