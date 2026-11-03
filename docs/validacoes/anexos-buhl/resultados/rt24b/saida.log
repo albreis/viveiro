@@ -1,0 +1,7 @@
+OK   atividade: modelo 50: 5.63; 100: 8.35; 200: 14.46 | referência Todos os grupos escavaram (25 a 61 cm³ em 72 h).
+OK   saturacao: modelo 0.62 / 0.92; 0.81 / 1.00; 0.92 / 1.00 | referência 0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80
+OK   escala: modelo 0.68 | referência 0.64
+Só frentes: volume 50=4.44 100=8.35 200=13.22 | OK atividade 50: 4.44; 100: 8.35; 200: 13.22 | OK saturacao 0.72 / 1.00; 0.81 / 1.00; 0.91 / 1.00 | OK escala 0.79
+Só trânsito: volume 50=1.18 100=0.00 200=1.24 | FALHA atividade 50: 1.18; 100: 0.00; 200: 1.24 | FALHA saturacao 0.21 / 0.61; sem dados / sem dados; 0.99 / 0.99 | FALHA escala 0.03
+O modelo reproduziu os três padrões nesta configuração.
+Resultados em /tmp/claude-0/-home-user-viveiro/d6baa7f1-88af-5227-9a68-4e113d2a668e/scratchpad/rt24b

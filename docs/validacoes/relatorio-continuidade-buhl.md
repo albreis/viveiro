@@ -485,3 +485,12 @@ cada tick fica mais pesado.
 | `docs/validacoes/buhl-2005.md` | Primeira comparação e separação frentes/trânsito |
 | `docs/validacoes/fluxo-tunel.md` | Trânsito, suspeitos e regra das ociosas |
 | `docs/validacoes/analise-equacoes-escavacao.md` | Equações, versão 2, tempo real, pilotos |
+| `docs/validacoes/anexos-buhl/` | Resultados brutos de todas as rodadas, scripts de diagnóstico e o patch das contraprovas (veja o README da pasta) |
+
+## 10. Branches
+
+- O trabalho todo está em `claude/project-thread-kazijj` (PR #69), criada a
+  partir da `main`. Não há outra branch deste trabalho, e a `main` local é
+  igual à `origin/main`.
+- As contraprovas foram feitas numa cópia descartável sobre o commit
+  `2a4c97e`. A diferença está em `anexos-buhl/contraprova/cf.patch`.
