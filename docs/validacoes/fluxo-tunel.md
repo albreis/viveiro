@@ -65,3 +65,41 @@ câmaras, não com o túnel.
 Próximos passos possíveis, sem mudar regras ainda: medir como as operárias
 saem de uma câmara lotada (distribuição pelas paredes, fila na boca do túnel) e
 por que as rotas de quem carrega terra ficam mais longas no ninho maior.
+
+## Os dois suspeitos testados
+
+Medição na escavação (semente BUHL-2, grupo fixo, modo projetos, 8 dias), em
+cada viagem de quem carrega terra até a saída:
+
+| | 50 operárias | 200 operárias |
+| --- | --- | --- |
+| Duração da viagem (mediana, ticks) | 102 | 232 |
+| Caminho pelos nós / menor caminho | 3,72 / 3,82 | 3,12 / 3,82 |
+| Distância andada dentro de câmaras | 0,67 | 8,15 |
+| Distância andada em túneis | 3,42 | 4,74 |
+| Tempo dentro de câmaras | 18% | 47% |
+| Na câmara, em desvio pela superfície (`supportMotion`) | 29% | 84% |
+
+- **Rotas longas: descartado.** A sequência de túneis escolhida já é a mais
+  curta. O caminho extra é andado dentro das câmaras.
+- **Câmara lotada: confirmado.** Com 200 operárias há 40 a 48 ociosas por
+  câmara, contra 7 a 10 com 50. Em 90% dos casos, quem está ao lado de uma
+  carregadora em desvio é uma operária ociosa andando pela câmara. A
+  carregadora contorna pelas paredes e anda 12 vezes mais dentro da câmara.
+
+Contraprovas numa cópia descartável do código (não incluídas aqui):
+
+- Proibir o desvio (aceitar só apoio perto da formiga) piorou: as carregadoras
+  ficaram paradas 71% do tempo na câmara e a viagem subiu para 406 ticks. O
+  desvio é a saída que elas encontram, não a causa.
+- Fazer as ociosas darem passagem a quem carrega terra (a carregadora deixa de
+  enxergá-las como obstáculo) baixou a viagem com 200 operárias de 232 para 97
+  ticks, igual à de 50, e a distância na câmara de 8,15 para 0,78.
+
+Mesmo com essa contraprova, na comparação com Buhl (5 sementes, 20 dias) as
+frentes continuam cavando menos com 200 do que com 100 operárias (feromônio:
+0,82 / 1,26 / 0,46; projetos: 0,33 / 0,30 / 0,18), e o alargamento por
+trânsito com 200 continua alto (1,4 a 1,5). A viagem lenta explica parte do
+problema, não todo. O alargamento só é feito por operárias sem carga paradas
+num túnel, então o próximo suspeito são as ociosas paradas nos túneis e perto
+das frentes.
