@@ -152,3 +152,27 @@ freio por densidade, que foram escritas por tick, ficam rápidas demais no
 começo e o freio desliga a escavação cedo. Antes de rodar 72 h vale converter
 essas taxas para unidades de tempo real (por segundo) a partir de medidas de
 formigas, e só então comparar com Buhl em várias sementes.
+
+### Fome no modo de tempo real e nova rodada de 24 h
+
+A rodada de 72 h (feita no notebook, uma semente) passou nos três critérios
+(escala 0,57), mas o grupo de 200 terminou com 126 operárias: 45 morreram de
+fome na primeira hora. O congelamento mantinha cheio o estoque da colônia, mas
+a comida não chegava a todas as operárias a tempo. Agora o modo de tempo real
+também mantém a energia de cada operária (as de Buhl não morreriam de fome em
+3 dias).
+
+Nova rodada de 24 h com a correção (BUHL-1):
+
+| | 50 | 100 | 200 |
+| --- | --- | --- | --- |
+| Volume em 24 h (u³) | 5,63 | 8,35 | 14,46 |
+| Proporção (modelo) | 1 | 1,48 | 2,57 |
+| Proporção em Buhl, 24 h | 1 | 1,58 | 2,58 |
+| Proporção em Buhl, 72 h | 1 | 1,48 | 2,41 |
+| Operárias no fim | 50 | 100 | 200 |
+
+Escala 0,68 contra 0,64 de Buhl. A proporção entre grupos agora é próxima da
+do experimento. A forma da curva continua diferente: de 45% a 83% do volume
+sai nas 3 primeiras horas e depois a escavação quase para, enquanto em Buhl a
+desaceleração é gradual. Falta confirmar com 5 sementes.
