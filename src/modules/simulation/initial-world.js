@@ -1,3 +1,4 @@
+import { attachExtension } from "../extensions/world.ts";
 import { applyInitialInputs } from "../experiments/initial-inputs.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { initializeSurvival } from "../survival/initialize.ts";
@@ -25,6 +26,8 @@ export function initializeWorld(world, seed, parameters, options = {}) {
     const profile = resolveBiologicalProfile(options.biologicalProfile);
     world.biologicalProfile = profileReference(profile.id, profile.version);
   }
+  if (options.decisionExtension !== undefined)
+    attachExtension(world, options.decisionExtension);
   world.seed = String(seed);
   world.rng = hashSeed(seed);
   world.params = {

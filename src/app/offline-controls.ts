@@ -1,3 +1,4 @@
+import { message, messageSource, t } from "../i18n/runtime.ts";
 import {
   activeRegistration,
   prepareRegistration,
@@ -9,12 +10,12 @@ export function installOfflineControls() {
   const panel = document.createElement("section");
   panel.id = "offline-panel";
   panel.className = "panel offline-panel";
-  panel.innerHTML = `<h2>Leve o laboratório com você.</h2>
-    <p>Prepare esta versão para abrir sem rede. Experimentos continuam neste navegador; exporte seu JSON para guardar outra cópia.</p>
-    <p id="offline-status" role="status">Conferindo esta versão…</p>
-    <button id="offline-prepare" type="button">Preparar para usar sem rede</button>
-    <button id="offline-remove" type="button" hidden>Remover cópia offline</button>
-    <p>Depois de preparar, abra este mesmo endereço. A instalação como aplicativo depende do menu do navegador. O Site privado continua online.</p>`;
+  panel.innerHTML = `<h2 data-i18n="interface.offline.title"></h2>
+    <p data-i18n="interface.offline.help"></p>
+    <p id="offline-status" role="status" data-i18n="interface.offline.check"></p>
+    <button id="offline-prepare" type="button" data-i18n="interface.offline.prepare"></button>
+    <button id="offline-remove" type="button" hidden data-i18n="interface.offline.remove"></button>
+    <p data-i18n="interface.offline.note"></p>`;
   document.querySelector(".scene-card")!.after(panel);
   const status = panel.querySelector<HTMLParagraphElement>("#offline-status")!;
   const prepare = panel.querySelector<HTMLButtonElement>("#offline-prepare")!;
@@ -27,42 +28,39 @@ export function installOfflineControls() {
     window.isSecureContext;
   const render = async () => {
     if (!supported) {
-      status.textContent =
-        "Este navegador não oferece o modo offline aqui. O laboratório continua disponível online.";
+      message(status, "data.offline.unsupported");
       prepare.disabled = true;
       return;
     }
     const registration = await activeRegistration(base);
     remove.hidden = !registration;
     if (registration?.waiting) {
-      status.textContent =
-        "Atualização pronta. Feche as abas desta versão para ativar, depois reabra o endereço.";
+      message(status, "data.offline.update");
       return;
     }
     const value = registration?.active
       ? await workerStatus(registration.active)
       : undefined;
-    status.textContent = value?.ready
-      ? "Pronto para abrir sem rede · " +
-        value.files +
-        " arquivos desta versão. Checkpoints ficam no navegador."
-      : "Esta versão ainda precisa ser preparada enquanto houver conexão.";
+    message(
+      status,
+      value?.ready ? "data.offline.ready" : "data.offline.notReady",
+      { files: value?.files ?? 0 },
+    );
     prepare.hidden = !!value?.ready;
   };
   const action = (fn: () => Promise<unknown>) => async () => {
     if (busy) return;
     busy = true;
     prepare.disabled = remove.disabled = true;
-    status.textContent =
-      "Preparando os arquivos desta versão. Mantenha esta aba aberta…";
+    message(status, "data.offline.preparing");
     try {
       await fn();
       await render();
     } catch (error) {
-      status.textContent =
-        error instanceof Error
-          ? error.message
-          : "Não foi possível preparar a cópia offline.";
+      messageSource(
+        status,
+        error instanceof Error ? error.message : t("data.offline.failed"),
+      );
     } finally {
       busy = false;
       prepare.disabled = remove.disabled = false;
@@ -74,7 +72,6 @@ export function installOfflineControls() {
     prepare.hidden = false;
   });
   void render().catch(() => {
-    status.textContent =
-      "Não foi possível conferir a cópia offline. Você pode tentar preparar novamente.";
+    message(status, "data.offline.checkFailed");
   });
 }

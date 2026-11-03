@@ -1,5 +1,7 @@
 # Viveiro
 
+[Português](README.md) · [English](README.en.md)
+
 Terrário 3D de formigas no navegador. Cada formiga é um agente autônomo que só percebe o que está ao seu redor (cheiro, temperatura, umidade, CO₂, contato) e, a partir disso, cava túneis, transporta terra, cuida da prole e funda novas colônias. Tudo é reproduzível por _seed_.
 
 **[Abrir o laboratório público](https://viveiro.ersolucoesweb.com.br/)** · [Versões](CHANGELOG.md) · [Como citar](CITATION.cff)
@@ -59,19 +61,20 @@ executa as mesmas 50 condições; `--resume` reutiliza os resultados já verific
 
 ## Estrutura do código
 
-| Pasta                    | Conteúdo                                                     |
-| ------------------------ | ------------------------------------------------------------ |
-| `src/app`                | Interface e controle da experiência.                         |
-| `src/modules/navigation` | Sensores, forças e locomoção (TypeScript estrito).           |
-| `src/modules/simulation` | Relógio fixo e ciclos biológicos.                            |
-| `src/modules/landscape`  | Geração por seed, espécies, água e materiais.                |
-| `src/modules/terrain`    | Terreno compartilhado entre física e desenho.                |
-| `src/modules/renderer`   | Cena, câmera, seleção, plantas e corpos.                     |
-| `src/services`           | Persistência (IndexedDB, checkpoints) e serviços.            |
-| `src/workers`            | Previsões, aprendizado e malha do solo fora da renderização. |
-| `src/styles`             | CSS por componente e breakpoint.                             |
-| `scripts`                | CLI de experimentos, release pública e depósito.             |
-| `tests`                  | Testes do modelo.                                            |
+| Pasta                    | Conteúdo                                                               |
+| ------------------------ | ---------------------------------------------------------------------- |
+| `src/app`                | Interface e controle da experiência.                                   |
+| `src/modules/navigation` | Sensores, forças e locomoção (TypeScript estrito).                     |
+| `src/modules/simulation` | Relógio fixo e ciclos biológicos.                                      |
+| `src/modules/landscape`  | Geração por seed, espécies, água e materiais.                          |
+| `src/modules/terrain`    | Terreno compartilhado entre física e desenho.                          |
+| `src/modules/renderer`   | Cena, câmera, seleção, plantas e corpos.                               |
+| `src/services`           | Persistência (IndexedDB, checkpoints) e serviços.                      |
+| `src/workers`            | Previsões, aprendizado e malha do solo fora da renderização.           |
+| `src/i18n`               | Catálogos por idioma/área, controle de locale e documentos traduzidos. |
+| `src/styles`             | CSS por componente e breakpoint.                                       |
+| `scripts`                | CLI de experimentos, release pública e depósito.                       |
+| `tests`                  | Testes do modelo.                                                      |
 
 A navegação e os controles novos são tipados. Partes legadas da interface, da biologia e do renderer ainda estão em JavaScript e são migradas aos poucos.
 

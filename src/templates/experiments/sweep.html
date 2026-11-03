@@ -1,0 +1,78 @@
+<section id="varredura" aria-labelledby="sweep-title">
+  <h2 id="sweep-title"><span data-i18n="sweeps.title"></span></h2>
+  <p>
+    <span data-i18n="sweeps.description"></span>
+  </p>
+  <p>
+    <span data-i18n="sweeps.pairing"></span>
+  </p>
+  <label for="sweep-plan"><span data-i18n="sweeps.plan"></span></label>
+  <textarea
+    id="sweep-plan"
+    rows="16"
+    spellcheck="false"
+    aria-describedby="sweep-help"
+  ></textarea>
+  <p id="sweep-help">
+    <span data-i18n="sweeps.help"></span>
+  </p>
+  <label for="sweep-jobs"><span data-i18n="sweeps.parallel"></span></label>
+  <select id="sweep-jobs">
+    <option value="1">1</option>
+    <option value="2" selected>2</option>
+    <option value="4">4</option>
+  </select>
+  <div class="experiment-actions">
+    <button id="sweep-run"><span data-i18n="sweeps.run"></span></button>
+    <button id="sweep-cancel" disabled>
+      <span data-i18n="sweeps.cancel"></span>
+    </button>
+    <button id="sweep-reset">
+      <span data-i18n="sweeps.clear"></span>
+    </button>
+  </div>
+  <label for="sweep-import"><span data-i18n="sweeps.import"></span></label>
+  <input id="sweep-import" type="file" accept=".json,application/json" />
+  <progress
+    id="sweep-progress"
+    max="50"
+    value="0"
+    data-i18n-aria-label="sweeps.progress"
+  ></progress>
+  <p id="sweep-status" role="status" aria-live="polite">
+    <span data-i18n="sweeps.ready"></span>
+  </p>
+  <p id="sweep-error" role="alert" tabindex="-1"></p>
+  <div id="sweep-downloads" hidden>
+    <a id="sweep-checkpoint" download="retomada.json"
+      ><span data-i18n="sweeps.download.checkpoint"></span
+    ></a>
+    <a id="sweep-summary" download="resumo.csv"
+      ><span data-i18n="sweeps.download.summary"></span
+    ></a>
+    <p>
+      <span data-i18n="sweeps.download.help"></span>
+    </p>
+  </div>
+  <h3><span data-i18n="sweeps.terminal.title"></span></h3>
+  <p>
+    <span data-i18n="sweeps.terminal.help"></span>
+  </p>
+  <pre
+    tabindex="0"
+    role="region"
+    data-i18n-aria-label="sweeps.terminal.command"
+  ><code>npm run sweep -- --out resultado-novo --jobs 2</code></pre>
+  <p>
+    <span data-i18n="sweeps.terminal.repeat"></span> <code>--resume</code>
+    <span data-i18n="sweeps.terminal.resume"></span>
+    <code>--checkpoint retomada.json --out outra-pasta</code>
+    <span data-i18n="sweeps.terminal.import"></span>
+    <code>--plan varredura.json</code>.
+  </p>
+  <p>
+    <a href="./modelo/varreduras.html" data-i18n-href="./modelo/varreduras.html"
+      ><span data-i18n="sweeps.link"></span
+    ></a>
+  </p>
+</section>

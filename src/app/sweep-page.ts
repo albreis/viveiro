@@ -1,3 +1,4 @@
+import { message, clearMessage, messageSource, t } from "../i18n/runtime.ts";
 import { exampleSweep, normalizeSweep } from "../modules/sweeps/plan.ts";
 import { sweepJobs } from "../modules/sweeps/jobs.ts";
 import {
@@ -33,26 +34,27 @@ function busy(active: boolean) {
   cancel.disabled = !active;
 }
 function fail(e: unknown) {
-  error.textContent = e instanceof Error ? e.message : String(e);
+  messageSource(error, e instanceof Error ? e.message : String(e));
   error.focus();
 }
 function show(c: SweepCheckpoint) {
   current = c;
   progress.max = c.plan.values.length * c.plan.replicates;
   progress.value = c.results.length;
-  status.textContent = `${c.results.length} de ${progress.max} execuções concluídas. Baixe a retomada para guardar os resultados.`;
+  message(status, "sweeps.running", {
+    count: c.results.length,
+    total: progress.max,
+  });
   void downloads.update(c).catch(fail);
 }
 run.onclick = async () => {
   if (controller || importing) return;
-  error.textContent = "";
+  clearMessage(error);
   try {
     const plan = normalizeSweep(JSON.parse(field.value));
     const count = plan.values.length * plan.replicates;
     if (count > 200 || count * (plan.base.days + 1) > 10000)
-      throw Error(
-        "No navegador: até 200 execuções e 10.000 observações diárias previstas. Use a CLI para planos maiores.",
-      );
+      throw Error(t("sweeps.limit"));
     field.value = JSON.stringify(plan, null, 2);
     const active = new AbortController();
     controller = active;
@@ -67,11 +69,12 @@ run.onclick = async () => {
           if (controller === active) show(c);
         },
       });
-      if (controller === active)
-        status.textContent = `Varredura concluída: ${count} execuções, sem alterar seu terrário salvo.`;
+      if (controller === active) message(status, "sweeps.completed", { count });
     } catch (e) {
       if (active.signal.aborted)
-        status.textContent = `Interrompida com ${current?.results.length ?? 0} execuções completas preservadas. Continue aqui ou baixe a retomada.`;
+        message(status, "sweeps.stopped", {
+          count: current?.results.length ?? 0,
+        });
       else fail(e);
     } finally {
       if (controller === active) {
@@ -88,19 +91,17 @@ reset.onclick = () => {
   current = undefined;
   downloads.clear();
   progress.value = 0;
-  status.textContent =
-    "Resultados removidos desta página. Configuração e arquivos já baixados preservados.";
-  error.textContent = "";
+  message(status, "sweeps.cleared");
+  clearMessage(error);
 };
 file.onchange = async () => {
   const selected = file.files?.[0];
   if (!selected || controller) return;
   importing = true;
   busy(true);
-  error.textContent = "";
+  clearMessage(error);
   try {
-    if (selected.size > 20 * 1024 * 1024)
-      throw Error("Arquivo de retomada excede 20 MiB.");
+    if (selected.size > 20 * 1024 * 1024) throw Error(t("sweeps.fileLimit"));
     const raw = JSON.parse((await selected.text()).replace(/^\uFEFF/, "")),
       plan = normalizeSweep(raw.plan);
     const c = await validateCheckpoint(raw, plan, await sweepJobs(plan));

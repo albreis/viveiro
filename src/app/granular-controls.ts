@@ -1,3 +1,4 @@
+import { message } from "../i18n/runtime.ts";
 import type { SoilWorld } from "../modules/soil/types.ts";
 export function installGranularControls(
   intervene: (type: string, x: number, z: number, value: number) => void,
@@ -22,10 +23,8 @@ export function renderGranularControls(w: SoilWorld) {
   const state = w.soil.granular,
     target = document.getElementById("granular-status");
   if (target)
-    target.textContent = state
-      ? (w.nest.rubble || []).filter((p) => p.mobile && p.mass > 0).length +
-        " agregado(s) de terra solta · " +
-        state.moving +
-        " em movimento. Atrito e gravidade exploratórios."
-      : "A terra solta poderá cair e se acomodar no relevo.";
+    message(target, state ? "panels.granular" : "panels.granular.wait", {
+      count: (w.nest.rubble || []).filter((p) => p.mobile && p.mass > 0).length,
+      moving: state?.moving ?? 0,
+    });
 }

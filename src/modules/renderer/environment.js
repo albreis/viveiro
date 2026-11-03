@@ -1,3 +1,4 @@
+import { localizedLabelTexture } from "./localized-label.ts";
 import { LandscapeView } from "./LandscapeView.js";
 import { EntranceView } from "./EntranceView.ts";
 import * as THREE from "three";
@@ -112,21 +113,9 @@ export function buildGround(host, seed) {
 }
 
 export function label(host, text, x, y, z) {
-  const c = document.createElement("canvas");
-  c.width = 256;
-  c.height = 64;
-  const ctx = c.getContext("2d");
-  ctx.fillStyle = "#f5f8e5cc";
-  ctx.beginPath();
-  ctx.roundRect(4, 4, 248, 56, 20);
-  ctx.fill();
-  ctx.font = "500 21px Arial";
-  ctx.fillStyle = "#64754e";
-  ctx.textAlign = "center";
-  ctx.fillText(text, 128, 41);
   const sprite = new THREE.Sprite(
     new THREE.SpriteMaterial({
-      map: new THREE.CanvasTexture(c),
+      map: localizedLabelTexture(text),
       transparent: true,
       depthTest: false,
       opacity: 0.85,

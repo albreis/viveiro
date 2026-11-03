@@ -119,3 +119,24 @@ export function validateOptionalInputs(params: Record<string, unknown>): void {
       throw Error(`Entrada ${key} fora de ${min}–${max}.`);
   }
 }
+
+/** Shared canonical input contract for experiments and saved parameter profiles. */
+export function normalizeParameters(value: unknown = {}): ExperimentParameters {
+  if (!value || typeof value !== "object" || Array.isArray(value))
+    throw Error("Configuração deve ser um objeto JSON.");
+  const supplied = value as Record<string, unknown>;
+  for (const key of Object.keys(supplied))
+    if (!Object.hasOwn(parameterRanges, key))
+      throw Error("Campo desconhecido: " + key);
+  const parameters = {} as ExperimentParameters;
+  for (const key of Object.keys(parameterRanges) as ExperimentParameter[]) {
+    if (!Object.hasOwn(baseParameterRanges, key) && supplied[key] === undefined)
+      continue;
+    const [min, max, fallback] = parameterRanges[key],
+      n = supplied[key] === undefined ? fallback : supplied[key];
+    if (typeof n !== "number" || !Number.isFinite(n) || n < min || n > max)
+      throw Error(`${key}: use um número entre ${min} e ${max}.`);
+    parameters[key] = Object.is(n, -0) ? 0 : n;
+  }
+  return parameters;
+}

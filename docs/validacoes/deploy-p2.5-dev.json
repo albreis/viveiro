@@ -1,0 +1,18 @@
+{
+  "schema": "viveiro-private-deployment-v1",
+  "stage": "P2.5",
+  "developmentVersion": "0.43.0",
+  "tagCreated": false,
+  "githubReleaseCreated": false,
+  "manualZenodoDeposit": false,
+  "sourceSha": "f4f9a398190af74abcb8aafd2a0d36231ef9f829",
+  "pr": "https://github.com/albreis/viveiro/pull/66",
+  "basePr": 65,
+  "projectId": "appgprj_6ae6364bc4488191b2757449ed3f7e94",
+  "deploymentId": "appgdep_6ae929c1b8688191b5bc65b8f808ad67",
+  "versionId": "appgprj_6ae6364bc4488191b2757449ed3f7e94~appgver_38a01a94fa808191b2d1daed277cbe5d",
+  "status": "succeeded",
+  "updatedAt": "2026-11-03T00:24:47.079728+00:00",
+  "audience": "owner-private; custom revision 1 unchanged",
+  "publicPages": "unchanged until consolidated P2 tag"
+}

@@ -1,3 +1,4 @@
+import { locale, t, messageSource, clearMessage } from "../i18n/runtime.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
 import { colonyWorlds } from "../modules/colonies/types.ts";
 export function renderDevelopmentStatus(w: FamilyWorld): void {
@@ -15,33 +16,31 @@ export function renderDevelopmentStatus(w: FamilyWorld): void {
     cocoons = brood.filter((b) => b.cocoon?.built).length;
   target.hidden = !brood.length && !losses;
   if (target.hidden) {
-    target.textContent = "";
+    clearMessage(target);
     return;
   }
   const paused = brood.filter((b) => b.development!.lastRate <= 1e-9).length,
     stressed = brood.filter((b) => b.development!.stress > 0.1).length;
   const temperatures = brood.map((b) => b.development!.lastTemperature),
     format = (x: number) =>
-      x.toLocaleString("pt-BR", { maximumFractionDigits: 1 });
-  target.textContent =
-    brood.length +
-    " cria(s) com maturação térmica · " +
-    paused +
-    " com crescimento parado · " +
-    stressed +
-    " sob estresse · " +
-    losses +
-    " perda(s) · " +
-    cocoons +
-    " casulo(s) em uso. " +
-    (temperatures.length
-      ? "Entorno: " +
-        format(Math.min(...temperatures)) +
-        "–" +
-        format(Math.max(...temperatures)) +
-        " °C. "
-      : "") +
-    "Modelo demonstrativo; água no solo é um proxy, não umidade do ar da câmara.";
+      x.toLocaleString(locale.locale, { maximumFractionDigits: 1 });
+  messageSource(
+    target,
+    t("panels.development", {
+      brood: brood.length,
+      paused,
+      stressed,
+      losses,
+      cocoons,
+    }) +
+      (temperatures.length
+        ? t("panels.development.temperature", {
+            min: format(Math.min(...temperatures)),
+            max: format(Math.max(...temperatures)),
+          })
+        : "") +
+      t("panels.development.note"),
+  );
 }
 
 export function installBroodInspection(

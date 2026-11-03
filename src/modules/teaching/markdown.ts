@@ -1,3 +1,5 @@
+import { translate } from "../../i18n/core.ts";
+import { defaultLocale, type Locale } from "../../i18n/catalogs.ts";
 export const escapeHtml = (value: string) =>
   value.replace(
     /[&<>"']/g,
@@ -30,7 +32,10 @@ function inline(text: string) {
     .join("");
 }
 /** Small trusted-document subset; raw HTML and executable link schemes stay text. */
-export function teachingMarkdown(markdown: string): string {
+export function teachingMarkdown(
+  markdown: string,
+  locale: Locale = defaultLocale,
+): string {
   const html: string[] = [];
   let paragraph: string[] = [],
     list: "ul" | "ol" | undefined,
@@ -66,7 +71,9 @@ export function teachingMarkdown(markdown: string): string {
       rows.every((r) => r.length === header.length)
     ) {
       html.push(
-        '<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela de dados"><table><thead><tr>' +
+        '<div class="table-scroll" tabindex="0" role="region" aria-label="' +
+          escapeHtml(translate("documents.table", {}, locale)) +
+          '"><table><thead><tr>' +
           header.map((c) => '<th scope="col">' + inline(c) + "</th>").join("") +
           "</tr></thead><tbody>" +
           rows
@@ -87,7 +94,9 @@ export function teachingMarkdown(markdown: string): string {
     code: string[] = [];
   const closeCode = () => {
     html.push(
-      '<pre tabindex="0" role="region" aria-label="Código ou equação em texto"><code>' +
+      '<pre tabindex="0" role="region" aria-label="' +
+        escapeHtml(translate("documents.code", {}, locale)) +
+        '"><code>' +
         escapeHtml(code.join("\n")) +
         "</code></pre>",
     );

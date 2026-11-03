@@ -1,3 +1,4 @@
+import { t as text } from "../../i18n/runtime.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import type { PerspectiveCamera } from "three";
 import type { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -24,7 +25,7 @@ export function focusEcology(host: FocusHost) {
               y: surfaceHeight(w.nest.relief, p.x, p.z),
               z: p.z,
               inside: false,
-              label: "Pulgões na base da planta #" + p.id,
+              label: text("scene.ecology.aphids", { id: p.id }),
             },
           ]
         : [];
@@ -38,11 +39,11 @@ export function focusEcology(host: FocusHost) {
         inside: m.status === "adopted" || m.y < -0.1,
         label:
           m.status === "adopted"
-            ? "Lagarta adotada no berçário"
-            : "Lagarta de odor mimético",
+            ? text("scene.ecology.adopted")
+            : text("scene.ecology.mimic"),
       })),
   ];
-  if (!targets.length) return "Ainda não há relações ecológicas visíveis.";
+  if (!targets.length) return text("scene.ecology.empty");
   const t = targets[(host.ecologyFocus || 0) % targets.length];
   host.ecologyFocus = (host.ecologyFocus || 0) + 1;
   host.stopFollowing();

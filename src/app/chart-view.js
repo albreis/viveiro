@@ -1,6 +1,7 @@
+import { locale } from "../i18n/runtime.ts";
 const $ = (id) => document.getElementById(id);
 const format = (n) =>
-  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
+  new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 1 }).format(n);
 export function drawChart(world, comparison) {
   const canvas = $("chart"),
     r = canvas.getBoundingClientRect();

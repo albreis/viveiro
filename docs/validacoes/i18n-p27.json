@@ -1,0 +1,107 @@
+{
+  "schema": "viveiro-i18n-validation-v1",
+  "stage": "P2.7",
+  "developmentVersion": "0.44.0",
+  "releaseCreated": false,
+  "locales": [
+    "pt-BR",
+    "en"
+  ],
+  "messagesPerLocale": 1192,
+  "verification": {
+    "fullSuite": {
+      "tests": 459,
+      "passed": 459,
+      "failed": 0
+    },
+    "finalDirected": {
+      "tests": 30,
+      "passed": 30
+    },
+    "strictTypeScript": true,
+    "viteBuild": true,
+    "modules": 436,
+    "localizedDocuments": {
+      "modelHtml": 26,
+      "teachingHtml": 14,
+      "englishLicenseHtml": 1,
+      "englishModelSources": 13,
+      "englishTeachingSources": 9
+    },
+    "offlineManifestHashes": "all generated public assets verified; English model, guides, vectors and licenses included",
+    "downloadFollowupTests": {
+      "tests": 16,
+      "passed": 16
+    }
+  },
+  "browser": {
+    "engine": "native IAB",
+    "dev": "http://127.0.0.1:4173/",
+    "compiled": "http://127.0.0.1:4189/",
+    "responsive": [
+      {
+        "page": "laboratory en",
+        "viewport": 320,
+        "documentWidth": 305
+      },
+      {
+        "page": "terrarium en and pt-BR",
+        "viewport": 320,
+        "documentWidth": 305
+      }
+    ],
+    "checks": [
+      "Compiled scene renders with no captured console errors",
+      "Compiled locale changes preserve edited seed and checkpoint name; paused Day 0.6 stays fixed",
+      "English and Portuguese ODD alternate to the same page",
+      "English teaching guide rendered from translated source",
+      "License navigation points to en/licencas.html in English",
+      "Dev biological catalog covers all 100 records; tour and seven lessons covered by earlier UI evidence"
+    ],
+    "publicOffline": {
+      "base": "/releases/v0.44.0/",
+      "cachedFiles": 557,
+      "serverStopped": true,
+      "checks": [
+        "English teacher index opens with HTTP server stopped",
+        "English inheritance guide opens from a cached local link",
+        "Same guide alternates pt-BR and en while server stays stopped"
+      ]
+    },
+    "publishedPrivate": {
+      "sourceSha": "7a24fd9720323cbe7f12f7b8f7175d78f2e8a7b7",
+      "checks": [
+        "English laboratory rendered in production",
+        "English ODD rendered in production",
+        "Final explicit localized download filename confirmed in deployed HTML"
+      ]
+    }
+  },
+  "portableExperiment": {
+    "seed": "I18N-QA-045-Árvore",
+    "days": 3,
+    "ticks": 300,
+    "profile": "generic-demo@5",
+    "policy": "stdlib-f64-v1",
+    "csvSha256": "d5c713b5842aa13d8171c23582d72200b6299abdb4590e97ea73e1a27d7eeb8b",
+    "manifestSha256": "30d5565502b105b5ac9bf3e0600cb1cc267711cf467ffd3065bbe238b65e968f",
+    "equalBytes": [
+      "Node CLI",
+      "dev pt-BR",
+      "dev en",
+      "compiled en CSV and manifest",
+      "compiled pt-BR CSV after locale change"
+    ],
+    "rawFiles": "public/experimentos/i18n-p27"
+  },
+  "limits": [
+    "Internal verification; no empirical calibration or external teacher/accessibility endorsement",
+    "Canonical model text, scientific files and user-authored names remain unchanged",
+    "Operational and historical repository documents remain Portuguese; public model/teaching pages and README have English versions",
+    "IAB static text download event timed out; source bytes/links validated by generators and route checks. Actual CSV/manifest downloads succeeded."
+  ],
+  "references": [
+    "i18n-lab-parcial.json",
+    "i18n-ui-parcial.json"
+  ]
+}
