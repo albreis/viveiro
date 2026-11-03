@@ -1,3 +1,4 @@
+import { t } from "../../i18n/runtime.ts";
 import {
   Vector3,
   Raycaster,
@@ -25,8 +26,7 @@ export function focusBrood(h: Host): string {
   const available = h.world.brood.filter((b) => b.carrier === undefined),
     cocoons = available.filter((b) => b.cocoon?.built),
     brood = cocoons.length ? cocoons : available;
-  if (!brood.length)
-    return "As crias estão em transporte ou ainda não existem neste terrário.";
+  if (!brood.length) return t("scene.brood.empty");
   const living = new Set(h.world.ants.map((a) => a.id)),
     actors = [
       h.antGroup,
@@ -71,8 +71,7 @@ export function focusBrood(h: Host): string {
       if (view) break;
     }
   }
-  if (!view)
-    return "As cuidadoras cobrem as crias agora. Observe novamente quando abrirem espaço.";
+  if (!view) return t("scene.brood.blocked");
   h.stopFollowing();
   h.setInterior(true);
   h.currentView = "brood";
@@ -86,8 +85,14 @@ export function focusBrood(h: Host): string {
   h.followLight.intensity = 0.25;
   h.controls.update();
   const b = brood[view.index],
-    stage = { egg: "ovo", larva: "larva", pupa: "pupa" }[broodStage(b.age)];
-  return (
-    "Cria #" + b.id + " · " + stage + (b.cocoon?.built ? " com casulo." : ".")
-  );
+    stage = {
+      egg: t("scene.brood.egg"),
+      larva: t("scene.brood.larva"),
+      pupa: t("scene.brood.pupa"),
+    }[broodStage(b.age)];
+  return t("scene.brood.summary", {
+    id: b.id,
+    stage,
+    cocoon: b.cocoon?.built ? t("scene.brood.cocoon") : "",
+  });
 }

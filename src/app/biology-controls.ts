@@ -1,3 +1,6 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
+import { profileLabel, profileDescription } from "../i18n/biology.ts";
+import type { MessageKey } from "../i18n/catalogs.ts";
 import { renderStoreStatus } from "./store-status.ts";
 import { renderMaternalStatus } from "./maternal-status.ts";
 import { biologyMarkup } from "./biology-markup.ts";
@@ -34,7 +37,11 @@ export function installBiologyControls(world: FamilyWorld): void {
     topic = document.getElementById("biology-topic") as HTMLSelectElement;
   select.replaceChildren(
     ...biologicalProfiles.map(
-      (p) => new Option(p.label + " · v" + p.version, biologicalProfileKey(p)),
+      (p) =>
+        new Option(
+          profileLabel(p) + " · v" + p.version,
+          biologicalProfileKey(p),
+        ),
     ),
   );
   select.value = biologicalProfileKey(
@@ -47,15 +54,24 @@ export function installBiologyControls(world: FamilyWorld): void {
       topic.value as ParameterTopic,
       resolveBiologicalProfile(selectedBiologicalProfile()),
     );
+  const describeProfile = () => {
+    const p = resolveBiologicalProfile(selectedBiologicalProfile());
+    message(
+      document.getElementById("biology-catalog-profile")!,
+      "biology.preview",
+      { label: profileLabel(p), version: p.version },
+    );
+    messageSource(
+      document.getElementById("biology-preview")!,
+      profileDescription(p) +
+        t("biology.foundation", {
+          foundation: t(("biology.foundation." + p.foundation) as MessageKey),
+        }),
+    );
+  };
   const changeProfile = () => {
     const p = resolveBiologicalProfile(selectedBiologicalProfile());
-    document.getElementById("biology-catalog-profile")!.textContent =
-      "Consulta do próximo perfil: " + p.label + " · v" + p.version;
-    document.getElementById("biology-preview")!.textContent =
-      p.description +
-      " Fundação genérica " +
-      p.foundation +
-      ". Casulos e sazonalidade sem calibração por espécie.";
+    describeProfile();
     const maternal = topic.querySelector<HTMLOptionElement>(
       'option[value="maternal"]',
     );
@@ -106,6 +122,17 @@ export function installBiologyControls(world: FamilyWorld): void {
   select.onchange = changeProfile;
   topic.onchange = refresh;
   changeProfile();
+  const stopLocale = locale.subscribe(() => {
+    for (const option of select.options) {
+      const p = resolveBiologicalProfile(
+        biologicalReferenceFromKey(option.value),
+      );
+      option.textContent = profileLabel(p) + " · v" + p.version;
+    }
+    describeProfile();
+    refresh();
+  });
+  window.addEventListener("pagehide", stopLocale, { once: true });
 }
 export function renderBiologyStatus(world: FamilyWorld): void {
   const output = document.getElementById("biology-active");
@@ -113,17 +140,13 @@ export function renderBiologyStatus(world: FamilyWorld): void {
   renderMaternalStatus(world);
   renderStoreStatus(world);
   const p = resolveBiologicalProfile(world.biologicalProfile);
-  output.textContent =
-    "Atual: " +
-    p.label +
-    " · v" +
-    p.version +
-    ". Sem espécie calibrada. Ar atual " +
-    (world.params.temperatureC ?? 24).toLocaleString("pt-BR") +
-    "°C/" +
-    world.params.humidity.toLocaleString("pt-BR") +
-    "%. " +
-    (world.biologicalProfile
-      ? "Perfil preservado no experimento."
-      : "Save legado reconhecido como genérico, sem reescrever seus parâmetros.");
+  messageSource(
+    output,
+    t("biology.active", {
+      label: profileLabel(p),
+      version: p.version,
+      temperature: locale.number(world.params.temperatureC ?? 24),
+      humidity: locale.number(world.params.humidity),
+    }) + t(world.biologicalProfile ? "biology.preserved" : "biology.legacy"),
+  );
 }

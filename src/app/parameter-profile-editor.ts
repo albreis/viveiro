@@ -1,3 +1,4 @@
+import { profileLabel } from "../i18n/biology.ts";
 import type { MessageKey } from "../i18n/catalogs.ts";
 import {
   message,
@@ -47,9 +48,7 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
     const o = document.createElement("option");
     o.value = p.id + "@" + p.version;
     const render = () => {
-      const key =
-        "biology.profile." + (p.id === "lab-lniger-2024" ? p.id : o.value);
-      o.textContent = t(key as MessageKey) + " · " + o.value;
+      o.textContent = profileLabel(p) + " · " + o.value;
     };
     render();
     const stop = locale.subscribe(render);

@@ -38,34 +38,41 @@ Os PRs estavam abertos e encadeados na conferência de transferência; não dupl
 Preservar ACO padrão, paridade portátil e trajetória nativa. Os modelos e as
 faixas são exploratórios, sem calibração por espécie.
 
-## P2.7 em andamento — ainda não concluído
+## P2.7 em andamento — interface migrada, documentos pendentes
 
-src/i18n tem 466 mensagens por idioma em catálogos por área, seletor nas duas
-páginas, bindings explícitos e fallback português no Vite. Troca sem reload nem
-recriar forms. Laboratório isolado/perfis/varreduras, texto estático do terrário,
-câmera, indicadores centrais, fundação, linhagem e gráficos migrados.
+src/i18n tem 1.131 mensagens por idioma, registradas em index.ts de cada locale.
+Seletor compartilhado sem reload, bindings explícitos, lookup de mensagens
+canônicas só na apresentação e fallback português. Templates HTML em fragmentos
+src/templates (maior ~150 linhas). Experimentos/perfis/varreduras, tela 3D,
+painéis especializados, catálogo com 100 parâmetros, 7 aulas e tour migrados.
 
-QA real: 300 ticks, CSV/manifesto idênticos no dev pt-BR, dev en e CLI. Brutos em
-public/experimentos/i18n-p27; docs/validacoes/i18n-lab-parcial.json. Nome editado,
-valor 67.5 e editor aberto preservados. Erros limpos não voltam ao trocar idioma.
-15 testes dirigidos aprovados (9 i18n + 6 acessibilidade), TS/build aprovados.
-Suíte completa anterior: 444 do P2.6; ainda não repetida nesta base.
+Validação atual: 25 testes dirigidos de i18n/acessibilidade/tour, TS estrito e
+build Vite aprovados. QA nativa dev nos dois idiomas preservou seed em edição,
+nome de checkpoint, perfil/grupo consultado e estado pausado D11,3. Tour mudou
+idioma sem perder passo e entrou realmente em primeira pessoa. Evidência
+parcial docs/validacoes/i18n-ui-parcial.json. Não alegar suíte completa atual.
+
+QA científica anterior nesta mesma etapa: 300 ticks, CSV/manifesto idênticos em
+dev pt-BR, dev en e CLI; public/experimentos/i18n-p27 e evidência lab-parcial.
+.gitattributes preserva todos os bytes desses arquivos; testes conferem hashes.
+Mensagens/estados do modelo e nomes escritos pelo usuário continuam canônicos;
+somente a UI os apresenta traduzidos. Nenhuma regra de física/IA foi alterada.
 
 ## Próximo passo concreto
 
-1. Migrar painéis especializados: clima/gases, ecologia/química, estrutura,
-   granular, estoques, fertilidade, saúde, estações/desenvolvimento, biologia.
-2. Tempo/desempenho/offline, previsão/checkpoints, ensino e tour ainda pendentes.
-3. Traduzir estados/eventos/metadados do modelo somente na apresentação. Preservar
-   IDs, seeds, dados científicos, saves, nomes e outros textos do usuário.
-4. Traduzir documentos públicos/licenças e integrar os geradores de páginas.
-5. QA nativa nos dois idiomas, responsivo/Workers/exportação, suíte completa/build.
-   Atualizar PR/cronograma e publicar no mesmo privado após validação. Sem tag
-   enquanto P2.7 não cumprir todos os aceites.
+1. Tradução integral de 13 documentos públicos do modelo + 9 arquivos de ensino
+   e página de licenças, em src/i18n/locales/en; preservar fontes portuguesas.
+2. Integrar rotas en/modelo e en/ensino nos geradores, alternância de idioma e
+   navegação/links/downloads corretos, incluindo subdiretórios do Pages e offline.
+3. Rever mensagens restantes de serviços/erros, códigos de protocolo e dados do
+   usuário; inventário é heurístico, não prova cobertura. Verificar tamanho de módulos.
+4. QA nativa responsiva e bundle compilado em ambos os idiomas, salvar evidências;
+   suíte completa/paridade/builds público e privado. Só então concluir P2.7/PR #68.
+5. Publicar no mesmo Site privado. Uma única tag consolidada apenas depois de
+   todos os P2 ativos concluírem e dos metadados CFF/Zenodo alinhados previamente.
 
 Comandos: npm run i18n:check; npm run i18n:inventory;
-node --test tests/i18n*.test.mjs; npm run build.
-Inventário é heurístico, não cobertura. Logs .runtime são locais/ignorados.
+node --test tests/i18n*.test.mjs; npm run build. Logs locais em .runtime ignorado.
 
 ## Política de publicação
 

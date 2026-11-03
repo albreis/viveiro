@@ -1,3 +1,4 @@
+import { locale, t } from "../../i18n/runtime.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import type { PerspectiveCamera, PointLight } from "three";
 import type { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -12,7 +13,7 @@ interface Host {
 }
 export function focusSealing(h: Host): string {
   const p = [...(h.world.nest.plugs || [])].sort((a, b) => b.mass - a.mass)[0];
-  if (!p) return "Ainda não existe tampão neste terrário.";
+  if (!p) return t("scene.seal.empty");
   h.stopFollowing();
   h.setInterior(true);
   h.currentView = "sealing";
@@ -29,11 +30,8 @@ export function focusSealing(h: Host): string {
   h.camera.fov = 55;
   h.camera.updateProjectionMatrix();
   h.controls.update();
-  return (
-    "Entrada da colônia " +
-    p.owner +
-    " vista pelo lado interno. Terra no tampão: " +
-    p.mass.toLocaleString("pt-BR", { maximumFractionDigits: 3 }) +
-    " u³."
-  );
+  return t("scene.seal.summary", {
+    id: p.owner,
+    mass: locale.number(p.mass, { maximumFractionDigits: 3 }),
+  });
 }

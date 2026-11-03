@@ -1,0 +1,29 @@
+<section class="panel soil-panel">
+  <div class="section-label">
+    <span data-i18n="terrarium.climate.title"></span><span>◉</span>
+  </div>
+  <p id="climate-status"></p>
+  <div class="climate-tabs">
+    <button
+      class="text-button"
+      data-climate-map="water"
+      aria-pressed="true"
+      data-i18n="terrarium.climate.water"
+    ></button
+    ><button
+      class="text-button"
+      data-climate-map="heat"
+      aria-pressed="false"
+      data-i18n="terrarium.climate.heat"
+    ></button>
+  </div>
+  <canvas
+    id="climate-map"
+    width="280"
+    height="112"
+    role="img"
+    data-i18n-aria-label="terrarium.climate.map"
+  ></canvas>
+  <p id="climate-map-caption" class="field-note"></p>
+  <p data-i18n="terrarium.climate.help"></p>
+</section>

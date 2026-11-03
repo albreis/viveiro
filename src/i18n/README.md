@@ -35,3 +35,19 @@ fica persistido. `static-html.ts` e o plugin Vite preenchem fallback português.
 P2.7 ainda não terminou. Laboratório e controles centrais migrados; faltam
 painéis especializados, tour e documentos. Evidência de paridade real em
 `docs/validacoes/i18n-lab-parcial.json`; não confundir inventário com cobertura.
+
+## Organização e dados canônicos
+
+Cada locale tem `index.ts` com os imports dos catálogos por área. Para adicionar
+idioma, copie a pasta e registre o índice em catalogs.ts. Os HTMLs estruturais
+pequenos ficam em src/templates; o plugin Vite os reúne antes de preencher as
+traduções. Não editar dist.
+
+Estados/eventos do modelo, IDs, seeds, receitas e metadados científicos mantêm
+seu formato canônico. A tradução fica nas fronteiras de apresentação. Datas e
+números da tela usam o locale; CSV/JSON mantêm valores/contratos originais.
+Nomes de checkpoints/perfis escritos pelo usuário nunca são traduzidos. Os
+textos de fonte científica preservam avisos de hipótese, amostra e incerteza.
+
+A interface está migrada; ainda faltam documentos públicos e revisão final de
+P2.7. Evidência adicional: docs/validacoes/i18n-ui-parcial.json.

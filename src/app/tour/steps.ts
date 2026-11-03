@@ -1,34 +1,30 @@
 export const tourSteps = [
   {
-    title: "Uma habitante, outro ponto de vista",
-    description:
-      "Este guia leva você à visão de uma formiga em três passos. Você pode usar mouse ou teclado, pular e reabrir quando quiser. O terrário continua no estado atual.",
+    title: "tour.step.0.title",
+    description: "tour.step.0.description",
     target: "viewport",
-    jump: "Observar o terrário",
-    next: "Começar",
+    jump: "tour.step.0.jump",
+    next: "tour.step.0.next",
   },
   {
-    title: "1. Escolha uma habitante",
-    description:
-      "A lista abaixo do terrário mostra as formigas vivas. Escolha uma ou use a seleção atual. No teclado, Tab chega à lista e as setas mudam a seleção.",
+    title: "tour.step.1.title",
+    description: "tour.step.1.description",
     target: "ant-select",
-    jump: "Mostrar a lista",
-    next: "Usar seleção atual",
+    jump: "tour.step.1.jump",
+    next: "tour.step.1.next",
   },
   {
-    title: "2. Entre em primeira pessoa",
-    description:
-      "Ative o botão “1ª pessoa ↗” ao lado da lista. Você também pode dar dois cliques numa formiga no cenário. O guia avança quando a câmera realmente entrar.",
+    title: "tour.step.2.title",
+    description: "tour.step.2.description",
     target: "follow-ant",
-    jump: "Mostrar 1ª pessoa",
-    next: "Aguardando entrada",
+    jump: "tour.step.2.jump",
+    next: "tour.step.2.next",
   },
   {
-    title: "3. Veja por onde ela anda",
-    description:
-      "Você entrou na perspectiva de uma formiga. Arraste no cenário para olhar ao redor. Conclua o guia e use “Sair da formiga” ou Esc para voltar. O modelo é exploratório, sem espécie calibrada.",
+    title: "tour.step.3.title",
+    description: "tour.step.3.description",
     target: "exit-ant",
-    jump: "Mostrar como voltar",
-    next: "Concluir",
+    jump: "tour.step.3.jump",
+    next: "tour.step.3.next",
   },
 ] as const;

@@ -1,14 +1,15 @@
+import { locale, t, messageSource } from "../i18n/runtime.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
 import { colonyWorlds } from "../modules/colonies/types.ts";
 import { maternalBalance } from "../modules/maternal/pools.ts";
 const number = (value: number) =>
-  value.toLocaleString("pt-BR", { maximumFractionDigits: 3 });
+  value.toLocaleString(locale.locale, { maximumFractionDigits: 3 });
 function display(message?: string): void {
   for (const id of ["maternal-status", "maternal-catalog-status"]) {
     const target = document.getElementById(id);
     if (target) {
       target.hidden = !message;
-      target.textContent = message ?? "";
+      messageSource(target, message ?? "");
     }
   }
 }
@@ -27,25 +28,22 @@ export function renderMaternalStatus(world: FamilyWorld): void {
     s = state.stores,
     balance = maternalBalance(state);
   display(
-    "Atual · colônia " +
-      (current.colonyId ?? 1) +
-      ", perfil v" +
-      (current.biologicalProfile?.version ?? 1) +
-      (archived
-        ? " · registro da fundação: lipídio "
-        : " · créditos da fundação: lipídio ") +
-      number(s.lipid) +
-      ", proteína " +
-      number(s.protein) +
-      ", músculo " +
-      number(s.muscle) +
-      " u. Consumidos " +
-      number(balance.consumed) +
-      "; convertidos " +
-      number(state.converted) +
-      ". " +
-      (Math.abs(balance.error) < 1e-7
-        ? "Balanço fechado."
-        : "Balanço inconsistente."),
+    t("panels.maternal", {
+      id: current.colonyId ?? 1,
+      version: current.biologicalProfile?.version ?? 1,
+      record: t(
+        archived ? "panels.maternal.archived" : "panels.maternal.current",
+      ),
+      lipid: number(s.lipid),
+      protein: number(s.protein),
+      muscle: number(s.muscle),
+      consumed: number(balance.consumed),
+      converted: number(state.converted),
+      balance: t(
+        Math.abs(balance.error) < 1e-7
+          ? "panels.maternal.closed"
+          : "panels.maternal.inconsistent",
+      ),
+    }),
   );
 }

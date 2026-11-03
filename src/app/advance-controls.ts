@@ -1,3 +1,4 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { checkpointStore } from "../services/session-store.ts";
 import { AdvanceClient } from "../services/advance-client.ts";
 import type { SessionState } from "../modules/persistence/types.ts";
@@ -33,18 +34,16 @@ export function installAdvanceControls(context: AdvanceContext) {
     (p, error) => {
       if (error) {
         setBusy(false);
-        status.textContent = error;
+        messageSource(status, error);
         return;
       }
       if (p) {
         bar.max = p.totalTicks;
         bar.value = p.doneTicks;
-        status.textContent =
-          "Calculando: " +
-          (p.doneTicks / 100).toFixed(2) +
-          " de " +
-          (p.totalTicks / 100).toFixed(2) +
-          " dias; nenhum resultado aplicado ainda.";
+        message(status, "execution.advance.calculating", {
+          done: (p.doneTicks / 100).toFixed(2),
+          total: (p.totalTicks / 100).toFixed(2),
+        });
       }
     },
     (outcome) => void finish(outcome),
@@ -53,24 +52,29 @@ export function installAdvanceControls(context: AdvanceContext) {
     const token = generation;
     try {
       cancel.disabled = true;
-      status.textContent = "Aplicando os passos concluídos e salvando…";
+      message(status, "execution.advance.applying");
       context.apply(outcome.session);
       await context.save();
       if (token !== generation) return;
       bar.max = outcome.progress.totalTicks;
       bar.value = outcome.progress.doneTicks;
-      status.textContent =
-        (outcome.complete
-          ? "Avanço concluído. "
-          : "Limite de processamento atingido. ") +
-        (outcome.progress.doneTicks / 100).toFixed(2) +
-        " dias aplicados; terrário em pausa. " +
-        (outcome.complete ? "" : "Retome para concluir o destino salvo.");
+      messageSource(
+        status,
+        t(
+          outcome.complete
+            ? "execution.advance.complete"
+            : "execution.advance.limit",
+        ) +
+          t("execution.advance.result", {
+            days: (outcome.progress.doneTicks / 100).toFixed(2),
+          }) +
+          (outcome.complete ? "" : t("execution.advance.resumeHelp")),
+      );
     } catch (error) {
-      status.textContent =
-        error instanceof Error
-          ? error.message
-          : "O avanço não pôde ser aplicado.";
+      messageSource(
+        status,
+        error instanceof Error ? error.message : t("execution.advance.failed"),
+      );
     } finally {
       if (token === generation) {
         setBusy(false);
@@ -81,20 +85,22 @@ export function installAdvanceControls(context: AdvanceContext) {
   const refresh = () => {
     if (busy) return;
     const plan = context.plan();
-    start.textContent = plan
-      ? "Retomar até o dia " +
-        (plan.targetTick / 100).toLocaleString("pt-BR", {
+    message(
+      start,
+      plan ? "execution.advance.resume" : "interface.advance.run",
+      {
+        day: locale.number((plan?.targetTick ?? 0) / 100, {
           maximumFractionDigits: 1,
-        })
-      : "Avançar dias";
+        }),
+      },
+    );
     days.disabled = !!plan;
   };
   const invalidate = (message?: string) => {
     generation++;
     client.cancel();
     if (busy)
-      status.textContent =
-        message ?? "Avanço cancelado. O cálculo não aplicado foi descartado.";
+      messageSource(status, message ?? t("execution.advance.cancelled"));
     setBusy(false);
   };
   cancel.onclick = () => {
@@ -105,14 +111,14 @@ export function installAdvanceControls(context: AdvanceContext) {
     if (busy) return;
     const count = Number(days.value);
     if (!Number.isInteger(count) || count < 1 || count > 365) {
-      status.textContent = "Escolha um número inteiro de 1 a 365 dias.";
+      message(status, "execution.advance.days");
       return;
     }
     context.pause();
     const token = ++generation;
     setBusy(true);
     bar.value = 0;
-    status.textContent = "Preservando o estado anterior…";
+    message(status, "execution.advance.preserving");
     try {
       const source = context.capture();
       const saved = await checkpointStore.save(
@@ -122,16 +128,18 @@ export function installAdvanceControls(context: AdvanceContext) {
       );
       if (token !== generation) return;
       if (!saved.ok || saved.backend !== "indexedDB")
-        throw Error(
-          "O checkpoint anterior não pôde ser preservado no banco. O avanço não foi iniciado.",
-        );
-      status.textContent = "Calculando os próximos dias…";
+        throw Error(t("execution.advance.checkpoint"));
+      message(status, "execution.advance.running");
       client.start(source, { days: count, budgetMs: Number(budget.value) });
     } catch (error) {
       if (token === generation) {
         setBusy(false);
-        status.textContent =
-          error instanceof Error ? error.message : "Avanço indisponível.";
+        messageSource(
+          status,
+          error instanceof Error
+            ? error.message
+            : t("execution.advance.unavailable"),
+        );
       }
     }
   };

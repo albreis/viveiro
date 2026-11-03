@@ -1,3 +1,4 @@
+import { message, messageSource, t } from "../i18n/runtime.ts";
 import { createLessonSession } from "../modules/lessons/recipe.ts";
 import { lessonDefinition } from "../modules/lessons/catalog.ts";
 import {
@@ -20,8 +21,7 @@ export function installLessonControls(context: LessonContext) {
       busy = true;
       view.busy(true);
       const started = performance.now();
-      view.status.textContent =
-        "Preparando a comparação e preservando o terrário atual…";
+      message(view.status, "lessons.preparing");
       try {
         const d = lessonDefinition(button.dataset.lesson!);
         const candidate = createLessonSession({ id: d.id, version: 2 });
@@ -30,18 +30,15 @@ export function installLessonControls(context: LessonContext) {
         await context.save();
         view.render(context.current(), context.actions());
         const seconds = ((performance.now() - started) / 1000).toFixed(2);
-        view.status.textContent =
-          "Aula aberta em " +
-          seconds +
-          " s, em pausa. O terrário anterior foi guardado como “Antes da aula”. Use A/B para comparar.";
+        message(view.status, "lessons.opened", { seconds });
         document
           .getElementById("viewport")!
           .scrollIntoView({ block: "center", behavior: "auto" });
       } catch (error) {
-        view.status.textContent =
-          error instanceof Error
-            ? error.message
-            : "Não foi possível abrir a aula; o terrário anterior foi mantido.";
+        messageSource(
+          view.status,
+          error instanceof Error ? error.message : t("lessons.failed"),
+        );
       } finally {
         busy = false;
         view.busy(false);

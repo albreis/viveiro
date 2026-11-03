@@ -1,3 +1,4 @@
+import { locale, t, message } from "../i18n/runtime.ts";
 import { performanceMarkup } from "./performance-markup.ts";
 import { FrameMeasurement } from "../modules/renderer/frame-measurement.ts";
 import {
@@ -32,10 +33,12 @@ export function installPerformanceControls(
   const report = panel.querySelector("#frame-report")!;
   const meter = new FrameMeasurement();
   const describe = () => {
-    note.textContent =
+    message(
+      note,
       select.value === "light"
-        ? "Até 80 operárias desenhadas, priorizando a câmera e a seleção. Sombras desligadas e malha visual reduzida. Todos os agentes continuam simulados. Previsão por contagem é uma aproximação."
-        : "Desenho completo e sombras. O perfil altera a apresentação e o método inicial da previsão; a seed e a biologia do experimento são preservadas.";
+        ? "execution.performance.light"
+        : "execution.performance.full",
+    );
   };
   select.value = readPerformanceMode();
   describe();
@@ -53,20 +56,21 @@ export function installPerformanceControls(
       profile.forecast;
     forecast.invalidate();
     describe();
-    report.textContent = saved
-      ? "Perfil aplicado. Inicie outra medição para comparar."
-      : "Perfil aplicado nesta sessão; o navegador não permitiu guardar a preferência.";
+    message(
+      report,
+      saved ? "execution.performance.applied" : "execution.performance.unsaved",
+    );
   };
   button.onclick = () => {
     if (!scene() || document.hidden) return;
     meter.begin(performance.now());
     button.disabled = true;
-    report.textContent = "Medindo durante 10 segundos. Mantenha a aba visível.";
+    message(report, "execution.performance.measuring");
   };
   document.addEventListener("visibilitychange", () => {
     if (document.hidden && button.disabled) {
       cancel();
-      report.textContent = "Medição cancelada: a aba ficou oculta.";
+      message(report, "execution.performance.cancelled");
     }
   });
   let lastCount = "";
@@ -74,28 +78,32 @@ export function installPerformanceControls(
     frame(now: number) {
       const host = scene();
       if (!host || document.hidden) return;
-      const text =
-        (host.visibleWorkers?.length ?? 0) +
-        " de " +
-        host.world.workers.length +
-        " operárias desenhadas; todas simuladas.";
+      const text = t("execution.performance.count", {
+        visible: host.visibleWorkers?.length ?? 0,
+        total: host.world.workers.length,
+      });
       if (text !== lastCount) {
         count.textContent = lastCount = text;
       }
       const result = meter.frame(now, host.renderer.info.render);
       if (!result) return;
       button.disabled = false;
-      report.textContent =
-        result.fps.toFixed(1) +
-        " quadros/s · P95 " +
-        result.p95FrameMs.toFixed(1) +
-        " ms · " +
-        Math.round(result.meanDrawCalls) +
-        " chamadas · " +
-        Math.round(result.meanTriangles) +
-        " triângulos/quadro. Média em " +
-        (result.elapsedMs / 1000).toFixed(1) +
-        " s; não certifica hardware escolar.";
+      message(report, "execution.performance.report", {
+        fps: locale.number(result.fps, {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1,
+        }),
+        p95: locale.number(result.p95FrameMs, {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1,
+        }),
+        calls: Math.round(result.meanDrawCalls),
+        triangles: Math.round(result.meanTriangles),
+        seconds: locale.number(result.elapsedMs / 1000, {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1,
+        }),
+      });
     },
   };
 }

@@ -1,0 +1,105 @@
+<main id="conteudo" tabindex="-1">
+  <p id="experiment-version">
+    <span data-i18n="experiments.versionInitial"></span>
+  </p>
+  <h1><span data-i18n="experiments.title"></span></h1>
+  <p>
+    <span data-i18n="experiments.description"></span>
+  </p>
+  <label for="experiment-policy"
+    ><span data-i18n="experiments.policy.label"></span
+  ></label>
+  <select id="experiment-policy" aria-describedby="policy-help">
+    <option value="aco" data-i18n="experiments.policy.aco"></option>
+    <option value="balanced" data-i18n="experiments.policy.example"></option>
+    <option
+      value="manual"
+      disabled
+      data-i18n="experiments.policy.manual"
+    ></option>
+  </select>
+  <p id="policy-help">
+    <span data-i18n="experiments.policy.help"></span>
+    <a href="./modelo/extensoes.html"
+      ><span data-i18n="experiments.policy.link"></span></a
+    >.
+  </p>
+  <label for="experiment-plan"
+    ><strong><span data-i18n="experiments.plan.label"></span></strong
+  ></label>
+  <textarea
+    id="experiment-plan"
+    rows="22"
+    spellcheck="false"
+    aria-describedby="experiment-help"
+  ></textarea>
+  <p id="experiment-help">
+    <span data-i18n="experiments.plan.help"></span>
+  </p>
+  <div class="experiment-actions">
+    <button id="experiment-run" type="button">
+      <span data-i18n="experiments.run"></span></button
+    ><button id="experiment-cancel" type="button" disabled>
+      <span data-i18n="common.cancel"></span>
+    </button>
+  </div>
+  <progress
+    id="experiment-progress"
+    value="0"
+    max="1"
+    data-i18n-aria-label="experiments.progress"
+  ></progress>
+  <p id="experiment-status" role="status">
+    <span data-i18n="experiments.ready"></span>
+  </p>
+  <p id="experiment-error" role="alert" tabindex="-1"></p>
+  <section
+    id="experiment-results"
+    tabindex="-1"
+    data-i18n-aria-label="experiments.results.label"
+    hidden
+  >
+    <h2><span data-i18n="experiments.results.title"></span></h2>
+    <p>
+      <span data-i18n="experiments.results.help"></span>
+    </p>
+    <ul>
+      <li>
+        <a id="experiment-csv" download="dados.csv"
+          ><span data-i18n="experiments.download.csv"></span
+        ></a>
+      </li>
+      <li>
+        <a id="experiment-manifest" download="manifesto.json"
+          ><span data-i18n="experiments.download.manifest"></span
+        ></a>
+      </li>
+      <li>
+        <a id="experiment-config" download="configuracao.json"
+          ><span data-i18n="experiments.download.plan"></span
+        ></a>
+      </li>
+    </ul>
+  </section>
+  <h2><span data-i18n="experiments.terminal.title"></span></h2>
+  <p>
+    <span data-i18n="experiments.terminal.help"></span>
+  </p>
+  <pre
+    tabindex="0"
+    role="region"
+    data-i18n-aria-label="experiments.terminal.command"
+  ><code>npm run experiment -- --plan configuracao.json --out resultado-novo</code></pre>
+  <p>
+    <span data-i18n="experiments.terminal.output"></span>
+  </p>
+  <pre
+    tabindex="0"
+    role="region"
+    data-i18n-aria-label="experiments.terminal.example"
+  ><code>npm run experiment -- --seed SEMENTE-42 --days 3 --humidity 68 --profile generic-demo@5 --out resultado-novo</code></pre>
+  <p>
+    <span data-i18n="experiments.limits"></span>
+  </p>
+  <!-- @include experiments/sweep.html -->
+</main>

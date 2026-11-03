@@ -11,7 +11,9 @@ export function createDomTranslations(controller: LocaleController) {
     key: MessageKey,
     args: MessageArguments = {},
   ) => {
-    element.setAttribute("data-i18n", key);
+    element.removeAttribute("data-i18n-source");
+    if (element.getAttribute("data-i18n") !== key)
+      element.setAttribute("data-i18n", key);
     argumentsByElement.set(element, args);
     render(element);
   };
@@ -22,8 +24,10 @@ export function createDomTranslations(controller: LocaleController) {
     element.textContent = "";
   };
   const source = (element: Element, value: string) => {
-    clear(element);
-    element.setAttribute("data-i18n-source", value);
+    element.removeAttribute("data-i18n");
+    argumentsByElement.delete(element);
+    if (element.getAttribute("data-i18n-source") !== value)
+      element.setAttribute("data-i18n-source", value);
     render(element);
   };
   function render(element: Element) {

@@ -19,3 +19,16 @@
   outline: 3px solid #496d35;
   outline-offset: 3px;
 }
+
+@media (max-width: 650px) {
+  .topbar {
+    height: auto;
+    min-height: 66px;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding-block: 0.6rem;
+  }
+  .topbar .locale-picker {
+    margin-left: auto;
+  }
+}

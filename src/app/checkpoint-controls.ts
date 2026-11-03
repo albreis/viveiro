@@ -1,3 +1,4 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { checkpointStore } from "../services/session-store.ts";
 import { parseExperiment } from "../modules/persistence/codec.ts";
 import { normalizeSession } from "../modules/persistence/validation.ts";
@@ -55,11 +56,11 @@ export function installCheckpointControls(context: CheckpointContext) {
           option.value = item.id;
           option.textContent =
             (item.kind === "manual" ? "★ " : "") +
-            item.label +
+            (item.kind === "auto" ? t("checkpoints.auto") : item.label) +
             " · D" +
             (item.tick / 100).toFixed(1) +
             " · " +
-            new Date(item.createdAt).toLocaleString("pt-BR", {
+            new Date(item.createdAt).toLocaleString(locale.locale, {
               timeZone: "America/Sao_Paulo",
               dateStyle: "short",
               timeStyle: "short",
@@ -86,9 +87,7 @@ export function installCheckpointControls(context: CheckpointContext) {
         "manual",
       );
     if (!saved.ok || saved.backend !== "indexedDB")
-      throw new Error(
-        "O estado anterior não pôde ser guardado como checkpoint. A recuperação não foi aplicada.",
-      );
+      throw new Error(t("checkpoints.beforeFailed"));
   };
   create.onclick = async () => {
     if (busy) return;
@@ -98,16 +97,18 @@ export function installCheckpointControls(context: CheckpointContext) {
         label =
           name.value.trim() || "Dia " + (session.world.tick / 100).toFixed(1),
         result = await checkpointStore.save(session, label, "manual");
-      status.textContent =
+      messageSource(
+        status,
         result.message ||
-        (result.ok
-          ? "Checkpoint criado neste navegador."
-          : "Não foi possível criar o checkpoint.");
+          t(result.ok ? "checkpoints.created" : "checkpoints.createFailed"),
+      );
       if (result.ok) name.value = "";
       await refresh();
     } catch (error) {
-      status.textContent =
-        error instanceof Error ? error.message : "Checkpoint indisponível.";
+      messageSource(
+        status,
+        error instanceof Error ? error.message : t("checkpoints.unavailable"),
+      );
     } finally {
       setBusy(false);
     }
@@ -121,12 +122,13 @@ export function installCheckpointControls(context: CheckpointContext) {
       context.apply(candidate);
       checkpointStore.allowWrites();
       await context.save();
-      status.textContent =
-        "Checkpoint recuperado em pausa. O estado anterior foi preservado.";
+      message(status, "checkpoints.restored");
       await refresh();
     } catch (error) {
-      status.textContent =
-        error instanceof Error ? error.message : "Não foi possível recuperar.";
+      messageSource(
+        status,
+        error instanceof Error ? error.message : t("checkpoints.restoreFailed"),
+      );
     } finally {
       setBusy(false);
     }
@@ -137,19 +139,19 @@ export function installCheckpointControls(context: CheckpointContext) {
     if (!file || busy) return;
     setBusy(true);
     try {
-      if (file.size > 20000000)
-        throw new Error("O arquivo deve ter até 20 MB.");
+      if (file.size > 20000000) throw new Error(t("checkpoints.fileLimit"));
       const candidate = parseExperiment(await file.text());
       await beforeRestore();
       context.apply(candidate);
       checkpointStore.allowWrites();
       await context.save();
-      status.textContent =
-        "Experimento importado em pausa. O estado anterior foi preservado.";
+      message(status, "checkpoints.imported");
       await refresh();
     } catch (error) {
-      status.textContent =
-        error instanceof Error ? error.message : "Arquivo inválido.";
+      messageSource(
+        status,
+        error instanceof Error ? error.message : t("checkpoints.invalid"),
+      );
     } finally {
       input.value = "";
       setBusy(false);
@@ -158,5 +160,9 @@ export function installCheckpointControls(context: CheckpointContext) {
   document.addEventListener("viveiro:saved", () => {
     if (!busy && document.activeElement !== list) void refresh();
   });
+  const stopLocale = locale.subscribe(() => {
+    if (!busy) void refresh();
+  });
+  window.addEventListener("pagehide", stopLocale, { once: true });
   void refresh();
 }

@@ -1,0 +1,21 @@
+{
+  "forecast.horizon.one": "Estimated population in {days} day:",
+  "forecast.horizon.many": "Estimated population in {days} days:",
+  "forecast.running": "Calculating {completed}/{runs} futures · {percent}%",
+  "forecast.complete": "P10–P90 · {runs} scenarios · starting on day {day}. Exploratory interval, without future interventions.",
+  "forecast.budget": "Computation limit reached · {completed}/{runs} futures completed. ",
+  "forecast.provisional": "Provisional interval; stopping may introduce bias.",
+  "forecast.insufficient": "Insufficient sample to display an interval.",
+  "forecast.cancelled": "Forecast canceled. Recalculate whenever you like.",
+  "forecast.unavailable": "Forecast unavailable.",
+  "forecast.counts": "Extrapolation from counts and history; tunnels and genetics are not simulated.",
+  "forecast.countsShort": "Count-based extrapolation; tunnels and genetics are not simulated.",
+  "forecast.censuses": " {count} recent censuses.",
+  "forecast.full": "Full state: agents, brood, habitat and tunnels. The interval is not scientifically calibrated.",
+  "forecast.cost": "{elapsed} elapsed · {active} of computation",
+  "forecast.benchmark.note": "{origins} origins across {seeds} synthetic seeds; origins from the same seed are correlated. Baseline = constant count. Different methods; descriptive comparison. Uncalibrated interval; the baseline has no interval.",
+  "forecast.benchmark.cost": "Model {version} · {date}. {full} s of full computation per origin (all horizons) vs {counts} ms of count computation per horizon, in {runtime} without 3D rendering. This does not measure the error of this terrarium.",
+  "forecast.benchmark.unavailable": "Report unavailable in this version. The terrarium forecast remains independent.",
+  "forecast.sourceInvalid": "Observation source is incompatible with the method.",
+  "forecast.browserUnavailable": "This browser could not provide the forecast."
+}

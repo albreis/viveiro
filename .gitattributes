@@ -8,3 +8,7 @@ public/experimentos/morris-042/*.csv binary
 public/experimentos/policies-043/**/*.csv binary
 public/experimentos/policies-043/*.csv binary
 public/experimentos/profile-044/**/*.csv binary
+
+# Exact i18n browser/CLI evidence, including canonical JSON and CSV bytes.
+public/experimentos/i18n-p27/** -text
+public/experimentos/i18n-p27/**/*.csv binary

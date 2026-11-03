@@ -1,3 +1,5 @@
+import { translate } from "../i18n/core.ts";
+import { message, messageSource, t } from "../i18n/runtime.ts";
 import { BOUNDS } from "../modules/simulation/constants.js";
 export const placementTools = ["food", "plant", "predator", "scent"] as const;
 export function placement(type: string, x: number, z: number) {
@@ -8,9 +10,7 @@ export function placement(type: string, x: number, z: number) {
     Math.abs(x) > BOUNDS.x ||
     Math.abs(z) > BOUNDS.z
   )
-    throw Error(
-      "Escolha um elemento e coordenadas dentro dos limites do terrário.",
-    );
+    throw Error(translate("data.placement.invalid"));
   return { type, x, z };
 }
 export function installAccessibleInterventions(
@@ -18,13 +18,13 @@ export function installAccessibleInterventions(
 ) {
   const host = document.getElementById("keyboard-placement");
   if (!host) return;
-  host.innerHTML = `<summary>Intervir por coordenadas · teclado</summary>
-    <p>As mesmas intervenções do mouse. Coordenadas da superfície em unidades do modelo: X de −9,3 a 9,3 e Z de −5,8 a 5,8. A ação é registrada no experimento e usa as regras normais do terreno.</p>
-    <form id="placement-form"><label for="placement-tool">Elemento</label>
-    <select id="placement-tool"><option value="food">Alimento</option><option value="plant">Planta</option><option value="predator">Predador</option><option value="scent">Odor estranho</option></select>
-    <label for="placement-x">Coordenada X</label><input id="placement-x" name="x" type="number" min="-${BOUNDS.x}" max="${BOUNDS.x}" step="any" value="0" required>
-    <label for="placement-z">Coordenada Z</label><input id="placement-z" name="z" type="number" min="-${BOUNDS.z}" max="${BOUNDS.z}" step="any" value="0" required>
-    <button type="submit">Aplicar intervenção nas coordenadas</button></form>
+  host.innerHTML = `<summary data-i18n="interface.placement.title"></summary>
+    <p data-i18n="interface.placement.help"></p>
+    <form id="placement-form"><label for="placement-tool" data-i18n="interface.placement.element"></label>
+    <select id="placement-tool"><option value="food" data-i18n="terrarium.food"></option><option value="plant" data-i18n="terrarium.plant"></option><option value="predator" data-i18n="terrarium.predator"></option><option value="scent" data-i18n="terrarium.foreignOdor"></option></select>
+    <label for="placement-x" data-i18n="interface.placement.x"></label><input id="placement-x" name="x" type="number" min="-${BOUNDS.x}" max="${BOUNDS.x}" step="any" value="0" required>
+    <label for="placement-z" data-i18n="interface.placement.z"></label><input id="placement-z" name="z" type="number" min="-${BOUNDS.z}" max="${BOUNDS.z}" step="any" value="0" required>
+    <button type="submit" data-i18n="interface.placement.apply"></button></form>
     <p role="status" id="placement-status"></p>`;
   const input = (id: string) => host.querySelector<HTMLInputElement>("#" + id)!;
   host.querySelector<HTMLFormElement>("form")!.onsubmit = (event) => {
@@ -36,15 +36,15 @@ export function installAccessibleInterventions(
         input("placement-z").valueAsNumber,
       );
       apply(p.type, p.x, p.z);
-      host.querySelector("#placement-status")!.textContent =
-        "Solicitação enviada nas coordenadas X " +
-        p.x +
-        ", Z " +
-        p.z +
-        ". O diário informa o resultado do modelo.";
+      message(host.querySelector("#placement-status")!, "data.placement.sent", {
+        x: p.x,
+        z: p.z,
+      });
     } catch (error) {
-      host.querySelector("#placement-status")!.textContent =
-        error instanceof Error ? error.message : "Intervenção não aplicada.";
+      messageSource(
+        host.querySelector("#placement-status")!,
+        error instanceof Error ? error.message : t("data.placement.failed"),
+      );
     }
   };
 }

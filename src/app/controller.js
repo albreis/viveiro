@@ -1,3 +1,4 @@
+import { translate } from "../i18n/core.ts";
 import {
   locale,
   t,
@@ -151,9 +152,7 @@ async function load() {
       return;
     }
   } catch {
-    protectWrites(
-      "O save não pôde ser reconstruído. A gravação ficou protegida; importe um experimento ou inicie outro terrário.",
-    );
+    protectWrites(translate("scene.save.failed"));
   }
   world = new World(initial.seed, initial.params, {
     biologicalProfile: initial.biologicalProfile,

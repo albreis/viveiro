@@ -23,6 +23,16 @@ function scan(folder: string) {
     else if (/\.(ts|js)$/.test(file)) files.push(file);
   }
 }
+function templateFiles(folder: string): string[] {
+  return readdirSync(folder, { withFileTypes: true }).flatMap((entry) => {
+    const file = join(folder, entry.name);
+    return entry.isDirectory()
+      ? templateFiles(file)
+      : file.endsWith(".html")
+        ? [file]
+        : [];
+  });
+}
 const human = (s: string) =>
   /[À-ÿ]/.test(s) || /\b[A-Za-z]{2,}\s+[A-Za-z]{2,}\b/.test(s);
 function candidate(file: string, line: number, kind: string, text: string) {
@@ -85,6 +95,7 @@ for (const file of [
   "index.html",
   "experimentos.html",
   "public/licencas.html",
+  ...templateFiles("src/templates"),
 ]) {
   const source = readFileSync(file, "utf8"),
     masked = source.replace(/<(script|style|code|pre)\b[\s\S]*?<\/\1>/gi, (m) =>
