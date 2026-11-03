@@ -103,3 +103,9 @@ docs/validacoes/cli-0.39.0.json; nenhum dado do terrário pessoal foi usado.
 
 A partir da 0.41.0, `npm run sweep -- --out resultado-novo --jobs 2` executa
 cinco valores de umidade × dez réplicas. [Plano e retomada](varreduras.md).
+
+## Comparação com dados publicados
+
+`npm run benchmark:buhl -- --out buhl-novo` compara a escavação de grupos de 50,
+100 e 200 operárias com Buhl et al. em _Messor sancta_. Critérios, fonte dos
+dados e resultado atual em [validacoes/buhl-2005.md](validacoes/buhl-2005.md).

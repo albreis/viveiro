@@ -13,7 +13,8 @@
     "format": "prettier --write src index.html vite.config.ts tsconfig.json",
     "build:public": "node scripts/build-public-release.ts",
     "experiment": "node scripts/run-experiment.ts",
-    "sweep": "node scripts/run-sweep.ts"
+    "sweep": "node scripts/run-sweep.ts",
+    "benchmark:buhl": "node scripts/run-buhl.ts"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",
