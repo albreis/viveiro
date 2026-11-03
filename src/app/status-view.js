@@ -1,3 +1,4 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { renderSurvivalStatus } from "./survival-view.ts";
 import { renderFertilityStatus } from "./fertility-status.ts";
 import { renderMaterialStatus } from "./material-controls.ts";
@@ -23,7 +24,7 @@ import { renderSoilStatus } from "./soil-status.ts";
 import { drawChart as renderChart } from "./chart-view.js";
 const $ = (id) => document.getElementById(id);
 const format = (n) =>
-  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
+  new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 1 }).format(n);
 export function renderStatus(context, updateAntCamera) {
   const { world, comparison, scenario, current } = context;
   renderSealingStatus(current);
@@ -43,11 +44,19 @@ export function renderStatus(context, updateAntCamera) {
       $(key).style.setProperty("--range", world.params[key] + "%");
     }
   $("population").textContent = w.population;
-  $("population-detail").textContent =
+  messageSource(
+    $("population-detail"),
     (queen
-      ? w.ants.filter((a) => a.kind === "queen").length + " rainha(s)"
-      : "Sem rainha") +
-    (workers ? " · " + workers + " operárias" : male ? " · 1 macho" : "");
+      ? t("status.queens", {
+          count: w.ants.filter((a) => a.kind === "queen").length,
+        })
+      : t("status.noQueen")) +
+      (workers
+        ? t("status.workers", { count: workers })
+        : male
+          ? t("status.male")
+          : ""),
+  );
   $("brood").textContent = w.brood.length;
   $("food").replaceChildren(
     document.createTextNode(format(w.food)),
@@ -55,19 +64,23 @@ export function renderStatus(context, updateAntCamera) {
   );
   $("vegetation").replaceChildren(
     document.createTextNode(w.plants.length),
-    Object.assign(document.createElement("span"), { textContent: " plantas" }),
+    Object.assign(document.createElement("span"), {
+      textContent: " " + t("terrarium.plants"),
+    }),
   );
   $("predators").textContent = w.predators.length;
-  $("day").textContent = "Dia " + format(w.day);
-  $("time-of-day").textContent =
+  message($("day"), "status.day", { day: format(w.day) });
+  message(
+    $("time-of-day"),
     w.day < 1
-      ? "A fundação"
+      ? "terrarium.founding"
       : w.workers.length === 0
-        ? "O começo da colônia"
+        ? "status.beginning"
         : scenario === "b"
-          ? "Cenário B · alterado"
-          : "O ritmo da colônia";
-  $("chart-days").textContent = format(w.day) + " DIAS";
+          ? "status.scenarioB"
+          : "status.rhythm",
+  );
+  message($("chart-days"), "status.days", { day: format(w.day) });
   const list = $("events");
   list.replaceChildren();
   for (const event of w.events.slice(0, 7)) {
@@ -77,44 +90,30 @@ export function renderStatus(context, updateAntCamera) {
       text = document.createElement("span");
     time.textContent = "D " + format(event.day);
     dot.className = "event-dot " + event.type;
-    text.textContent = event.text;
+    messageSource(text, event.text);
     li.append(time, dot, text);
     list.append(li);
   }
   let observation;
-  if (!queen)
-    observation =
-      "A colônia perdeu a rainha. Observe quanto tempo as operárias conseguem sobreviver.";
+  if (!queen) observation = t("status.observation.noQueen");
   else if (isClaustral(w)) observation = foundingDescription(w.founding);
-  else if (w.food < 2)
-    observation =
-      "As reservas estão baixas. Novas crias dependem do alimento que as operárias conseguirem trazer.";
+  else if (w.food < 2) observation = t("status.observation.lowFood");
   else if (w.workers.length === 0 && w.brood.length)
-    observation =
-      "As primeiras crias estão no ninho: " +
-      w.brood.filter((b) => b.age < 0.35).length +
-      " ovos, " +
-      w.brood.filter((b) => b.age >= 0.35 && b.age < 0.9).length +
-      " larvas e " +
-      w.brood.filter((b) => b.age >= 0.9).length +
-      " pupas.";
+    observation = t("status.observation.brood", {
+      eggs: w.brood.filter((b) => b.age < 0.35).length,
+      larvae: w.brood.filter((b) => b.age >= 0.35 && b.age < 0.9).length,
+      pupae: w.brood.filter((b) => b.age >= 0.9).length,
+    });
   else if (w.workers.some((a) => a.carrying))
-    observation =
-      "Há operárias trazendo alimento. O caminho de volta deixa pistas de feromônios para a colônia.";
-  else if (w.workers.length)
-    observation =
-      "As operárias exploram o ambiente. Um encontro com alimento ou perigo pode mudar sua próxima decisão.";
-  else
-    observation =
-      "A rainha prepara o ninho. O primeiro ciclo de vida está começando.";
-  $("observation").textContent = observation;
+    observation = t("status.observation.food");
+  else if (w.workers.length) observation = t("status.observation.explore");
+  else observation = t("terrarium.observation.initial");
+  messageSource($("observation"), observation || "");
   if (comparison)
-    $("comparison-text").textContent =
-      "B começou com +1 ponto de umidade. Agora: A " +
-      world.population +
-      " · B " +
-      comparison.population +
-      " formigas.";
+    message($("comparison-text"), "status.comparison", {
+      a: world.population,
+      b: comparison.population,
+    });
   renderBiologyStatus(w);
   renderFoundingStatus(w.founding);
   renderFamilyStatus(w);

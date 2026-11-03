@@ -8,77 +8,91 @@
       name="description"
       content="Um terrário vivo em 3D. Observe uma colônia de formigas, transforme o ambiente e explore os limites da previsão."
     />
-    <title>Viveiro — um pequeno mundo vivo</title>
+    <title data-i18n="terrarium.title"></title>
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <nav class="skip-links" aria-label="Atalhos da página">
-      <a href="#main-content">Ir para o conteúdo</a>
-      <a href="#viewport">Ir para a câmera</a>
-      <a href="#environment-controls">Ir para ambiente e intervenções</a>
-      <a href="#daily-summary">Ir para os dados observados</a>
+    <nav class="skip-links" data-i18n-aria-label="terrarium.nav.shortcuts">
+      <a href="#main-content" data-i18n="terrarium.nav.content"></a>
+      <a href="#viewport" data-i18n="terrarium.nav.camera"></a>
+      <a href="#environment-controls" data-i18n="terrarium.nav.environment"></a>
+      <a href="#daily-summary" data-i18n="terrarium.nav.data"></a>
     </nav>
     <header class="topbar">
-      <a href="./" class="brand" aria-label="Viveiro, início"
+      <a href="./" class="brand" data-i18n-aria-label="terrarium.nav.home"
         ><span class="brand-symbol" aria-hidden="true">v</span>viveiro<span
           class="brand-dot"
           aria-hidden="true"
           >.</span
         ></a
       >
-      <span class="brand-caption">UM LABORATÓRIO DE PEQUENOS MUNDOS</span>
+      <span class="brand-caption" data-i18n="terrarium.brand.caption"></span>
       <div class="top-actions">
-        <span class="prototype" id="release-label">MODELO EXPLORATÓRIO</span
+        <span
+          class="prototype"
+          id="release-label"
+          data-i18n="terrarium.model"
+        ></span
         ><button id="help" class="text-button">
-          <span class="help-circle">?</span> Como funciona
+          <span class="help-circle">?</span>
+          <span data-i18n="terrarium.help"></span>
         </button>
       </div>
     </header>
     <main id="main-content" tabindex="-1">
       <section class="page-heading">
         <div>
-          <div class="eyebrow">OBSERVATÓRIO / EXPERIMENTO 001</div>
-          <h1>A vida encontra caminhos<span aria-hidden="true">.</span></h1>
-          <p>Um ecossistema autônomo. Cada encontro muda o que vem depois.</p>
+          <div class="eyebrow" data-i18n="terrarium.eyebrow"></div>
+          <h1>
+            <span data-i18n="terrarium.heading"></span
+            ><span aria-hidden="true">.</span>
+          </h1>
+          <p data-i18n="terrarium.description"></p>
         </div>
         <button class="outline-button" id="new-world">
-          <span>↻</span> Novo terrário
+          <span>↻</span> <span data-i18n="terrarium.new"></span>
         </button>
       </section>
       <div class="workspace">
         <aside
           class="left-panel"
           id="environment-controls"
-          aria-label="Ambiente e intervenções"
+          data-i18n-aria-label="terrarium.environment.label"
           tabindex="-1"
         >
           <section class="panel environment">
             <div class="section-label">
-              <span>O AMBIENTE</span><span class="tiny-number">01</span>
+              <span data-i18n="terrarium.environment.title"></span
+              ><span class="tiny-number">01</span>
             </div>
-            <h2>Condições de vida</h2>
-            <p class="muted small">Pequenas mudanças, novos caminhos.</p>
+            <h2 data-i18n="terrarium.environment.conditions"></h2>
+            <p
+              class="muted small"
+              data-i18n="terrarium.environment.description"
+            ></p>
             <div class="slider-block">
               <label for="humidity"
-                ><span>◉ &nbsp; Umidade do ar</span
+                ><span data-i18n="terrarium.humidity.label"></span
                 ><output id="humidity-value">58%</output></label
               ><input id="humidity" type="range" min="0" max="100" value="58" />
               <div class="range-labels">
-                <span>Seco</span><span>Úmido</span>
+                <span data-i18n="terrarium.humidity.low"></span
+                ><span data-i18n="terrarium.humidity.high"></span>
               </div>
             </div>
             <div class="slider-block">
               <label for="light"
-                ><span>☼ &nbsp; Luz solar</span
+                ><span data-i18n="terrarium.light.label"></span
                 ><output id="light-value">72%</output></label
               ><input id="light" type="range" min="0" max="100" value="72" />
               <div class="range-labels">
-                <span>Sombra</span><span>Sol pleno</span>
+                <span data-i18n="terrarium.light.low"></span
+                ><span data-i18n="terrarium.light.high"></span>
               </div>
             </div>
             <div class="slider-block">
               <label for="randomness"
-                ><span>⤨ &nbsp; Aleatoriedade</span
+                ><span data-i18n="terrarium.randomness.label"></span
                 ><output id="randomness-value">28%</output></label
               ><input
                 id="randomness"
@@ -87,11 +101,11 @@
                 max="100"
                 value="28"
               />
-              <p class="field-note">Variação nas decisões de exploração.</p>
+              <p class="field-note" data-i18n="terrarium.randomness.help"></p>
             </div>
             <div class="slider-block">
               <label for="repose-angle"
-                ><span>▱ &nbsp; Repouso da terra</span
+                ><span data-i18n="terrarium.soil.label"></span
                 ><output id="repose-angle-value">36°</output></label
               ><input
                 id="repose-angle"
@@ -100,14 +114,12 @@
                 max="55"
                 value="36"
               />
-              <p class="field-note">
-                Maior ângulo: menos deslizamento. Modelo exploratório.
-              </p>
+              <p class="field-note" data-i18n="terrarium.soil.help"></p>
             </div>
             <div id="soil-material-panel" hidden></div>
             <div class="slider-block">
               <label for="temperature"
-                ><span>☷ &nbsp; Temperatura do ar</span
+                ><span data-i18n="terrarium.temperature.label"></span
                 ><output id="temperature-value">24 °C</output></label
               ><input
                 id="temperature"
@@ -116,95 +128,103 @@
                 max="45"
                 value="24"
               />
-              <p class="field-note">Referência térmica independente da luz.</p>
+              <p class="field-note" data-i18n="terrarium.temperature.help"></p>
             </div>
             <button id="rain" class="rain-button">
-              <span>☂</span> Fazer chover <span>+12% umidade</span>
+              <span>☂</span> <span data-i18n="terrarium.rain"></span>
+              <span data-i18n="terrarium.rain.effect"></span>
             </button>
           </section>
           <section class="panel intervention-panel">
             <div class="section-label">
-              <span>INTERVENÇÕES</span><span class="tiny-number">02</span>
+              <span data-i18n="terrarium.tools.title"></span
+              ><span class="tiny-number">02</span>
             </div>
-            <h2>Deixe sua marca</h2>
-            <p class="muted small" id="tool-hint">
-              Escolha um elemento e clique no solo.
-            </p>
+            <h2 data-i18n="terrarium.tools.heading"></h2>
+            <p
+              class="muted small"
+              id="tool-hint"
+              data-i18n="terrarium.tools.help"
+            ></p>
             <div class="tools">
               <button data-tool="food" aria-pressed="false">
                 <span aria-hidden="true" class="tool-icon food-icon">◒</span
-                ><span>Alimento</span>
+                ><span data-i18n="terrarium.food"></span>
               </button>
               <button data-tool="plant" aria-pressed="false">
                 <span aria-hidden="true" class="tool-icon">⚘</span
-                ><span>Planta</span>
+                ><span data-i18n="terrarium.plant"></span>
               </button>
               <button data-tool="predator" aria-pressed="false">
                 <span aria-hidden="true" class="tool-icon predator-icon">✳</span
-                ><span>Predador</span>
+                ><span data-i18n="terrarium.predator"></span>
               </button>
               <button data-tool="scent" aria-pressed="false">
                 <span aria-hidden="true" class="tool-icon">◌</span
-                ><span>Odor estranho</span>
+                ><span data-i18n="terrarium.foreignOdor"></span>
               </button>
             </div>
-            <p class="field-note">
-              Clique novamente no elemento para voltar à câmera.
-            </p>
+            <p class="field-note" data-i18n="terrarium.tools.reset"></p>
           </section>
           <section id="biology-panel" class="panel biology-panel"></section>
           <details id="keyboard-placement"></details>
           <div class="seed-box">
-            <label for="seed">SEMENTE DO EXPERIMENTO</label>
+            <label for="seed" data-i18n="terrarium.seed.title"></label>
             <div>
               <input
                 id="seed"
                 value="SEMENTE-42"
                 maxlength="40"
-                aria-label="Semente do experimento"
+                data-i18n-aria-label="terrarium.seed.label"
               /><button
                 id="apply-seed"
-                title="Iniciar com esta semente"
-                aria-label="Iniciar com esta semente"
+                data-i18n-title="terrarium.seed.apply"
+                data-i18n-aria-label="terrarium.seed.apply"
               >
                 ↗
               </button>
             </div>
-            <button id="replay" class="text-button">
-              ↺ Repetir cenário e intervenções
-            </button>
+            <button
+              id="replay"
+              class="text-button"
+              data-i18n="terrarium.seed.replay"
+            ></button>
           </div>
         </aside>
         <section class="center-panel">
           <div class="scene-card">
             <div class="scene-toolbar">
               <div class="live-status">
-                <i></i><span id="status-text">ECOSSISTEMA VIVO</span>
+                <i></i
+                ><span
+                  id="status-text"
+                  data-i18n="terrarium.status.live"
+                ></span>
               </div>
               <div class="view-switch">
                 <button
                   id="view-iso"
                   class="active"
-                  aria-label="Vista em perspectiva"
-                  title="Perspectiva"
+                  data-i18n-aria-label="terrarium.camera.perspective.label"
+                  data-i18n-title="terrarium.camera.perspective"
                 >
                   ◇</button
                 ><button
                   id="view-top"
-                  aria-label="Vista de cima"
-                  title="Vista de cima"
+                  data-i18n-aria-label="terrarium.camera.top"
+                  data-i18n-title="terrarium.camera.top"
                 >
                   ▦</button
                 ><button
                   id="view-side"
-                  aria-label="Vista lateral dos túneis"
-                  title="Alternar entre os quatro lados do terrário"
+                  data-i18n-aria-label="terrarium.camera.side"
+                  data-i18n-title="terrarium.camera.sides"
                 >
                   ▤</button
                 ><button
                   id="fullscreen"
-                  aria-label="Tela cheia"
-                  title="Tela cheia"
+                  data-i18n-aria-label="terrarium.camera.fullscreen"
+                  data-i18n-title="terrarium.camera.fullscreen"
                 >
                   ⛶
                 </button>
@@ -215,63 +235,72 @@
               role="group"
               tabindex="0"
               aria-describedby="scene-keyboard-hint"
-              aria-label="Terrário tridimensional com formigas, plantas, lago e aranhas"
+              data-i18n-aria-label="terrarium.camera.label"
             >
               <div id="loading">
-                <span class="loading-leaf">⚘</span>Preparando um pequeno mundo…
+                <span class="loading-leaf">⚘</span
+                ><span data-i18n="terrarium.loading"></span>
               </div>
-              <button id="resume-overlay" hidden>
-                Simulação pausada · Continuar ▶
-              </button>
+              <button
+                id="resume-overlay"
+                hidden
+                data-i18n="terrarium.paused"
+              ></button>
             </div>
             <div class="ant-camera">
               <div>
-                <span class="eyebrow">NA PERSPECTIVA DE UMA FORMIGA</span
-                ><span id="ant-state"
-                  >Escolha uma habitante para acompanhar.</span
-                ><span id="ant-genome">Herança não registrada</span
+                <span class="eyebrow" data-i18n="terrarium.ant.title"></span
+                ><span id="ant-state" data-i18n="terrarium.ant.choose"></span
+                ><span id="ant-genome" data-i18n="terrarium.ant.noGenome"></span
                 ><span id="ant-climate"></span><span id="ant-gas"></span
                 ><span id="ant-learning"></span>
               </div>
               <select
                 id="ant-select"
-                aria-label="Formiga para acompanhar"
+                data-i18n-aria-label="terrarium.ant.select"
               ></select
-              ><button id="follow-ant">1ª pessoa ↗</button
-              ><button id="exit-ant" hidden>Sair da formiga</button>
+              ><button id="follow-ant" data-i18n="terrarium.ant.enter"></button
+              ><button
+                id="exit-ant"
+                hidden
+                data-i18n="terrarium.ant.exit"
+              ></button>
             </div>
-            <p id="scene-keyboard-hint">
-              Na câmera: setas giram ou olham, +/− aproximam/afastam a visão
-              geral, Home centraliza e Esc sai da formiga. Use Tab para
-              continuar aos controles.
-            </p>
+            <p
+              id="scene-keyboard-hint"
+              data-i18n="terrarium.camera.keyboard"
+            ></p>
             <div class="scene-caption">
               <span class="scene-tag"
                 ><i class="green-dot"></i>
-                <span id="biome-label">Terrário de floresta</span></span
-              ><span id="scene-guide"
-                >Arraste para orbitar · Role para aproximar</span
-              >
+                <span
+                  id="biome-label"
+                  data-i18n="terrarium.biome.forest"
+                ></span></span
+              ><span id="scene-guide" data-i18n="terrarium.camera.guide"></span>
             </div>
             <div class="scene-controls">
               <label class="toggle-label"
                 ><input type="checkbox" id="interior" /><span
                   class="toggle-track"
                 ></span
-                >Ver túneis internos</label
-              >
+                ><span data-i18n="terrarium.camera.interior"></span
+              ></label>
               <button
                 id="play"
                 class="play-button"
-                aria-label="Pausar simulação"
+                data-i18n-aria-label="terrarium.pause"
               >
                 Ⅱ
               </button>
               <div class="time-display">
-                <strong id="day">Dia 0</strong
-                ><span id="time-of-day">A fundação</span>
+                <strong id="day" data-i18n="terrarium.dayZero"></strong
+                ><span id="time-of-day" data-i18n="terrarium.founding"></span>
               </div>
-              <div class="speed-controls" aria-label="Velocidade da simulação">
+              <div
+                class="speed-controls"
+                data-i18n-aria-label="terrarium.speed"
+              >
                 <button data-speed="1" class="active">1×</button
                 ><button data-speed="3">3×</button
                 ><button data-speed="10">10×</button>
@@ -281,92 +310,142 @@
                 ><input type="checkbox" id="trails" /><span
                   class="toggle-track"
                 ></span
-                >Feromônios</label
-              >
+                ><span data-i18n="terrarium.pheromones"></span
+              ></label>
             </div>
           </div>
           <div id="comparison-panel" class="comparison-strip" hidden>
             <div>
-              <span class="eyebrow">DOIS COMEÇOS, DOIS FUTUROS</span>
-              <p id="comparison-text">Cenário B: umidade inicial +1 ponto.</p>
+              <span
+                class="eyebrow"
+                data-i18n="terrarium.comparison.title"
+              ></span>
+              <p
+                id="comparison-text"
+                data-i18n="terrarium.comparison.initial"
+              ></p>
             </div>
             <div class="scenario-switch">
-              <button data-scenario="a" class="active">A · original</button
-              ><button data-scenario="b">B · alterado</button>
+              <button
+                data-scenario="a"
+                class="active"
+                data-i18n="terrarium.comparison.a"
+              ></button
+              ><button
+                data-scenario="b"
+                data-i18n="terrarium.comparison.b"
+              ></button>
             </div>
           </div>
           <div class="observation-card">
             <span class="observation-symbol" aria-hidden="true">↗</span>
             <div>
-              <span class="eyebrow">O QUE ESTÁ ACONTECENDO</span>
-              <p id="observation">
-                A rainha prepara o ninho. O primeiro ciclo de vida está
-                começando.
-              </p>
+              <span
+                class="eyebrow"
+                data-i18n="terrarium.observation.title"
+              ></span>
+              <p id="observation" data-i18n="terrarium.observation.initial"></p>
             </div>
             <span class="observation-line"></span>
           </div>
           <div class="legend">
-            <span><i class="legend-dot ant-dot"></i>Formigas</span
-            ><span><i class="legend-dot brood-dot"></i>Crias no ninho</span
-            ><span><i class="legend-dot food-dot"></i>Alimento</span
-            ><span><i class="legend-dot predator-dot"></i>Aranhas</span
-            ><button id="export" class="text-button">↓ Exportar JSON</button>
+            <span
+              ><i class="legend-dot ant-dot"></i
+              ><span data-i18n="terrarium.ants"></span></span
+            ><span
+              ><i class="legend-dot brood-dot"></i
+              ><span data-i18n="terrarium.brood.nest"></span></span
+            ><span
+              ><i class="legend-dot food-dot"></i
+              ><span data-i18n="terrarium.food"></span></span
+            ><span
+              ><i class="legend-dot predator-dot"></i
+              ><span data-i18n="terrarium.spiders"></span></span
+            ><button
+              id="export"
+              class="text-button"
+              data-i18n="terrarium.export"
+            ></button>
           </div>
           <details id="daily-data" class="daily-data"></details>
         </section>
         <aside
           class="right-panel"
-          aria-label="Indicadores e experimentos salvos"
+          data-i18n-aria-label="terrarium.metrics.label"
         >
           <section class="panel metrics-panel">
             <div class="section-label">
-              <span>A COLÔNIA</span><span class="live-word"><i></i> AGORA</span>
+              <span data-i18n="terrarium.colony.title"></span
+              ><span class="live-word"
+                ><i></i> <span data-i18n="terrarium.now"></span
+              ></span>
             </div>
             <div class="population-line">
               <strong id="population">2</strong>
               <div>
-                formigas<span id="population-detail">1 rainha · 1 macho</span>
+                <span data-i18n="terrarium.ants.unit"></span
+                ><span
+                  id="population-detail"
+                  data-i18n="terrarium.population.initial"
+                ></span>
               </div>
               <span class="ant-glyph" aria-hidden="true">♧</span>
             </div>
             <div class="metric-grid">
-              <div><span>Crias</span><strong id="brood">0</strong></div>
               <div>
-                <span>Reserva</span><strong id="food">0<span> u.</span></strong>
+                <span data-i18n="terrarium.brood"></span
+                ><strong id="brood">0</strong>
               </div>
               <div>
-                <span>Vegetação</span
-                ><strong id="vegetation">32<span> plantas</span></strong>
+                <span data-i18n="terrarium.reserve"></span
+                ><strong id="food"
+                  >0<span data-i18n="terrarium.units"></span
+                ></strong>
               </div>
               <div>
-                <span>Predadores</span><strong id="predators">2</strong>
+                <span data-i18n="terrarium.vegetation"></span
+                ><strong id="vegetation"
+                  >32<span data-i18n="terrarium.plants"></span
+                ></strong>
+              </div>
+              <div>
+                <span data-i18n="terrarium.predators"></span
+                ><strong id="predators">2</strong>
               </div>
             </div>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>FUNDAÇÃO E VIDA COLETIVA</span><span>↔</span>
+              <span data-i18n="terrarium.family.title"></span><span>↔</span>
             </div>
-            <p id="family-status">1 colônia · 2 alados fundadores.</p>
+            <p id="family-status" data-i18n="terrarium.family.initial"></p>
             <p id="daughter-status"></p>
-            <p id="founding-status" role="status" aria-live="off">
-              Aguardando o primeiro voo.
-            </p>
-            <button id="focus-sealing" class="text-button" disabled>
-              Observar entrada por dentro
-            </button>
+            <p
+              id="founding-status"
+              role="status"
+              aria-live="off"
+              data-i18n="terrarium.founding.wait"
+            ></p>
+            <button
+              id="focus-sealing"
+              class="text-button"
+              disabled
+              data-i18n="terrarium.sealing.focus"
+            ></button>
             <p id="fertility-status" class="field-note" hidden></p>
             <div id="survival-panel" hidden></div>
             <p id="store-status" class="field-note" hidden></p>
             <p id="development-status" hidden></p>
-            <button id="focus-brood" class="text-button" disabled>
-              Observar crias de perto
-            </button>
+            <button
+              id="focus-brood"
+              class="text-button"
+              disabled
+              data-i18n="terrarium.brood.focus"
+            ></button>
             <div id="season-panel" hidden>
               <p id="season-status"></p>
               <label for="photoperiod"
-                >Duração diária da luz
+                ><span data-i18n="terrarium.photoperiod"></span>
                 <strong id="photoperiod-value">12 h</strong></label
               ><input
                 id="photoperiod"
@@ -375,53 +454,52 @@
                 max="24"
                 step="0.5"
                 value="12"
-                aria-label="Duração diária da luz"
+                data-i18n-aria-label="terrarium.photoperiod"
               />
             </div>
             <p id="chemical-status"></p>
             <div
               id="odor-legend"
               class="odor-legend"
-              aria-label="Cores dos territórios"
+              data-i18n-aria-label="terrarium.odor.label"
             ></div>
-            <p id="colony-status">
-              A divisão de tarefas começa com as primeiras operárias.
-            </p>
+            <p id="colony-status" data-i18n="terrarium.colony.initial"></p>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>TÚNEIS VIVOS</span><span>↓</span>
+              <span data-i18n="terrarium.tunnels.title"></span><span>↓</span>
             </div>
-            <p id="soil-status">
-              As operárias organizam as frentes de trabalho.
-            </p>
+            <p id="soil-status" data-i18n="terrarium.tunnels.initial"></p>
             <p id="granular-status"></p>
             <p id="structure-status"></p>
-            <button id="focus-structure" class="text-button" disabled>
-              Observar teto com menor suporte
-            </button>
-            <button id="disturb" class="text-button">
-              Abalar uma galeria vazia
-            </button>
+            <button
+              id="focus-structure"
+              class="text-button"
+              disabled
+              data-i18n="terrarium.structure.focus"
+            ></button>
+            <button
+              id="disturb"
+              class="text-button"
+              data-i18n="terrarium.structure.disturb"
+            ></button>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>RELAÇÕES DO ECOSSISTEMA</span><span>⚘</span>
+              <span data-i18n="terrarium.ecology.title"></span><span>⚘</span>
             </div>
-            <p id="ecology-status">
-              As relações ecológicas aparecem conforme o tempo avança.
-            </p>
-            <p>
-              O melaço custa recursos da planta. O odor compatível pode permitir
-              a adoção de uma lagarta.
-            </p>
-            <button id="focus-ecology" class="text-button" disabled>
-              Observar relações de perto
-            </button>
+            <p id="ecology-status" data-i18n="terrarium.ecology.initial"></p>
+            <p data-i18n="terrarium.ecology.help"></p>
+            <button
+              id="focus-ecology"
+              class="text-button"
+              disabled
+              data-i18n="terrarium.ecology.focus"
+            ></button>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>ÁGUA E CALOR NO SOLO</span><span>◉</span>
+              <span data-i18n="terrarium.climate.title"></span><span>◉</span>
             </div>
             <p id="climate-status"></p>
             <div class="climate-tabs">
@@ -429,32 +507,28 @@
                 class="text-button"
                 data-climate-map="water"
                 aria-pressed="true"
-              >
-                Ver água</button
+                data-i18n="terrarium.climate.water"
+              ></button
               ><button
                 class="text-button"
                 data-climate-map="heat"
                 aria-pressed="false"
-              >
-                Ver calor
-              </button>
+                data-i18n="terrarium.climate.heat"
+              ></button>
             </div>
             <canvas
               id="climate-map"
               width="280"
               height="112"
               role="img"
-              aria-label="Corte central do solo"
+              data-i18n-aria-label="terrarium.climate.map"
             ></canvas>
             <p id="climate-map-caption" class="field-note"></p>
-            <p>
-              Água nos poros e umidade do ar são medidas diferentes. Modelo
-              espacial exploratório.
-            </p>
+            <p data-i18n="terrarium.climate.help"></p>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>AR NAS GALERIAS</span><span>≈</span>
+              <span data-i18n="terrarium.gas.title"></span><span>≈</span>
             </div>
             <p id="gas-status"></p>
             <canvas
@@ -462,15 +536,12 @@
               width="280"
               height="112"
               role="img"
-              aria-label="Diagrama das galerias, entradas e sentido do fluxo de ar"
+              data-i18n-aria-label="terrarium.gas.map"
             ></canvas>
-            <p class="field-note">
-              Verde → ocre: mais CO₂. Círculos maiores: entradas. Setas:
-              circulação. Projeção esquemática, modelo exploratório.
-            </p>
+            <p class="field-note" data-i18n="terrarium.gas.help"></p>
             <div class="slider-block">
               <label for="wind"
-                ><span>Vento horizontal</span
+                ><span data-i18n="terrarium.wind"></span
                 ><output id="wind-value">0 u.</output></label
               >
               <input
@@ -481,270 +552,337 @@
                 step="0.5"
                 value="0"
               />
-              <p class="field-note">
-                Intensidade em unidades do modelo; também transporta feromônios.
-              </p>
+              <p class="field-note" data-i18n="terrarium.wind.help"></p>
             </div>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>APRENDIZADO LOCAL</span><span>◇</span>
+              <span data-i18n="terrarium.learning.title"></span><span>◇</span>
             </div>
             <p id="learning-status"></p>
-            <label for="learning-mode">Navegação</label
+            <label
+              for="learning-mode"
+              data-i18n="terrarium.learning.navigation"
+            ></label
             ><select id="learning-mode">
               <option value="aco">ACO</option>
-              <option value="neural" disabled>Política aprendida</option>
+              <option
+                value="neural"
+                disabled
+                data-i18n="terrarium.learning.policy"
+              ></option>
             </select>
-            <p id="training-status">
-              Treino separado da renderização, com avaliação contra ACO. Modelo
-              exploratório.
-            </p>
+            <p id="training-status" data-i18n="terrarium.learning.help"></p>
             <div class="climate-tabs">
-              <button id="train-policy" class="text-button">
-                Treinar e comparar</button
-              ><button id="apply-policy" class="text-button" disabled>
-                Aplicar política
-              </button>
+              <button
+                id="train-policy"
+                class="text-button"
+                data-i18n="terrarium.learning.train"
+              ></button
+              ><button
+                id="apply-policy"
+                class="text-button"
+                disabled
+                data-i18n="terrarium.learning.apply"
+              ></button>
             </div>
           </section>
           <section class="panel soil-panel">
             <div class="section-label">
-              <span>EXPERIMENTOS SALVOS</span><span>▣</span>
+              <span data-i18n="terrarium.checkpoints.title"></span
+              ><span>▣</span>
             </div>
-            <p id="checkpoint-status" role="status" aria-live="polite">
-              Checkpoints ficam neste navegador. Exportar dados cria uma cópia
-              em JSON.
-            </p>
-            <label for="checkpoint-name">Nome do checkpoint</label
+            <p
+              id="checkpoint-status"
+              role="status"
+              aria-live="polite"
+              data-i18n="terrarium.checkpoints.help"
+            ></p>
+            <label
+              for="checkpoint-name"
+              data-i18n="terrarium.checkpoints.name"
+            ></label
             ><input
               id="checkpoint-name"
               type="text"
               maxlength="60"
-              placeholder="Antes da chuva"
-            /><button id="create-checkpoint" class="text-button">
-              Criar checkpoint</button
-            ><label for="checkpoint-list">Checkpoint para recuperar</label
+              data-i18n-placeholder="terrarium.checkpoints.placeholder"
+            /><button
+              id="create-checkpoint"
+              class="text-button"
+              data-i18n="terrarium.checkpoints.create"
+            ></button
+            ><label
+              for="checkpoint-list"
+              data-i18n="terrarium.checkpoints.select"
+            ></label
             ><select id="checkpoint-list"></select
-            ><button id="restore-checkpoint" class="text-button" disabled>
-              Restaurar checkpoint</button
-            ><button id="import-checkpoint" class="text-button">
-              Importar experimento</button
+            ><button
+              id="restore-checkpoint"
+              class="text-button"
+              disabled
+              data-i18n="terrarium.checkpoints.restore"
+            ></button
+            ><button
+              id="import-checkpoint"
+              class="text-button"
+              data-i18n="terrarium.checkpoints.import"
+            ></button
             ><input
               id="import-experiment"
               type="file"
               accept=".json,application/json"
-              aria-label="Arquivo do experimento"
+              data-i18n-aria-label="terrarium.checkpoints.file"
               hidden
             />
-            <p class="field-note">
-              Antes de recuperar, o estado atual ganha um checkpoint nomeado.
-              Automáticos: 8 recentes. Nomeados: preservados. Datas em São
-              Paulo.
-            </p>
+            <p class="field-note" data-i18n="terrarium.checkpoints.note"></p>
           </section>
           <section class="panel chart-panel">
             <div class="section-label">
-              <span>VIDA AO LONGO DO TEMPO</span
-              ><span id="chart-days">0 DIAS</span>
+              <span data-i18n="terrarium.chart.title"></span
+              ><span id="chart-days" data-i18n="terrarium.chart.initial"></span>
             </div>
             <canvas
               id="chart"
               aria-describedby="chart-summary"
               height="130"
-              aria-label="Gráfico do número de formigas ao longo do tempo"
+              data-i18n-aria-label="terrarium.chart.label"
             ></canvas>
             <p id="chart-summary"></p>
             <div class="chart-legend">
               <span
-                ><i></i>Formigas
+                ><i></i><span data-i18n="terrarium.ants"></span>
                 <span id="chart-b-legend" hidden> A</span></span
               ><span id="chart-comparison-legend" hidden
-                ><i class="line-b"></i>Formigas B</span
-              ><span class="chart-axis-note">dias →</span>
+                ><i class="line-b"></i
+                ><span data-i18n="terrarium.chart.b"></span></span
+              ><span
+                class="chart-axis-note"
+                data-i18n="terrarium.chart.axis"
+              ></span>
             </div>
           </section>
           <section class="forecast-card">
             <div class="section-label">
-              <span>UM OLHAR ADIANTE</span><span>✧</span>
+              <span data-i18n="terrarium.forecast.title"></span><span>✧</span>
             </div>
-            <h2>O futuro tem intervalos.</h2>
-            <p id="forecast-horizon">População estimada daqui a 3 dias:</p>
+            <h2 data-i18n="terrarium.forecast.heading"></h2>
+            <p id="forecast-horizon" data-i18n="terrarium.forecast.horizon"></p>
             <div class="forecast-value" id="forecast-value">
-              — <span>formigas</span>
+              — <span data-i18n="terrarium.ants.unit"></span>
             </div>
             <div class="forecast-range"><span></span><i></i><span></span></div>
-            <p class="forecast-note" id="forecast-note">
-              Previsão aguardando início.
-            </p>
-            <p id="forecast-method-note" class="forecast-note">
-              Estado completo do modelo.
-            </p>
+            <p
+              class="forecast-note"
+              id="forecast-note"
+              data-i18n="terrarium.forecast.wait"
+            ></p>
+            <p
+              id="forecast-method-note"
+              class="forecast-note"
+              data-i18n="terrarium.forecast.complete"
+            ></p>
             <progress
               id="forecast-progress"
               max="1"
               value="0"
-              aria-label="Progresso da previsão"
+              data-i18n-aria-label="terrarium.forecast.progress"
               hidden
             ></progress>
             <p id="forecast-cost" class="forecast-note"></p>
             <div class="forecast-options">
               <label
-                >Observação<select id="forecast-observation">
-                  <option value="complete">Estado completo (modelo 3D)</option>
-                  <option value="counts">
-                    Contagem e histórico (aproximação)
-                  </option>
-                </select></label
-              >
+                ><span data-i18n="terrarium.forecast.observation"></span
+                ><select id="forecast-observation">
+                  <option
+                    value="complete"
+                    data-i18n="terrarium.forecast.full"
+                  ></option>
+                  <option
+                    value="counts"
+                    data-i18n="terrarium.forecast.counts"
+                  ></option></select
+              ></label>
               <label
-                >Horizonte<select id="forecast-days">
-                  <option value="1">1 dia</option>
-                  <option value="3" selected>3 dias</option>
-                  <option value="7">7 dias</option>
-                </select></label
-              >
+                ><span data-i18n="terrarium.forecast.days"></span
+                ><select id="forecast-days">
+                  <option
+                    value="1"
+                    data-i18n="terrarium.forecast.oneDay"
+                  ></option>
+                  <option
+                    value="3"
+                    selected
+                    data-i18n="terrarium.forecast.threeDays"
+                  ></option>
+                  <option
+                    value="7"
+                    data-i18n="terrarium.forecast.sevenDays"
+                  ></option></select
+              ></label>
               <label
-                >Futuros<select id="forecast-runs">
-                  <option value="6">6 cenários</option>
-                  <option value="18" selected>18 cenários</option>
-                </select></label
-              >
+                ><span data-i18n="terrarium.forecast.futures"></span
+                ><select id="forecast-runs">
+                  <option
+                    value="6"
+                    data-i18n="terrarium.forecast.sixRuns"
+                  ></option>
+                  <option
+                    value="18"
+                    selected
+                    data-i18n="terrarium.forecast.eighteenRuns"
+                  ></option></select
+              ></label>
               <label
-                >Limite de cálculo<select id="forecast-budget">
-                  <option value="10">10 s de trabalho</option>
-                  <option value="30" selected>30 s de trabalho</option>
-                  <option value="120">120 s de trabalho</option>
-                </select></label
-              >
+                ><span data-i18n="terrarium.forecast.budget"></span
+                ><select id="forecast-budget">
+                  <option
+                    value="10"
+                    data-i18n="terrarium.forecast.tenSeconds"
+                  ></option>
+                  <option
+                    value="30"
+                    selected
+                    data-i18n="terrarium.forecast.thirtySeconds"
+                  ></option>
+                  <option
+                    value="120"
+                    data-i18n="terrarium.forecast.twoMinutes"
+                  ></option></select
+              ></label>
             </div>
             <div class="forecast-actions">
-              <button id="forecast-run">Recalcular previsão</button
-              ><button id="forecast-cancel" disabled>Cancelar previsão</button>
+              <button
+                id="forecast-run"
+                data-i18n="terrarium.forecast.run"
+              ></button
+              ><button
+                id="forecast-cancel"
+                disabled
+                data-i18n="terrarium.forecast.cancel"
+              ></button>
             </div>
             <details id="forecast-benchmark" class="forecast-benchmark">
-              <summary>Erros por horizonte · ensaio reservado</summary>
+              <summary data-i18n="terrarium.benchmark.title"></summary>
               <label
-                >Métrica<select id="forecast-metric">
-                  <option value="mae">Erro absoluto médio (formigas)</option>
-                  <option value="rmse">
-                    Raiz do erro quadrático (formigas)
-                  </option>
-                  <option value="coverage">Faixa contém o desfecho (%)</option>
-                </select></label
-              >
+                ><span data-i18n="terrarium.benchmark.metric"></span
+                ><select id="forecast-metric">
+                  <option
+                    value="mae"
+                    data-i18n="terrarium.benchmark.mae"
+                  ></option>
+                  <option
+                    value="rmse"
+                    data-i18n="terrarium.benchmark.rmse"
+                  ></option>
+                  <option
+                    value="coverage"
+                    data-i18n="terrarium.benchmark.coverage"
+                  ></option></select
+              ></label>
               <table>
-                <caption>
-                  Comparação com continuação sintética sem intervenções futuras
-                </caption>
+                <caption data-i18n="terrarium.benchmark.caption"></caption>
                 <thead>
                   <tr>
-                    <th scope="col">Dias</th>
-                    <th scope="col">Completo</th>
-                    <th scope="col">Contagem</th>
-                    <th scope="col">Base</th>
+                    <th scope="col" data-i18n="terrarium.benchmark.days"></th>
+                    <th scope="col" data-i18n="terrarium.benchmark.full"></th>
+                    <th scope="col" data-i18n="terrarium.benchmark.counts"></th>
+                    <th
+                      scope="col"
+                      data-i18n="terrarium.benchmark.baseline"
+                    ></th>
                   </tr>
                 </thead>
                 <tbody id="forecast-benchmark-rows"></tbody>
               </table>
-              <p id="forecast-benchmark-note">
-                Abra para carregar o ensaio reservado.
-              </p>
+              <p
+                id="forecast-benchmark-note"
+                data-i18n="terrarium.benchmark.open"
+              ></p>
               <p id="forecast-benchmark-cost"></p>
-              <a href="%BASE_URL%benchmarks/previsoes-v1.json" download
-                >Baixar relatório completo em JSON</a
-              >
+              <a
+                href="%BASE_URL%benchmarks/previsoes-v1.json"
+                download
+                data-i18n="terrarium.benchmark.download"
+              ></a>
             </details>
-            <button id="compare">Comparar dois cenários <span>↗</span></button>
+            <button id="compare">
+              <span data-i18n="terrarium.comparison.run"></span> <span>↗</span>
+            </button>
           </section>
           <section class="panel events-panel">
             <div class="section-label">
-              <span>DIÁRIO DO TERRÁRIO</span><span class="tiny-number">↙</span>
+              <span data-i18n="terrarium.events.title"></span
+              ><span class="tiny-number">↙</span>
             </div>
             <ol
               id="events"
               aria-live="off"
               tabindex="0"
-              aria-label="Eventos do terrário; use as setas para rolar"
+              data-i18n-aria-label="terrarium.events.label"
             ></ol>
           </section>
         </aside>
       </div>
       <footer>
-        <a href="./ensino/index.html">Guia do professor</a>
-        <a href="./modelo/index.html">Como o modelo funciona · ODD</a>
-        <a href="./experimentos.html">Experimentos reproduzíveis</a>
+        <a href="./ensino/index.html" data-i18n="terrarium.teaching"></a>
+        <a href="./modelo/index.html" data-i18n="terrarium.odd"></a>
+        <a href="./experimentos.html" data-i18n="terrarium.experiments"></a>
         <span
-          ><i class="green-dot"></i> Autonomia individual. Vida coletiva.</span
-        ><span id="save-status">Salvo apenas neste navegador</span
+          ><i class="green-dot"></i>
+          <span data-i18n="terrarium.footer.life"></span></span
+        ><span id="save-status" data-i18n="terrarium.save.local"></span
         ><span
-          >OBSERVAR TAMBÉM É DESCOBRIR. ·
-          <a href="%BASE_URL%licencas.html" target="_blank" rel="noopener"
-            >Licenças</a
-          ></span
-        >
+          ><span data-i18n="terrarium.footer.discover"></span>
+          <a
+            href="%BASE_URL%licencas.html"
+            target="_blank"
+            rel="noopener"
+            data-i18n="terrarium.licenses"
+          ></a
+        ></span>
       </footer>
     </main>
     <div id="toast" role="status" hidden></div>
     <dialog id="help-dialog" aria-labelledby="help-title">
-      <button class="dialog-close" id="close-help" aria-label="Fechar">
+      <button
+        class="dialog-close"
+        id="close-help"
+        data-i18n-aria-label="terrarium.close"
+      >
         ×
       </button>
-      <div class="eyebrow">GUIA DE OBSERVAÇÃO</div>
-      <h2 id="help-title">Uma colônia.<br />Muitos futuros possíveis.</h2>
-      <p>
-        Cada formiga observa o que está perto e decide entre explorar, coletar,
-        seguir feromônios, fugir e voltar ao ninho. As interações formam o
-        comportamento da colônia.
-      </p>
+      <div class="eyebrow" data-i18n="terrarium.help.title"></div>
+      <h2 id="help-title">
+        <span data-i18n="terrarium.help.colony"></span><br /><span
+          data-i18n="terrarium.help.futures"
+        ></span>
+      </h2>
+      <p data-i18n="terrarium.help.intro"></p>
       <div class="help-columns">
         <div>
-          <h3>O ciclo de vida</h3>
-          <p>
-            O terrário novo começa com dois alados e solo intacto. Umidade e luz
-            favoráveis após chuva permitem o voo. A rainha acasala, perde as
-            asas, escava e cria as primeiras naníticas com reservas maternas,
-            sem buscar alimento. Depois, as operárias precisam forragear. Os
-            tempos são acelerados; este não é um calendário biológico.
-          </p>
+          <h3 data-i18n="terrarium.help.lifecycle.title"></h3>
+          <p data-i18n="terrarium.help.lifecycle"></p>
         </div>
         <div>
-          <h3>Novas colônias</h3>
-          <p>
-            Colônias maduras podem reservar alimento para princesas e zangões.
-            Os alados precisam sair do ninho e encontrar uma janela úmida e
-            quente após chuva. Uma filha funda outro abrigo com recursos e
-            parentesco próprios. Se perderem a janela, podem precisar de outra
-            chuva. Limite atual: quatro colônias por experimento.
-          </p>
+          <h3 data-i18n="terrarium.help.colonies.title"></h3>
+          <p data-i18n="terrarium.help.colonies"></p>
         </div>
         <div>
-          <h3>Repetir e comparar</h3>
-          <p>
-            A mesma semente, condições e sequência de intervenções reproduzem a
-            execução. “Repetir” reaplica as intervenções nos mesmos instantes. O
-            cenário B começa do estado atual com 1 ponto a mais de umidade.
-          </p>
+          <h3 data-i18n="terrarium.help.replay.title"></h3>
+          <p data-i18n="terrarium.help.replay"></p>
         </div>
         <div>
-          <h3>Prever com incerteza</h3>
-          <p>
-            A previsão executa 18 cenários com pequenas variações de luz e
-            umidade e novas escolhas aleatórias. O intervalo mostra os percentis
-            10–90 dessas simulações, não uma garantia. Compare previsões e
-            resultados.
-          </p>
+          <h3 data-i18n="terrarium.help.forecast.title"></h3>
+          <p data-i18n="terrarium.help.forecast"></p>
         </div>
       </div>
-      <p class="help-note">
-        Aleatoriedade e caos são conceitos diferentes. Divergência entre
-        cenários, por si só, não comprova caos matemático. Este protótipo
-        explora um modelo ecológico simplificado; seus resultados não validam
-        previsões sobre um terrário real. Limite: 450 formigas e crias.
-      </p>
-      <button class="primary-button" id="start-observing">
-        Voltar ao terrário ↗
-      </button>
+      <p class="help-note" data-i18n="terrarium.help.limits"></p>
+      <button
+        class="primary-button"
+        id="start-observing"
+        data-i18n="terrarium.help.back"
+      ></button>
     </dialog>
     <script type="module" src="/src/main.ts"></script>
   </body>

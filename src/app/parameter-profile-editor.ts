@@ -1,3 +1,11 @@
+import type { MessageKey } from "../i18n/catalogs.ts";
+import {
+  message,
+  clearMessage,
+  messageSource,
+  t,
+  locale,
+} from "../i18n/runtime.ts";
 import { installProfileFiles } from "./profile-file-io.ts";
 import { normalizeExperiment } from "../modules/experiments/plan.ts";
 import { normalizeSweep } from "../modules/sweeps/plan.ts";
@@ -38,21 +46,27 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
   for (const p of biologicalProfiles) {
     const o = document.createElement("option");
     o.value = p.id + "@" + p.version;
-    o.textContent = p.label + " · " + o.value;
+    const render = () => {
+      const key =
+        "biology.profile." + (p.id === "lab-lniger-2024" ? p.id : o.value);
+      o.textContent = t(key as MessageKey) + " · " + o.value;
+    };
+    render();
+    const stop = locale.subscribe(render);
+    window.addEventListener("pagehide", stop, { once: true });
     biology.append(o);
   }
   const safe = (action: () => void) => {
     try {
-      error.textContent = "";
+      clearMessage(error);
       action();
     } catch (e) {
-      error.textContent = e instanceof Error ? e.message : String(e);
+      messageSource(error, e instanceof Error ? e.message : String(e));
       error.focus();
     }
   };
   const current = () => {
-    if (!form.reportValidity())
-      throw Error("Confira os campos do perfil antes de continuar.");
+    if (!form.reportValidity()) throw Error(t("profiles.invalid"));
     return checkParameterProfileVersion({
       schema: "viveiro-parameter-profile-v1",
       catalogVersion: 1,
@@ -89,7 +103,7 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
     library.replaceChildren();
     const empty = document.createElement("option");
     empty.value = "";
-    empty.textContent = "Escolha uma versão";
+    message(empty, "profiles.choose");
     library.append(empty);
     for (const p of readParameterProfiles()) {
       const o = document.createElement("option");
@@ -99,8 +113,7 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
     }
   };
   const apply = () => {
-    if (planField.disabled)
-      throw Error("Aguarde ou cancele o experimento antes de alterar o plano.");
+    if (planField.disabled) throw Error(t("profiles.busy"));
     const p = current(),
       plan = normalizeExperiment({
         ...normalizeExperiment(JSON.parse(planField.value)),
@@ -110,10 +123,7 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
       });
     planField.value = JSON.stringify(plan, null, 2);
     planField.dispatchEvent(new Event("input", { bubbles: true }));
-    status.textContent =
-      "Perfil " +
-      parameterProfileKey(p) +
-      " aplicado. A seed e a duração do experimento foram preservadas.";
+    message(status, "profiles.applied", { profile: parameterProfileKey(p) });
   };
   byId("profile-apply").onclick = () => safe(apply);
   form.onsubmit = (e) => {
@@ -123,23 +133,21 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
   byId("profile-from-plan").onclick = () =>
     safe(() => {
       fromPlan();
-      status.textContent = "Valores atuais do plano lidos no editor.";
+      message(status, "profiles.readDone");
     });
   byId("profile-save").onclick = () =>
     safe(() => {
       const p = saveParameterProfile(current());
       refresh();
       library.value = parameterProfileKey(p);
-      status.textContent =
-        "Versão " + parameterProfileKey(p) + " guardada neste navegador.";
+      message(status, "profiles.saved", { profile: parameterProfileKey(p) });
     });
   byId("profile-sweep").onclick = () =>
     safe(() => {
       const field = document.getElementById(
         "sweep-plan",
       ) as HTMLTextAreaElement;
-      if (field.disabled)
-        throw Error("Interrompa a varredura antes de mudar sua base.");
+      if (field.disabled) throw Error(t("profiles.sweepBusy"));
       const p = current(),
         sweep = normalizeSweep(JSON.parse(field.value));
       field.value = JSON.stringify(
@@ -156,8 +164,7 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
         2,
       );
       field.dispatchEvent(new Event("input", { bubbles: true }));
-      status.textContent =
-        "Perfil aplicado à base da varredura. Seed, duração e valores de comparação foram preservados.";
+      message(status, "profiles.sweepDone");
     });
   library.onchange = () =>
     safe(() => {
@@ -166,8 +173,7 @@ export function installParameterEditor(planField: HTMLTextAreaElement) {
       );
       if (p) {
         load(p);
-        status.textContent =
-          "Versão carregada no editor. Aplique para usar no experimento.";
+        message(status, "profiles.loaded");
       }
     });
   installProfileFiles({

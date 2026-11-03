@@ -1,3 +1,5 @@
+import { message, locale, t } from "../i18n/runtime.ts";
+import type { MessageKey } from "../i18n/catalogs.ts";
 import {
   parameterRanges,
   parameterDetails,
@@ -14,7 +16,7 @@ export function parameterFields(container: HTMLElement) {
       meta = parameterDetails[key];
     const group = document.createElement("fieldset"),
       legend = document.createElement("legend");
-    legend.textContent = meta.label;
+    message(legend, ("profiles.parameter." + key) as MessageKey);
     group.append(legend);
     const label = document.createElement("label"),
       input = document.createElement("input");
@@ -25,13 +27,31 @@ export function parameterFields(container: HTMLElement) {
     input.step = "any";
     input.value = String(fallback);
     input.required = true;
-    label.append(document.createTextNode("Valor (" + meta.unit + ") "), input);
+    const valueLabel = document.createElement("span");
+    label.append(valueLabel, " ", input);
     group.append(label);
     const info = document.createElement("p");
     info.className = "parameter-source";
     info.id = "parameter-" + key + "-source";
     input.setAttribute("aria-describedby", info.id);
-    info.textContent = `Faixa: ${min} a ${max} ${meta.unit}. Fonte: src/modules/${meta.source}. ${meta.kind === "hypothesis" ? "Hipótese do modelo" : "Aproximação do modelo"}; sem calibração por espécie.`;
+    const render = () => {
+      const unit = t(("profiles.unit." + key) as MessageKey);
+      message(valueLabel, "profiles.value", { unit });
+      message(info, "profiles.source", {
+        min,
+        max,
+        unit,
+        source: meta.source,
+        kind: t(
+          meta.kind === "hypothesis"
+            ? "profiles.hypothesis"
+            : "profiles.approximation",
+        ),
+      });
+    };
+    render();
+    const stop = locale.subscribe(render);
+    window.addEventListener("pagehide", stop, { once: true });
     group.append(info);
     inputs.set(key, input);
     if (!Object.hasOwn(baseParameterRanges, key)) {
@@ -39,10 +59,9 @@ export function parameterFields(container: HTMLElement) {
         wrap = document.createElement("label");
       active.type = "checkbox";
       input.disabled = true;
-      wrap.append(
-        active,
-        document.createTextNode(" Aplicar esta entrada opcional"),
-      );
+      const optionalLabel = document.createElement("span");
+      message(optionalLabel, "profiles.optional");
+      wrap.append(active, " ", optionalLabel);
       group.append(wrap);
       toggles.set(key, active);
       active.addEventListener("change", () => {

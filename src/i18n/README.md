@@ -21,3 +21,17 @@ A integração da interface e a tradução dos demais catálogos/documentos faze
 Priorize src/app e o HTML estático. Mensagens de eventos/estados e metadados biológicos precisam de tradução na apresentação, preservando os dados persistidos e os protocolos científicos. Não altere seed, RNG ou conteúdo de CSV para traduzir a interface.
 
 O controlador não se instala automaticamente na interface. O próximo passo é conectar um seletor e migrar os textos para os catálogos. `subscribe` permite atualizar a apresentação sem recriar o mundo; libere a assinatura ao desmontar controles. `number` formata somente a exibição e nunca deve ser usado para gravar valores científicos ou CSV.
+
+## Integração em andamento
+
+Seletor conectado às duas páginas. `runtime.ts` compartilha o controlador sem
+acessar a simulação; em testes Node mantém o padrão português. `dom.ts` fornece
+`message`, `messageSource`, `messageAttribute` e `clearMessage`. Use bindings em
+folhas de texto, nunca em ancestrais de inputs. Limpe erros com `clearMessage`
+para que não reapareçam na troca de idioma. Conteúdo do usuário não é traduzido.
+`source.ts` traduz mensagens canônicas somente ao apresentar; não altera o que
+fica persistido. `static-html.ts` e o plugin Vite preenchem fallback português.
+
+P2.7 ainda não terminou. Laboratório e controles centrais migrados; faltam
+painéis especializados, tour e documentos. Evidência de paridade real em
+`docs/validacoes/i18n-lab-parcial.json`; não confundir inventário com cobertura.

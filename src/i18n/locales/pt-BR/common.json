@@ -8,5 +8,6 @@
   "common.missing": "Sem dados",
   "common.back": "Voltar",
   "common.model": "Modelo exploratório",
-  "common.version": "Versão {version}"
+  "common.version": "Versão {version}",
+  "common.license": "Viveiro · Código MIT · Documentação original CC BY 4.0"
 }

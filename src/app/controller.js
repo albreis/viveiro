@@ -1,3 +1,10 @@
+import {
+  locale,
+  t,
+  message as setMessage,
+  messageSource,
+  messageAttribute,
+} from "../i18n/runtime.ts";
 import { renderChartSummary } from "./chart-summary.ts";
 import { installAccessibleInterventions } from "./accessible-interventions.ts";
 import { installDailyControls } from "./daily-controls.ts";
@@ -77,12 +84,12 @@ let forecaster,
   dailyControls;
 const active = () => (scenario === "b" && comparison ? comparison : world);
 const format = (n) =>
-  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 }).format(n);
+  new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 1 }).format(n);
 let antCamera;
 let hadSavedExperiment = true;
 
 function toast(message) {
-  $("toast").textContent = message;
+  messageSource($("toast"), message);
   $("toast").hidden = false;
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => ($("toast").hidden = true), 3800);
@@ -164,11 +171,11 @@ async function save() {
     lastCheckpointId = result.id;
     document.dispatchEvent(new Event("viveiro:saved"));
   }
-  $("save-status").textContent =
+  messageSource(
+    $("save-status"),
     result.message ||
-    (result.ok
-      ? "Progresso salvo neste navegador"
-      : "Não foi possível salvar — exporte o experimento em JSON");
+      (result.ok ? t("controls.save.ok") : t("controls.save.failed")),
+  );
 }
 function intervention(type, x = 0, z = 0, value) {
   advanceControls?.invalidate();
@@ -244,8 +251,8 @@ function reset(seed, params, replay = false) {
   if (scene) scene.showTrails = $("trails").checked;
   configureAntCamera();
 
-  $("tool-hint").textContent = "Escolha um elemento e clique no solo.";
-  $("scene-guide").textContent = "Arraste para orbitar · Role para aproximar";
+  setMessage($("tool-hint"), "terrarium.tools.help");
+  setMessage($("scene-guide"), "terrarium.camera.guide");
   syncControls();
   updateUi();
   save();
@@ -258,20 +265,23 @@ function syncControls() {
   }
   $("seed").value = initial.seed;
   $("play").textContent = running ? "Ⅱ" : "▶";
-  $("play").setAttribute(
+  messageAttribute(
+    $("play"),
     "aria-label",
-    running ? "Pausar simulação" : "Continuar simulação",
+    running ? "terrarium.pause" : "controls.resume",
   );
-  $("status-text").textContent = running
-    ? "ECOSSISTEMA VIVO"
-    : "OBSERVAÇÃO PAUSADA";
+  setMessage(
+    $("status-text"),
+    running ? "terrarium.status.live" : "controls.paused",
+  );
   $("resume-overlay").hidden = running;
   $("comparison-panel").hidden = !comparison;
   $("chart-b-legend").hidden = !comparison;
   $("chart-comparison-legend").hidden = !comparison;
-  $("compare").firstChild.textContent = comparison
-    ? "Encerrar comparação "
-    : "Comparar dois cenários ";
+  setMessage(
+    $("compare").querySelector("[data-i18n]"),
+    comparison ? "controls.comparison.end" : "terrarium.comparison.run",
+  );
   document.querySelectorAll("[data-scenario]").forEach((b) => {
     b.classList.toggle("active", b.dataset.scenario === scenario);
     b.setAttribute("aria-pressed", String(b.dataset.scenario === scenario));
@@ -313,9 +323,8 @@ function handleError(error) {
   loading.replaceChildren();
   const title = document.createElement("strong"),
     message = document.createElement("span");
-  title.textContent = "A cena 3D não pôde iniciar.";
-  message.textContent =
-    "Use um navegador com WebGL e aceleração de hardware ativada.";
+  setMessage(title, "controls.webgl.title");
+  setMessage(message, "controls.webgl.help");
   loading.append(title, message);
 }
 await load();
@@ -359,7 +368,7 @@ for (const key of ["humidity", "light", "randomness"]) {
 }
 $("rain").onclick = () => {
   intervention("rain");
-  toast("A umidade aumentou. Observe a resposta do ambiente.");
+  toast(t("controls.rain"));
 };
 $("focus-ecology").onclick = () => {
   if (!scene) return;
@@ -415,7 +424,7 @@ if (focusStructureButton)
   };
 $("disturb").onclick = () => {
   intervention("collapse");
-  toast("Observe a terra solta e o trabalho de recuperação.");
+  toast(t("controls.disturb"));
 };
 $("play").onclick = () => {
   advanceControls?.invalidate();
@@ -440,19 +449,14 @@ document.querySelectorAll("[data-tool]").forEach(
         b.classList.toggle("active", selected);
         b.setAttribute("aria-pressed", String(selected));
       });
-      $("tool-hint").textContent =
-        tool === "scent"
-          ? "Clique no solo perto de uma formiga na superfície para alterar seu odor."
-          : tool
-            ? "Clique no solo para adicionar " +
-              { food: "alimento", plant: "uma planta", predator: "uma aranha" }[
-                tool
-              ] +
-              "."
-            : "Escolha um elemento e clique no solo.";
-      $("scene-guide").textContent = tool
-        ? "Clique no solo · Esc para sair"
-        : "Arraste para orbitar · Role para aproximar";
+      setMessage(
+        $("tool-hint"),
+        tool ? "controls.tool." + tool : "terrarium.tools.help",
+      );
+      setMessage(
+        $("scene-guide"),
+        tool ? "controls.camera.place" : "terrarium.camera.guide",
+      );
     }),
 );
 $("trails").onchange = () => {
@@ -461,7 +465,7 @@ $("trails").onchange = () => {
 $("new-world").onclick = () => {
   const seed = "SEMENTE-" + Math.floor(Date.now() % 100000);
   reset(seed, { ...world.params });
-  toast("Um novo começo. Observe os primeiros ovos.");
+  toast(t("controls.new"));
 };
 $("apply-seed").onclick = () => {
   const seed = $("seed").value.trim();
@@ -472,7 +476,7 @@ $("seed").onkeydown = (e) => {
 };
 $("replay").onclick = () => {
   reset(initial.seed, initial.params, true);
-  toast("Repetindo o cenário com as mesmas intervenções nos mesmos instantes.");
+  toast(t("controls.replay"));
 };
 $("compare").onclick = () => {
   advanceControls?.invalidate();
@@ -480,12 +484,12 @@ $("compare").onclick = () => {
   if (comparison) {
     comparison = null;
     scenario = "a";
-    toast("Comparação encerrada. O cenário A continua.");
+    toast(t("controls.comparison.stopped"));
   } else {
     comparison = World.restore(world.snapshot());
     comparison.params.humidity = Math.min(100, comparison.params.humidity + 1);
     comparison.log("Cenário B: umidade aumentada em 1 ponto.");
-    toast("Dois mundos, uma pequena diferença. Compare a evolução no gráfico.");
+    toast(t("controls.comparison.started"));
   }
   forecaster?.invalidate();
   syncControls();
@@ -562,7 +566,7 @@ $("export").onclick = () => {
     ".json";
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
-  toast("Dados, histórico e semente exportados em JSON.");
+  toast(t("controls.exported"));
 };
 function tick() {
   const cursor = { interventions, replaying, replayIndex };
@@ -657,3 +661,6 @@ const tourControls = installTourControls({
 if (import.meta.hot) import.meta.hot.dispose(() => tourControls.dispose());
 forecaster?.consider(forecastSource, scenario, active().tick);
 requestAnimationFrame(frame);
+
+const stopLocaleRendering = locale.subscribe(() => updateUi());
+window.addEventListener("pagehide", stopLocaleRendering, { once: true });

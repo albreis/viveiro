@@ -1,3 +1,4 @@
+import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { colonyWorlds } from "../modules/colonies/types.ts";
 import type { FamilyPresentation } from "../modules/colonies/presentation.ts";
 import { foundingDescription } from "./founding-status.ts";
@@ -10,19 +11,24 @@ export function renderFamilyStatus(world: FamilyPresentation) {
     (n, c) => n + (c.colony.reproductiveFood || 0),
     0,
   );
-  el.textContent =
-    (world.colonyCount || 1) +
-    " colônia(s) · " +
-    queens +
-    " rainha(s) · " +
-    alates +
-    " alado(s) para o próximo voo. " +
-    reserved.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) +
-    " u. reservadas para alados.";
+  message(el, "status.family", {
+    colonies: world.colonyCount || 1,
+    queens,
+    alates,
+    reserved: locale.number(reserved, { maximumFractionDigits: 1 }),
+  });
   const detail = document.getElementById("daughter-status");
   if (detail)
-    detail.textContent = (world.foundings || [])
-      .filter((f) => f.colonyId !== 1)
-      .map((f) => "Colônia " + f.colonyId + ": " + foundingDescription(f.state))
-      .join(" ");
+    messageSource(
+      detail,
+      (world.foundings || [])
+        .filter((f) => f.colonyId !== 1)
+        .map((f) =>
+          t("status.family.daughter", {
+            id: f.colonyId,
+            description: foundingDescription(f.state) || "",
+          }),
+        )
+        .join(" "),
+    );
 }

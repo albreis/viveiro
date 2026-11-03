@@ -1,26 +1,22 @@
-# Continuação do Viveiro — transferência manual
+# Continuação do Viveiro — P2.7 retomado
 
 Atualizado em 02/11/2026, horário local. Trabalhar em G:\Projetos\viveiro.
 Ler AGENTS.md e docs/cronograma.md; conferir Git/PRs antes de alterar arquivos.
 
-## Estado de transferência
+## Estado atual — 03/11/2026
 
-O desenvolvimento desta execução foi encerrado no critério de limite solicitado
-pelo usuário. O usuário continuará manualmente. Não retomar automaticamente
-após reset sem novo pedido explícito. Automação continuar-cronograma-do-viveiro
-está PAUSED; o prompt já registra essa orientação. Não consumir resets nem
-contornar limites. A janela deve ser consultada por get_usage_limits quando
-houver novo pedido; não publicar dados privados da conta no repositório.
+Retomado por pedido explícito na branch codex/internacionalizacao. Automação
+continua PAUSED para evitar executor concorrente. Ao restarem 3% na janela de
+5h, enviar tudo ao GitHub, atualizar checkpoint e parar para continuação manual.
+Não retomar após reset sem novo pedido explícito nem publicar dados da conta.
 
-Branch atual: codex/internacionalizacao, upstream origin/codex/internacionalizacao.
-PR de rascunho: https://github.com/albreis/viveiro/pull/68, base codex/editor-perfis.
-Último commit de código desta base: 1d83c4f; o commit de transferência é posterior.
-Código, evidências e checkpoint enviados ao GitHub. Logs em .runtime/ são locais;
-os inventários podem ser regenerados pelos comandos abaixo.
+PR #68 permanece rascunho, base codex/editor-perfis. Fetch conferido: origin/main
+não tem novidades desde a base. Branch remota do usuário claude/project-thread-kazijj,
+PR #69 de escavação, preservada sem integrar nesta entrega.
 
-Dev http://127.0.0.1:4173/ continua em G, PID17752 na última conferência. Não parar.
-O preview 4189 foi usado apenas para QA; não depende dele para continuar.
-Preservar branches, tags, saves, IndexedDB e privacidade do Site original.
+Dev http://127.0.0.1:4173/ reiniciado em G (PID15348). Não parar. QA pausou a cena
+existente SEMENTE-42911 em torno de D11,3; não restaurar estados históricos sobre
+o trabalho recente do usuário. Preservar branches, tags, saves e privacidade.
 
 ## Entregas concluídas nesta sequência
 
@@ -44,50 +40,32 @@ faixas são exploratórios, sem calibração por espécie.
 
 ## P2.7 em andamento — ainda não concluído
 
-A pedido do usuário, internacionalização fica em src/i18n, em arquivos pequenos:
+src/i18n tem 466 mensagens por idioma em catálogos por área, seletor nas duas
+páginas, bindings explícitos e fallback português no Vite. Troca sem reload nem
+recriar forms. Laboratório isolado/perfis/varreduras, texto estático do terrário,
+câmera, indicadores centrais, fundação, linhagem e gráficos migrados.
 
-- locales/pt-BR e locales/en: common.json e experiments.json, 32 mensagens por idioma.
-- catalogs.ts: registro de idiomas e tipos derivados; core.ts: interpolação pura.
-- controller.ts: estado de idioma, assinaturas e números de apresentação.
-- browser.ts: preferência viveiro.locale.v1 e query lang, sem reload ou acesso a saves.
-- validation.ts: paridade de chaves/variáveis e rejeição de mensagens vazias.
-- README.md: como adicionar catálogos/idiomas e continuar a integração.
-
-Validação desta base: seis testes de i18n e TypeScript estrito; build Vite com
-checagem de traduções. A suíte completa anterior tem 444 testes do P2.6; não
-atribuir uma execução completa de 450 testes à base atual. A interface ainda
-não usa o controlador e a documentação ainda não foi traduzida. Não marcar
-P2.7 como entregue, não liberar o rascunho como concluído e não criar tag.
-
-Comandos úteis:
-
-```sh
-npm run i18n:check
-npm run i18n:inventory
-npm run i18n:inventory -- --json
-node --test tests/i18n.test.mjs tests/i18n-controller.test.mjs
-npm run build
-```
-
-Inventário heurístico atual: 902 candidatos em 100 arquivos; também encontra
-falsos positivos e não mede cobertura. Saída local .runtime/i18n-inventory.json.
+QA real: 300 ticks, CSV/manifesto idênticos no dev pt-BR, dev en e CLI. Brutos em
+public/experimentos/i18n-p27; docs/validacoes/i18n-lab-parcial.json. Nome editado,
+valor 67.5 e editor aberto preservados. Erros limpos não voltam ao trocar idioma.
+15 testes dirigidos aprovados (9 i18n + 6 acessibilidade), TS/build aprovados.
+Suíte completa anterior: 444 do P2.6; ainda não repetida nesta base.
 
 ## Próximo passo concreto
 
-1. Conectar um controlador compartilhado e seletor de idioma em src/main.ts e
-   src/app/experiment-page.ts; manter português como padrão e trocar idioma
-   sem recriar o World, recarregar a página ou perder entradas do usuário.
-2. Usar primeiro as 32 mensagens já preparadas no laboratório de experimentos;
-   migrar HTML/aria-labels/estados, perfis e varreduras para catálogos por área.
-   Depois cobrir index.html, demais controles, tour, diálogos, erros e gráficos.
-3. Traduzir na apresentação os eventos/estados e metadados do modelo. Preservar
-   IDs, seeds, valores científicos, CSV, snapshots e textos escritos pelo usuário.
-   Evitar que o idioma da UI altere mensagens persistidas ou decisões do modelo.
-4. Traduzir documentação pública modelo/ensino e licenças; integrar as versões
-   e links nos geradores scripts/lib/model-doc-pages.ts e teaching-pages.ts.
-5. Verificar todas as telas nos dois idiomas com Cua, inclusive acessibilidade,
-   dados do usuário e Workers. Rodar testes de paridade, suíte completa e build.
-   Atualizar o PR #68, cronograma e evidências só após os aceites reais.
+1. Migrar painéis especializados: clima/gases, ecologia/química, estrutura,
+   granular, estoques, fertilidade, saúde, estações/desenvolvimento, biologia.
+2. Tempo/desempenho/offline, previsão/checkpoints, ensino e tour ainda pendentes.
+3. Traduzir estados/eventos/metadados do modelo somente na apresentação. Preservar
+   IDs, seeds, dados científicos, saves, nomes e outros textos do usuário.
+4. Traduzir documentos públicos/licenças e integrar os geradores de páginas.
+5. QA nativa nos dois idiomas, responsivo/Workers/exportação, suíte completa/build.
+   Atualizar PR/cronograma e publicar no mesmo privado após validação. Sem tag
+   enquanto P2.7 não cumprir todos os aceites.
+
+Comandos: npm run i18n:check; npm run i18n:inventory;
+node --test tests/i18n*.test.mjs; npm run build.
+Inventário é heurístico, não cobertura. Logs .runtime são locais/ignorados.
 
 ## Política de publicação
 

@@ -20,5 +20,20 @@
   "experiments.download.csv": "Baixar CSV",
   "experiments.download.manifest": "Baixar manifesto",
   "experiments.download.plan": "Baixar configuração",
-  "experiments.terminal.title": "Repetir no terminal"
+  "experiments.terminal.title": "Repetir no terminal",
+  "experiments.pageTitle": "Experimentos reproduzíveis · Viveiro",
+  "experiments.skip": "Pular para o conteúdo",
+  "experiments.back": "← Voltar ao laboratório",
+  "experiments.modelLink": "Como o modelo funciona",
+  "experiments.versionInitial": "Viveiro · Modelo exploratório",
+  "experiments.policy.help": "A escolha altera somente este experimento.",
+  "experiments.policy.link": "Conhecer as hipóteses da política e criar uma extensão",
+  "experiments.plan.help": "Informe seed, dias inteiros de 0 a 365, modo inicial e perfil com versão. Parâmetros: umidade, luz e aleatoriedade de 0 a 100; repouso de 15 a 55°; temperatura de 5 a 45 °C; ventos X/Z de −4 a 4 unidades. Valores omitidos recebem padrões explícitos no manifesto.",
+  "experiments.results.help": "CSV com estado inicial e fechamentos diários; manifesto com configuração completa, versão e hash SHA-256 do CSV. Sem datas de execução nos arquivos.",
+  "experiments.terminal.help": "Na fonte desta mesma versão, com Node 24, salve a configuração baixada e execute:",
+  "experiments.terminal.command": "Comando para repetir o experimento",
+  "experiments.terminal.example": "Exemplo de configuração no terminal",
+  "experiments.terminal.output": "A pasta de saída precisa ser nova. O comando gera dados.csv e manifesto.json. Para configurar por argumentos:",
+  "experiments.limits": "Um dia do modelo equivale a 100 ticks. Os valores são exploratórios e não calibrados por espécie. Experimentos isolados usam a política aritmética portátil stdlib-f64-v1. Para comparar arquivos, use a mesma versão do Viveiro, configuração e política indicada no manifesto. O terrário 3D e os saves existentes continuam usando a política nativa, que pode gerar trajetórias diferentes. Sem consulta de clima real ou continuidade em servidor.",
+  "experiments.version": "Viveiro {version} · Modelo exploratório"
 }
