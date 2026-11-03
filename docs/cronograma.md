@@ -6,7 +6,7 @@ dos testes e do feedback; não há datas artificiais de conclusão.
 
 ## Situação atual
 
-✅ significa mecanismo implementado, testado e entregue como modelo exploratório; não calibração por espécie. Última release pública: **0.45.0**, consolidação dos P2.4–P2.7 pelo [PR #71](https://github.com/albreis/viveiro/pull/71), no [GitHub Pages](https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/). **Todos os P2 ativos (P2.1–P2.7) estão implementados e publicados.** CodeQL corrigido sem supressão; 462 testes únicos aprovados, builds e QA nativa. CSV/manifesto de 300 ticks publicados são idênticos à CLI. Site privado permanece owner-only. [Recibo](validacoes/release-0.45.0.json) e [revisão P2](revisao-p2.md). Uma única release consolidada, sem depósito manual ou versões intermediárias Zenodo. Falta conferir DOI/botão de citação (P0.4); validações P1/P3 e comunidade P4 permanecem abertas. P2.8/P5 descartados.
+✅ significa mecanismo implementado, testado e entregue como modelo exploratório; não calibração por espécie. Última release pública: **0.45.0**, consolidação dos P2.4–P2.7 pelo [PR #71](https://github.com/albreis/viveiro/pull/71), no [GitHub Pages](https://viveiro.ersolucoesweb.com.br/releases/v0.45.0/). **Todos os P2 ativos (P2.1–P2.7) estão implementados e publicados.** CodeQL corrigido sem supressão; 462 testes únicos aprovados, builds e QA nativa. CSV/manifesto de 300 ticks publicados são idênticos à CLI. Site privado permanece owner-only. [Recibo](validacoes/release-0.45.0.json) e [revisão P2](revisao-p2.md). Uma única release consolidada, sem depósito manual ou versões intermediárias Zenodo. Falta conferir DOI automático (P0.4B); botão de citação no GitHub confirmado (P0.4C). validações P1/P3 e comunidade P4 permanecem abertas. P2.8/P5 descartados.
 
 | Etapa | Entrega                                                            | Situação                                                         |
 | ----- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -517,7 +517,7 @@ Cada passo usa branch codex/, PR em ordem, testes e conferência no navegador. D
 - [ ] P0.4 CITATION.cff e DOI de versões consolidadas pela integração GitHub–Zenodo. Sem depósito manual ou DOI a cada etapa; usuário não quer versões intermediárias no Zenodo. Aceite restante: botão de citação e DOI da versão consolidada escolhida.
   - [x] P0.4A: CFF 1.2.0 válido, autoria/ORCID confirmados preservados e fonte/tag 0.41.0 exata. Pacote selecionado local com hashes conferidos; não enviado ao Zenodo. [Citação e depósito](citacao-e-deposito.md).
   - [ ] P0.4B: conferir DOI da versão consolidada 0.45.0 pela integração GitHub–Zenodo já publicada no GitHub; emissão automática ainda precisa ser conferida. A 0.36.0 já foi publicada com autorização explícita: [DOI 10.5281/zenodo.23891981](https://doi.org/10.5281/zenodo.23891981). Não duplicar depósitos nem atribuir esse DOI à versão atual; ausência de DOI por etapa não bloqueia os P2.
-  - [ ] P0.4C: após o PR chegar à branch padrão, conferir o botão do GitHub. Não concluído só por abrir PR.
+  - [x] P0.4C: botão “Cite this repository” confirmado no GitHub após a consolidação chegar à main, em 03/11/2026. CFF da 0.45.0 presente na branch padrão; emissão/DOI automático ainda pendente de conferência em P0.4B.
   - A citação externa não impede avançar; o laboratório original continua privado e o público é servido pelo GitHub Pages.
 
 ### P1. Modo escola

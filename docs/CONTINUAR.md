@@ -32,7 +32,7 @@ em tests/fixtures/release-045. Logs em .runtime/release-045-*.txt, ignorados no 
 
 CFF/Zenodo preparados antes da tag, autoria/ORCID preservados. A integração
 GitHub–Zenodo é automática; nenhum depósito manual/duplicado foi criado. Falta
-conferir DOI 0.45.0 e botão de citação (P0.4). DOI 10.5281/zenodo.23891981 é 0.36.0;
+conferir DOI 0.45.0 (P0.4B). Botão de citação confirmado na main (P0.4C). DOI 10.5281/zenodo.23891981 é 0.36.0;
 não reutilizar para a versão nova nem inventar DOI. CFF sem commit explícito usa
 a tag imutável para resolver a fonte; commits explícitos ainda exigem igualdade.
 
@@ -46,7 +46,7 @@ Preservar #69/claude/project-thread-kazijj e outros trabalhos do usuário.
 
 Não há mecanismo P2 ativo restante. Cronograma ainda tem:
 - Migração gradual da UI e do renderer legados para TypeScript.
-- P0.4: conferência da citação e DOI automático da release consolidada.
+- P0.4B: conferir DOI automático da release consolidada; botão GitHub já confirmado.
 - P1: ensaios reais de desempenho/tour, revisão docente, acessibilidade e pilotos.
 - P3: parceria/dados licenciados, calibração, validação reservada e publicação.
 - P4: contribuição externa, galeria pública 20 experimentos (10 externos) e oficinas.

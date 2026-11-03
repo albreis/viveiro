@@ -37,8 +37,8 @@ marcou o #70 como mesclado ao integrar essa fonte. Branches e tags preservadas.
   mesmo commit e audiência owner-only preservada. Dev 4173 continua rodando em G.
 
 CFF e Zenodo foram preparados antes da única release consolidada. Nenhum depósito
-manual ou versão intermediária foi criado. O DOI automático 0.45.0 e o botão de
-citação ainda precisam de conferência (P0.4); o DOI 0.36.0 não é da versão atual.
+manual ou versão intermediária foi criado. O DOI automático 0.45.0 ainda precisa
+de conferência (P0.4B); o botão de citação do GitHub foi confirmado em P0.4C; o DOI 0.36.0 não é da versão atual.
 
 ## Limites e próximo escopo
 
@@ -48,7 +48,7 @@ executam código local de confiança, sem sandbox de terceiros. O editor expõe 
 entradas, não todos os coeficientes internos. Paridade exige versão/plano/política
 iguais; a trajetória nativa do terrário permanece preservada.
 
-Restam migração gradual de UI/renderização para TypeScript; conferência DOI/citação;
+Restam migração gradual de UI/renderização para TypeScript; conferência do DOI automático;
 validação escolar/acessibilidade/pilotos (P1); dados reais, parceria, calibração,
 validação reservada e publicação científica (P3); comunidade, galeria e oficinas
 (P4). Calibração por material/espécie e revisão docente também permanecem abertas.

@@ -58,7 +58,13 @@
   },
   "limits": [
     "Exploratory model, without species calibration or external scientific validation",
-    "P0.4 DOI/citation button and external P1/P3/P4 acceptances remain open",
+    "P0.4B DOI verification and external P1/P3/P4 acceptances remain open",
     "Operational records added after the immutable release tag; no tag rewrite"
-  ]
+  ],
+  "citation": {
+    "githubButtonVerified": true,
+    "repository": "https://github.com/albreis/viveiro",
+    "observedLabel": "Cite this repository",
+    "checkedOn": "2026-11-03"
+  }
 }
