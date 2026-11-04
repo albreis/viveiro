@@ -135,5 +135,14 @@ na mesma fonte do modelo. Não iniciar uma segunda execução.
 
 Conferir os grupos com `node scripts/compare-buhl-reference.ts .runtime/buhl-rt24b-reconciliado`,
 gravar o recibo e atualizar B2 no [PR #98](https://github.com/albreis/viveiro/pull/98).
-Só então iniciar a implementação do protocolo físico [B3](planejamento/buhl-protocolo.md).
-O protocolo de preparação de B3 não calibra nem converte o rt24b.
+A preparação de [B3](planejamento/buhl-protocolo.md) já mede caminhada livre
+em unidades por tick. Depois de registrar o terceiro grupo de B2, implementar
+a arena plana: disco de 200 mm por 5 mm, área externa de 500 mm, operárias
+dispersas e nenhuma galeria pronta. Registrar a escala geométrica, medir o
+vazio novo e distinguir remoção de solo, alargamento por tráfego e pelotas.
+O ensaio de B3 não calibra nem converte o rt24b.
+
+O [diagnóstico de B4](planejamento/buhl-criterios.md) aceita somente séries
+com horas físicas e cm³ da arena, compara limites bilaterais e mantém os
+resultados desfavoráveis. Rodou apenas com dados fictícios de teste; aplicar
+a rodadas reais de B3 antes de ajustar mecanismos ou iniciar B5.
