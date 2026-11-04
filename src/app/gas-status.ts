@@ -1,4 +1,4 @@
-import { writeStatusMetrics } from "./status-metrics.ts";
+import { metricRange, writeStatusMetrics } from "./status-metrics.ts";
 import { locale, t, message } from "../i18n/runtime.ts";
 import type { GasWorld } from "../modules/ventilation/types.ts";
 import { gasFractions } from "../modules/ventilation/sensing.ts";
@@ -51,8 +51,8 @@ export function renderGasStatus(w: GasWorld) {
     carbonMax: format(Math.max(...air.map((c) => c.carbon)) * 100),
   };
   writeStatusMetrics("gas", {
-    oxygen: limits.oxygenMin + "–" + limits.oxygenMax + "%",
-    carbon: limits.carbonMin + "–" + limits.carbonMax + "%",
+    oxygen: metricRange(limits.oxygenMin, limits.oxygenMax, "%"),
+    carbon: metricRange(limits.carbonMin, limits.carbonMax, "%"),
     entrances,
   });
   message(target, "panels.gas.summary", {

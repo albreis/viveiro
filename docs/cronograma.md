@@ -24,7 +24,7 @@ O modelo continua exploratório, sem calibração biológica concluída.
 - [x] P4.1A/P4.2A: estrutura de contribuições e dez receitas da equipe.
 - [ ] P3: calibração **já iniciada** na branch `claude/project-thread-kazijj`;
   resultados ainda não satisfazem o aceite científico. [Retomada Buhl](planejamento/buhl.md).
-- [ ] UX: 21 melhorias propostas para implementação por etapas.
+- [x] UX: 21 melhorias implementadas em cinco fases. A confirmação dos gestos em celular físico segue na fila individual.
 - [ ] Dados adicionais: **opcionais**, para ampliar evidências depois; não bloqueiam Buhl/UX.
 
 - [x] [Página privada de leitura do cronograma](cronograma-privado.md): busca,
@@ -47,7 +47,7 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
 1. **T1 — Acessibilidade entregue.** Axe-core e Playwright examinaram 78 estados.
    Os dois achados do Lighthouse e o contraste durante a troca A/B foram corrigidos.
    [Relatório e pontos de inspeção manual](validacoes/axe-t1/resumo.json).
-2. **T2 — UX:** fases 1–4 e explicações das métricas, com regressão a cada fase.
+2. **T2 — UX entregue:** fases 1–4 e explicações das métricas, com regressão a cada fase.
    [UX-01–UX-21 e aceites](planejamento/ux-interface.md).
 3. **T3 — Desempenho:** medir e reduzir TBT/CLS, sem confundir carregamento
    com FPS. Preparar o ensaio no equipamento de entrada.

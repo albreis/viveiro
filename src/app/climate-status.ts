@@ -1,4 +1,4 @@
-import { writeStatusMetrics } from "./status-metrics.ts";
+import { metricRange, writeStatusMetrics } from "./status-metrics.ts";
 import { locale, t, message } from "../i18n/runtime.ts";
 import { drawClimateMap, type ClimateMode } from "./climate-map.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
@@ -64,8 +64,8 @@ export function renderClimateStatus(w: FamilyWorld) {
     tempMax: f(Math.max(...s.temperature)),
   };
   writeStatusMetrics("climate", {
-    soilWater: limits.waterMin + "–" + limits.waterMax + "%",
-    soilTemperature: limits.tempMin + "–" + limits.tempMax + " °C",
+    soilWater: metricRange(limits.waterMin, limits.waterMax, "%"),
+    soilTemperature: metricRange(limits.tempMin, limits.tempMax, " °C"),
   });
   message(target, "panels.climate.summary", {
     ...limits,

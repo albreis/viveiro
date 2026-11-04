@@ -23,12 +23,12 @@ A matriz de 78 estados passou com zero violações automáticas. O [relatório](
 
 ## T2 — Interface e internacionalização
 
-- [ ] Executar [UX-01–UX-21](ux-interface.md) na ordem das cinco fases.
-- [ ] Reutilizar módulos TS e `src/i18n`, sem strings duplicadas ou arquivos gigantes.
-- [ ] Preservar seleção/câmera, A/B, saves, checkpoints, pausa e plano de execução.
-- [ ] Após cada fase: screenshots e métricas em 1440×900, 820×1180 e 390×844,
+- [x] Executar [UX-01–UX-21](ux-interface.md) na ordem das cinco fases.
+- [x] Reutilizar módulos TS e `src/i18n`, sem strings duplicadas ou arquivos gigantes.
+- [x] Preservar seleção/câmera, A/B, saves, checkpoints, pausa e plano de execução.
+- [x] Após cada fase: screenshots e métricas em 1440×900, 820×1180 e 390×844,
   pt/en, teclado e estados abertos; testes dirigidos onde houver lógica nova.
-- [ ] Verificar que alterar o layout não muda hashes/execução do modelo.
+- [x] Verificar que alterar o layout não muda hashes/execução do modelo.
 
 Gestos físicos e conforto real no celular têm uma verificação individual própria;
 simular viewport não substitui essa experiência.

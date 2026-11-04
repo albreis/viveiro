@@ -12,3 +12,7 @@ export function writeStatusMetrics(
     if (text !== metric.textContent) metric.textContent = text;
   });
 }
+
+export function metricRange(min: string, max: string, unit: string): string {
+  return (min === max ? min : min + "–" + max) + unit;
+}

@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação é T2, fase 5 (UX-21).** Fases 1 a 4 validadas tecnicamente. T1 concluída em
+**Próxima implementação é T3 (desempenho).** As cinco fases de UX foram validadas tecnicamente. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -108,6 +108,11 @@ da auditoria passaram. A gaveta reutiliza os controles e permite intervir
 direto no solo. Rolagem, órbita, pinça e primeira pessoa foram verificadas
 no Chrome com toque emulado. O teste em celular físico segue na fila individual.
 
-Próxima etapa: UX-21, destacar os números nos cinco cartões e mover
-explicações detalhadas para Saiba mais. Depois vêm T3, Buhl e o apoio técnico
-de T5.
+UX-21 validado. Os cartões de fundação, túneis, ecologia, clima e ar
+mostram as métricas principais e oferecem os detalhes em Saiba mais.
+A troca de A para B na aula de ventilação mudou de uma para duas entradas.
+Build, 19 testes dirigidos e 38 estados no Chrome passaram.
+
+Próxima etapa: T3. Medir TBT/CLS no build atual com Lighthouse local e
+identificar as tarefas e os elementos dominantes. Preparar um cenário
+reproduzível para medir FPS. Depois vêm Buhl e o apoio técnico de T5.
