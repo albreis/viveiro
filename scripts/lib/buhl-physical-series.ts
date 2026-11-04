@@ -3,6 +3,8 @@ import {
   BUHL_GROUPS,
 } from "../../src/modules/benchmarks/buhl-2005-data.ts";
 
+import { BUHL_DISK_MM } from "../../src/modules/benchmarks/buhl-arena/geometry.ts";
+
 export const checkTimes = BUHL_CURVE_HOURS.map((hour) => hour * 3600);
 export const minimumReplicates = 5;
 const groupSizes = BUHL_GROUPS.map((group) => group.workers);
@@ -56,9 +58,9 @@ export function parseBuhlPhysicalSeries(input: unknown) {
     series.protocol !== "disco-fixo-2005" ||
     series.timeUnit !== "s" ||
     series.volumeUnit !== "cm3" ||
-    geometry?.arenaDiameter !== 500 ||
-    geometry?.sandDiameter !== 200 ||
-    geometry?.sandThickness !== 5 ||
+    geometry?.arenaDiameter !== BUHL_DISK_MM.arenaDiameter ||
+    geometry?.sandDiameter !== BUHL_DISK_MM.sandDiameter ||
+    geometry?.sandThickness !== BUHL_DISK_MM.sandThickness ||
     typeof series.sourceFingerprint !== "string" ||
     !/^[a-f0-9]{64}$/.test(series.sourceFingerprint) ||
     !positive(series.secondsPerTick) ||

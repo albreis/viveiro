@@ -86,3 +86,23 @@ ensaio não escolhe o tamanho físico da arena nem verifica como uma operária
 se move em contato com areia, paredes, outras operárias ou carga. Também não
 estabelece equivalência entre mordida, pelota e volume de vazio. Esses
 passos e o cenário físico continuam pendentes em B3.
+
+## Geometria inicial da arena
+
+O módulo da arena representa o círculo externo de 500 mm, o disco intacto
+de 200 mm e a espessura de 5 mm. A grade usa células de 0,8 mm por padrão,
+a resolução numérica do modelo dos autores, não uma granulometria observada.
+Uma célula aberta adiciona sua área vezes a espessura ao volume novo.
+Somente uma célula sólida vizinha por lado do piso ou da galeria pode abrir.
+A contagem de células preserva o saldo de areia sólida e vazio medido.
+
+O dispersor inicial usa a seed no anel externo e verifica uma separação
+mínima informada em mm. Ele usa um fluxo aleatório separado para preservar
+a sequência das futuras decisões dos agentes. A separação precisa ser
+justificada pelo perfil físico escolhido; o valor de teste não é um dado
+de campo. A geometria foi testada sem plantas, ninho pronto ou rainha.
+
+Ainda falta ligar esse cenário ao movimento local, medir escavação e
+transporte de pelotas e usar um relógio físico explícito no runner.
+Abrir uma célula é uma operação de geometria, não equivale a uma pelota.
+O terrário e os saves não usam a arena plana experimental.
