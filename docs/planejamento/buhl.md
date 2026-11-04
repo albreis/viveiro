@@ -37,13 +37,17 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
 
 ## Ordem técnica de retomada
 
-- [ ] **B1 — Reconciliar sem perder:** comparar PR69 com a main atual, incorporar
-  P2.3/P2.4 e aritmética portátil; resolver conflitos em uma branch `codex/`
-  dedicada, preservando a branch original, anexos, tags e resultados.
+- [x] **B1 — Reconciliar sem perder:** integrar a branch científica numa
+  branch própria, preservar o histórico e a aritmética portátil, e reutilizar
+  arquivos imutáveis e o pool de P2.3 para a retomada por grupo.
+  [Validação da reconciliação](../validacoes/buhl-reconciliacao.json).
+  A aplicação de Morris aos parâmetros de escavação fica em B5.
 - [ ] **B2 — Testar e fixar referência:** rodar testes dirigidos do benchmark e
   suíte pertinente; executar uma referência `rt24b` após a integração para
   verificar se a trajetória mudou. Não reutilizar resultados como se fossem
-  da nova fonte quando o código mudou.
+  da nova fonte quando o código mudou. A verificação de 600 ticks coincidiu
+  com a série histórica nos três grupos. Ela cobre somente o início da rodada.
+  [Comando da referência e retomada](../cli.md#comparação-com-dados-publicados).
 - [ ] **B3 — Unidades e protocolo:** definir tick↔tempo físico, comprimento/volume,
   taxas biológicas e condições experimentais. O atual “1 tick = 1 segundo” do
   benchmark não está reconciliado com o dia de 100 ticks do modelo.

@@ -1,0 +1,7 @@
+OK   atividade: modelo 50: 1.03; 100: 1.27; 200: 0.96 | referência Todos os grupos escavaram (25 a 61 cm³ em 72 h).
+FALHA saturacao: modelo 0.43 / 0.74; 0.38 / 0.67; 0.39 / 0.65 | referência 0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80
+FALHA escala: modelo -0.05 | referência 0.64
+Só frentes: volume 50=1.03 100=1.27 200=0.81 | OK atividade 50: 1.03; 100: 1.27; 200: 0.81 | FALHA saturacao 0.43 / 0.75; 0.38 / 0.67; 0.40 / 0.70 | FALHA escala -0.17
+Só trânsito: volume 50=0.00 100=0.00 200=0.16 | OK atividade 50: 0.00; 100: 0.00; 200: 0.16 | FALHA saturacao 0.00 / 0.00; 1.00 / 1.00; 0.36 / 0.38 | FALHA escala 3.41
+O modelo não reproduziu todos os padrões nesta configuração.
+Resultados em /tmp/claude-0/-home-user-viveiro/d6baa7f1-88af-5227-9a68-4e113d2a668e/scratchpad/r-estigmergia

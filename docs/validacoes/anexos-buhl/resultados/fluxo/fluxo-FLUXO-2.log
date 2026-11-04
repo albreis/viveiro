@@ -1,0 +1,9 @@
+   2 operárias: densidade 0.15, fluxo 0.005, velocidade 0.0423
+   4 operárias: densidade 0.28, fluxo 0.013, velocidade 0.0476
+   8 operárias: densidade 0.60, fluxo 0.018, velocidade 0.0446
+  16 operárias: densidade 1.19, fluxo 0.035, velocidade 0.0427
+  32 operárias: densidade 2.34, fluxo 0.073, velocidade 0.0448
+  64 operárias: densidade 4.57, fluxo 0.123, velocidade 0.0438
+ 128 operárias: densidade 7.36, fluxo 0.177, velocidade 0.0431
+ 200 operárias: densidade 6.46, fluxo 0.117, velocidade 0.0430
+O fluxo não despenca na densidade mais alta. Fluxo final/pico: 1.00; velocidade final/inicial: 1.02.

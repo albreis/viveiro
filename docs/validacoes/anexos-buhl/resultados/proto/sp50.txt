@@ -1,0 +1,5 @@
+50 BUHL-2 400 total 0.075 fronts 0.075 widen 0.000
+50 BUHL-2 800 total 0.213 fronts 0.213 widen -0.000
+50 BUHL-2 1200 total 0.408 fronts 0.408 widen -0.000
+50 BUHL-2 1600 total 0.678 fronts 0.678 widen 0.000
+50 BUHL-2 2000 total 0.953 fronts 0.953 widen -0.000

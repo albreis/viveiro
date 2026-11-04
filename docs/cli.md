@@ -103,3 +103,31 @@ docs/validacoes/cli-0.39.0.json; nenhum dado do terrário pessoal foi usado.
 
 A partir da 0.41.0, `npm run sweep -- --out resultado-novo --jobs 2` executa
 cinco valores de umidade × dez réplicas. [Plano e retomada](varreduras.md).
+
+## Comparação com dados publicados
+
+`npm run benchmark:buhl -- --out buhl-novo` compara a escavação de grupos de 50,
+100 e 200 operárias com Buhl et al. em _Messor sancta_. Critérios, fonte dos
+dados e resultado atual em [validacoes/buhl-2005.md](validacoes/buhl-2005.md).
+
+A pasta registra o plano e a identificação da fonte. Cada combinação de
+semente e grupo concluída grava um JSON com SHA-256. Repetir com `--resume`
+confere a fonte, o protocolo e os arquivos antes de agendar grupos pendentes.
+`--jobs` aceita de 1 a 8 Workers. `--limit 1` executa um grupo novo por chamada.
+Ao interromper, o grupo em andamento começa do zero na retomada, e os grupos
+concluídos são reaproveitados. CSV e comparação saem após todos os grupos.
+
+Para repetir a referência histórica `rt24b` um grupo por vez, a partir da raiz:
+
+```powershell
+npm run benchmark:buhl -- --out .runtime/buhl-rt24b-reconciliado --mode estigmergia --protocol grupo-fixo --ociosas original --horas 24 --segundos-por-tick 1 --groups 50,100,200 --seeds 1 --semente-inicial 1 --sample-every 600 --jobs 1 --limit 1
+```
+
+Nas próximas chamadas, repetir o comando com `--resume`. O relógio de um
+segundo por tick pertence à reprodução do protocolo histórico. A escala
+física e a validação permanecem na [etapa Buhl](planejamento/buhl.md).
+
+`npm run benchmark:fluxo -- --out fluxo.csv` mede fluxo e velocidade num túnel
+com 2 a 200 operárias indo e voltando, para comparar com a forma do trânsito de
+formigas de Poissonnier et al. (2019). Resultado em
+[validacoes/fluxo-tunel.md](validacoes/fluxo-tunel.md).

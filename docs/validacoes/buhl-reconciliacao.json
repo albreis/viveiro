@@ -1,0 +1,58 @@
+{
+  "originalSource": "512b8c0fbe07ff015b4be85075e7457f5cf57395",
+  "baseSource": "6692fb464380426980606a7c228db4bc097e83c5",
+  "originalPr": 69,
+  "reconciliation": {
+    "mergeConflict": "package.json",
+    "fullSuiteBeforeCliChange": 496,
+    "buhlTestsAfterCliChange": 16,
+    "desktopBrowserCases": 19,
+    "axeViolations": 0
+  },
+  "rt24bPrefix": {
+    "seed": "BUHL-1",
+    "prefixTicks": 600,
+    "runs": [
+      {
+        "workers": 50,
+        "elapsedMs": 8815,
+        "historicalVolume": 0.3478685429282786,
+        "observed": {
+          "tick": 600,
+          "removed": 0.3478685429282786,
+          "traffic": 0,
+          "workers": 50,
+          "activeProjects": 3,
+          "nestNodes": 14
+        }
+      },
+      {
+        "workers": 100,
+        "elapsedMs": 12499,
+        "historicalVolume": 1.1074538648462895,
+        "observed": {
+          "tick": 600,
+          "removed": 1.1074538648462895,
+          "traffic": 0,
+          "workers": 100,
+          "activeProjects": 6,
+          "nestNodes": 19
+        }
+      },
+      {
+        "workers": 200,
+        "elapsedMs": 43814,
+        "historicalVolume": 1.7931085114425964,
+        "observed": {
+          "tick": 600,
+          "removed": 1.7931085114425964,
+          "traffic": 0.8671348936091344,
+          "workers": 200,
+          "activeProjects": 7,
+          "nestNodes": 19
+        }
+      }
+    ]
+  },
+  "scope": "600 de 86400 ticks com volumes idênticos aos do arquivo histórico nos três grupos. A rodada completa e os critérios científicos continuam abertos."
+}

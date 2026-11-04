@@ -112,6 +112,8 @@ export interface NestState {
   lastWidenTick?: number[];
   rubble?: import("../granular/types.ts").GranularBody[];
   erosionCuts?: (Vec3 & { r: number })[];
+  /** Optional traffic rules; absent means the original rules. */
+  traffic?: { idleYield?: boolean };
 }
 
 export interface NavigationWorld {
