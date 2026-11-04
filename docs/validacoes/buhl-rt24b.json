@@ -1,0 +1,63 @@
+{
+  "runSource": "0751a5fd42d679e3146ab75fa8144f7b12c4ca89",
+  "nodeVersion": "v24.22.1",
+  "verifiedDate": "2026-11-04",
+  "scope": "Reprodutibilidade computacional; não é validação empírica.",
+  "protocol": {
+    "days": 3,
+    "seeds": 1,
+    "groups": [
+      50,
+      100,
+      200
+    ],
+    "sampleEvery": 600,
+    "mode": "estigmergia",
+    "protocol": "grupo-fixo",
+    "idle": "original",
+    "realTime": {
+      "hours": 24,
+      "secondsPerTick": 1,
+      "ticks": 86400
+    },
+    "firstSeed": 1,
+    "brake": {}
+  },
+  "identicalCsvBytes": 33597,
+  "identicalCsvSha256": "860c6273cf8436e8a2a0447ee2bd05a839c2fcd113915d4a7a4ec54990d12fed",
+  "schema": "viveiro-buhl-rt24b-comparacao-v1",
+  "sourceFingerprint": "740cb9ce86537d68786a85df1555ec0d9f9c54109eb744211504475e2542cbe8",
+  "archivedSeriesSha256": "8ecfaa1c8bf97423ea743708735051cf516cdcb919ea2e099bb331fa2d804c57",
+  "results": [
+    {
+      "workers": 50,
+      "status": "identical",
+      "samples": 145,
+      "differentSamples": 0,
+      "firstDifference": null,
+      "historicalFinalVolume": 5.625215148597371,
+      "finalVolume": 5.625215148597371,
+      "runSha256": "59db9e0fe446913c7d0c3c7b9b0e2f7f5174dcfb1be37c449dc1cc6fe0e1127f"
+    },
+    {
+      "workers": 100,
+      "status": "identical",
+      "samples": 145,
+      "differentSamples": 0,
+      "firstDifference": null,
+      "historicalFinalVolume": 8.348447060945192,
+      "finalVolume": 8.348447060945192,
+      "runSha256": "6d3b73b1d0dbfb687fbea2965e554b3ad8410dcb9529a6afcd3ea6c1ae0cfd07"
+    },
+    {
+      "workers": 200,
+      "status": "identical",
+      "samples": 145,
+      "differentSamples": 0,
+      "firstDifference": null,
+      "historicalFinalVolume": 14.456723508110988,
+      "finalVolume": 14.456723508110988,
+      "runSha256": "8636abd79255979e626c996f4ade32a2277749524242bbaa79eaf66648872c9f"
+    }
+  ]
+}
