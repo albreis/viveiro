@@ -12,34 +12,50 @@
   ></p>
   <button
     id="focus-sealing"
-    class="text-button"
+    class="secondary-action"
+    data-disabled-reason="focus-sealing-reason"
     disabled
     data-i18n="terrarium.sealing.focus"
   ></button>
+  <p
+    class="secondary-action-reason"
+    id="focus-sealing-reason"
+    hidden
+    data-i18n="terrarium.action.focus-sealing.reason"
+  ></p>
   <p id="fertility-status" class="field-note" hidden></p>
   <div id="survival-panel" hidden></div>
   <p id="store-status" class="field-note" hidden></p>
   <p id="development-status" hidden></p>
   <button
     id="focus-brood"
-    class="text-button"
+    class="secondary-action"
+    data-disabled-reason="focus-brood-reason"
     disabled
     data-i18n="terrarium.brood.focus"
   ></button>
+  <p
+    class="secondary-action-reason"
+    id="focus-brood-reason"
+    hidden
+    data-i18n="terrarium.action.focus-brood.reason"
+  ></p>
   <div id="season-panel" hidden>
     <p id="season-status"></p>
-    <label for="photoperiod"
-      ><span data-i18n="terrarium.photoperiod"></span>
-      <strong id="photoperiod-value">12 h</strong></label
-    ><input
-      id="photoperiod"
-      type="range"
-      min="0"
-      max="24"
-      step="0.5"
-      value="12"
-      data-i18n-aria-label="terrarium.photoperiod"
-    />
+    <div class="slider-block">
+      <label for="photoperiod"
+        ><span data-i18n="terrarium.photoperiod"></span>
+        <output id="photoperiod-value">12 h</output></label
+      ><input
+        id="photoperiod"
+        type="range"
+        min="0"
+        max="24"
+        step="0.5"
+        value="12"
+        data-i18n-aria-label="terrarium.photoperiod"
+      />
+    </div>
   </div>
   <p id="chemical-status"></p>
   <div

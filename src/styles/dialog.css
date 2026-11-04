@@ -6,7 +6,7 @@
   display: inline-grid;
   place-items: center;
   margin-right: 6px;
-  font-size: 10px;
+  font-size: 12px;
 }
 #toast {
   position: fixed;
@@ -70,7 +70,7 @@ dialog > p {
   font-weight: 600;
 }
 .help-columns p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -78,7 +78,7 @@ dialog > p {
   background: #e9efde;
   padding: 13px;
   border-radius: 7px;
-  font-size: 10px !important;
+  font-size: 12px !important;
 }
 .primary-button {
   border: 0;

@@ -15,7 +15,6 @@
   "gallery.all": "All",
   "gallery.origin.team": "Viveiro team",
   "gallery.origin.external": "Community",
-  "gallery.count": "{count} experiment(s) in this selection",
   "gallery.empty": "There are no experiments in this selection yet. Change the filters or contribute a scenario.",
   "gallery.open": "Open experiment",
   "gallery.download": "Download JSON plan",
@@ -66,5 +65,7 @@
   "gallery.entry.reserva-pequena.condition": "Initial stock 5 u.; established colony.",
   "gallery.entry.reserva-ampla.title": "Starting with a larger reserve",
   "gallery.entry.reserva-ampla.question": "What changes with more food available at the same start?",
-  "gallery.entry.reserva-ampla.condition": "Initial stock 25 u.; same seed as the small-reserve recipe."
+  "gallery.entry.reserva-ampla.condition": "Initial stock 25 u.; same seed as the small-reserve recipe.",
+  "gallery.count.one": "{count} experiment in this selection",
+  "gallery.count.other": "{count} experiments in this selection"
 }

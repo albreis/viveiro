@@ -12,11 +12,11 @@
   background: #f7f9ef;
   color: #435b38;
   font: inherit;
-  font-size: 11px;
+  font-size: 12px;
 }
 .biology-panel #biology-open {
   margin-top: 14px;
-  font-size: 11px;
+  font-size: 12px;
   color: #536a42;
 }
 .biology-panel #biology-open {
@@ -47,7 +47,7 @@
   color: #4f753c;
 }
 #biology-records p {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--muted);
 }

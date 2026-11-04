@@ -20,7 +20,7 @@
     height: 465px;
   }
   .brand-caption {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 1px;
   }
   .scene-controls {
@@ -31,7 +31,7 @@
     display: none;
   }
   .toggle-label {
-    font-size: 8px;
+    font-size: 12px;
   }
   .legend {
     gap: 9px;
@@ -43,6 +43,6 @@
     font-size: 47px;
   }
   .scene-caption > span:last-child {
-    font-size: 7px;
+    font-size: 12px;
   }
 }

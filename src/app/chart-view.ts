@@ -21,7 +21,7 @@ export function drawChart(world: RenderWorld, comparison: RenderWorld | null) {
   if (!ctx) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, width, height);
-  const left = 24,
+  const left = 37,
     right = 6,
     top = 9,
     bottom = 18,
@@ -41,7 +41,7 @@ export function drawChart(world: RenderWorld, comparison: RenderWorld | null) {
       .map((p) => p.population),
   );
   const max = Math.ceil(maxValue / 5) * 5;
-  ctx.font = "8px Arial";
+  ctx.font = "12px Arial";
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
   for (let i = 0; i < 3; i++) {

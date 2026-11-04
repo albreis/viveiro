@@ -36,7 +36,7 @@
   "controls.camera.health": "health",
   "controls.camera.energy": " · energy {energy}% · infection {infection}%",
   "controls.camera.empty": "No living ants.",
-  "controls.camera.brain": "Individual brain · {count} update(s)",
+  "controls.camera.brain": "Individual brain · updates: {count}",
   "controls.camera.learning": "Learning active · waiting for a route decision",
   "controls.camera.aco": "ACO navigation",
   "controls.camera.look": "Drag to look · Esc to leave",

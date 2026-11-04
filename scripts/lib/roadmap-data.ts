@@ -176,7 +176,7 @@ export function readRoadmap(root: string): RoadmapData {
       "ux",
       ux,
       rows(section.body).map((r) =>
-        item(r[0], r[0] + " · " + r[1], ux, false, r[2]),
+        item(r[0], r[0] + " · " + r[1], ux, r[3] === "Entregue", r[2]),
       ),
     );
   }

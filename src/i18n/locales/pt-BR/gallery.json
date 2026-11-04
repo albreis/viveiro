@@ -15,7 +15,6 @@
   "gallery.all": "Todos",
   "gallery.origin.team": "Equipe Viveiro",
   "gallery.origin.external": "Comunidade",
-  "gallery.count": "{count} experimento(s) nesta seleção",
   "gallery.empty": "Ainda não há experimentos nesta seleção. Altere os filtros ou contribua um cenário.",
   "gallery.open": "Abrir experimento",
   "gallery.download": "Baixar plano JSON",
@@ -66,5 +65,7 @@
   "gallery.entry.reserva-pequena.condition": "Estoque inicial 5 u.; colônia estabelecida.",
   "gallery.entry.reserva-ampla.title": "Começar com mais reserva",
   "gallery.entry.reserva-ampla.question": "O que muda com mais alimento disponível no mesmo início?",
-  "gallery.entry.reserva-ampla.condition": "Estoque inicial 25 u.; mesma seed da receita de pouca reserva."
+  "gallery.entry.reserva-ampla.condition": "Estoque inicial 25 u.; mesma seed da receita de pouca reserva.",
+  "gallery.count.one": "{count} experimento nesta seleção",
+  "gallery.count.other": "{count} experimentos nesta seleção"
 }

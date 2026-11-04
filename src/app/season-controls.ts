@@ -21,6 +21,7 @@ export function renderSeasonStatus(w: FamilyWorld): void {
   const input = document.getElementById("photoperiod") as HTMLInputElement;
   if (document.activeElement !== input)
     input.value = String(w.params.photoperiodHours ?? 12);
+  input.style.setProperty("--range", (Number(input.value) / 24) * 100 + "%");
   document.getElementById("photoperiod-value")!.textContent =
     input.value + " h";
   const format = (x: number) =>

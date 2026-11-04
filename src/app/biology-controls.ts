@@ -17,6 +17,26 @@ import type {
   ParameterTopic,
   BiologicalReference,
 } from "../modules/biology/types.ts";
+function renderProfileOptions(select: HTMLSelectElement): void {
+  const selected = select.value;
+  const families = new Map<string, HTMLOptGroupElement>();
+  for (const profile of biologicalProfiles) {
+    let group = families.get(profile.id);
+    if (!group) {
+      group = document.createElement("optgroup");
+      group.label = profileLabel(profile);
+      families.set(profile.id, group);
+    }
+    group.append(
+      new Option(
+        profileLabel(profile) + " · v" + profile.version,
+        biologicalProfileKey(profile),
+      ),
+    );
+  }
+  select.replaceChildren(...families.values());
+  if (selected) select.value = selected;
+}
 export function selectedBiologicalProfile(): BiologicalReference {
   return biologicalReferenceFromKey(
     (document.getElementById("biology-profile") as HTMLSelectElement | null)
@@ -35,15 +55,7 @@ export function installBiologyControls(world: FamilyWorld): void {
       "biology-profile",
     ) as HTMLSelectElement,
     topic = document.getElementById("biology-topic") as HTMLSelectElement;
-  select.replaceChildren(
-    ...biologicalProfiles.map(
-      (p) =>
-        new Option(
-          profileLabel(p) + " · v" + p.version,
-          biologicalProfileKey(p),
-        ),
-    ),
-  );
+  renderProfileOptions(select);
   select.value = biologicalProfileKey(
     latestProfileReference(
       resolveBiologicalProfile(world.biologicalProfile).id,
@@ -123,12 +135,7 @@ export function installBiologyControls(world: FamilyWorld): void {
   topic.onchange = refresh;
   changeProfile();
   const stopLocale = locale.subscribe(() => {
-    for (const option of select.options) {
-      const p = resolveBiologicalProfile(
-        biologicalReferenceFromKey(option.value),
-      );
-      option.textContent = profileLabel(p) + " · v" + p.version;
-    }
+    renderProfileOptions(select);
     describeProfile();
     refresh();
   });

@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação: T2, fase 1 (UX-01 a UX-06).** T1 concluída em
+**Próxima implementação: T2, fase 2 (UX-07 a UX-11).** Fase 1 entregue. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -87,3 +87,6 @@ Publicação da página privada concluída pelo PR84, fonte76650820087a14f7d2afb
 URL: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/cronograma.html?lang=pt-BR
 Acesso após deploy: custom/revisão1/um dono/zero externos. Conferida em produção,
 console limpo. Recibo atualiza somente documentação; não pede outro deploy/tag.
+
+T1 publicado no Site privado na fonte ae989fa27ca5cc3836e87cb6f96f4d13944de813,
+PR86, implantação appgdep_6aea9ea886e48191b3623df16356710b.

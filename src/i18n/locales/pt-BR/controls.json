@@ -36,7 +36,7 @@
   "controls.camera.health": "saúde",
   "controls.camera.energy": " · energia {energy}% · infecção {infection}%",
   "controls.camera.empty": "Nenhuma formiga viva.",
-  "controls.camera.brain": "Cérebro individual · {count} ajuste(s)",
+  "controls.camera.brain": "Cérebro individual · ajustes: {count}",
   "controls.camera.learning": "Aprendizado ativo · aguardando uma decisão de rota",
   "controls.camera.aco": "Navegação ACO",
   "controls.camera.look": "Arraste para olhar · Esc para sair",

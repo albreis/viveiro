@@ -23,6 +23,21 @@ export function translate(
     },
   );
 }
+type CountKey = "gallery.count" | "status.queens" | "status.workers";
+const pluralRules = new Map<Locale, Intl.PluralRules>();
+export function countMessageKey(
+  key: CountKey,
+  count: number,
+  locale: Locale,
+): MessageKey {
+  let rules = pluralRules.get(locale);
+  if (!rules) {
+    rules = new Intl.PluralRules(locale);
+    pluralRules.set(locale, rules);
+  }
+  const form = count !== 0 && rules.select(count) === "one" ? "one" : "other";
+  return `${key}.${form}`;
+}
 export function messageArguments(message: string): string[] {
   return [
     ...new Set(

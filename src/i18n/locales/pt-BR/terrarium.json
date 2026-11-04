@@ -194,5 +194,12 @@
   "terrarium.help.forecast.title": "Prever com incerteza",
   "terrarium.help.forecast": "A previsão executa 18 cenários com pequenas variações de luz e umidade e novas escolhas aleatórias. O intervalo mostra os percentis 10–90 dessas simulações, não uma garantia. Compare previsões e resultados.",
   "terrarium.help.limits": "Aleatoriedade e caos são conceitos diferentes. Divergência entre cenários, por si só, não comprova caos matemático. Este protótipo explora um modelo ecológico simplificado; seus resultados não validam previsões sobre um terrário real. Limite: 450 formigas e crias.",
-  "terrarium.help.back": "Voltar ao terrário ↗"
+  "terrarium.help.back": "Voltar ao terrário ↗",
+  "terrarium.camera.firstPerson": "Primeira pessoa",
+  "terrarium.camera.sideShort": "Vista lateral",
+  "terrarium.action.focus-sealing.reason": "Entrada em formação ou sem acesso à câmera.",
+  "terrarium.action.focus-brood.reason": "A câmera precisa de uma cria visível.",
+  "terrarium.action.focus-ecology.reason": "A câmera precisa de uma relação ecológica visível.",
+  "terrarium.action.focus-structure.reason": "Aguarde uma medição de suporte do teto.",
+  "terrarium.action.apply-policy.reason": "Treine uma política para poder aplicá-la."
 }

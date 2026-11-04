@@ -5,6 +5,7 @@ import axe from "axe-core";
 import { preview } from "vite";
 import metadata from "../../package.json" with { type: "json" };
 import { auditStates } from "./axe-states.mjs";
+import { layoutMetrics } from "./layout-metrics.mjs";
 import { scan } from "./axe-scan.mjs";
 
 const out = resolve(process.env.VIVEIRO_QA_OUTPUT ?? ".runtime/axe");
@@ -51,21 +52,36 @@ try {
           if (!response?.ok()) throw Error("Falha ao abrir " + path);
           await page.locator("#language-picker").waitFor();
         };
-        await auditStates(page, open, async (state) => {
-          const result = await scan(page, state);
-          report.cases.push({ locale, viewport, ...result });
-          console.log(
-            locale,
-            viewport.width,
-            state,
-            result.violations.length,
-            result.incomplete.length,
-          );
-          await writeFile(
-            resolve(out, "report.json"),
-            JSON.stringify(report, null, 2) + "\n",
-          );
-        });
+        await auditStates(
+          page,
+          open,
+          async (state) => {
+            const result = await scan(page, state);
+            const layout = await layoutMetrics(page);
+            if (
+              process.argv.includes("--screenshots") &&
+              state === "terrario-pausado"
+            ) {
+              await page.evaluate(() => scrollTo(0, 0));
+              await page.screenshot({
+                path: resolve(out, locale + "-" + viewport.width + ".png"),
+              });
+            }
+            report.cases.push({ locale, viewport, layout, ...result });
+            console.log(
+              locale,
+              viewport.width,
+              state,
+              result.violations.length,
+              result.incomplete.length,
+            );
+            await writeFile(
+              resolve(out, "report.json"),
+              JSON.stringify(report, null, 2) + "\n",
+            );
+          },
+          process.argv.includes("--layout"),
+        );
         if (errors.length) throw Error(errors.join("\n"));
       } finally {
         await context.close();

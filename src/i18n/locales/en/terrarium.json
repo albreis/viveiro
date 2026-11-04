@@ -194,5 +194,12 @@
   "terrarium.help.forecast.title": "Forecast with uncertainty",
   "terrarium.help.forecast": "The forecast runs 18 scenarios with small light and humidity variations and new random choices. The interval shows the 10th–90th percentiles of those simulations, not a guarantee. Compare forecasts with outcomes.",
   "terrarium.help.limits": "Randomness and chaos are different concepts. Divergence between scenarios alone does not prove mathematical chaos. This prototype explores a simplified ecological model; its results do not validate forecasts for a real terrarium. Limit: 450 ants and brood.",
-  "terrarium.help.back": "Return to terrarium ↗"
+  "terrarium.help.back": "Return to terrarium ↗",
+  "terrarium.camera.firstPerson": "First person",
+  "terrarium.camera.sideShort": "Side view",
+  "terrarium.action.focus-sealing.reason": "Entrance forming or unavailable to the camera.",
+  "terrarium.action.focus-brood.reason": "A visible brood item is needed.",
+  "terrarium.action.focus-ecology.reason": "A visible ecological interaction is needed.",
+  "terrarium.action.focus-structure.reason": "Wait for a roof support measurement.",
+  "terrarium.action.apply-policy.reason": "Train a policy to apply it."
 }
