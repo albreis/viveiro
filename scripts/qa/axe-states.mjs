@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { checkDesktopWorkbench } from "./workbench-layout.mjs";
 
 export async function auditStates(page, open, audit, layoutOnly = false) {
   await open("index.html");
@@ -24,6 +25,7 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
       "true",
     );
     await show("#panel-soil");
+    if (page.viewportSize().width >= 1181) await checkDesktopWorkbench(page);
     await audit("aba-solo");
     await click("#tab-lab");
     await audit("aba-laboratorio");

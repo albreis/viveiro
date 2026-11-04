@@ -2,6 +2,7 @@ import type { ViewController } from "./view-controller.ts";
 import { installEnvironmentControls } from "./controls-environment.ts";
 import { installExperimentsControls } from "./controls-experiments.ts";
 import { installHelpControls } from "./controls-help.ts";
+import { installWorkbenchDocking } from "./workbench-docking.ts";
 import { installPanelTabs } from "./panel-tabs.ts";
 import { installExportControls } from "./controls-export.ts";
 function installActionReasons(): void {
@@ -31,6 +32,7 @@ function installActionReasons(): void {
 }
 export function installControllerControls(this: ViewController) {
   installPanelTabs();
+  installWorkbenchDocking();
   installActionReasons();
   installEnvironmentControls.call(this);
   installExperimentsControls.call(this);
