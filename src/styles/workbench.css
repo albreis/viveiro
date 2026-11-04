@@ -1,0 +1,117 @@
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.right-panel > [role="tabpanel"] {
+  min-height: 0;
+}
+.right-panel [role="tabpanel"] > section + section {
+  margin-top: 10px;
+}
+.panel-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+.panel-tabs button {
+  min-height: 40px;
+  padding: 6px 3px;
+  border: 1px solid #c3cdb7;
+  border-radius: 7px;
+  background: #f9fbf4;
+  transition: transform 0.16s;
+  font-size: 12px;
+}
+.panel-tabs button[aria-selected="true"] {
+  background: #426044;
+  border-color: #426044;
+  color: white;
+}
+.analysis-link {
+  display: block;
+  margin: 8px 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.analysis-band {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+  grid-column: 1 / -1;
+}
+.analysis-band > h2,
+.analysis-band > .chart-panel,
+.analysis-band > .observation-card,
+.analysis-band > .legend,
+.analysis-band > .daily-data {
+  grid-column: 1 / -1;
+}
+.analysis-band > h2 {
+  margin: 0;
+}
+.analysis-band > .chart-panel #chart {
+  height: 160px;
+}
+.profile-selection-name {
+  overflow-wrap: anywhere;
+}
+.lesson-panel > summary {
+  cursor: pointer;
+}
+.lesson-panel > summary h2 {
+  display: inline;
+}
+@media (min-width: 1181px) {
+  .workspace {
+    --workbench-height: min(780px, calc(100dvh - 135px));
+    grid-template-columns: 290px minmax(0, 1fr) 315px;
+    align-items: start;
+  }
+  .workspace > .left-panel {
+    grid-area: 1 / 1;
+    max-height: var(--workbench-height);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding-right: 5px;
+  }
+  .workspace > .center-panel {
+    grid-area: 1 / 2;
+    min-width: 0;
+    position: relative;
+  }
+  .workspace > .right-panel {
+    grid-area: 1 / 3 / span 2;
+    position: sticky;
+    top: 16px;
+    max-height: var(--workbench-height);
+  }
+  .right-panel > [role="tabpanel"] {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+  .workspace > .analysis-band {
+    grid-area: 2 / 1 / auto / span 2;
+  }
+  #viewport {
+    height: clamp(355px, 32vw, 505px);
+  }
+  .center-panel > .tour-panel {
+    position: absolute;
+    top: 52px;
+    left: 12px;
+    right: auto;
+    bottom: auto;
+    max-width: calc(100% - 24px);
+    max-height: calc(100dvh - 310px);
+  }
+}
+@media (max-width: 650px) {
+  .analysis-band {
+    order: 3;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

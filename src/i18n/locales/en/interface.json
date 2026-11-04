@@ -72,5 +72,12 @@
   "interface.daily.brood": "Brood",
   "interface.daily.food": "Food (u.)",
   "interface.daily.air": "Air (°C)",
-  "interface.daily.soil": "Mean soil (°C)"
+  "interface.daily.soil": "Mean soil (°C)",
+  "interface.tabs.label": "Terrarium panels",
+  "interface.tabs.colony": "Colony",
+  "interface.tabs.soil": "Soil and air",
+  "interface.tabs.data": "Data",
+  "interface.tabs.lab": "Lab",
+  "interface.tabs.analysis": "Analysis and data",
+  "interface.tabs.laboratory": "Open experiment laboratory"
 }

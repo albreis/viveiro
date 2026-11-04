@@ -10,7 +10,7 @@ import { presentLesson } from "../../i18n/lessons.ts";
 import { lessons, lessonDefinition } from "../../modules/lessons/catalog.ts";
 import type { LessonReference } from "../../modules/lessons/reference.ts";
 export function lessonView() {
-  const panel = document.createElement("section");
+  const panel = document.createElement("details");
   panel.className = "panel lesson-panel";
   panel.id = "lesson-panel";
   const title = document.createElement("h2");
@@ -45,8 +45,10 @@ export function lessonView() {
   status.id = "lesson-status";
   status.setAttribute("role", "status");
   message(status, "lessons.choose");
-  panel.append(title, note, grid, question, setup, status);
-  document.querySelector(".scene-card")!.before(panel);
+  const summary = document.createElement("summary");
+  summary.append(title);
+  panel.append(summary, note, grid, question, setup, status);
+  document.querySelector(".scene-card")!.after(panel);
   let key = "";
   return {
     buttons,

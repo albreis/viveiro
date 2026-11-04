@@ -72,5 +72,12 @@
   "interface.daily.brood": "Prole",
   "interface.daily.food": "Alimento (u.)",
   "interface.daily.air": "Ar (°C)",
-  "interface.daily.soil": "Solo médio (°C)"
+  "interface.daily.soil": "Solo médio (°C)",
+  "interface.tabs.label": "Painéis do terrário",
+  "interface.tabs.colony": "Colônia",
+  "interface.tabs.soil": "Solo e ar",
+  "interface.tabs.data": "Dados",
+  "interface.tabs.lab": "Lab",
+  "interface.tabs.analysis": "Análise e dados",
+  "interface.tabs.laboratory": "Abrir laboratório de experimentos"
 }

@@ -2,6 +2,7 @@ import type { ViewController } from "./view-controller.ts";
 import { installEnvironmentControls } from "./controls-environment.ts";
 import { installExperimentsControls } from "./controls-experiments.ts";
 import { installHelpControls } from "./controls-help.ts";
+import { installPanelTabs } from "./panel-tabs.ts";
 import { installExportControls } from "./controls-export.ts";
 function installActionReasons(): void {
   const buttons = document.querySelectorAll<HTMLButtonElement>(
@@ -29,6 +30,7 @@ function installActionReasons(): void {
   });
 }
 export function installControllerControls(this: ViewController) {
+  installPanelTabs();
   installActionReasons();
   installEnvironmentControls.call(this);
   installExperimentsControls.call(this);

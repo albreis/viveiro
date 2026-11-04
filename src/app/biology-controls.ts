@@ -69,6 +69,11 @@ export function installBiologyControls(world: FamilyWorld): void {
   const describeProfile = () => {
     const p = resolveBiologicalProfile(selectedBiologicalProfile());
     message(
+      document.getElementById("biology-selected-label")!,
+      "biology.preview",
+      { label: profileLabel(p), version: p.version },
+    );
+    message(
       document.getElementById("biology-catalog-profile")!,
       "biology.preview",
       { label: profileLabel(p), version: p.version },
