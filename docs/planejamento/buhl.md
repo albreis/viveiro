@@ -57,6 +57,7 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   para curva temporal e escala, incerteza de digitalização e replicação por
   grupo. Os antigos limites apenas inferiores aceitaram saturação precoce.
   Não comparar horizontes de 8/16h com alvos de 24/48h sem correspondência.
+  [Diagnóstico bilateral e contrato da série física](buhl-criterios.md).
 - [ ] **B5 — Rodadas retomáveis:** adaptar varreduras/sensibilidade às entradas
   de escavação; salvar por execução, fonte, seed, parâmetros e progresso.
   Rodadas BUHL-2/n1c30 de 72h foram preparadas, mas não concluídas no relatório;
