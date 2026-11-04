@@ -1,6 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { SoilMesher } from "../src/services/SoilMesher.ts";
+import { soilMeshData } from "../src/modules/terrain/mesh-data.ts";
+import { World } from "./fixtures/established-world.mjs";
 
 test("trocar o detalhe durante trabalho no Worker descarta a resposta antiga", () => {
   const previous = globalThis.Worker;
@@ -40,6 +42,42 @@ test("trocar o detalhe durante trabalho no Worker descarta a resposta antiga", (
     assert.equal(calls, 1);
     m.dispose();
     assert.equal(port.terminated, true);
+  } finally {
+    globalThis.Worker = previous;
+  }
+});
+
+test("a malha inicial usa o worker e mantém a geometria quando ele falha", async () => {
+  const previous = globalThis.Worker;
+  let port;
+  globalThis.Worker = class {
+    constructor() {
+      port = this;
+    }
+    postMessage(message) {
+      this.message = message;
+    }
+    terminate() {}
+  };
+  try {
+    const mesher = new SoilMesher("light");
+    const nest = new World("soil-worker-startup").nest;
+    const expected = soilMeshData(nest, "light");
+    const prepared = mesher.prepare(nest);
+    assert.equal(port.message.detail, "light");
+    assert.equal(mesher.busy, true);
+    port.onmessage({
+      data: {
+        revision: nest.revision,
+        mesh: expected,
+        generation: port.message.generation,
+      },
+    });
+    assert.equal(await prepared, expected);
+    const fallback = mesher.prepare(nest);
+    port.onerror();
+    assert.deepEqual(await fallback, expected);
+    assert.equal(mesher.busy, false);
   } finally {
     globalThis.Worker = previous;
   }

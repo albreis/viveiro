@@ -4,9 +4,14 @@ import { LandscapeView } from "./LandscapeView.ts";
 import { EntranceView } from "./EntranceView.ts";
 import * as THREE from "three";
 import { hashSeed } from "../simulation/world.js";
-import { createSoilGeometry } from "../terrain/soil.js";
+import { createSoilGeometry, geometryFromSoilData } from "../terrain/soil.js";
+import type { SoilMeshData } from "../terrain/mesh-data.ts";
 
-export function buildGround(host: Terrarium, seed: string) {
+export function buildGround(
+  host: Terrarium,
+  seed: string,
+  soilData?: SoilMeshData,
+) {
   let state = hashSeed(seed + ":terrain");
   const rnd = () => {
     state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
@@ -30,7 +35,9 @@ export function buildGround(host: Terrarium, seed: string) {
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(2, 1.3);
   host.soil = host.mesh(
-    createSoilGeometry(host.world.nest, host.performance.soilDetail),
+    soilData
+      ? geometryFromSoilData(soilData)
+      : createSoilGeometry(host.world.nest, host.performance.soilDetail),
     [
       host.material("#ffffff", { vertexColors: true }),
       host.material("#ffffff", { map: texture, vertexColors: true }),

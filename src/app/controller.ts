@@ -14,6 +14,7 @@ import { presentFamily } from "../modules/colonies/presentation.ts";
 import { AntCameraControls } from "./AntCameraControls.ts";
 import { storageNotice, checkpointStore } from "../services/session-store.ts";
 import { Terrarium } from "../modules/renderer/scene.ts";
+import { SoilMesher } from "../services/SoilMesher.ts";
 import { FrameController } from "./controller-frame.ts";
 import { installControllerControls } from "./controller-controls.ts";
 class Controller extends FrameController {
@@ -30,12 +31,16 @@ class Controller extends FrameController {
     });
     const notice = storageNotice();
     if (notice) this.toast(notice);
+    const world = presentFamily(this.active());
+    const mesher = new SoilMesher(
+      renderProfile(readPerformanceMode()).soilDetail,
+    );
     try {
-      this.scene = new Terrarium(
-        $("viewport"),
-        presentFamily(this.active()),
-        this.intervention,
-      );
+      const data = await mesher.prepare(world.nest);
+      this.scene = new Terrarium($("viewport"), world, this.intervention, {
+        data,
+        mesher,
+      });
       this.configureAntCamera();
       $("loading").hidden = true;
       this.forecaster = new ForecastClient(
@@ -71,11 +76,11 @@ class Controller extends FrameController {
       if (import.meta.hot)
         import.meta.hot.dispose(() => this.forecaster?.dispose());
     } catch (error) {
+      if (!this.scene) mesher.dispose();
       this.handleError(error);
     }
 
     installControllerControls.call(this);
-    this.previous = performance.now();
     this.installFrameEvents();
     this.dailyControls = installDailyControls({
       scenarios: () => [
@@ -127,10 +132,13 @@ class Controller extends FrameController {
       this.scenario,
       this.active().tick,
     );
+    this.previous = performance.now();
     requestAnimationFrame(this.frame);
 
     const stopLocaleRendering = locale.subscribe(() => this.updateUi());
     window.addEventListener("pagehide", stopLocaleRendering, { once: true });
   };
 }
-await new Controller().start();
+export function startTerrarium(): Promise<void> {
+  return new Controller().start();
+}

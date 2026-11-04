@@ -1,0 +1,186 @@
+{
+  "baselineSource": "ddd8d91f21ba67669617b0f43bc324799e2a46f9",
+  "testedChange": "Malha inicial no worker e i18n antes de iniciar o terrário",
+  "lighthouse": {
+    "version": "13.6.0",
+    "browser": "156.0.8078.80",
+    "conditions": "Builds Vite locais. Três navegações frias alternadas por variante/perfil, sem API PageSpeed. Chrome headless com SwiftShader.",
+    "profiles": {
+      "desktop": {
+        "baseline": {
+          "runs": [
+            {
+              "tbtMs": 2819.457,
+              "cls": 0.240327,
+              "lcpMs": 2291.808,
+              "score": 0.41
+            },
+            {
+              "tbtMs": 3223,
+              "cls": 0.101973,
+              "lcpMs": 2503.784,
+              "score": 0.47
+            },
+            {
+              "tbtMs": 3009,
+              "cls": 0.118076,
+              "lcpMs": 2404.579,
+              "score": 0.47
+            }
+          ],
+          "median": {
+            "tbtMs": 3009,
+            "cls": 0.118076,
+            "lcpMs": 2404.579,
+            "score": 0.47
+          }
+        },
+        "worker": {
+          "runs": [
+            {
+              "tbtMs": 1220.557,
+              "cls": 0.094721,
+              "lcpMs": 1524.62,
+              "score": 0.61
+            },
+            {
+              "tbtMs": 1103,
+              "cls": 0.012164,
+              "lcpMs": 1515.52,
+              "score": 0.64
+            },
+            {
+              "tbtMs": 1207,
+              "cls": 0.010353,
+              "lcpMs": 1495.731,
+              "score": 0.64
+            }
+          ],
+          "median": {
+            "tbtMs": 1207,
+            "cls": 0.012164,
+            "lcpMs": 1515.52,
+            "score": 0.64
+          }
+        }
+      },
+      "mobile": {
+        "baseline": {
+          "runs": [
+            {
+              "tbtMs": 5505.5,
+              "cls": 0.001383,
+              "lcpMs": 2173.381,
+              "score": 0.59
+            },
+            {
+              "tbtMs": 4140.5,
+              "cls": 0.004064,
+              "lcpMs": 5348.436,
+              "score": 0.33
+            },
+            {
+              "tbtMs": 3895.5,
+              "cls": 0.004064,
+              "lcpMs": 5307.993,
+              "score": 0.34
+            }
+          ],
+          "median": {
+            "tbtMs": 4140.5,
+            "cls": 0.004064,
+            "lcpMs": 5307.993,
+            "score": 0.34
+          }
+        },
+        "worker": {
+          "runs": [
+            {
+              "tbtMs": 4211.5,
+              "cls": 0.017444,
+              "lcpMs": 5498.016,
+              "score": 0.42
+            },
+            {
+              "tbtMs": 2006.5,
+              "cls": 0.001383,
+              "lcpMs": 2489.579,
+              "score": 0.61
+            },
+            {
+              "tbtMs": 3849.5,
+              "cls": 0.017444,
+              "lcpMs": 5367.562,
+              "score": 0.43
+            }
+          ],
+          "median": {
+            "tbtMs": 3849.5,
+            "cls": 0.017444,
+            "lcpMs": 5367.562,
+            "score": 0.43
+          }
+        }
+      }
+    }
+  },
+  "motion": {
+    "version": "0.46.0",
+    "browser": "156.0.8078.80",
+    "platform": "win32 10.0.26200",
+    "cpu": "11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz",
+    "logicalCpus": 8,
+    "ramGiB": 16,
+    "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x00009A49) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.101.5522)",
+    "softwareRequested": false,
+    "viewport": {
+      "width": 1366,
+      "height": 768
+    },
+    "scenario": {
+      "seed": "AULA-v2-trilhas-vento",
+      "comparison": "a",
+      "speed": 10,
+      "initialWorkers": 16,
+      "simulatedScenarios": 2,
+      "minimumSeconds": 10
+    },
+    "results": [
+      {
+        "mode": "full",
+        "fps": 58.6,
+        "p95FrameMs": 16.9,
+        "before": {
+          "population": "17",
+          "day": "Day 0"
+        },
+        "after": {
+          "population": "17",
+          "day": "Day 1.6"
+        },
+        "measurement": "58.6 frames/s · P95 16.9 ms · 808 calls · 310210 triangles/frame. Average over 10.0 s; this does not certify school hardware."
+      },
+      {
+        "mode": "light",
+        "fps": 59.7,
+        "p95FrameMs": 16.9,
+        "before": {
+          "population": "17",
+          "day": "Day 0"
+        },
+        "after": {
+          "population": "17",
+          "day": "Day 1.7"
+        },
+        "measurement": "59.7 frames/s · P95 16.9 ms · 808 calls · 210439 triangles/frame. Average over 10.0 s; this does not certify school hardware."
+      }
+    ]
+  },
+  "validation": {
+    "testsPassed": 17,
+    "browserCases": 38,
+    "violations": 0,
+    "horizontalOverflowCases": 0
+  },
+  "openAcceptance": "P1.1B ainda precisa do ensaio em notebook de entrada/Chromebook identificado no contexto escolar."
+}
