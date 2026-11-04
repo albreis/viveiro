@@ -82,3 +82,8 @@ Suíte completa479/479; TS/build aprovados. Ver cronograma-privado.md e
 validacoes/cronograma-privado.json para o recibo e a publicação.
 O próximo passo de produto continua T1 de acessibilidade; não foi fechado pelo
 fato de a página do cronograma ter navegação por teclado.
+
+Publicação da página privada concluída pelo PR84, fonte76650820087a14f7d2afbeba3d504772acd44d9e.
+URL: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/cronograma.html?lang=pt-BR
+Acesso após deploy: custom/revisão1/um dono/zero externos. Conferida em produção,
+console limpo. Recibo atualiza somente documentação; não pede outro deploy/tag.
