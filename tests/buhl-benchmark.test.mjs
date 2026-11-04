@@ -127,6 +127,9 @@ test("argumentos inválidos falham antes de rodar", () => {
     idle: "original",
     realTime: undefined,
     parallel: false,
+    jobs: 1,
+    resume: false,
+    limit: undefined,
     firstSeed: 1,
     brake: {},
   });

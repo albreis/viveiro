@@ -118,7 +118,12 @@ malha do solo para o worker. A mediana de TBT caiu nos dois perfis e o CLS
 caiu no desktop. O ensaio de movimento registrou 58,6/59,7 FPS no hardware
 local. Ver qa-desempenho.md. O teste no equipamento escolar permanece aberto.
 
-Próxima etapa: B1 da retomada de Buhl. A prévia de merge da branch original
-com a main encontrou conflito textual em package.json. Reconciliar em
-branch codex/ própria, revisar aritmética e isolamento do benchmark,
-rodar build/testes e só depois avançar à referência rt24b de B2.
+B1 reconciliado em codex/buhl-reconciliacao. A branch original e os anexos
+foram preservados. Os primeiros 600 ticks de rt24b coincidiram exatamente
+com o arquivo histórico para 50, 100 e 200 operárias. O CLI agora grava
+um resultado verificado por grupo e retoma com as ferramentas de P2.3.
+
+Próximo passo: B2. Repetir rt24b com 86.400 ticks e os três grupos do
+[comando em cli.md](cli.md#comparação-com-dados-publicados). Começar pelo grupo
+de 50 com --limit 1. Retomar na mesma pasta com --resume e comparar a série
+e os volumes finais com os anexos. Depois tratar unidades e protocolo em B3.

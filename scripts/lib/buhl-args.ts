@@ -10,6 +10,9 @@ export interface BuhlOptions {
   /** Real-time reading: hours of experiment and seconds per tick. */
   realTime?: { hours: number; secondsPerTick: number; ticks: number };
   parallel: boolean;
+  jobs: number;
+  resume: boolean;
+  limit?: number;
   /** First seed number (BUHL-N), so tuning and test seeds can be kept apart. */
   firstSeed: number;
   /** Density brake overrides for the pheromone mode. */
@@ -27,9 +30,14 @@ const integer = (name: string, raw: string, min: number, max: number) => {
 /** Strict parser: unknown, repeated or valueless flags fail before running. */
 export function buhlArgs(argv: string[]): BuhlOptions {
   const seen = new Map<string, string>();
-  for (let i = 0; i < argv.length; i += 2) {
-    const flag = argv[i],
-      value = argv[i + 1];
+  for (let i = 0; i < argv.length; i++) {
+    const flag = argv[i];
+    if (flag === "--resume") {
+      if (seen.has("resume")) throw Error("Opção repetida: --resume");
+      seen.set("resume", "true");
+      continue;
+    }
+    const value = argv[++i];
     if (!flag.startsWith("--")) throw Error("Argumento inesperado: " + flag);
     const name = flag.slice(2);
     if (
@@ -45,6 +53,8 @@ export function buhlArgs(argv: string[]): BuhlOptions {
         "horas",
         "segundos-por-tick",
         "paralelo",
+        "jobs",
+        "limit",
         "semente-inicial",
         "freio-expoente",
         "freio-c",
@@ -106,6 +116,8 @@ export function buhlArgs(argv: string[]): BuhlOptions {
     throw Error(
       "--freio-expoente e --freio-c só valem com --mode estigmergia.",
     );
+  const parallel = choice("paralelo", "nao", ["nao", "sim"]) === "sim";
+  const limit = seen.get("limit");
   return {
     out,
     days: integer("days", seen.get("days") ?? "3", 1, 365),
@@ -122,7 +134,10 @@ export function buhlArgs(argv: string[]): BuhlOptions {
     protocol: choice("protocol", "terrario", ["terrario", "grupo-fixo"]),
     idle: choice("ociosas", "original", ["original", "cedem"]),
     realTime,
-    parallel: choice("paralelo", "nao", ["nao", "sim"]) === "sim",
+    parallel,
+    jobs: integer("jobs", seen.get("jobs") ?? (parallel ? "3" : "1"), 1, 8),
+    resume: seen.has("resume"),
+    limit: limit === undefined ? undefined : integer("limit", limit, 1, 20_000),
     firstSeed: integer(
       "semente-inicial",
       seen.get("semente-inicial") ?? "1",
