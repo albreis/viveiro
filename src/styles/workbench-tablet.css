@@ -44,6 +44,12 @@
   .scene-controls .time-display {
     min-width: 0;
   }
+  #toast {
+    bottom: calc(var(--transport-clearance) + 10px);
+  }
+  .tour-panel:not([data-dock^="top"]) {
+    bottom: calc(var(--transport-clearance) + 0.7rem);
+  }
   .scene-card:fullscreen .scene-controls {
     position: static;
   }
