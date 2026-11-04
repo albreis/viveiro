@@ -34,9 +34,14 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
   assert.ok(items("optional").every((i) => i.optional && !i.done));
   assert.equal(items("buhl").length, 8);
   assert.ok(data.groups.find((g) => g.view === "buhl").started);
-  const [reconciliation, ...validation] = items("buhl");
+  const [reconciliation, reference, ...validation] = items("buhl");
   assert.match(reconciliation.title, /B1.*Reconciliar/);
   assert.equal(reconciliation.done, true);
+  assert.match(reference.title, /B2.*fixar referência/);
+  assert.equal(reference.done, true);
+  assert.ok(
+    reference.links.some((link) => link.url.endsWith("/buhl-rt24b.json")),
+  );
   assert.ok(validation.every((step) => !step.done));
   assert.ok(items("personal").some((i) => i.done && /Zoom/.test(i.title)));
   assert.ok(
@@ -48,7 +53,7 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
     data.version,
     JSON.parse(readFileSync("package.json", "utf8")).version,
   );
-  assert.equal(data.updated, "03/11/2026");
+  assert.equal(data.updated, "04/11/2026");
   const all = data.groups.flatMap((g) => g.items);
   assert.equal(new Set(all.map((i) => i.id)).size, all.length);
 });

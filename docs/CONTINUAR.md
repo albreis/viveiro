@@ -123,24 +123,19 @@ foram preservados. Os primeiros 600 ticks de rt24b coincidiram exatamente
 com o arquivo histórico para 50, 100 e 200 operárias. O CLI agora grava
 um resultado verificado por grupo e retoma com as ferramentas de P2.3.
 
-Próximo passo: B2. A referência de 86.400 ticks por grupo começou em
-04/11/2026 na fonte 0751a5fd42d679e3146ab75fa8144f7b12c4ca89, Node 24.22.1.
-Os grupos de 50 e 100 coincidiram com as 145 amostras históricas de cada um;
-falta comparar o grupo de 200, que está em execução. O plano e os resultados estão em
-`.runtime/buhl-rt24b-reconciliado`; log em
-`.runtime/buhl-rt24b-reconciliado-execucao.log`. Consultar o log e o lock
-antes de qualquer retomada. Se a execução encerrou incompleta, retomar com
-`--resume` no [mesmo comando e pasta](cli.md#comparação-com-dados-publicados),
-na mesma fonte do modelo. Não iniciar uma segunda execução.
+B2 concluído em 04/11/2026. Os três grupos de rt24b (50, 100 e 200)
+completaram 86.400 ticks cada. As 435 amostras e o CSV completo bateram
+exatamente com a referência histórica; ver [recibo](validacoes/buhl-rt24b.json).
+A rodada local está em `.runtime/buhl-rt24b-reconciliado`. Não repetir a
+referência para aceitar B2 de novo. Este resultado não calibra o modelo.
 
-Conferir os grupos com `node scripts/compare-buhl-reference.ts .runtime/buhl-rt24b-reconciliado`,
-gravar o recibo e atualizar B2 no [PR #98](https://github.com/albreis/viveiro/pull/98).
-A preparação de [B3](planejamento/buhl-protocolo.md) já mede caminhada livre
-em unidades por tick. Depois de registrar o terceiro grupo de B2, implementar
-a arena plana: disco de 200 mm por 5 mm, área externa de 500 mm, operárias
-dispersas e nenhuma galeria pronta. Registrar a escala geométrica, medir o
-vazio novo e distinguir remoção de solo, alargamento por tráfego e pelotas.
-O ensaio de B3 não calibra nem converte o rt24b.
+Próximo passo: B3. Retomar o [PR #104](https://github.com/albreis/viveiro/pull/104)
+com a geometria da arena de disco intacto e a dispersão inicial por seed.
+Validar a integração da geometria e ligar o movimento local das operárias
+à arena. Medir vazio novo e distinguir remoção, alargamento por tráfego
+e pelotas. O [protocolo físico](planejamento/buhl-protocolo.md) já inclui
+o ensaio de caminhada livre; usar uma escala geométrica explícita
+antes de interpretar os segundos por tick.
 
 O [diagnóstico de B4](planejamento/buhl-criterios.md) aceita somente séries
 com horas físicas e cm³ da arena, compara limites bilaterais e mantém os
