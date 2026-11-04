@@ -1,0 +1,40 @@
+{
+  "schema": "viveiro-gautrais-grafos-inventario-v1",
+  "source": "https://doi.org/10.1371/journal.pone.0109436.s001",
+  "graphSetSha256": "6283effdf4dc824a50880228126358ec353112aea5d6ddd3cd5e374c34509938",
+  "totals": {
+    "finalGraphs": 28,
+    "series": 23,
+    "frames": 4991,
+    "parallelInFrames": 0
+  },
+  "groups": [
+    {
+      "workers": 50,
+      "finalGraphs": 5,
+      "series": 0,
+      "finalMeanNodes": 24.2,
+      "finalMeanEdges": 22,
+      "finalMeanCycleRank": 1.4,
+      "finalParallelEdges": 0
+    },
+    {
+      "workers": 100,
+      "finalGraphs": 5,
+      "series": 5,
+      "finalMeanNodes": 35.2,
+      "finalMeanEdges": 37.4,
+      "finalMeanCycleRank": 5.6,
+      "finalParallelEdges": 0
+    },
+    {
+      "workers": 200,
+      "finalGraphs": 18,
+      "series": 18,
+      "finalMeanNodes": 59.888888888888886,
+      "finalMeanEdges": 68.88888888888889,
+      "finalMeanCycleRank": 13,
+      "finalParallelEdges": 5
+    }
+  ]
+}
