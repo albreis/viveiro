@@ -1,0 +1,56 @@
+.scene-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding: 10px 16px;
+}
+@media (min-width: 651px) and (max-width: 1180px) {
+  .workspace {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .center-panel {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+  .right-panel {
+    grid-column: auto;
+  }
+}
+@media (max-width: 1180px) {
+  html {
+    --transport-clearance: calc(76px + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(var(--transport-clearance) + 10px);
+  }
+  body {
+    padding-bottom: var(--transport-clearance);
+  }
+  .scene-controls {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 18;
+    background: var(--paper);
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+    min-height: 60px;
+    gap: 8px;
+  }
+  .scene-controls .play-button,
+  .scene-controls .speed-controls button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .scene-controls .speed-controls {
+    flex-shrink: 0;
+  }
+  .scene-controls .time-display {
+    min-width: 0;
+  }
+  #toast {
+    bottom: calc(var(--transport-clearance) + 10px);
+  }
+  .tour-panel:not([data-dock^="top"]) {
+    bottom: calc(var(--transport-clearance) + 0.7rem);
+  }
+  .scene-card:fullscreen .scene-controls {
+    position: static;
+  }
+}

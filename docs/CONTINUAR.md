@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação é T2, fase 3 (UX-12 a UX-15).** Fases 1 e 2 entregues. T1 concluída em
+**Próxima implementação é T2, fase 4 (UX-16 a UX-20).** Fases 1 a 3 validadas. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -94,9 +94,16 @@ PR86, implantação appgdep_6aea9ea886e48191b3623df16356710b.
 UX-01 a UX-06 publicados no PR87, fonte 0e4be5e807a57e6447c0dd250966cc2dc942c5e3,
 implantação appgdep_6aeaa18c97b88191b19a48fb378c49d7.
 
-O desktop foi reorganizado a pedido do usuário. Ambiente fica à esquerda,
-Colônia e abas à direita, ambos com altura natural. Intervenções, perfil
-e semente ficam em três colunas após Análise e dados. A página permite
-alcançar o fim da aba e mantém o resumo da Colônia junto às abas durante
-a rolagem. A próxima etapa continua no rascunho #89. Sincronizar esse
-rascunho com a main e validar o tablet com os controles na nova posição.
+UX-07 a UX-11 publicados pelo PR88, com correções de rolagem e de layout nos
+PRs 90–92. Ambiente e Colônia têm altura natural no desktop, e os controles
+secundários ficam depois de Análise e dados. O PR93 acrescentou a prévia
+dos experimentos por mouse e teclado.
+
+UX-12 a UX-15 validados no PR89. Build, 480 testes e 102 estados no Chrome
+passaram. A cena ocupa a largura útil no tablet, e a barra permanece acessível
+durante a rolagem e a navegação por Tab. Ver validacoes/ux-fase-3.json.
+
+A fase móvel começa em codex/ux-mobile. Sincronizar com a main após o PR89
+e testar a gaveta, os alvos e os gestos em navegador com toque emulado.
+O teste em celular físico segue na fila individual. Depois vêm UX-21, T3,
+Buhl e o apoio técnico de T5.

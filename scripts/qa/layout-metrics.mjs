@@ -61,6 +61,15 @@ export function layoutMetrics(page) {
       scene: rect(".scene-card"),
       viewport: rect("#viewport"),
       left: rect(".left-panel"),
+      environment: rect(".environment"),
+      intervention: rect(".intervention-panel"),
+      transport: rect(".scene-controls"),
+      transportPosition: getComputedStyle(
+        document.querySelector(".scene-controls") ?? document.body,
+      ).position,
+      headerActions: ["#tour-open", "#help"].every((id) =>
+        document.querySelector(id)?.checkVisibility(),
+      ),
       center: rect(".center-panel"),
       right: rect(".right-panel"),
       analysis: rect(".analysis-band"),

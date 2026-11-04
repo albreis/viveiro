@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { checkTabletLayout } from "./tablet-layout.mjs";
 import { checkColonyFlow, checkDesktopWorkbench } from "./workbench-layout.mjs";
 
 export async function auditStates(page, open, audit, layoutOnly = false) {
@@ -32,6 +33,10 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
     await audit("aba-laboratorio");
     await click("#tab-colony");
   }
+  assert.ok(await page.locator("#tour-open").isVisible());
+  assert.ok(await page.locator("#help").isVisible());
+  const { width } = page.viewportSize();
+  if (width > 650 && width <= 1180) await checkTabletLayout(page);
   if (layoutOnly) return;
   await click("#view-top");
   assert.equal(
@@ -59,6 +64,10 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
     const guide = await page.locator("#tour-panel").boundingBox();
     const colony = await page.locator(".metrics-panel").boundingBox();
     assert.ok(guide.x + guide.width <= colony.x);
+  } else if (width <= 1180) {
+    const guide = await page.locator("#tour-panel").boundingBox();
+    const transport = await page.locator(".scene-controls").boundingBox();
+    assert.ok(guide.y + guide.height <= transport.y + 1);
   }
   await audit("tour-inicio");
   await click("#tour-next");
