@@ -62,7 +62,10 @@ para confirmação em aparelho físico.
 
 | ID | Implementação | Aceite | Estado |
 | --- | --- | --- | --- |
-| UX-21 | Resumos e aprofundamento | Começar com 2–4 métricas por cartão e “Saiba mais”; preservar unidades/fontes/limites, sem anúncio a leitor de tela a cada frame | Pendente |
+| UX-21 | Resumos e aprofundamento | Começar com 2–4 métricas por cartão e “Saiba mais”; preservar unidades/fontes/limites, sem anúncio a leitor de tela a cada frame | Entregue |
+
+A [validação da fase 5](../validacoes/ux-fase-5.json) verificou os cinco cartões
+com detalhes abertos por teclado e as entradas da comparação de ventilação em A/B.
 
 ## Verificação em cada entrega
 

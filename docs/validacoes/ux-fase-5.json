@@ -1,0 +1,21 @@
+{
+  "stage": "UX-21",
+  "browser": "Chrome 156.0.8078.80",
+  "axe": "4.14.0",
+  "locales": ["pt-BR", "en"],
+  "viewports": [[1440, 900], [820, 1180], [390, 844]],
+  "cases": 38,
+  "violations": 0,
+  "horizontalOverflowCases": 0,
+  "incompleteCasesByRule": {
+    "aria-valid-attr-value": 12,
+    "color-contrast": 36,
+    "label-content-name-mismatch": 36,
+    "link-in-text-block": 24
+  },
+  "metricCards": ["family", "soil", "ecology", "climate", "gas"],
+  "keyboardDisclosures": true,
+  "comparisonEntrances": { "a": 1, "b": 2 },
+  "testsPassed": 19,
+  "report": ".runtime/ux5-final/report.json"
+}

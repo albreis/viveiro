@@ -2,7 +2,25 @@
   <div class="section-label">
     <span data-i18n="terrarium.gas.title"></span><span>≈</span>
   </div>
-  <p id="gas-status"></p>
+  <dl id="gas-metrics" class="status-metrics">
+    <div>
+      <dt data-i18n="interface.metrics.oxygen"></dt>
+      <dd data-metric="oxygen">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.carbon"></dt>
+      <dd data-metric="carbon">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.entrances"></dt>
+      <dd data-metric="entrances">—</dd>
+    </div>
+  </dl>
+  <details class="metric-details">
+    <summary data-i18n="interface.metrics.more"></summary>
+    <p id="gas-status"></p>
+    <p class="field-note" data-i18n="terrarium.gas.help"></p>
+  </details>
   <canvas
     id="gas-map"
     width="280"
@@ -10,7 +28,6 @@
     role="img"
     data-i18n-aria-label="terrarium.gas.map"
   ></canvas>
-  <p class="field-note" data-i18n="terrarium.gas.help"></p>
   <div class="slider-block">
     <label for="wind"
       ><span data-i18n="terrarium.wind"></span

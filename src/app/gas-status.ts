@@ -1,3 +1,4 @@
+import { metricRange, writeStatusMetrics } from "./status-metrics.ts";
 import { locale, t, message } from "../i18n/runtime.ts";
 import type { GasWorld } from "../modules/ventilation/types.ts";
 import { gasFractions } from "../modules/ventilation/sensing.ts";
@@ -36,17 +37,27 @@ export function renderGasStatus(w: GasWorld) {
     );
     document.getElementById("wind-value")!.textContent = input.value + " u.";
   }
+  const entrances = w.nest.nodes.filter((n) => n.type === "entrance").length;
   if (!s || !s.cells.length) {
+    writeStatusMetrics("gas", { entrances });
     message(target, "panels.gas.empty");
     return;
   }
   const air = s.cells.map((_, i) => gasFractions(s, i));
-  message(target, "panels.gas.summary", {
+  const limits = {
     oxygenMin: format(Math.min(...air.map((c) => c.oxygen)) * 100),
     oxygenMax: format(Math.max(...air.map((c) => c.oxygen)) * 100),
     carbonMin: format(Math.min(...air.map((c) => c.carbon)) * 100),
     carbonMax: format(Math.max(...air.map((c) => c.carbon)) * 100),
-    entrances: w.nest.nodes.filter((n) => n.type === "entrance").length,
+  };
+  writeStatusMetrics("gas", {
+    oxygen: metricRange(limits.oxygenMin, limits.oxygenMax, "%"),
+    carbon: metricRange(limits.carbonMin, limits.carbonMax, "%"),
+    entrances,
+  });
+  message(target, "panels.gas.summary", {
+    ...limits,
+    entrances,
     consumed: format(s.consumed, 3),
   });
   drawGasMap(w);

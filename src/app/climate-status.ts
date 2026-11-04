@@ -1,3 +1,4 @@
+import { metricRange, writeStatusMetrics } from "./status-metrics.ts";
 import { locale, t, message } from "../i18n/runtime.ts";
 import { drawClimateMap, type ClimateMode } from "./climate-map.ts";
 import type { FamilyWorld } from "../modules/colonies/types.ts";
@@ -49,17 +50,25 @@ export function renderClimateStatus(w: FamilyWorld) {
   const target = document.getElementById("climate-status");
   if (!target) return;
   if (!s) {
+    writeStatusMetrics("climate");
     message(target, "panels.climate.wait");
     return;
   }
   const water = s.water.map((v) => (v / s.capacity) * 100),
     f = (v: number) =>
       v.toLocaleString(locale.locale, { maximumFractionDigits: 1 });
-  message(target, "panels.climate.summary", {
+  const limits = {
     waterMin: f(Math.min(...water)),
     waterMax: f(Math.max(...water)),
     tempMin: f(Math.min(...s.temperature)),
     tempMax: f(Math.max(...s.temperature)),
+  };
+  writeStatusMetrics("climate", {
+    soilWater: metricRange(limits.waterMin, limits.waterMax, "%"),
+    soilTemperature: metricRange(limits.tempMin, limits.tempMax, " °C"),
+  });
+  message(target, "panels.climate.summary", {
+    ...limits,
     rain: f(s.rainIn),
     evaporated: f(s.evaporated),
   });

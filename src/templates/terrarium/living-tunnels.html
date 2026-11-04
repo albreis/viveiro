@@ -2,9 +2,30 @@
   <div class="section-label">
     <span data-i18n="terrarium.tunnels.title"></span><span>↓</span>
   </div>
-  <p id="soil-status" data-i18n="terrarium.tunnels.initial"></p>
-  <p id="granular-status"></p>
-  <p id="structure-status"></p>
+  <dl id="soil-metrics" class="status-metrics">
+    <div>
+      <dt data-i18n="interface.metrics.fronts"></dt>
+      <dd data-metric="fronts">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.digging"></dt>
+      <dd data-metric="digging">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.hauling"></dt>
+      <dd data-metric="hauling">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.looseSoil"></dt>
+      <dd data-metric="looseSoil">—</dd>
+    </div>
+  </dl>
+  <details class="metric-details">
+    <summary data-i18n="interface.metrics.more"></summary>
+    <p id="soil-status" data-i18n="terrarium.tunnels.initial"></p>
+    <p id="granular-status"></p>
+    <p id="structure-status"></p>
+  </details>
   <button
     id="focus-structure"
     class="secondary-action"

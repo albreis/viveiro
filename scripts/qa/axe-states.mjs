@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { checkTabletLayout } from "./tablet-layout.mjs";
+import { checkMetricCards } from "./metric-cards.mjs";
 import { checkColonyFlow, checkDesktopWorkbench } from "./workbench-layout.mjs";
 
 export async function auditStates(page, open, audit, layoutOnly = false) {
@@ -28,10 +29,22 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
     await show("#panel-soil");
     if (page.viewportSize().width >= 1181) await checkDesktopWorkbench(page);
     await audit("aba-solo");
+    await checkMetricCards(
+      page,
+      ["soil", "climate", "gas"],
+      audit,
+      "metricas-solo",
+    );
     await click("#tab-lab");
     if (page.viewportSize().width >= 1181) await checkColonyFlow(page);
     await audit("aba-laboratorio");
     await click("#tab-colony");
+    await checkMetricCards(
+      page,
+      ["family", "ecology"],
+      audit,
+      "metricas-colonia",
+    );
   }
   assert.ok(await page.locator("#tour-open").isVisible());
   assert.ok(await page.locator("#help").isVisible());

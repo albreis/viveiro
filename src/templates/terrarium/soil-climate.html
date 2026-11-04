@@ -2,7 +2,21 @@
   <div class="section-label">
     <span data-i18n="terrarium.climate.title"></span><span>◉</span>
   </div>
-  <p id="climate-status"></p>
+  <dl id="climate-metrics" class="status-metrics">
+    <div>
+      <dt data-i18n="interface.metrics.soilWater"></dt>
+      <dd data-metric="soilWater">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.soilTemperature"></dt>
+      <dd data-metric="soilTemperature">—</dd>
+    </div>
+  </dl>
+  <details class="metric-details">
+    <summary data-i18n="interface.metrics.more"></summary>
+    <p id="climate-status"></p>
+    <p data-i18n="terrarium.climate.help"></p>
+  </details>
   <div class="climate-tabs">
     <button
       class="text-button"
@@ -25,5 +39,4 @@
     data-i18n-aria-label="terrarium.climate.map"
   ></canvas>
   <p id="climate-map-caption" class="field-note"></p>
-  <p data-i18n="terrarium.climate.help"></p>
 </section>

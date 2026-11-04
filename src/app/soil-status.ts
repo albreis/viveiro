@@ -1,10 +1,15 @@
+import { writeStatusMetrics } from "./status-metrics.ts";
 import { locale, t, messageSource } from "../i18n/runtime.ts";
 import type { SoilWorld } from "../modules/soil/types.ts";
 import { soilBalance } from "../modules/soil/ledger.ts";
 
 export function renderSoilStatus(world: SoilWorld) {
   const target = document.getElementById("soil-status");
-  if (!target || !world.soil) return;
+  if (!target) return;
+  if (!world.soil) {
+    writeStatusMetrics("soil");
+    return;
+  }
   const founding =
     (world as SoilWorld & { founding?: { phase: string } }).founding?.phase ===
     "digging";
@@ -20,6 +25,13 @@ export function renderSoilStatus(world: SoilWorld) {
     new Intl.NumberFormat(locale.locale, { maximumFractionDigits: 3 }).format(
       Math.abs(v) < 1e-9 ? 0 : v,
     );
+  const loose = format(balance.loose);
+  writeStatusMetrics("soil", {
+    fronts: active,
+    digging,
+    hauling,
+    looseSoil: loose + " u³",
+  });
   messageSource(
     target,
     t("status.soil", {
@@ -27,7 +39,7 @@ export function renderSoilStatus(world: SoilWorld) {
       digging,
       hauling,
       deposited: format(balance.surfaceStock ?? balance.deposited),
-      loose: format(balance.loose),
+      loose,
     }) +
       (balance.sealed !== undefined
         ? t("status.soil.seal", {

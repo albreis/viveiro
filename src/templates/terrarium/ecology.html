@@ -2,8 +2,25 @@
   <div class="section-label">
     <span data-i18n="terrarium.ecology.title"></span><span>⚘</span>
   </div>
-  <p id="ecology-status" data-i18n="terrarium.ecology.initial"></p>
-  <p data-i18n="terrarium.ecology.help"></p>
+  <dl id="ecology-metrics" class="status-metrics">
+    <div>
+      <dt data-i18n="interface.metrics.aphids"></dt>
+      <dd data-metric="aphids">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.aphidPlants"></dt>
+      <dd data-metric="aphidPlants">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.honeydew"></dt>
+      <dd data-metric="honeydew">—</dd>
+    </div>
+  </dl>
+  <details class="metric-details">
+    <summary data-i18n="interface.metrics.more"></summary>
+    <p id="ecology-status" data-i18n="terrarium.ecology.initial"></p>
+    <p data-i18n="terrarium.ecology.help"></p>
+  </details>
   <button
     id="focus-ecology"
     class="secondary-action"
