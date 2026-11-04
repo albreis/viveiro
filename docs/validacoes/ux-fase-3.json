@@ -1,0 +1,29 @@
+{
+  "stage": "UX-12 a UX-15",
+  "browser": "Chrome 156.0.8078.80",
+  "axe": "4.14.0",
+  "locales": ["pt-BR", "en"],
+  "viewports": [[1440, 900], [820, 1180], [390, 844]],
+  "cases": 102,
+  "violations": 0,
+  "horizontalOverflowCases": 0,
+  "incompleteCasesByRule": {
+    "color-contrast": 76,
+    "label-content-name-mismatch": 72,
+    "link-in-text-block": 48
+  },
+  "tablet": {
+    "viewportWidthPx": 820,
+    "sceneWidthPx": 782,
+    "sceneAboveCards": true,
+    "environmentUsesNaturalHeight": true,
+    "transportFixedWhileScrolling": true,
+    "footerClearOfTransport": true,
+    "tabLeavesTransport": true,
+    "guidedTourClearOfTransport": true
+  },
+  "extraWidthsCheckedPx": [320, 651, 1180],
+  "testsPassed": 480,
+  "report": ".runtime/ux3-final-resumed/report.json",
+  "manualCheckPending": "Leitor de tela e celular físico seguem no cronograma."
+}

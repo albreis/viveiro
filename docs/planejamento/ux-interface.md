@@ -36,10 +36,13 @@ coluna esquerda de 290 px e diferença de altura de 135 px em 1440×900.
 
 | ID | Implementação | Aceite | Estado |
 | --- | --- | --- | --- |
-| UX-12 | Terrário em largura total | Em 820px, cena em largura total e ambiente abaixo. Controles secundários se adaptam à largura após a análise | Pendente |
-| UX-13 | Cartões com altura natural | Alinhamento no início, sem vazios >100px causados por esticamento artificial | Pendente |
-| UX-14 | Barra persistente de tempo | Play/pausa, dia e 1×/3×/10× acessíveis em tablet/mobile, sem sobreposição ou armadilha de foco | Pendente |
-| UX-15 | Cabeçalho consistente | Tour/Ajuda disponíveis nos três tamanhos, com mesmo significado e foco | Pendente |
+| UX-12 | Terrário em largura total | Em 820px, cena em largura total e ambiente abaixo. Controles secundários se adaptam à largura após a análise | Entregue |
+| UX-13 | Cartões com altura natural | Alinhamento no início, sem vazios >100px causados por esticamento artificial | Entregue |
+| UX-14 | Barra persistente de tempo | Play/pausa, dia e 1×/3×/10× acessíveis em tablet/mobile, sem sobreposição ou armadilha de foco | Entregue |
+| UX-15 | Cabeçalho consistente | Tour/Ajuda disponíveis nos três tamanhos, com mesmo significado e foco | Entregue |
+
+A [validação da fase 3](../validacoes/ux-fase-3.json) registrou 782 px úteis de
+cena em 820×1180, navegação da barra por teclado e acesso ao rodapé.
 
 ## Fase 4 — Mobile até 650px
 

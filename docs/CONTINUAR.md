@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação é T2, fase 3 (UX-12 a UX-15).** Fases 1 e 2 entregues. T1 concluída em
+**Próxima implementação é T2, fase 4 (UX-16 a UX-20).** Fases 1 a 3 validadas. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -99,6 +99,11 @@ PRs 90–92. Ambiente e Colônia têm altura natural no desktop, e os controles
 secundários ficam depois de Análise e dados. O PR93 acrescentou a prévia
 dos experimentos por mouse e teclado.
 
-A branch codex/ux-tablet incorpora as correções da main. O próximo passo é
-validar UX-12 a UX-15 em 820×1180, com regressão em desktop e celular. Depois
-seguem UX-16 a UX-21, T3, Buhl e o apoio técnico de T5.
+UX-12 a UX-15 validados no PR89. Build, 480 testes e 102 estados no Chrome
+passaram. A cena ocupa a largura útil no tablet, e a barra permanece acessível
+durante a rolagem e a navegação por Tab. Ver validacoes/ux-fase-3.json.
+
+A fase móvel começa em codex/ux-mobile. Sincronizar com a main após o PR89
+e testar a gaveta, os alvos e os gestos em navegador com toque emulado.
+O teste em celular físico segue na fila individual. Depois vêm UX-21, T3,
+Buhl e o apoio técnico de T5.
