@@ -27,7 +27,7 @@ export function installForecastBenchmark(): void {
   const render = () => {
     if (!report) return;
     const chosen = metric.value as "mae" | "rmse" | "coverage",
-      body = get("forecast-benchmark-rows");
+      body = get<HTMLTableSectionElement>("forecast-benchmark-rows");
     body.replaceChildren();
     for (const days of report.horizons) {
       const row = document.createElement("tr"),
@@ -50,6 +50,7 @@ export function installForecastBenchmark(): void {
       }
       body.append(row);
     }
+    body.closest("table")!.hidden = body.rows.length === 0;
     const n = report.seeds.length * report.origins.length,
       unique = new Map(
         report.rows.map((row) => [row.seed + ":" + row.originTick, row]),

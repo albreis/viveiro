@@ -44,8 +44,9 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
 
 ## Próximas entregas técnicas
 
-1. **T1 — Acessibilidade:** axe-core com Playwright/Cypress, estados interativos
-   e correção dos dois alertas desktop do Lighthouse.
+1. **T1 — Acessibilidade entregue.** Axe-core e Playwright examinaram 78 estados.
+   Os dois achados do Lighthouse e o contraste durante a troca A/B foram corrigidos.
+   [Relatório e pontos de inspeção manual](validacoes/axe-t1/resumo.json).
 2. **T2 — UX:** fases 1–4 e explicações das métricas, com regressão a cada fase.
    [UX-01–UX-21 e aceites](planejamento/ux-interface.md).
 3. **T3 — Desempenho:** medir e reduzir TBT/CLS, sem confundir carregamento

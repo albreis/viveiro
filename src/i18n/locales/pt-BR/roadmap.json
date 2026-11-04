@@ -10,8 +10,7 @@
   "roadmap.updated": "Documentos atualizados em {date}",
   "roadmap.version": "Versão publicada",
   "roadmap.next": "Próxima entrega técnica",
-  "roadmap.nextTitle": "T1 · Acessibilidade",
-  "roadmap.nextText": "Axe-core, estados interativos e os dois ajustes apontados pelo Lighthouse.",
+  "roadmap.nextText": "Veja os critérios e resultados das etapas técnicas.",
   "roadmap.nextAction": "Ver próximos passos",
   "roadmap.uxCount": "melhorias de UX planejadas",
   "roadmap.optionalCount": "fontes opcionais propostas",
@@ -52,5 +51,6 @@
   "roadmap.readonly": "Visão de leitura, gerada dos documentos. Mudanças no cronograma aparecem na próxima publicação privada.",
   "roadmap.languageNote": "Os documentos de planejamento estão em português; o idioma da navegação pode ser alterado.",
   "roadmap.optionalLimit": "Dados opcionais não entram nos critérios de conclusão.",
-  "roadmap.modelLimit": "Modelo exploratório · calibração em andamento"
+  "roadmap.modelLimit": "Modelo exploratório · calibração em andamento",
+  "roadmap.nextDone": "Etapas técnicas concluídas"
 }
