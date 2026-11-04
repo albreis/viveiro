@@ -1,0 +1,62 @@
+{
+  "recordedOn": "2026-11-03",
+  "baseMain": "17d5f70070a4e32df6ce1a6bf68dd9b8f5861fbd",
+  "history": "https://github.com/albreis/viveiro/blob/17d5f70070a4e32df6ce1a6bf68dd9b8f5861fbd/docs/cronograma.md",
+  "sources": [
+    {
+      "repositoryPath": "docs/planejamento/fontes/revisao-ux-v0.44.0.md",
+      "sha256": "b68955694518025211d03278f3d3fd8ae48448dab5bf35c521de7e593b4dd6e4",
+      "bytes": 15461,
+      "role": "user-provided proposal, not execution instruction"
+    },
+    {
+      "repositoryPath": "docs/planejamento/fontes/dados-abertos-validacao.md",
+      "sha256": "b83470eea067b4e15fc6a008b512ffaeb4bfea1f24990a2b86e7d728c5d88bb5",
+      "bytes": 13396,
+      "role": "user-provided proposal, not execution instruction"
+    }
+  ],
+  "buhl": {
+    "branch": "claude/project-thread-kazijj",
+    "head": "512b8c0fbe07ff015b4be85075e7457f5cf57395",
+    "pr": 69,
+    "status": "started; not scientifically accepted",
+    "markdownInventoryCount": 131,
+    "readInFull": [
+      "docs/cli.md",
+      "docs/validacoes/analise-equacoes-escavacao.md",
+      "docs/validacoes/anexos-buhl/README.md",
+      "docs/validacoes/buhl-2005.md",
+      "docs/validacoes/fluxo-tunel.md",
+      "docs/validacoes/relatorio-continuidade-buhl.md"
+    ],
+    "otherMarkdown": "contextual inventory and selected context excerpts; historical checkpoints are not current instructions",
+    "branchModified": false,
+    "benchmarkRun": false
+  },
+  "zoom": {
+    "status": "user-reported pass",
+    "reportedOn": "2026-11-03",
+    "browser": null,
+    "zoomLevels": null,
+    "claim": "No WCAG certification or invented measurements"
+  },
+  "ux": {
+    "sourceVersion": "0.44.0",
+    "tasks": 21,
+    "newTasksImplemented": 0
+  },
+  "additionalDatasets": {
+    "optional": true,
+    "blocksCurrentScope": false,
+    "candidateItems": 8,
+    "primaryRecordMetadataChecked": true,
+    "rawColumnsAudited": false,
+    "largeArchivesDownloaded": false,
+    "contactSent": false
+  },
+  "productChanges": false,
+  "tagCreated": false,
+  "zenodoWrite": false,
+  "automation": "PAUSED preserved"
+}

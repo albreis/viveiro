@@ -1,0 +1,32 @@
+{
+  "checkedOn": "2026-11-03",
+  "method": "Read-only native browser inspection of published Zenodo record; downloaded ZIP checked locally against tag blobs",
+  "record": "https://zenodo.org/records/23932885",
+  "doi": "10.5281/zenodo.23932885",
+  "version": "0.46.0",
+  "publicationDate": "2026-11-03",
+  "creator": "Viveiro contributors",
+  "tag": "v0.46.0",
+  "tagCommit": "7f4d20674206916ea443ef2f359097da5ca18731",
+  "relatedUrls": [
+    "https://github.com/albreis/viveiro/tree/v0.46.0",
+    "https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/"
+  ],
+  "archive": {
+    "name": "albreis/viveiro-v0.46.0.zip",
+    "bytes": 2015537,
+    "md5": "8dffffdf55323fe9a173976d432f876f",
+    "sha256": "a554563694f61e3daac87fb1bca63eaffece8dbbae2a3a3cf89e6b633b47dfa1",
+    "root": "albreis-viveiro-7f4d206/",
+    "packageVersion": "0.46.0",
+    "citationVersion": "0.46.0",
+    "filesComparedToTag": 1739,
+    "missing": [],
+    "extra": [],
+    "changed": []
+  },
+  "acceptance": "P0.4B: published version DOI, versioned source relation and actual archive verified; P0.4A/C recorded previously",
+  "writesToZenodo": false,
+  "newDeposit": false,
+  "limitation": "This is not a scientific calibration or a new release."
+}

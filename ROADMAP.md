@@ -1,19 +1,18 @@
 # Evolução do Viveiro
 
-Atualizado em 31/10/2026.
+Atualizado em 03/11/2026. Última release: **0.46.0**; P2.1–P2.7 entregues.
 
-O [cronograma por entregas](docs/cronograma.md) registra etapas, dependências e critérios de aceite.
+O [cronograma operacional](docs/cronograma.md) separa o trabalho em três filas:
 
-- Publicado: terrário, túneis, primeira pessoa e duplo clique (v0.2.1).
-- Versão 0.3.0: locomoção social 3D, terreno arredondado, apoio contínuo e TypeScript/Vite.
-- Próxima: escavação orgânica, transporte de terra, erosão e reparos.
-- Depois: organização, feromônios, genética, ecologia, física avançada e RL.
+- [Técnico: código, automação e análise](docs/planejamento/tecnico.md).
+- [Você sozinho: testes manuais e decisões](docs/planejamento/voce-sozinho.md).
+- [Com terceiros: pessoas, pareceres e acordos reais](docs/planejamento/com-terceiros.md).
 
-Documentação:
+Próximos planos: [21 melhorias de UX](docs/planejamento/ux-interface.md),
+[retomada científica de Buhl](docs/planejamento/buhl.md) e
+[dados abertos adicionais opcionais](docs/planejamento/dados-opcionais.md).
+[Entregas já concluídas](docs/planejamento/entregas-concluidas.md).
 
-- [Cronograma](docs/cronograma.md)
-- [Especificações recebidas](docs/especificacoes.md)
-- [Arquitetura e banco de dados](docs/arquitetura.md)
-- [Equações e implementação da navegação](docs/navegacao.md)
-
-Cada entrega tem branch, testes e publicação. Modelos simplificados não são apresentados como reprodução científica validada.
+Cada entrega funcional usa branch, testes adequados, QA e PR. O simulador
+continua exploratório; não há calibração científica concluída. P2.8/P5 estão
+fora do escopo. Dados opcionais não bloqueiam a conclusão do escopo ativo.
