@@ -6,34 +6,23 @@
 }
 @media (min-width: 651px) and (max-width: 1180px) {
   .workspace {
-    grid-template-columns: minmax(0, 1fr);
-    align-items: start;
-  }
-  .workspace > .center-panel,
-  .workspace > .left-panel,
-  .workspace > .right-panel,
-  .workspace > .analysis-band {
-    grid-column: 1;
-  }
-  .left-panel {
-    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
-    gap: 14px;
   }
-  .left-panel > .environment {
-    grid-row: span 2;
+  .center-panel {
+    grid-column: 1 / -1;
+    min-width: 0;
   }
-  .left-panel > .intervention-panel {
-    margin: 0;
+  .right-panel {
+    grid-column: auto;
   }
 }
 @media (max-width: 1180px) {
   html {
-    scroll-padding-bottom: 86px;
+    --transport-clearance: calc(76px + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(var(--transport-clearance) + 10px);
   }
   body {
-    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: var(--transport-clearance);
   }
   .scene-controls {
     position: fixed;
@@ -56,6 +45,6 @@
     min-width: 0;
   }
   .scene-card:fullscreen .scene-controls {
-    position: absolute;
+    position: static;
   }
 }

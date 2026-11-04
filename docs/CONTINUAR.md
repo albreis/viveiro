@@ -94,13 +94,11 @@ PR86, implantação appgdep_6aea9ea886e48191b3623df16356710b.
 UX-01 a UX-06 publicados no PR87, fonte 0e4be5e807a57e6447c0dd250966cc2dc942c5e3,
 implantação appgdep_6aeaa18c97b88191b19a48fb378c49d7.
 
-UX-07 a UX-11 publicados pelo PR88, fonte 2cc80be9796f1e98efc51e0ca65a4a2886be203d,
-implantação appgdep_6aeaa31e3a5081918584dde647e51de9.
+UX-07 a UX-11 publicados pelo PR88, com correções de rolagem e de layout nos
+PRs 90–92. Ambiente e Colônia têm altura natural no desktop, e os controles
+secundários ficam depois de Análise e dados. O PR93 acrescentou a prévia
+dos experimentos por mouse e teclado.
 
-Passagem manual no limite de 3% em 04/11/2026. A branch codex/ux-tablet
-contém UX-12 a UX-15 em revisão. Build e 18 testes dirigidos passaram.
-Conferir `.runtime/ux3-axe.log` e `.runtime/ux3-final/report.json` ou repetir
-`npm run build` e `npm run qa:a11y -- --layout --screenshots`. Verificar cena
-em largura total, cartões com altura natural e barra de reprodução fixa em
-820×1180. Concluir QA, registrar aceites, integrar o PR e publicar no Site
-privado. Em seguida vêm UX-16 a UX-21, T3, Buhl e o apoio técnico de T5.
+A branch codex/ux-tablet incorpora as correções da main. O próximo passo é
+validar UX-12 a UX-15 em 820×1180, com regressão em desktop e celular. Depois
+seguem UX-16 a UX-21, T3, Buhl e o apoio técnico de T5.
