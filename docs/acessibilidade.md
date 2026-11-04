@@ -105,3 +105,12 @@ Nova chamada permitida ao PageSpeed oficial, para v0.45.0 pública em03/11 às
 04/11 às21:53:59UTC antes de nova tentativa permitida. Leitor de tela, zoom real,
 aplicação de planilha e equipamento escolar permanecem pendentes.
 Evidência: [auditoria](validacoes/auditoria-interface-0.46.0.json).
+
+## Lighthouse local concluído
+
+A versão pública0.46.0 foi auditada com Lighthouse13.6.0 e Chrome156:97/100 em
+acessibilidade desktop e100/100 móvel. O aceite acima de90 foi atingido. A execução
+local oficial não usa a API PageSpeed; não houve nova requisição à API em cota.
+Desempenho44/100 desktop e33/100 móvel. Dois alertas desktop e limitações ficam
+em [Lighthouse](lighthouse.md), com relatórios íntegros, hashes e configuração.
+P1.6B2 continua parcial por planilha, leitor de tela, zoom e outros estados.

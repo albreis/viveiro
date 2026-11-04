@@ -53,3 +53,15 @@ Automação continuar-cronograma-do-viveiro **PAUSED**, confirmada no fechamento
 Não iniciar executor concorrente nem retomar dependências externas sem novo pedido.
 Antes de3% restante da janela real de5h, push/checkpoint e parar se houver nova
 execução ativa. Não contornar limites ou aprovações.
+
+
+## Fechamento Lighthouse solicitado depois da0.46.0
+
+Branch codex/lighthouse-auditoria. Lighthouse13.6.0 local oficial em Chrome156,
+perfil temporário, sem API PageSpeed:97a11y/44performance desktop e100/33 móvel.
+Aceite P1.6B2-L concluído. Relatórios integrais gzip e hashes em
+validacoes/lighthouse-0.46.0; instruções em lighthouse.md. Sem código de produto,
+sem nova tag/release/Zenodo. Dev4173 e saves preservados. Permanecem alertas
+desktop(contraste do texto auxiliar de chuva e nome da marca) e otimização de
+carregamento(TBT/CLS); não confundir nota Lighthouse com FPS. Antes de novos
+consertos, seguir branch/PR e orçamento; esta rodada concluiu a medição pedida.
