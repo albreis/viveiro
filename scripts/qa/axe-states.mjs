@@ -15,6 +15,20 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
   await click("#play");
   await show("#resume-overlay");
   await audit("terrario-pausado");
+  const colonyTab = page.locator("#tab-colony");
+  if (await colonyTab.count()) {
+    await colonyTab.focus();
+    await page.keyboard.press("ArrowRight");
+    assert.equal(
+      await page.locator("#tab-soil").getAttribute("aria-selected"),
+      "true",
+    );
+    await show("#panel-soil");
+    await audit("aba-solo");
+    await click("#tab-lab");
+    await audit("aba-laboratorio");
+    await click("#tab-colony");
+  }
   if (layoutOnly) return;
   await click("#view-top");
   assert.equal(
@@ -38,6 +52,11 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
   );
   await click("#tour-open");
   await show("#tour-panel");
+  if (page.viewportSize().width >= 1181 && (await colonyTab.count())) {
+    const guide = await page.locator("#tour-panel").boundingBox();
+    const colony = await page.locator(".metrics-panel").boundingBox();
+    assert.ok(guide.x + guide.width <= colony.x);
+  }
   await audit("tour-inicio");
   await click("#tour-next");
   await audit("tour-selecao");

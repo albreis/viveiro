@@ -18,7 +18,7 @@ export class TourView {
     this.panel.setAttribute("role", "region");
     this.panel.setAttribute("aria-labelledby", "tour-title");
     this.panel.innerHTML = tourMarkup;
-    document.body.append(this.panel);
+    document.querySelector(".center-panel")!.append(this.panel);
     this.title = this.panel.querySelector("#tour-title")!;
     this.next = this.panel.querySelector("#tour-next")!;
     this.back = this.panel.querySelector("#tour-back")!;

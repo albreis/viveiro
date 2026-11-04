@@ -23,11 +23,14 @@ dois idiomas e três tamanhos. As capturas locais ficam em `.runtime/ux1-final`.
 
 | ID | Implementação | Aceite | Estado |
 | --- | --- | --- | --- |
-| UX-07 | Terrário antes das aulas | Topo do terrário ≤260px em 1440×900; aulas recolhidas/em drawer ou abaixo | Pendente |
-| UX-08 | Coluna esquerda 280–300px | Nome completo do perfil legível, podendo quebrar linha/detalhar, sem corte silencioso | Pendente |
-| UX-09 | Coluna direita sticky e navegação | Colônia sempre visível; abas acessíveis Colônia/Solo e ar/Dados/Lab; diferença entre alturas das colunas <300px | Pendente |
-| UX-10 | Faixa de análise abaixo do terrário | Gráficos/previsão/saves aproveitam largura esquerda+centro; coordenar com UX-09 para não duplicar cartões/controles/IDs | Pendente |
-| UX-11 | Tour ancorado ao terrário | Não cobre o resumo da colônia; foco e destaque continuam coerentes | Pendente |
+| UX-07 | Terrário antes das aulas | Topo do terrário ≤260px em 1440×900; aulas recolhidas/em drawer ou abaixo | Entregue |
+| UX-08 | Coluna esquerda 280–300px | Nome completo do perfil legível, podendo quebrar linha/detalhar, sem corte silencioso | Entregue |
+| UX-09 | Coluna direita sticky e navegação | Colônia sempre visível; abas acessíveis Colônia/Solo e ar/Dados/Lab; diferença entre alturas das colunas <300px | Entregue |
+| UX-10 | Faixa de análise abaixo do terrário | Gráficos/previsão/saves aproveitam largura esquerda+centro; coordenar com UX-09 para não duplicar cartões/controles/IDs | Entregue |
+| UX-11 | Tour ancorado ao terrário | Não cobre o resumo da colônia; foco e destaque continuam coerentes | Entregue |
+
+A [medição da fase 2](../validacoes/ux-fase-2.json) registrou cena a 233 px,
+coluna esquerda de 290 px e diferença de altura de 135 px em 1440×900.
 
 ## Fase 3 — Tablet de 650 a 1180px
 

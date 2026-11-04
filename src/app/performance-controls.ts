@@ -25,7 +25,7 @@ export function installPerformanceControls(
   panel.className = "panel performance-panel";
   panel.id = "performance-panel";
   panel.innerHTML = performanceMarkup;
-  document.querySelector(".scene-card")!.after(panel);
+  document.getElementById("analysis")!.append(panel);
   const select = panel.querySelector<HTMLSelectElement>("#render-profile")!;
   const button = panel.querySelector<HTMLButtonElement>("#measure-frames")!;
   const note = panel.querySelector("#render-profile-note")!;

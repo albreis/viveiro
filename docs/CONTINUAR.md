@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação: T2, fase 2 (UX-07 a UX-11).** Fase 1 entregue. T1 concluída em
+**Próxima implementação é T2, fase 3 (UX-12 a UX-15).** Fases 1 e 2 entregues. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -90,3 +90,6 @@ console limpo. Recibo atualiza somente documentação; não pede outro deploy/ta
 
 T1 publicado no Site privado na fonte ae989fa27ca5cc3836e87cb6f96f4d13944de813,
 PR86, implantação appgdep_6aea9ea886e48191b3623df16356710b.
+
+UX-01 a UX-06 publicados no PR87, fonte 0e4be5e807a57e6447c0dd250966cc2dc942c5e3,
+implantação appgdep_6aeaa18c97b88191b19a48fb378c49d7.

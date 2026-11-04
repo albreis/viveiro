@@ -4,6 +4,7 @@ export const biologyMarkup = `<div class="section-label"><span data-i18n="interf
 <p id="maternal-status" class="field-note" hidden></p>
 <label for="biology-profile" data-i18n="interface.biology.profile"></label>
 <select id="biology-profile"></select>
+<p id="biology-selected-label" class="field-note profile-selection-name"></p>
 <p id="biology-preview" class="field-note"></p>
 <p class="field-note" data-i18n="interface.biology.help"></p>
 <button id="biology-open" class="text-button" data-i18n="interface.biology.open"></button>

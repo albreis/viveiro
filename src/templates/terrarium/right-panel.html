@@ -1,0 +1,93 @@
+<aside class="right-panel" data-i18n-aria-label="terrarium.metrics.label">
+  <!-- @include terrarium/metrics.html -->
+  <div
+    class="panel-tabs"
+    role="tablist"
+    data-i18n-aria-label="interface.tabs.label"
+  >
+    <button
+      type="button"
+      id="tab-colony"
+      role="tab"
+      aria-controls="panel-colony"
+      aria-selected="true"
+      data-i18n="interface.tabs.colony"
+    ></button>
+    <button
+      type="button"
+      id="tab-soil"
+      role="tab"
+      aria-controls="panel-soil"
+      aria-selected="false"
+      tabindex="-1"
+      data-i18n="interface.tabs.soil"
+    ></button>
+    <button
+      type="button"
+      id="tab-data"
+      role="tab"
+      aria-controls="panel-data"
+      aria-selected="false"
+      tabindex="-1"
+      data-i18n="interface.tabs.data"
+    ></button>
+    <button
+      type="button"
+      id="tab-lab"
+      role="tab"
+      aria-controls="panel-lab"
+      aria-selected="false"
+      tabindex="-1"
+      data-i18n="interface.tabs.lab"
+    ></button>
+  </div>
+  <div
+    id="panel-colony"
+    role="tabpanel"
+    aria-labelledby="tab-colony"
+    tabindex="0"
+  >
+    <!-- @include terrarium/collective-life.html -->
+    <!-- @include terrarium/ecology.html -->
+  </div>
+  <div
+    id="panel-soil"
+    role="tabpanel"
+    aria-labelledby="tab-soil"
+    tabindex="0"
+    hidden
+  >
+    <!-- @include terrarium/living-tunnels.html -->
+    <!-- @include terrarium/soil-climate.html -->
+    <!-- @include terrarium/ventilation.html -->
+  </div>
+  <div
+    id="panel-data"
+    role="tabpanel"
+    aria-labelledby="tab-data"
+    tabindex="0"
+    hidden
+  >
+    <a
+      class="analysis-link"
+      href="#analysis"
+      data-i18n="interface.tabs.analysis"
+    ></a>
+    <!-- @include terrarium/events.html -->
+  </div>
+  <div
+    id="panel-lab"
+    role="tabpanel"
+    aria-labelledby="tab-lab"
+    tabindex="0"
+    hidden
+  >
+    <!-- @include terrarium/learning.html -->
+    <a
+      class="analysis-link"
+      href="./experimentos.html"
+      data-i18n-href="./experimentos.html"
+      data-i18n="interface.tabs.laboratory"
+    ></a>
+  </div>
+</aside>

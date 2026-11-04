@@ -63,6 +63,12 @@ export function layoutMetrics(page) {
       left: rect(".left-panel"),
       center: rect(".center-panel"),
       right: rect(".right-panel"),
+      analysis: rect(".analysis-band"),
+      visibleLesson: Boolean(document.querySelector("#lesson-panel[open]")),
+      stickyColony: document.querySelector(".right-panel")?.checkVisibility()
+        ? getComputedStyle(document.querySelector(".right-panel")).position ===
+          "sticky"
+        : false,
     };
   });
 }

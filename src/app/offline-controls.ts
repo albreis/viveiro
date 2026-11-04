@@ -16,7 +16,7 @@ export function installOfflineControls() {
     <button id="offline-prepare" type="button" data-i18n="interface.offline.prepare"></button>
     <button id="offline-remove" type="button" hidden data-i18n="interface.offline.remove"></button>
     <p data-i18n="interface.offline.note"></p>`;
-  document.querySelector(".scene-card")!.after(panel);
+  document.getElementById("analysis")!.append(panel);
   const status = panel.querySelector<HTMLParagraphElement>("#offline-status")!;
   const prepare = panel.querySelector<HTMLButtonElement>("#offline-prepare")!;
   const remove = panel.querySelector<HTMLButtonElement>("#offline-remove")!;

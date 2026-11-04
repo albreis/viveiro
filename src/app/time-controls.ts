@@ -6,7 +6,7 @@ export function installTimeControls(clock: SimulationClock, save: () => void) {
   panel.className = "panel time-panel";
   panel.id = "time-panel";
   panel.innerHTML = timeMarkup;
-  document.querySelector(".scene-card")!.after(panel);
+  document.getElementById("analysis")!.append(panel);
   const pace = document.getElementById("day-pace") as HTMLSelectElement,
     status = document.getElementById("clock-status")!;
   const render = () => {
