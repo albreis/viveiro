@@ -1,13 +1,11 @@
-import {
-  locale,
-  t,
-  message,
-  messageSource,
-  clearMessage,
-} from "../../i18n/runtime.ts";
+import { locale, t, message, messageSource } from "../../i18n/runtime.ts";
 import type { MessageKey } from "../../i18n/catalogs.ts";
 import { presentLesson } from "../../i18n/lessons.ts";
-import { lessons, lessonDefinition } from "../../modules/lessons/catalog.ts";
+import {
+  lessons,
+  lessonDefinition,
+  type LessonId,
+} from "../../modules/lessons/catalog.ts";
 import type { LessonReference } from "../../modules/lessons/reference.ts";
 export function lessonView() {
   const panel = document.createElement("details");
@@ -19,10 +17,49 @@ export function lessonView() {
   message(note, "lessons.help");
   const grid = document.createElement("div");
   grid.className = "lesson-grid";
+  const question = document.createElement("p");
+  question.id = "lesson-question";
+  const setup = document.createElement("p");
+  setup.id = "lesson-setup";
+  let selected: LessonId | undefined;
+  let hovered: LessonId | undefined;
+  let focused: LessonId | undefined;
+  let interventionCount = 0;
+
+  const renderDetails = () => {
+    const id = hovered ?? focused ?? selected;
+    const lesson = id ? presentLesson(lessonDefinition(id)) : null;
+    const extra =
+      id === selected && interventionCount
+        ? t("lessons.interventions", { count: interventionCount })
+        : "";
+    messageSource(question, lesson?.question ?? "");
+    messageSource(setup, lesson ? lesson.setup + extra : "");
+  };
+
   const buttons = lessons.map((d) => {
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.lesson = d.id;
+    button.onpointerenter = (event) => {
+      if (event.pointerType === "touch") return;
+      hovered = d.id;
+      renderDetails();
+    };
+    button.onpointerleave = () => {
+      if (hovered !== d.id) return;
+      hovered = undefined;
+      renderDetails();
+    };
+    button.onfocus = () => {
+      focused = d.id;
+      if (button.matches(":focus-visible")) hovered = undefined;
+      renderDetails();
+    };
+    button.onblur = () => {
+      focused = undefined;
+      renderDetails();
+    };
     const name = document.createElement("strong");
     message(name, ("lessons." + d.id + ".title") as MessageKey);
     const labels = document.createElement("span");
@@ -37,10 +74,6 @@ export function lessonView() {
     grid.append(button);
     return button;
   });
-  const question = document.createElement("p");
-  question.id = "lesson-question";
-  const setup = document.createElement("p");
-  setup.id = "lesson-setup";
   const status = document.createElement("p");
   status.id = "lesson-status";
   status.setAttribute("role", "status");
@@ -73,16 +106,9 @@ export function lessonView() {
       if (next === key) return;
       key = next;
       const d = ref ? presentLesson(lessonDefinition(ref.id)) : null;
-      messageSource(question, d ? d.question : "");
-      messageSource(
-        setup,
-        d
-          ? d.setup +
-              (interventions
-                ? t("lessons.interventions", { count: interventions })
-                : "")
-          : "",
-      );
+      selected = ref?.id;
+      interventionCount = interventions;
+      renderDetails();
       messageSource(
         document.querySelector<HTMLButtonElement>('[data-scenario="a"]')!,
         d ? "A · " + d.a : t("terrarium.comparison.a"),
