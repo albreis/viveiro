@@ -58,4 +58,57 @@ export async function checkDesktopWorkbench(page) {
   });
   const bottom = await page.locator("#panel-soil > :last-child").boundingBox();
   assert.ok(bottom.y + bottom.height <= page.viewportSize().height + 1);
+  await checkStickyBoundaries(page);
+}
+
+async function checkStickyBoundaries(page) {
+  const positions = await page.evaluate(async () => {
+    const box = (selector) =>
+      document.querySelector(selector).getBoundingClientRect();
+    const pageTop = (selector) => scrollY + box(selector).top;
+    const samples = [
+      pageTop(".analysis-band") - 80,
+      pageTop(".analysis-band") + 100,
+      pageTop(".secondary-controls"),
+      document.documentElement.scrollHeight,
+    ];
+
+    const positions = [];
+    for (const top of samples) {
+      scrollTo({ top, behavior: "instant" });
+      await new Promise((done) => requestAnimationFrame(done));
+      const controls = [
+        ...document.querySelectorAll(".secondary-controls > *"),
+      ].map((panel) => panel.getBoundingClientRect());
+      positions.push({
+        scroll: scrollY,
+        sceneBottom: Math.max(
+          ...[".left-panel", ".center-panel", ".right-panel"].map(
+            (selector) => box(selector).bottom,
+          ),
+        ),
+        analysisTop: box(".analysis-band").top,
+        analysisBottom: box(".analysis-band").bottom,
+        controlsTop: Math.min(...controls.map((panel) => panel.top)),
+        controlsBottom: Math.max(...controls.map((panel) => panel.bottom)),
+        footerTop: box("main > footer").top,
+      });
+    }
+    return positions;
+  });
+
+  for (const position of positions) {
+    assert.ok(
+      position.sceneBottom <= position.analysisTop + 1,
+      `O terrário sobrepôs a análise em scrollY=${position.scroll}`,
+    );
+    assert.ok(
+      position.controlsTop >= position.analysisBottom - 1,
+      `Os controles sobrepuseram a análise em scrollY=${position.scroll}`,
+    );
+    assert.ok(
+      position.controlsBottom <= position.footerTop + 1,
+      `Os controles sobrepuseram o rodapé em scrollY=${position.scroll}`,
+    );
+  }
 }
