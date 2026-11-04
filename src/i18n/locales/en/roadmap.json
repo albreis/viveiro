@@ -10,8 +10,7 @@
   "roadmap.updated": "Documents updated on {date}",
   "roadmap.version": "Published version",
   "roadmap.next": "Next technical delivery",
-  "roadmap.nextTitle": "T1 · Accessibility",
-  "roadmap.nextText": "Axe-core, interactive states and the two Lighthouse findings.",
+  "roadmap.nextText": "See the criteria and results for the technical stages.",
   "roadmap.nextAction": "See next steps",
   "roadmap.uxCount": "planned UX improvements",
   "roadmap.optionalCount": "optional data sources proposed",
@@ -52,5 +51,6 @@
   "roadmap.readonly": "Read-only view, generated from the documents. Roadmap changes appear with the next private publication.",
   "roadmap.languageNote": "Planning documents are in Portuguese; the navigation language can be changed.",
   "roadmap.optionalLimit": "Optional data does not enter completion criteria.",
-  "roadmap.modelLimit": "Exploratory model · calibration in progress"
+  "roadmap.modelLimit": "Exploratory model · calibration in progress",
+  "roadmap.nextDone": "Technical stages complete"
 }

@@ -32,9 +32,10 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-Na próxima implementação, **T1: preparar axe-core com Playwright/Cypress como
-QA separado do bundle, cobrir estados interativos e corrigir os dois achados
-desktop**. Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
+**Próxima implementação: T2, fase 1 (UX-01 a UX-06).** T1 concluída em
+78 estados do axe, com zero violações automáticas. Os resultados incompletos
+e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
+Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
 `codex/` nova, módulos pequenos/TS/Vite e testes adequados. Não criar nova release
 apenas para estes documentos. A retomada automática continua PAUSED.
 
@@ -80,8 +81,7 @@ filtros e impressão. Interface pt/en; conteúdo do plano continua em português
 Excluída do build público; usar apenas o Site privado owner-only. Sem tag nova.
 Suíte completa479/479; TS/build aprovados. Ver cronograma-privado.md e
 validacoes/cronograma-privado.json para o recibo e a publicação.
-O próximo passo de produto continua T1 de acessibilidade; não foi fechado pelo
-fato de a página do cronograma ter navegação por teclado.
+A página exibe a primeira etapa técnica com itens pendentes.
 
 Publicação da página privada concluída pelo PR84, fonte76650820087a14f7d2afbeba3d504772acd44d9e.
 URL: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/cronograma.html?lang=pt-BR

@@ -17,7 +17,8 @@
     "sensitivity": "node scripts/run-sensitivity.ts",
     "compare:policy": "node scripts/compare-policy.ts",
     "i18n:check": "node scripts/check-i18n.ts",
-    "i18n:inventory": "node scripts/inventory-i18n.ts"
+    "i18n:inventory": "node scripts/inventory-i18n.ts",
+    "qa:a11y": "node scripts/qa/accessibility.mjs"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",
@@ -39,6 +40,8 @@
     "@babel/parser": "8.1.0",
     "@types/node": "^24.0.0",
     "@types/three": "^0.170.0",
+    "axe-core": "4.14.0",
+    "playwright-core": "1.64.1",
     "prettier": "^3.9.10",
     "typescript": "^7.0.2",
     "vite": "^8.3.5"

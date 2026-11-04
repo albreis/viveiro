@@ -70,6 +70,14 @@ function renderNavigation() {
 }
 function render() {
   renderNavigation();
+  const next = data.groups.find(
+    (group) =>
+      group.view === "technical" && group.items.some((item) => !item.done),
+  );
+  const nextTitle = find("roadmap-next-title");
+  nextTitle.lang = next ? "pt-BR" : locale.locale;
+  nextTitle.textContent = next?.title ?? t("roadmap.nextDone");
+  find("roadmap-next").hidden = !next;
   message(find("roadmap-updated"), "roadmap.updated", { date: data.updated });
   find("roadmap-version").textContent = data.version;
   find("ux-count").textContent = String(

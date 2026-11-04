@@ -1,0 +1,15 @@
+{
+  "version": "0.46.0",
+  "browser": "156.0.8078.80",
+  "axe": "4.14.0",
+  "createdAt": "2026-11-04T02:48:13.786Z",
+  "cases": 78,
+  "violations": 0,
+  "incompleteRuleOccurrences": {
+    "color-contrast": 50,
+    "label-content-name-mismatch": 48,
+    "link-in-text-block": 16
+  },
+  "rawSha256": "ea88fdab71564b448e0eedced6573e0fc60a5624656cfc5ebd250dadca4f0b67",
+  "manualGuide": "../../roteiro-acessibilidade.md"
+}

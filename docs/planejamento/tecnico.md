@@ -2,22 +2,24 @@
 
 [Índice e aceites gerais](../cronograma.md). Itens desta fila podem ser preparados
 ou executados pelo agente; os resultados de pessoas reais ficam nas outras filas.
-Nenhuma implementação nova é declarada concluída nesta reorganização.
 
 ## T1 — P1.6: acessibilidade automatizada
 
-- [ ] Integrar axe-core com Playwright ou Cypress numa ferramenta de QA separada
-  do bundle. Cobrir pt-BR/en, três tamanhos de tela, diálogos, abas, drawers,
-  tour, perfis, A/B, galeria e estados pausado/em execução.
-- [ ] Registrar violações e resultados `incomplete`, corrigir ocorrências reais,
+- [x] Integrar axe-core com Playwright ou Cypress numa ferramenta de QA separada
+  do bundle. Cobertura de pt-BR/en em três tamanhos, diálogos, tour, perfis, A/B,
+  galeria, cronograma e cena em execução ou em pausa.
+  Abas e gavetas da UX entram na matriz nas fases correspondentes.
+- [x] Registrar violações e resultados `incomplete`, corrigir ocorrências reais,
   guardar seletores/estado/versão. Não esconder alertas só para obter nota verde.
-- [ ] Corrigir o contraste do texto auxiliar de `#rain > span` e a diferença
+- [x] Corrigir o contraste do texto auxiliar de `#rain > span` e a diferença
   entre nome acessível e texto visível de `a.brand`; reavaliar os estados afetados.
-- [ ] Preparar roteiro de teclado/leitor de tela para a verificação manual.
+- [x] Preparar roteiro de teclado/leitor de tela para a verificação manual.
 
 [Axe-core oficial](https://github.com/dequelabs/axe-core) testa regras automáticas;
 não é um leitor de tela. O teste manual continua separado. Lighthouse >90 já
 passou; a nova cobertura serve para detectar estados que aquela medição não viu.
+
+A matriz de 78 estados passou com zero violações automáticas. O [relatório](../validacoes/axe-t1/resumo.json) preserva os casos incompletos. O [roteiro manual](../roteiro-acessibilidade.md) está disponível.
 
 ## T2 — Interface e internacionalização
 
