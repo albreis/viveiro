@@ -61,3 +61,28 @@ e [registro do conjunto de 2001](../validacoes/buhl-2005.md).
 B3 ainda depende do cenário de arena e das medições internas correspondentes.
 B4 deve fixar limites antes de usar a curva coletiva para ajuste. Dados brutos
 por réplica e replicação externa seguem como dependências de validação.
+
+## Ensaio de caminhada livre do Viveiro
+
+Na raiz do repositório, rode:
+
+```sh
+node scripts/measure-buhl-motion.ts
+```
+
+O ensaio chama o movimento de superfície usado no Viveiro. Cria 64 operárias
+da seed `BUHL-FREE-1`, mede cada uma isoladamente em piso plano, sem carga,
+vizinhas ou obstáculos, e mantém a direção fixa. Descarta oito ticks de
+aceleração e mede o caminho percorrido nos 24 seguintes. A
+[saída de referência](../validacoes/buhl-deslocamento-livre.json) guarda as
+velocidades individuais em unidades do modelo por tick, o resumo e a
+identidade da fonte. As 64 operárias são geradas pelo simulador; o N = 100
+do artigo pertence à observação real, que foi feita fora do disco.
+
+A opção `--mm-por-unidade N` calcula um **intervalo candidato** em segundos
+por tick, usando a escala geométrica fornecida e a velocidade média real.
+Sem uma escala fornecida, o campo de segundos por tick fica vazio. Esse
+ensaio não escolhe o tamanho físico da arena nem verifica como uma operária
+se move em contato com areia, paredes, outras operárias ou carga. Também não
+estabelece equivalência entre mordida, pelota e volume de vazio. Esses
+passos e o cenário físico continuam pendentes em B3.

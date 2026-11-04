@@ -52,7 +52,7 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
 - [ ] **B3 — Unidades e protocolo:** definir tick↔tempo físico, comprimento/volume,
   taxas biológicas e condições experimentais. O atual “1 tick = 1 segundo” do
   benchmark não está reconciliado com o dia de 100 ticks do modelo.
-  [Bases de B3 e fontes separadas](buhl-protocolo.md).
+  [Bases, fontes e ensaio de caminhada livre](buhl-protocolo.md).
 - [ ] **B4 — Critérios antes do ajuste:** incluir limites inferiores/superiores
   para curva temporal e escala, incerteza de digitalização e replicação por
   grupo. Os antigos limites apenas inferiores aceitaram saturação precoce.
