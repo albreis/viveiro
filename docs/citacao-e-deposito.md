@@ -1,5 +1,21 @@
 # Citação e depósito da versão atual
 
+**Estado em 03/11/2026: P0.4 concluído para a versão consolidada 0.46.0.**
+CFF/autoria e botão de citação já conferidos; publicação automática confirmada:
+[DOI 10.5281/zenodo.23932885](https://doi.org/10.5281/zenodo.23932885).
+Registro aponta à tag v0.46.0, fonte7f4d206; ZIP real baixado, MD5 conferido e
+1.739 arquivos iguais aos blobs da tag. [Recibo](validacoes/zenodo-0.46.0.json).
+
+A integração GitHub–Zenodo está ativa. Não criar depósito manual/duplicado ou
+versão intermediária para cumprir este aceite. As instruções e pendências
+abaixo são **históricas**, anteriores a essa integração e publicação; não são
+a próxima tarefa. A autoria coletiva “Viveiro contributors” foi preservada.
+[Plano ativo](cronograma.md).
+
+---
+
+# Histórico de citação e preparação de depósitos
+
 ## Estado
 
 CITATION.cff preparado e validado pelo esquema oficial CFF 1.2.0.
