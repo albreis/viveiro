@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#f4f5ef" />
+    <title data-i18n="roadmap.title"></title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/styles/roadmap.css" />
+    <link rel="stylesheet" href="./src/i18n/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#roadmap-main" data-i18n="roadmap.skip"></a>
+    <header class="roadmap-topbar">
+      <a href="./index.html" class="roadmap-brand" aria-label="Viveiro"
+        >viveiro<span aria-hidden="true">.</span></a
+      >
+      <span class="private-badge" data-i18n="roadmap.private"></span>
+      <a class="back-link" href="./index.html" data-i18n="roadmap.back"></a>
+    </header>
+    <div class="roadmap-layout">
+      <aside class="roadmap-sidebar">
+        <p class="nav-caption" data-i18n="roadmap.link"></p>
+        <nav id="roadmap-nav" data-i18n-aria-label="roadmap.nav"></nav>
+        <div class="sidebar-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <p data-i18n="roadmap.modelLimit"></p>
+        </div>
+      </aside>
+      <main id="roadmap-main" tabindex="-1">
+        <div class="roadmap-heading">
+          <div>
+            <p class="eyebrow" data-i18n="roadmap.eyebrow"></p>
+            <h1 data-i18n="roadmap.heading"></h1>
+            <p class="intro" data-i18n="roadmap.intro"></p>
+            <p id="roadmap-updated" class="updated"></p>
+          </div>
+          <button
+            id="roadmap-print"
+            class="quiet-button"
+            data-i18n="roadmap.print"
+          ></button>
+        </div>
+        <section class="roadmap-highlights">
+          <div class="next-step">
+            <p class="eyebrow" data-i18n="roadmap.next"></p>
+            <h2 data-i18n="roadmap.nextTitle"></h2>
+            <p data-i18n="roadmap.nextText"></p>
+            <button id="roadmap-next" data-i18n="roadmap.nextAction"></button>
+          </div>
+          <div class="highlight">
+            <strong id="ux-count">21</strong
+            ><span data-i18n="roadmap.uxCount"></span>
+          </div>
+          <div class="highlight">
+            <strong id="optional-count">8</strong
+            ><span data-i18n="roadmap.optionalCount"></span>
+          </div>
+          <div class="highlight version">
+            <span data-i18n="roadmap.version"></span
+            ><strong id="roadmap-version"></strong
+            ><span class="version-marker">●</span>
+          </div>
+        </section>
+        <form class="roadmap-filters" role="search">
+          <label class="search-field" for="roadmap-search"
+            ><span data-i18n="roadmap.search"></span>
+            <input
+              id="roadmap-search"
+              type="search"
+              maxlength="200"
+              data-i18n-placeholder="roadmap.searchPlaceholder"
+            />
+          </label>
+          <label for="roadmap-status"
+            ><span data-i18n="roadmap.status"></span>
+            <select id="roadmap-status">
+              <option value="all" data-i18n="roadmap.status.all"></option>
+              <option
+                value="pending"
+                data-i18n="roadmap.status.pending"
+              ></option>
+              <option value="done" data-i18n="roadmap.status.done"></option>
+            </select>
+          </label>
+        </form>
+        <section class="roadmap-content" aria-labelledby="roadmap-view-title">
+          <div class="view-heading">
+            <h2 id="roadmap-view-title"></h2>
+            <button
+              id="roadmap-expand"
+              class="quiet-button"
+              aria-expanded="false"
+              data-i18n="roadmap.expand"
+            ></button>
+          </div>
+          <p id="roadmap-note" class="view-note"></p>
+          <p
+            id="roadmap-results"
+            class="result-count"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div id="roadmap-groups"></div>
+          <div id="roadmap-empty" class="empty-state" hidden>
+            <p data-i18n="roadmap.empty"></p>
+            <button
+              id="roadmap-clear"
+              class="quiet-button"
+              data-i18n="roadmap.clear"
+            ></button>
+          </div>
+        </section>
+        <footer class="roadmap-footer">
+          <p data-i18n="roadmap.readonly"></p>
+          <p data-i18n="roadmap.languageNote"></p>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="./src/app/roadmap-page.ts"></script>
+  </body>
+</html>

@@ -1,3 +1,4 @@
+import roadmap from "./roadmap.json" with { type: "json" };
 import gallery from "./gallery.json" with { type: "json" };
 import services from "./services.json" with { type: "json" };
 import documents from "./documents.json" with { type: "json" };
@@ -25,6 +26,7 @@ import enEvents from "./events.json" with { type: "json" };
 import enScene from "./scene.json" with { type: "json" };
 
 const messages = {
+  ...roadmap,
   ...gallery,
   ...services,
   ...documents,
