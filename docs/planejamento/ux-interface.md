@@ -24,9 +24,9 @@ dois idiomas e três tamanhos. As capturas locais ficam em `.runtime/ux1-final`.
 | ID | Implementação | Aceite | Estado |
 | --- | --- | --- | --- |
 | UX-07 | Terrário antes das aulas | Topo do terrário ≤260px em 1440×900; aulas recolhidas/em drawer ou abaixo | Entregue |
-| UX-08 | Coluna esquerda 280–300px | Nome completo do perfil legível, podendo quebrar linha/detalhar, sem corte silencioso | Entregue |
-| UX-09 | Coluna direita sticky e navegação | Colônia sempre visível; abas acessíveis Colônia/Solo e ar/Dados/Lab; diferença entre alturas das colunas <300px | Entregue |
-| UX-10 | Faixa de análise abaixo do terrário | Gráficos/previsão/saves aproveitam largura esquerda+centro; coordenar com UX-09 para não duplicar cartões/controles/IDs | Entregue |
+| UX-08 | Coluna esquerda 280–300px | Somente Ambiente na esquerda. Perfil com nome completo nos controles abaixo da análise | Entregue |
+| UX-09 | Coluna direita sticky e navegação | Resumo da Colônia e abas acessíveis Colônia/Solo e ar/Dados/Lab acompanham a página; conteúdo das abas tem altura natural | Entregue |
+| UX-10 | Faixa de análise abaixo do terrário | Gráficos, previsão e saves em faixa de análise. Intervenções, perfil e semente abaixo em três colunas no desktop | Entregue |
 | UX-11 | Tour ancorado ao terrário | Não cobre o resumo da colônia; foco e destaque continuam coerentes | Entregue |
 
 A [medição da fase 2](../validacoes/ux-fase-2.json) registrou cena a 233 px,
@@ -36,7 +36,7 @@ coluna esquerda de 290 px e diferença de altura de 135 px em 1440×900.
 
 | ID | Implementação | Aceite | Estado |
 | --- | --- | --- | --- |
-| UX-12 | Terrário em largura total | Em 820px, ambiente/intervenções ficam em duas colunas abaixo da cena | Pendente |
+| UX-12 | Terrário em largura total | Em 820px, cena em largura total e ambiente abaixo. Controles secundários se adaptam à largura após a análise | Pendente |
 | UX-13 | Cartões com altura natural | Alinhamento no início, sem vazios >100px causados por esticamento artificial | Pendente |
 | UX-14 | Barra persistente de tempo | Play/pausa, dia e 1×/3×/10× acessíveis em tablet/mobile, sem sobreposição ou armadilha de foco | Pendente |
 | UX-15 | Cabeçalho consistente | Tour/Ajuda disponíveis nos três tamanhos, com mesmo significado e foco | Pendente |

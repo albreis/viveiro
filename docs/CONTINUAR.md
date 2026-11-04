@@ -93,3 +93,10 @@ PR86, implantação appgdep_6aea9ea886e48191b3623df16356710b.
 
 UX-01 a UX-06 publicados no PR87, fonte 0e4be5e807a57e6447c0dd250966cc2dc942c5e3,
 implantação appgdep_6aeaa18c97b88191b19a48fb378c49d7.
+
+O desktop foi reorganizado a pedido do usuário. Ambiente fica à esquerda,
+Colônia e abas à direita, ambos com altura natural. Intervenções, perfil
+e semente ficam em três colunas após Análise e dados. A página permite
+alcançar o fim da aba e mantém o resumo da Colônia junto às abas durante
+a rolagem. A próxima etapa continua no rascunho #89. Sincronizar esse
+rascunho com a main e validar o tablet com os controles na nova posição.
