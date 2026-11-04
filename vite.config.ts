@@ -1,3 +1,7 @@
+import {
+  roadmapPlugin,
+  privateRoadmapEnabled,
+} from "./scripts/lib/roadmap-plugin.ts";
 import { i18nPlugin } from "./scripts/lib/i18n-plugin.ts";
 import { modelDocPlugin } from "./scripts/lib/model-doc-plugin.ts";
 import { offlinePlugin } from "./scripts/lib/offline-plugin.ts";
@@ -6,6 +10,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
+    roadmapPlugin(),
     i18nPlugin(),
     teachingPlugin(),
     modelDocPlugin(),
@@ -26,6 +31,7 @@ export default defineConfig(({ mode }) => ({
         index: "index.html",
         experiments: "experimentos.html",
         gallery: "galeria.html",
+        ...(privateRoadmapEnabled(mode) ? { roadmap: "cronograma.html" } : {}),
       },
       output: {
         manualChunks(id) {

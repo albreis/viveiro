@@ -1,0 +1,120 @@
+@import "./roadmap-layout.css";
+@import "./roadmap-content.css";
+@import "./roadmap-responsive.css";
+:root {
+  color-scheme: light;
+  --roadmap-bg: #f4f5ef;
+  --roadmap-ink: #203d32;
+  --roadmap-muted: #546455;
+  --roadmap-green: #315d42;
+  --roadmap-line: #dce2d6;
+  --roadmap-paper: #fffefa;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--roadmap-ink);
+  background: var(--roadmap-bg);
+  font-size: 15px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  color: inherit;
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+button,
+summary {
+  cursor: pointer;
+}
+button {
+  min-height: 44px;
+}
+[hidden] {
+  display: none !important;
+}
+:focus-visible {
+  outline: 3px solid #667d32;
+  outline-offset: 4px;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+p {
+  line-height: 1.6;
+}
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  z-index: 10;
+  padding: 14px;
+  background: white;
+}
+.skip:focus {
+  top: 12px;
+}
+.roadmap-topbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 88px;
+  padding: 16px 3.5%;
+  border-bottom: 1px solid var(--roadmap-line);
+  background: var(--roadmap-paper);
+}
+.roadmap-brand {
+  font-weight: 750;
+  font-size: 28px;
+  letter-spacing: -1.5px;
+  text-decoration: none;
+}
+.roadmap-brand span {
+  color: #89a345;
+}
+.private-badge {
+  font-size: 12px;
+  color: #31543c;
+  background: #eaf0df;
+  border: 1px solid #cedbc0;
+  border-radius: 30px;
+  padding: 7px 12px;
+}
+.back-link {
+  margin-left: auto;
+  font-size: 13px;
+  text-underline-offset: 4px;
+  padding: 12px 0;
+}
+.eyebrow,
+.nav-caption {
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  font-weight: 650;
+}
+.quiet-button {
+  border: 1px solid #b9c7af;
+  background: transparent;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+.quiet-button:hover {
+  background: #e8eddf;
+}
+.document-link {
+  display: inline-block;
+  font-size: 13px;
+  color: #315d42;
+  text-underline-offset: 4px;
+  margin: 8px 18px 6px 0;
+}

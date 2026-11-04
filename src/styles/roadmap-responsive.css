@@ -1,0 +1,163 @@
+@media (max-width: 1150px) {
+  .roadmap-layout {
+    grid-template-columns: 195px minmax(0, 1fr);
+  }
+  .roadmap-sidebar {
+    padding: 32px 12px;
+  }
+  #roadmap-main {
+    padding: 34px 25px;
+  }
+  .roadmap-highlights {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .next-step {
+    grid-column: 1 / -1;
+  }
+  .highlight {
+    min-height: 135px;
+  }
+}
+@media (max-width: 750px) {
+  .roadmap-topbar {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+  .roadmap-topbar .locale-picker {
+    font-size: 12px;
+    margin: 0;
+  }
+  .roadmap-brand {
+    font-size: 25px;
+  }
+  .back-link {
+    font-size: 12px;
+  }
+  .private-badge {
+    font-size: 12px;
+  }
+  .roadmap-layout {
+    display: block;
+  }
+  .roadmap-sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--roadmap-line);
+    padding: 14px 20px;
+  }
+  .nav-caption,
+  .sidebar-note {
+    display: none;
+  }
+  #roadmap-nav {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+  #roadmap-nav button {
+    flex: 0 0 auto;
+    font-size: 12px;
+    padding: 10px;
+    gap: 7px;
+  }
+  .nav-count {
+    min-width: 16px;
+    font-size: 12px;
+  }
+  #roadmap-main {
+    padding: 28px 20px;
+  }
+  .roadmap-heading {
+    display: block;
+  }
+  #roadmap-print {
+    margin-top: 16px;
+  }
+  h1 {
+    font-size: 35px;
+    letter-spacing: -1.5px;
+  }
+  .intro {
+    font-size: 14px;
+  }
+  .highlight {
+    padding: 17px 12px;
+    min-height: 128px;
+    gap: 8px;
+  }
+  .highlight strong {
+    font-size: 36px;
+  }
+  .highlight span {
+    font-size: 12px;
+  }
+  .highlight.version strong {
+    font-size: 21px;
+  }
+  .roadmap-filters {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .search-field {
+    flex-basis: 100%;
+  }
+  .roadmap-filters > label {
+    width: 100%;
+  }
+  .group-summary {
+    padding: 16px 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .group-summary h3 {
+    flex: 1;
+    min-width: 160px;
+    font-size: 14px;
+  }
+  .group-tasks {
+    padding: 0 14px 14px;
+  }
+  .task-badge {
+    white-space: normal;
+    max-width: 82px;
+    text-align: center;
+  }
+  .task-title {
+    font-size: 13px;
+  }
+  .task-detail {
+    padding-left: 30px;
+    padding-right: 0;
+  }
+  .view-heading h2 {
+    font-size: 21px;
+  }
+}
+@media print {
+  .roadmap-topbar,
+  .roadmap-sidebar,
+  .roadmap-filters,
+  .view-heading button,
+  .roadmap-highlights,
+  #roadmap-print,
+  .skip {
+    display: none;
+  }
+  .roadmap-layout {
+    display: block;
+  }
+  #roadmap-main {
+    padding: 0;
+  }
+  .roadmap-group {
+    break-inside: auto;
+  }
+  .roadmap-task {
+    break-inside: avoid;
+  }
+  .task-detail {
+    color: black;
+  }
+}

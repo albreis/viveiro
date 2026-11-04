@@ -27,6 +27,9 @@ O modelo continua exploratório, sem calibração biológica concluída.
 - [ ] UX: 21 melhorias propostas para implementação por etapas.
 - [ ] Dados adicionais: **opcionais**, para ampliar evidências depois; não bloqueiam Buhl/UX.
 
+- [x] [Página privada de leitura do cronograma](cronograma-privado.md): busca,
+  filtros e áreas por responsabilidade; gerada destes documentos, fora do build público.
+
 ## Três filas de trabalho
 
 | Fila | O que contém | Plano detalhado |

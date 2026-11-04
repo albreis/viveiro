@@ -1,8 +1,8 @@
 # Continuação — cronograma por responsabilidade
 
 03/11/2026. Trabalhar em `G:\Projetos\viveiro`, ler AGENTS.md e cronograma.md,
-conferir Git/PRs e preservar saves, branches e tags. Esta rodada reorganiza o
-planejamento; não implementa UX nem executa calibração longa.
+conferir Git/PRs e preservar saves, branches e tags. Última entrega: página privada de leitura do cronograma.
+Não implementa as fases UX nem executa calibração longa.
 
 ## Estado preservado
 
@@ -71,3 +71,14 @@ executor concorrente. Antes de3% restante da janela real de5h, enviar progresso
 e parar para continuidade manual, conforme pedido. Consultar a cota real sem
 expor conta/créditos; não contornar limites. Não executar benchmarks de horas
 numa rodada cujo objetivo é apenas organizar o cronograma.
+
+## Página privada do cronograma — nova entrega
+
+Página de leitura `/cronograma.html`, gerada dos documentos existentes: busca
+no plano todo, áreas por responsabilidade, UX/Buhl/opcionais/concluídos,
+filtros e impressão. Interface pt/en; conteúdo do plano continua em português.
+Excluída do build público; usar apenas o Site privado owner-only. Sem tag nova.
+Suíte completa479/479; TS/build aprovados. Ver cronograma-privado.md e
+validacoes/cronograma-privado.json para o recibo e a publicação.
+O próximo passo de produto continua T1 de acessibilidade; não foi fechado pelo
+fato de a página do cronograma ter navegação por teclado.

@@ -1,0 +1,72 @@
+{
+  "feature": "owner-private roadmap reading page",
+  "path": "/cronograma.html",
+  "source": "existing planning Markdown, no duplicate task registry",
+  "sourceDocuments": 8,
+  "uxItems": 21,
+  "optionalSources": 8,
+  "buhlSteps": 8,
+  "uiLocales": [
+    "pt-BR",
+    "en"
+  ],
+  "documentLocale": "pt-BR",
+  "publicBuild": {
+    "actualBuildChecked": true,
+    "pageEmitted": false,
+    "roadmapChunkEmitted": false,
+    "navigationEmitted": false,
+    "privatePayloadEmitted": false
+  },
+  "tests": {
+    "targeted": {
+      "passed": 5,
+      "failed": 0
+    },
+    "fullSuite": {
+      "passed": 479,
+      "failed": 0,
+      "durationMs": 175830.6495
+    }
+  },
+  "browserQA": {
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        820,
+        1180
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "horizontalPageOverflow": false,
+    "checks": [
+      "global accent-insensitive search",
+      "empty results",
+      "21 UX items",
+      "personal done filter returns zoom check",
+      "optional sources and links",
+      "Buhl started label and limitation",
+      "explicit locale survives reload"
+    ],
+    "consoleErrors": []
+  },
+  "accessBefore": {
+    "mode": "custom",
+    "revision": 1,
+    "ownerCount": 1,
+    "externalVisitorCount": 0,
+    "groupCount": 0
+  },
+  "accessChanged": false,
+  "simulationChanged": false,
+  "savesAccessed": false,
+  "tagCreated": false,
+  "zenodoWrite": false,
+  "deployment": "pending"
+}
