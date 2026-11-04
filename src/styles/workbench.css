@@ -81,25 +81,25 @@
 .secondary-controls > .seed-box {
   padding: 16px;
 }
+.workspace-scene {
+  display: contents;
+}
 @media (min-width: 1181px) {
   .workspace {
     grid-template-columns: 290px minmax(0, 1fr) 315px;
     align-items: start;
   }
-  .workspace > .left-panel {
-    grid-area: 1 / 1;
+  .workspace-scene {
+    /* Bound sticky panels to the terrarium, above the analysis section. */
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    align-items: start;
   }
-  .workspace > .center-panel {
-    grid-area: 1 / 2;
+  .workspace-scene > .center-panel {
     min-width: 0;
   }
-  .workspace > .right-panel {
-    grid-area: 1 / 3;
-  }
-  .workspace > .analysis-band {
-    grid-area: 2 / 1 / auto / span 3;
-  }
-  .workspace > :is(.left-panel, .center-panel, .right-panel),
+  .workspace-scene > *,
   .secondary-controls > * {
     position: sticky;
     top: min(16px, calc(100dvh - var(--dock-height, 0px) - 16px));

@@ -10,9 +10,7 @@ export function installWorkbenchDocking(): void {
     }
   });
   document
-    .querySelectorAll(
-      ".workspace > :is(.left-panel, .center-panel, .right-panel), .secondary-controls > *",
-    )
+    .querySelectorAll(".workspace-scene > *, .secondary-controls > *")
     .forEach((panel) => observer.observe(panel));
   window.addEventListener("pagehide", () => observer.disconnect(), {
     once: true,
