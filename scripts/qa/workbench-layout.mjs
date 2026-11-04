@@ -44,21 +44,41 @@ export async function checkDesktopWorkbench(page) {
     geometry.sidebar.slice(0, 3).every((panel) => panel.position === "sticky"),
   );
 
-  await page.locator(".colony-dock").evaluate((dock) => {
-    scrollTo(0, scrollY + dock.getBoundingClientRect().top + 80);
-  });
-  await page.waitForFunction(() => {
-    const header = document
-      .querySelector(".colony-dock")
-      .getBoundingClientRect();
-    return scrollY > 0 && Math.abs(header.top - 16) <= 1;
-  });
+  await checkColonyFlow(page);
   await page.locator("#panel-soil > :last-child").evaluate((card) => {
     card.scrollIntoView({ block: "end" });
   });
   const bottom = await page.locator("#panel-soil > :last-child").boundingBox();
   assert.ok(bottom.y + bottom.height <= page.viewportSize().height + 1);
   await checkStickyBoundaries(page);
+}
+
+export async function checkColonyFlow(page) {
+  const overlap = await page.evaluate(async () => {
+    const dock = document.querySelector(".colony-dock");
+    const panel = document.querySelector(
+      ".right-panel > [role=tabpanel]:not([hidden])",
+    );
+    const origin =
+      scrollY +
+      document.querySelector(".workspace-scene").getBoundingClientRect().top;
+
+    for (const offset of [0, 80, 220, 400]) {
+      scrollTo({ top: origin + offset, behavior: "instant" });
+      await new Promise((done) => requestAnimationFrame(done));
+      if (
+        dock.getBoundingClientRect().bottom >
+        panel.getBoundingClientRect().top + 1
+      )
+        return { tab: panel.id, scroll: scrollY };
+    }
+    return null;
+  });
+  assert.equal(
+    overlap,
+    null,
+    "Resumo e abas devem rolar junto com o conteúdo da Colônia",
+  );
 }
 
 async function checkStickyBoundaries(page) {
