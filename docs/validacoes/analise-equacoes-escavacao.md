@@ -1,0 +1,178 @@
+# Análise das equações da escavação (comparação com Buhl)
+
+Revisão termo a termo da cadeia que transforma operárias em volume escavado,
+com medições do modo por feromônio (`--mode estigmergia --protocol
+grupo-fixo`, sementes BUHL-1 e BUHL-3). Objetivo: achar por que o volume das
+frentes não cresce com o grupo como em Buhl et al. (inclinação 0,64).
+
+## A cadeia e suas equações
+
+| Etapa | Equação ou regra | Onde |
+| --- | --- | --- |
+| Abrir frente | por tick, cada ociosa numa câmara: P = 0,006 × F; no máximo **uma frente por nó de origem**, 12 frentes, 140 nós | `soil/worker.ts`, `soil/projects.ts` |
+| Freio por densidade | F = ρ² / (ρ² + c²), ρ = operárias / volume escavado, c = 100 | `soil/stigmergy.ts` |
+| Feromônio da frente | X(t) = X₀·e^(−0,04·Δt) + 0,35 por mordida | `soil/stigmergy.ts` |
+| Entrar numa frente | P = (0,01 + 0,99·X²/(X²+1)) × F; equipe de no máximo 6 | `soil/stigmergy.ts` |
+| Continuar após despejar | continua com a mesma P; senão larga a tarefa | `soil/worker.ts` |
+| Mordida | avanço 0,02 × 4 = 0,08; volume π·0,28²·avanço ≈ 0,0197; uma mordida por frente por tick; cada operária morde a cada 4 ticks | `soil/projects.ts` |
+| Carga | capacidade 0,022: 1 a 2 mordidas por viagem | `soil/worker.ts` |
+| Fim da frente | segmentos de 0,65 a 0,95, mais 2 a 4 segmentos, depois vira câmara (cerca de 0,8 u³ por projeto) | `soil/projects.ts` |
+| Ir até a frente | rota pelo odor genérico "frente", com destino a uma frente específica | `navigation/local-routing.ts` |
+| Escolha de saída | peso ∝ e^(1,4·60·sinal) × heurística², exploração 2,5% | `navigation/local-route-policy.ts`, `chemistry/aco.ts` |
+| Trânsito | forças sociais, colisão, recuo, alargamento após 65 ticks parada | `navigation/` |
+
+## O que as medições mostram (20 dias)
+
+| | 50 | 100 | 200 |
+| --- | --- | --- | --- |
+| Mordidas da colônia por dia | 1,8 a 2,9 | 1,6 a 2,7 | 0,9 a 1,1 |
+| Frentes abertas | 3,0 a 3,3 | 3,8 a 4,4 | 3,9 |
+| Nós de origem sem frente | 2,1 a 2,5 | 1,3 a 1,6 | 0,1 |
+| Equipes cheias (6 de 6) | 84% a 96% | 98% | 100% |
+| Operárias cavando ao mesmo tempo | 0,15 a 0,29 | 0,12 a 0,30 | 0,17 |
+| Operárias em "indo para a frente" | 15 a 16 | 20 a 22 | 21 |
+| Probabilidade média de entrar | 0,024 | 0,03 | 0,016 a 0,021 |
+
+Rotas de odor estão boas: saindo de uma câmara vizinha a uma frente, a chance
+de escolher o túnel certo é 0,98.
+
+## Causas, da mais forte para a mais fraca
+
+1. **O feromônio evapora antes da próxima mordida.** Com evaporação de 0,04
+   por tick, metade some em 17 ticks. Mas cada frente recebe uma mordida a
+   cada 1 a 4 dias (100 a 400 ticks). Então X fica perto de zero, a resposta
+   de Hill fica perto de zero e a chance de entrar fica no piso (0,01 × F). O
+   reforço positivo, que é o mecanismo central de Buhl, nunca chega a operar.
+2. **Quase toda escavadora larga a tarefa depois de uma viagem.** A decisão
+   de continuar usa a mesma probabilidade de entrar (cerca de 0,02), então 98%
+   desistem após despejar. Em 10 dias, todos os 29 a 30 inícios de "indo
+   para a frente" foram de recrutas novas; nenhuma voltou após despejar.
+3. **Recrutas se perdem e ocupam a vaga.** A recruta escolhe a frente mais
+   marcada do ninho inteiro, mas segue o odor genérico de "frente", que leva
+   à frente mais próxima. Ao chegar numa frente que não é a dela, não adota
+   essa frente (a troca só acontece quando ela fica sem rota) e continua
+   andando. Ficam em média de 3,4 a 4,2 dias (p90 de 8 dias) nesse estado. Das
+   que ainda estavam perdidas no fim, 13 de 16 (50 operárias) e 21 de 23 (200)
+   tinham passado por outra frente. Como contam na equipe, as equipes ficam
+   cheias e ninguém mais é recrutado.
+4. **Teto estrutural de frentes.** Só pode haver uma frente por nó de origem.
+   Com 200 operárias todas as origens já têm frente (0,1 livre), então o
+   número de escavadoras possíveis fica em cerca de 6 × origens, igual para
+   100 e 200.
+5. **Trânsito nas câmaras.** Já documentado em `fluxo-tunel.md`: com 200, as
+   ociosas atrapalham quem carrega terra e alargam túneis. Isso amplifica as
+   causas 1 a 4, mas sozinho não as explica: mesmo com 50 operárias a colônia
+   dá só cerca de 2 mordidas por dia.
+
+## Comparação com o mecanismo de Buhl
+
+No experimento, a escavação começa rápida porque as operárias que cavam
+reforçam o local e recrutam outras, e desacelera quando a densidade de
+operárias por área escavada cai. No Viveiro, o reforço (1) não acontece, a
+persistência (2) é quase nula e a ocupação das equipes (3) trava o
+recrutamento. Por isso o volume é pequeno, quase linear no tempo e não cresce
+com o grupo.
+
+## O que testar a seguir (só no modo por feromônio, que é opcional)
+
+- Evaporação na escala do intervalo entre mordidas, ou depósito também pelas
+  carregadoras na trilha entre frente e saída (o comentário do código já
+  descreve essa trilha, mas ela não é depositada).
+- Fidelidade à tarefa: depois de despejar, continuar com alta probabilidade
+  enquanto a frente estiver aberta.
+- Recruta que chega a uma frente aberta adota essa frente na hora, ou a rota
+  usa "qualquer frente" como destino.
+- Avaliar mais de uma frente por origem.
+
+Ajustar com sementes separadas para ajuste e para teste, e só então comparar
+com Buhl.
+
+## Correções no modo por feromônio (versão 2 do estado)
+
+O modo por feromônio é opcional e o padrão não muda (séries do modo projetos
+idênticas; suíte com a mesma única falha antiga da `main`). As correções seguem
+um princípio, não um ajuste para bater com Buhl:
+
+- **Recruta que chega a uma frente aberta trabalha nela**, em vez de seguir
+  andando atrás da frente que escolheu de longe.
+- **Fidelidade:** quem despejou terra volta para a mesma frente aberta com
+  probabilidade 0,9 × freio de densidade (ou a de recrutamento, se maior). Em
+  formigas-de-fogo, uma minoria persistente faz a maior parte da escavação
+  (Aguilar et al. 2018).
+- **Trilha:** quem despeja terra reforça a marca da sua frente (0,35), e a
+  evaporação passa de 0,04 para 0,0035 por tick (meia-vida de cerca de 200
+  ticks, a ordem de uma viagem de ida e volta).
+
+Resultado (5 sementes, 20 dias, grupo fixo), volume 50 / 100 / 200:
+
+| | Total | Só frentes | Escala total | Escala frentes |
+| --- | --- | --- | --- | --- |
+| Versão 1 | 0,98 / 1,10 / 1,71 | 0,98 / 1,10 / 0,50 | 0,40 | negativa |
+| Versão 2 | 1,74 / 3,37 / 4,65 | 1,74 / 3,37 / 3,68 | 0,71 | 0,54 |
+
+O volume das frentes agora cresce com o grupo em todas as sementes de 50 para
+100. De 100 para 200 o ganho é pequeno porque o teto de 12 frentes é atingido
+(10 a 12 frentes abertas com 200). A curva ainda não desacelera como em Buhl
+(saturação 0,25 / 0,67 com 50, contra 0,48 / 0,82).
+
+## Tempo real
+
+`--horas 72 --segundos-por-tick 1` lê cada tick como 1 segundo e roda 259.200
+ticks, com idade, doença e comida congeladas e sem predadores (o arranjo de
+Buhl não tinha). `--paralelo sim` roda cada grupo numa thread.
+
+### Piloto de 24 h em tempo real
+
+Uma semente (BUHL-1), modo por feromônio v2, grupo fixo, 1 s por tick (86.400
+ticks), cerca de 50 min na nuvem com `--paralelo sim`.
+
+| | 50 | 100 | 200 |
+| --- | --- | --- | --- |
+| Volume em 24 h (u³) | 6,97 | 11,79 | 13,37 |
+| Proporção (modelo) | 1 | 1,69 | 1,92 |
+| Proporção em Buhl, 24 h (12 / 19 / 31 cm³) | 1 | 1,58 | 2,58 |
+| Fração do volume de 24 h já feita em 1 h | 37% | 42% | 53% |
+
+O verificador marca OK nos três padrões (escala 0,47 contra 0,64; saturação
+0,63 / 0,89, 0,67 / 0,82 e 0,83 / 0,93), mas o resultado não deve ser lido
+como reprodução de Buhl:
+
+- **A forma está errada.** Quase metade da escavação acontece na primeira
+  hora; depois as frentes viram câmaras, o número de frentes abertas cai a
+  zero e a colônia fica horas parada, com surtos curtos depois. Em Buhl a
+  desaceleração é gradual ao longo de 72 h. A "saturação" medida aqui é esse
+  surto inicial seguido de parada.
+- **Os terços não são os de Buhl.** Em 24 h a saturação é medida em 8 h e
+  16 h; a referência de Buhl é em 24 h e 48 h de 72 h.
+- **Uma semente só.** O teto de 12 frentes continua limitando o grupo de 200
+  (1,92 contra 2,58).
+
+Conclusão: com o tick valendo 1 s, as taxas de abertura de frente, mordida e
+freio por densidade, que foram escritas por tick, ficam rápidas demais no
+começo e o freio desliga a escavação cedo. Antes de rodar 72 h vale converter
+essas taxas para unidades de tempo real (por segundo) a partir de medidas de
+formigas, e só então comparar com Buhl em várias sementes.
+
+### Fome no modo de tempo real e nova rodada de 24 h
+
+A rodada de 72 h (feita no notebook, uma semente) passou nos três critérios
+(escala 0,57), mas o grupo de 200 terminou com 126 operárias: 45 morreram de
+fome na primeira hora. O congelamento mantinha cheio o estoque da colônia, mas
+a comida não chegava a todas as operárias a tempo. Agora o modo de tempo real
+também mantém a energia de cada operária (as de Buhl não morreriam de fome em
+3 dias).
+
+Nova rodada de 24 h com a correção (BUHL-1):
+
+| | 50 | 100 | 200 |
+| --- | --- | --- | --- |
+| Volume em 24 h (u³) | 5,63 | 8,35 | 14,46 |
+| Proporção (modelo) | 1 | 1,48 | 2,57 |
+| Proporção em Buhl, 24 h | 1 | 1,58 | 2,58 |
+| Proporção em Buhl, 72 h | 1 | 1,48 | 2,41 |
+| Operárias no fim | 50 | 100 | 200 |
+
+Escala 0,68 contra 0,64 de Buhl. A proporção entre grupos agora é próxima da
+do experimento. A forma da curva continua diferente: de 45% a 83% do volume
+sai nas 3 primeiras horas e depois a escavação quase para, enquanto em Buhl a
+desaceleração é gradual. Falta confirmar com 5 sementes.

@@ -8,6 +8,7 @@ import type {
 import type { SocialForceResult } from "./social-forces.ts";
 import { loaded } from "./social-forces.ts";
 import { normalize, rotate, scale, add, cross } from "./vectors.ts";
+import { idleYieldOn } from "./idle-yield.ts";
 
 export function navigationState(ant: AgentState): NavigationState {
   ant.navigation ??= {
@@ -71,6 +72,12 @@ export function widenCongestedTunnel(
 ) {
   const nav = navigationState(ant);
   if (edgeIndex < 0 || ant.kind !== "worker" || loaded(ant)) return false;
+  // Under the optional rule, widening is digging work: idle workers do not dig.
+  if (
+    idleYieldOn(world) &&
+    !(ant as AgentState & { soilTask?: unknown }).soilTask
+  )
+    return false;
   if ((world.nest.linkWidths?.[edgeIndex] || 0.38) >= 0.64) return false;
   if (nav.stagnantTicks > 65 && !nav.excavateUntil) {
     nav.excavateUntil = world.tick + 16;

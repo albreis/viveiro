@@ -1,0 +1,98 @@
+{
+  "schema": "viveiro-buhl-v1",
+  "modelVersion": "0.41.0",
+  "source": {
+    "report": "Buhl, Deneubourg, Grimal & Theraulaz (2001). Actes Coll. Insectes Sociaux 14: 52-105",
+    "reportUrl": "https://dictionnaire-amoureux-des-fourmis.fr/Noms%20propres/Publis/2001/ACTES-COLLOQUES-INSECTES-SOCIAUX-VOL14-Buhlf.pdf",
+    "article": "Buhl, Deneubourg, Grimal & Theraulaz (2005). Behav. Ecol. Sociobiol. 58: 9-17",
+    "articleDoi": "10.1007/s00265-004-0906-2",
+    "horizonHours": 72,
+    "replicatesPerGroup": 5
+  },
+  "options": {
+    "days": 20,
+    "seeds": 3,
+    "groups": [
+      50,
+      100,
+      200
+    ],
+    "sampleEvery": 25,
+    "mode": "estigmergia",
+    "protocol": "grupo-fixo"
+  },
+  "groups": [
+    {
+      "workers": 50,
+      "runs": 3,
+      "meanFinal": 0.25371874783028325,
+      "shape": {
+        "atThird": 0.322706224714814,
+        "atTwoThirds": 0.5706062699666923
+      },
+      "finalWorkersMean": 43.666666666666664
+    },
+    {
+      "workers": 100,
+      "runs": 3,
+      "meanFinal": 0.3828842097696586,
+      "shape": {
+        "atThird": 0.47763917369227654,
+        "atTwoThirds": 0.722778274420851
+      },
+      "finalWorkersMean": 88.66666666666667
+    },
+    {
+      "workers": 200,
+      "runs": 3,
+      "meanFinal": 1.356456262928364,
+      "shape": {
+        "atThird": 0.6492446786374495,
+        "atTwoThirds": 0.7589817902939215
+      },
+      "finalWorkersMean": 187.33333333333334
+    }
+  ],
+  "reference": {
+    "slope": 0.6350794201335876,
+    "shapes": [
+      {
+        "atThird": 0.48,
+        "atTwoThirds": 0.82
+      },
+      {
+        "atThird": 0.5135135135135135,
+        "atTwoThirds": 0.8378378378378378
+      },
+      {
+        "atThird": 0.5254237288135594,
+        "atTwoThirds": 0.7966101694915254
+      }
+    ]
+  },
+  "slope": 1.2092702491591514,
+  "criteria": [
+    {
+      "id": "atividade",
+      "description": "Todos os grupos escavam algum volume no horizonte.",
+      "reference": "Todos os grupos escavaram (25 a 61 cm³ em 72 h).",
+      "model": "50: 0.25; 100: 0.38; 200: 1.36",
+      "passed": true
+    },
+    {
+      "id": "saturacao",
+      "description": "Curva desacelera: ao menos 40% do volume final em 1/3 do tempo e 70% em 2/3.",
+      "reference": "0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80",
+      "model": "0.32 / 0.57; 0.48 / 0.72; 0.65 / 0.76",
+      "passed": false
+    },
+    {
+      "id": "escala",
+      "description": "Volume final cresce com o grupo: inclinação log-log entre 0,4 e 1,0.",
+      "reference": "0.64",
+      "model": "1.21",
+      "passed": false
+    }
+  ],
+  "reproduced": false
+}

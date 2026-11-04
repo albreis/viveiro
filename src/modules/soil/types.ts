@@ -38,6 +38,8 @@ export interface SoilState {
   integrity: number[];
   lastProject: number;
   nextId: number;
+  /** Present only when the stigmergic digging mode was enabled. */
+  stigmergy?: import("./stigmergy.ts").StigmergyState;
 }
 export interface SoilWorld extends NavigationWorld {
   microclimate?: import("../microclimate/types.ts").SoilClimate;

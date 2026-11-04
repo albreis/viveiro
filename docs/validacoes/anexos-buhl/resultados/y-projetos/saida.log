@@ -1,0 +1,7 @@
+OK   atividade: modelo 50: 0.33; 100: 0.43; 200: 1.69 | referência Todos os grupos escavaram (25 a 61 cm³ em 72 h).
+FALHA saturacao: modelo 0.28 / 0.67; 0.29 / 0.55; 0.63 / 0.80 | referência 0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80
+FALHA escala: modelo 1.17 | referência 0.64
+Só frentes: volume 50=0.33 100=0.30 200=0.18 | OK atividade 50: 0.33; 100: 0.30; 200: 0.18 | FALHA saturacao 0.28 / 0.67; 0.35 / 0.73; 0.47 / 0.78 | FALHA escala -0.46
+Só trânsito: volume 50=0.00 100=0.13 200=1.52 | FALHA atividade 50: 0.00; 100: 0.13; 200: 1.52 | FALHA saturacao sem dados / sem dados; 0.15 / 0.15; 0.65 / 0.80 | FALHA escala 3.51
+O modelo não reproduziu todos os padrões nesta configuração.
+Resultados em /tmp/claude-0/-home-user-viveiro/d6baa7f1-88af-5227-9a68-4e113d2a668e/scratchpad/y-projetos

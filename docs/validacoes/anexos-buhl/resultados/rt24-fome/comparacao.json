@@ -1,0 +1,273 @@
+{
+  "schema": "viveiro-buhl-v1",
+  "modelVersion": "0.41.0",
+  "source": {
+    "report": "Buhl, Deneubourg, Grimal & Theraulaz (2001). Actes Coll. Insectes Sociaux 14: 52-105",
+    "reportUrl": "https://dictionnaire-amoureux-des-fourmis.fr/Noms%20propres/Publis/2001/ACTES-COLLOQUES-INSECTES-SOCIAUX-VOL14-Buhlf.pdf",
+    "article": "Buhl, Deneubourg, Grimal & Theraulaz (2005). Behav. Ecol. Sociobiol. 58: 9-17",
+    "articleDoi": "10.1007/s00265-004-0906-2",
+    "horizonHours": 72,
+    "replicatesPerGroup": 5
+  },
+  "options": {
+    "days": 3,
+    "seeds": 1,
+    "groups": [
+      50,
+      100,
+      200
+    ],
+    "sampleEvery": 600,
+    "mode": "estigmergia",
+    "protocol": "grupo-fixo",
+    "idle": "original",
+    "realTime": {
+      "hours": 24,
+      "secondsPerTick": 1,
+      "ticks": 86400
+    },
+    "parallel": true
+  },
+  "stigmergy": {
+    "k": 1,
+    "deposit": 0.35,
+    "evaporation": 0.0035,
+    "spontaneous": 0.006,
+    "baseJoin": 0.01,
+    "maxFronts": 12,
+    "maxNodes": 140,
+    "perFront": 6,
+    "biteScale": 4,
+    "crowding": 100,
+    "fidelity": 0.9,
+    "trailDeposit": 0.35
+  },
+  "groups": [
+    {
+      "workers": 50,
+      "runs": 1,
+      "meanFinal": 6.971428243594751,
+      "shape": {
+        "atThird": 0.631240904049542,
+        "atTwoThirds": 0.8854936223337139
+      },
+      "finalWorkersMean": 50
+    },
+    {
+      "workers": 100,
+      "runs": 1,
+      "meanFinal": 11.788479168329706,
+      "shape": {
+        "atThird": 0.6674560772536543,
+        "atTwoThirds": 0.8193630578029121
+      },
+      "finalWorkersMean": 100
+    },
+    {
+      "workers": 200,
+      "runs": 1,
+      "meanFinal": 13.365358267064906,
+      "shape": {
+        "atThird": 0.830890390279091,
+        "atTwoThirds": 0.9302626696031484
+      },
+      "finalWorkersMean": 146
+    }
+  ],
+  "reference": {
+    "slope": 0.6350794201335876,
+    "shapes": [
+      {
+        "atThird": 0.48,
+        "atTwoThirds": 0.82
+      },
+      {
+        "atThird": 0.5135135135135135,
+        "atTwoThirds": 0.8378378378378378
+      },
+      {
+        "atThird": 0.5254237288135594,
+        "atTwoThirds": 0.7966101694915254
+      }
+    ]
+  },
+  "slope": 0.4694861762924095,
+  "criteria": [
+    {
+      "id": "atividade",
+      "description": "Todos os grupos escavam algum volume no horizonte.",
+      "reference": "Todos os grupos escavaram (25 a 61 cm³ em 72 h).",
+      "model": "50: 6.97; 100: 11.79; 200: 13.37",
+      "passed": true
+    },
+    {
+      "id": "saturacao",
+      "description": "Curva desacelera: ao menos 40% do volume final em 1/3 do tempo e 70% em 2/3.",
+      "reference": "0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80",
+      "model": "0.63 / 0.89; 0.67 / 0.82; 0.83 / 0.93",
+      "passed": true
+    },
+    {
+      "id": "escala",
+      "description": "Volume final cresce com o grupo: inclinação log-log entre 0,4 e 1,0.",
+      "reference": "0.64",
+      "model": "0.47",
+      "passed": true
+    }
+  ],
+  "reproduced": true,
+  "porOrigem": {
+    "frentes": {
+      "groups": [
+        {
+          "workers": 50,
+          "runs": 1,
+          "meanFinal": 6.859910444203812,
+          "shape": {
+            "atThird": 0.6415026410033576,
+            "atTwoThirds": 0.8998886061954643
+          },
+          "finalWorkersMean": 50
+        },
+        {
+          "workers": 100,
+          "runs": 1,
+          "meanFinal": 11.772421528171495,
+          "shape": {
+            "atThird": 0.6683664905857205,
+            "atTwoThirds": 0.8191166681361693
+          },
+          "finalWorkersMean": 100
+        },
+        {
+          "workers": 200,
+          "runs": 1,
+          "meanFinal": 12.047160991707745,
+          "shape": {
+            "atThird": 0.8297047467786705,
+            "atTwoThirds": 0.9399503154977288
+          },
+          "finalWorkersMean": 146
+        }
+      ],
+      "reference": {
+        "slope": 0.6350794201335876,
+        "shapes": [
+          {
+            "atThird": 0.48,
+            "atTwoThirds": 0.82
+          },
+          {
+            "atThird": 0.5135135135135135,
+            "atTwoThirds": 0.8378378378378378
+          },
+          {
+            "atThird": 0.5254237288135594,
+            "atTwoThirds": 0.7966101694915254
+          }
+        ]
+      },
+      "slope": 0.4062157783744103,
+      "criteria": [
+        {
+          "id": "atividade",
+          "description": "Todos os grupos escavam algum volume no horizonte.",
+          "reference": "Todos os grupos escavaram (25 a 61 cm³ em 72 h).",
+          "model": "50: 6.86; 100: 11.77; 200: 12.05",
+          "passed": true
+        },
+        {
+          "id": "saturacao",
+          "description": "Curva desacelera: ao menos 40% do volume final em 1/3 do tempo e 70% em 2/3.",
+          "reference": "0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80",
+          "model": "0.64 / 0.90; 0.67 / 0.82; 0.83 / 0.94",
+          "passed": true
+        },
+        {
+          "id": "escala",
+          "description": "Volume final cresce com o grupo: inclinação log-log entre 0,4 e 1,0.",
+          "reference": "0.64",
+          "model": "0.41",
+          "passed": true
+        }
+      ],
+      "reproduced": true
+    },
+    "transito": {
+      "groups": [
+        {
+          "workers": 50,
+          "runs": 1,
+          "meanFinal": 0.11151779939093931,
+          "shape": {
+            "atThird": 0,
+            "atTwoThirds": 0
+          },
+          "finalWorkersMean": 50
+        },
+        {
+          "workers": 100,
+          "runs": 1,
+          "meanFinal": 0.016057640158210873,
+          "shape": {
+            "atThird": 0,
+            "atTwoThirds": 1
+          },
+          "finalWorkersMean": 100
+        },
+        {
+          "workers": 200,
+          "runs": 1,
+          "meanFinal": 1.3181972753571607,
+          "shape": {
+            "atThird": 0.8417261266255093,
+            "atTwoThirds": 0.8417261266255093
+          },
+          "finalWorkersMean": 146
+        }
+      ],
+      "reference": {
+        "slope": 0.6350794201335876,
+        "shapes": [
+          {
+            "atThird": 0.48,
+            "atTwoThirds": 0.82
+          },
+          {
+            "atThird": 0.5135135135135135,
+            "atTwoThirds": 0.8378378378378378
+          },
+          {
+            "atThird": 0.5254237288135594,
+            "atTwoThirds": 0.7966101694915254
+          }
+        ]
+      },
+      "slope": 1.7816101954901116,
+      "criteria": [
+        {
+          "id": "atividade",
+          "description": "Todos os grupos escavam algum volume no horizonte.",
+          "reference": "Todos os grupos escavaram (25 a 61 cm³ em 72 h).",
+          "model": "50: 0.11; 100: 0.02; 200: 1.32",
+          "passed": true
+        },
+        {
+          "id": "saturacao",
+          "description": "Curva desacelera: ao menos 40% do volume final em 1/3 do tempo e 70% em 2/3.",
+          "reference": "0.48 / 0.82; 0.51 / 0.84; 0.53 / 0.80",
+          "model": "0.00 / 0.00; 0.00 / 1.00; 0.84 / 0.84",
+          "passed": false
+        },
+        {
+          "id": "escala",
+          "description": "Volume final cresce com o grupo: inclinação log-log entre 0,4 e 1,0.",
+          "reference": "0.64",
+          "model": "1.78",
+          "passed": false
+        }
+      ],
+      "reproduced": false
+    }
+  }
+}

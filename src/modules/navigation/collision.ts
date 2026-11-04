@@ -6,6 +6,7 @@ import type {
   Vec3,
 } from "./types.ts";
 import { neighborsOf } from "./sensors.ts";
+import { givingWay, idleYieldOn, working } from "./idle-yield.ts";
 
 export function positionClear(
   world: NavigationWorld,
@@ -25,7 +26,9 @@ export function positionClear(
     y: forward.z * normal.x - forward.x * normal.z,
     z: forward.x * normal.y - forward.y * normal.x,
   };
+  const squeeze = idleYieldOn(world) && working(entity);
   for (const other of neighborsOf(world, entity)) {
+    if (squeeze && givingWay(world, other)) continue;
     const x = point.x - other.x,
       y = (point.y || 0) - (other.y || 0),
       z = point.z - other.z;

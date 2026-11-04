@@ -1,0 +1,33 @@
+diff --git a/src/modules/navigation/contact.ts b/src/modules/navigation/contact.ts
+index 58c7874..acde744 100644
+--- a/src/modules/navigation/contact.ts
++++ b/src/modules/navigation/contact.ts
+@@ -71,6 +71,7 @@ export function widenCongestedTunnel(
+ ) {
+   const nav = navigationState(ant);
+   if (edgeIndex < 0 || ant.kind !== "worker" || loaded(ant)) return false;
++  if (process.env.CF_NOWIDEN && !(ant as any).soilTask) return false;
+   if ((world.nest.linkWidths?.[edgeIndex] || 0.38) >= 0.64) return false;
+   if (nav.stagnantTicks > 65 && !nav.excavateUntil) {
+     nav.excavateUntil = world.tick + 16;
+diff --git a/src/modules/navigation/sensors.ts b/src/modules/navigation/sensors.ts
+index a15166a..031ed72 100644
+--- a/src/modules/navigation/sensors.ts
++++ b/src/modules/navigation/sensors.ts
+@@ -45,6 +45,16 @@ export function neighborsOf(
+       for (let x = cx - span; x <= cx + span; x++) {
+         for (const other of index.cells.get(key(x, y, z)) || []) {
+           if (other.id === agent.id) continue;
++          if (
++            process.env.CF_YIELD &&
++            ((agent as any).carryingSoil > 0 ||
++              (process.env.CF_YIELD === "2" && (agent as any).soilTask)) &&
++            !(other as any).soilTask &&
++            !(other as any).carryingSoil &&
++            !(other as any).hasFood &&
++            !(other as any).carryingBrood
++          )
++            continue;
+           if (
+             modelMath.hypot(
+               other.x - agent.x,
