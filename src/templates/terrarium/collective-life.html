@@ -2,8 +2,29 @@
   <div class="section-label">
     <span data-i18n="terrarium.family.title"></span><span>↔</span>
   </div>
-  <p id="family-status" data-i18n="terrarium.family.initial"></p>
-  <p id="daughter-status"></p>
+  <dl id="family-metrics" class="status-metrics">
+    <div>
+      <dt data-i18n="interface.metrics.colonies"></dt>
+      <dd data-metric="colonies">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.queens"></dt>
+      <dd data-metric="queens">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.alates"></dt>
+      <dd data-metric="alates">—</dd>
+    </div>
+    <div>
+      <dt data-i18n="interface.metrics.alateReserve"></dt>
+      <dd data-metric="alateReserve">—</dd>
+    </div>
+  </dl>
+  <details class="metric-details">
+    <summary data-i18n="interface.metrics.more"></summary>
+    <p id="family-status" data-i18n="terrarium.family.initial"></p>
+    <p id="daughter-status"></p>
+  </details>
   <p
     id="founding-status"
     role="status"
