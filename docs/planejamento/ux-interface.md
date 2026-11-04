@@ -25,7 +25,7 @@ dois idiomas e três tamanhos. As capturas locais ficam em `.runtime/ux1-final`.
 | --- | --- | --- | --- |
 | UX-07 | Terrário antes das aulas | Topo do terrário ≤260px em 1440×900; aulas recolhidas/em drawer ou abaixo | Entregue |
 | UX-08 | Coluna esquerda 280–300px | Somente Ambiente na esquerda. Perfil com nome completo nos controles abaixo da análise | Entregue |
-| UX-09 | Coluna direita sticky e navegação | Resumo da Colônia e abas acessíveis Colônia/Solo e ar/Dados/Lab acompanham a página; conteúdo das abas tem altura natural | Entregue |
+| UX-09 | Coluna direita sticky e navegação | Resumo da Colônia, abas e conteúdo rolam juntos, sem se sobrepor. A coluna tem altura natural | Entregue |
 | UX-10 | Faixa de análise abaixo do terrário | Gráficos, previsão e saves em faixa de análise. Intervenções, perfil e semente abaixo em três colunas no desktop | Entregue |
 | UX-11 | Tour ancorado ao terrário | Não cobre o resumo da colônia; foco e destaque continuam coerentes | Entregue |
 

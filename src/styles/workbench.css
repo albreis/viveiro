@@ -104,12 +104,6 @@
     position: sticky;
     top: min(16px, calc(100dvh - var(--dock-height, 0px) - 16px));
   }
-  .colony-dock {
-    position: sticky;
-    top: 16px;
-    z-index: 1;
-    background: var(--paper);
-  }
   #viewport {
     height: clamp(355px, 32vw, 505px);
   }
