@@ -1,0 +1,128 @@
+#mobile-controls-open {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  html:has(#mobile-controls[open]) {
+    overflow: hidden;
+  }
+  #viewport {
+    height: clamp(220px, 45dvh, 365px);
+  }
+  #new-world {
+    margin-top: 0;
+  }
+  .scene-toolbar {
+    inset-inline: 10px;
+    gap: 8px;
+  }
+  .live-status {
+    min-width: 0;
+    letter-spacing: 0.6px;
+  }
+  .view-switch {
+    flex-shrink: 0;
+  }
+  .left-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .scene-controls {
+    padding-inline: 10px;
+  }
+  .time-display strong {
+    overflow-wrap: anywhere;
+  }
+  .time-display span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #mobile-controls-open {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 44px;
+    flex: 0 0 44px;
+    border: 1px solid #c3cdb7;
+    border-radius: 7px;
+    background: var(--paper);
+    font-size: 21px;
+  }
+  #mobile-controls {
+    width: 100%;
+    max-width: none;
+    max-height: min(72dvh, calc(100dvh - 16px));
+    margin: auto 0 0;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-radius: 14px 14px 0 0;
+    background: var(--paper);
+  }
+  #mobile-controls[open] {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 10px;
+  }
+  .mobile-controls-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .mobile-controls-heading h2 {
+    margin: 0;
+  }
+  .mobile-controls-body {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 5px;
+  }
+  .mobile-controls-body .intervention-panel {
+    margin: 0;
+  }
+  #mobile-controls-close {
+    padding-inline: 12px;
+    border: 1px solid #c3cdb7;
+    border-radius: 7px;
+    background: var(--paper);
+  }
+  button,
+  select,
+  input:is([type="text"], [type="number"]),
+  summary {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .toggle-label {
+    min-height: 44px;
+  }
+  .slider-block input[type="range"] {
+    height: 44px;
+    margin-block: 0;
+    background-repeat: no-repeat;
+    background-size: 100% 3px;
+    background-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #camera-mode {
+    display: none;
+  }
+}
+
+#scene-touch-hint {
+  display: none;
+}
+@media (pointer: coarse) {
+  #scene-touch-hint {
+    display: block;
+    margin: 0;
+    padding: 0 16px 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .scene-card:not(:has(:focus-visible)) #scene-keyboard-hint,
+  #scene-guide:not([data-i18n="controls.camera.place"]) {
+    display: none;
+  }
+}

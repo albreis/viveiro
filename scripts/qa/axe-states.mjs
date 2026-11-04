@@ -37,6 +37,23 @@ export async function auditStates(page, open, audit, layoutOnly = false) {
   assert.ok(await page.locator("#help").isVisible());
   const { width } = page.viewportSize();
   if (width > 650 && width <= 1180) await checkTabletLayout(page);
+  if (width <= 650) {
+    await click("#mobile-controls-open");
+    await show("#mobile-controls");
+    assert.equal(
+      await page.locator("#drawer-environment #humidity").count(),
+      1,
+    );
+    await audit("gaveta-mobile");
+    await page.keyboard.press("Escape");
+    await hide("#mobile-controls");
+    assert.ok(
+      await page
+        .locator("#mobile-controls-open")
+        .evaluate((node) => node === document.activeElement),
+    );
+    await show(".left-panel #humidity");
+  }
   if (layoutOnly) return;
   await click("#view-top");
   assert.equal(

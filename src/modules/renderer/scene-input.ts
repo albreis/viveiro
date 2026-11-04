@@ -1,11 +1,18 @@
 import type { Terrarium } from "./scene.ts";
+import { installSceneTouch } from "./scene-touch.ts";
 export function installSceneInput(host: Terrarium) {
   let down: { x: number; y: number; lastX: number; lastY: number } | null =
     null;
+  const cancelTap = () => {
+    down = null;
+  };
+  installSceneTouch(host, cancelTap);
+  host.renderer.domElement.addEventListener("pointercancel", cancelTap);
   host.renderer.domElement.addEventListener("pointerdown", (e) => {
     down = { x: e.clientX, y: e.clientY, lastX: e.clientX, lastY: e.clientY };
   });
   host.renderer.domElement.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") return;
     if (host.followId && down) {
       host.lookYaw += (e.clientX - down.lastX) * 0.004;
       host.lookPitch = Math.max(
