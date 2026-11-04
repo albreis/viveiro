@@ -22,7 +22,7 @@ export function installMobileControls(): void {
   installPanelTabs(dialog);
 
   open.addEventListener("click", () => {
-    if (dialog.open || !mobile.matches) return;
+    if (dialog.open || moved.length || !mobile.matches) return;
     for (const [source, target] of groups) {
       const element = document.querySelector(source)!;
       const anchor = document.createComment("mobile-control");

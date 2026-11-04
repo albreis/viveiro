@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação é T2, fase 4 (UX-16 a UX-20).** Fases 1 a 3 validadas. T1 concluída em
+**Próxima implementação é T2, fase 5 (UX-21).** Fases 1 a 4 validadas tecnicamente. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -103,7 +103,11 @@ UX-12 a UX-15 validados no PR89. Build, 480 testes e 102 estados no Chrome
 passaram. A cena ocupa a largura útil no tablet, e a barra permanece acessível
 durante a rolagem e a navegação por Tab. Ver validacoes/ux-fase-3.json.
 
-A fase móvel começa em codex/ux-mobile. Sincronizar com a main após o PR89
-e testar a gaveta, os alvos e os gestos em navegador com toque emulado.
-O teste em celular físico segue na fila individual. Depois vêm UX-21, T3,
-Buhl e o apoio técnico de T5.
+UX-16 a UX-20 validados tecnicamente. Build, 22 testes dirigidos e 26 estados
+da auditoria passaram. A gaveta reutiliza os controles e permite intervir
+direto no solo. Rolagem, órbita, pinça e primeira pessoa foram verificadas
+no Chrome com toque emulado. O teste em celular físico segue na fila individual.
+
+Próxima etapa: UX-21, destacar os números nos cinco cartões e mover
+explicações detalhadas para Saiba mais. Depois vêm T3, Buhl e o apoio técnico
+de T5.

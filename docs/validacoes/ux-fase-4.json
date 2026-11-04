@@ -1,0 +1,31 @@
+{
+  "stage": "UX-16 a UX-20",
+  "browser": "Chrome 156.0.8078.80",
+  "axe": "4.14.0",
+  "locales": ["pt-BR", "en"],
+  "viewports": [[1440, 900], [820, 1180], [390, 844]],
+  "cases": 26,
+  "violations": 0,
+  "horizontalOverflowCases": 0,
+  "incompleteCasesByRule": {
+    "aria-valid-attr-value": 8,
+    "color-contrast": 24,
+    "label-content-name-mismatch": 24,
+    "link-in-text-block": 16
+  },
+  "dialogReference": "O aria-controls da abertura aponta para o diálogo presente no DOM, mesmo fechado.",
+  "mobile": {
+    "firstFrameShowsCanvas": true,
+    "lessonsStartCollapsed": true,
+    "drawerEscapeRestoresFocusAndControls": true,
+    "sliderTargetHeightPx": 44,
+    "tappedTerrainAfterSelectingFood": true,
+    "oneFingerScroll": true,
+    "twoFingerOrbit": true,
+    "pinchChangesDistance": true,
+    "twoFingerFirstPersonLook": true
+  },
+  "testsPassed": 22,
+  "report": ".runtime/ux4-final/report.json",
+  "manualCheckPending": "Confirmar UX-19/20 em celular físico."
+}

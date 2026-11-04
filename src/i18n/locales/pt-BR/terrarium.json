@@ -59,7 +59,7 @@
   "terrarium.ant.select": "Formiga para acompanhar",
   "terrarium.ant.enter": "1ª pessoa ↗",
   "terrarium.ant.exit": "Sair da formiga",
-  "terrarium.camera.touch": "Um dedo rola a página. Dois dedos giram a câmera ou olham em primeira pessoa. Faça uma pinça para aproximar a visão geral.",
+  "terrarium.camera.touch": "Um dedo rola a página. Dois dedos giram a câmera ou olham em primeira pessoa. Use a pinça para ajustar o zoom da visão geral.",
   "terrarium.camera.keyboard": "Na câmera: setas giram ou olham, +/− aproximam/afastam a visão geral, Home centraliza e Esc sai da formiga. Use Tab para continuar aos controles.",
   "terrarium.biome.forest": "Terrário de floresta",
   "terrarium.camera.guide": "Arraste para orbitar · Role para aproximar",
