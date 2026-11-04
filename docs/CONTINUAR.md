@@ -32,7 +32,7 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação é T3 (desempenho).** As cinco fases de UX foram validadas tecnicamente. T1 concluída em
+**Próxima implementação é T4, retomada de Buhl.** As cinco fases de UX e T3 foram validadas tecnicamente. T1 concluída em
 78 estados do axe, com zero violações automáticas. Os resultados incompletos
 e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
 Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
@@ -113,6 +113,12 @@ mostram as métricas principais e oferecem os detalhes em Saiba mais.
 A troca de A para B na aula de ventilação mudou de uma para duas entradas.
 Build, 19 testes dirigidos e 38 estados no Chrome passaram.
 
-Próxima etapa: T3. Medir TBT/CLS no build atual com Lighthouse local e
-identificar as tarefas e os elementos dominantes. Preparar um cenário
-reproduzível para medir FPS. Depois vêm Buhl e o apoio técnico de T5.
+T3 mediu o carregamento em três rodadas alternadas e transferiu a primeira
+malha do solo para o worker. A mediana de TBT caiu nos dois perfis e o CLS
+caiu no desktop. O ensaio de movimento registrou 58,6/59,7 FPS no hardware
+local. Ver qa-desempenho.md. O teste no equipamento escolar permanece aberto.
+
+Próxima etapa: B1 da retomada de Buhl. A prévia de merge da branch original
+com a main encontrou conflito textual em package.json. Reconciliar em
+branch codex/ própria, revisar aritmética e isolamento do benchmark,
+rodar build/testes e só depois avançar à referência rt24b de B2.

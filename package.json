@@ -18,7 +18,8 @@
     "compare:policy": "node scripts/compare-policy.ts",
     "i18n:check": "node scripts/check-i18n.ts",
     "i18n:inventory": "node scripts/inventory-i18n.ts",
-    "qa:a11y": "node scripts/qa/accessibility.mjs"
+    "qa:a11y": "node scripts/qa/accessibility.mjs",
+    "qa:motion": "node scripts/qa/performance-motion.mjs"
   },
   "dependencies": {
     "@stdlib/math-base-special-atan": "0.2.4",

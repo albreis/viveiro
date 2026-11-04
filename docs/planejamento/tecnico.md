@@ -35,13 +35,14 @@ simular viewport não substitui essa experiência.
 
 ## T3 — P1.1: carregamento e desempenho em execução
 
-- [ ] Medir causas de TBT/CLS dos resultados Lighthouse 44 desktop/33 móvel;
+- [x] Medir causas de TBT/CLS dos resultados Lighthouse 44 desktop/33 móvel;
   priorizar mudança com evidência e repetir a medição afetada.
-- [ ] Preparar cenário com seed, versão, população e carga documentadas; medir
+- [x] Preparar cenário com seed, versão, população e carga documentadas; medir
   FPS com a simulação em movimento no perfil leve e no mesmo modelo.
-- [ ] Registrar hardware, navegador, duração e distribuição de quadros; comparar
+- [x] Registrar hardware, navegador, duração e distribuição de quadros; comparar
   antes/depois, sem transformar a medição local em aceite de Chromebook.
 
+A [medição local e seu protocolo](../qa-desempenho.md) estão publicados.
 O alvo P1.1B continua ≥30 FPS em equipamento de entrada identificado.
 Resultados de carregamento não são medidas de FPS.
 

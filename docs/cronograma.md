@@ -49,8 +49,8 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [Relatório e pontos de inspeção manual](validacoes/axe-t1/resumo.json).
 2. **T2 — UX entregue:** fases 1–4 e explicações das métricas, com regressão a cada fase.
    [UX-01–UX-21 e aceites](planejamento/ux-interface.md).
-3. **T3 — Desempenho:** medir e reduzir TBT/CLS, sem confundir carregamento
-   com FPS. Preparar o ensaio no equipamento de entrada.
+3. **T3 — Desempenho técnico entregue:** [TBT, CLS e ensaio de FPS](qa-desempenho.md).
+   O ensaio em equipamento escolar segue no aceite P1.1B.
 4. **T4 — Buhl/P3:** reconciliar a branch científica com a main atual,
    conferir testes e uma referência antes de retomar varreduras longas.
    [Ordem, resultados e impedimentos reais](planejamento/buhl.md).

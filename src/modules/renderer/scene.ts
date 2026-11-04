@@ -27,6 +27,7 @@ import { FoundersView } from "./FoundersView.ts";
 import { updateSoilVisibility } from "./soil-visibility.ts";
 import { ColonyView } from "./ColonyView.ts";
 import { SoilMesher } from "../../services/SoilMesher.ts";
+import type { SoilMeshData } from "../terrain/mesh-data.ts";
 import { SoilView } from "./SoilView.ts";
 import { buildGround, label } from "./environment.ts";
 import { buildInsects, buildQueen, buildMale, updateAnts } from "./insects.ts";
@@ -79,10 +80,12 @@ export class Terrarium extends SceneCore {
     element: HTMLElement,
     world: World,
     onPlace: (tool: string, x: number, z: number) => void,
+    initialSoil?: { data: SoilMeshData; mesher: SoilMesher },
   ) {
     super(element, world, onPlace);
-    this.buildGround(world.seed);
-    this.soilMesher = new SoilMesher(this.performance.soilDetail);
+    buildGround(this, world.seed, initialSoil?.data);
+    this.soilMesher =
+      initialSoil?.mesher ?? new SoilMesher(this.performance.soilDetail);
     this.soilView = new SoilView(this.scene, LIMIT);
     this.granularView = new GranularView(this.scene);
     this.structureView = new StructureView(this.scene);
@@ -129,9 +132,6 @@ export class Terrarium extends SceneCore {
     this.plantViews = new Map();
     this.foodViews = new Map();
     this.lastTick = -1;
-  }
-  buildGround(seed: string) {
-    return buildGround(this, seed);
   }
   label(text: string, x: number, y: number, z: number) {
     return label(this, text, x, y, z);
