@@ -1,6 +1,6 @@
-export function installPanelTabs(): void {
+export function installPanelTabs(root: ParentNode): void {
   const tabs = Array.from(
-    document.querySelectorAll<HTMLButtonElement>(".panel-tabs [role=tab]"),
+    root.querySelectorAll<HTMLButtonElement>(".panel-tabs [role=tab]"),
   );
   const activate = (selected: HTMLButtonElement) => {
     for (const tab of tabs) {

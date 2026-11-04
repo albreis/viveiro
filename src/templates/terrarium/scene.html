@@ -41,7 +41,7 @@
     id="viewport"
     role="group"
     tabindex="0"
-    aria-describedby="scene-keyboard-hint"
+    aria-describedby="scene-keyboard-hint scene-touch-hint"
     data-i18n-aria-label="terrarium.camera.label"
   >
     <div id="loading">
@@ -63,6 +63,7 @@
     ><button id="exit-ant" hidden data-i18n="terrarium.ant.exit"></button>
   </div>
   <p id="scene-keyboard-hint" data-i18n="terrarium.camera.keyboard"></p>
+  <p id="scene-touch-hint" data-i18n="terrarium.camera.touch"></p>
   <div class="scene-caption">
     <span class="scene-tag"
       ><i class="green-dot"></i>
@@ -99,5 +100,14 @@
       <button data-speed="1" class="active">1×</button
       ><button data-speed="3">3×</button><button data-speed="10">10×</button>
     </div>
+    <button
+      type="button"
+      id="mobile-controls-open"
+      aria-haspopup="dialog"
+      aria-controls="mobile-controls"
+      data-i18n-aria-label="interface.drawer.open"
+    >
+      <span aria-hidden="true">☷</span>
+    </button>
   </div>
 </div>

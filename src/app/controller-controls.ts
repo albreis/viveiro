@@ -4,6 +4,7 @@ import { installExperimentsControls } from "./controls-experiments.ts";
 import { installHelpControls } from "./controls-help.ts";
 import { installWorkbenchDocking } from "./workbench-docking.ts";
 import { installPanelTabs } from "./panel-tabs.ts";
+import { installMobileControls } from "./mobile-controls.ts";
 import { installExportControls } from "./controls-export.ts";
 function installActionReasons(): void {
   const buttons = document.querySelectorAll<HTMLButtonElement>(
@@ -31,7 +32,8 @@ function installActionReasons(): void {
   });
 }
 export function installControllerControls(this: ViewController) {
-  installPanelTabs();
+  installPanelTabs(document.querySelector(".right-panel")!);
+  installMobileControls();
   installWorkbenchDocking();
   installActionReasons();
   installEnvironmentControls.call(this);

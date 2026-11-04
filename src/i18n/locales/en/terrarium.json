@@ -59,6 +59,7 @@
   "terrarium.ant.select": "Ant to follow",
   "terrarium.ant.enter": "First person ↗",
   "terrarium.ant.exit": "Leave ant view",
+  "terrarium.camera.touch": "Swipe with one finger to scroll. Use two fingers to orbit or look around in ant view. Pinch to zoom the overview.",
   "terrarium.camera.keyboard": "In the camera: arrow keys orbit or look, +/− zoom the overview, Home centers it and Esc leaves ant view. Use Tab to reach the controls.",
   "terrarium.biome.forest": "Forest terrarium",
   "terrarium.camera.guide": "Drag to orbit · Scroll to zoom",
