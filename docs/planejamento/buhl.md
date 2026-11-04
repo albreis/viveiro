@@ -46,7 +46,8 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   suíte pertinente; executar uma referência `rt24b` após a integração para
   verificar se a trajetória mudou. Não reutilizar resultados como se fossem
   da nova fonte quando o código mudou. A verificação de 600 ticks coincidiu
-  com a série histórica nos três grupos. Ela cobre somente o início da rodada.
+  com a série histórica nos três grupos. Na rodada completa, os grupos de
+  50 e 100 coincidiram nas 145 amostras de cada um; 200 ainda não foi conferido.
   [Comando da referência e retomada](../cli.md#comparação-com-dados-publicados).
 - [ ] **B3 — Unidades e protocolo:** definir tick↔tempo físico, comprimento/volume,
   taxas biológicas e condições experimentais. O atual “1 tick = 1 segundo” do

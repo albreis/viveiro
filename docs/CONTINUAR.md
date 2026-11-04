@@ -125,8 +125,8 @@ um resultado verificado por grupo e retoma com as ferramentas de P2.3.
 
 Próximo passo: B2. A referência de 86.400 ticks por grupo começou em
 04/11/2026 na fonte 0751a5fd42d679e3146ab75fa8144f7b12c4ca89, Node 24.22.1.
-O grupo de 50 já foi salvo e bateu nas 145 amostras; 100 e 200 ainda
-precisam ser conferidos. O plano e os resultados estão em
+Os grupos de 50 e 100 coincidiram com as 145 amostras históricas de cada um;
+falta comparar o grupo de 200, que está em execução. O plano e os resultados estão em
 `.runtime/buhl-rt24b-reconciliado`; log em
 `.runtime/buhl-rt24b-reconciliado-execucao.log`. Consultar o log e o lock
 antes de qualquer retomada. Se a execução encerrou incompleta, retomar com
