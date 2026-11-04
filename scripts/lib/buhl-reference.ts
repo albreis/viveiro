@@ -56,6 +56,8 @@ function verifyPlan(folder: string) {
     config.realTime?.ticks !== end ||
     config.firstSeed !== 1 ||
     !config.brake ||
+    typeof config.brake !== "object" ||
+    Array.isArray(config.brake) ||
     Object.keys(config.brake).length !== 0
   )
     throw Error("O plano não corresponde à referência rt24b.");
@@ -74,6 +76,7 @@ export function compareBuhlReference(folder: string) {
   };
   const groupColumn = column("operarias_iniciais");
   const tickColumn = column("tick");
+  const seedColumn = column("semente");
   const columns = Object.entries(fields).map(
     ([field, name]) => [field as keyof typeof fields, column(name)] as const,
   );
@@ -102,6 +105,7 @@ export function compareBuhlReference(folder: string) {
       const row = expected[index];
       if (
         actual.tick !== index * step ||
+        row[seedColumn] !== run.seed ||
         Number(row[tickColumn]) !== actual.tick
       )
         throw Error("Ticks inesperados no grupo de " + workers);

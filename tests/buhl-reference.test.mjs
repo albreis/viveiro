@@ -80,6 +80,10 @@ test("rt24b distingue grupo pendente, reprodução exata e primeira divergência
   put("BUHL-1-50.json", { run, sha256: "corrompido" });
   assert.throws(() => compareBuhlReference(folder), /Registro inválido/);
 
+  plan.config.brake = [];
+  put("plano.json", plan);
+  assert.throws(() => compareBuhlReference(folder), /não corresponde/);
+  plan.config.brake = {};
   plan.config.realTime.secondsPerTick = 2;
   put("plano.json", plan);
   assert.throws(() => compareBuhlReference(folder), /não corresponde/);
