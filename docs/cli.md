@@ -123,8 +123,16 @@ Para repetir a referência histórica `rt24b` um grupo por vez, a partir da raiz
 npm run benchmark:buhl -- --out .runtime/buhl-rt24b-reconciliado --mode estigmergia --protocol grupo-fixo --ociosas original --horas 24 --segundos-por-tick 1 --groups 50,100,200 --seeds 1 --semente-inicial 1 --sample-every 600 --jobs 1 --limit 1
 ```
 
-Nas próximas chamadas, repetir o comando com `--resume`. O relógio de um
-segundo por tick pertence à reprodução do protocolo histórico. A escala
+Nas próximas chamadas, repetir o comando com `--resume`. Para comparar
+os grupos concluídos com as 145 amostras de cada grupo da série histórica:
+
+```powershell
+node scripts/compare-buhl-reference.ts .runtime/buhl-rt24b-reconciliado
+```
+
+O relatório lista grupos pendentes e o primeiro tick divergente. O comando
+retorna 2 se houver divergência e 1 se o plano ou um arquivo for inválido.
+O relógio de um segundo por tick pertence à reprodução do protocolo histórico. A escala
 física e a validação permanecem na [etapa Buhl](planejamento/buhl.md).
 
 `npm run benchmark:fluxo -- --out fluxo.csv` mede fluxo e velocidade num túnel
