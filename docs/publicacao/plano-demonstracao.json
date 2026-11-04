@@ -1,0 +1,20 @@
+{
+  "schema": "viveiro-experiment-v1",
+  "seed": "GALERIA-SOLO-01",
+  "days": 3,
+  "startMode": "established",
+  "biologicalProfile": {
+    "schema": 1,
+    "id": "generic-microclimate-demo",
+    "version": 3
+  },
+  "parameters": {
+    "humidity": 58,
+    "light": 72,
+    "randomness": 28,
+    "reposeAngle": 15,
+    "temperatureC": 24,
+    "windX": 0,
+    "windZ": 0
+  }
+}

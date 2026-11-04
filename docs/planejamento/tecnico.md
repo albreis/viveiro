@@ -72,8 +72,9 @@ substituir a validação de Buhl por seleção de resultados mais favoráveis.
 - [ ] Corrigir barreiras observadas no teste real com pessoa nova.
 - [ ] Conferir e integrar contribuições externas quando recebidas; validar novas
   receitas por schema/seed/manifesto, com autoria e licença.
-- [ ] Apoiar texto de preprint/JOSS, versões, dados e instruções de reprodução;
-  submissão e pareceres seguem nas filas humanas.
+- [x] Preparar [rascunho de publicação e exemplo reproduzido da 0.46.0](../publicacao/preparacao.md).
+- [ ] Revisar texto após resultados reais de calibração e piloto e preparar a
+  versão escolhida com os autores. Submissão e pareceres seguem nas filas humanas.
 
 A migração da UI/renderer já foi entregue. O legado de simulação pode migrar
 por necessidade concreta; não reabrir essa entrega como se os 13 JS restassem.
