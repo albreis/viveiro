@@ -199,7 +199,18 @@ export class AntCameraControls {
           : "controls.camera.aco",
         { count: ant?.learningUpdates ?? 0 },
       );
-    this.markView(scene?.followId ? null : (scene?.currentView ?? false));
+    const view = scene?.followId ? null : (scene?.currentView ?? false);
+    this.markView(view);
+    message(
+      element("camera-mode"),
+      view === null
+        ? "terrarium.camera.firstPerson"
+        : view === true
+          ? "terrarium.camera.top"
+          : view === "side"
+            ? "terrarium.camera.sideShort"
+            : "terrarium.camera.perspective",
+    );
     const follow = element<HTMLButtonElement>("follow-ant");
     follow.disabled = !ant;
     const focused = document.activeElement;

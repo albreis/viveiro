@@ -1,7 +1,5 @@
 {
-  "status.queens": "Queens: {count}",
   "status.noQueen": "No queen",
-  "status.workers": " · workers: {count}",
   "status.male": " · 1 male",
   "status.day": "Day {day}",
   "status.days": "{day} DAYS",
@@ -28,7 +26,7 @@
   "status.founding.failed": "Founding interrupted",
   "status.founding.summary": "{phase} · maternal reserve {reserve}/{initial} u. · {nanitics} nanitics · {trips} soil trips.",
   "status.founding.survey": " Survey: {samples} local samples · soil {temperature} °C / {water}% pore water.",
-  "status.founding.foraging": " Queen foraging: {trips} trip(s) · chamber food {pantry} u. · load {load} u. · consumed {consumed} u.",
+  "status.founding.foraging": " Queen foraging: trips {trips} · chamber food {pantry} u. · load {load} u. · consumed {consumed} u.",
   "status.founding.seal": " Plug: {phase} · {trips} reopening trips.",
   "status.founding.legacy": "Nest from an earlier version preserved.",
   "status.seal.collect": "collecting material",
@@ -40,7 +38,7 @@
   "status.seal.opened": "reopened",
   "status.family": "Colonies: {colonies} · queens: {queens} · alates for the next flight: {alates}. {reserved} u. reserved for alates.",
   "status.family.daughter": "Colony {id}: {description}",
-  "status.soil": "{fronts} digging front(s) · {digging} digging · {hauling} hauling. Deposited soil: {deposited} u³ · loose: {loose} u³.",
+  "status.soil": "Digging fronts: {fronts} · digging: {digging} · hauling: {hauling}. Deposited soil: {deposited} u³ · loose: {loose} u³.",
   "status.soil.seal": " Plug: {sealed} u³ · balance error: {error}.",
   "status.genome.legacy": "Earlier save · ancestry not recorded",
   "status.genome.haploid": "Haploid",
@@ -48,10 +46,14 @@
   "status.genome.founder": "{ploidy} · generation 0 · founder",
   "status.genome.mother": "unknown",
   "status.genome.father": "not recorded",
-  "status.genome.summary": "{ploidy} · generation {generation} · mother {mother} · father {father} · {mutations} mutation(s)",
+  "status.genome.summary": "{ploidy} · generation {generation} · mother {mother} · father {father} · mutations: {mutations}",
   "status.chart.empty": "Scenario {scenario}: no censuses retained in this interval.",
   "status.chart.summary": "Scenario {scenario}: {count} {census} between days {firstDay} and {lastDay}. Adults: {first} in the first, {last} in the last; minimum {min}, maximum {max}. Observed model values, without forecasting.",
   "status.chart.singular": "census",
   "status.chart.plural": "censuses",
-  "status.release": "PROTOTYPE v{version}"
+  "status.release": "PROTOTYPE v{version}",
+  "status.queens.one": "{count} queen",
+  "status.queens.other": "{count} queens",
+  "status.workers.one": " · {count} worker",
+  "status.workers.other": " · {count} workers"
 }

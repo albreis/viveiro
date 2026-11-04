@@ -1,0 +1,151 @@
+{
+  "phase": "UX-01 a UX-06",
+  "browser": "156.0.8078.80",
+  "axe": "4.14.0",
+  "createdAt": "2026-11-04T03:03:13.394Z",
+  "fullMatrixBeforeFinalFontFix": {
+    "cases": 90,
+    "violations": 0
+  },
+  "finalLayout": [
+    {
+      "locale": "pt-BR",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "terrario-em-execucao",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "pt-BR",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "terrario-pausado",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "terrario-em-execucao",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "state": "terrario-pausado",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "pt-BR",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "state": "terrario-em-execucao",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "pt-BR",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "state": "terrario-pausado",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "state": "terrario-em-execucao",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "state": "terrario-pausado",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "pt-BR",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "terrario-em-execucao",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "pt-BR",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "terrario-pausado",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "terrario-em-execucao",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    },
+    {
+      "locale": "en",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "terrario-pausado",
+      "minTextPx": 12,
+      "horizontalOverflow": 0,
+      "violations": 0
+    }
+  ],
+  "checks": [
+    "17 opções em grupos por família",
+    "fotoperíodo em perfil sazonal",
+    "câmera superior e primeira pessoa",
+    "zoom de fontes em dois idiomas",
+    "plural zero/um/vários"
+  ]
+}

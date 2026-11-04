@@ -30,15 +30,15 @@
     letter-spacing: -1.2px;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 12px;
     max-width: 240px;
     line-height: 1.7;
   }
   .eyebrow {
-    font-size: 7px;
+    font-size: 12px;
   }
   .outline-button {
-    font-size: 9px;
+    font-size: 12px;
     padding: 8px;
     white-space: nowrap;
     margin-top: 20px;
@@ -102,7 +102,7 @@
     width: 27px;
   }
   .toggle-label {
-    font-size: 8px;
+    font-size: 12px;
   }
   .scene-caption {
     padding: 0 12px 12px;
@@ -128,14 +128,14 @@
     min-height: 78px;
   }
   .observation-card p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .legend {
     margin: 13px 1px;
     gap: 10px;
   }
   .legend .text-button {
-    font-size: 8px;
+    font-size: 12px;
   }
   .comparison-strip {
     padding: 12px;
@@ -150,7 +150,7 @@
     padding: 28px 23px;
   }
   .section-label {
-    font-size: 8px;
+    font-size: 12px;
   }
   .environment .small {
     margin-bottom: 20px;
@@ -159,7 +159,7 @@
     font-size: 13px;
   }
   .rain-button {
-    font-size: 9px;
+    font-size: 12px;
   }
   .slider-block {
     margin-bottom: 23px;
@@ -168,13 +168,13 @@
     gap: 4px;
   }
   .tools button {
-    font-size: 8px;
+    font-size: 12px;
   }
   .intervention-panel {
     padding: 13px;
   }
   .intervention-panel .small {
-    font-size: 9px;
+    font-size: 12px;
   }
   .population-line > strong {
     font-size: 43px;
@@ -183,7 +183,7 @@
     gap: 9px;
   }
   .population-line > div > span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .ant-glyph {
     display: none;
@@ -201,11 +201,11 @@
     font-size: 27px;
   }
   .forecast-card > button {
-    font-size: 8px;
+    font-size: 12px;
   }
   footer {
     flex-wrap: wrap;
-    font-size: 7px;
+    font-size: 12px;
     margin-top: 20px;
   }
   footer > span:last-child {
@@ -227,6 +227,6 @@
     max-width: none;
   }
   .ant-camera button {
-    font-size: 8px;
+    font-size: 12px;
   }
 }

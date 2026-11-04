@@ -1,4 +1,5 @@
 import { installLocalePicker } from "../i18n/picker.ts";
+import { countMessageKey } from "../i18n/core.ts";
 import { locale, message } from "../i18n/runtime.ts";
 import { gallery } from "../modules/gallery/catalog.ts";
 import { galleryCard, entryText } from "./gallery-card.ts";
@@ -36,7 +37,11 @@ function render() {
       ).includes(query),
   );
   list.replaceChildren(...selected.map((item) => galleryCard(item, urls)));
-  message(count, "gallery.count", { count: selected.length });
+  message(
+    count,
+    countMessageKey("gallery.count", selected.length, locale.locale),
+    { count: selected.length },
+  );
   empty.hidden = selected.length > 0;
   message(document.querySelector("#gallery-version")!, "gallery.version", {
     version: metadata.version,

@@ -7,6 +7,7 @@ interface StatusContext {
   scenario: string;
   current: Presented;
 }
+import { countMessageKey } from "../i18n/core.ts";
 import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { renderSurvivalStatus } from "./survival-view.ts";
 import { renderFertilityStatus } from "./fertility-status.ts";
@@ -47,7 +48,8 @@ export function renderStatus(
   renderSurvivalStatus(current);
   const w = current,
     workers = w.workers.length,
-    queen = w.ants.some((a) => a.kind === "queen"),
+    queens = w.ants.filter((a) => a.kind === "queen").length,
+    queen = queens > 0,
     male = w.ants.some((a) => a.kind === "male");
   for (const key of ["humidity", "light", "randomness"] as const)
     if (document.activeElement !== $(key)) {
@@ -59,12 +61,14 @@ export function renderStatus(
   messageSource(
     $("population-detail"),
     (queen
-      ? t("status.queens", {
-          count: w.ants.filter((a) => a.kind === "queen").length,
+      ? t(countMessageKey("status.queens", queens, locale.locale), {
+          count: queens,
         })
       : t("status.noQueen")) +
       (workers
-        ? t("status.workers", { count: workers })
+        ? t(countMessageKey("status.workers", workers, locale.locale), {
+            count: workers,
+          })
         : male
           ? t("status.male")
           : ""),

@@ -17,7 +17,7 @@
   "data.offline.checkFailed": "Could not check the offline copy. You can try preparing it again.",
   "data.survival.days": "{days} days",
   "data.survival.none": "none recorded",
-  "data.survival.summary": "{adults} adult(s) tracked · {hurt} injured · {infected} with modeled infection load. Deaths: {causes}. Energy and injuries are different states.",
+  "data.survival.summary": "Adults tracked: {adults} · injured: {hurt} · with modeled infection load: {infected}. Deaths: {causes}. Energy and injuries are different states.",
   "data.death.age": "age",
   "data.death.disease": "disease",
   "data.death.starvation": "starvation",

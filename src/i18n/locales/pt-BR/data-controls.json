@@ -17,7 +17,7 @@
   "data.offline.checkFailed": "Não foi possível conferir a cópia offline. Você pode tentar preparar novamente.",
   "data.survival.days": "{days} dias",
   "data.survival.none": "nenhuma registrada",
-  "data.survival.summary": "{adults} adulta(s) acompanhadas · {hurt} ferida(s) · {infected} com carga infecciosa modelada. Mortes: {causes}. Energia e ferimentos são estados diferentes.",
+  "data.survival.summary": "Adultas acompanhadas: {adults} · feridas: {hurt} · com carga infecciosa modelada: {infected}. Mortes: {causes}. Energia e ferimentos são estados diferentes.",
   "data.death.age": "idade",
   "data.death.disease": "doença",
   "data.death.starvation": "fome",

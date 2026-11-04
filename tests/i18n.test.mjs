@@ -58,3 +58,20 @@ test("i18n: build validation rejects missing keys, extra keys and lost variables
     ),
   );
 });
+
+test("contagens visíveis concordam com zero, um e vários em pt-BR e inglês", async () => {
+  const { countMessageKey, translate } = await import("../src/i18n/core.ts");
+  for (const [locale, counts] of [
+    ["pt-BR", ["0 experimentos", "1 experimento", "4 experimentos"]],
+    ["en", ["0 experiments", "1 experiment", "4 experiments"]],
+  ]) {
+    [0, 1, 4].forEach((count, index) => {
+      const key = countMessageKey("gallery.count", count, locale);
+      const text = translate(key, { count }, locale);
+      assert.equal(
+        text.split(locale === "en" ? " in " : " nesta ")[0],
+        counts[index],
+      );
+    });
+  }
+});

@@ -27,7 +27,7 @@
   "execution.learning.progress": "Treino: {episode}/1200 episódios.",
   "execution.learning.failed": "O treino não pôde terminar.",
   "execution.learning.unavailable": "Treino indisponível neste navegador.",
-  "execution.learning.active": "Aprendizado em {colonies} colônia(s) · {decisions} escolhas locais · {updates} ajustes individuais. Recompensa acumulada: {reward}.",
+  "execution.learning.active": "Aprendizado ativo. Colônias: {colonies} · escolhas locais: {decisions} · ajustes individuais: {updates}. Recompensa acumulada: {reward}.",
   "execution.learning.aco": "ACO ativo. A política aprendida é opcional e pode ser comparada no mesmo ambiente.",
   "execution.learning.report": "Teste reservado do modelo inicial ({seed}): rede {trained}/{episodes} entregas · ACO {baseline}/{baselineEpisodes} · sem treino {untrained}/{untrainedEpisodes}. Passos médios: rede {trainedSteps} · ACO {baselineSteps}. São grafos de treino; desempenho no terrário pode ser diferente."
 }

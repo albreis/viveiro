@@ -8,14 +8,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 12px;
 }
 .slider-block label span {
   color: var(--muted);
 }
 .slider-block output {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -55,11 +55,11 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
 }
 .field-note {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.7;
   color: var(--muted);
   margin: 11px 0 0;
@@ -73,7 +73,7 @@
   align-items: center;
   gap: 7px;
   padding: 10px 8px;
-  font-size: 10px;
+  font-size: 12px;
   color: #587048;
 }
 .rain-button > span:first-child {
@@ -112,7 +112,7 @@
   flex-direction: column;
   align-items: center;
   gap: 7px;
-  font-size: 9px;
+  font-size: 12px;
 }
 .tools button:hover,
 .tools button.active {
@@ -134,7 +134,7 @@
   padding: 18px 6px;
 }
 .seed-box label {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.3px;
   color: var(--muted);
 }
@@ -150,7 +150,7 @@
   border: 0;
   background: none;
   font-family: monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.7px;
   color: #5a6a50;
   padding: 3px 0;
@@ -162,5 +162,5 @@
   color: var(--muted);
 }
 .seed-box .text-button {
-  font-size: 9px;
+  font-size: 12px;
 }

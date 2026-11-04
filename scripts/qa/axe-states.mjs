@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 
-export async function auditStates(page, open, audit) {
+export async function auditStates(page, open, audit, layoutOnly = false) {
   await open("index.html");
   await page.locator("#tour-open").waitFor();
   await page.locator("#loading").waitFor({ state: "hidden" });
@@ -15,6 +15,16 @@ export async function auditStates(page, open, audit) {
   await click("#play");
   await show("#resume-overlay");
   await audit("terrario-pausado");
+  if (layoutOnly) return;
+  await click("#view-top");
+  assert.equal(
+    await page.locator("#view-top").getAttribute("aria-pressed"),
+    "true",
+  );
+  await click("#follow-ant");
+  await show("#exit-ant");
+  await audit("primeira-pessoa");
+  await click("#exit-ant");
   await click("#help");
   await show("#help-dialog");
   await audit("ajuda-modal");
@@ -55,6 +65,16 @@ export async function auditStates(page, open, audit) {
   await click("#forecast-benchmark > summary");
   await page.locator("#forecast-benchmark-rows td").first().waitFor();
   await audit("benchmark-aberto");
+  await click("#compare");
+  await page.locator("#biology-profile").selectOption("generic-demo@5");
+  await page.locator("#seed").fill("QA-ESTACOES");
+  await click("#apply-seed");
+  await show("#photoperiod");
+  assert.equal(
+    await page.locator("#biology-profile optgroup option").count(),
+    17,
+  );
+  await audit("fotoperiodo");
 
   await open("experimentos.html");
   await audit("laboratorio");

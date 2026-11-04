@@ -13,17 +13,26 @@
     ></option>
   </select>
   <p id="training-status" data-i18n="terrarium.learning.help"></p>
-  <div class="climate-tabs">
+  <div class="learning-actions">
     <button
       id="train-policy"
-      class="text-button"
+      class="secondary-action"
+      aria-describedby="training-status"
       data-i18n="terrarium.learning.train"
     ></button
     ><button
       id="apply-policy"
-      class="text-button"
+      class="secondary-action"
+      data-disabled-reason="apply-policy-reason"
+      aria-describedby="training-status"
       disabled
       data-i18n="terrarium.learning.apply"
     ></button>
+    <p
+      class="secondary-action-reason"
+      id="apply-policy-reason"
+      hidden
+      data-i18n="terrarium.action.apply-policy.reason"
+    ></p>
   </div>
 </section>

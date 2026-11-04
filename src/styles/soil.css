@@ -7,3 +7,27 @@
 .soil-panel button {
   font-size: 12px;
 }
+
+.soil-panel .secondary-action {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+  padding: 8px 11px;
+  border: 1px solid #bdcbaa;
+  border-radius: 7px;
+  background: #e8edde;
+  color: #355238;
+  text-align: left;
+}
+.soil-panel .secondary-action:hover:not(:disabled) {
+  background: #dae4ca;
+}
+.soil-panel .secondary-action:disabled {
+  opacity: 1;
+  border-style: dashed;
+  background: #f2f3ed;
+  color: #566151;
+}
+.soil-panel .secondary-action-reason {
+  margin: 5px 0 0;
+}
