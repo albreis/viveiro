@@ -123,7 +123,17 @@ foram preservados. Os primeiros 600 ticks de rt24b coincidiram exatamente
 com o arquivo histórico para 50, 100 e 200 operárias. O CLI agora grava
 um resultado verificado por grupo e retoma com as ferramentas de P2.3.
 
-Próximo passo: B2. Repetir rt24b com 86.400 ticks e os três grupos do
-[comando em cli.md](cli.md#comparação-com-dados-publicados). Começar pelo grupo
-de 50 com --limit 1. Retomar na mesma pasta com --resume e comparar a série
-e os volumes finais com os anexos. Depois tratar unidades e protocolo em B3.
+Próximo passo: B2. A referência de 86.400 ticks por grupo começou em
+04/11/2026 na fonte 0751a5fd42d679e3146ab75fa8144f7b12c4ca89, Node 24.22.1.
+O grupo de 50 já foi salvo e bateu nas 145 amostras; 100 e 200 ainda
+precisam ser conferidos. O plano e os resultados estão em
+\`.runtime/buhl-rt24b-reconciliado\`; log em
+\`.runtime/buhl-rt24b-reconciliado-execucao.log\`. Consultar o log e o lock
+antes de qualquer retomada. Se a execução encerrou incompleta, retomar com
+\`--resume\` no [mesmo comando e pasta](cli.md#comparação-com-dados-publicados),
+na mesma fonte do modelo. Não iniciar uma segunda execução.
+
+Conferir os grupos com \`node scripts/compare-buhl-reference.ts .runtime/buhl-rt24b-reconciliado\`,
+gravar o recibo e atualizar B2 no [PR #98](https://github.com/albreis/viveiro/pull/98).
+Só então iniciar a implementação do protocolo físico [B3](planejamento/buhl-protocolo.md).
+O protocolo de preparação de B3 não calibra nem converte o rt24b.
