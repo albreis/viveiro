@@ -5,8 +5,9 @@ Incrementa evidência, transparência e valor científico; não bloqueia Buhl, U
 release atual. Não cria parceria presumida nem comprova superioridade sobre concorrentes.
 
 Fonte: [levantamento fornecido](fontes/dados-abertos-validacao.md). Conferidos os
-registros primários e suas listas de arquivos em 03/11/2026; arquivos internos,
-colunas, tratamentos e amostras ainda não foram auditados. Uma página com arquivos
+registros primários e suas listas de arquivos em 03/11/2026. A auditoria de
+Gautrais et al. foi adicionada abaixo; os demais arquivos internos e amostras
+ainda não foram auditados. Uma página com arquivos
 não significa que o benchmark já foi implementado. Não baixar grandes pacotes
 para simplesmente marcar o planejamento como feito.
 
@@ -35,6 +36,9 @@ para simplesmente marcar o planejamento como feito.
 - Aceite: observações/controles auditados, escala espacial/temporal e métricas
   comparáveis, fonte/licença registradas. Modelo Python dos autores é uma
   comparação de modelos separada; patógeno/transmissão fica fora desta etapa.
+- Referência 2D complementar para Buhl: [Gautrais et al. 2014](../validacoes/gautrais-2014.md).
+  Grafos verificados: 28 finais e 23 séries de *Messor sancta*. Ainda é
+  preciso demonstrar a separação de réplicas antes de usar como dados reservados.
 
 ### OP-03 — Fundação/crescimento: Casillas-Pérez et al. 2021/2022
 
