@@ -11,7 +11,7 @@ pareceres e acordos não pode ser simulado por outro agente de IA.
 | P1.7 | Escola, docentes e 2–3 turmas | Piloto real, SUS médio >70, pré/pós-teste e relatório; coletar somente dados/consentimentos apropriados ao protocolo |
 | P3.1 | Laboratório de mirmecologia | Acordo e dados compatíveis com permissão/licença; dados já abertos não exigem nova autorização por padrão |
 | P3 — revisão complementar (opcional) | Pesquisadores/revisores independentes | Reprodução externa dos dados/protocolo/limites; não é novo requisito de P3.3, cujo aceite continua MAE/cobertura em dados reservados |
-| P3.4 | Revisores/editoria JOSS | Pareceres e aceite reais; preparar/submeter preprint é uma ação autoral separada |
+| P3.4 | Revisores/editoria JOSS | Pareceres e aceite reais; a [preparação](../publicacao/preparacao.md) separa autoria, histórico público e evidências de uso em pesquisa |
 | P4.1B | Primeiro colaborador externo | Contribuição real revisada e integrada; tarefa aberta pelo mantenedor não conta |
 | P4.2B | Autores externos de experimentos | Dez receitas externas aceitas, totalizando 20 e metade fora da equipe |
 | P4.3 | Professores/participantes ou evento | Oficina/minicurso uma vez por semestre, realização e gravação publicada |

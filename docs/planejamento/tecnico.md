@@ -64,14 +64,17 @@ substituir a validação de Buhl por seleção de resultados mais favoráveis.
 
 ## T5 — Apoio técnico a escola, publicação e comunidade
 
-- [ ] Preparar fichas de parecer dos seis roteiros e aplicar as correções recebidas.
-- [ ] Preparar instrumentos SUS/pré/pós, registro de sessões e análise do piloto;
-  não preencher respostas ou inventar participantes.
-- [ ] Preparar guia de execução e relatório para uma pessoa nova testar o tour.
+- [x] Preparar [fichas de parecer dos seis roteiros](../ensino/revisao-docente.md).
+- [ ] Aplicar correções após receber pareceres de Biologia e Física.
+- [x] Preparar [instrumentos SUS/pré/pós, registro e análise local](../ensino/piloto.md).
+- [ ] Analisar resultados reais após o piloto, sem preencher respostas ausentes.
+- [x] Preparar [roteiro e registro da primeira experiência](../ensino/primeira-experiencia.md).
+- [ ] Corrigir barreiras observadas no teste real com pessoa nova.
 - [ ] Conferir e integrar contribuições externas quando recebidas; validar novas
   receitas por schema/seed/manifesto, com autoria e licença.
-- [ ] Apoiar texto de preprint/JOSS, versões, dados e instruções de reprodução;
-  submissão e pareceres seguem nas filas humanas.
+- [x] Preparar [rascunho de publicação e exemplo reproduzido da 0.46.0](../publicacao/preparacao.md).
+- [ ] Revisar texto após resultados reais de calibração e piloto e preparar a
+  versão escolhida com os autores. Submissão e pareceres seguem nas filas humanas.
 
 A migração da UI/renderer já foi entregue. O legado de simulação pode migrar
 por necessidade concreta; não reabrir essa entrega como se os 13 JS restassem.
