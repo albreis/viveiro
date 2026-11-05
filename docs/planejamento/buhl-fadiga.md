@@ -66,6 +66,27 @@ preservados. A seta indica controle → fadiga. A referência de taxa usa
 os volumes digitalizados de 48 e 72 h de 2001. A média final observada
 vem da tabela 1 de Buhl et al. (2005).
 
+### Curvas de 0 a 72 h
+
+Os círculos mostram os pontos lidos da Figura 2a de Buhl et al. (2001).
+A linha pontilhada e a faixa sombreada guiam a leitura entre esses pontos.
+A faixa representa a estimativa de ±3 cm³ da digitalização. O ponto inicial
+é zero. As linhas do Viveiro mostram a média de cinco seeds pareadas, com
+uma amostra a cada 20 minutos em cada rodada. Os gráficos compartilham
+a escala de tempo e usam escalas de volume ajustadas por grupo.
+[Fonte e critérios da leitura](buhl-criterios.md).
+
+![50 operárias. A curva com fadiga cresce mais devagar e fica abaixo da referência de Buhl na maior parte do ensaio.](../validacoes/figuras/buhl-fadiga-50.svg)
+
+![100 operárias. A curva com fadiga desacelera e termina perto do volume de referência.](../validacoes/figuras/buhl-fadiga-100.svg)
+
+![200 operárias. Com fadiga, o volume final cai de aproximadamente 107 para 64 cm³ e se aproxima da referência.](../validacoes/figuras/buhl-fadiga-200.svg)
+
+As figuras podem ser geradas novamente a partir dos CSVs arquivados com
+`python scripts/plot-buhl-fatigue.py` em um ambiente com Matplotlib 3.11.2.
+
+### Resultados numéricos
+
 | Operárias | Volume em 12 h (cm³) | Volume em 72 h (cm³) | Buhl em 72 h (cm³) | Taxa de 48 a 72 h (cm³/h) | Taxa de referência (cm³/h) | MAE da curva (cm³) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 50 | 6,12 → 4,82 | 33,82 → 19,92 | 25,35 | 0,453 → 0,226 | 0,188 | 3,00 → 4,39 |

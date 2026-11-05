@@ -71,7 +71,7 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   **E-mail enviado em 05/11/2026.** O mantenedor solicitou à Dra. Camille
   Buhl os dados por réplica e as condições de reuso. Aguardando resposta.
   [Método, escolha e plano reservado](buhl-ajuste.md).
-  [Hipótese de fadiga local, protocolo e resultados pareados](buhl-fadiga.md).
+  [Gráficos de Buhl e do Viveiro sem e com fadiga](buhl-fadiga.md#curvas-de-0-a-72-h).
 - [x] **B8 — Avaliar e publicar:** 15 rodadas de 72 h com seeds reservadas.
   O ajuste melhorou o MAE, mas o volume cresceu demais após 12 h.
   [Relatório, dados e reprodução](../validacao.md). P3.2 e P3.3 seguem abertos.
