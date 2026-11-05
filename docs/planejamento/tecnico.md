@@ -49,13 +49,14 @@ Resultados de carregamento não são medidas de FPS.
 ## T4 — P3: análise e calibração já iniciadas
 
 - [ ] Seguir a [retomada Buhl](buhl.md), preservando branch, anexos e experimentos.
-- [ ] Distinguir reconciliação de código, execução de benchmark, calibração,
+- [x] Distinguir reconciliação de código, execução de benchmark, calibração,
   validação reservada e replicação por equipe independente.
-- [ ] Definir unidades/tempo físico e critérios antes do ajuste; resultados
+- [x] Definir unidades/tempo físico e critérios antes do ajuste; resultados
   desfavoráveis precisam continuar publicados.
-- [ ] Usar P2.3/P2.4 para retomada e sensibilidade, adequando as entradas ao
+- [x] Usar P2.3/P2.4 para retomada e sensibilidade, adequando as entradas ao
   experimento; não presumir que o benchmark antigo já está integrado.
-- [ ] Gerar relatório com parâmetros, dados/fontes, incerteza, MAE e cobertura.
+- [x] Gerar [relatório](../validacao.md) com parâmetros, fontes, incerteza,
+  MAE, cobertura e desvios observados.
 
 A obtenção de dados de reuso permitido não exige automaticamente contato com
 laboratório. O acordo exigido em P3.1 e a revisão independente continuam externos.
