@@ -32,3 +32,18 @@ e [recrutamento](../validacoes/buhl-arena-edge-recruit-6h-plano.json) usam as
 cinco seeds de desenvolvimento em cada grupo. Compare as três variantes
 às seis horas. Uma nova comparação com os dados publicados usa o
 horizonte de 72 horas e os critérios de B4.
+
+## Resultado às seis horas
+
+As diferenças foram medidas nas mesmas cinco seeds por grupo. O
+[recibo](../validacoes/buhl-arena-mecanismos-6h.json) inclui desvio padrão,
+diferenças pareadas, massa e contatos.
+
+| Operárias | Controle (cm³) | Seguimento (cm³) | Seguimento e recrutamento (cm³) |
+| --- | ---: | ---: | ---: |
+| 50 | 0,000 | 5,463 | 9,979 |
+| 100 | 0,001 | 10,452 | 20,375 |
+| 200 | 0,003 | 18,831 | 39,099 |
+
+Esse ensaio mede o efeito das regras no simulador. A escolha para B7
+usa a amostra física de 12 h e a avaliação posterior até 72 h.

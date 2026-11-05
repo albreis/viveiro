@@ -1,0 +1,457 @@
+{
+  "schema": "viveiro-buhl-ablacao-6h-v1",
+  "seconds": 21600,
+  "calibrated": false,
+  "modes": {
+    "local": {
+      "sourceFingerprint": "4288c47e3b4c5210758e684ae0ef1a1a4565af944f5bb6a6d35a9a1b1ec40530",
+      "seriesSha256": "592fcecce3c2246856ddda84b4edfbb4223e7abc3ad7e6b98ceb5bef8e5f70e8",
+      "groups": [
+        {
+          "workers": 50,
+          "meanCm3": 0,
+          "sdCm3": 0.0,
+          "meanPairedDifferenceCm3": 0,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.046193333333333336,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.0507,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.039433333333333334,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.045066666666666665,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.041686666666666664,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            }
+          ]
+        },
+        {
+          "workers": 100,
+          "meanCm3": 0.0006400000000000002,
+          "sdCm3": 0.0014310835055998657,
+          "meanPairedDifferenceCm3": 0.0,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.0845,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.07323333333333333,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 0.0032000000000000006,
+              "removedSoilCm3": 0.09108,
+              "pairedDifferenceCm3": 0.0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.07999333333333333,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.08112,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            }
+          ]
+        },
+        {
+          "workers": 200,
+          "meanCm3": 0.00256,
+          "sdCm3": 0.0041722895393296955,
+          "meanPairedDifferenceCm3": 0.0,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 0.009600000000000001,
+              "removedSoilCm3": 0.17747333333333334,
+              "pairedDifferenceCm3": 0.0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.19153333333333333,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.18702666666666667,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 0.0032000000000000006,
+              "removedSoilCm3": 0.16544,
+              "pairedDifferenceCm3": 0.0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 0,
+              "removedSoilCm3": 0.16224,
+              "pairedDifferenceCm3": 0,
+              "contactWorkerTicks": null,
+              "recruitedDigStarts": null
+            }
+          ]
+        }
+      ]
+    },
+    "edge-follow": {
+      "sourceFingerprint": "564f3afb4e6bfbfa228d8c388f96bca76c9807f51e787fae6051e395e6f6b594",
+      "seriesSha256": "2ef6c06373cd7a4e234fd66cc09772e20e0b33bec60957e538ae5f1e51af54a6",
+      "groups": [
+        {
+          "workers": 50,
+          "meanCm3": 5.463040000000001,
+          "sdCm3": 0.211265444405847,
+          "meanPairedDifferenceCm3": 5.463040000000001,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 5.334400000000001,
+              "removedSoilCm3": 6.31798,
+              "pairedDifferenceCm3": 5.334400000000001,
+              "contactWorkerTicks": 7029169,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 5.452800000000001,
+              "removedSoilCm3": 6.499473333333333,
+              "pairedDifferenceCm3": 5.452800000000001,
+              "contactWorkerTicks": 6916753,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 5.193600000000001,
+              "removedSoilCm3": 6.178306666666667,
+              "pairedDifferenceCm3": 5.193600000000001,
+              "contactWorkerTicks": 7045902,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 5.721600000000001,
+              "removedSoilCm3": 6.6995466666666665,
+              "pairedDifferenceCm3": 5.721600000000001,
+              "contactWorkerTicks": 7092784,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 5.612800000000001,
+              "removedSoilCm3": 6.5761,
+              "pairedDifferenceCm3": 5.612800000000001,
+              "contactWorkerTicks": 7217925,
+              "recruitedDigStarts": 0
+            }
+          ]
+        },
+        {
+          "workers": 100,
+          "meanCm3": 10.452480000000001,
+          "sdCm3": 0.3697945808148087,
+          "meanPairedDifferenceCm3": 10.451840000000002,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 10.569600000000001,
+              "removedSoilCm3": 11.903573333333334,
+              "pairedDifferenceCm3": 10.569600000000001,
+              "contactWorkerTicks": 14179201,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 10.432000000000002,
+              "removedSoilCm3": 11.678093333333333,
+              "pairedDifferenceCm3": 10.432000000000002,
+              "contactWorkerTicks": 13939554,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 11.014400000000002,
+              "removedSoilCm3": 12.28866,
+              "pairedDifferenceCm3": 11.011200000000002,
+              "contactWorkerTicks": 14461020,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 10.134400000000001,
+              "removedSoilCm3": 11.326413333333333,
+              "pairedDifferenceCm3": 10.134400000000001,
+              "contactWorkerTicks": 13812237,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 10.112000000000002,
+              "removedSoilCm3": 11.31528,
+              "pairedDifferenceCm3": 10.112000000000002,
+              "contactWorkerTicks": 13891021,
+              "recruitedDigStarts": 0
+            }
+          ]
+        },
+        {
+          "workers": 200,
+          "meanCm3": 18.831360000000004,
+          "sdCm3": 0.3907893140811307,
+          "meanPairedDifferenceCm3": 18.828800000000005,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 19.046400000000002,
+              "removedSoilCm3": 20.667673333333333,
+              "pairedDifferenceCm3": 19.036800000000003,
+              "contactWorkerTicks": 25769884,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 18.272000000000002,
+              "removedSoilCm3": 19.76596,
+              "pairedDifferenceCm3": 18.272000000000002,
+              "contactWorkerTicks": 24792961,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 18.678400000000003,
+              "removedSoilCm3": 20.1994,
+              "pairedDifferenceCm3": 18.678400000000003,
+              "contactWorkerTicks": 26049249,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 18.851200000000002,
+              "removedSoilCm3": 20.50852666666667,
+              "pairedDifferenceCm3": 18.848000000000003,
+              "contactWorkerTicks": 26210775,
+              "recruitedDigStarts": 0
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 19.308800000000005,
+              "removedSoilCm3": 20.977393333333332,
+              "pairedDifferenceCm3": 19.308800000000005,
+              "contactWorkerTicks": 26474858,
+              "recruitedDigStarts": 0
+            }
+          ]
+        }
+      ]
+    },
+    "edge-recruit": {
+      "sourceFingerprint": "564f3afb4e6bfbfa228d8c388f96bca76c9807f51e787fae6051e395e6f6b594",
+      "seriesSha256": "c3fdca6cef9e909773d4c3cd282023110349ab48490fb53765ce74790be926b8",
+      "groups": [
+        {
+          "workers": 50,
+          "meanCm3": 9.978880000000002,
+          "sdCm3": 0.3979763209036437,
+          "meanPairedDifferenceCm3": 9.978880000000002,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 10.144000000000002,
+              "removedSoilCm3": 11.619933333333334,
+              "pairedDifferenceCm3": 10.144000000000002,
+              "contactWorkerTicks": 6258944,
+              "recruitedDigStarts": 8476
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 10.582400000000002,
+              "removedSoilCm3": 12.044813333333334,
+              "pairedDifferenceCm3": 10.582400000000002,
+              "contactWorkerTicks": 5929837,
+              "recruitedDigStarts": 8781
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 9.894400000000001,
+              "removedSoilCm3": 11.306113333333334,
+              "pairedDifferenceCm3": 9.894400000000001,
+              "contactWorkerTicks": 6307190,
+              "recruitedDigStarts": 8178
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 9.657600000000002,
+              "removedSoilCm3": 11.055793333333334,
+              "pairedDifferenceCm3": 9.657600000000002,
+              "contactWorkerTicks": 6181771,
+              "recruitedDigStarts": 7924
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 9.616000000000001,
+              "removedSoilCm3": 11.046866666666666,
+              "pairedDifferenceCm3": 9.616000000000001,
+              "contactWorkerTicks": 6092317,
+              "recruitedDigStarts": 7968
+            }
+          ]
+        },
+        {
+          "workers": 100,
+          "meanCm3": 20.375040000000002,
+          "sdCm3": 0.274150557176161,
+          "meanPairedDifferenceCm3": 20.374400000000005,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 20.432000000000002,
+              "removedSoilCm3": 22.805886666666666,
+              "pairedDifferenceCm3": 20.432000000000002,
+              "contactWorkerTicks": 13285468,
+              "recruitedDigStarts": 17221
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 20.336000000000002,
+              "removedSoilCm3": 22.50596,
+              "pairedDifferenceCm3": 20.336000000000002,
+              "contactWorkerTicks": 13257124,
+              "recruitedDigStarts": 17094
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 20.780800000000003,
+              "removedSoilCm3": 23.061173333333333,
+              "pairedDifferenceCm3": 20.777600000000003,
+              "contactWorkerTicks": 12625857,
+              "recruitedDigStarts": 17417
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 20.019200000000005,
+              "removedSoilCm3": 22.211693333333333,
+              "pairedDifferenceCm3": 20.019200000000005,
+              "contactWorkerTicks": 13256535,
+              "recruitedDigStarts": 16645
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 20.307200000000005,
+              "removedSoilCm3": 22.397166666666667,
+              "pairedDifferenceCm3": 20.307200000000005,
+              "contactWorkerTicks": 13117106,
+              "recruitedDigStarts": 16850
+            }
+          ]
+        },
+        {
+          "workers": 200,
+          "meanCm3": 39.09888000000001,
+          "sdCm3": 0.4334824933027861,
+          "meanPairedDifferenceCm3": 39.096320000000006,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "voidVolumeCm3": 39.78880000000001,
+              "removedSoilCm3": 43.298366666666666,
+              "pairedDifferenceCm3": 39.77920000000001,
+              "contactWorkerTicks": 27102768,
+              "recruitedDigStarts": 33282
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "voidVolumeCm3": 38.63040000000001,
+              "removedSoilCm3": 41.788446666666665,
+              "pairedDifferenceCm3": 38.63040000000001,
+              "contactWorkerTicks": 26494622,
+              "recruitedDigStarts": 31999
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "voidVolumeCm3": 39.171200000000006,
+              "removedSoilCm3": 42.12081333333333,
+              "pairedDifferenceCm3": 39.171200000000006,
+              "contactWorkerTicks": 25809717,
+              "recruitedDigStarts": 32489
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "voidVolumeCm3": 38.88960000000001,
+              "removedSoilCm3": 42.126513333333335,
+              "pairedDifferenceCm3": 38.88640000000001,
+              "contactWorkerTicks": 25627295,
+              "recruitedDigStarts": 32359
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "voidVolumeCm3": 39.01440000000001,
+              "removedSoilCm3": 42.34820666666667,
+              "pairedDifferenceCm3": 39.01440000000001,
+              "contactWorkerTicks": 26600708,
+              "recruitedDigStarts": 32377
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
