@@ -61,7 +61,7 @@
   "interface.offline.remove": "Remover cópia offline",
   "interface.offline.note": "Depois de preparar, abra este mesmo endereço. A instalação como aplicativo depende do menu do navegador. O Site privado continua online.",
   "interface.daily.title": "Dados observados · CSV diário",
-  "interface.daily.description": "Uma amostra ao final de cada dia do modelo (100 ticks), sem médias temporais nem previsões. A/B são exportados juntos. Vazios indicam ausência de leitura.",
+  "interface.daily.description": "Uma amostra ao final de cada dia do modelo (100 ticks). A/B são exportados juntos. Vazios indicam ausência de leitura. O CSV em português usa vírgula decimal e ponto e vírgula entre colunas.",
   "interface.daily.download": "Baixar CSV diário",
   "interface.daily.label": "Tabela de observações; use as setas para ver todas as colunas",
   "interface.daily.caption": "Até 10 amostras mais recentes por cenário. Totais de todas as colônias; dados completos no CSV.",

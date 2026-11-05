@@ -61,7 +61,7 @@
   "interface.offline.remove": "Remove offline copy",
   "interface.offline.note": "After preparation, open this same address. App installation depends on the browser menu. The private Site remains online.",
   "interface.daily.title": "Observed data · daily CSV",
-  "interface.daily.description": "One sample at the end of each model day (100 ticks), without time averages or forecasts. A/B are exported together. Empty fields indicate no reading.",
+  "interface.daily.description": "One sample at the end of each model day (100 ticks). A/B are exported together. Empty fields indicate no reading. The English CSV uses a decimal point and commas between columns.",
   "interface.daily.download": "Download daily CSV",
   "interface.daily.label": "Observation table; use arrow keys to see all columns",
   "interface.daily.caption": "Up to 10 most recent samples per scenario. Totals across all colonies; full data in the CSV.",

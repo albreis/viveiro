@@ -45,6 +45,11 @@ A fonte registrada é `2be875ba67da45df10c56875615c6a7aa82e1449`.
 A variante ficou aquém dos critérios exploratórios. A regra segue
 opcional na arena para investigação. B7 continua pendente.
 
+O [CSV para planilhas](csv-diario.md) segue o idioma selecionado.
+O usuário confirmou a importação em localidade EUA em 05/11. A
+[verificação na planilha em português](planejamento/voce-sozinho.md)
+permanece em P1.6B2-C.
+
 As cinco fases de UX e T3 foram validadas tecnicamente. T1 examinou 78 estados
 com zero violações do axe. As verificações manuais seguem no roteiro de
 acessibilidade. A retomada automática continua PAUSED.

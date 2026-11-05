@@ -1,3 +1,4 @@
+import { bindSpreadsheetCsv } from "./spreadsheet-csv.ts";
 import { initializeGalleryPlan } from "./gallery-plan.ts";
 import { message, clearMessage, messageSource, t } from "../i18n/runtime.ts";
 import { installLocalePicker } from "../i18n/picker.ts";
@@ -20,6 +21,11 @@ const planField = byId<HTMLTextAreaElement>("experiment-plan"),
   error = byId("experiment-error"),
   progress = byId<HTMLProgressElement>("experiment-progress"),
   results = byId("experiment-results");
+const setCsv = bindSpreadsheetCsv(
+  byId<HTMLAnchorElement>("experiment-csv"),
+  "dados",
+  byId("experiment-csv-canonical-option"),
+);
 let worker: Worker | null = null,
   urls: string[] = [];
 planField.value = JSON.stringify(exampleExperiment(), null, 2);
@@ -29,6 +35,7 @@ message(byId("experiment-version"), "experiments.version", {
   version: metadata.version,
 });
 function clearResult() {
+  setCsv(null);
   for (const url of urls) URL.revokeObjectURL(url);
   urls = [];
   results.hidden = true;
@@ -81,7 +88,12 @@ run.onclick = () => {
       else {
         finish();
         progress.value = progress.max;
-        link("experiment-csv", value.result.csv, "text/csv;charset=utf-8");
+        setCsv(value.result.csv);
+        link(
+          "experiment-csv-canonical",
+          value.result.csv,
+          "text/csv;charset=utf-8",
+        );
         link(
           "experiment-manifest",
           value.result.manifest,

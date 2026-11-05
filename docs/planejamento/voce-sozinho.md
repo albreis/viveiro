@@ -13,10 +13,10 @@ O agente pode orientar, preparar arquivos e ajudar a registrar resultados.
 
 ## Verificações manuais restantes
 
-- [ ] **P1.6B2-C — CSV em planilha:** abrir o arquivo real exportado em Excel,
-  LibreOffice ou Sheets; conferir cabeçalhos, acentos, separadores/decimais,
-  datas e ausências, sem valores reinterpretados como fórmulas.
-  O agente pode auxiliar se houver uma aplicação acessível instalada.
+- [ ] **P1.6B2-C — CSV em planilha:** reimportar o download em português
+  com localidade Brasil e conferir cabeçalhos, acentos, números e vazios.
+  O usuário confirmou os valores do CSV original ao importar com localidade
+  EUA em 05/11. [Formato por idioma e importação](../csv-diario.md).
 - [ ] **P1.6B2-R — Leitor de tela real:** percorrer tour, câmera, controles,
   mudanças de painel, pausa, dados e diálogo usando NVDA/VoiceOver equivalente.
   Registrar leitor/navegador/versão e problemas. Axe-core não encerra este item.
