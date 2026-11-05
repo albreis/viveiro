@@ -38,6 +38,7 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
         ? "viveiro-disco-local-v1"
         : "viveiro-disco-contato-v2",
     mechanism: plan.mechanism,
+    contactAccess: plan.contactAccess,
     calibrated: false,
     geometryMm: BUHL_DISK_MM,
     timeUnit: "s",

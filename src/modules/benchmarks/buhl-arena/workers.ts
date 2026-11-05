@@ -49,6 +49,7 @@ export class BuhlLabWorkers {
             this.#random,
             seconds,
             plan.mechanism === "edge-recruit",
+            plan.contactAccess,
           );
     this.#moveChance =
       (BUHL_INDIVIDUAL.speedMmPerSecond * seconds) / plan.pitchMm;

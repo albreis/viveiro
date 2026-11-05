@@ -18,6 +18,7 @@ export class BuhlEdgeContact {
   private readonly arena: BuhlArena;
   private readonly random: () => number;
   readonly #leaveChance: number;
+  readonly #access: number;
   readonly #decayPerTick: number;
   readonly #marks: Map<number, { tick: number; value: number }> | null;
   #ticksOnEdge = 0;
@@ -29,9 +30,11 @@ export class BuhlEdgeContact {
     random: () => number,
     seconds: number,
     recruit: boolean,
+    access: number,
   ) {
     this.arena = arena;
     this.random = random;
+    this.#access = access;
     this.#leaveChance = chancePerTick(edgeLeavePerSecond, seconds);
     this.#decayPerTick = (Math.LN2 * seconds) / halfLifeSeconds;
     this.#marks = recruit ? new Map() : null;
@@ -59,7 +62,7 @@ export class BuhlEdgeContact {
   }
 
   shouldDig(agent: EdgeContact, tick: number, flatChance: number): boolean {
-    if (agent.face < 0) return false;
+    if (agent.face < 0 || this.#access === 0) return false;
     let recess = false;
     if (this.arena.material(agent.cell) === "gallery") {
       let sides = 0;
@@ -69,8 +72,8 @@ export class BuhlEdgeContact {
     }
     if (
       recess
-        ? agent.freshContact && this.random() < recessPerContact
-        : flatChance > 0 && this.random() < flatChance
+        ? agent.freshContact && this.random() < recessPerContact * this.#access
+        : flatChance > 0 && this.random() < flatChance * this.#access
     ) {
       this.#digStarts++;
       return true;
@@ -82,7 +85,7 @@ export class BuhlEdgeContact {
       mark = Math.max(mark, this.#strength(neighbor, tick));
     }
     const k = recess ? 200 : 3500;
-    const chance = (mark * mark) / (mark * mark + k * k);
+    const chance = ((mark * mark) / (mark * mark + k * k)) * this.#access;
     if (chance === 0 || this.random() >= chance) return false;
     this.#recruited++;
     this.#digStarts++;
