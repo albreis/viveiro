@@ -33,10 +33,17 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próximo passo em T4.** Identificar séries empíricas de volume por réplica
-em protocolo compatível e verificar licença e procedência. B8 concluiu a
-avaliação exploratória de 72 h. A forma da saturação é a principal diferença
-a investigar quando os dados estiverem disponíveis.
+**Próximo passo em T4.** Concluir o teste exploratório de fadiga local na
+branch `codex/buhl-fadiga-local` ([PR #111](https://github.com/albreis/viveiro/pull/111)).
+A fonte pré-especificada é `2be875ba67da45df10c56875615c6a7aa82e1449`.
+O [protocolo](planejamento/buhl-fadiga.md) fixa controle, variante,
+seeds novas e critérios. Os lotes de 72 h ficam em
+`.runtime/buhl-fadiga-controle` e `.runtime/buhl-fadiga-local`.
+Se interrompidos, retomar com o mesmo plano, Node e fonte, acrescentando
+`--resume` apenas para a pasta já criada e após confirmar que o
+executor encerrou. Publicar os resultados pareados antes de decidir
+sobre outro mecanismo. Para validação empírica, identificar séries
+compatíveis de volume por réplica com procedência e licença verificáveis.
 
 As cinco fases de UX e T3 foram validadas tecnicamente. T1 examinou 78 estados
 com zero violações do axe. As verificações manuais seguem no roteiro de
