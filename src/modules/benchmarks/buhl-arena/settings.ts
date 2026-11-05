@@ -1,4 +1,8 @@
 import { modelMath } from "../../../libs/model-math.ts";
+import {
+  normalizeBuhlMicroclimate,
+  type BuhlMicroclimatePlan,
+} from "./microclimate.ts";
 import { BUHL_DISK_MM } from "./geometry.ts";
 import type { BuhlGroupSize } from "./placement.ts";
 
@@ -16,7 +20,8 @@ export type BuhlMechanism = "local" | "edge-follow" | "edge-recruit";
 export interface BuhlLabPlan {
   mechanism: BuhlMechanism;
   contactAccess: number;
-  digFatigue?: "work-recovery";
+  digFatigue?: "work-recovery" | "action-recovery";
+  microclimate?: BuhlMicroclimatePlan;
   observeActivity?: boolean;
   seed: string;
   workers: BuhlGroupSize;
@@ -35,6 +40,7 @@ const keys = new Set([
   "mechanism",
   "contactAccess",
   "digFatigue",
+  "microclimate",
   "observeActivity",
   "workers",
   "durationSeconds",
@@ -107,11 +113,17 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
     throw Error("A observação de atividade requer true ou false.");
   if (
     Object.hasOwn(raw, "digFatigue") &&
-    (digFatigue !== "work-recovery" || mechanism !== "edge-follow")
+    ((digFatigue !== "work-recovery" && digFatigue !== "action-recovery") ||
+      mechanism !== "edge-follow")
   )
     throw Error("A fadiga experimental requer seguimento da parede.");
   return {
-    ...(digFatigue === "work-recovery" ? { digFatigue } : {}),
+    ...(digFatigue === "work-recovery" || digFatigue === "action-recovery"
+      ? { digFatigue }
+      : {}),
+    ...(Object.hasOwn(raw, "microclimate")
+      ? { microclimate: normalizeBuhlMicroclimate(raw.microclimate) }
+      : {}),
     ...(observeActivity === true ? { observeActivity } : {}),
     seed,
     workers,

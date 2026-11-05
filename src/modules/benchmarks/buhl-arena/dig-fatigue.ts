@@ -27,8 +27,11 @@ export class BuhlDigFatigue {
   }
 
   recordWork(tick: number, effortTicks: number): void {
-    this.#workDebtSeconds =
-      this.#remainingDebt(tick) + effortTicks * this.secondsPerTick;
+    this.recordEffort(tick, effortTicks * this.secondsPerTick);
+  }
+
+  recordEffort(tick: number, effortSeconds: number): void {
+    this.#workDebtSeconds = this.#remainingDebt(tick) + effortSeconds;
     this.#lastWorkTick = tick;
   }
 

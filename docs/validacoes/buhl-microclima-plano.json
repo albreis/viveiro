@@ -1,0 +1,48 @@
+{
+  "settings": {
+    "mechanism": "edge-follow",
+    "contactAccess": 0.35,
+    "workers": 100,
+    "durationSeconds": 7200,
+    "sampleEverySeconds": 1200,
+    "tickMilliseconds": 50,
+    "pitchMm": 0.8,
+    "separationMm": 5,
+    "dryDensityMgPerMm3": 1.5,
+    "observeActivity": true,
+    "microclimate": {
+      "temperatureC": 25,
+      "initialSandWaterFraction": 0.08,
+      "airRelativeHumidity": 0.65,
+      "airflowIndex": 0,
+      "drying": false
+    }
+  },
+  "seeds": ["ARENA-MICROCLIMA-1", "ARENA-MICROCLIMA-2", "ARENA-MICROCLIMA-3"],
+  "conditions": {
+    "reference": {},
+    "cold": {
+      "temperatureC": 16
+    },
+    "warm": {
+      "temperatureC": 30
+    },
+    "dry": {
+      "initialSandWaterFraction": 0.04
+    },
+    "wet": {
+      "initialSandWaterFraction": 0.12
+    },
+    "dryingStill": {
+      "drying": true
+    },
+    "dryingFlow": {
+      "drying": true,
+      "airflowIndex": 1
+    },
+    "flowWithoutDrying": {
+      "airflowIndex": 1
+    }
+  },
+  "arms": ["control", "action-recovery"]
+}
