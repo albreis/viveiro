@@ -74,6 +74,7 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   [Gráficos de Buhl e do Viveiro sem e com fadiga](buhl-fadiga.md#curvas-de-0-a-72-h).
   [Relatório sobre agregação, água, temperatura e ventilação](buhl-variaveis.md).
   [Instrumentação de atividade e piloto de duas horas](buhl-atividade.md).
+  [Triagem de microclima e fadiga por ação](buhl-microclima.md).
 - [x] **B8 — Avaliar e publicar:** 15 rodadas de 72 h com seeds reservadas.
   O ajuste melhorou o MAE, mas o volume cresceu demais após 12 h.
   [Relatório, dados e reprodução](../validacao.md). P3.2 e P3.3 seguem abertos.

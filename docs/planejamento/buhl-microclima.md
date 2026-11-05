@@ -41,3 +41,31 @@ A triagem testa os mecanismos internos em 48 rodadas simuladas. A
 validação biológica de B7 requer séries independentes. A arena não
 atribui arrasto ao corpo nem assume temperatura, umidade ou ventilação
 medidas durante o experimento de Buhl.
+
+## Resultados das duas horas
+
+Médias de três réplicas simuladas por condição e braço. Massa seca retirada
+em gramas e soma das horas de trabalho individual por rodada.
+
+| Condição            | Massa sem fadiga | Massa com fadiga | Horas sem fadiga | Horas com fadiga |
+| ------------------- | ---------------: | ---------------: | ---------------: | ---------------: |
+| Referência, 25 °C   |            2,847 |            2,504 |           19,778 |           17,382 |
+| 16 °C               |            2,213 |            2,032 |           15,389 |           14,107 |
+| 30 °C               |            3,305 |            2,953 |           22,988 |           20,510 |
+| Água fixa em 4%     |            2,636 |            2,461 |           22,947 |           21,431 |
+| Água fixa em 12%    |            2,636 |            2,461 |           22,947 |           21,431 |
+| Secagem sem fluxo   |            2,845 |            2,552 |           20,087 |           18,013 |
+| Secagem com fluxo   |            2,834 |            2,579 |           20,619 |           18,748 |
+| Fluxo com água fixa |            2,847 |            2,504 |           19,778 |           17,382 |
+
+A massa e a distância subiram com a temperatura nos dois braços. Fixar
+a água em 4% ou 12% aumentou o tempo de pelotização em 25% e produziu
+a mesma massa nos dois níveis por construção. A secagem com fluxo levou
+a água final de 7,53% para 6,67% em relação à secagem sem fluxo. A massa
+mudou pouco e em sentidos diferentes nos dois braços. Com água fixa,
+o fluxo preservou todas as trajetórias e telemetrias exatamente. O
+balanço de massa fechou em todas as amostras.
+
+[Série por seed e intervalo](../validacoes/buhl-microclima-2h.csv).
+Fonte do modelo `efa393d`, fingerprint `996a363b3d4e586a7f250de07ba86c0b75dc883874ebeda2207d57bc42b788eb`, Node `v24.22.1`.
+SHA-256 do CSV com LF `23ad0240d4bedeb3c095b248d94f8b11bc66abf88c494ee626077c13ae186216`.

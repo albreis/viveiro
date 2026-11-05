@@ -40,10 +40,11 @@ das curvas já usadas no ajuste.
 A [revisão da escavação](planejamento/buhl-variaveis.md) identificou
 contagens de ativas e agregadas como evidência complementar de Buhl.
 A [instrumentação](planejamento/buhl-atividade.md) mede esforço e massa
-por operária e já tem um piloto pareado de duas horas. Próximo trabalho
-técnico, criar um plano de microclima com fatores independentes para
-temperatura da locomoção, teor de água na areia e fluxo com via de secagem.
-Fixar os níveis e critérios e executar a triagem pareada com e sem fadiga.
+por operária e já tem um piloto pareado de duas horas. A
+[triagem de microclima](planejamento/buhl-microclima.md) concluiu 48 rodadas
+pareadas, com balanço de massa e controle de fluxo com água fixa.
+Próximo trabalho técnico, ligar o esforço de locomoção, carga, bloqueio
+e escavação ao terrário 3D em perfil exploratório versionado.
 Para estimar fadiga, procurar duração e frequência de escavação e repouso
 por operária em condições comparáveis. Fixar novos parâmetros e critérios
 antes de comparar com observações reservadas.

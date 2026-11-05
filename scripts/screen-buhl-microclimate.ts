@@ -68,7 +68,7 @@ if (command) {
               dugMicrograms: sample.dugMicrograms,
               distanceMm: sample.distanceMm,
               microclimate: sample.microclimate,
-              digSeconds: sample.activity!.digSeconds,
+              diggingSeconds: sample.activity!.diggingSeconds,
               ...(sample.meanDigReadiness === undefined
                 ? {}
                 : { meanDigReadiness: sample.meanDigReadiness }),
