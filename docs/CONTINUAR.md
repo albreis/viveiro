@@ -1,8 +1,9 @@
 # Continuação — cronograma por responsabilidade
 
-03/11/2026. Trabalhar em `G:\Projetos\viveiro`, ler AGENTS.md e cronograma.md,
-conferir Git/PRs e preservar saves, branches e tags. Última entrega: página privada de leitura do cronograma.
-Não implementa as fases UX nem executa calibração longa.
+05/11/2026. Trabalhar em G:/Projetos/viveiro, ler AGENTS.md e cronograma.md,
+conferir Git/PRs e preservar saves, branches e tags. Última entrega
+técnica em T4: [avaliação de Buhl em 72 h](validacao.md). A pendência
+científica de B7 requer séries empíricas independentes por réplica.
 
 ## Estado preservado
 
