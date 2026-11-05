@@ -79,3 +79,12 @@ substituir a validação de Buhl por seleção de resultados mais favoráveis.
 
 A migração da UI/renderer já foi entregue. O legado de simulação pode migrar
 por necessidade concreta; não reabrir essa entrega como se os 13 JS restassem.
+
+## T6 — Fundação claustral × semiclaustral comparável
+
+- [ ] Medir a contribuição de reserva inicial, casulo e estação na diferença de
+  população entre as duas fundações, com rodadas pareadas.
+- [ ] Reserva inicial menor para a semiclaustral, em perfil versionado; casulo e
+  estação como escolhas independentes; comparação de aula com as mesmas regras.
+
+[Plano, aceites e referências](fundacao-comparavel.md).

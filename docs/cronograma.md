@@ -6,7 +6,7 @@ trabalho pendente, inclusive quando a implementação já existe.
 
 ## Situação atual
 
-**Última release: [0.46.0](https://github.com/albreis/viveiro/releases/tag/v0.46.0).**
+**Última release: [0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0).**
 P2.1–P2.7 implementados e publicados. UI/renderer em TypeScript estrito;
 474 testes e build aprovados na entrega. [Recibo](validacoes/release-0.46.0.json).
 O modelo continua exploratório, sem calibração biológica concluída.
@@ -60,6 +60,11 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [Pendências e critérios](planejamento/buhl.md).
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.
+6. **T6 — Fundação claustral × semiclaustral comparável:** a semiclaustral começa
+   com a mesma reserva da claustral e não tem casulo nem estação, o que exagera
+   sua vantagem. Medir cada fator, dar reserva inicial menor, tornar casulo e
+   estação escolhas independentes e corrigir a comparação de aula.
+   [Plano e aceites](planejamento/fundacao-comparavel.md).
 
 Os lotes físicos de Buhl usam as ferramentas de retomada e análise de
 sensibilidade. T5 tem instrumentos preparados. As próximas verificações de

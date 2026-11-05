@@ -1,5 +1,22 @@
 # Versões
 
+## 0.47.0 — Interface por dispositivo e arena de Buhl — 05/11/2026
+
+- Experiência reorganizada para desktop, tablet e celular: painéis com rolagem da página, fixação limitada ao terrário, abas da Colônia no fluxo da coluna, controles e gestos no celular.
+- Primeira fase de legibilidade, métricas destacadas nos cinco cartões do terrário e prévia da descrição dos experimentos.
+- Auditorias de acessibilidade automatizadas (axe) e relatórios Lighthouse locais; preparo do solo em Worker e medição do carregamento.
+- CSV exportado no idioma da interface, com aviso de download localizado.
+- Arena física de Buhl: geometria, deslocamento livre, contato e recrutamento separados, fadiga local, diagnósticos de 72 horas e sensibilidade por Morris; dados abertos de topologia de Messor sancta auditados.
+- Instrumentos do piloto escolar e cronograma privado com responsabilidades.
+- Citação e Zenodo com autoria pessoal: Everaldo Reis da Silva, ORCID 0009-0008-0719-8722.
+- Integra os PRs #81–#116 e #118. Modelo exploratório; comparações com Buhl são diagnósticos, não calibração biológica.
+
+## 0.46.0 — Galeria e TypeScript estrito — 03/11/2026
+
+- Galeria bilíngue com dez receitas reproduzíveis, busca, filtros e abertura em laboratório isolado.
+- Guias de contribuição e formulários; interface e renderer legados migrados para TypeScript estrito.
+- Auditoria local com correção do contraste A/B.
+
 ## 0.45.0 — P2 consolidado — 03/11/2026
 
 - Sensibilidade Morris com 12 entradas, índices e 104 execuções reais arquivadas.

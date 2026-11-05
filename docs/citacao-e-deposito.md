@@ -9,8 +9,25 @@ Registro aponta à tag v0.46.0, fonte7f4d206; ZIP real baixado, MD5 conferido e
 A integração GitHub–Zenodo está ativa. Não criar depósito manual/duplicado ou
 versão intermediária para cumprir este aceite. As instruções e pendências
 abaixo são **históricas**, anteriores a essa integração e publicação; não são
-a próxima tarefa. A autoria coletiva “Viveiro contributors” foi preservada.
-[Plano ativo](cronograma.md).
+a próxima tarefa. [Plano ativo](cronograma.md).
+
+## Autoria a partir da próxima release
+
+Em 05/11/2026 o usuário definiu a autoria pessoal: Everaldo Reis da Silva,
+ORCID [0009-0008-0719-8722](https://orcid.org/0009-0008-0719-8722).
+O CITATION.cff usa `given-names` "Everaldo" e `family-names` "Reis da Silva";
+o .zenodo.json usa "Reis da Silva, Everaldo", formato que o Zenodo separa em
+prenome e sobrenome. Os nomes coincidem com o perfil ORCID.
+
+Motivo: até a 0.46.0 o ORCID acompanhava o nome coletivo "Viveiro contributors",
+que o Zenodo e o DataCite registraram como pessoa com esse sobrenome. Com o nome
+divergente do ORCID, as versões não chegaram ao perfil ORCID e não foram ligadas
+ao autor no OpenAIRE. O validador de citação agora recusa ORCID em autoria
+coletiva e exige prenome e sobrenome para pessoas.
+
+As versões já publicadas (0.36.0, 0.40.1, 0.45.0 e 0.46.0) mantêm os metadados
+antigos até serem editadas manualmente no Zenodo pela conta do autor; o DOI não
+muda. A licença continua com direito autoral de "Viveiro contributors".
 
 ---
 

@@ -2,6 +2,18 @@ import { modelDocumentSources } from "../model-documentation/catalog.ts";
 import { teachingGuides } from "../teaching/catalog.ts";
 import { releaseTag, validateSourceSha } from "./release.ts";
 
+/** CFF person: Zenodo, DataCite and ORCID match the author by these names. */
+export interface CitationPerson {
+  "given-names": string;
+  "family-names": string;
+  orcid?: string;
+}
+/** CFF entity, such as a group. An ORCID identifies a person, never an entity. */
+export interface CitationEntity {
+  name: string;
+}
+export type CitationAuthor = CitationPerson | CitationEntity;
+
 export interface CitationMetadata {
   "cff-version": string;
   title: string;
@@ -9,7 +21,34 @@ export interface CitationMetadata {
   commit?: string;
   "date-released": string;
   url: string;
-  authors: { name: string; orcid?: string }[];
+  authors: CitationAuthor[];
+}
+
+const ORCID_URL = /^https:\/\/orcid\.org\/\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/;
+const isPerson = (author: CitationAuthor): author is CitationPerson =>
+  "family-names" in author;
+
+function checkAuthor(value: unknown): void {
+  const a = value as Record<string, unknown> | null;
+  if (!a || typeof a !== "object") throw Error("Autoria verificável ausente.");
+  if ("family-names" in a || "given-names" in a) {
+    if (
+      typeof a["given-names"] !== "string" ||
+      !a["given-names"].trim() ||
+      typeof a["family-names"] !== "string" ||
+      !a["family-names"].trim()
+    )
+      throw Error("Pessoa autora precisa de prenome e sobrenome.");
+    if (a.orcid !== undefined && !ORCID_URL.test(String(a.orcid)))
+      throw Error(
+        "ORCID deve ser a URL https://orcid.org/0000-0000-0000-0000.",
+      );
+    return;
+  }
+  if (typeof a.name !== "string" || !a.name.trim())
+    throw Error("Autoria verificável ausente.");
+  if ("orcid" in a)
+    throw Error("ORCID identifica uma pessoa; não use em autoria coletiva.");
 }
 
 // Repository-publication tests contain deliberate credential markers and local fixtures.
@@ -69,16 +108,21 @@ export function citationMetadata(value: unknown): CitationMetadata {
     throw Error("Data da release inválida.");
   if (!c.url || !c.url.endsWith("/releases/" + releaseTag(c.version) + "/"))
     throw Error("URL não corresponde à versão citada.");
-  if (!c.authors?.length || c.authors.some((author) => !author.name?.trim()))
-    throw Error("Autoria verificável ausente.");
+  if (!c.authors?.length) throw Error("Autoria verificável ausente.");
+  c.authors.forEach(checkAuthor);
   return c as CitationMetadata;
 }
 
-// CFF carries the ORCID as a URL; Zenodo expects the bare identifier.
-function zenodoCreators(citation: CitationMetadata) {
-  return citation.authors.map(({ name, orcid }) =>
-    orcid ? { name, orcid: orcid.replace("https://orcid.org/", "") } : { name },
-  );
+// Zenodo splits "Family, Given" into a person; CFF carries the ORCID as a URL
+// and Zenodo expects the bare identifier.
+export function zenodoCreators(citation: CitationMetadata) {
+  return citation.authors.map((author) => {
+    if (!isPerson(author)) return { name: author.name };
+    const name = author["family-names"] + ", " + author["given-names"];
+    return author.orcid
+      ? { name, orcid: author.orcid.replace("https://orcid.org/", "") }
+      : { name };
+  });
 }
 
 export function checkDepositMetadata(
