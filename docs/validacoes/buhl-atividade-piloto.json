@@ -1,0 +1,1526 @@
+{
+  "schema": "viveiro-buhl-atividade-piloto-v1",
+  "calibrated": false,
+  "nodeVersion": "v24.22.1",
+  "browser": "156.0.8078.80",
+  "sourceFingerprint": "15bfc34b07bba1c8c82ab14e4e0e24c4c939431d0d50a03a1ddec6d3b2f1bbcb",
+  "plan": {
+    "seed": "ARENA-ATIVIDADE-1",
+    "workers": 100,
+    "separationMm": 5,
+    "dryDensityMgPerMm3": 1.5,
+    "durationSeconds": 7200,
+    "sampleEverySeconds": 1200,
+    "mechanism": "edge-follow",
+    "contactAccess": 0.35,
+    "observeActivity": true
+  },
+  "variants": [
+    {
+      "id": "controle",
+      "run": {
+        "seed": "ARENA-ATIVIDADE-1",
+        "workers": 100,
+        "samples": [
+          {
+            "timeSeconds": 0,
+            "initialSandCells": 49053,
+            "remainingSandCells": 49053,
+            "openedCells": 0,
+            "voidVolumeCm3": 0,
+            "removedSoilCm3": 0,
+            "trafficOpenedCells": 0,
+            "fullPellets": 0,
+            "fragments": 0,
+            "pickups": 0,
+            "drops": 0,
+            "dugMicrograms": 0,
+            "carriedMicrograms": 0,
+            "depositedMicrograms": 0,
+            "workers": 100,
+            "digging": 0,
+            "carrying": 0,
+            "distanceMm": 0,
+            "activity": {
+              "workersAdjacentToSand": 0,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 0,
+              "diggingSeconds": 0,
+              "carryingSeconds": 0,
+              "successfulDigs": 0,
+              "failedDigs": 0,
+              "removedMicrograms": 0,
+              "microgramsPerDiggingHour": null
+            },
+            "contactWorkerTicks": 0,
+            "digStarts": 0,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 1200,
+            "initialSandCells": 49053,
+            "remainingSandCells": 49042,
+            "openedCells": 11,
+            "voidVolumeCm3": 0.03520000000000001,
+            "removedSoilCm3": 0.27856,
+            "trafficOpenedCells": 0,
+            "fullPellets": 238,
+            "fragments": 11,
+            "pickups": 3057,
+            "drops": 3287,
+            "dugMicrograms": 417840,
+            "carriedMicrograms": 31570,
+            "depositedMicrograms": 386270,
+            "workers": 100,
+            "digging": 6,
+            "carrying": 19,
+            "distanceMm": 1645602.4000000001,
+            "activity": {
+              "workersAdjacentToSand": 37,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 0,
+              "diggingSeconds": 10474.5,
+              "carryingSeconds": 17798.65,
+              "successfulDigs": 249,
+              "failedDigs": 0,
+              "removedMicrograms": 417840,
+              "microgramsPerDiggingHour": 143608.19132178146
+            },
+            "contactWorkerTicks": 823643,
+            "digStarts": 255,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 2400,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48979,
+            "openedCells": 74,
+            "voidVolumeCm3": 0.23680000000000004,
+            "removedSoilCm3": 0.5973333333333334,
+            "trafficOpenedCells": 0,
+            "fullPellets": 468,
+            "fragments": 74,
+            "pickups": 7205,
+            "drops": 7728,
+            "dugMicrograms": 896000,
+            "carriedMicrograms": 30490,
+            "depositedMicrograms": 865510,
+            "workers": 100,
+            "digging": 20,
+            "carrying": 19,
+            "distanceMm": 3262648,
+            "activity": {
+              "workersAdjacentToSand": 51,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 7,
+              "diggingSeconds": 22806.300000000003,
+              "carryingSeconds": 41810.200000000004,
+              "successfulDigs": 542,
+              "failedDigs": 2,
+              "removedMicrograms": 896000,
+              "microgramsPerDiggingHour": 141434.60359637465
+            },
+            "contactWorkerTicks": 1639949,
+            "digStarts": 564,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 3600,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48892,
+            "openedCells": 161,
+            "voidVolumeCm3": 0.5152000000000001,
+            "removedSoilCm3": 0.9838933333333333,
+            "trafficOpenedCells": 0,
+            "fullPellets": 738,
+            "fragments": 161,
+            "pickups": 11345,
+            "drops": 12217,
+            "dugMicrograms": 1475840,
+            "carriedMicrograms": 43470,
+            "depositedMicrograms": 1432370,
+            "workers": 100,
+            "digging": 16,
+            "carrying": 27,
+            "distanceMm": 4847456.8,
+            "activity": {
+              "workersAdjacentToSand": 54,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 30,
+              "diggingSeconds": 37253.950000000004,
+              "carryingSeconds": 65814.75,
+              "successfulDigs": 899,
+              "failedDigs": 4,
+              "removedMicrograms": 1475840,
+              "microgramsPerDiggingHour": 142616.39369784947
+            },
+            "contactWorkerTicks": 2385642,
+            "digStarts": 919,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 4800,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48789,
+            "openedCells": 264,
+            "voidVolumeCm3": 0.8448000000000001,
+            "removedSoilCm3": 1.3596866666666667,
+            "trafficOpenedCells": 0,
+            "fullPellets": 985,
+            "fragments": 264,
+            "pickups": 15618,
+            "drops": 16843,
+            "dugMicrograms": 2039530,
+            "carriedMicrograms": 37860,
+            "depositedMicrograms": 2001670,
+            "workers": 100,
+            "digging": 11,
+            "carrying": 24,
+            "distanceMm": 6441209.600000001,
+            "activity": {
+              "workersAdjacentToSand": 39,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 56,
+              "diggingSeconds": 51144.15,
+              "carryingSeconds": 91152.35,
+              "successfulDigs": 1249,
+              "failedDigs": 4,
+              "removedMicrograms": 2039530,
+              "microgramsPerDiggingHour": 143561.05243708225
+            },
+            "contactWorkerTicks": 3095561,
+            "digStarts": 1264,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 6000,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48673,
+            "openedCells": 380,
+            "voidVolumeCm3": 1.2160000000000002,
+            "removedSoilCm3": 1.8052466666666667,
+            "trafficOpenedCells": 0,
+            "fullPellets": 1283,
+            "fragments": 380,
+            "pickups": 20870,
+            "drops": 22511,
+            "dugMicrograms": 2707870,
+            "carriedMicrograms": 36100,
+            "depositedMicrograms": 2671770,
+            "workers": 100,
+            "digging": 14,
+            "carrying": 22,
+            "distanceMm": 7990582.4,
+            "activity": {
+              "workersAdjacentToSand": 48,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 939,
+              "diggingSeconds": 67835.3,
+              "carryingSeconds": 120917.40000000001,
+              "successfulDigs": 1663,
+              "failedDigs": 5,
+              "removedMicrograms": 2707870,
+              "microgramsPerDiggingHour": 143705.88764256958
+            },
+            "contactWorkerTicks": 3843775,
+            "digStarts": 1682,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 7200,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48561,
+            "openedCells": 492,
+            "voidVolumeCm3": 1.5744000000000002,
+            "removedSoilCm3": 2.2019533333333334,
+            "trafficOpenedCells": 0,
+            "fullPellets": 1541,
+            "fragments": 492,
+            "pickups": 26433,
+            "drops": 28436,
+            "dugMicrograms": 3302930,
+            "carriedMicrograms": 47730,
+            "depositedMicrograms": 3255200,
+            "workers": 100,
+            "digging": 16,
+            "carrying": 30,
+            "distanceMm": 9566376.8,
+            "activity": {
+              "workersAdjacentToSand": 53,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 1021,
+              "diggingSeconds": 82806.70000000001,
+              "carryingSeconds": 153105.35,
+              "successfulDigs": 2033,
+              "failedDigs": 6,
+              "removedMicrograms": 3302930,
+              "microgramsPerDiggingHour": 143594.03284999882
+            },
+            "contactWorkerTicks": 4621843,
+            "digStarts": 2055,
+            "recruitedDigStarts": 0
+          }
+        ],
+        "activityByWorker": [
+          {
+            "workerId": 1,
+            "removedMicrograms": 38330,
+            "diggingSeconds": 953.75
+          },
+          {
+            "workerId": 2,
+            "removedMicrograms": 26230,
+            "diggingSeconds": 652.7
+          },
+          {
+            "workerId": 3,
+            "removedMicrograms": 22040,
+            "diggingSeconds": 548.5
+          },
+          {
+            "workerId": 4,
+            "removedMicrograms": 32450,
+            "diggingSeconds": 807.5
+          },
+          {
+            "workerId": 5,
+            "removedMicrograms": 30490,
+            "diggingSeconds": 758.75
+          },
+          {
+            "workerId": 6,
+            "removedMicrograms": 57870,
+            "diggingSeconds": 1440.1000000000001
+          },
+          {
+            "workerId": 7,
+            "removedMicrograms": 43470,
+            "diggingSeconds": 1081.75
+          },
+          {
+            "workerId": 8,
+            "removedMicrograms": 23120,
+            "diggingSeconds": 575.3000000000001
+          },
+          {
+            "workerId": 9,
+            "removedMicrograms": 32180,
+            "diggingSeconds": 840.0500000000001
+          },
+          {
+            "workerId": 10,
+            "removedMicrograms": 31910,
+            "diggingSeconds": 794.1
+          },
+          {
+            "workerId": 11,
+            "removedMicrograms": 44010,
+            "diggingSeconds": 1095.15
+          },
+          {
+            "workerId": 12,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 13,
+            "removedMicrograms": 39480,
+            "diggingSeconds": 1015.6
+          },
+          {
+            "workerId": 14,
+            "removedMicrograms": 24810,
+            "diggingSeconds": 637.4000000000001
+          },
+          {
+            "workerId": 15,
+            "removedMicrograms": 32450,
+            "diggingSeconds": 807.5
+          },
+          {
+            "workerId": 16,
+            "removedMicrograms": 32990,
+            "diggingSeconds": 820.9000000000001
+          },
+          {
+            "workerId": 17,
+            "removedMicrograms": 38670,
+            "diggingSeconds": 962.3000000000001
+          },
+          {
+            "workerId": 18,
+            "removedMicrograms": 24540,
+            "diggingSeconds": 610.65
+          },
+          {
+            "workerId": 19,
+            "removedMicrograms": 18320,
+            "diggingSeconds": 455.85
+          },
+          {
+            "workerId": 20,
+            "removedMicrograms": 29610,
+            "diggingSeconds": 769.2
+          },
+          {
+            "workerId": 21,
+            "removedMicrograms": 23120,
+            "diggingSeconds": 575.3000000000001
+          },
+          {
+            "workerId": 22,
+            "removedMicrograms": 42050,
+            "diggingSeconds": 1046.4
+          },
+          {
+            "workerId": 23,
+            "removedMicrograms": 27110,
+            "diggingSeconds": 674.6500000000001
+          },
+          {
+            "workerId": 24,
+            "removedMicrograms": 42050,
+            "diggingSeconds": 1046.4
+          },
+          {
+            "workerId": 25,
+            "removedMicrograms": 47120,
+            "diggingSeconds": 1172.55
+          },
+          {
+            "workerId": 26,
+            "removedMicrograms": 34140,
+            "diggingSeconds": 849.5500000000001
+          },
+          {
+            "workerId": 27,
+            "removedMicrograms": 18930,
+            "diggingSeconds": 548
+          },
+          {
+            "workerId": 28,
+            "removedMicrograms": 19470,
+            "diggingSeconds": 484.5
+          },
+          {
+            "workerId": 29,
+            "removedMicrograms": 32450,
+            "diggingSeconds": 807.5
+          },
+          {
+            "workerId": 30,
+            "removedMicrograms": 24270,
+            "diggingSeconds": 603.95
+          },
+          {
+            "workerId": 31,
+            "removedMicrograms": 57260,
+            "diggingSeconds": 1496.5
+          },
+          {
+            "workerId": 32,
+            "removedMicrograms": 40360,
+            "diggingSeconds": 1004.35
+          },
+          {
+            "workerId": 33,
+            "removedMicrograms": 45430,
+            "diggingSeconds": 1130.5
+          },
+          {
+            "workerId": 34,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 35,
+            "removedMicrograms": 36100,
+            "diggingSeconds": 898.3000000000001
+          },
+          {
+            "workerId": 36,
+            "removedMicrograms": 31570,
+            "diggingSeconds": 785.5500000000001
+          },
+          {
+            "workerId": 37,
+            "removedMicrograms": 42050,
+            "diggingSeconds": 1081.75
+          },
+          {
+            "workerId": 38,
+            "removedMicrograms": 26500,
+            "diggingSeconds": 662.8000000000001
+          },
+          {
+            "workerId": 39,
+            "removedMicrograms": 31570,
+            "diggingSeconds": 785.5500000000001
+          },
+          {
+            "workerId": 40,
+            "removedMicrograms": 28190,
+            "diggingSeconds": 701.45
+          },
+          {
+            "workerId": 41,
+            "removedMicrograms": 26230,
+            "diggingSeconds": 652.7
+          },
+          {
+            "workerId": 42,
+            "removedMicrograms": 37250,
+            "diggingSeconds": 926.95
+          },
+          {
+            "workerId": 43,
+            "removedMicrograms": 50500,
+            "diggingSeconds": 1256.65
+          },
+          {
+            "workerId": 44,
+            "removedMicrograms": 52190,
+            "diggingSeconds": 1298.7
+          },
+          {
+            "workerId": 45,
+            "removedMicrograms": 31300,
+            "diggingSeconds": 778.85
+          },
+          {
+            "workerId": 46,
+            "removedMicrograms": 24270,
+            "diggingSeconds": 604.35
+          },
+          {
+            "workerId": 47,
+            "removedMicrograms": 22850,
+            "diggingSeconds": 568.6
+          },
+          {
+            "workerId": 48,
+            "removedMicrograms": 26230,
+            "diggingSeconds": 652.7
+          },
+          {
+            "workerId": 49,
+            "removedMicrograms": 33800,
+            "diggingSeconds": 841
+          },
+          {
+            "workerId": 50,
+            "removedMicrograms": 30220,
+            "diggingSeconds": 752.0500000000001
+          },
+          {
+            "workerId": 51,
+            "removedMicrograms": 23120,
+            "diggingSeconds": 575.3000000000001
+          },
+          {
+            "workerId": 52,
+            "removedMicrograms": 45430,
+            "diggingSeconds": 1130.5
+          },
+          {
+            "workerId": 53,
+            "removedMicrograms": 30490,
+            "diggingSeconds": 758.75
+          },
+          {
+            "workerId": 54,
+            "removedMicrograms": 35830,
+            "diggingSeconds": 891.6
+          },
+          {
+            "workerId": 55,
+            "removedMicrograms": 51650,
+            "diggingSeconds": 1285.3000000000002
+          },
+          {
+            "workerId": 56,
+            "removedMicrograms": 29070,
+            "diggingSeconds": 723.4000000000001
+          },
+          {
+            "workerId": 57,
+            "removedMicrograms": 37520,
+            "diggingSeconds": 933.6500000000001
+          },
+          {
+            "workerId": 58,
+            "removedMicrograms": 36980,
+            "diggingSeconds": 920.25
+          },
+          {
+            "workerId": 59,
+            "removedMicrograms": 43470,
+            "diggingSeconds": 1081.75
+          },
+          {
+            "workerId": 60,
+            "removedMicrograms": 28190,
+            "diggingSeconds": 719.85
+          },
+          {
+            "workerId": 61,
+            "removedMicrograms": 16090,
+            "diggingSeconds": 400.40000000000003
+          },
+          {
+            "workerId": 62,
+            "removedMicrograms": 34410,
+            "diggingSeconds": 856.25
+          },
+          {
+            "workerId": 63,
+            "removedMicrograms": 27380,
+            "diggingSeconds": 681.35
+          },
+          {
+            "workerId": 64,
+            "removedMicrograms": 25420,
+            "diggingSeconds": 667.95
+          },
+          {
+            "workerId": 65,
+            "removedMicrograms": 29340,
+            "diggingSeconds": 730.1
+          },
+          {
+            "workerId": 66,
+            "removedMicrograms": 33870,
+            "diggingSeconds": 870.8000000000001
+          },
+          {
+            "workerId": 67,
+            "removedMicrograms": 38330,
+            "diggingSeconds": 953.75
+          },
+          {
+            "workerId": 68,
+            "removedMicrograms": 36100,
+            "diggingSeconds": 898.3000000000001
+          },
+          {
+            "workerId": 69,
+            "removedMicrograms": 46850,
+            "diggingSeconds": 1165.8500000000001
+          },
+          {
+            "workerId": 70,
+            "removedMicrograms": 31910,
+            "diggingSeconds": 794.1
+          },
+          {
+            "workerId": 71,
+            "removedMicrograms": 21160,
+            "diggingSeconds": 533.2
+          },
+          {
+            "workerId": 72,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 73,
+            "removedMicrograms": 26500,
+            "diggingSeconds": 659.4000000000001
+          },
+          {
+            "workerId": 74,
+            "removedMicrograms": 18930,
+            "diggingSeconds": 500.8
+          },
+          {
+            "workerId": 75,
+            "removedMicrograms": 43200,
+            "diggingSeconds": 1075.05
+          },
+          {
+            "workerId": 76,
+            "removedMicrograms": 32990,
+            "diggingSeconds": 820.9000000000001
+          },
+          {
+            "workerId": 77,
+            "removedMicrograms": 36980,
+            "diggingSeconds": 920.25
+          },
+          {
+            "workerId": 78,
+            "removedMicrograms": 42590,
+            "diggingSeconds": 1059.8
+          },
+          {
+            "workerId": 79,
+            "removedMicrograms": 24270,
+            "diggingSeconds": 646
+          },
+          {
+            "workerId": 80,
+            "removedMicrograms": 28730,
+            "diggingSeconds": 714.85
+          },
+          {
+            "workerId": 81,
+            "removedMicrograms": 40630,
+            "diggingSeconds": 1011.0500000000001
+          },
+          {
+            "workerId": 82,
+            "removedMicrograms": 17240,
+            "diggingSeconds": 429.05
+          },
+          {
+            "workerId": 83,
+            "removedMicrograms": 19470,
+            "diggingSeconds": 484.5
+          },
+          {
+            "workerId": 84,
+            "removedMicrograms": 24270,
+            "diggingSeconds": 603.95
+          },
+          {
+            "workerId": 85,
+            "removedMicrograms": 44890,
+            "diggingSeconds": 1117.1000000000001
+          },
+          {
+            "workerId": 86,
+            "removedMicrograms": 29340,
+            "diggingSeconds": 730.1
+          },
+          {
+            "workerId": 87,
+            "removedMicrograms": 26840,
+            "diggingSeconds": 667.95
+          },
+          {
+            "workerId": 88,
+            "removedMicrograms": 32180,
+            "diggingSeconds": 800.8000000000001
+          },
+          {
+            "workerId": 89,
+            "removedMicrograms": 40900,
+            "diggingSeconds": 1017.75
+          },
+          {
+            "workerId": 90,
+            "removedMicrograms": 17240,
+            "diggingSeconds": 429.05
+          },
+          {
+            "workerId": 91,
+            "removedMicrograms": 31030,
+            "diggingSeconds": 772.1500000000001
+          },
+          {
+            "workerId": 92,
+            "removedMicrograms": 36980,
+            "diggingSeconds": 922.4000000000001
+          },
+          {
+            "workerId": 93,
+            "removedMicrograms": 32720,
+            "diggingSeconds": 856.25
+          },
+          {
+            "workerId": 94,
+            "removedMicrograms": 22310,
+            "diggingSeconds": 555.2
+          },
+          {
+            "workerId": 95,
+            "removedMicrograms": 34410,
+            "diggingSeconds": 876.75
+          },
+          {
+            "workerId": 96,
+            "removedMicrograms": 47730,
+            "diggingSeconds": 1225.8500000000001
+          },
+          {
+            "workerId": 97,
+            "removedMicrograms": 44550,
+            "diggingSeconds": 1108.55
+          },
+          {
+            "workerId": 98,
+            "removedMicrograms": 36980,
+            "diggingSeconds": 960.25
+          },
+          {
+            "workerId": 99,
+            "removedMicrograms": 23120,
+            "diggingSeconds": 575.3000000000001
+          },
+          {
+            "workerId": 100,
+            "removedMicrograms": 29070,
+            "diggingSeconds": 723.4000000000001
+          }
+        ]
+      }
+    },
+    {
+      "id": "fadiga",
+      "digFatigue": "work-recovery",
+      "run": {
+        "seed": "ARENA-ATIVIDADE-1",
+        "workers": 100,
+        "samples": [
+          {
+            "timeSeconds": 0,
+            "initialSandCells": 49053,
+            "remainingSandCells": 49053,
+            "openedCells": 0,
+            "voidVolumeCm3": 0,
+            "removedSoilCm3": 0,
+            "trafficOpenedCells": 0,
+            "fullPellets": 0,
+            "fragments": 0,
+            "pickups": 0,
+            "drops": 0,
+            "dugMicrograms": 0,
+            "carriedMicrograms": 0,
+            "depositedMicrograms": 0,
+            "workers": 100,
+            "digging": 0,
+            "carrying": 0,
+            "meanDigReadiness": 1,
+            "distanceMm": 0,
+            "activity": {
+              "workersAdjacentToSand": 0,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 0,
+              "diggingSeconds": 0,
+              "carryingSeconds": 0,
+              "successfulDigs": 0,
+              "failedDigs": 0,
+              "removedMicrograms": 0,
+              "microgramsPerDiggingHour": null
+            },
+            "contactWorkerTicks": 0,
+            "digStarts": 0,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 1200,
+            "initialSandCells": 49053,
+            "remainingSandCells": 49038,
+            "openedCells": 15,
+            "voidVolumeCm3": 0.04800000000000001,
+            "removedSoilCm3": 0.27896666666666664,
+            "trafficOpenedCells": 0,
+            "fullPellets": 235,
+            "fragments": 15,
+            "pickups": 2604,
+            "drops": 2842,
+            "dugMicrograms": 418450,
+            "carriedMicrograms": 20010,
+            "depositedMicrograms": 398440,
+            "workers": 100,
+            "digging": 4,
+            "carrying": 12,
+            "meanDigReadiness": 0.9722191604415188,
+            "distanceMm": 1645066.4000000001,
+            "activity": {
+              "workersAdjacentToSand": 39,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 0,
+              "diggingSeconds": 10519.35,
+              "carryingSeconds": 15211.050000000001,
+              "successfulDigs": 250,
+              "failedDigs": 1,
+              "removedMicrograms": 418450,
+              "microgramsPerDiggingHour": 143204.66568751872
+            },
+            "contactWorkerTicks": 762986,
+            "digStarts": 255,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 2400,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48992,
+            "openedCells": 61,
+            "voidVolumeCm3": 0.19520000000000004,
+            "removedSoilCm3": 0.5861533333333333,
+            "trafficOpenedCells": 0,
+            "fullPellets": 469,
+            "fragments": 61,
+            "pickups": 6972,
+            "drops": 7485,
+            "dugMicrograms": 879230,
+            "carriedMicrograms": 27380,
+            "depositedMicrograms": 851850,
+            "workers": 100,
+            "digging": 7,
+            "carrying": 17,
+            "meanDigReadiness": 0.9436664632391863,
+            "distanceMm": 3273824,
+            "activity": {
+              "workersAdjacentToSand": 40,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 1,
+              "diggingSeconds": 22079.25,
+              "carryingSeconds": 39993.8,
+              "successfulDigs": 530,
+              "failedDigs": 1,
+              "removedMicrograms": 879230,
+              "microgramsPerDiggingHour": 143357.58687455417
+            },
+            "contactWorkerTicks": 1625503,
+            "digStarts": 538,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 3600,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48901,
+            "openedCells": 152,
+            "voidVolumeCm3": 0.4864000000000001,
+            "removedSoilCm3": 0.9618533333333333,
+            "trafficOpenedCells": 0,
+            "fullPellets": 726,
+            "fragments": 152,
+            "pickups": 11362,
+            "drops": 12221,
+            "dugMicrograms": 1442780,
+            "carriedMicrograms": 31570,
+            "depositedMicrograms": 1411210,
+            "workers": 100,
+            "digging": 12,
+            "carrying": 19,
+            "meanDigReadiness": 0.911078804472328,
+            "distanceMm": 4861570.4,
+            "activity": {
+              "workersAdjacentToSand": 42,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 802,
+              "diggingSeconds": 36255.8,
+              "carryingSeconds": 65622.40000000001,
+              "successfulDigs": 878,
+              "failedDigs": 4,
+              "removedMicrograms": 1442780,
+              "microgramsPerDiggingHour": 143260.05770111264
+            },
+            "contactWorkerTicks": 2434340,
+            "digStarts": 894,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 4800,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48804,
+            "openedCells": 249,
+            "voidVolumeCm3": 0.7968000000000002,
+            "removedSoilCm3": 1.35788,
+            "trafficOpenedCells": 0,
+            "fullPellets": 996,
+            "fragments": 249,
+            "pickups": 16087,
+            "drops": 17309,
+            "dugMicrograms": 2036820,
+            "carriedMicrograms": 38060,
+            "depositedMicrograms": 1998760,
+            "workers": 100,
+            "digging": 11,
+            "carrying": 23,
+            "meanDigReadiness": 0.8795423997979117,
+            "distanceMm": 6441528.800000001,
+            "activity": {
+              "workersAdjacentToSand": 42,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 822,
+              "diggingSeconds": 51013.200000000004,
+              "carryingSeconds": 92614.75,
+              "successfulDigs": 1245,
+              "failedDigs": 4,
+              "removedMicrograms": 2036820,
+              "microgramsPerDiggingHour": 143738.3265507751
+            },
+            "contactWorkerTicks": 3169369,
+            "digStarts": 1260,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 6000,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48689,
+            "openedCells": 364,
+            "voidVolumeCm3": 1.1648000000000003,
+            "removedSoilCm3": 1.7416533333333333,
+            "trafficOpenedCells": 0,
+            "fullPellets": 1240,
+            "fragments": 364,
+            "pickups": 21216,
+            "drops": 22796,
+            "dugMicrograms": 2612480,
+            "carriedMicrograms": 39210,
+            "depositedMicrograms": 2573270,
+            "workers": 100,
+            "digging": 16,
+            "carrying": 24,
+            "meanDigReadiness": 0.8512770064622001,
+            "distanceMm": 8023755.2,
+            "activity": {
+              "workersAdjacentToSand": 46,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 1542,
+              "diggingSeconds": 65520.200000000004,
+              "carryingSeconds": 121513.1,
+              "successfulDigs": 1604,
+              "failedDigs": 5,
+              "removedMicrograms": 2612480,
+              "microgramsPerDiggingHour": 143542.41897918502
+            },
+            "contactWorkerTicks": 3877727,
+            "digStarts": 1625,
+            "recruitedDigStarts": 0
+          },
+          {
+            "timeSeconds": 7200,
+            "initialSandCells": 49053,
+            "remainingSandCells": 48571,
+            "openedCells": 482,
+            "voidVolumeCm3": 1.5424000000000002,
+            "removedSoilCm3": 2.1519266666666668,
+            "trafficOpenedCells": 0,
+            "fullPellets": 1505,
+            "fragments": 482,
+            "pickups": 26545,
+            "drops": 28502,
+            "dugMicrograms": 3227890,
+            "carriedMicrograms": 48270,
+            "depositedMicrograms": 3179620,
+            "workers": 100,
+            "digging": 16,
+            "carrying": 30,
+            "meanDigReadiness": 0.8229266233243219,
+            "distanceMm": 9593412.8,
+            "activity": {
+              "workersAdjacentToSand": 49,
+              "adjacentIdleWorkers": 0,
+              "blockedMoves": 1741,
+              "diggingSeconds": 80897.8,
+              "carryingSeconds": 151734.85,
+              "successfulDigs": 1987,
+              "failedDigs": 6,
+              "removedMicrograms": 3227890,
+              "microgramsPerDiggingHour": 143643.01625013287
+            },
+            "contactWorkerTicks": 4633432,
+            "digStarts": 2009,
+            "recruitedDigStarts": 0
+          }
+        ],
+        "activityByWorker": [
+          {
+            "workerId": 1,
+            "removedMicrograms": 30760,
+            "diggingSeconds": 806.75
+          },
+          {
+            "workerId": 2,
+            "removedMicrograms": 17780,
+            "diggingSeconds": 442.45000000000005
+          },
+          {
+            "workerId": 3,
+            "removedMicrograms": 31300,
+            "diggingSeconds": 778.85
+          },
+          {
+            "workerId": 4,
+            "removedMicrograms": 25420,
+            "diggingSeconds": 632.6
+          },
+          {
+            "workerId": 5,
+            "removedMicrograms": 28800,
+            "diggingSeconds": 716.7
+          },
+          {
+            "workerId": 6,
+            "removedMicrograms": 36100,
+            "diggingSeconds": 898.3000000000001
+          },
+          {
+            "workerId": 7,
+            "removedMicrograms": 39820,
+            "diggingSeconds": 1015.1
+          },
+          {
+            "workerId": 8,
+            "removedMicrograms": 41240,
+            "diggingSeconds": 1026.3
+          },
+          {
+            "workerId": 9,
+            "removedMicrograms": 40090,
+            "diggingSeconds": 997.6500000000001
+          },
+          {
+            "workerId": 10,
+            "removedMicrograms": 40090,
+            "diggingSeconds": 997.6500000000001
+          },
+          {
+            "workerId": 11,
+            "removedMicrograms": 27380,
+            "diggingSeconds": 698.1
+          },
+          {
+            "workerId": 12,
+            "removedMicrograms": 34410,
+            "diggingSeconds": 856.25
+          },
+          {
+            "workerId": 13,
+            "removedMicrograms": 37520,
+            "diggingSeconds": 933.6500000000001
+          },
+          {
+            "workerId": 14,
+            "removedMicrograms": 26230,
+            "diggingSeconds": 652.7
+          },
+          {
+            "workerId": 15,
+            "removedMicrograms": 40900,
+            "diggingSeconds": 1017.75
+          },
+          {
+            "workerId": 16,
+            "removedMicrograms": 14670,
+            "diggingSeconds": 365.05
+          },
+          {
+            "workerId": 17,
+            "removedMicrograms": 22850,
+            "diggingSeconds": 568.6
+          },
+          {
+            "workerId": 18,
+            "removedMicrograms": 21970,
+            "diggingSeconds": 546.65
+          },
+          {
+            "workerId": 19,
+            "removedMicrograms": 16090,
+            "diggingSeconds": 400.40000000000003
+          },
+          {
+            "workerId": 20,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 21,
+            "removedMicrograms": 39210,
+            "diggingSeconds": 975.7
+          },
+          {
+            "workerId": 22,
+            "removedMicrograms": 38940,
+            "diggingSeconds": 969
+          },
+          {
+            "workerId": 23,
+            "removedMicrograms": 50500,
+            "diggingSeconds": 1256.65
+          },
+          {
+            "workerId": 24,
+            "removedMicrograms": 20280,
+            "diggingSeconds": 504.6
+          },
+          {
+            "workerId": 25,
+            "removedMicrograms": 16630,
+            "diggingSeconds": 413.8
+          },
+          {
+            "workerId": 26,
+            "removedMicrograms": 27650,
+            "diggingSeconds": 688.0500000000001
+          },
+          {
+            "workerId": 27,
+            "removedMicrograms": 53070,
+            "diggingSeconds": 1320.65
+          },
+          {
+            "workerId": 28,
+            "removedMicrograms": 28800,
+            "diggingSeconds": 716.7
+          },
+          {
+            "workerId": 29,
+            "removedMicrograms": 27380,
+            "diggingSeconds": 681.35
+          },
+          {
+            "workerId": 30,
+            "removedMicrograms": 43130,
+            "diggingSeconds": 1073.2
+          },
+          {
+            "workerId": 31,
+            "removedMicrograms": 29880,
+            "diggingSeconds": 785.5500000000001
+          },
+          {
+            "workerId": 32,
+            "removedMicrograms": 28190,
+            "diggingSeconds": 701.45
+          },
+          {
+            "workerId": 33,
+            "removedMicrograms": 23390,
+            "diggingSeconds": 582
+          },
+          {
+            "workerId": 34,
+            "removedMicrograms": 28530,
+            "diggingSeconds": 741.6500000000001
+          },
+          {
+            "workerId": 35,
+            "removedMicrograms": 31300,
+            "diggingSeconds": 778.85
+          },
+          {
+            "workerId": 36,
+            "removedMicrograms": 29340,
+            "diggingSeconds": 730.1
+          },
+          {
+            "workerId": 37,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 38,
+            "removedMicrograms": 42050,
+            "diggingSeconds": 1046.4
+          },
+          {
+            "workerId": 39,
+            "removedMicrograms": 27380,
+            "diggingSeconds": 719.4000000000001
+          },
+          {
+            "workerId": 40,
+            "removedMicrograms": 40900,
+            "diggingSeconds": 1053.1000000000001
+          },
+          {
+            "workerId": 41,
+            "removedMicrograms": 48000,
+            "diggingSeconds": 1194.5
+          },
+          {
+            "workerId": 42,
+            "removedMicrograms": 42050,
+            "diggingSeconds": 1046.4
+          },
+          {
+            "workerId": 43,
+            "removedMicrograms": 35020,
+            "diggingSeconds": 906.85
+          },
+          {
+            "workerId": 44,
+            "removedMicrograms": 28530,
+            "diggingSeconds": 710
+          },
+          {
+            "workerId": 45,
+            "removedMicrograms": 31640,
+            "diggingSeconds": 787.4000000000001
+          },
+          {
+            "workerId": 46,
+            "removedMicrograms": 21970,
+            "diggingSeconds": 546.65
+          },
+          {
+            "workerId": 47,
+            "removedMicrograms": 39820,
+            "diggingSeconds": 999
+          },
+          {
+            "workerId": 48,
+            "removedMicrograms": 32720,
+            "diggingSeconds": 848.1500000000001
+          },
+          {
+            "workerId": 49,
+            "removedMicrograms": 38400,
+            "diggingSeconds": 955.6
+          },
+          {
+            "workerId": 50,
+            "removedMicrograms": 35020,
+            "diggingSeconds": 871.85
+          },
+          {
+            "workerId": 51,
+            "removedMicrograms": 48270,
+            "diggingSeconds": 1201.2
+          },
+          {
+            "workerId": 52,
+            "removedMicrograms": 36100,
+            "diggingSeconds": 898.3000000000001
+          },
+          {
+            "workerId": 53,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 54,
+            "removedMicrograms": 25960,
+            "diggingSeconds": 646
+          },
+          {
+            "workerId": 55,
+            "removedMicrograms": 35560,
+            "diggingSeconds": 884.9000000000001
+          },
+          {
+            "workerId": 56,
+            "removedMicrograms": 34480,
+            "diggingSeconds": 858.1
+          },
+          {
+            "workerId": 57,
+            "removedMicrograms": 31030,
+            "diggingSeconds": 772.1500000000001
+          },
+          {
+            "workerId": 58,
+            "removedMicrograms": 27920,
+            "diggingSeconds": 694.75
+          },
+          {
+            "workerId": 59,
+            "removedMicrograms": 27920,
+            "diggingSeconds": 730.1
+          },
+          {
+            "workerId": 60,
+            "removedMicrograms": 26770,
+            "diggingSeconds": 666.1
+          },
+          {
+            "workerId": 61,
+            "removedMicrograms": 48810,
+            "diggingSeconds": 1214.6000000000001
+          },
+          {
+            "workerId": 62,
+            "removedMicrograms": 34410,
+            "diggingSeconds": 856.25
+          },
+          {
+            "workerId": 63,
+            "removedMicrograms": 33870,
+            "diggingSeconds": 842.85
+          },
+          {
+            "workerId": 64,
+            "removedMicrograms": 22850,
+            "diggingSeconds": 568.6
+          },
+          {
+            "workerId": 65,
+            "removedMicrograms": 22850,
+            "diggingSeconds": 568.6
+          },
+          {
+            "workerId": 66,
+            "removedMicrograms": 10140,
+            "diggingSeconds": 252.3
+          },
+          {
+            "workerId": 67,
+            "removedMicrograms": 35830,
+            "diggingSeconds": 891.6
+          },
+          {
+            "workerId": 68,
+            "removedMicrograms": 23120,
+            "diggingSeconds": 575.3000000000001
+          },
+          {
+            "workerId": 69,
+            "removedMicrograms": 34140,
+            "diggingSeconds": 849.5500000000001
+          },
+          {
+            "workerId": 70,
+            "removedMicrograms": 36980,
+            "diggingSeconds": 961.8000000000001
+          },
+          {
+            "workerId": 71,
+            "removedMicrograms": 17510,
+            "diggingSeconds": 435.75
+          },
+          {
+            "workerId": 72,
+            "removedMicrograms": 24270,
+            "diggingSeconds": 639.3000000000001
+          },
+          {
+            "workerId": 73,
+            "removedMicrograms": 24270,
+            "diggingSeconds": 603.95
+          },
+          {
+            "workerId": 74,
+            "removedMicrograms": 22310,
+            "diggingSeconds": 555.2
+          },
+          {
+            "workerId": 75,
+            "removedMicrograms": 41440,
+            "diggingSeconds": 1067.8
+          },
+          {
+            "workerId": 76,
+            "removedMicrograms": 39210,
+            "diggingSeconds": 975.7
+          },
+          {
+            "workerId": 77,
+            "removedMicrograms": 36980,
+            "diggingSeconds": 920.25
+          },
+          {
+            "workerId": 78,
+            "removedMicrograms": 36100,
+            "diggingSeconds": 898.3000000000001
+          },
+          {
+            "workerId": 79,
+            "removedMicrograms": 27920,
+            "diggingSeconds": 694.75
+          },
+          {
+            "workerId": 80,
+            "removedMicrograms": 43130,
+            "diggingSeconds": 1073.2
+          },
+          {
+            "workerId": 81,
+            "removedMicrograms": 29070,
+            "diggingSeconds": 723.4000000000001
+          },
+          {
+            "workerId": 82,
+            "removedMicrograms": 21160,
+            "diggingSeconds": 526.5500000000001
+          },
+          {
+            "workerId": 83,
+            "removedMicrograms": 47660,
+            "diggingSeconds": 1194.95
+          },
+          {
+            "workerId": 84,
+            "removedMicrograms": 30150,
+            "diggingSeconds": 750.2
+          },
+          {
+            "workerId": 85,
+            "removedMicrograms": 34750,
+            "diggingSeconds": 864.8000000000001
+          },
+          {
+            "workerId": 86,
+            "removedMicrograms": 50230,
+            "diggingSeconds": 1249.95
+          },
+          {
+            "workerId": 87,
+            "removedMicrograms": 27110,
+            "diggingSeconds": 674.6500000000001
+          },
+          {
+            "workerId": 88,
+            "removedMicrograms": 40630,
+            "diggingSeconds": 1028.05
+          },
+          {
+            "workerId": 89,
+            "removedMicrograms": 35290,
+            "diggingSeconds": 899.1
+          },
+          {
+            "workerId": 90,
+            "removedMicrograms": 24810,
+            "diggingSeconds": 617.35
+          },
+          {
+            "workerId": 91,
+            "removedMicrograms": 35290,
+            "diggingSeconds": 886.6
+          },
+          {
+            "workerId": 92,
+            "removedMicrograms": 34680,
+            "diggingSeconds": 862.95
+          },
+          {
+            "workerId": 93,
+            "removedMicrograms": 25960,
+            "diggingSeconds": 646
+          },
+          {
+            "workerId": 94,
+            "removedMicrograms": 32450,
+            "diggingSeconds": 807.5
+          },
+          {
+            "workerId": 95,
+            "removedMicrograms": 44010,
+            "diggingSeconds": 1095.15
+          },
+          {
+            "workerId": 96,
+            "removedMicrograms": 26500,
+            "diggingSeconds": 665.9000000000001
+          },
+          {
+            "workerId": 97,
+            "removedMicrograms": 33870,
+            "diggingSeconds": 842.85
+          },
+          {
+            "workerId": 98,
+            "removedMicrograms": 21160,
+            "diggingSeconds": 526.5500000000001
+          },
+          {
+            "workerId": 99,
+            "removedMicrograms": 31570,
+            "diggingSeconds": 785.5500000000001
+          },
+          {
+            "workerId": 100,
+            "removedMicrograms": 31570,
+            "diggingSeconds": 841.7
+          }
+        ]
+      }
+    }
+  ]
+}

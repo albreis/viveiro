@@ -1,3 +1,4 @@
+import { BuhlActivity } from "./activity.ts";
 import { BuhlDigFatigue } from "./dig-fatigue.ts";
 import { BuhlEdgeContact, type EdgeContact } from "./edge.ts";
 import { seededRandom } from "../../../libs/seeded-random.ts";
@@ -30,6 +31,7 @@ export class BuhlLabWorkers {
   readonly #digChance: number;
   readonly #dropChance: number;
   readonly #edge: BuhlEdgeContact | null;
+  readonly #activity?: BuhlActivity;
   #steps = 0;
 
   private readonly arena: BuhlArena;
@@ -43,6 +45,8 @@ export class BuhlLabWorkers {
     this.#random = seededRandom(plan.seed + ":buhl-lab-workers-v1").random;
     this.#occupied = new Uint16Array(arena.cellsPerSide * arena.cellsPerSide);
     const seconds = plan.tickMilliseconds / 1000;
+    if (plan.observeActivity)
+      this.#activity = new BuhlActivity(plan.workers, seconds);
     this.#edge =
       plan.mechanism === "local"
         ? null
@@ -91,6 +95,7 @@ export class BuhlLabWorkers {
   step(tick: number): void {
     for (const worker of this.#agents) {
       if (worker.dig) {
+        this.#activity?.digging(worker.id, tick);
         if (tick >= worker.dig.untilTick) {
           worker.digFatigue?.recordWork(tick, worker.dig.effortTicks);
           worker.load = this.soil.dig(
@@ -98,11 +103,13 @@ export class BuhlLabWorkers {
             worker.dig.target,
             worker.dig.mass,
           );
+          this.#activity?.completedDig(worker.id, worker.load);
           if (worker.load) this.#edge?.deposit(worker.dig.target, tick);
           worker.dig = null;
         }
         continue;
       }
+      if (worker.load) this.#activity?.carrying(worker.id, tick);
       if (worker.load && this.#random() < this.#dropChance) {
         this.soil.drop(worker.cell, worker.load);
         worker.load = 0;
@@ -110,7 +117,7 @@ export class BuhlLabWorkers {
       }
       this.#edge?.observe(worker);
       if (!worker.load && this.#startDig(worker, tick)) continue;
-      if (this.#random() < this.#moveChance) this.#move(worker);
+      if (this.#random() < this.#moveChance) this.#move(worker, tick);
     }
   }
 
@@ -138,19 +145,24 @@ export class BuhlLabWorkers {
     return true;
   }
 
-  #move(worker: Worker): void {
+  #move(worker: Worker, tick: number): void {
     const draw = this.#random();
     const turn = draw < 0.04 ? 1 : draw < 0.08 ? 3 : draw < 0.085 ? 2 : 0;
     const side = draw < 0.5 ? 1 : 3;
     const facing = (worker.heading + turn) & 3;
     let target = -1;
     let direction = facing;
+    let occupiedNeighbor = false;
     for (let attempt = 0; attempt < 4; attempt++) {
       const offset =
         attempt === 0 ? 0 : attempt === 1 ? side : attempt === 2 ? 4 - side : 2;
       const heading = (facing + offset) & 3;
       const cell = this.arena.neighbor(worker.cell, heading);
-      if (this.#occupied[cell] || !this.arena.walkable(cell)) continue;
+      if (this.#occupied[cell]) {
+        occupiedNeighbor = true;
+        continue;
+      }
+      if (!this.arena.walkable(cell)) continue;
       if (target < 0) {
         target = cell;
         direction = heading;
@@ -161,7 +173,11 @@ export class BuhlLabWorkers {
         break;
       }
     }
-    if (target < 0) return;
+    if (target < 0) {
+      if (occupiedNeighbor) this.#activity?.blocked(worker.id, tick);
+      return;
+    }
+    this.#activity?.moved(worker.id, tick);
     this.#occupied[worker.cell] = 0;
     this.#occupied[target] = worker.id;
     worker.cell = target;
@@ -173,6 +189,10 @@ export class BuhlLabWorkers {
       this.#random() < this.plan.pickupPerContact
     )
       worker.load = this.soil.pickUp(target);
+  }
+
+  individualActivity() {
+    return this.#activity?.byWorker();
   }
 
   sample(tick: number) {
@@ -192,6 +212,16 @@ export class BuhlLabWorkers {
         ? { meanDigReadiness: readiness / this.#agents.length }
         : {}),
       distanceMm: this.#steps * this.arena.pitchMm,
+      ...(this.#activity
+        ? {
+            activity: this.#activity.sample(
+              this.arena,
+              this.#agents,
+              this.#occupied,
+              tick,
+            ),
+          }
+        : {}),
       ...this.#edge?.sample(),
     };
   }
