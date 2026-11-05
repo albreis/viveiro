@@ -68,6 +68,8 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
 - [ ] **B7 — Calibrar e reservar dados:** ajuste exploratório de 12 h
   concluído. A configuração foi congelada antes de usar as seeds
   reservadas. Faltam observações empíricas independentes por réplica.
+  **E-mail enviado em 05/11/2026.** O mantenedor solicitou à Dra. Camille
+  Buhl os dados por réplica e as condições de reuso. Aguardando resposta.
   [Método, escolha e plano reservado](buhl-ajuste.md).
   [Hipótese de fadiga local, protocolo e resultados pareados](buhl-fadiga.md).
 - [x] **B8 — Avaliar e publicar:** 15 rodadas de 72 h com seeds reservadas.

@@ -33,8 +33,10 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próximo passo em T4.** Identificar séries empíricas independentes
-de volume por réplica com protocolo, procedência e licença verificáveis.
+**Próximo passo em T4.** Aguardar a resposta ao e-mail que o mantenedor
+enviou à Dra. Camille Buhl em 05/11/2026. Ao receber dados ou um link,
+conferir protocolo, procedência, licença e quais réplicas ficaram fora
+das curvas já usadas no ajuste.
 Para estimar fadiga, procurar duração e frequência de escavação e repouso
 por operária em condições comparáveis. Fixar novos parâmetros e critérios
 antes de comparar com observações reservadas.
