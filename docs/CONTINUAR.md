@@ -37,6 +37,8 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 enviou à Dra. Camille Buhl em 05/11/2026. Ao receber dados ou um link,
 conferir protocolo, procedência, licença e quais réplicas ficaram fora
 das curvas já usadas no ajuste.
+A [revisão da escavação](planejamento/buhl-variaveis.md) identificou
+contagens de ativas e agregadas como evidência complementar de Buhl.
 Para estimar fadiga, procurar duração e frequência de escavação e repouso
 por operária em condições comparáveis. Fixar novos parâmetros e critérios
 antes de comparar com observações reservadas.

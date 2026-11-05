@@ -72,6 +72,7 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   Buhl os dados por réplica e as condições de reuso. Aguardando resposta.
   [Método, escolha e plano reservado](buhl-ajuste.md).
   [Gráficos de Buhl e do Viveiro sem e com fadiga](buhl-fadiga.md#curvas-de-0-a-72-h).
+  [Relatório sobre agregação, água, temperatura e ventilação](buhl-variaveis.md).
 - [x] **B8 — Avaliar e publicar:** 15 rodadas de 72 h com seeds reservadas.
   O ajuste melhorou o MAE, mas o volume cresceu demais após 12 h.
   [Relatório, dados e reprodução](../validacao.md). P3.2 e P3.3 seguem abertos.
