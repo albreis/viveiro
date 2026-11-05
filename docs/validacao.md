@@ -38,6 +38,10 @@ com identidade por réplica e licença verificável. Os grafos de
 medem topologia. A relação de suas réplicas com a série de volume ainda
 precisa ser verificada.
 
+A [comparação visual de fadiga](planejamento/buhl-fadiga.md#curvas-de-0-a-72-h)
+mostra um lote pareado posterior com a curva de Buhl e as séries do
+Viveiro sem e com a regra de fadiga.
+
 ## Reprodução
 
 - [Escolha e resultados de 12 h](validacoes/buhl-arena-escolha-12h.json).
