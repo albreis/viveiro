@@ -11,10 +11,10 @@
       "orcid": "https://orcid.org/0009-0008-0719-8722"
     }
   ],
-  "version": "0.46.0",
-  "date-released": "2026-11-03",
+  "version": "0.47.0",
+  "date-released": "2026-11-05",
   "repository-code": "https://github.com/albreis/viveiro",
-  "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/",
+  "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.47.0/",
   "license": "MIT",
   "keywords": [
     "artificial life",

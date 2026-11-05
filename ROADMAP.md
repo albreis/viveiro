@@ -1,6 +1,6 @@
 # Evolução do Viveiro
 
-Atualizado em 03/11/2026. Última release: **0.46.0**; P2.1–P2.7 entregues.
+Atualizado em 05/11/2026. Última release: **0.47.0**; P2.1–P2.7 entregues.
 
 O [cronograma operacional](docs/cronograma.md) separa o trabalho em três filas:
 

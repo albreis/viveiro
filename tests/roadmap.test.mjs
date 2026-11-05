@@ -18,6 +18,7 @@ import {
   roadmapFilterParams,
 } from "../src/modules/roadmap/filter.ts";
 const data = readRoadmap(process.cwd());
+const { version } = JSON.parse(readFileSync("package.json", "utf8"));
 const items = (view) =>
   data.groups.filter((g) => g.view === view).flatMap((g) => g.items);
 
@@ -150,7 +151,7 @@ test("actual public build excludes private roadmap entry, payload and navigation
   );
   await build({
     mode: "public",
-    base: "/releases/v0.46.0/",
+    base: `/releases/v${version}/`,
     logLevel: "silent",
     build: { outDir: output },
   });

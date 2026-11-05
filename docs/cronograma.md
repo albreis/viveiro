@@ -6,7 +6,7 @@ trabalho pendente, inclusive quando a implementação já existe.
 
 ## Situação atual
 
-**Última release: [0.46.0](https://github.com/albreis/viveiro/releases/tag/v0.46.0).**
+**Última release: [0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0).**
 P2.1–P2.7 implementados e publicados. UI/renderer em TypeScript estrito;
 474 testes e build aprovados na entrega. [Recibo](validacoes/release-0.46.0.json).
 O modelo continua exploratório, sem calibração biológica concluída.
