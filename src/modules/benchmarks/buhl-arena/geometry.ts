@@ -77,6 +77,10 @@ export class BuhlArena {
       : (materials[this.#cells[index]] ?? "outside");
   }
 
+  solid(index: number): boolean {
+    return this.#cells[index] === 2;
+  }
+
   walkable(index: number): boolean {
     const material = this.#cells[index];
     return material === 1 || material === 3;

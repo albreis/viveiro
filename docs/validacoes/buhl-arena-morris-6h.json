@@ -1,0 +1,146 @@
+{
+  "schema": "viveiro-buhl-morris-resultados-v1",
+  "sourceFingerprint": "4288c47e3b4c5210758e684ae0ef1a1a4565af944f5bb6a6d35a9a1b1ec40530",
+  "calibrated": false,
+  "rankings": {
+    "voidVolumeCm3": [
+      {
+        "parameter": "dryDensityMgPerMm3",
+        "n": 4,
+        "mu": -0.0042,
+        "muStar": 0.0042,
+        "sigma": 0.0036,
+        "effects": [
+          -0.007200000000000001,
+          -0.0072,
+          0,
+          -0.0024000000000000007
+        ]
+      },
+      {
+        "parameter": "pickupPerContact",
+        "n": 4,
+        "mu": -0.0012000000000000001,
+        "muStar": 0.0012000000000000001,
+        "sigma": 0.0013856406460551018,
+        "effects": [
+          -0.0024,
+          -0.0024000000000000002,
+          0,
+          0
+        ]
+      },
+      {
+        "parameter": "digRatePerSecond",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0,
+        "effects": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "removedSoilCm3": [
+      {
+        "parameter": "digRatePerSecond",
+        "n": 4,
+        "mu": 0.1154236049107143,
+        "muStar": 0.1154236049107143,
+        "sigma": 0.025310344170220347,
+        "effects": [
+          0.1338796875,
+          0.07816250000000001,
+          0.12765535714285717,
+          0.12199687499999998
+        ]
+      },
+      {
+        "parameter": "dryDensityMgPerMm3",
+        "n": 4,
+        "mu": -0.04243247767857143,
+        "muStar": 0.04243247767857143,
+        "sigma": 0.03110344864260784,
+        "effects": [
+          -0.0866828125,
+          -0.02792261904761904,
+          -0.015491666666666673,
+          -0.03963281250000002
+        ]
+      },
+      {
+        "parameter": "pickupPerContact",
+        "n": 4,
+        "mu": -0.0074494791666666685,
+        "muStar": 0.01537135416666667,
+        "sigma": 0.02256065745881443,
+        "effects": [
+          -0.03831250000000003,
+          -0.002399999999999985,
+          -0.0049291666666666616,
+          0.015843750000000004
+        ]
+      }
+    ],
+    "fullPellets": [
+      {
+        "parameter": "digRatePerSecond",
+        "n": 4,
+        "mu": 107.8125,
+        "muStar": 107.8125,
+        "sigma": 18.486904148612872,
+        "effects": [
+          126.74999999999999,
+          83.25,
+          105.75,
+          115.49999999999999
+        ]
+      },
+      {
+        "parameter": "pickupPerContact",
+        "n": 4,
+        "mu": -4.875,
+        "muStar": 12.375,
+        "sigma": 17.239127008059313,
+        "effects": [
+          -27,
+          -2.2499999999999996,
+          -5.25,
+          15
+        ]
+      },
+      {
+        "parameter": "dryDensityMgPerMm3",
+        "n": 4,
+        "mu": 2.4374999999999996,
+        "muStar": 3.9374999999999996,
+        "sigma": 6.165681227569261,
+        "effects": [
+          -3,
+          11.249999999999998,
+          0,
+          1.5
+        ]
+      }
+    ]
+  },
+  "runCount": 32,
+  "sourceReportSha256": "771bd8d77a1448d0cf1043ef80c0d71330b98365ad0b6ee2d8c6dd5e3aba143b",
+  "ranges": {
+    "dryDensityMgPerMm3": [
+      1.2,
+      1.8
+    ],
+    "digRatePerSecond": [
+      0.01415,
+      0.0566
+    ],
+    "pickupPerContact": [
+      0.051,
+      0.153
+    ]
+  }
+}
