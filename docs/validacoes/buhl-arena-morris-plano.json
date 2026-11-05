@@ -1,0 +1,13 @@
+{
+  "seed": "ARENA-MORRIS",
+  "trajectories": 4,
+  "replicates": 2,
+  "settings": {
+    "workers": 100,
+    "separationMm": 5,
+    "durationSeconds": 21600,
+    "sampleEverySeconds": 1200,
+    "tickMilliseconds": 50,
+    "pitchMm": 0.8
+  }
+}
