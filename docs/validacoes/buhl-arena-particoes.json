@@ -1,0 +1,20 @@
+{
+  "schema": "viveiro-buhl-particoes-v1",
+  "controleEComparacaoDeMecanismos": [
+    "ARENA-BASE-1",
+    "ARENA-BASE-2",
+    "ARENA-BASE-3",
+    "ARENA-BASE-4",
+    "ARENA-BASE-5"
+  ],
+  "triagemSensibilidade": "ARENA-MORRIS-T*-R*",
+  "checagemReservadaDoSimulador": [
+    "ARENA-CHECAGEM-1",
+    "ARENA-CHECAGEM-2",
+    "ARENA-CHECAGEM-3",
+    "ARENA-CHECAGEM-4",
+    "ARENA-CHECAGEM-5"
+  ],
+  "dadosEmpiricosReservados": [],
+  "nota": "Os estudos agregados de 2001 e 2005 orientam o diagnóstico de desenvolvimento. O conjunto empírico independente precisa de proveniência por réplica."
+}

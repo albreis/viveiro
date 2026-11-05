@@ -1,0 +1,368 @@
+{
+  "schema": "viveiro-buhl-arena-diagnostico-v1",
+  "calibrated": false,
+  "sourceFingerprint": "4288c47e3b4c5210758e684ae0ef1a1a4565af944f5bb6a6d35a9a1b1ec40530",
+  "secondsPerTick": 0.05,
+  "references": {
+    "curve": "Buhl et al. (2001), Fig. 2a; digitalização aproximada.",
+    "readingErrorCm3": 3,
+    "final": "Buhl et al. (2005), Tabela 1, disco fixo; doi:10.1007/s00265-004-0906-2"
+  },
+  "groups": [
+    {
+      "workers": 50,
+      "replicateSeeds": [
+        "ARENA-BASE-1",
+        "ARENA-BASE-2",
+        "ARENA-BASE-3",
+        "ARENA-BASE-4",
+        "ARENA-BASE-5"
+      ],
+      "curve": [
+        {
+          "hour": 0,
+          "simulatedMeanCm3": 0,
+          "simulatedSampleSdCm3": 0,
+          "readCm3": 0,
+          "bandCm3": [
+            0,
+            0
+          ],
+          "within": true
+        },
+        {
+          "hour": 12,
+          "simulatedMeanCm3": 0.0012800000000000003,
+          "simulatedSampleSdCm3": 0.0028621670111997313,
+          "readCm3": 6,
+          "bandCm3": [
+            3,
+            9
+          ],
+          "within": false
+        },
+        {
+          "hour": 24,
+          "simulatedMeanCm3": 0.0038400000000000005,
+          "simulatedSampleSdCm3": 0.0041722895393296955,
+          "readCm3": 12,
+          "bandCm3": [
+            9,
+            15
+          ],
+          "within": false
+        },
+        {
+          "hour": 36,
+          "simulatedMeanCm3": 0.016000000000000004,
+          "simulatedSampleSdCm3": 0.00750466521571749,
+          "readCm3": 16.5,
+          "bandCm3": [
+            13.5,
+            19.5
+          ],
+          "within": false
+        },
+        {
+          "hour": 48,
+          "simulatedMeanCm3": 0.026240000000000003,
+          "simulatedSampleSdCm3": 0.0069374346843772165,
+          "readCm3": 20.5,
+          "bandCm3": [
+            17.5,
+            23.5
+          ],
+          "within": false
+        },
+        {
+          "hour": 60,
+          "simulatedMeanCm3": 0.04800000000000001,
+          "simulatedSampleSdCm3": 0.010119288512538816,
+          "readCm3": 23,
+          "bandCm3": [
+            20,
+            26
+          ],
+          "within": false
+        },
+        {
+          "hour": 72,
+          "simulatedMeanCm3": 0.06784000000000001,
+          "simulatedSampleSdCm3": 0.010467473429629521,
+          "readCm3": 25,
+          "bandCm3": [
+            22,
+            28
+          ],
+          "within": false
+        }
+      ],
+      "maeCm3": 17.139466666666667,
+      "readBandCoverage": 0,
+      "finalCm3": 0.06784000000000001,
+      "earlyFraction": [
+        {
+          "hour": 24,
+          "simulated": 0.05660377358490566,
+          "read": 0.48
+        },
+        {
+          "hour": 48,
+          "simulated": 0.38679245283018865,
+          "read": 0.82
+        }
+      ],
+      "articleFinal72h": {
+        "observedMeanCm3": 25.35,
+        "observedSdCm3": 11,
+        "observedN": 5,
+        "descriptiveBandCm3": [
+          14.350000000000001,
+          36.35
+        ],
+        "withinDescriptiveBand": false
+      }
+    },
+    {
+      "workers": 100,
+      "replicateSeeds": [
+        "ARENA-BASE-1",
+        "ARENA-BASE-2",
+        "ARENA-BASE-3",
+        "ARENA-BASE-4",
+        "ARENA-BASE-5"
+      ],
+      "curve": [
+        {
+          "hour": 0,
+          "simulatedMeanCm3": 0,
+          "simulatedSampleSdCm3": 0,
+          "readCm3": 0,
+          "bandCm3": [
+            0,
+            0
+          ],
+          "within": true
+        },
+        {
+          "hour": 12,
+          "simulatedMeanCm3": 0.003840000000000001,
+          "simulatedSampleSdCm3": 0.005258136552049595,
+          "readCm3": 10,
+          "bandCm3": [
+            7,
+            13
+          ],
+          "within": false
+        },
+        {
+          "hour": 24,
+          "simulatedMeanCm3": 0.030080000000000006,
+          "simulatedSampleSdCm3": 0.004853040284192995,
+          "readCm3": 19,
+          "bandCm3": [
+            16,
+            22
+          ],
+          "within": false
+        },
+        {
+          "hour": 36,
+          "simulatedMeanCm3": 0.08448000000000001,
+          "simulatedSampleSdCm3": 0.0048530402841929915,
+          "readCm3": 26,
+          "bandCm3": [
+            23,
+            29
+          ],
+          "within": false
+        },
+        {
+          "hour": 48,
+          "simulatedMeanCm3": 0.16192,
+          "simulatedSampleSdCm3": 0.016253984126976383,
+          "readCm3": 31,
+          "bandCm3": [
+            28,
+            34
+          ],
+          "within": false
+        },
+        {
+          "hour": 60,
+          "simulatedMeanCm3": 0.24896000000000007,
+          "simulatedSampleSdCm3": 0.018576544350336,
+          "readCm3": 34,
+          "bandCm3": [
+            31,
+            37
+          ],
+          "within": false
+        },
+        {
+          "hour": 72,
+          "simulatedMeanCm3": 0.35520000000000007,
+          "simulatedSampleSdCm3": 0.0352,
+          "readCm3": 37,
+          "bandCm3": [
+            34,
+            40
+          ],
+          "within": false
+        }
+      ],
+      "maeCm3": 26.019253333333335,
+      "readBandCoverage": 0,
+      "finalCm3": 0.35520000000000007,
+      "earlyFraction": [
+        {
+          "hour": 24,
+          "simulated": 0.08468468468468468,
+          "read": 0.5135135135135135
+        },
+        {
+          "hour": 48,
+          "simulated": 0.4558558558558558,
+          "read": 0.8378378378378378
+        }
+      ],
+      "articleFinal72h": {
+        "observedMeanCm3": 37.15,
+        "observedSdCm3": 9.2,
+        "observedN": 5,
+        "descriptiveBandCm3": [
+          27.95,
+          46.349999999999994
+        ],
+        "withinDescriptiveBand": false
+      }
+    },
+    {
+      "workers": 200,
+      "replicateSeeds": [
+        "ARENA-BASE-1",
+        "ARENA-BASE-2",
+        "ARENA-BASE-3",
+        "ARENA-BASE-4",
+        "ARENA-BASE-5"
+      ],
+      "curve": [
+        {
+          "hour": 0,
+          "simulatedMeanCm3": 0,
+          "simulatedSampleSdCm3": 0,
+          "readCm3": 0,
+          "bandCm3": [
+            0,
+            0
+          ],
+          "within": true
+        },
+        {
+          "hour": 12,
+          "simulatedMeanCm3": 0.03136000000000001,
+          "simulatedSampleSdCm3": 0.006155322899734831,
+          "readCm3": 17,
+          "bandCm3": [
+            14,
+            20
+          ],
+          "within": false
+        },
+        {
+          "hour": 24,
+          "simulatedMeanCm3": 0.16640000000000002,
+          "simulatedSampleSdCm3": 0.017380448785920346,
+          "readCm3": 31,
+          "bandCm3": [
+            28,
+            34
+          ],
+          "within": false
+        },
+        {
+          "hour": 36,
+          "simulatedMeanCm3": 0.35072000000000003,
+          "simulatedSampleSdCm3": 0.02795195878646075,
+          "readCm3": 39,
+          "bandCm3": [
+            36,
+            42
+          ],
+          "within": false
+        },
+        {
+          "hour": 48,
+          "simulatedMeanCm3": 0.5612800000000002,
+          "simulatedSampleSdCm3": 0.02813453393962659,
+          "readCm3": 47,
+          "bandCm3": [
+            44,
+            50
+          ],
+          "within": false
+        },
+        {
+          "hour": 60,
+          "simulatedMeanCm3": 0.8505600000000001,
+          "simulatedSampleSdCm3": 0.022100859711785,
+          "readCm3": 54,
+          "bandCm3": [
+            51,
+            57
+          ],
+          "within": false
+        },
+        {
+          "hour": 72,
+          "simulatedMeanCm3": 1.1232000000000002,
+          "simulatedSampleSdCm3": 0.019464840096954268,
+          "readCm3": 59,
+          "bandCm3": [
+            56,
+            62
+          ],
+          "within": false
+        }
+      ],
+      "maeCm3": 40.652746666666665,
+      "readBandCoverage": 0,
+      "finalCm3": 1.1232000000000002,
+      "earlyFraction": [
+        {
+          "hour": 24,
+          "simulated": 0.14814814814814814,
+          "read": 0.5254237288135594
+        },
+        {
+          "hour": 48,
+          "simulated": 0.4997150997150998,
+          "read": 0.7966101694915254
+        }
+      ],
+      "articleFinal72h": {
+        "observedMeanCm3": 65.27,
+        "observedSdCm3": 22.4,
+        "observedN": 10,
+        "descriptiveBandCm3": [
+          42.87,
+          87.66999999999999
+        ],
+        "withinDescriptiveBand": false
+      }
+    }
+  ],
+  "scale": {
+    "simulatedSlope": 2.0246674303143624,
+    "digitizationBand": [
+      0.5000000000000003,
+      0.747382345874789
+    ],
+    "withinDigitizationBand": false
+  },
+  "runSourceCommit": "953d464",
+  "runCount": 15,
+  "sourceSeriesSha256": "592fcecce3c2246856ddda84b4edfbb4223e7abc3ad7e6b98ceb5bef8e5f70e8",
+  "publishedSeriesSha256Lf": "ecda7a51521b15c1d8c35f754e1837b1c86b88101296378500b95a718ef870b5",
+  "invariants": "Massa removida igual à transportada mais a depositada. Células iniciais igual às restantes mais as abertas."
+}

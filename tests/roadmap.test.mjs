@@ -45,7 +45,7 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
   );
   assert.match(arena.title, /B3.*Unidades/);
   assert.equal(arena.done, true);
-  assert.equal(criteria.done, false);
+  assert.equal(criteria.done, true);
   assert.match(batches.title, /B5.*Rodadas retomáveis/);
   assert.equal(batches.done, true);
   assert.ok(validation.every((step) => !step.done));
@@ -59,7 +59,7 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
     data.version,
     JSON.parse(readFileSync("package.json", "utf8")).version,
   );
-  assert.equal(data.updated, "04/11/2026");
+  assert.equal(data.updated, "05/11/2026");
   const all = data.groups.flatMap((g) => g.items);
   assert.equal(new Set(all.map((i) => i.id)).size, all.length);
 });

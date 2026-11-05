@@ -2,8 +2,7 @@
 
 Este é um diagnóstico pré-especificado. Só se aplica à arena física de B3
 (disco de 200 mm, 5 mm de espessura, arena de 500 mm). Não converte ou
-reclassifica o benchmark histórico rt24b. Nenhum dado de uma arena nova
-foi produzido para este diagnóstico.
+reclassifica o benchmark histórico rt24b.
 
 ## O que comparar
 
@@ -47,3 +46,22 @@ O relatório mantém diferenças desfavoráveis e não retorna erro por elas.
 Entrada inválida ou série incompleta retorna erro. O schema documenta unidades,
 mas não prova que o runner mediu corretamente o vazio. Essa equivalência, a
 geração da arena e a aplicação do critério a rodadas reais continuam abertas.
+
+## Resultado do controle físico
+
+Foram executadas cinco seeds por grupo, com 217 amostras em cada rodada.
+O [recibo](../validacoes/buhl-arena-base-72h.json) conserva os limites e
+os valores obtidos em cada tempo. A [série de 20 em 20 minutos](../validacoes/buhl-arena-base-72h.csv)
+preserva as medidas individuais. O [plano fixado](../validacoes/buhl-arena-base-plano.json)
+usa densidade seca de 1,5 mg/mm³ e separação inicial de 5 mm.
+
+| Operárias | Vazio médio do modelo em 72 h (cm³) | Média de 2005 (cm³) | MAE da curva de 2001 (cm³) | Cobertura ±3 cm³ |
+| --- | ---: | ---: | ---: | ---: |
+| 50 | 0,068 | 25,35 | 17,14 | 0% |
+| 100 | 0,355 | 37,15 | 26,02 | 0% |
+| 200 | 1,123 | 65,27 | 40,65 | 0% |
+
+A inclinação log-log do controle foi 2,025.
+O controle abriu pouco vazio em todos os grupos. A comparação preserva
+esse desvio, que motiva medir o tempo de contato com a parede e a
+concentração da escavação em frentes. A calibração permanece pendente.
