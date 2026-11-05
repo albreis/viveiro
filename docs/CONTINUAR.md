@@ -144,7 +144,12 @@ B6 separou seguimento da parede e recrutamento. A
 [ablação de seis horas](planejamento/buhl-mecanismos.md) conserva os
 resultados de cada mecanismo com as mesmas seeds do controle.
 
-Próximo passo: B7. Ajustar o acesso à face usando a média observada em
-12 h nos três grupos e usar as cinco seeds reservadas apenas na avaliação
-posterior de 72 h. Publicar MAE, cobertura e desvios em B8. Manter P3.3
-pendente até obter observações empíricas independentes por réplica.
+B7 escolheu a configuração no ponto observado de 12 h. As 45
+execuções usaram apenas seeds de desenvolvimento. O
+[plano reservado](validacoes/buhl-arena-reservado-plano.json) preserva
+os parâmetros escolhidos e as cinco seeds separadas. A validação empírica
+continua pendente por falta de observações independentes identificadas.
+
+Próximo passo: B8. Concluir ou retomar o lote de 72 h em
+`.runtime/buhl-arena-reservado-72h` com o plano congelado. Publicar
+MAE, cobertura, escala, curva temporal e as diferenças desfavoráveis.

@@ -31,14 +31,17 @@ export class BuhlArena {
       throw Error("A célula deve ter 0,5–5 mm e dividir a largura da arena.");
     this.pitchMm = pitchMm;
     this.cellsPerSide = width;
-    this.cellVolumeCm3 = (pitchMm ** 2 * BUHL_DISK_MM.sandThickness) / 1000;
+    this.cellVolumeCm3 =
+      (pitchMm * pitchMm * BUHL_DISK_MM.sandThickness) / 1000;
     this.#cells = new Uint8Array(width * width);
-    const arenaR2 = (BUHL_DISK_MM.arenaDiameter / 2) ** 2;
-    const sandR2 = (BUHL_DISK_MM.sandDiameter / 2) ** 2;
+    const arenaRadius = BUHL_DISK_MM.arenaDiameter / 2;
+    const arenaR2 = arenaRadius * arenaRadius;
+    const sandRadius = BUHL_DISK_MM.sandDiameter / 2;
+    const sandR2 = sandRadius * sandRadius;
     let sand = 0;
     for (let index = 0; index < this.#cells.length; index++) {
       const point = this.center(index)!;
-      const radius2 = point.xMm ** 2 + point.zMm ** 2;
+      const radius2 = point.xMm * point.xMm + point.zMm * point.zMm;
       if (radius2 < sandR2) {
         this.#cells[index] = 2;
         sand++;
@@ -62,7 +65,7 @@ export class BuhlArena {
     if (
       !Number.isFinite(xMm) ||
       !Number.isFinite(zMm) ||
-      xMm ** 2 + zMm ** 2 >= half ** 2
+      xMm * xMm + zMm * zMm >= half * half
     )
       return null;
     const x = Math.floor((xMm + half) / this.pitchMm);

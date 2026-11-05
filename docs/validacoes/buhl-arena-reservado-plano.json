@@ -1,0 +1,24 @@
+{
+  "groups": [
+    50,
+    100,
+    200
+  ],
+  "seeds": [
+    "ARENA-CHECAGEM-1",
+    "ARENA-CHECAGEM-2",
+    "ARENA-CHECAGEM-3",
+    "ARENA-CHECAGEM-4",
+    "ARENA-CHECAGEM-5"
+  ],
+  "settings": {
+    "mechanism": "edge-follow",
+    "contactAccess": 0.35,
+    "separationMm": 5,
+    "dryDensityMgPerMm3": 1.5,
+    "durationSeconds": 259200,
+    "sampleEverySeconds": 1200,
+    "tickMilliseconds": 50,
+    "pitchMm": 0.8
+  }
+}

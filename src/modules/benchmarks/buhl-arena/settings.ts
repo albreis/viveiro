@@ -1,3 +1,4 @@
+import { modelMath } from "../../../libs/model-math.ts";
 import { BUHL_DISK_MM } from "./geometry.ts";
 import type { BuhlGroupSize } from "./placement.ts";
 
@@ -14,6 +15,7 @@ export type BuhlMechanism = "local" | "edge-follow" | "edge-recruit";
 
 export interface BuhlLabPlan {
   mechanism: BuhlMechanism;
+  contactAccess: number;
   seed: string;
   workers: BuhlGroupSize;
   durationSeconds: number;
@@ -29,6 +31,7 @@ export interface BuhlLabPlan {
 const keys = new Set([
   "seed",
   "mechanism",
+  "contactAccess",
   "workers",
   "durationSeconds",
   "sampleEverySeconds",
@@ -89,10 +92,14 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
     );
   if (Math.ceil(durationSeconds / sampleEverySeconds) > 10_000)
     throw Error("O plano excede o limite de 10 mil intervalos de coleta.");
+  const contactAccess = number("contactAccess", 0, 1, 1);
+  if (mechanism === "local" && contactAccess !== 1)
+    throw Error("Acesso à face requer seguimento ou recrutamento.");
   return {
     seed,
     workers,
     mechanism,
+    contactAccess,
     durationSeconds,
     sampleEverySeconds,
     tickMilliseconds,
@@ -115,4 +122,4 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
 }
 
 export const chancePerTick = (rate: number, seconds: number) =>
-  -Math.expm1(-rate * seconds);
+  -modelMath.expm1(-rate * seconds);

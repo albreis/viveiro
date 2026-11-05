@@ -1,0 +1,427 @@
+{
+  "schema": "viveiro-buhl-selecao-12h-v1",
+  "timeSeconds": 43200,
+  "calibrated": false,
+  "candidates": [
+    {
+      "id": "follow-035",
+      "config": {
+        "groups": [
+          50,
+          100,
+          200
+        ],
+        "seeds": [
+          "ARENA-BASE-1",
+          "ARENA-BASE-2",
+          "ARENA-BASE-3",
+          "ARENA-BASE-4",
+          "ARENA-BASE-5"
+        ],
+        "settings": {
+          "mechanism": "edge-follow",
+          "contactAccess": 0.35,
+          "separationMm": 5,
+          "dryDensityMgPerMm3": 1.5,
+          "durationSeconds": 43200,
+          "sampleEverySeconds": 1200,
+          "tickMilliseconds": 50,
+          "pitchMm": 0.8
+        }
+      },
+      "sourceFingerprint": "ee763ee1244d3f0aed8f7891629fcf50abb49493a35f22edec0350ad21e81013",
+      "seriesSha256": "6607a861f1d6277ec98a05fb0b30a5a8259c2f07146538f78b9c51900594d193",
+      "groups": [
+        {
+          "workers": 50,
+          "simulatedMeanCm3": 6.112640000000001,
+          "readCm3": 6,
+          "relativeError": 0.018773333333333458,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 50,
+              "cm3": 6.390400000000001
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 50,
+              "cm3": 6.150400000000001
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 50,
+              "cm3": 6.214400000000001
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 50,
+              "cm3": 5.990400000000001
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 50,
+              "cm3": 5.817600000000001
+            }
+          ]
+        },
+        {
+          "workers": 100,
+          "simulatedMeanCm3": 11.178240000000002,
+          "readCm3": 10,
+          "relativeError": 0.11782400000000023,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 100,
+              "cm3": 11.120000000000003
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 100,
+              "cm3": 10.966400000000002
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 100,
+              "cm3": 11.382400000000002
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 100,
+              "cm3": 11.376000000000001
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 100,
+              "cm3": 11.046400000000002
+            }
+          ]
+        },
+        {
+          "workers": 200,
+          "simulatedMeanCm3": 19.772800000000007,
+          "readCm3": 17,
+          "relativeError": 0.1631058823529416,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 200,
+              "cm3": 19.494400000000002
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 200,
+              "cm3": 19.683200000000003
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 200,
+              "cm3": 19.622400000000003
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 200,
+              "cm3": 19.984000000000005
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 200,
+              "cm3": 20.080000000000005
+            }
+          ]
+        }
+      ],
+      "score": 0.09990107189542509
+    },
+    {
+      "id": "follow-060",
+      "config": {
+        "groups": [
+          50,
+          100,
+          200
+        ],
+        "seeds": [
+          "ARENA-BASE-1",
+          "ARENA-BASE-2",
+          "ARENA-BASE-3",
+          "ARENA-BASE-4",
+          "ARENA-BASE-5"
+        ],
+        "settings": {
+          "mechanism": "edge-follow",
+          "contactAccess": 0.6,
+          "separationMm": 5,
+          "dryDensityMgPerMm3": 1.5,
+          "durationSeconds": 43200,
+          "sampleEverySeconds": 1200,
+          "tickMilliseconds": 50,
+          "pitchMm": 0.8
+        }
+      },
+      "sourceFingerprint": "ee763ee1244d3f0aed8f7891629fcf50abb49493a35f22edec0350ad21e81013",
+      "seriesSha256": "37a6e6657d4c670cafaf55f7111e7c34a61ee3be1c0a8627da2aaf8793d6ed2d",
+      "groups": [
+        {
+          "workers": 50,
+          "simulatedMeanCm3": 8.402560000000003,
+          "readCm3": 6,
+          "relativeError": 0.40042666666666715,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 50,
+              "cm3": 8.5248
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 50,
+              "cm3": 8.515200000000002
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 50,
+              "cm3": 8.326400000000001
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 50,
+              "cm3": 8.368000000000002
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 50,
+              "cm3": 8.278400000000001
+            }
+          ]
+        },
+        {
+          "workers": 100,
+          "simulatedMeanCm3": 15.729280000000003,
+          "readCm3": 10,
+          "relativeError": 0.5729280000000003,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 100,
+              "cm3": 15.913600000000002
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 100,
+              "cm3": 15.635200000000003
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 100,
+              "cm3": 15.692800000000004
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 100,
+              "cm3": 15.801600000000002
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 100,
+              "cm3": 15.603200000000003
+            }
+          ]
+        },
+        {
+          "workers": 200,
+          "simulatedMeanCm3": 27.303040000000003,
+          "readCm3": 17,
+          "relativeError": 0.6060611764705884,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 200,
+              "cm3": 27.049600000000005
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 200,
+              "cm3": 26.995200000000004
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 200,
+              "cm3": 27.785600000000006
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 200,
+              "cm3": 28.028800000000004
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 200,
+              "cm3": 26.656000000000006
+            }
+          ]
+        }
+      ],
+      "score": 0.5264719477124187
+    },
+    {
+      "id": "recruit-020",
+      "config": {
+        "groups": [
+          50,
+          100,
+          200
+        ],
+        "seeds": [
+          "ARENA-BASE-1",
+          "ARENA-BASE-2",
+          "ARENA-BASE-3",
+          "ARENA-BASE-4",
+          "ARENA-BASE-5"
+        ],
+        "settings": {
+          "mechanism": "edge-recruit",
+          "contactAccess": 0.2,
+          "separationMm": 5,
+          "dryDensityMgPerMm3": 1.5,
+          "durationSeconds": 43200,
+          "sampleEverySeconds": 1200,
+          "tickMilliseconds": 50,
+          "pitchMm": 0.8
+        }
+      },
+      "sourceFingerprint": "ee763ee1244d3f0aed8f7891629fcf50abb49493a35f22edec0350ad21e81013",
+      "seriesSha256": "634de4087101194fb584a9a4d78ddb7bbc7e55775c29556d2448f73748c95513",
+      "groups": [
+        {
+          "workers": 50,
+          "simulatedMeanCm3": 7.873920000000001,
+          "readCm3": 6,
+          "relativeError": 0.31232000000000015,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 50,
+              "cm3": 7.980800000000001
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 50,
+              "cm3": 8.224000000000002
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 50,
+              "cm3": 7.894400000000002
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 50,
+              "cm3": 7.756800000000001
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 50,
+              "cm3": 7.513600000000001
+            }
+          ]
+        },
+        {
+          "workers": 100,
+          "simulatedMeanCm3": 16.471040000000006,
+          "readCm3": 10,
+          "relativeError": 0.6471040000000006,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 100,
+              "cm3": 16.166400000000003
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 100,
+              "cm3": 16.585600000000003
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 100,
+              "cm3": 16.844800000000003
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 100,
+              "cm3": 15.897600000000002
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 100,
+              "cm3": 16.860800000000005
+            }
+          ]
+        },
+        {
+          "workers": 200,
+          "simulatedMeanCm3": 32.187520000000006,
+          "readCm3": 17,
+          "relativeError": 0.8933835294117651,
+          "runs": [
+            {
+              "seed": "ARENA-BASE-1",
+              "workers": 200,
+              "cm3": 31.011200000000006
+            },
+            {
+              "seed": "ARENA-BASE-2",
+              "workers": 200,
+              "cm3": 31.078400000000006
+            },
+            {
+              "seed": "ARENA-BASE-3",
+              "workers": 200,
+              "cm3": 33.123200000000004
+            },
+            {
+              "seed": "ARENA-BASE-4",
+              "workers": 200,
+              "cm3": 32.71040000000001
+            },
+            {
+              "seed": "ARENA-BASE-5",
+              "workers": 200,
+              "cm3": 33.01440000000001
+            }
+          ]
+        }
+      ],
+      "score": 0.617602509803922
+    }
+  ],
+  "selected": "follow-035",
+  "reservedPlan": {
+    "groups": [
+      50,
+      100,
+      200
+    ],
+    "seeds": [
+      "ARENA-CHECAGEM-1",
+      "ARENA-CHECAGEM-2",
+      "ARENA-CHECAGEM-3",
+      "ARENA-CHECAGEM-4",
+      "ARENA-CHECAGEM-5"
+    ],
+    "settings": {
+      "mechanism": "edge-follow",
+      "contactAccess": 0.35,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8
+    }
+  },
+  "runSourceCommit": "c7e2688bbd4b5eb0cd8cc87f951b0abb01f1a6c5",
+  "runArithmetic": "ecmascript-native-f64-v1"
+}

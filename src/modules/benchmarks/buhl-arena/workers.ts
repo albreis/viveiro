@@ -39,7 +39,7 @@ export class BuhlLabWorkers {
     this.soil = soil;
     this.plan = plan;
     this.#random = seededRandom(plan.seed + ":buhl-lab-workers-v1").random;
-    this.#occupied = new Uint16Array(arena.cellsPerSide ** 2);
+    this.#occupied = new Uint16Array(arena.cellsPerSide * arena.cellsPerSide);
     const seconds = plan.tickMilliseconds / 1000;
     this.#edge =
       plan.mechanism === "local"
@@ -49,6 +49,7 @@ export class BuhlLabWorkers {
             this.#random,
             seconds,
             plan.mechanism === "edge-recruit",
+            plan.contactAccess,
           );
     this.#moveChance =
       (BUHL_INDIVIDUAL.speedMmPerSecond * seconds) / plan.pitchMm;
