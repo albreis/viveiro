@@ -4,6 +4,10 @@ O CITATION.cff da raiz descreve a versão atual do software. Arquivos desta past
 preservam citações de versões específicas com DOI realmente publicado.
 Não transferir um DOI para uma versão com fonte diferente.
 
+A partir da release seguinte à 0.46.0, a autoria é Everaldo Reis da Silva
+(ORCID 0009-0008-0719-8722). As citações abaixo reproduzem a autoria registrada
+na época de cada publicação.
+
 ## Versão0.36.0
 
 Viveiro contributors (2026). Viveiro: terrário3D e simulação multiagente de
