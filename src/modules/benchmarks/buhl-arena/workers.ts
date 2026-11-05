@@ -1,3 +1,4 @@
+import { BuhlDigFatigue } from "./dig-fatigue.ts";
 import { BuhlEdgeContact, type EdgeContact } from "./edge.ts";
 import { seededRandom } from "../../../libs/seeded-random.ts";
 import type { BuhlArena } from "./geometry.ts";
@@ -13,6 +14,7 @@ interface DigTask {
   target: number;
   mass: number;
   untilTick: number;
+  effortTicks: number;
 }
 interface Worker extends EdgeContact {
   id: number;
@@ -50,6 +52,9 @@ export class BuhlLabWorkers {
             seconds,
             plan.mechanism === "edge-recruit",
             plan.contactAccess,
+            plan.digFatigue
+              ? seededRandom(plan.seed + ":buhl-dig-fatigue-v1").random
+              : null,
           );
     this.#moveChance =
       (BUHL_INDIVIDUAL.speedMmPerSecond * seconds) / plan.pitchMm;
@@ -70,6 +75,7 @@ export class BuhlLabWorkers {
       const id = index + 1;
       this.#occupied[cell] = id;
       return {
+        ...(plan.digFatigue ? { digFatigue: new BuhlDigFatigue(seconds) } : {}),
         id,
         cell,
         heading: Math.floor(this.#random() * 4),
@@ -86,6 +92,7 @@ export class BuhlLabWorkers {
     for (const worker of this.#agents) {
       if (worker.dig) {
         if (tick >= worker.dig.untilTick) {
+          worker.digFatigue?.recordWork(tick, worker.dig.effortTicks);
           worker.load = this.soil.dig(
             worker.cell,
             worker.dig.target,
@@ -122,7 +129,12 @@ export class BuhlLabWorkers {
       (BUHL_INDIVIDUAL.pelletSeconds * 1000 * mass) /
         (this.plan.tickMilliseconds * BUHL_INDIVIDUAL.pelletMicrograms),
     );
-    worker.dig = { target, mass, untilTick: tick + elapsedTicks };
+    worker.dig = {
+      target,
+      mass,
+      untilTick: tick + elapsedTicks,
+      effortTicks: elapsedTicks,
+    };
     return true;
   }
 
@@ -163,17 +175,22 @@ export class BuhlLabWorkers {
       worker.load = this.soil.pickUp(target);
   }
 
-  sample() {
+  sample(tick: number) {
     let digging = 0;
     let carrying = 0;
+    let readiness = 0;
     for (const worker of this.#agents) {
       if (worker.dig) digging++;
       if (worker.load) carrying++;
+      if (worker.digFatigue) readiness += worker.digFatigue.readiness(tick);
     }
     return {
       workers: this.#agents.length,
       digging,
       carrying,
+      ...(this.plan.digFatigue
+        ? { meanDigReadiness: readiness / this.#agents.length }
+        : {}),
       distanceMm: this.#steps * this.arena.pitchMm,
       ...this.#edge?.sample(),
     };

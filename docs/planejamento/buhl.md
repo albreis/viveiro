@@ -69,6 +69,7 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   concluído. A configuração foi congelada antes de usar as seeds
   reservadas. Faltam observações empíricas independentes por réplica.
   [Método, escolha e plano reservado](buhl-ajuste.md).
+  [Hipótese de fadiga local e comparação pré-especificada](buhl-fadiga.md).
 - [x] **B8 — Avaliar e publicar:** 15 rodadas de 72 h com seeds reservadas.
   O ajuste melhorou o MAE, mas o volume cresceu demais após 12 h.
   [Relatório, dados e reprodução](../validacao.md). P3.2 e P3.3 seguem abertos.

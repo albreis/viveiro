@@ -16,6 +16,7 @@ export type BuhlMechanism = "local" | "edge-follow" | "edge-recruit";
 export interface BuhlLabPlan {
   mechanism: BuhlMechanism;
   contactAccess: number;
+  digFatigue?: "work-recovery";
   seed: string;
   workers: BuhlGroupSize;
   durationSeconds: number;
@@ -32,6 +33,7 @@ const keys = new Set([
   "seed",
   "mechanism",
   "contactAccess",
+  "digFatigue",
   "workers",
   "durationSeconds",
   "sampleEverySeconds",
@@ -95,7 +97,14 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
   const contactAccess = number("contactAccess", 0, 1, 1);
   if (mechanism === "local" && contactAccess !== 1)
     throw Error("Acesso à face requer seguimento ou recrutamento.");
+  const { digFatigue } = raw;
+  if (
+    Object.hasOwn(raw, "digFatigue") &&
+    (digFatigue !== "work-recovery" || mechanism !== "edge-follow")
+  )
+    throw Error("A fadiga experimental requer seguimento da parede.");
   return {
+    ...(digFatigue === "work-recovery" ? { digFatigue } : {}),
     seed,
     workers,
     mechanism,

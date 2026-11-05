@@ -1,3 +1,4 @@
+import type { BuhlDigFatigue } from "./dig-fatigue.ts";
 import { modelMath } from "../../../libs/model-math.ts";
 import type { BuhlArena } from "./geometry.ts";
 import { chancePerTick } from "./settings.ts";
@@ -13,11 +14,13 @@ export interface EdgeContact {
   face: number;
   freshContact: boolean;
   following: boolean;
+  digFatigue?: BuhlDigFatigue;
 }
 
 export class BuhlEdgeContact {
   private readonly arena: BuhlArena;
   private readonly random: () => number;
+  private readonly fatigueRandom: (() => number) | null;
   readonly #leaveChance: number;
   readonly #access: number;
   readonly #decayPerTick: number;
@@ -32,9 +35,11 @@ export class BuhlEdgeContact {
     seconds: number,
     recruit: boolean,
     access: number,
+    fatigueRandom: (() => number) | null,
   ) {
     this.arena = arena;
     this.random = random;
+    this.fatigueRandom = fatigueRandom;
     this.#access = access;
     this.#leaveChance = chancePerTick(edgeLeavePerSecond, seconds);
     this.#decayPerTick = (Math.LN2 * seconds) / halfLifeSeconds;
@@ -75,10 +80,8 @@ export class BuhlEdgeContact {
       recess
         ? agent.freshContact && this.random() < recessPerContact * this.#access
         : flatChance > 0 && this.random() < flatChance * this.#access
-    ) {
-      this.#digStarts++;
-      return true;
-    }
+    )
+      return this.#acceptStart(agent, tick);
     if (!this.#marks || !agent.freshContact) return false;
     let mark = this.#strength(agent.face, tick);
     for (let heading = 0; heading < 4; heading++) {
@@ -89,6 +92,17 @@ export class BuhlEdgeContact {
     const chance = ((mark * mark) / (mark * mark + k * k)) * this.#access;
     if (chance === 0 || this.random() >= chance) return false;
     this.#recruited++;
+    this.#digStarts++;
+    return true;
+  }
+
+  #acceptStart(agent: EdgeContact, tick: number): boolean {
+    if (
+      agent.digFatigue &&
+      this.fatigueRandom &&
+      this.fatigueRandom() >= agent.digFatigue.readiness(tick)
+    )
+      return false;
     this.#digStarts++;
     return true;
   }

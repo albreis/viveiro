@@ -1,0 +1,25 @@
+{
+  "groups": [
+    50,
+    100,
+    200
+  ],
+  "seeds": [
+    "ARENA-FADIGA-1",
+    "ARENA-FADIGA-2",
+    "ARENA-FADIGA-3",
+    "ARENA-FADIGA-4",
+    "ARENA-FADIGA-5"
+  ],
+  "settings": {
+    "mechanism": "edge-follow",
+    "contactAccess": 0.35,
+    "separationMm": 5,
+    "dryDensityMgPerMm3": 1.5,
+    "durationSeconds": 259200,
+    "sampleEverySeconds": 1200,
+    "tickMilliseconds": 50,
+    "pitchMm": 0.8,
+    "digFatigue": "work-recovery"
+  }
+}
