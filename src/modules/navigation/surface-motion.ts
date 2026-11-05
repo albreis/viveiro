@@ -1,3 +1,4 @@
+import { effortEnabled, recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { blocksVegetation } from "../predators/vegetation.ts";
 import { logLevel, pondLevel, blocksObstacle } from "./surface-obstacles.ts";
@@ -82,7 +83,12 @@ export function moveSurface(
     heading = entity.avoidAngle ?? heading;
     entity.avoidTicks = (entity.avoidTicks || 0) - 1;
   }
-  let candidate: { x: number; z: number; angle: number } | null = null;
+  let candidate: {
+    x: number;
+    z: number;
+    angle: number;
+    detour: boolean;
+  } | null = null;
   for (const turn of [
     0,
     0.45,
@@ -99,7 +105,7 @@ export function moveSurface(
     const x = entity.x + modelMath.cos(angle) * speed,
       z = entity.z + modelMath.sin(angle) * speed;
     if (!blocked(x, z, angle)) {
-      candidate = { x, z, angle };
+      candidate = { x, z, angle, detour: turn !== 0 };
       if (turn) {
         entity.avoidTicks = 5;
         entity.avoidAngle = angle;
@@ -109,6 +115,7 @@ export function moveSurface(
   }
   if (!candidate) {
     if (!predator) {
+      recordMotionEffort(world, entity, null, false, true);
       recordCongestion(entity);
       entity.state = "Contato Antenal";
     }
@@ -125,6 +132,14 @@ export function moveSurface(
     };
     recordCongestion(entity);
   }
+  const origin =
+    !predator && effortEnabled(world, entity)
+      ? {
+          x: entity.x,
+          z: entity.z,
+          y: surfaceHeight(world.nest.relief, entity.x, entity.z) + 0.008,
+        }
+      : null;
   entity.x = candidate.x;
   entity.z = candidate.z;
   entity.y = surfaceHeight(world.nest.relief, entity.x, entity.z) + 0.008;
@@ -136,5 +151,17 @@ export function moveSurface(
     ) / entity.normal.y,
   );
   entity.angle = candidate.angle;
+  if (origin)
+    recordMotionEffort(
+      world,
+      entity,
+      {
+        x: entity.x - origin.x,
+        y: entity.y - origin.y,
+        z: entity.z - origin.z,
+      },
+      candidate.detour,
+      true,
+    );
   return true;
 }

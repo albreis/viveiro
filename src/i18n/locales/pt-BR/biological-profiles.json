@@ -36,5 +36,7 @@
   "biology.foundation.unknown": "desconhecida",
   "biology.active": "Atual: {label} · v{version}. Sem espécie calibrada. Ar atual {temperature}°C/{humidity}%. ",
   "biology.preserved": "Perfil preservado no experimento.",
-  "biology.legacy": "Save legado reconhecido como genérico, sem reescrever seus parâmetros."
+  "biology.legacy": "Save legado reconhecido como genérico, sem reescrever seus parâmetros.",
+  "biology.profile.generic-effort-demo@1": "Fadiga · esforço no terrário",
+  "biology.description.generic-effort-demo@1": "Operárias acumulam esforço em deslocamentos e escavações e se recuperam com o tempo. Carga, relevo, desvios e condições locais entram no cálculo exploratório."
 }

@@ -1,13 +1,14 @@
 # Continuação — cronograma por responsabilidade
 
 05/11/2026. Trabalhar em G:/Projetos/viveiro, ler AGENTS.md e cronograma.md,
-conferir Git/PRs e preservar saves, branches e tags. Última entrega
-técnica em T4: [avaliação de Buhl em 72 h](validacao.md). A pendência
+conferir Git/PRs e preservar saves, branches e tags. As últimas entregas
+técnicas de T4 estão no [relatório da triagem](planejamento/buhl-microclima.md). A pendência
 científica de B7 requer séries empíricas independentes por réplica.
 
 ## Estado preservado
 
-Release **0.46.0**, fonte `7f4d20674206916ea443ef2f359097da5ca18731`.
+Última release **[0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0)**.
+A versão 0.46.0 teve fonte `7f4d20674206916ea443ef2f359097da5ca18731`.
 P2.1–P2.7 publicados; P2.8/P5 descartados. PRs76–80 entregaram comunidade,
 galeria com dez receitas internas, contraste A/B e UI/renderer em TS estrito.
 474 testes completos, build460módulos, CodeQL e QA aprovados na entrega.
@@ -24,7 +25,7 @@ DOI automático **10.5281/zenodo.23932885**, versão0.46.0, conferido no registr
 público e no ZIP baixado; ver validacoes/zenodo-0.46.0.json. P0.4 encerrado.
 Não duplicar depósitos, publicar versões intermediárias no Zenodo ou reescrever tags.
 
-Público: https://viveiro.ersolucoesweb.com.br/releases/v0.46.0/
+Público: https://viveiro.ersolucoesweb.com.br/
 Não atualizar antigo Site público ChatGPT. Site original privado preservado:
 appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/revisão1/um dono/zero externos.
 Fonte privada2ad7611 equivalente à tag; recibo de deploy na evidência da release.
@@ -32,6 +33,9 @@ Dev4173 iniciado em G (PID15348 na última verificação); preview4189 preservad
 Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuário.
 
 ## Próximo passo concreto
+
+Para retomar a fila técnica, conferir Git e os PRs de T6 e seguir o
+[plano de fundação comparável](planejamento/fundacao-comparavel.md).
 
 **Próximo passo em T4.** Aguardar a resposta ao e-mail que o mantenedor
 enviou à Dra. Camille Buhl em 05/11/2026. Ao receber dados ou um link,
@@ -43,8 +47,9 @@ A [instrumentação](planejamento/buhl-atividade.md) mede esforço e massa
 por operária e já tem um piloto pareado de duas horas. A
 [triagem de microclima](planejamento/buhl-microclima.md) concluiu 48 rodadas
 pareadas, com balanço de massa e controle de fluxo com água fixa.
-Próximo trabalho técnico, ligar o esforço de locomoção, carga, bloqueio
-e escavação ao terrário 3D em perfil exploratório versionado.
+O [perfil de esforço no terrário 3D](planejamento/fadiga-esforco.md) liga
+locomoção, carga, bloqueio, clima e escavação. A próxima ação de B7 depende
+dos registros independentes solicitados à autora.
 Para estimar fadiga, procurar duração e frequência de escavação e repouso
 por operária em condições comparáveis. Fixar novos parâmetros e critérios
 antes de comparar com observações reservadas.

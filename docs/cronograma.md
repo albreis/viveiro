@@ -57,6 +57,7 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
 4. **T4 — Buhl/P3:** B1–B6 e B8 entregues. B7 tem ajuste exploratório e
    avaliação em seeds reservadas. Faltam séries empíricas independentes.
    [Avaliação de 72 h](validacao.md). [Fadiga local em 30 rodadas pareadas](planejamento/buhl-fadiga.md).
+   [Triagem de microclima](planejamento/buhl-microclima.md) e [esforço no terrário 3D](planejamento/fadiga-esforco.md) disponíveis como investigações exploratórias.
    [Pendências e critérios](planejamento/buhl.md).
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.

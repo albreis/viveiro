@@ -30,7 +30,8 @@ export function chooseSupportedStep(
   if (length(forward) < 0.001) forward = { x: 1, y: 0, z: 0 };
   const side = normalize(cross(normal, forward));
   const handedness = ant.id % 2 ? 1 : -1;
-  let best: ReturnType<typeof stepOnSupport> | null = null,
+  let best: (ReturnType<typeof stepOnSupport> & { detour?: boolean }) | null =
+      null,
     bestScore = -Infinity;
   for (const turn of [
     0,
@@ -75,7 +76,7 @@ export function chooseSupportedStep(
       (travel / speed) * 0.2 -
       Math.abs(turn) * 0.015;
     if (score > bestScore) {
-      best = next;
+      best = turn === 0 ? next : { ...next, detour: true };
       bestScore = score;
     }
     if (turn === 0 && best) return best;

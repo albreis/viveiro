@@ -1,3 +1,4 @@
+import { recordDigEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type { DigProject, SoilWorld, SoilAgent } from "./types.ts";
 import { distance3, removedSoil } from "./ledger.ts";
@@ -123,6 +124,7 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
     distance3(front, base) - Math.max(0, base.r - front.r),
   );
   const mass = Math.PI * modelMath.pow(front.r, 2) * (after - before);
+  recordDigEffort(world, ant, step / 0.02);
   project.excavated += mass;
   removedSoil(world, ant, mass);
   depositMark(world, project);

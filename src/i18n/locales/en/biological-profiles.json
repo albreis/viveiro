@@ -36,5 +36,7 @@
   "biology.foundation.unknown": "unknown",
   "biology.active": "Current: {label} · v{version}. No calibrated species. Current air {temperature}°C/{humidity}%. ",
   "biology.preserved": "Profile preserved in the experiment.",
-  "biology.legacy": "Legacy save recognized as generic, without rewriting its parameters."
+  "biology.legacy": "Legacy save recognized as generic, without rewriting its parameters.",
+  "biology.profile.generic-effort-demo@1": "Fatigue · terrarium effort",
+  "biology.description.generic-effort-demo@1": "Workers build up effort when moving and digging and recover over time. Load, slopes, detours and local conditions feed the exploratory calculation."
 }

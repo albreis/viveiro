@@ -1,3 +1,4 @@
+import type { EffortEnvironment } from "../fatigue/terrarium.ts";
 export interface Vec3 {
   x: number;
   y: number;
@@ -26,6 +27,7 @@ export interface AgentState {
   learningUpdates?: number;
   learningBrain?: import("../learning/types.ts").TinyBrain;
   learningTrace?: import("../learning/types.ts").LearningTrace;
+  effort?: import("../fatigue/effort-model.ts").EffortState;
   id: number;
   health?: number;
   bodyOdor?: number[];
@@ -116,7 +118,7 @@ export interface NestState {
   traffic?: { idleYield?: boolean };
 }
 
-export interface NavigationWorld {
+export interface NavigationWorld extends EffortEnvironment {
   decisionExtension?: import("../extensions/types.ts").ExtensionReference;
   extensionDecisions?: number;
   plants?: import("../landscape/types.ts").Plant[];
