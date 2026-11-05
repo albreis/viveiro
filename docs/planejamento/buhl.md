@@ -58,10 +58,10 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   grupo. Os antigos limites apenas inferiores aceitaram saturação precoce.
   Não comparar horizontes de 8/16h com alvos de 24/48h sem correspondência.
   [Diagnóstico bilateral e contrato da série física](buhl-criterios.md).
-- [ ] **B5 — Rodadas retomáveis:** adaptar varreduras/sensibilidade às entradas
-  de escavação; salvar por execução, fonte, seed, parâmetros e progresso.
-  Rodadas BUHL-2/n1c30 de 72h foram preparadas, mas não concluídas no relatório;
-  não rodar cegamente nem repetir variantes já descartadas.
+- [x] **B5 — Rodadas retomáveis:** executor por seed/grupo com plano, fonte,
+  versão do Node, checkpoint e hash por rodada. Triagem Morris pareia seeds
+  para densidade seca, taxa de escavação e coleta de pelotas.
+  [Planos, comandos e retomada](buhl-lotes.md).
 - [ ] **B6 — Ajustar mecanismos justificados:** abertura precoce das frentes,
   densidade inicial, recrutamento e limites geométricos; separar volume de
   construção do alargamento de tráfego. Não afrouxar o verificador para passar.
