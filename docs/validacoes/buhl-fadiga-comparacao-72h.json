@@ -1,0 +1,1047 @@
+{
+  "schema": "viveiro-buhl-fadiga-comparacao-v1",
+  "calibrated": false,
+  "independentEmpiricalValidation": false,
+  "runSourceCommit": "2be875ba67da45df10c56875615c6a7aa82e1449",
+  "sourceFingerprint": "b515822d01abbcb6217bccf29ec1d92033e9825e8d7e57a6b1b061de2d7b780a",
+  "nodeVersion": "v24.22.1",
+  "references": {
+    "curve": "Buhl et al. (2001), Fig. 2a; digitalização aproximada.",
+    "readingErrorCm3": 3,
+    "final": "Buhl et al. (2005), Tabela 1, disco fixo; doi:10.1007/s00265-004-0906-2"
+  },
+  "rules": {
+    "rule": "work-recovery",
+    "workHalfResponseSeconds": 3600,
+    "recoveryHalfLifeSeconds": 86400
+  },
+  "runCount": 30,
+  "sampleCount": 6510,
+  "criteria": {
+    "allLowerMae": false,
+    "allEarlyWithin": true,
+    "groupsWithCloserLateRate": 3
+  },
+  "qualifiesForNewEvaluation": false,
+  "arms": {
+    "controle": {
+      "sourceSeriesSha256": "d4e5bf25881a97494ad66bfe2e6f88c16d2a3837993ae3e9c08c8ef2b814c331",
+      "publishedSeriesSha256Lf": "da86d38dd247e521711ae4aa02b1d49fa3d94e1089957956d6eb31619d67d7ca",
+      "samples": 3255,
+      "groups": [
+        {
+          "workers": 50,
+          "replicateSeeds": [
+            "ARENA-FADIGA-1",
+            "ARENA-FADIGA-2",
+            "ARENA-FADIGA-3",
+            "ARENA-FADIGA-4",
+            "ARENA-FADIGA-5"
+          ],
+          "curve": [
+            {
+              "hour": 0,
+              "simulatedMeanCm3": 0,
+              "simulatedSampleSdCm3": 0,
+              "readCm3": 0,
+              "bandCm3": [
+                0,
+                0
+              ],
+              "within": true
+            },
+            {
+              "hour": 12,
+              "simulatedMeanCm3": 6.1222400000000015,
+              "simulatedSampleSdCm3": 0.16482951192065085,
+              "readCm3": 6,
+              "bandCm3": [
+                3,
+                9
+              ],
+              "within": true
+            },
+            {
+              "hour": 24,
+              "simulatedMeanCm3": 11.950080000000003,
+              "simulatedSampleSdCm3": 0.29650206070110224,
+              "readCm3": 12,
+              "bandCm3": [
+                9,
+                15
+              ],
+              "within": true
+            },
+            {
+              "hour": 36,
+              "simulatedMeanCm3": 17.44384,
+              "simulatedSampleSdCm3": 0.252824302629316,
+              "readCm3": 16.5,
+              "bandCm3": [
+                13.5,
+                19.5
+              ],
+              "within": true
+            },
+            {
+              "hour": 48,
+              "simulatedMeanCm3": 22.960000000000004,
+              "simulatedSampleSdCm3": 0.14920375330399704,
+              "readCm3": 20.5,
+              "bandCm3": [
+                17.5,
+                23.5
+              ],
+              "within": true
+            },
+            {
+              "hour": 60,
+              "simulatedMeanCm3": 28.575360000000007,
+              "simulatedSampleSdCm3": 0.21664968959128486,
+              "readCm3": 23,
+              "bandCm3": [
+                20,
+                26
+              ],
+              "within": false
+            },
+            {
+              "hour": 72,
+              "simulatedMeanCm3": 33.82016000000001,
+              "simulatedSampleSdCm3": 0.1946010483013891,
+              "readCm3": 25,
+              "bandCm3": [
+                22,
+                28
+              ],
+              "within": false
+            }
+          ],
+          "maeCm3": 2.9952533333333364,
+          "readBandCoverage": 0.6666666666666666,
+          "finalCm3": 33.82016000000001,
+          "earlyFraction": [
+            {
+              "hour": 24,
+              "simulated": 0.3533419120429945,
+              "read": 0.48
+            },
+            {
+              "hour": 48,
+              "simulated": 0.6788850200590417,
+              "read": 0.82
+            }
+          ],
+          "articleFinal72h": {
+            "observedMeanCm3": 25.35,
+            "observedSdCm3": 11,
+            "observedN": 5,
+            "descriptiveBandCm3": [
+              14.350000000000001,
+              36.35
+            ],
+            "withinDescriptiveBand": true
+          }
+        },
+        {
+          "workers": 100,
+          "replicateSeeds": [
+            "ARENA-FADIGA-1",
+            "ARENA-FADIGA-2",
+            "ARENA-FADIGA-3",
+            "ARENA-FADIGA-4",
+            "ARENA-FADIGA-5"
+          ],
+          "curve": [
+            {
+              "hour": 0,
+              "simulatedMeanCm3": 0,
+              "simulatedSampleSdCm3": 0,
+              "readCm3": 0,
+              "bandCm3": [
+                0,
+                0
+              ],
+              "within": true
+            },
+            {
+              "hour": 12,
+              "simulatedMeanCm3": 11.554560000000002,
+              "simulatedSampleSdCm3": 0.22759852372104705,
+              "readCm3": 10,
+              "bandCm3": [
+                7,
+                13
+              ],
+              "within": true
+            },
+            {
+              "hour": 24,
+              "simulatedMeanCm3": 22.120960000000004,
+              "simulatedSampleSdCm3": 0.36900315445806237,
+              "readCm3": 19,
+              "bandCm3": [
+                16,
+                22
+              ],
+              "within": false
+            },
+            {
+              "hour": 36,
+              "simulatedMeanCm3": 32.51200000000001,
+              "simulatedSampleSdCm3": 0.4844857067035099,
+              "readCm3": 26,
+              "bandCm3": [
+                23,
+                29
+              ],
+              "within": false
+            },
+            {
+              "hour": 48,
+              "simulatedMeanCm3": 42.89792000000001,
+              "simulatedSampleSdCm3": 0.5348434088590787,
+              "readCm3": 31,
+              "bandCm3": [
+                28,
+                34
+              ],
+              "within": false
+            },
+            {
+              "hour": 60,
+              "simulatedMeanCm3": 52.92992000000002,
+              "simulatedSampleSdCm3": 0.83363408759479,
+              "readCm3": 34,
+              "bandCm3": [
+                31,
+                37
+              ],
+              "within": false
+            },
+            {
+              "hour": 72,
+              "simulatedMeanCm3": 62.665600000000005,
+              "simulatedSampleSdCm3": 1.0976769652315768,
+              "readCm3": 37,
+              "bandCm3": [
+                34,
+                40
+              ],
+              "within": false
+            }
+          ],
+          "maeCm3": 11.28016000000001,
+          "readBandCoverage": 0.16666666666666666,
+          "finalCm3": 62.665600000000005,
+          "earlyFraction": [
+            {
+              "hour": 24,
+              "simulated": 0.353000051064699,
+              "read": 0.5135135135135135
+            },
+            {
+              "hour": 48,
+              "simulated": 0.6845529285604863,
+              "read": 0.8378378378378378
+            }
+          ],
+          "articleFinal72h": {
+            "observedMeanCm3": 37.15,
+            "observedSdCm3": 9.2,
+            "observedN": 5,
+            "descriptiveBandCm3": [
+              27.95,
+              46.349999999999994
+            ],
+            "withinDescriptiveBand": false
+          }
+        },
+        {
+          "workers": 200,
+          "replicateSeeds": [
+            "ARENA-FADIGA-1",
+            "ARENA-FADIGA-2",
+            "ARENA-FADIGA-3",
+            "ARENA-FADIGA-4",
+            "ARENA-FADIGA-5"
+          ],
+          "curve": [
+            {
+              "hour": 0,
+              "simulatedMeanCm3": 0,
+              "simulatedSampleSdCm3": 0,
+              "readCm3": 0,
+              "bandCm3": [
+                0,
+                0
+              ],
+              "within": true
+            },
+            {
+              "hour": 12,
+              "simulatedMeanCm3": 19.566720000000004,
+              "simulatedSampleSdCm3": 0.436683354388508,
+              "readCm3": 17,
+              "bandCm3": [
+                14,
+                20
+              ],
+              "within": true
+            },
+            {
+              "hour": 24,
+              "simulatedMeanCm3": 38.175360000000005,
+              "simulatedSampleSdCm3": 0.741683792461451,
+              "readCm3": 31,
+              "bandCm3": [
+                28,
+                34
+              ],
+              "within": false
+            },
+            {
+              "hour": 36,
+              "simulatedMeanCm3": 56.64832000000001,
+              "simulatedSampleSdCm3": 1.1360982492724836,
+              "readCm3": 39,
+              "bandCm3": [
+                36,
+                42
+              ],
+              "within": false
+            },
+            {
+              "hour": 48,
+              "simulatedMeanCm3": 74.66816000000001,
+              "simulatedSampleSdCm3": 1.6916281766392987,
+              "readCm3": 47,
+              "bandCm3": [
+                44,
+                50
+              ],
+              "within": false
+            },
+            {
+              "hour": 60,
+              "simulatedMeanCm3": 91.45216000000002,
+              "simulatedSampleSdCm3": 1.9351421570520382,
+              "readCm3": 54,
+              "bandCm3": [
+                51,
+                57
+              ],
+              "within": false
+            },
+            {
+              "hour": 72,
+              "simulatedMeanCm3": 107.11616000000001,
+              "simulatedSampleSdCm3": 1.8575350893051767,
+              "readCm3": 59,
+              "bandCm3": [
+                56,
+                62
+              ],
+              "within": false
+            }
+          ],
+          "maeCm3": 23.43781333333334,
+          "readBandCoverage": 0.16666666666666666,
+          "finalCm3": 107.11616000000001,
+          "earlyFraction": [
+            {
+              "hour": 24,
+              "simulated": 0.3563921634233341,
+              "read": 0.5254237288135594
+            },
+            {
+              "hour": 48,
+              "simulated": 0.6970765195466306,
+              "read": 0.7966101694915254
+            }
+          ],
+          "articleFinal72h": {
+            "observedMeanCm3": 65.27,
+            "observedSdCm3": 22.4,
+            "observedN": 10,
+            "descriptiveBandCm3": [
+              42.87,
+              87.66999999999999
+            ],
+            "withinDescriptiveBand": false
+          }
+        }
+      ],
+      "scale": {
+        "simulatedSlope": 0.8316103787466005,
+        "digitizationBand": [
+          0.5000000000000003,
+          0.747382345874789
+        ],
+        "withinDigitizationBand": false
+      }
+    },
+    "local": {
+      "sourceSeriesSha256": "ffbf113ba74157a9f5f7ab7924e0a080df36c557a71cf2287ead23a5544778ab",
+      "publishedSeriesSha256Lf": "f25ef4b9781baea08530d46484f35ee5734328a37fcf1cbbe9bda64373830473",
+      "samples": 3255,
+      "groups": [
+        {
+          "workers": 50,
+          "replicateSeeds": [
+            "ARENA-FADIGA-1",
+            "ARENA-FADIGA-2",
+            "ARENA-FADIGA-3",
+            "ARENA-FADIGA-4",
+            "ARENA-FADIGA-5"
+          ],
+          "curve": [
+            {
+              "hour": 0,
+              "simulatedMeanCm3": 0,
+              "simulatedSampleSdCm3": 0,
+              "readCm3": 0,
+              "bandCm3": [
+                0,
+                0
+              ],
+              "within": true
+            },
+            {
+              "hour": 12,
+              "simulatedMeanCm3": 4.8211200000000005,
+              "simulatedSampleSdCm3": 0.09542762702697795,
+              "readCm3": 6,
+              "bandCm3": [
+                3,
+                9
+              ],
+              "within": true
+            },
+            {
+              "hour": 24,
+              "simulatedMeanCm3": 8.561920000000002,
+              "simulatedSampleSdCm3": 0.06687923444537965,
+              "readCm3": 12,
+              "bandCm3": [
+                9,
+                15
+              ],
+              "within": false
+            },
+            {
+              "hour": 36,
+              "simulatedMeanCm3": 11.610240000000001,
+              "simulatedSampleSdCm3": 0.08299667463218054,
+              "readCm3": 16.5,
+              "bandCm3": [
+                13.5,
+                19.5
+              ],
+              "within": false
+            },
+            {
+              "hour": 48,
+              "simulatedMeanCm3": 14.498560000000001,
+              "simulatedSampleSdCm3": 0.1294201220830828,
+              "readCm3": 20.5,
+              "bandCm3": [
+                17.5,
+                23.5
+              ],
+              "within": false
+            },
+            {
+              "hour": 60,
+              "simulatedMeanCm3": 17.218560000000004,
+              "simulatedSampleSdCm3": 0.07287995609219289,
+              "readCm3": 23,
+              "bandCm3": [
+                20,
+                26
+              ],
+              "within": false
+            },
+            {
+              "hour": 72,
+              "simulatedMeanCm3": 19.921920000000007,
+              "simulatedSampleSdCm3": 0.0995246301173727,
+              "readCm3": 25,
+              "bandCm3": [
+                22,
+                28
+              ],
+              "within": false
+            }
+          ],
+          "maeCm3": 4.394613333333331,
+          "readBandCoverage": 0.16666666666666666,
+          "finalCm3": 19.921920000000007,
+          "earlyFraction": [
+            {
+              "hour": 24,
+              "simulated": 0.42977383705988176,
+              "read": 0.48
+            },
+            {
+              "hour": 48,
+              "simulated": 0.7277692109997428,
+              "read": 0.82
+            }
+          ],
+          "articleFinal72h": {
+            "observedMeanCm3": 25.35,
+            "observedSdCm3": 11,
+            "observedN": 5,
+            "descriptiveBandCm3": [
+              14.350000000000001,
+              36.35
+            ],
+            "withinDescriptiveBand": true
+          }
+        },
+        {
+          "workers": 100,
+          "replicateSeeds": [
+            "ARENA-FADIGA-1",
+            "ARENA-FADIGA-2",
+            "ARENA-FADIGA-3",
+            "ARENA-FADIGA-4",
+            "ARENA-FADIGA-5"
+          ],
+          "curve": [
+            {
+              "hour": 0,
+              "simulatedMeanCm3": 0,
+              "simulatedSampleSdCm3": 0,
+              "readCm3": 0,
+              "bandCm3": [
+                0,
+                0
+              ],
+              "within": true
+            },
+            {
+              "hour": 12,
+              "simulatedMeanCm3": 9.056640000000002,
+              "simulatedSampleSdCm3": 0.12605319512015525,
+              "readCm3": 10,
+              "bandCm3": [
+                7,
+                13
+              ],
+              "within": true
+            },
+            {
+              "hour": 24,
+              "simulatedMeanCm3": 15.381760000000003,
+              "simulatedSampleSdCm3": 0.15295531373574434,
+              "readCm3": 19,
+              "bandCm3": [
+                16,
+                22
+              ],
+              "within": false
+            },
+            {
+              "hour": 36,
+              "simulatedMeanCm3": 20.940800000000003,
+              "simulatedSampleSdCm3": 0.24749884848216877,
+              "readCm3": 26,
+              "bandCm3": [
+                23,
+                29
+              ],
+              "within": false
+            },
+            {
+              "hour": 48,
+              "simulatedMeanCm3": 26.199040000000007,
+              "simulatedSampleSdCm3": 0.2552428804100122,
+              "readCm3": 31,
+              "bandCm3": [
+                28,
+                34
+              ],
+              "within": false
+            },
+            {
+              "hour": 60,
+              "simulatedMeanCm3": 31.20896,
+              "simulatedSampleSdCm3": 0.27133471580319496,
+              "readCm3": 34,
+              "bandCm3": [
+                31,
+                37
+              ],
+              "within": true
+            },
+            {
+              "hour": 72,
+              "simulatedMeanCm3": 36.14656000000001,
+              "simulatedSampleSdCm3": 0.28975818884027993,
+              "readCm3": 37,
+              "bandCm3": [
+                34,
+                40
+              ],
+              "within": true
+            }
+          ],
+          "maeCm3": 3.011039999999996,
+          "readBandCoverage": 0.5,
+          "finalCm3": 36.14656000000001,
+          "earlyFraction": [
+            {
+              "hour": 24,
+              "simulated": 0.42553869579843834,
+              "read": 0.5135135135135135
+            },
+            {
+              "hour": 48,
+              "simulated": 0.7248003682784753,
+              "read": 0.8378378378378378
+            }
+          ],
+          "articleFinal72h": {
+            "observedMeanCm3": 37.15,
+            "observedSdCm3": 9.2,
+            "observedN": 5,
+            "descriptiveBandCm3": [
+              27.95,
+              46.349999999999994
+            ],
+            "withinDescriptiveBand": true
+          }
+        },
+        {
+          "workers": 200,
+          "replicateSeeds": [
+            "ARENA-FADIGA-1",
+            "ARENA-FADIGA-2",
+            "ARENA-FADIGA-3",
+            "ARENA-FADIGA-4",
+            "ARENA-FADIGA-5"
+          ],
+          "curve": [
+            {
+              "hour": 0,
+              "simulatedMeanCm3": 0,
+              "simulatedSampleSdCm3": 0,
+              "readCm3": 0,
+              "bandCm3": [
+                0,
+                0
+              ],
+              "within": true
+            },
+            {
+              "hour": 12,
+              "simulatedMeanCm3": 16.320640000000004,
+              "simulatedSampleSdCm3": 0.2787345116773298,
+              "readCm3": 17,
+              "bandCm3": [
+                14,
+                20
+              ],
+              "within": true
+            },
+            {
+              "hour": 24,
+              "simulatedMeanCm3": 27.914880000000004,
+              "simulatedSampleSdCm3": 0.3780918830125826,
+              "readCm3": 31,
+              "bandCm3": [
+                28,
+                34
+              ],
+              "within": false
+            },
+            {
+              "hour": 36,
+              "simulatedMeanCm3": 38.07488000000001,
+              "simulatedSampleSdCm3": 0.6479727401673636,
+              "readCm3": 39,
+              "bandCm3": [
+                36,
+                42
+              ],
+              "within": true
+            },
+            {
+              "hour": 48,
+              "simulatedMeanCm3": 47.2736,
+              "simulatedSampleSdCm3": 0.703188623343695,
+              "readCm3": 47,
+              "bandCm3": [
+                44,
+                50
+              ],
+              "within": true
+            },
+            {
+              "hour": 60,
+              "simulatedMeanCm3": 56.004480000000015,
+              "simulatedSampleSdCm3": 0.5019850515702655,
+              "readCm3": 54,
+              "bandCm3": [
+                51,
+                57
+              ],
+              "within": true
+            },
+            {
+              "hour": 72,
+              "simulatedMeanCm3": 64.4608,
+              "simulatedSampleSdCm3": 0.4797492678472771,
+              "readCm3": 59,
+              "bandCm3": [
+                56,
+                62
+              ],
+              "within": false
+            }
+          ],
+          "maeCm3": 2.0714133333333344,
+          "readBandCoverage": 0.6666666666666666,
+          "finalCm3": 64.4608,
+          "earlyFraction": [
+            {
+              "hour": 24,
+              "simulated": 0.4330520254169976,
+              "read": 0.5254237288135594
+            },
+            {
+              "hour": 48,
+              "simulated": 0.733369737887212,
+              "read": 0.7966101694915254
+            }
+          ],
+          "articleFinal72h": {
+            "observedMeanCm3": 65.27,
+            "observedSdCm3": 22.4,
+            "observedN": 10,
+            "descriptiveBandCm3": [
+              42.87,
+              87.66999999999999
+            ],
+            "withinDescriptiveBand": true
+          }
+        }
+      ],
+      "scale": {
+        "simulatedSlope": 0.8470326988167614,
+        "digitizationBand": [
+          0.5000000000000003,
+          0.747382345874789
+        ],
+        "withinDigitizationBand": false
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "workers": 50,
+      "pairs": [
+        {
+          "seed": "ARENA-FADIGA-1",
+          "controle": {
+            "volume12hCm3": 6.297600000000001,
+            "volume48hCm3": 23.094400000000004,
+            "volume72hCm3": 33.80800000000001,
+            "lateRateCm3PerHour": 0.44640000000000013
+          },
+          "local": {
+            "volume12hCm3": 4.8256000000000006,
+            "volume48hCm3": 14.518400000000003,
+            "volume72hCm3": 20.003200000000003,
+            "lateRateCm3PerHour": 0.22853333333333334
+          },
+          "deltaVolume72hCm3": -13.804800000000004,
+          "deltaLateRateCm3PerHour": -0.2178666666666668
+        },
+        {
+          "seed": "ARENA-FADIGA-2",
+          "controle": {
+            "volume12hCm3": 6.032000000000001,
+            "volume48hCm3": 22.966400000000004,
+            "volume72hCm3": 34.073600000000006,
+            "lateRateCm3PerHour": 0.4628000000000001
+          },
+          "local": {
+            "volume12hCm3": 4.668800000000001,
+            "volume48hCm3": 14.342400000000003,
+            "volume72hCm3": 19.923200000000005,
+            "lateRateCm3PerHour": 0.2325333333333334
+          },
+          "deltaVolume72hCm3": -14.150400000000001,
+          "deltaLateRateCm3PerHour": -0.2302666666666667
+        },
+        {
+          "seed": "ARENA-FADIGA-3",
+          "controle": {
+            "volume12hCm3": 6.070400000000001,
+            "volume48hCm3": 22.857600000000005,
+            "volume72hCm3": 33.53280000000001,
+            "lateRateCm3PerHour": 0.44480000000000014
+          },
+          "local": {
+            "volume12hCm3": 4.924800000000001,
+            "volume48hCm3": 14.400000000000002,
+            "volume72hCm3": 19.763200000000005,
+            "lateRateCm3PerHour": 0.22346666666666679
+          },
+          "deltaVolume72hCm3": -13.769600000000004,
+          "deltaLateRateCm3PerHour": -0.22133333333333335
+        },
+        {
+          "seed": "ARENA-FADIGA-4",
+          "controle": {
+            "volume12hCm3": 5.923200000000001,
+            "volume48hCm3": 22.768000000000004,
+            "volume72hCm3": 33.80160000000001,
+            "lateRateCm3PerHour": 0.4597333333333335
+          },
+          "local": {
+            "volume12hCm3": 4.870400000000001,
+            "volume48hCm3": 14.566400000000003,
+            "volume72hCm3": 19.910400000000003,
+            "lateRateCm3PerHour": 0.22266666666666665
+          },
+          "deltaVolume72hCm3": -13.891200000000005,
+          "deltaLateRateCm3PerHour": -0.23706666666666684
+        },
+        {
+          "seed": "ARENA-FADIGA-5",
+          "controle": {
+            "volume12hCm3": 6.288000000000001,
+            "volume48hCm3": 23.113600000000005,
+            "volume72hCm3": 33.884800000000006,
+            "lateRateCm3PerHour": 0.44880000000000003
+          },
+          "local": {
+            "volume12hCm3": 4.816000000000001,
+            "volume48hCm3": 14.665600000000003,
+            "volume72hCm3": 20.009600000000002,
+            "lateRateCm3PerHour": 0.22266666666666665
+          },
+          "deltaVolume72hCm3": -13.875200000000003,
+          "deltaLateRateCm3PerHour": -0.22613333333333338
+        }
+      ],
+      "lateControlCm3PerHour": 0.4525066666666668,
+      "lateFatigueCm3PerHour": 0.22597333333333336,
+      "lateReferenceCm3PerHour": 0.1875,
+      "lowerMae": false,
+      "earlyWithin": true,
+      "lateCloser": true,
+      "meanDigReadiness": {
+        "12": 0.5019121869881591,
+        "48": 0.3833366993183132,
+        "72": 0.3786367427609476
+      }
+    },
+    {
+      "workers": 100,
+      "pairs": [
+        {
+          "seed": "ARENA-FADIGA-1",
+          "controle": {
+            "volume12hCm3": 11.536000000000001,
+            "volume48hCm3": 43.34400000000001,
+            "volume72hCm3": 63.811200000000014,
+            "lateRateCm3PerHour": 0.8528000000000002
+          },
+          "local": {
+            "volume12hCm3": 8.918400000000002,
+            "volume48hCm3": 26.304000000000006,
+            "volume72hCm3": 36.10240000000001,
+            "lateRateCm3PerHour": 0.40826666666666683
+          },
+          "deltaVolume72hCm3": -27.708800000000004,
+          "deltaLateRateCm3PerHour": -0.4445333333333334
+        },
+        {
+          "seed": "ARENA-FADIGA-2",
+          "controle": {
+            "volume12hCm3": 11.292800000000002,
+            "volume48hCm3": 43.14880000000001,
+            "volume72hCm3": 62.01920000000001,
+            "lateRateCm3PerHour": 0.7862666666666668
+          },
+          "local": {
+            "volume12hCm3": 9.040000000000001,
+            "volume48hCm3": 26.569600000000005,
+            "volume72hCm3": 36.544000000000004,
+            "lateRateCm3PerHour": 0.41559999999999997
+          },
+          "deltaVolume72hCm3": -25.475200000000008,
+          "deltaLateRateCm3PerHour": -0.3706666666666668
+        },
+        {
+          "seed": "ARENA-FADIGA-3",
+          "controle": {
+            "volume12hCm3": 11.692800000000002,
+            "volume48hCm3": 42.93760000000001,
+            "volume72hCm3": 63.30240000000001,
+            "lateRateCm3PerHour": 0.8485333333333335
+          },
+          "local": {
+            "volume12hCm3": 8.963200000000002,
+            "volume48hCm3": 26.134400000000007,
+            "volume72hCm3": 36.24320000000001,
+            "lateRateCm3PerHour": 0.4212000000000001
+          },
+          "deltaVolume72hCm3": -27.059200000000004,
+          "deltaLateRateCm3PerHour": -0.4273333333333334
+        },
+        {
+          "seed": "ARENA-FADIGA-4",
+          "controle": {
+            "volume12hCm3": 11.859200000000001,
+            "volume48hCm3": 43.08160000000001,
+            "volume72hCm3": 63.10720000000001,
+            "lateRateCm3PerHour": 0.8344000000000001
+          },
+          "local": {
+            "volume12hCm3": 9.228800000000001,
+            "volume48hCm3": 25.884800000000006,
+            "volume72hCm3": 36.10240000000001,
+            "lateRateCm3PerHour": 0.4257333333333335
+          },
+          "deltaVolume72hCm3": -27.004800000000003,
+          "deltaLateRateCm3PerHour": -0.4086666666666666
+        },
+        {
+          "seed": "ARENA-FADIGA-5",
+          "controle": {
+            "volume12hCm3": 11.392000000000001,
+            "volume48hCm3": 41.97760000000001,
+            "volume72hCm3": 61.08800000000001,
+            "lateRateCm3PerHour": 0.7962666666666666
+          },
+          "local": {
+            "volume12hCm3": 9.132800000000001,
+            "volume48hCm3": 26.102400000000006,
+            "volume72hCm3": 35.74080000000001,
+            "lateRateCm3PerHour": 0.4016
+          },
+          "deltaVolume72hCm3": -25.3472,
+          "deltaLateRateCm3PerHour": -0.39466666666666655
+        }
+      ],
+      "lateControlCm3PerHour": 0.8236533333333335,
+      "lateFatigueCm3PerHour": 0.41448000000000007,
+      "lateReferenceCm3PerHour": 0.25,
+      "lowerMae": true,
+      "earlyWithin": true,
+      "lateCloser": true,
+      "meanDigReadiness": {
+        "12": 0.5348018392410583,
+        "48": 0.411528836276527,
+        "72": 0.40292264192088595
+      }
+    },
+    {
+      "workers": 200,
+      "pairs": [
+        {
+          "seed": "ARENA-FADIGA-1",
+          "controle": {
+            "volume12hCm3": 19.894400000000005,
+            "volume48hCm3": 73.80480000000001,
+            "volume72hCm3": 105.31200000000003,
+            "lateRateCm3PerHour": 1.3128000000000004
+          },
+          "local": {
+            "volume12hCm3": 16.022400000000005,
+            "volume48hCm3": 46.851200000000006,
+            "volume72hCm3": 64.4672,
+            "lateRateCm3PerHour": 0.734
+          },
+          "deltaVolume72hCm3": -40.84480000000002,
+          "deltaLateRateCm3PerHour": -0.5788000000000004
+        },
+        {
+          "seed": "ARENA-FADIGA-2",
+          "controle": {
+            "volume12hCm3": 18.928000000000004,
+            "volume48hCm3": 74.54080000000002,
+            "volume72hCm3": 107.40800000000002,
+            "lateRateCm3PerHour": 1.3694666666666666
+          },
+          "local": {
+            "volume12hCm3": 16.2784,
+            "volume48hCm3": 46.83200000000001,
+            "volume72hCm3": 63.96800000000001,
+            "lateRateCm3PerHour": 0.7140000000000001
+          },
+          "deltaVolume72hCm3": -43.440000000000005,
+          "deltaLateRateCm3PerHour": -0.6554666666666665
+        },
+        {
+          "seed": "ARENA-FADIGA-3",
+          "controle": {
+            "volume12hCm3": 19.948800000000002,
+            "volume48hCm3": 73.56480000000002,
+            "volume72hCm3": 106.85760000000002,
+            "lateRateCm3PerHour": 1.3872
+          },
+          "local": {
+            "volume12hCm3": 16.6624,
+            "volume48hCm3": 46.95680000000001,
+            "volume72hCm3": 64.62720000000002,
+            "lateRateCm3PerHour": 0.736266666666667
+          },
+          "deltaVolume72hCm3": -42.2304,
+          "deltaLateRateCm3PerHour": -0.650933333333333
+        },
+        {
+          "seed": "ARENA-FADIGA-4",
+          "controle": {
+            "volume12hCm3": 19.753600000000002,
+            "volume48hCm3": 77.62240000000001,
+            "volume72hCm3": 110.10240000000002,
+            "lateRateCm3PerHour": 1.3533333333333335
+          },
+          "local": {
+            "volume12hCm3": 16.092800000000004,
+            "volume48hCm3": 47.22880000000001,
+            "volume72hCm3": 64.07360000000001,
+            "lateRateCm3PerHour": 0.701866666666667
+          },
+          "deltaVolume72hCm3": -46.028800000000004,
+          "deltaLateRateCm3PerHour": -0.6514666666666665
+        },
+        {
+          "seed": "ARENA-FADIGA-5",
+          "controle": {
+            "volume12hCm3": 19.308800000000005,
+            "volume48hCm3": 73.808,
+            "volume72hCm3": 105.90080000000002,
+            "lateRateCm3PerHour": 1.3372000000000004
+          },
+          "local": {
+            "volume12hCm3": 16.547200000000004,
+            "volume48hCm3": 48.49920000000001,
+            "volume72hCm3": 65.168,
+            "lateRateCm3PerHour": 0.6945333333333332
+          },
+          "deltaVolume72hCm3": -40.73280000000001,
+          "deltaLateRateCm3PerHour": -0.6426666666666672
+        }
+      ],
+      "lateControlCm3PerHour": 1.352,
+      "lateFatigueCm3PerHour": 0.7161333333333334,
+      "lateReferenceCm3PerHour": 0.5,
+      "lowerMae": true,
+      "earlyWithin": true,
+      "lateCloser": true,
+      "meanDigReadiness": {
+        "12": 0.5673481653687389,
+        "48": 0.44187758568698615,
+        "72": 0.4379149921496134
+      }
+    }
+  ]
+}

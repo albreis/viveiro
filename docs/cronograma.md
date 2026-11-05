@@ -53,7 +53,8 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    O ensaio em equipamento escolar segue no aceite P1.1B.
 4. **T4 — Buhl/P3:** B1–B6 e B8 entregues. B7 tem ajuste exploratório e
    avaliação em seeds reservadas. Faltam séries empíricas independentes.
-   [Avaliação de 72 h](validacao.md). [Pendências e critérios](planejamento/buhl.md).
+   [Avaliação de 72 h](validacao.md). [Fadiga local em 30 rodadas pareadas](planejamento/buhl-fadiga.md).
+   [Pendências e critérios](planejamento/buhl.md).
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.
 
