@@ -4,7 +4,7 @@
   "data.daily.closing": "Daily closing",
   "data.daily.now": "Now",
   "data.daily.coverage": "Scenario {scenario}: {count} daily samples recorded; collection since D{day}; {discarded} old days discarded. Earlier history without readings is not reconstructed.",
-  "data.daily.exported": "CSV generated with observed days and the current sample. When importing into a spreadsheet, use UTF-8, comma delimiters and a decimal point.",
+  "data.daily.exported": "CSV generated in the format of the language selected at the time of download.",
   "data.placement.invalid": "Choose an element and coordinates within the terrarium bounds.",
   "data.placement.sent": "Request sent at coordinates X {x}, Z {z}. The journal reports the model outcome.",
   "data.placement.failed": "Intervention not applied.",

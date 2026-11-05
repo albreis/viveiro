@@ -4,7 +4,7 @@
   "data.daily.closing": "Fechamento diário",
   "data.daily.now": "Agora",
   "data.daily.coverage": "Cenário {scenario}: {count} amostras diárias registradas; coleta desde D{day}; {discarded} dias antigos descartados. Histórico anterior sem leituras não é reconstruído.",
-  "data.daily.exported": "CSV gerado com dias observados e amostra atual. Ao importar em planilha, use UTF-8, vírgula como separador e ponto decimal.",
+  "data.daily.exported": "CSV gerado no formato do idioma escolhido no momento do download.",
   "data.placement.invalid": "Escolha um elemento e coordenadas dentro dos limites do terrário.",
   "data.placement.sent": "Solicitação enviada nas coordenadas X {x}, Z {z}. O diário informa o resultado do modelo.",
   "data.placement.failed": "Intervenção não aplicada.",
