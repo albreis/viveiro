@@ -6,6 +6,7 @@ import {
   citationMetadata,
   checkDepositMetadata,
   checkDepositBytes,
+  zenodoCreators,
 } from "../src/modules/publication/deposit.ts";
 
 const citation = () =>
@@ -13,7 +14,7 @@ const citation = () =>
 const zenodo = () =>
   JSON.parse(readFileSync(new URL("../.zenodo.json", import.meta.url)));
 
-test("citação vincula a release real sem inventar DOI ou autoria pessoal", () => {
+test("citação vincula a release real ao autor com ORCID, sem inventar DOI", () => {
   const c = citationMetadata(citation());
   assert.match(c.version, /^\d+\.\d+\.\d+$/);
   if (c.commit !== undefined) assert.match(c.commit, /^[a-f0-9]{40}$/);
@@ -21,9 +22,13 @@ test("citação vincula a release real sem inventar DOI ou autoria pessoal", () 
   assert.throws(() => citationMetadata({ ...c, commit: "invalid" }), /SHA/);
   assert.deepEqual(c.authors, [
     {
-      name: "Viveiro contributors",
+      "given-names": "Everaldo",
+      "family-names": "Reis da Silva",
       orcid: "https://orcid.org/0009-0008-0719-8722",
     },
+  ]);
+  assert.deepEqual(zenodo().creators, [
+    { name: "Reis da Silva, Everaldo", orcid: "0009-0008-0719-8722" },
   ]);
   assert.equal("doi" in c, false);
   checkDepositMetadata(c, zenodo());
@@ -33,6 +38,32 @@ test("citação vincula a release real sem inventar DOI ou autoria pessoal", () 
   );
   assert.throws(
     () => citationMetadata({ ...c, url: c.url.replace(c.version, "999.99.9") }),
+    /URL/,
+  );
+});
+
+test("ORCID só acompanha pessoa com prenome e sobrenome", () => {
+  const c = citationMetadata(citation());
+  const group = { name: "Viveiro contributors" };
+  assert.deepEqual(zenodoCreators({ ...c, authors: [group] }), [group]);
+  assert.throws(
+    () =>
+      citationMetadata({
+        ...c,
+        authors: [{ ...group, orcid: "https://orcid.org/0009-0008-0719-8722" }],
+      }),
+    /pessoa/,
+  );
+  assert.throws(
+    () => citationMetadata({ ...c, authors: [{ "family-names": "Silva" }] }),
+    /prenome e sobrenome/,
+  );
+  assert.throws(
+    () =>
+      citationMetadata({
+        ...c,
+        authors: [{ ...c.authors[0], orcid: "0009-0008-0719-8722" }],
+      }),
     /URL/,
   );
 });
