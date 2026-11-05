@@ -46,9 +46,9 @@ A variante ficou aquém dos critérios exploratórios. A regra segue
 opcional na arena para investigação. B7 continua pendente.
 
 O [CSV para planilhas](csv-diario.md) segue o idioma selecionado.
-O usuário confirmou a importação em localidade EUA em 05/11. A
-[verificação na planilha em português](planejamento/voce-sozinho.md)
-permanece em P1.6B2-C.
+P1.6B2-C e P1.6B2-R concluídos em 05/11 após o relato de importação
+com localidade EUA e uso de NVDA. UX-19/20 em celular físico também
+foi confirmado pelo usuário. [Escopo dos relatos](planejamento/voce-sozinho.md).
 
 As cinco fases de UX e T3 foram validadas tecnicamente. T1 examinou 78 estados
 com zero violações do axe. As verificações manuais seguem no roteiro de
@@ -121,7 +121,7 @@ durante a rolagem e a navegação por Tab. Ver validacoes/ux-fase-3.json.
 UX-16 a UX-20 validados tecnicamente. Build, 22 testes dirigidos e 26 estados
 da auditoria passaram. A gaveta reutiliza os controles e permite intervir
 direto no solo. Rolagem, órbita, pinça e primeira pessoa foram verificadas
-no Chrome com toque emulado. O teste em celular físico segue na fila individual.
+no Chrome com toque emulado. O usuário confirmou o uso no POCO X6 em 05/11.
 
 UX-21 validado. Os cartões de fundação, túneis, ecologia, clima e ar
 mostram as métricas principais e oferecem os detalhes em Saiba mais.

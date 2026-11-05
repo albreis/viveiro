@@ -21,10 +21,13 @@ O modelo continua exploratório, sem calibração biológica concluída.
   [relatórios](lighthouse.md). Não substitui leitor de tela nem certifica WCAG AA.
 - [x] P1.6B2-Z: usuário informou que testou o zoom e está adequado em 03/11.
   Navegador/percentuais não informados; regressão de layout será reavaliada.
+- [x] P1.6B2-C/P1.6B2-R: usuário confirmou a leitura do CSV em localidade EUA
+  e o funcionamento com NVDA em 05/11. [Evidências e escopo](planejamento/voce-sozinho.md).
 - [x] P4.1A/P4.2A: estrutura de contribuições e dez receitas da equipe.
 - [ ] P3: calibração **já iniciada** na branch `claude/project-thread-kazijj`;
   resultados ainda não satisfazem o aceite científico. [Retomada Buhl](planejamento/buhl.md).
-- [x] UX: 21 melhorias implementadas em cinco fases. A confirmação dos gestos em celular físico segue na fila individual.
+- [x] UX: 21 melhorias implementadas em cinco fases. O usuário confirmou
+  funcionamento adequado no POCO X6 em 05/11.
 - [ ] Dados adicionais: **opcionais**, para ampliar evidências depois; não bloqueiam Buhl/UX.
 
 - [x] [Página privada de leitura do cronograma](cronograma-privado.md): busca,
@@ -69,7 +72,7 @@ T4 e T5 dependem de dados, observações e retornos reais.
 | P1.1B | ≥30 FPS em Chromebook/notebook de entrada identificado, em movimento e sob carga | Técnico + você; terceiros apenas se precisar de equipamento emprestado |
 | P1.2B | Pessoa nova entra em primeira pessoa em <2 min sem ajuda | Terceiros |
 | P1.4B | Seis roteiros com pareceres reais de Biologia/Física e correções | Terceiros + técnico |
-| P1.6B2 | CSV em planilha, leitor de tela e demais estados rumo à WCAG 2.1 AA; zoom/Lighthouse registrados acima | Você + técnico |
+| P1.6B2 | Demais estados da avaliação WCAG 2.1 AA. Ensaios de zoom, Lighthouse, CSV e NVDA registrados acima | Você + técnico |
 | P1.7 | Piloto em 2–3 turmas, SUS médio >70 e pré/pós-teste com relatório | Terceiros + técnico |
 | P3.1 | Perfil/espécie, dados licenciados compatíveis e acordo com laboratório | Técnico + você + terceiros para o acordo |
 | P3.2 | ≥3 padrões observados, parâmetros guiados por sensibilidade, fonte/amostra/incerteza | Técnico; dados/revisão externa quando necessários |

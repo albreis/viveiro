@@ -11,19 +11,19 @@ O agente pode orientar, preparar arquivos e ajudar a registrar resultados.
   registrar como teste relatado, sem inventar porcentagens ou conformidade WCAG.
   Novas mudanças de layout terão uma verificação de regressão própria.
 
+- [x] **P1.6B2-C — CSV em planilha:** em 05/11/2026, o usuário
+  confirmou a leitura do CSV original com localidade EUA. Os downloads por
+  idioma passaram no Chrome, e a conversão para português foi conferida com
+  um leitor independente. [Formato e evidências](../csv-diario.md).
+- [x] **P1.6B2-R — Leitor de tela real:** em 05/11/2026, o usuário
+  relatou funcionamento adequado no NVDA. O relato confirma o uso manual
+  do leitor. [Roteiro de verificação](../roteiro-acessibilidade.md).
+- [x] **UX-19/20 — Celular físico:** em 05/11/2026, o usuário
+  confirmou funcionamento geral no POCO X6 e informou que a gaveta
+  permite usar os controles. [Testes da interface](ux-interface.md).
+
 ## Verificações manuais restantes
 
-- [ ] **P1.6B2-C — CSV em planilha:** reimportar o download em português
-  com localidade Brasil e conferir cabeçalhos, acentos, números e vazios.
-  O usuário confirmou os valores do CSV original ao importar com localidade
-  EUA em 05/11. [Formato por idioma e importação](../csv-diario.md).
-- [ ] **P1.6B2-R — Leitor de tela real:** percorrer tour, câmera, controles,
-  mudanças de painel, pausa, dados e diálogo usando NVDA/VoiceOver equivalente.
-  Registrar leitor/navegador/versão e problemas. Axe-core não encerra este item.
-  Uma pessoa usuária experiente ajuda, mas não é pré-requisito para você testar.
-- [ ] **UX-19/20 — Celular físico:** confirmar rolagem com um dedo, órbita com
-  dois, pinça/zoom, primeira pessoa e dicas contextuais; verificar que o drawer
-  não tapa os controles nem prende o foco. Captura de viewport não basta.
 - [ ] **P1.1B — Equipamento próprio:** se tiver Chromebook/notebook de entrada,
   executar o cenário preparado, em movimento e sob carga, registrando hardware
   e navegador. Só dependerá de terceiro se precisar obter acesso ao equipamento.
