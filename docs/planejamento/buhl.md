@@ -65,9 +65,10 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   parede e o recrutamento em variantes e medir seus efeitos em cinco
   seeds por grupo, com abertura por escavação separada do trânsito.
   [Mecanismos e ablação às seis horas](buhl-mecanismos.md).
-- [ ] **B7 — Calibrar e reservar dados:** sensibilidade aponta parâmetros;
-  separar observações/colônias antes de ajustar e manter seeds reservadas.
-  Usar várias réplicas (meta inicial ≥5 seeds), reportar incerteza e perdas.
+- [ ] **B7 — Calibrar e reservar dados:** ajuste exploratório de 12 h
+  concluído. A configuração foi congelada antes de usar as seeds
+  reservadas. Faltam observações empíricas independentes por réplica.
+  [Método, escolha e plano reservado](buhl-ajuste.md).
 - [ ] **B8 — Avaliar e publicar:** MAE, cobertura, padrões que falham e limites,
   com dados/manifestos brutos em `docs/validacao.md` ou documento ligado a ele.
   Fechar P3.2/P3.3 só quando seus critérios reais forem atendidos.
