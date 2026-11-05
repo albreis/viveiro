@@ -77,6 +77,35 @@ export class BuhlArena {
       : (materials[this.#cells[index]] ?? "outside");
   }
 
+  walkable(index: number): boolean {
+    const material = this.#cells[index];
+    return material === 1 || material === 3;
+  }
+
+  /** Cardinal headings clockwise from east; -1 denotes the grid boundary. */
+  neighbor(index: number, heading: number): number {
+    const n = this.cellsPerSide;
+    switch (heading) {
+      case 0:
+        return index % n === n - 1 ? -1 : index + 1;
+      case 1:
+        return index >= n * (n - 1) ? -1 : index + n;
+      case 2:
+        return index % n === 0 ? -1 : index - 1;
+      default:
+        return index < n ? -1 : index - n;
+    }
+  }
+
+  adjacent(from: number, target: number): boolean {
+    const n = this.cellsPerSide;
+    return (
+      Math.abs((from % n) - (target % n)) +
+        Math.abs(Math.floor(from / n) - Math.floor(target / n)) ===
+      1
+    );
+  }
+
   /** Opens only one solid cell sharing a side with reachable floor or gallery. */
   open(from: number, target: number): boolean {
     if (
@@ -84,12 +113,7 @@ export class BuhlArena {
       this.material(target) !== "sand"
     )
       return false;
-    const n = this.cellsPerSide;
-    const adjacent =
-      Math.abs((from % n) - (target % n)) +
-        Math.abs(Math.floor(from / n) - Math.floor(target / n)) ===
-      1;
-    if (!adjacent) return false;
+    if (!this.adjacent(from, target)) return false;
     this.#cells[target] = 3;
     this.#removed++;
     return true;

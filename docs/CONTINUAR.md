@@ -129,15 +129,14 @@ exatamente com a referência histórica; ver [recibo](validacoes/buhl-rt24b.json
 A rodada local está em `.runtime/buhl-rt24b-reconciliado`. Não repetir a
 referência para aceitar B2 de novo. Este resultado não calibra o modelo.
 
-Próximo passo: B3. Retomar o [PR #104](https://github.com/albreis/viveiro/pull/104)
-com a geometria da arena de disco intacto e a dispersão inicial por seed.
-Validar a integração da geometria e ligar o movimento local das operárias
-à arena. Medir vazio novo e distinguir remoção, alargamento por tráfego
-e pelotas. O [protocolo físico](planejamento/buhl-protocolo.md) já inclui
-o ensaio de caminhada livre; usar uma escala geométrica explícita
-antes de interpretar os segundos por tick.
+B3 entregue no PR #104. A arena física usa operárias com movimento
+local, areia em disco intacto e contas separadas de abertura de células,
+massa removida e solo transportado. O [protocolo físico](planejamento/buhl-protocolo.md)
+documenta parâmetros e unidades. As escolhas de densidade e dispersão
+permanecem hipóteses declaradas.
 
-O [diagnóstico de B4](planejamento/buhl-criterios.md) aceita somente séries
-com horas físicas e cm³ da arena, compara limites bilaterais e mantém os
-resultados desfavoráveis. Rodou apenas com dados fictícios de teste; aplicar
-a rodadas reais de B3 antes de ajustar mecanismos ou iniciar B5.
+Próximo passo: executar a referência de B4 com cinco seeds em cada grupo
+(50, 100, 200), amostras a cada 1.200 s e horizonte de 72 h. Usar a retomada
+e os manifestos de B5 para preservar cada execução. Rodar o
+[diagnóstico bilateral](planejamento/buhl-criterios.md) sobre esse lote
+antes de ajustar os mecanismos.

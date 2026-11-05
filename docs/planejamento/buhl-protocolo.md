@@ -1,6 +1,6 @@
 # Buhl: bases para um protocolo físico separado
 
-Rascunho de B3. A execução rt24b verifica reprodutibilidade do cenário
+Protocolo físico de B3. A execução rt24b verifica reprodutibilidade do cenário
 histórico do Viveiro. A comparação com formigas observadas exige um segundo
 protocolo, com relógio, geometria e medições próprios.
 
@@ -58,7 +58,6 @@ e [registro do conjunto de 2001](../validacoes/buhl-2005.md).
   do artigo para 72 h. Reportar MAE, incerteza e discrepâncias antes de ajustar
   parâmetros. Acordo entre duas execuções do Viveiro mede reprodutibilidade.
 
-B3 ainda depende do cenário de arena e das medições internas correspondentes.
 B4 deve fixar limites antes de usar a curva coletiva para ajuste. Dados brutos
 por réplica e replicação externa seguem como dependências de validação.
 
@@ -85,7 +84,7 @@ Sem uma escala fornecida, o campo de segundos por tick fica vazio. Esse
 ensaio não escolhe o tamanho físico da arena nem verifica como uma operária
 se move em contato com areia, paredes, outras operárias ou carga. Também não
 estabelece equivalência entre mordida, pelota e volume de vazio. Esses
-passos e o cenário físico continuam pendentes em B3.
+passos são tratados pelo runner experimental da arena.
 
 ## Geometria inicial da arena
 
@@ -102,7 +101,46 @@ a sequência das futuras decisões dos agentes. A separação precisa ser
 justificada pelo perfil físico escolhido; o valor de teste não é um dado
 de campo. A geometria foi testada sem plantas, ninho pronto ou rainha.
 
-Ainda falta ligar esse cenário ao movimento local, medir escavação e
-transporte de pelotas e usar um relógio físico explícito no runner.
-Abrir uma célula é uma operação de geometria, não equivale a uma pelota.
-O terrário e os saves não usam a arena plana experimental.
+O runner usa essa geometria para medir a abertura de células e o transporte
+de pelotas, conforme o plano abaixo.
+
+## Rodar a arena com operárias
+
+O relógio da arena avança em segundos físicos. A malha padrão usa passo de
+0,8 mm e tick de 50 ms. Em espaço livre, a chance de andar uma célula por
+tick dá a velocidade média alvo de 15,05 mm/s. A direção persiste, com
+desvios e bloqueios de ocupação. A decisão de escavar depende da areia na
+célula frontal. A taxa por segundo vira probabilidade por tick pela
+expressão `1 - exp(-taxa × segundosPorTick)`. A coleta de depósitos usa
+a probabilidade por contato ao entrar numa célula com solo depositado.
+
+Para reproduzir um ensaio de 20 minutos, salve o plano em um arquivo JSON:
+
+```json
+{
+  "seed": "ARENA-BASE-1",
+  "workers": 50,
+  "durationSeconds": 1200,
+  "separationMm": 5,
+  "dryDensityMgPerMm3": 1.5
+}
+```
+
+```sh
+node scripts/run-buhl-arena.ts plano.json > serie.json
+```
+
+A densidade e a separação inicial são hipóteses explícitas do plano. A
+massa de uma célula vem da densidade seca e da geometria. Uma operação
+completa retira 1,69 mg em 42,04 s, arredondados para o próximo tick.
+Quando resta menos massa na célula, o tempo é proporcional e a carga
+conta como fragmento. A célula abre só após perder toda a massa. A série
+registra vazio aberto, massa removida, massa em trânsito e em depósito,
+pelotas, fragmentos e número de coletas e descargas. A soma transportada
+e depositada conserva a massa retirada. O alargamento por trânsito
+aparece separado com zero, pois esta versão atribui abertura à escavação.
+
+A versão inicial usa quatro direções, uma duração fixa por unidade de
+massa e movimento local sem feromônio. Serve de controle exploratório
+para medir onde o protocolo diverge das curvas observadas. O manifesto registra o identificador da regra, os tempos e as unidades. O diagnóstico
+B4 exige cinco seeds por grupo, até a amostra final de 72 horas.

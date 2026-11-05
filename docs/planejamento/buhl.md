@@ -49,10 +49,10 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   [Recibo com fonte e hashes](../validacoes/buhl-rt24b.json) ·
   [Comando da referência e retomada](../cli.md#comparação-com-dados-publicados).
   O aceite cobre reprodutibilidade computacional.
-- [ ] **B3 — Unidades e protocolo:** definir tick↔tempo físico, comprimento/volume,
-  taxas biológicas e condições experimentais. O atual “1 tick = 1 segundo” do
-  benchmark não está reconciliado com o dia de 100 ticks do modelo.
-  [Bases, fontes e ensaio de caminhada livre](buhl-protocolo.md).
+- [x] **B3 — Unidades e protocolo:** executar a arena de disco fixo com
+  operárias dispersas por seed, relógio em segundos e série em cm³.
+  Registrar hipóteses do solo, remoção por frente, pelotas e balanço de massa.
+  [Protocolo, fontes e comando](buhl-protocolo.md).
 - [ ] **B4 — Critérios antes do ajuste:** incluir limites inferiores/superiores
   para curva temporal e escala, incerteza de digitalização e replicação por
   grupo. Os antigos limites apenas inferiores aceitaram saturação precoce.

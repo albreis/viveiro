@@ -1,0 +1,152 @@
+import { seededRandom } from "../../../libs/seeded-random.ts";
+import type { BuhlArena } from "./geometry.ts";
+import { placeBuhlWorkers } from "./placement.ts";
+import {
+  BUHL_INDIVIDUAL,
+  chancePerTick,
+  type BuhlLabPlan,
+} from "./settings.ts";
+import type { BuhlSoilLedger } from "./soil.ts";
+
+interface DigTask {
+  target: number;
+  mass: number;
+  untilTick: number;
+}
+interface Worker {
+  id: number;
+  cell: number;
+  heading: number;
+  load: number;
+  dig: DigTask | null;
+}
+
+export class BuhlLabWorkers {
+  readonly #agents: Worker[];
+  readonly #occupied: Uint16Array;
+  readonly #random: () => number;
+  readonly #moveChance: number;
+  readonly #digChance: number;
+  readonly #dropChance: number;
+  #steps = 0;
+
+  private readonly arena: BuhlArena;
+  private readonly soil: BuhlSoilLedger;
+  private readonly plan: BuhlLabPlan;
+
+  constructor(arena: BuhlArena, soil: BuhlSoilLedger, plan: BuhlLabPlan) {
+    this.arena = arena;
+    this.soil = soil;
+    this.plan = plan;
+    this.#random = seededRandom(plan.seed + ":buhl-lab-workers-v1").random;
+    this.#occupied = new Uint16Array(arena.cellsPerSide ** 2);
+    const seconds = plan.tickMilliseconds / 1000;
+    this.#moveChance =
+      (BUHL_INDIVIDUAL.speedMmPerSecond * seconds) / plan.pitchMm;
+    this.#digChance = chancePerTick(plan.digRatePerSecond, seconds);
+    this.#dropChance = chancePerTick(
+      BUHL_INDIVIDUAL.dropRatePerSecond,
+      seconds,
+    );
+    this.#agents = placeBuhlWorkers(
+      arena,
+      plan.seed,
+      plan.workers,
+      plan.separationMm,
+    ).map((point, index) => {
+      const cell = arena.indexAt(point)!;
+      if (this.#occupied[cell])
+        throw Error("Duas operárias na mesma célula inicial.");
+      const id = index + 1;
+      this.#occupied[cell] = id;
+      return {
+        id,
+        cell,
+        heading: Math.floor(this.#random() * 4),
+        load: 0,
+        dig: null,
+      };
+    });
+  }
+
+  step(tick: number): void {
+    for (const worker of this.#agents) {
+      if (worker.dig) {
+        if (tick >= worker.dig.untilTick) {
+          worker.load = this.soil.dig(
+            worker.cell,
+            worker.dig.target,
+            worker.dig.mass,
+          );
+          worker.dig = null;
+        }
+        continue;
+      }
+      if (worker.load && this.#random() < this.#dropChance) {
+        this.soil.drop(worker.cell, worker.load);
+        worker.load = 0;
+        continue;
+      }
+      if (!worker.load && this.#digChance && this.#startDig(worker, tick))
+        continue;
+      if (this.#random() < this.#moveChance) this.#move(worker);
+    }
+  }
+
+  #startDig(worker: Worker, tick: number): boolean {
+    const target = this.arena.neighbor(worker.cell, worker.heading);
+    if (
+      this.arena.material(target) !== "sand" ||
+      this.#random() >= this.#digChance
+    )
+      return false;
+    const mass = this.soil.nextLoad(target);
+    const elapsedTicks = Math.ceil(
+      (BUHL_INDIVIDUAL.pelletSeconds * 1000 * mass) /
+        (this.plan.tickMilliseconds * BUHL_INDIVIDUAL.pelletMicrograms),
+    );
+    worker.dig = { target, mass, untilTick: tick + elapsedTicks };
+    return true;
+  }
+
+  #move(worker: Worker): void {
+    const draw = this.#random();
+    const turn = draw < 0.04 ? 1 : draw < 0.08 ? 3 : draw < 0.085 ? 2 : 0;
+    const side = draw < 0.5 ? 1 : 3;
+    const facing = (worker.heading + turn) & 3;
+    for (let attempt = 0; attempt < 4; attempt++) {
+      const offset =
+        attempt === 0 ? 0 : attempt === 1 ? side : attempt === 2 ? 4 - side : 2;
+      const heading = (facing + offset) & 3;
+      const cell = this.arena.neighbor(worker.cell, heading);
+      if (this.#occupied[cell] || !this.arena.walkable(cell)) continue;
+      this.#occupied[worker.cell] = 0;
+      this.#occupied[cell] = worker.id;
+      worker.cell = cell;
+      worker.heading = heading;
+      this.#steps++;
+      if (
+        !worker.load &&
+        this.soil.hasDeposit(cell) &&
+        this.#random() < this.plan.pickupPerContact
+      )
+        worker.load = this.soil.pickUp(cell);
+      return;
+    }
+  }
+
+  sample() {
+    let digging = 0;
+    let carrying = 0;
+    for (const worker of this.#agents) {
+      if (worker.dig) digging++;
+      if (worker.load) carrying++;
+    }
+    return {
+      workers: this.#agents.length,
+      digging,
+      carrying,
+      distanceMm: this.#steps * this.arena.pitchMm,
+    };
+  }
+}

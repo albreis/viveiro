@@ -34,7 +34,7 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
   assert.ok(items("optional").every((i) => i.optional && !i.done));
   assert.equal(items("buhl").length, 8);
   assert.ok(data.groups.find((g) => g.view === "buhl").started);
-  const [reconciliation, reference, ...validation] = items("buhl");
+  const [reconciliation, reference, arena, ...validation] = items("buhl");
   assert.match(reconciliation.title, /B1.*Reconciliar/);
   assert.equal(reconciliation.done, true);
   assert.match(reference.title, /B2.*fixar referência/);
@@ -42,6 +42,8 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
   assert.ok(
     reference.links.some((link) => link.url.endsWith("/buhl-rt24b.json")),
   );
+  assert.match(arena.title, /B3.*Unidades/);
+  assert.equal(arena.done, true);
   assert.ok(validation.every((step) => !step.done));
   assert.ok(items("personal").some((i) => i.done && /Zoom/.test(i.title)));
   assert.ok(
