@@ -1,3 +1,5 @@
+import { WALK_WORK_PER_REFERENCE_SECOND } from "../../fatigue/motion-work.ts";
+import { BUHL_CLIMATE_ASSUMPTIONS } from "./microclimate.ts";
 import { BUHL_ACTIVITY_IDLE_SECONDS } from "./activity.ts";
 import { BUHL_DIG_FATIGUE } from "./dig-fatigue.ts";
 import { BuhlArena, BUHL_DISK_MM } from "./geometry.ts";
@@ -48,7 +50,15 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
     mechanism: plan.mechanism,
     contactAccess: plan.contactAccess,
     ...(plan.digFatigue
-      ? { digFatigue: { rule: plan.digFatigue, ...BUHL_DIG_FATIGUE } }
+      ? {
+          digFatigue: {
+            rule: plan.digFatigue,
+            ...BUHL_DIG_FATIGUE,
+            ...(plan.digFatigue === "action-recovery"
+              ? { walkWorkPerReferenceSecond: WALK_WORK_PER_REFERENCE_SECOND }
+              : {}),
+          },
+        }
       : {}),
     ...(plan.observeActivity
       ? {
@@ -57,6 +67,9 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
             idleSeconds: BUHL_ACTIVITY_IDLE_SECONDS,
           },
         }
+      : {}),
+    ...(plan.microclimate
+      ? { microclimate: { ...plan.microclimate, ...BUHL_CLIMATE_ASSUMPTIONS } }
       : {}),
     calibrated: false,
     geometryMm: BUHL_DISK_MM,

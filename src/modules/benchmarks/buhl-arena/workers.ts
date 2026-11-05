@@ -1,3 +1,5 @@
+import { motionWork } from "../../fatigue/motion-work.ts";
+import { BuhlMicroclimate } from "./microclimate.ts";
 import { BuhlActivity } from "./activity.ts";
 import { BuhlDigFatigue } from "./dig-fatigue.ts";
 import { BuhlEdgeContact, type EdgeContact } from "./edge.ts";
@@ -32,6 +34,8 @@ export class BuhlLabWorkers {
   readonly #dropChance: number;
   readonly #edge: BuhlEdgeContact | null;
   readonly #activity?: BuhlActivity;
+  readonly #microclimate?: BuhlMicroclimate;
+  readonly #walkingEffortPerStep: number;
   #steps = 0;
 
   private readonly arena: BuhlArena;
@@ -60,8 +64,16 @@ export class BuhlLabWorkers {
               ? seededRandom(plan.seed + ":buhl-dig-fatigue-v1").random
               : null,
           );
-    this.#moveChance =
-      (BUHL_INDIVIDUAL.speedMmPerSecond * seconds) / plan.pitchMm;
+    if (plan.microclimate)
+      this.#microclimate = new BuhlMicroclimate(plan.microclimate, seconds);
+    const speed =
+      this.#microclimate?.walkingMmPerSecond ??
+      BUHL_INDIVIDUAL.speedMmPerSecond;
+    this.#moveChance = (speed * seconds) / plan.pitchMm;
+    this.#walkingEffortPerStep =
+      plan.digFatigue === "action-recovery"
+        ? plan.pitchMm / BUHL_INDIVIDUAL.speedMmPerSecond
+        : 0;
     this.#digChance = chancePerTick(plan.digRatePerSecond, seconds);
     this.#dropChance = chancePerTick(
       BUHL_INDIVIDUAL.dropRatePerSecond,
@@ -133,7 +145,10 @@ export class BuhlLabWorkers {
     if (!allowed) return false;
     const mass = this.soil.nextLoad(target);
     const elapsedTicks = Math.ceil(
-      (BUHL_INDIVIDUAL.pelletSeconds * 1000 * mass) /
+      (BUHL_INDIVIDUAL.pelletSeconds *
+        (this.#microclimate?.pelletTimeFactor(tick) ?? 1) *
+        1000 *
+        mass) /
         (this.plan.tickMilliseconds * BUHL_INDIVIDUAL.pelletMicrograms),
     );
     worker.dig = {
@@ -178,6 +193,14 @@ export class BuhlLabWorkers {
       return;
     }
     this.#activity?.moved(worker.id, tick);
+    if (this.#walkingEffortPerStep)
+      worker.digFatigue?.recordEffort(
+        tick,
+        motionWork(
+          this.#walkingEffortPerStep,
+          worker.load / BUHL_INDIVIDUAL.pelletMicrograms,
+        ),
+      );
     this.#occupied[worker.cell] = 0;
     this.#occupied[target] = worker.id;
     worker.cell = target;
@@ -212,6 +235,9 @@ export class BuhlLabWorkers {
         ? { meanDigReadiness: readiness / this.#agents.length }
         : {}),
       distanceMm: this.#steps * this.arena.pitchMm,
+      ...(this.#microclimate
+        ? { microclimate: this.#microclimate.sample(tick) }
+        : {}),
       ...(this.#activity
         ? {
             activity: this.#activity.sample(
