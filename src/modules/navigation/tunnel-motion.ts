@@ -1,3 +1,4 @@
+import { recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { edgePassable } from "../sealing/passage.ts";
 import { surfaceHeight } from "../landscape/queries.ts";
@@ -200,6 +201,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     }
   }
   if (!footing) {
+    recordMotionEffort(world, ant, null);
     ant.state = "Contato Antenal";
     return;
   }
@@ -232,6 +234,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
     angle:
       footing.heading ?? modelMath.atan2(target.z - from.z, target.x - from.x),
   });
+  recordMotionEffort(world, ant, nav.velocity, force.pressure > 0.1);
   if (reversing) ant.state = "Recuando para liberar passagem";
   else if (nav.contactTicks < 4)
     ant.state = ant.carrying

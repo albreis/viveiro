@@ -1,3 +1,4 @@
+import { readyForDigBite, recordDigEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { approachDigFace } from "./approach.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
@@ -149,6 +150,7 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
       rubble.mass,
       CAPACITY - (ant.carryingSoil || 0),
     );
+    recordDigEffort(world, ant, mass / 0.007);
     rubble.mass -= mass;
     ant.carryingSoil = (ant.carryingSoil || 0) + mass;
     world.nest.revision++;
@@ -255,7 +257,11 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     return true;
   }
   ant.state = "Escavando a frente do túnel";
-  if (++task.digTicks % 4 === 0 && project.lastWorkedTick !== world.tick) {
+  if (
+    ++task.digTicks % 4 === 0 &&
+    project.lastWorkedTick !== world.tick &&
+    readyForDigBite(world, ant)
+  ) {
     project.lastWorkedTick = world.tick;
     digBite(world, ant, project);
     settleSupport(world, ant, ant.speed * 0.85);

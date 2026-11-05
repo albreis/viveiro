@@ -34,6 +34,7 @@
   "controls.camera.state": "{state} · distance {distance} u. · age {age} d · {healthLabel} {health}%",
   "controls.camera.body": "body",
   "controls.camera.health": "health",
+  "controls.camera.digReadiness": " · digging readiness {readiness}%",
   "controls.camera.energy": " · energy {energy}% · infection {infection}%",
   "controls.camera.empty": "No living ants.",
   "controls.camera.brain": "Individual brain · updates: {count}",

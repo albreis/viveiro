@@ -1,3 +1,4 @@
+import { EFFORT_PROFILE } from "../fatigue/effort-model.ts";
 import { createReproductiveProfiles } from "./reproductive-profiles.ts";
 import { createMicroclimateProfiles } from "./microclimate-profiles.ts";
 import type { BiologicalProfile } from "./types.ts";
@@ -25,6 +26,7 @@ const lab: BiologicalProfile = Object.freeze({
   description:
     "Só inicia o ar em 21 °C e 80% conforme condição de laboratório. Biologia e solo continuam genéricos; não reproduz o experimento.",
 });
+const microclimateProfiles = createMicroclimateProfiles(generic);
 export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
   generic,
   lab,
@@ -114,8 +116,16 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
     description:
       "Variante demonstrativa com entrada aberta e coleta externa local pela rainha. Alimento finito separado das reservas iniciais; sem espécie calibrada.",
   }),
-  ...createMicroclimateProfiles(generic),
+  ...microclimateProfiles,
   ...createReproductiveProfiles(generic),
+  Object.freeze({
+    ...microclimateProfiles[2],
+    id: EFFORT_PROFILE,
+    version: 1,
+    label: "Fadiga · esforço no terrário",
+    description:
+      "Operárias acumulam esforço em deslocamentos e escavações e se recuperam com o tempo. Carga, relevo, desvios e condições locais entram no cálculo exploratório.",
+  }),
 ]);
 export function latestBiologicalProfiles(): BiologicalProfile[] {
   const latest = new Map<string, BiologicalProfile>();

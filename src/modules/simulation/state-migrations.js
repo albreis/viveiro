@@ -1,3 +1,4 @@
+import { validateEffort } from "../fatigue/validation.ts";
 import { validateExtensionState } from "../extensions/world.ts";
 import { validateDaily } from "../observations/validation.ts";
 import { validateSurvival } from "../survival/validation.ts";
@@ -37,6 +38,7 @@ export function restoreWorld(snapshot, prototype, checkBudget = true) {
   validateExtensionState(world);
   validatePredatorMemory(world.predators);
   validateDaily(world.dailyObservations, world.tick);
+  validateEffort(world);
   const biologicalProfile = resolveBiologicalProfile(world.biologicalProfile);
   validateRoomStores(world, biologicalProfile.stockModel === "rooms-demo");
   validateSurvival(world, biologicalProfile.survivalModel === "risk-demo");

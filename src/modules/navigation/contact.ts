@@ -1,3 +1,4 @@
+import { recordDigEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type {
   AgentState,
@@ -101,6 +102,7 @@ export function widenCongestedTunnel(
     const before = world.nest.linkWidths[edgeIndex] || 0.38;
     const after = Math.min(0.64, before + 0.012);
     if (after > before) {
+      recordDigEffort(world, ant, (after - before) / 0.012);
       world.nest.linkWidths[edgeIndex] = after;
       world.nest.revision++;
       if (world.recordSoilRemoval) {

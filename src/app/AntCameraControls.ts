@@ -1,3 +1,4 @@
+import { digReadiness } from "../modules/fatigue/effort-model.ts";
 import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { translateSource } from "../i18n/source.ts";
 import { localGasLabel } from "./gas-status.ts";
@@ -175,6 +176,11 @@ export class AntCameraControls {
               ? t("controls.camera.energy", {
                   energy: Math.round(ant.energy),
                   infection: Math.round(ant.life.infection * 100),
+                })
+              : "") +
+            (ant.effort
+              ? t("controls.camera.digReadiness", {
+                  readiness: Math.round(digReadiness(ant.effort, tick) * 100),
                 })
               : "")
         : t("controls.camera.empty"),

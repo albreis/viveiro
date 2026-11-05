@@ -1,3 +1,4 @@
+import { recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
 import { projectSupport } from "../terrain/surface-queries.ts";
@@ -95,6 +96,7 @@ export function advanceSupportedMotion(
       : ant.angle;
   const pitch = modelMath.atan2(step.y, modelMath.hypot(step.x, step.z));
   if (!projected) {
+    recordMotionEffort(world, ant, null);
     ant.state = "Contato Antenal";
     motion.blockedTicks++;
     if (motion.blockedTicks > 45 || (motion.noProgressTicks || 0) > 100) {
@@ -107,6 +109,7 @@ export function advanceSupportedMotion(
   ant.distanceWalked = (ant.distanceWalked || 0) + length(step);
   navigationState(ant).velocity = step;
   Object.assign(ant, next, { normal: projected.normal, angle: heading, pitch });
+  recordMotionEffort(world, ant, step, projected.detour);
   ant.state =
     Math.abs(projected.normal.y) < 0.8
       ? step.y < -0.001

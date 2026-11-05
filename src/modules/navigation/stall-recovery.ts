@@ -1,3 +1,4 @@
+import { recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
 import { navigationState } from "./contact.ts";
@@ -72,7 +73,10 @@ export function recoverStall(world: NavigationWorld, ant: AgentState) {
     add(here, scale(direction, 0.8)),
     speed,
   );
-  if (!step) return false;
+  if (!step) {
+    recordMotionEffort(world, ant, null);
+    return false;
+  }
   const delta = sub(step.position, here),
     travel = length(delta);
   Object.assign(ant, step.position, {
@@ -82,6 +86,7 @@ export function recoverStall(world: NavigationWorld, ant: AgentState) {
     state: "Buscando espaço para liberar o fluxo",
     distanceWalked: (ant.distanceWalked || 0) + travel,
   });
+  recordMotionEffort(world, ant, delta, true);
   nav.velocity = delta;
   nav.stagnantTicks = 0;
   // Update only the abstract position on the current, locally known edge.
