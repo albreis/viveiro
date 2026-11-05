@@ -1,3 +1,4 @@
+import { BUHL_ACTIVITY_IDLE_SECONDS } from "./activity.ts";
 import { BUHL_DIG_FATIGUE } from "./dig-fatigue.ts";
 import { BuhlArena, BUHL_DISK_MM } from "./geometry.ts";
 import { BUHL_INDIVIDUAL, normalizeBuhlLabPlan } from "./settings.ts";
@@ -28,7 +29,13 @@ export function runBuhlLab(
     if (progress && (tick % progressEvery === 0 || tick === total))
       progress(tick, total);
   }
-  return { seed: plan.seed, workers: plan.workers, samples };
+  const activityByWorker = workers.individualActivity();
+  return {
+    seed: plan.seed,
+    workers: plan.workers,
+    samples,
+    ...(activityByWorker ? { activityByWorker } : {}),
+  };
 }
 
 export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
@@ -42,6 +49,14 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
     contactAccess: plan.contactAccess,
     ...(plan.digFatigue
       ? { digFatigue: { rule: plan.digFatigue, ...BUHL_DIG_FATIGUE } }
+      : {}),
+    ...(plan.observeActivity
+      ? {
+          activity: {
+            schema: "viveiro-buhl-atividade-v1",
+            idleSeconds: BUHL_ACTIVITY_IDLE_SECONDS,
+          },
+        }
       : {}),
     calibrated: false,
     geometryMm: BUHL_DISK_MM,
