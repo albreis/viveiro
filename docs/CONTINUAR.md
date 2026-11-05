@@ -135,8 +135,12 @@ massa removida e solo transportado. O [protocolo físico](planejamento/buhl-prot
 documenta parâmetros e unidades. As escolhas de densidade e dispersão
 permanecem hipóteses declaradas.
 
-Próximo passo: executar a referência de B4 com cinco seeds em cada grupo
-(50, 100, 200), amostras a cada 1.200 s e horizonte de 72 h. Usar a retomada
-e os manifestos de B5 para preservar cada execução. Rodar o
-[diagnóstico bilateral](planejamento/buhl-criterios.md) sobre esse lote
-antes de ajustar os mecanismos.
+B4 concluiu a referência de 72 h com 15 rodadas. O
+[relatório bilateral](planejamento/buhl-criterios.md) conserva o baixo volume
+nos três grupos. B5 entregou retomada por seed/grupo e triagem de
+sensibilidade [Morris](planejamento/buhl-lotes.md).
+
+Próximo passo: B6. Medir contato com a parede, início de escavação em
+reentrâncias e recrutamento local em mecanismos separados. Comparar com o
+controle em tempos equivalentes. Reservar seeds para a checagem do modelo e
+manter explícita a dependência de dados empíricos independentes em B7.

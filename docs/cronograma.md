@@ -1,6 +1,6 @@
 # Cronograma de entregas
 
-Atualizado em 04/11/2026. Plano operacional dividido por responsabilidade.
+Atualizado em 05/11/2026. Plano operacional dividido por responsabilidade.
 Os IDs P0–P4 continuam válidos. `[x]` indica aceite registrado; `[ ]` indica
 trabalho pendente, inclusive quando a implementação já existe.
 

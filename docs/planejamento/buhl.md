@@ -53,11 +53,10 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   operárias dispersas por seed, relógio em segundos e série em cm³.
   Registrar hipóteses do solo, remoção por frente, pelotas e balanço de massa.
   [Protocolo, fontes e comando](buhl-protocolo.md).
-- [ ] **B4 — Critérios antes do ajuste:** incluir limites inferiores/superiores
-  para curva temporal e escala, incerteza de digitalização e replicação por
-  grupo. Os antigos limites apenas inferiores aceitaram saturação precoce.
-  Não comparar horizontes de 8/16h com alvos de 24/48h sem correspondência.
-  [Diagnóstico bilateral e contrato da série física](buhl-criterios.md).
+- [x] **B4 — Critérios antes do ajuste:** aplicar os limites bilaterais e o
+  diagnóstico de escala ao controle de 72 h, com cinco seeds por grupo.
+  Os três grupos ficaram abaixo das curvas observadas.
+  [Critérios, resultados e série](buhl-criterios.md).
 - [x] **B5 — Rodadas retomáveis:** executor por seed/grupo com plano, fonte,
   versão do Node, checkpoint e hash por rodada. Triagem Morris pareia seeds
   para densidade seca, taxa de escavação e coleta de pelotas.
