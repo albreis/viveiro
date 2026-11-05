@@ -4,6 +4,8 @@ import {
   scenarioSamples,
   type ObservationScenario,
 } from "../modules/observations/csv.ts";
+import { spreadsheetCsv } from "./spreadsheet-csv.ts";
+
 interface DailyContext {
   scenarios(): ObservationScenario[];
   lesson(): string;
@@ -97,10 +99,12 @@ export function installDailyControls(context: DailyContext) {
   });
   host.querySelector<HTMLButtonElement>("#export-daily")!.onclick = () => {
     const scenarios = context.scenarios();
+    const csv = spreadsheetCsv(
+      dailyCsv(scenarios, context.lesson()),
+      locale.locale,
+    );
     const url = URL.createObjectURL(
-      new Blob([dailyCsv(scenarios, context.lesson())], {
-        type: "text/csv;charset=utf-8",
-      }),
+      new Blob([csv], { type: "text/csv;charset=utf-8" }),
     );
     const link = document.createElement("a");
     link.href = url;

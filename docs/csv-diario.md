@@ -11,11 +11,19 @@ série retida de A e B, independentemente da câmera ativa. Enter abre o painel 
 aciona o botão. Tab chega à região da tabela; setas permitem rolar as colunas.
 O JSON existente continua sendo o formato completo de experimento/checkpoint.
 
-CSV padrão separado por vírgula, quebras CRLF, UTF-8 com BOM e ponto decimal.
-Ao usar o importador de uma planilha, selecionar essas opções. O CSV efetivamente
-baixado foi conferido com Python csv.DictReader (22 colunas, quatro linhas A/B).
-A abertura em uma aplicação de planilha e leitores de tela adicionais ainda
-integra a próxima conferência de acessibilidade; não foi simulada como realizada.
+O download usa o idioma selecionado. Em português do Brasil, a vírgula
+separa as casas decimais e o ponto e vírgula separa as colunas. Em inglês,
+o ponto separa as casas decimais e a vírgula separa as colunas. Ambos usam
+UTF-8 com BOM e CRLF. Importe o arquivo original com a localidade do
+download para interpretar os valores corretamente. Se a planilha pedir
+um delimitador em português, escolha ponto e vírgula. Importe o arquivo
+baixado novamente quando os decimais já tiverem virado números inteiros.
+
+Na página de experimentos, o download para planilha e o índice da
+varredura também seguem o idioma. O arquivo científico `dados.csv`
+referenciado pelo manifesto tem o mesmo conteúdo do gerado pela CLI.
+Em português, ele fica disponível no link de reprodução. Em inglês,
+o download da planilha já tem esse formato.
 
 ## O que é medido
 
@@ -62,6 +70,16 @@ Textos são escapados/entre aspas e recebem apóstrofo quando poderiam iniciar u
 fórmula de planilha. Valores numéricos negativos legítimos continuam numéricos.
 
 ## Validação
+
+Em 05/11/2026, o usuário confirmou a leitura do CSV original em uma
+planilha com localidade EUA. O teste no Chrome baixou o CSV diário, o
+do experimento e o índice de varredura em português e inglês, inclusive
+após trocar o idioma com os resultados prontos. O hash de reprodução e
+o da execução dentro da retomada bateram. Um segundo leitor conferiu
+as 240 linhas e 22 colunas do CSV relatado, com os mesmos valores e
+vazios após a conversão. A conferência em planilha com localidade
+Brasil segue em [tarefas individuais](planejamento/voce-sozinho.md).
+
 
 -41 testes dirigidos: coleta, ausência, agregação, pesos por volume, retenção,
   save legado, importação corrompida, segurança CSV, aulas A/B e replay/RNG exatos.

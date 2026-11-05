@@ -69,6 +69,10 @@ biológico. A página não continua calculando depois de ser fechada.
   Filhas podem ter RNG próprio; esse único número não é hash do estado completo.
 - configuracao.json: download da página; a CLI usa o mesmo plano no manifesto.
 
+Na interface, o link de reprodução baixa `dados.csv` com o SHA-256 do
+manifesto. O download para planilha usa a [convenção do idioma](csv-diario.md).
+Em inglês, o download para planilha tem o mesmo formato científico.
+
 Manifesto e CSV não incluem data, duração de CPU, caminho local ou identificador
 aleatório da execução. Os hashes mudam se os dados mudarem. O número de versão
 permite localizar a tag da fonte após publicar; não certifica checkout sem edits.
