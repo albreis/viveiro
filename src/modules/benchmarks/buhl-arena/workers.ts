@@ -1,3 +1,4 @@
+import { BuhlEdgeContact, type EdgeContact } from "./edge.ts";
 import { seededRandom } from "../../../libs/seeded-random.ts";
 import type { BuhlArena } from "./geometry.ts";
 import { placeBuhlWorkers } from "./placement.ts";
@@ -13,10 +14,8 @@ interface DigTask {
   mass: number;
   untilTick: number;
 }
-interface Worker {
+interface Worker extends EdgeContact {
   id: number;
-  cell: number;
-  heading: number;
   load: number;
   dig: DigTask | null;
 }
@@ -28,6 +27,7 @@ export class BuhlLabWorkers {
   readonly #moveChance: number;
   readonly #digChance: number;
   readonly #dropChance: number;
+  readonly #edge: BuhlEdgeContact | null;
   #steps = 0;
 
   private readonly arena: BuhlArena;
@@ -41,6 +41,15 @@ export class BuhlLabWorkers {
     this.#random = seededRandom(plan.seed + ":buhl-lab-workers-v1").random;
     this.#occupied = new Uint16Array(arena.cellsPerSide ** 2);
     const seconds = plan.tickMilliseconds / 1000;
+    this.#edge =
+      plan.mechanism === "local"
+        ? null
+        : new BuhlEdgeContact(
+            arena,
+            this.#random,
+            seconds,
+            plan.mechanism === "edge-recruit",
+          );
     this.#moveChance =
       (BUHL_INDIVIDUAL.speedMmPerSecond * seconds) / plan.pitchMm;
     this.#digChance = chancePerTick(plan.digRatePerSecond, seconds);
@@ -64,6 +73,9 @@ export class BuhlLabWorkers {
         cell,
         heading: Math.floor(this.#random() * 4),
         load: 0,
+        face: -1,
+        freshContact: false,
+        following: false,
         dig: null,
       };
     });
@@ -78,6 +90,7 @@ export class BuhlLabWorkers {
             worker.dig.target,
             worker.dig.mass,
           );
+          if (worker.load) this.#edge?.deposit(worker.dig.target, tick);
           worker.dig = null;
         }
         continue;
@@ -87,19 +100,22 @@ export class BuhlLabWorkers {
         worker.load = 0;
         continue;
       }
-      if (!worker.load && this.#digChance && this.#startDig(worker, tick))
-        continue;
+      this.#edge?.observe(worker);
+      if (!worker.load && this.#startDig(worker, tick)) continue;
       if (this.#random() < this.#moveChance) this.#move(worker);
     }
   }
 
   #startDig(worker: Worker, tick: number): boolean {
-    const target = this.arena.neighbor(worker.cell, worker.heading);
-    if (
-      this.arena.material(target) !== "sand" ||
-      this.#random() >= this.#digChance
-    )
-      return false;
+    const target = this.#edge
+      ? worker.face
+      : this.arena.neighbor(worker.cell, worker.heading);
+    const allowed = this.#edge
+      ? this.#edge.shouldDig(worker, tick, this.#digChance)
+      : this.#digChance > 0 &&
+        this.arena.solid(target) &&
+        this.#random() < this.#digChance;
+    if (!allowed) return false;
     const mass = this.soil.nextLoad(target);
     const elapsedTicks = Math.ceil(
       (BUHL_INDIVIDUAL.pelletSeconds * 1000 * mass) /
@@ -114,25 +130,36 @@ export class BuhlLabWorkers {
     const turn = draw < 0.04 ? 1 : draw < 0.08 ? 3 : draw < 0.085 ? 2 : 0;
     const side = draw < 0.5 ? 1 : 3;
     const facing = (worker.heading + turn) & 3;
+    let target = -1;
+    let direction = facing;
     for (let attempt = 0; attempt < 4; attempt++) {
       const offset =
         attempt === 0 ? 0 : attempt === 1 ? side : attempt === 2 ? 4 - side : 2;
       const heading = (facing + offset) & 3;
       const cell = this.arena.neighbor(worker.cell, heading);
       if (this.#occupied[cell] || !this.arena.walkable(cell)) continue;
-      this.#occupied[worker.cell] = 0;
-      this.#occupied[cell] = worker.id;
-      worker.cell = cell;
-      worker.heading = heading;
-      this.#steps++;
-      if (
-        !worker.load &&
-        this.soil.hasDeposit(cell) &&
-        this.#random() < this.plan.pickupPerContact
-      )
-        worker.load = this.soil.pickUp(cell);
-      return;
+      if (target < 0) {
+        target = cell;
+        direction = heading;
+      }
+      if (!worker.following || this.#edge!.firstFace(cell, heading) >= 0) {
+        target = cell;
+        direction = heading;
+        break;
+      }
     }
+    if (target < 0) return;
+    this.#occupied[worker.cell] = 0;
+    this.#occupied[target] = worker.id;
+    worker.cell = target;
+    worker.heading = direction;
+    this.#steps++;
+    if (
+      !worker.load &&
+      this.soil.hasDeposit(target) &&
+      this.#random() < this.plan.pickupPerContact
+    )
+      worker.load = this.soil.pickUp(target);
   }
 
   sample() {
@@ -147,6 +174,7 @@ export class BuhlLabWorkers {
       digging,
       carrying,
       distanceMm: this.#steps * this.arena.pitchMm,
+      ...this.#edge?.sample(),
     };
   }
 }

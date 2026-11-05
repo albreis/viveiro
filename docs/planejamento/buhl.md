@@ -61,9 +61,10 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   versão do Node, checkpoint e hash por rodada. Triagem Morris pareia seeds
   para densidade seca, taxa de escavação e coleta de pelotas.
   [Planos, comandos e retomada](buhl-lotes.md).
-- [ ] **B6 — Ajustar mecanismos justificados:** abertura precoce das frentes,
-  densidade inicial, recrutamento e limites geométricos; separar volume de
-  construção do alargamento de tráfego. Não afrouxar o verificador para passar.
+- [x] **B6 — Ajustar mecanismos justificados:** separar o seguimento da
+  parede e o recrutamento em variantes e medir seus efeitos em cinco
+  seeds por grupo, com abertura por escavação separada do trânsito.
+  [Mecanismos e ablação às seis horas](buhl-mecanismos.md).
 - [ ] **B7 — Calibrar e reservar dados:** sensibilidade aponta parâmetros;
   separar observações/colônias antes de ajustar e manter seeds reservadas.
   Usar várias réplicas (meta inicial ≥5 seeds), reportar incerteza e perdas.

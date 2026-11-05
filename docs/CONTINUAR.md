@@ -140,7 +140,11 @@ B4 concluiu a referência de 72 h com 15 rodadas. O
 nos três grupos. B5 entregou retomada por seed/grupo e triagem de
 sensibilidade [Morris](planejamento/buhl-lotes.md).
 
-Próximo passo: B6. Medir contato com a parede, início de escavação em
-reentrâncias e recrutamento local em mecanismos separados. Comparar com o
-controle em tempos equivalentes. Reservar seeds para a checagem do modelo e
-manter explícita a dependência de dados empíricos independentes em B7.
+B6 separou seguimento da parede e recrutamento. A
+[ablação de seis horas](planejamento/buhl-mecanismos.md) conserva os
+resultados de cada mecanismo com as mesmas seeds do controle.
+
+Próximo passo: B7. Ajustar o acesso à face usando a média observada em
+12 h nos três grupos e usar as cinco seeds reservadas apenas na avaliação
+posterior de 72 h. Publicar MAE, cobertura e desvios em B8. Manter P3.3
+pendente até obter observações empíricas independentes por réplica.

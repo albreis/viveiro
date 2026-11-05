@@ -10,7 +10,10 @@ export const BUHL_INDIVIDUAL = Object.freeze({
   pickupPerContact: 0.102,
 });
 
+export type BuhlMechanism = "local" | "edge-follow" | "edge-recruit";
+
 export interface BuhlLabPlan {
+  mechanism: BuhlMechanism;
   seed: string;
   workers: BuhlGroupSize;
   durationSeconds: number;
@@ -25,6 +28,7 @@ export interface BuhlLabPlan {
 
 const keys = new Set([
   "seed",
+  "mechanism",
   "workers",
   "durationSeconds",
   "sampleEverySeconds",
@@ -53,7 +57,13 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
       throw Error("Valor inválido para " + key + ".");
     return value;
   };
-  const { seed, workers } = raw;
+  const { seed, workers, mechanism = "local" } = raw;
+  if (
+    mechanism !== "local" &&
+    mechanism !== "edge-follow" &&
+    mechanism !== "edge-recruit"
+  )
+    throw Error("Mecanismo da arena desconhecido.");
   if (
     typeof seed !== "string" ||
     seed !== seed.trim() ||
@@ -82,6 +92,7 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
   return {
     seed,
     workers,
+    mechanism,
     durationSeconds,
     sampleEverySeconds,
     tickMilliseconds,

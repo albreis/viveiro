@@ -48,7 +48,10 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
   assert.equal(criteria.done, true);
   assert.match(batches.title, /B5.*Rodadas retomáveis/);
   assert.equal(batches.done, true);
-  assert.ok(validation.every((step) => !step.done));
+  const [mechanisms, ...remaining] = validation;
+  assert.match(mechanisms.title, /B6.*Ajustar/);
+  assert.equal(mechanisms.done, true);
+  assert.ok(remaining.every((step) => !step.done));
   assert.ok(items("personal").some((i) => i.done && /Zoom/.test(i.title)));
   assert.ok(
     items("done").some((i) =>

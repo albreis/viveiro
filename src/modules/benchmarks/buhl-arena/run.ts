@@ -33,7 +33,11 @@ export function runBuhlLab(
 export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
   return {
     protocol: "disco-fixo-2005",
-    model: "viveiro-disco-local-v1",
+    model:
+      plan.mechanism === "local"
+        ? "viveiro-disco-local-v1"
+        : "viveiro-disco-contato-v2",
+    mechanism: plan.mechanism,
     calibrated: false,
     geometryMm: BUHL_DISK_MM,
     timeUnit: "s",
