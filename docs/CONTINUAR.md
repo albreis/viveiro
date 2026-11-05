@@ -1,8 +1,9 @@
 # Continuação — cronograma por responsabilidade
 
-03/11/2026. Trabalhar em `G:\Projetos\viveiro`, ler AGENTS.md e cronograma.md,
-conferir Git/PRs e preservar saves, branches e tags. Última entrega: página privada de leitura do cronograma.
-Não implementa as fases UX nem executa calibração longa.
+05/11/2026. Trabalhar em G:/Projetos/viveiro, ler AGENTS.md e cronograma.md,
+conferir Git/PRs e preservar saves, branches e tags. Última entrega
+técnica em T4: [avaliação de Buhl em 72 h](validacao.md). A pendência
+científica de B7 requer séries empíricas independentes por réplica.
 
 ## Estado preservado
 
@@ -32,12 +33,14 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próxima implementação é T4, retomada de Buhl.** As cinco fases de UX e T3 foram validadas tecnicamente. T1 concluída em
-78 estados do axe, com zero violações automáticas. Os resultados incompletos
-e o roteiro manual estão em validacoes/axe-t1 e roteiro-acessibilidade.md.
-Depois seguir as fases UX, desempenho e retomada Buhl. Usar branch
-`codex/` nova, módulos pequenos/TS/Vite e testes adequados. Não criar nova release
-apenas para estes documentos. A retomada automática continua PAUSED.
+**Próximo passo em T4.** Identificar séries empíricas de volume por réplica
+em protocolo compatível e verificar licença e procedência. B8 concluiu a
+avaliação exploratória de 72 h. A forma da saturação é a principal diferença
+a investigar quando os dados estiverem disponíveis.
+
+As cinco fases de UX e T3 foram validadas tecnicamente. T1 examinou 78 estados
+com zero violações do axe. As verificações manuais seguem no roteiro de
+acessibilidade. A retomada automática continua PAUSED.
 
 Planos: [técnico](planejamento/tecnico.md), [você sozinho](planejamento/voce-sozinho.md),
 [terceiros](planejamento/com-terceiros.md), [UX](planejamento/ux-interface.md),
@@ -150,6 +153,10 @@ execuções usaram apenas seeds de desenvolvimento. O
 os parâmetros escolhidos e as cinco seeds separadas. A validação empírica
 continua pendente por falta de observações independentes identificadas.
 
-Próximo passo: B8. Concluir ou retomar o lote de 72 h em
-`.runtime/buhl-arena-reservado-72h` com o plano congelado. Publicar
-MAE, cobertura, escala, curva temporal e as diferenças desfavoráveis.
+B8 concluiu as 15 rodadas de 72 h e publicou [avaliação e séries](validacao.md).
+A configuração escolhida ficou próxima das médias de 12 h. O volume continuou
+crescendo demais nas janelas seguintes. A trilha de dados deve preservar
+identidade por réplica, compatibilidade do protocolo e permissão de reuso.
+Um futuro ajuste deve reservar novas seeds do simulador e observações reais
+antes de comparar mecanismos de saturação. Os instrumentos de T5 estão prontos
+para receber observações, pareceres e contribuições reais.

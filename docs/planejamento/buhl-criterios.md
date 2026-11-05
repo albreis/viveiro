@@ -44,8 +44,10 @@ O comando `node scripts/assess-buhl-arena.ts SERIE.json` lê um lote no schema
 
 O relatório mantém diferenças desfavoráveis e não retorna erro por elas.
 Entrada inválida ou série incompleta retorna erro. O schema documenta unidades,
-mas não prova que o runner mediu corretamente o vazio. Essa equivalência, a
-geração da arena e a aplicação do critério a rodadas reais continuam abertas.
+mas não prova que o runner mediu corretamente o vazio. Os testes da arena e
+os balanços por amostra documentam a contagem de células e de massa no modelo.
+Os lotes de referência abaixo e de [avaliação](../validacao.md) aplicam o
+contrato às rodadas da arena.
 
 ## Resultado do controle físico
 

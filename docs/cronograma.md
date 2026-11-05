@@ -51,15 +51,15 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [UX-01–UX-21 e aceites](planejamento/ux-interface.md).
 3. **T3 — Desempenho técnico entregue:** [TBT, CLS e ensaio de FPS](qa-desempenho.md).
    O ensaio em equipamento escolar segue no aceite P1.1B.
-4. **T4 — Buhl/P3:** reconciliar a branch científica com a main atual,
-   conferir testes e uma referência antes de retomar varreduras longas.
-   [Ordem, resultados e impedimentos reais](planejamento/buhl.md).
+4. **T4 — Buhl/P3:** B1–B6 e B8 entregues. B7 tem ajuste exploratório e
+   avaliação em seeds reservadas. Faltam séries empíricas independentes.
+   [Avaliação de 72 h](validacao.md). [Pendências e critérios](planejamento/buhl.md).
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.
 
-A triagem documental de Buhl já foi feita; a ordem acima trata das entregas de
-implementação. Não iniciar um executor concorrente. Não rodar novamente os
-experimentos longos sem antes incorporar as ferramentas P2 e permitir retomada.
+Os lotes físicos de Buhl usam as ferramentas de retomada e análise de
+sensibilidade. T5 tem instrumentos preparados. As próximas verificações de
+T4 e T5 dependem de dados, observações e retornos reais.
 
 ## Aceites que continuam abertos
 
