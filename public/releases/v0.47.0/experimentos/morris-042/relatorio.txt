@@ -1,0 +1,53 @@
+# Sensibilidade do modelo: Morris
+
+Versão 0.42.0; 4 trajetórias, 2 réplicas pareadas, 10 dias, 12 entradas e 104 execuções.
+
+Ranking por população adulta final (µ*). Efeitos por unidade normalizada da faixa, não por unidade física. Valores maiores dependem do horizonte, perfil e faixas escolhidos. Empates não indicam uma ordem causal distinta.
+
+| Ordem | Parâmetro | µ* | sigma |
+| --- | --- | --- | --- |
+| 1 | temperatureC | 29.0625 | 34.0645 |
+| 2 | initialFood | 9.1875 | 10.7711 |
+| 3 | light | 2.0625 | 2.4780 |
+| 4 | windZ | 0.7500 | 1.5000 |
+| 5 | humidity | 0.3750 | 0.7500 |
+| 6 | initialRainPulse | 0.0000 | 0.0000 |
+| 7 | photoperiodHours | 0.0000 | 0.0000 |
+| 8 | randomness | 0.0000 | 0.0000 |
+| 9 | reposeAngle | 0.0000 | 0.0000 |
+| 10 | surfaceDiffusionScale | 0.0000 | 0.0000 |
+
+Perfil generic-demo@5, ninho estabelecido. A janela de triagem é uma escolha exploratória dentro dos limites do catálogo, não uma faixa de confiança biológica. Todas as entradas e faixas são hipóteses/aproximações do modelo; não incertezas calibradas. Sigma combina não linearidade/interações e ruído residual. Quatro trajetórias não dão precisão de calibração; zeros podem significar mecanismo inativo nesse cenário.
+
+Conservamos entradas, respostas de cada réplica, CSVs/manifestos de cada World e índices de todos os parâmetros, inclusive os fora do top 10. Réplicas são promediadas por ponto antes de calcular cada efeito elementar. Dados ausentes permanecem ausentes.
+
+## Interpretação dos dez primeiros
+
+O top 10 é uma ordenação de triagem das 12 entradas, não a descoberta de dez efeitos não nulos. Nesta execução, apenas cinco entradas alteraram a população final. Empates em zero são ordenados pelo identificador, sem prioridade científica. P3.2 deve também considerar outras métricas, horizontes e dados reais antes de escolher ajustes.
+
+## Proveniência das entradas
+
+- humidity: %; faixa [45, 85]; approximation; src/modules/simulation/environment-step.js; microclimate/boundaries.ts.
+- light: %; faixa [35, 85]; approximation; src/modules/landscape/dynamics.ts.
+- randomness: %; faixa [10, 60]; hypothesis; src/modules/simulation/worker-step.js.
+- reposeAngle: graus; faixa [20, 50]; approximation; src/modules/granular/update.ts.
+- temperatureC: °C; faixa [18, 30]; approximation; src/modules/microclimate/boundaries.ts.
+- windX: u. do modelo; faixa [-1.5, 1.5]; approximation; src/modules/simulation/environment-step.js.
+- windZ: u. do modelo; faixa [-1.5, 1.5]; approximation; src/modules/simulation/environment-step.js.
+- photoperiodHours: h/dia do modelo; faixa [8, 16]; hypothesis; src/modules/seasons/update.ts.
+- initialFood: u. de alimento; faixa [10, 24]; hypothesis; src/modules/experiments/initial-inputs.ts.
+- initialRainPulse: 0–1 relativo; faixa [0, 0.4]; hypothesis; src/modules/experiments/initial-inputs.ts; landscape/dynamics.ts.
+- surfaceDiffusionScale: multiplicador de D; faixa [0.5, 1.5]; approximation; src/modules/simulation/environment-step.js; chemistry/reaction-diffusion.ts.
+- surfaceEvaporationScale: multiplicador de lambda; faixa [0.5, 1.5]; approximation; src/modules/simulation/environment-step.js; chemistry/reaction-diffusion.ts.
+
+## Método e reprodução
+
+EE = (Y_depois − Y_antes)/(x_depois − x_antes), com x normalizado em [0,1]. µ é a média dos efeitos, µ* a média dos módulos e sigma o desvio amostral (n−1). Cada entrada tem quatro efeitos, após promediar as duas réplicas pareadas por ponto.
+
+Vanilla Morris, grid par, passo p/[2(p-1)], uma entrada por passo. Seeds comuns entre pontos de uma trajetória/réplica; outras trajetórias/réplicas recebem outras seeds. Não há otimização Campolongo ou bootstrap de confiança nesta implementação.
+
+Referências primárias: [Morris 1991](https://doi.org/10.1080/00401706.1991.10484804), [SALib amostragem](https://salib.readthedocs.io/en/stable/_modules/SALib/sample/morris/morris.html) e [SALib análise](https://salib.readthedocs.io/en/stable/_modules/SALib/analyze/morris.html). A implementação do Viveiro usa seu próprio RNG de desenho; não promete amostras iguais às do NumPy.
+
+`npm run sensitivity -- --out nova-pasta --jobs 4` reproduz o protocolo padrão. `--resume` verifica os arquivos existentes e a identidade da fonte antes de reutilizá-los. Mesmo modelo, versão, fonte, plano e seeds são necessários.
+
+Identidade de desenho: 953d4559c329bf56385f9230dc69712560baf1035a187be368d6cde10de44d23. Fonte normalizada: 43ddce7466fe4b4bd4459795ec9b75f9ab23ba75f17310eb2a5912021a62c156.

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reimplementable reaction–diffusion · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/reacao-difusao.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="reacao-difusao.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Reimplementable surface reaction–diffusion</h1>
+<p>Part 7A of the <a href="index.html">ODD</a>. This specification is self-contained for surface transport; it does not describe the underground graph odor solver. Transport uses no RNG, DOM, Three.js or agent information.</p>
+<h2>Domain, state and inputs</h2>
+<p>Rectangular grid W×H, with positive integer W/H; finite positive h is spacing. H represents Z rows, not Y height. Field C contains W×H finite nonnegative numbers, in order i=z×W+x. Use Float64 and values that do not overflow.</p>
+<p>Inputs: D≥0, lambda≥0, duration T≥0, finite vx/vz, missing velocities = 0. D has units h²/tick, v has h/tick and lambda has 1/model tick. C is abstract chemistry; equal cells allow mass checking by sum(C), proportional to physical mass only if an external scale/unit is defined.</p>
+<p>A new world starts with a zero field. Interior transport corresponds to diffusion plus advection and decay:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>∂C/∂t = D ∇²C − ∇·(v C) − lambda C</code></pre>
+<p>All external faces have zero total flux: no outside neighbor, wind loss, wrap-around or atmospheric ghost cell. With wind this is an idealized impermeable boundary, not a real open-air boundary.</p>
+<h2>Substeps and discretization</h2>
+<p>Calculate the integer substep count exactly:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>R = 4 D / h² + (abs(vx) + abs(vz)) / h
+N = max(1, ceil(R T / 0.85))
+delta = T / N
+a = D delta / h²
+bx = vx delta / h
+bz = vz delta / h
+f = exp(−lambda delta)</code></pre>
+<p>Each substep reads only old C and starts buffer B=C. Visit z from 0 to H−1 and x from 0 to W−1. For each cell i, process only the right face and Z+ face when neighbors exist. For j=i+1:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>J = a (C[i] − C[j]) + bx * (C[i] if bx &gt;= 0, otherwise C[j])
+B[i] = B[i] − J
+B[j] = B[j] + J</code></pre>
+<p>For j=i+W, use the same expression with bz. Do not update C while traversing faces: all fluxes use the old state. After all faces:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>C[i] = max(0, B[i] * f)  for every i</code></pre>
+<p>Repeat N times. Do not evaporate before calculating fluxes, use newly written buffer values as donors, or cap C at 5 during transport. max protects against rounding; in the stable positive domain it should not create mass. R delta≤0.85 is a conservative bound preserving donor positivity. The discretization is neither an exact analytical solution nor implicitly independent of step size: two T=1 calls may differ from one T=2 call.</p>
+<h2>Equivalent cell formulation</h2>
+<p>To reimplement without repeating the face loop, assign an outgoing rate to each cardinal neighbor j of i. If direction i→j is (dx,dz), with component ±1:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>r(i→j) = D/h² + max(vx*dx + vz*dz, 0)/h
+new[i] = max(0, (C[i]*(1−delta*sum_j r(i→j))
+                  + delta*sum_j C[j]*r(j→i)) * f)</code></pre>
+<p>Sum only internal neighbors. This form reads the entire old vector and produces another vector, potentially with slightly different rounding. The downloadable reference uses this formulation without importing the main solver.</p>
+<h2>Exact coupling in Viveiro</h2>
+<p>In the environment: W=40, H=26, h=0.5, T=1. Define u=humidity/100:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>D = 0.008 + 0.008 u
+lambda = 0.012 + 0.012 (1−u)
+vx = params.windX or 0
+vz = params.windZ or 0</code></pre>
+<p>Transport occurs at the start of the tick, before workers. A worker completing surface movement while carrying food deposits in its final cell. World-position indexing uses floor and clamp to the 0–39/0–25 bounds:</p>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>xCell = clamp(floor((xWorld+10)/20*40), 0, 39)
+zCell = clamp(floor((zWorld+6.5)/13*26), 0, 25)
+i = zCell*40+xCell
+added = max(0, min(0.25, 5−C[i]))
+C[i] = C[i] + added</code></pre>
+<p>Capacity 5 limits only new deposits; if C[i] is already 6, added=0 and C[i] stays 6. That deposit is transported next tick. No continuous food source directly adds chemistry inside this function.</p>
+<h2>Checks and precision</h2>
+<p>Without deposits, the final sum should be initialSum×exp(−lambda T), within Float64 error. Without evaporation, the sum is conserved. A zero field stays zero. The production field is updated in place; the reference returns a copy and preserves its input. The stated domain assumes valid inputs; it does not promise exhaustive validation of all malformed JavaScript objects in the production routine.</p>
+<p><a href="replicacao.html">Vectors and derivation</a> fixes small cases and an absolute 1e-12 tolerance. Numerical agreement does not measure chemical composition, physical wind, or species calibration of D/lambda.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="reacao-difusao.txt" download="viveiro-en-modelo-reacao-difusao.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

@@ -1,0 +1,55 @@
+{
+  "schema": "viveiro-profile-validation-files-v1",
+  "files": [
+    {
+      "file": "profile.json",
+      "sha256": "e104814db4f891578b0ca90bb5440b3c744a7cbd5364d5a1ee935f44bea55971",
+      "bytes": 423
+    },
+    {
+      "file": "plan.json",
+      "sha256": "8bafa545d0244d9d2a13795f6abf5c3d2ca1fdb1f1070f6f1af4520992fc69f5",
+      "bytes": 878
+    },
+    {
+      "file": "node/dados.csv",
+      "sha256": "6a3512ca20ca6d8de69d4b945cbe73c5ae66500827b8738fdbc0c26f95890fb9",
+      "bytes": 1059
+    },
+    {
+      "file": "node/manifesto.json",
+      "sha256": "ad92e715e6b540fa3cd196857aaf32f143bb235d7825455db8b0423b65729347",
+      "bytes": 1855
+    },
+    {
+      "file": "browser-first/dados.csv",
+      "sha256": "6a3512ca20ca6d8de69d4b945cbe73c5ae66500827b8738fdbc0c26f95890fb9",
+      "bytes": 1059
+    },
+    {
+      "file": "browser-first/manifesto.json",
+      "sha256": "ad92e715e6b540fa3cd196857aaf32f143bb235d7825455db8b0423b65729347",
+      "bytes": 1855
+    },
+    {
+      "file": "browser-imported/dados.csv",
+      "sha256": "6a3512ca20ca6d8de69d4b945cbe73c5ae66500827b8738fdbc0c26f95890fb9",
+      "bytes": 1059
+    },
+    {
+      "file": "browser-imported/manifesto.json",
+      "sha256": "ad92e715e6b540fa3cd196857aaf32f143bb235d7825455db8b0423b65729347",
+      "bytes": 1855
+    },
+    {
+      "file": "compiled/dados.csv",
+      "sha256": "6a3512ca20ca6d8de69d4b945cbe73c5ae66500827b8738fdbc0c26f95890fb9",
+      "bytes": 1059
+    },
+    {
+      "file": "compiled/manifesto.json",
+      "sha256": "ad92e715e6b540fa3cd196857aaf32f143bb235d7825455db8b0423b65729347",
+      "bytes": 1855
+    }
+  ]
+}

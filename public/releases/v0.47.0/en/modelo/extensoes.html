@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typed local extensions · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/extensoes.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="extensoes.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Typed local extensions</h1>
+<p>The research API separates observations, sensors, signal submodels and decision weights. ACO remains the default; adding a file does not change old experiments or the saved terrarium.</p>
+<h2>Create in one file</h2>
+<p>Copy <code>src/extensions/balanced.ts</code>, change <code>id</code>, <code>version</code> and the functions. The default export uses <code>satisfies DecisionExtension</code>. Contracts are defined in <code>src/modules/extensions/types.ts</code>.</p>
+<ul>
+<li><code>SensorSystem.sample(LocalInput)</code> derives finite signals from energy, load and adjacent exits.</li>
+<li><code>DecisionSubmodel.compute(DecisionFrame)</code> transforms signals; it receives only observations and earlier results from the same decision.</li>
+<li><code>DecisionPolicy.weights(DecisionFrame)</code> returns one nonnegative weight per exit. The sum must be positive; the simulator samples through its seeded RNG.</li>
+</ul>
+<p>Observations are frozen copies; they include no World, global positions, stocks, full map or mutable agent references. Exits have already passed physical passability checks. The policy does not return a position, dig, move food or change the clock. Submodels in this API are local signal transformations, not arbitrary replacements for gas/soil solvers.</p>
+<p>Weights must be between 0 and 1,000,000. Sensors/submodels are limited to 16 instances per stage, 32 signals per instance, and finite signals with absolute value at most 1,000,000. Invalid output stops the experiment with an explicit error, without silent fallback.</p>
+<h2>Run and compare</h2>
+<pre tabindex="0" role="region" aria-label="Code or equation as text"><code>npm run experiment -- --extension src/extensions/balanced.ts --seed MINHA-SEED --start established --profile generic-demo@1 --days 5 --out ensaio-novo
+npm run compare:policy -- --extension src/extensions/balanced.ts --days 5 --replicates 4 --seed POLICY-43 --out comparacao-nova</code></pre>
+<p>The second CLI runs ACO and the extension with the same seed per replicate, retains individual CSVs/manifests and produces <code>comparacao.csv</code>. Different replicates receive different seeds. The protocol records profile, horizon, identity and extension hash. Decision counts distinguish an actually invoked policy from a short experiment with no workers.</p>
+<p>The example favors comfort and avoids repeated visits. It is a programming hypothesis, not a species-validated behavior. Improving an internal result does not demonstrate greater biological realism. Comparisons do not replace P3.</p>
+<h2>Reproduce and restore</h2>
+<p>The plan/manifest stores <code>{schema, id, version, sourceSha256}</code>. SHA-256 identifies source with LF-normalized line endings. An installed version cannot be replaced by different source. Records with another version/hash are not reused. The local file path is not part of the manifest.</p>
+<p>In the browser, only extensions included in the bundle are available. The example is included; select its reference in the isolated laboratory’s JSON plan. JSON never authorizes importing a file or URL. New extensions require rebuilding the bundle or explicitly passing <code>--extension</code> to the CLI.</p>
+<p>When restoring an extension-using snapshot, the same identity must be registered before <code>World.restore</code>; missing or changed identity raises an error before continuation. Developer modules can call <code>loadTrustedExtension</code> before restoration. The rest of the save and collisions retain the same validators.</p>
+<h2>Trust boundary</h2>
+<p><code>--extension</code> executes local developer code with the Node process’s permissions. Types, frozen observations and weight validation are a model contract, <strong>not a security sandbox</strong>. Use only reviewed, trusted files. Transitive imports are the author’s responsibility; the manifest hash identifies only the specified file. For a package with external dependencies, also pin versions/sources in your protocol.</p>
+<p>For scientific reproduction, functions must be pure and deterministic: do not use <code>Math.random</code>, real-time clocks, network access, mutable files or global state. Sampling is performed by the simulator’s RNG, not the extension. Example tests verify repeatability and local limits; they do not certify third-party extensions.</p>
+<h2>Recorded study</h2>
+<p>Four paired replicates, five days, established generic-demo@1. The choice was actually invoked in all four custom runs; results are internal to the model and do not demonstrate biological superiority.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Data table"><table><thead><tr><th scope="col">Replicate</th><th scope="col">ACO population</th><th scope="col">Extension population</th><th scope="col">Extension decisions</th></tr></thead><tbody><tr><td>1</td><td>25</td><td>23</td><td>71</td></tr><tr><td>2</td><td>23</td><td>25</td><td>89</td></tr><tr><td>3</td><td>29</td><td>21</td><td>88</td></tr><tr><td>4</td><td>28</td><td>23</td><td>88</td></tr></tbody></table></div>
+<p><a href="../../experimentos/policies-043/comparacao.csv">Comparison data</a>, <a href="../../experimentos/policies-043/protocolo.json">full protocol</a> and <a href="../../experimentos/policies-043/arquivos.json">individual files with hashes</a>.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="extensoes.txt" download="viveiro-en-modelo-extensoes.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

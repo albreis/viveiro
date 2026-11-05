@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parameter editor and profiles · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/perfis.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="perfis.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Versioned parameter profiles</h1>
+<p>The experiment laboratory’s editor shows all 12 inputs in catalog v1, including unit, allowed range, code source and classification as hypothesis or approximation. These bounds are prototype rules, not species-calibrated confidence intervals.</p>
+<h2>Create and repeat</h2>
+<p>Open <strong>Experiments</strong>, then <strong>Edit and save a parameter profile</strong>. Enter identifier, name and version; choose an existing biological revision and adjust inputs. The five optional inputs can remain unchecked: they then preserve original model behavior.</p>
+<p><strong>Apply to experiment</strong> changes parameters and biological profile in the isolated plan. Seed, duration, initial mode and decision policy remain those of the plan. No 3D terrarium save or IndexedDB record is changed. <strong>Use in sweep</strong> changes only the sweep base; its axis values remain defined in the sweep configuration.</p>
+<p>Export profile JSON and also retain seed, executed configuration, Viveiro version and manifest arithmetic policy. Import the same profile in another browser, apply it to an experiment with the same seed and run it. A profile file alone is neither an ant-nest snapshot nor a record of every factor in a run.</p>
+<h2>Immutable versions and storage</h2>
+<p>JSON uses <code>viveiro-parameter-profile-v1</code>, <code>catalogVersion: 1</code>, an identifier, positive version, name, explicit biological reference and canonical parameters. In the local library, one <code>id@version</code> can only be reused with identical content. To save changes, increase the version or use another identifier. Imports conflicting with an existing version are rejected; nothing is overwritten.</p>
+<p>The library uses the independent localStorage key <code>viveiro.parameter-profiles.v1</code>, with up to 100 versions and 256 KiB. The importer accepts files up to 64 KiB. Quota, corruption and format errors are visible and preserve earlier data. The library is not synchronized over the network: exported files transfer it between origins and browsers. Existing saves are neither migrated nor deleted.</p>
+<h2>Provenance and variations</h2>
+<p>The plan and manifest store the complete <strong>origin</strong> profile in <code>parameterProfile</code>, alongside parameters and biological profile <strong>actually executed</strong>. This distinction lets a sweep record where it started while executing different values along its chosen axis. Editing plan JSON can also produce variations: executed values come from <code>parameters</code>, not the origin profile.</p>
+<p>Applying a profile through the editor copies all its values, including optional input presence/absence. There is no invisible filling of the five optional inputs in the exported file. Reimporting and applying identical configuration, model version and seed preserves the run; importing a profile does not promise parity between different simulator versions.</p>
+<p>The editor covers the experiment input catalog, not every internal physics or biology coefficient. Published biological profiles are immutable references; this editor does not create a calibrated species or replace P3 data and reviews.</p>
+<h2>Reproduction evidence</h2>
+<p>Profile qa-perfis-44@1 was exported, modified in the editor and reimported in the browser. With seed PROFILE-BROWSER-44 and three days, CSV and manifest were byte-identical in the first run, after reimporting, in the CLI and in the compiled bundle. The study also rejected different content under a saved version and checked application to the sweep base.</p>
+<p><a href="../../experimentos/profile-044/profile.json">Exported profile</a>, <a href="../../experimentos/profile-044/plan.json">executed plan</a> and <a href="../../experimentos/profile-044/arquivos.json">raw files and hashes</a>. This verifies the tested scenarios, not biological calibration or compatibility between different model versions.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="perfis.txt" download="viveiro-en-modelo-perfis.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

@@ -1,0 +1,119 @@
+# Reação-difusão superficial reimplementável
+
+Parte 7A do [ODD](../odd.md). Esta especificação é autossuficiente para o
+transporte superficial; não descreve o solver de odor no grafo subterrâneo.
+Não usa RNG, DOM, Three.js ou informação dos agentes durante o transporte.
+
+## Domínio, estado e entradas
+
+Grade retangular W×H, W/H inteiros positivos; h finito positivo é espaçamento.
+H representa linhas Z, não altura Y. Campo C contém W×H números finitos não
+negativos, em ordem i=z×W+x. Use Float64 e valores que não causem overflow.
+
+Entradas: D≥0, lambda≥0, duração T≥0, vx/vz finitos, velocidades ausentes=0.
+D tem unidades h²/tick, v tem h/tick e lambda tem 1/tick do modelo. C é química
+abstrata; células iguais permitem conferir massa por soma(C), proporcional à
+massa física apenas se uma escala/unidade for definida externamente.
+
+O campo começa zerado no mundo novo. Seu transporte corresponde, no interior,
+a difusão mais advecção e decaimento:
+
+```text
+∂C/∂t = D ∇²C − ∇·(v C) − lambda C
+```
+
+Todas as faces externas têm fluxo total zero: não há vizinho fora da grade,
+perda por vento, wrap-around ou célula fantasma atmosférica. Com vento, isto é
+uma fronteira impermeável idealizada, não uma fronteira aberta de ar real.
+
+## Subpassos e discretização
+
+Calcule exatamente o número inteiro de subpassos:
+
+```text
+R = 4 D / h² + (abs(vx) + abs(vz)) / h
+N = max(1, ceil(R T / 0.85))
+delta = T / N
+a = D delta / h²
+bx = vx delta / h
+bz = vz delta / h
+f = exp(−lambda delta)
+```
+
+Cada subpasso lê apenas C antigo e começa um buffer B=C. Visite z de 0 a H−1 e
+x de 0 a W−1. Para cada célula i, processe apenas a face direita e a face Z+,
+quando os vizinhos existirem. Para j=i+1:
+
+```text
+J = a (C[i] − C[j]) + bx * (C[i] se bx >= 0, senão C[j])
+B[i] = B[i] − J
+B[j] = B[j] + J
+```
+
+Para j=i+W, use a mesma expressão com bz. Não atualizar C enquanto se percorrem
+as faces: todos os fluxos usam o estado antigo. Depois de todas as faces:
+
+```text
+C[i] = max(0, B[i] * f)  para todo i
+```
+
+Repita N vezes. Não aplicar evaporação antes de calcular os fluxos, não usar
+valores já escritos no buffer como doadores e não limitar C a 5 no transporte.
+O max protege arredondamentos; no domínio positivo estável não deve criar massa.
+R delta≤0,85 é um limite conservador que preserva positividade por doadora.
+A discretização não é solução analítica exata nem implicitamente independente
+do tamanho do passo: duas chamadas T=1 podem diferir de uma chamada T=2.
+
+## Formulação equivalente por célula
+
+Para reimplementar sem repetir o laço de faces, cada vizinho cardinal j de i
+recebe uma taxa de saída. Se a direção i→j é (dx,dz), com componente±1:
+
+```text
+r(i→j) = D/h² + max(vx*dx + vz*dz, 0)/h
+novo[i] = max(0, (C[i]*(1−delta*sum_j r(i→j))
+                  + delta*sum_j C[j]*r(j→i)) * f)
+```
+
+Somar só vizinhos internos. Esta forma lê todo o vetor antigo e produz outro
+vetor, podendo ter arredondamento ligeiramente diferente. A referência baixável
+usa esta formulação, sem importar o solver principal.
+
+## Acoplamento exato no Viveiro
+
+No ambiente: W=40, H=26, h=0,5, T=1. Defina u=humidity/100:
+
+```text
+D = 0.008 + 0.008 u
+lambda = 0.012 + 0.012 (1−u)
+vx = params.windX ou 0
+vz = params.windZ ou 0
+```
+
+O transporte ocorre no início do tick, antes das operárias. Ao concluir movimento
+superficial carregando alimento, uma operária deposita na célula final. Indexação
+da posição mundial usa piso e clamp aos limites 0–39/0–25:
+
+```text
+xCell = clamp(floor((xWorld+10)/20*40), 0, 39)
+zCell = clamp(floor((zWorld+6.5)/13*26), 0, 25)
+i = zCell*40+xCell
+adicionado = max(0, min(0.25, 5−C[i]))
+C[i] = C[i] + adicionado
+```
+
+A capacidade 5 limita apenas nova deposição; se C[i] já vale 6, adicionado=0 e
+C[i] continua 6. Esse depósito será transportado no próximo tick. Não existe
+fonte contínua de comida diretamente adicionando química nesta função.
+
+## Checagem e precisão
+
+Sem depósito, a soma final deve ser somaInicial×exp(−lambda T), dentro do erro
+Float64. Sem evaporação, conserva soma. Campo zero continua zero. O campo de
+produção é atualizado in-place; a referência devolve cópia e preserva a entrada.
+O domínio descrito pressupõe entradas válidas; não promete validação exaustiva
+de todos os objetos JavaScript malformados na rotina de produção.
+
+[Vetores e derivação](replicacao.md) fixa casos pequenos e tolerância absoluta
+1e-12. Correspondência numérica não mede composição química, vento físico ou
+calibração de D/lambda para uma espécie.

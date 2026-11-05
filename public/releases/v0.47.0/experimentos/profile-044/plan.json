@@ -1,0 +1,43 @@
+{
+  "schema": "viveiro-experiment-v1",
+  "seed": "PROFILE-BROWSER-44",
+  "days": 3,
+  "startMode": "established",
+  "biologicalProfile": {
+    "schema": 1,
+    "id": "generic-demo",
+    "version": 1
+  },
+  "parameters": {
+    "humidity": 67.5,
+    "light": 72,
+    "randomness": 28,
+    "reposeAngle": 36,
+    "temperatureC": 24,
+    "windX": 0,
+    "windZ": 0,
+    "initialFood": 12
+  },
+  "parameterProfile": {
+    "schema": "viveiro-parameter-profile-v1",
+    "catalogVersion": 1,
+    "id": "qa-perfis-44",
+    "version": 1,
+    "label": "Perfil de verificação",
+    "biologicalProfile": {
+      "schema": 1,
+      "id": "generic-demo",
+      "version": 1
+    },
+    "parameters": {
+      "humidity": 67.5,
+      "light": 72,
+      "randomness": 28,
+      "reposeAngle": 36,
+      "temperatureC": 24,
+      "windX": 0,
+      "windZ": 0,
+      "initialFood": 12
+    }
+  }
+}

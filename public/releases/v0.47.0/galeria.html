@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="gallery.pageTitle">Galeria de experimentos · Viveiro</title>
+    <script type="module" crossorigin src="/releases/v0.47.0/assets/gallery-BcdH5X_U.js"></script>
+    <link rel="modulepreload" crossorigin href="/releases/v0.47.0/assets/biology-CMEvUw0e.js">
+    <link rel="modulepreload" crossorigin href="/releases/v0.47.0/assets/catalog-C5OtL--I.js">
+    <link rel="stylesheet" crossorigin href="/releases/v0.47.0/assets/biology-4FSXfl__.css">
+    <link rel="stylesheet" crossorigin href="/releases/v0.47.0/assets/catalog-CeJydyD2.css">
+    <link rel="stylesheet" crossorigin href="/releases/v0.47.0/assets/gallery-DEgp8XNC.css">
+  <meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+  <body>
+    <a class="skip" href="#gallery-main" data-i18n="experiments.skip">Pular para o conteúdo</a>
+    <header>
+      <a
+        href="./index.html"
+        data-i18n-href="./index.html"
+        data-i18n="gallery.back"
+      >← Voltar ao terrário</a>
+      <a
+        href="./experimentos.html"
+        data-i18n-href="./experimentos.html"
+        data-i18n="gallery.lab"
+      >Abrir laboratório</a>
+    </header>
+    <main id="gallery-main" tabindex="-1">
+      <div class="gallery-hero">
+        <p class="gallery-eyebrow" data-i18n="gallery.eyebrow">PERGUNTAS QUE DÁ PARA REPETIR</p>
+        <h1 data-i18n="gallery.heading">Uma seed. Uma pergunta.</h1>
+        <p data-i18n="gallery.intro">Escolha uma configuração, observe o modelo e baixe os dados. Cada receita tem seed, perfil e parâmetros explícitos.</p>
+        <p class="gallery-limits" data-i18n="gallery.limits">Modelos exploratórios, sem calibração por espécie. Uma hipótese pode não produzir diferença neste intervalo. Compare observações do mesmo dia e da mesma versão do Viveiro.</p>
+        <p id="gallery-version"></p>
+      </div>
+      <form class="gallery-filters" role="search">
+        <label for="gallery-search"
+          ><span data-i18n="gallery.search">Buscar por pergunta ou seed</span>
+          <input
+            id="gallery-search"
+            type="search"
+            data-i18n-placeholder="gallery.searchPlaceholder" placeholder="Ex.: vento, prole, GALERIA-SOLO"
+          />
+        </label>
+        <label for="gallery-topic"
+          ><span data-i18n="gallery.filterTopic">Tema</span>
+          <select id="gallery-topic">
+            <option value="" data-i18n="gallery.all">Todos</option>
+            <option value="signals" data-i18n="gallery.topic.signals">Feromônios e vento</option>
+            <option value="soil" data-i18n="gallery.topic.soil">Solo e escavação</option>
+            <option
+              value="development"
+              data-i18n="gallery.topic.development"
+            >Desenvolvimento</option>
+            <option
+              value="founding"
+              data-i18n="gallery.topic.founding"
+            >Fundação</option>
+            <option
+              value="resources"
+              data-i18n="gallery.topic.resources"
+            >Recursos</option>
+          </select>
+        </label>
+        <label for="gallery-origin"
+          ><span data-i18n="gallery.filterOrigin">Autoria</span>
+          <select id="gallery-origin">
+            <option value="" data-i18n="gallery.all">Todos</option>
+            <option value="team" data-i18n="gallery.origin.team">Equipe Viveiro</option>
+            <option
+              value="external"
+              data-i18n="gallery.origin.external"
+            >Comunidade</option>
+          </select>
+        </label>
+      </form>
+      <p id="gallery-count" role="status" aria-live="polite"></p>
+      <div id="gallery-list" class="gallery-grid"></div>
+      <p id="gallery-empty" data-i18n="gallery.empty" hidden>Ainda não há experimentos nesta seleção. Altere os filtros ou contribua um cenário.</p>
+      <aside class="gallery-contribute">
+        <h2 data-i18n="gallery.contribute">Contribuir um experimento</h2>
+        <p data-i18n="gallery.contributeText">Envie a pergunta, o plano e o método para revisão. Os créditos identificam a origem de cada receita.</p>
+        <a
+          href="https://github.com/albreis/viveiro/issues/new?template=experiment.yml"
+          data-i18n="gallery.contribute"
+        >Contribuir um experimento</a>
+        <p data-i18n="gallery.portable">Os experimentos abrem no laboratório isolado. O plano JSON também pode ser executado pela CLI da mesma versão e política numérica.</p>
+      </aside>
+    </main>
+    <footer data-i18n="common.license">Viveiro · Código MIT · Documentação original CC BY 4.0</footer>
+  </body>
+</html>

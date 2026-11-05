@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Initialization and inputs · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/inicializacao.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="inicializacao.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Initialization and input data</h1>
+<p>Parts 5 and 6 of the <a href="index.html">ODD</a>. Reconstructing an initial condition requires model version, seed, parameters, profile and mode; the seed alone does not define the experiment.</p>
+<h2>New founding</h2>
+<p>The interface uses SEMENTE-42 and reference initial parameters: humidity 58%, light 72%, randomness 28%, repose 36° and air 24 °C, before profile adjustments. The interface’s current generic profile is explicitly versioned; a legacy World without a profile does not automatically adopt the latest biological revision.</p>
+<p>Initialization fixes seed/RNG, resolves the profile and prepares soil composition, IDs, counters and collections. It generates landscape/terrain, base nest and fields; creates two founders; and, in founding mode, converts the scene to intact soil and flight/shelter states according to strategy. It then creates plants, 14 associated outside food sources and attempts to place up to two predators outside obstacles. Position rejection can change draw counts: do not assume a fixed number of RNG calls.</p>
+<p>Reserves, fertility, seasonality and health are initialized by the profile. The intermediate food value in the constructor must not be mistaken for a final free reserve for a claustral queen. Founding can redefine the nest and budget before initial-state recording.</p>
+<p>Established mode retains the base nest and appropriate legacy biological path. It does not invent a previous natural growth history.</p>
+<h2>Teaching recipes and restoration</h2>
+<p>Versioned lessons prepare populations/environment and A/B treatments; version 2 also initializes water/heat and gases without executing ticks. A prepared population is not free brood born through natural dynamics. The seed includes recipe version. Initial condition, question and treatment are identified in the experiment.</p>
+<p>Restoration starts from snapshot arrays, profiles and RNG, runs migrations/validation and rebuilds sharing/caches. It does not regenerate the world by calling the constructor with the seed. Missing old fields may initialize at the first allowed update; their history is not reconstructed retrospectively.</p>
+<h2>Inputs and interventions</h2>
+<ul>
+<li>Text seed, numerical parameters, mode and biological schema/id/version reference.</li>
+<li>Interventions with tick, type, coordinates and value, in recorded order.</li>
+<li>Teaching recipe or full snapshot/checkpoint, when used.</li>
+<li>Training/forecast options and observed information, separate from the world being forecast. Changing graphical quality must not change the model.</li>
+</ul>
+<p>Reference air profiles have catalog provenance, but initialize only the stated conditions. No complete species has been calibrated. Soil texture/water, air temperature, light intensity and photoperiod are distinct variables.</p>
+<p>The current run does not query weather, geolocation or laboratory databases over the network each tick. Real-location weather was removed from the active scope by the user on 2 November 2026. Export/checkpoint date metadata are not noise sources for agents.</p>
+<h2>Reproducing a trajectory</h2>
+<p>Preserve code/rules version, profile, initial state or snapshot, RNG states, ticks and action order. Use the same fixed-step contract and numerical domain. Do not promise identity across arbitrary JavaScript engines/versions merely because they use the same numerical seed.</p>
+<p>Clock, pause and budget change when ticks execute; they do not authorize combining time into a single larger physical step. Copying scenario A midway retains that instant’s history/RNG, unlike a new terrarium.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="inicializacao.txt" download="viveiro-en-modelo-inicializacao.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

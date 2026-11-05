@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ODD do Viveiro · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="index.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/index.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>ODD do Viveiro</h1>
+<p>Especificação do contrato observado na versão 0.38.0. O terrário é um modelo exploratório em unidades próprias, sem calibração biológica por espécie. Esta documentação segue os sete elementos do protocolo <a href="https://www.jasss.org/23/2/7.html">ODD, atualização de 2020</a>. As páginas curtas abaixo detalham o modelo atual; propostas futuras não são apresentadas como mecanismos já implementados.</p>
+<h2>1. Propósito e padrões</h2>
+<p>Explorar como decisões locais, recursos finitos e alterações ambientais produzem trajetórias coletivas e como a informação observada afeta previsões. Permite experimentos didáticos pela mesma seed e intervenções em ticks conhecidos. Não estima o futuro de uma colônia real, não demonstra caos matemático pela mera divergência e não mistura características de várias espécies como se fossem uma.</p>
+<p>Padrões de verificação internos: conservação com fontes/saídas explícitas, apoio dos corpos no terreno, conectividade dos túneis, persistência/replay, resposta probabilística e diferença entre previsão e observação. Não são padrões empíricos usados para calibração. POM, dados reservados e validação externa continuam dependências da fase de pesquisa do cronograma.</p>
+<h2>2. Entidades, variáveis de estado e escalas</h2>
+<p><a href="estados.html">Estados e unidades</a> distingue agentes, prole, colônias, habitat compartilhado, campos e sessão. O limite atual é 450 adultos/crias no conjunto de colônias; não se propõe representar uma população ilimitada. Um dia do modelo tem 100 ticks. Não equivale a um dia biológico calibrado.</p>
+<h2>3. Visão dos processos e agendamento</h2>
+<p><a href="agendamento.html">Agendamento</a> registra a ordem exata dos sistemas e o que é atualizado sequencialmente. Intervenções registradas precedem o passo seguinte. A renderização e a velocidade da interface não mudam o passo biológico.</p>
+<h2>4. Conceitos de desenho</h2>
+<p><a href="conceitos.html">Conceitos</a> descreve emergência, adaptação, objetivos, aprendizado, previsão, percepção, interação, estocasticidade, coletivos, observação e princípios adotados. O motor conhece o habitat para fazer física; isso não é conhecimento global liberado aos agentes.</p>
+<h2>5. Inicialização</h2>
+<p><a href="inicializacao.html">Inicialização</a> separa fundação, ninho estabelecido, experimento didático e restore. Perfil ausente em saves/uso legado mantém o contrato antigo; o padrão atual da interface é explicitamente escolhido.</p>
+<h2>6. Dados de entrada</h2>
+<p>A mesma <a href="inicializacao.html">página de entradas</a> registra seed, parâmetros, perfil versionado, receita e intervenções. Não há consulta de clima real por tick. Referências de ar de laboratório não calibram fisiologia ou solo.</p>
+<h2>7. Submodelos</h2>
+<p><a href="submodelos.html">Mapa de submodelos</a> reúne equações centrais, acoplamentos e limites. A <a href="reacao-difusao.html">reação-difusão</a> tem domínio, discretização, fronteiras, fontes, ordem, precisão e vetores suficientes para reimplementação sem consultar o solver principal.</p>
+<p><a href="replicacao.html">Replicação e vetores</a> oferece uma referência autônoma por balanços de entrada/saída em cada célula. Ela não importa a química de produção. Comparar duas implementações pelo mesmo projeto é verificação interna, não replicação externa ou validação científica.</p>
+<h2>Escopo da entrega</h2>
+<p>O mapa descreve todos os blocos principais; a especificação numérica completa nesta entrega é do campo superficial. As notas dos outros submodelos não bastam para reconstruir todo o Viveiro sem o código. A ordem, os perfis e as constantes fazem parte da versão: mudanças futuras precisam revisar este ODD.</p>
+<p>Fontes editáveis ficam em docs/odd.md e docs/odd/. Páginas e downloads são produzidos pelo Vite a partir desses mesmos arquivos, sem editar dist.</p>
+<p>Na0.40.0, experimentos isolados adotam uma <a href="aritmetica.html">política aritmética portátil</a>. O contrato nativo descrito acima permanece para o terrário e saves existentes.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="index.txt" download="viveiro-pt-BR-modelo-index.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>

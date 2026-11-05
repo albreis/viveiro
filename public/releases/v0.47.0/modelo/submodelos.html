@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa dos submodelos · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.47.0">
+<link rel="manifest" href="/releases/v0.47.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="submodelos.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/submodelos.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Mapa dos submodelos</h1>
+<p>Parte7 do <a href="index.html">ODD</a>. Esta página organiza acoplamentos e equações centrais; a especificação numérica completa desta entrega é a do campo superficial. Os demais blocos continuam com detalhes no código e nas notas técnicas da fonte.</p>
+<h2>Química, decisão e memória</h2>
+<p><a href="reacao-difusao.html">Reação-difusão superficial</a>: difusão conservativa, advecção a montante e decaimento exponencial em grade X/Z. Umidade do ar modula D/lambda; vento transporta o campo. Depósito é limitado, transporte não tem saturação artificial. O grafo subterrâneo usa outro solver e canais de referência.</p>
+<p>Odor de grafo: quantidades por nó; fluxos proporcionais à diferença de quantidade/volume. Fontes dos tipos de câmara são repostas até a referência; evaporação e emissão têm contadores. Essas marcas são parte imposta do ambiente.</p>
+<p>ACO: peso proporcional a tau^alpha × eta^beta, com piso1e-6 nos sinais, normalização logarítmica e mistura uniforme epsilon. Defaults da função: alpha1,4/beta2/epsilon0,05; chamadores podem modular valores. A função amostra, não escolhe sempre o maior. Estímulo/limiar usa S²/(S²+theta²), com limites numéricos e fatores de idade, casta e atividade; tarefas são reconsideradas em intervalos. Roteamento usa percepção adjacente e memória limitada de visitas.</p>
+<h2>Corpo, terreno e escavação</h2>
+<p>Movimento combina desejo, repulsão social, contato antenal, prioridade de carga, recuo e recuperação. Apoio é consultado no campo implícito e em obstáculos; uma rota não autoriza teletransporte. A câmera é uma apresentação desse corpo.</p>
+<p>Escavação remove material local, carrega e deposita; alargamento/ramificação e reparo dependem de tarefas. Agregados representam parcelas de solo. Repouso, umidade, composição, compactação, vão e dano modulam deslizamento/suporte por heurísticas. Não é DEM de todos os grãos nem cálculo geotécnico calibrado.</p>
+<h2>Água, calor e gases</h2>
+<p>Água do entorno poroso troca conservativamente entre células por gradiente de saturação e um termo gravitacional reduzido. Fluxo limitado por doadora/capacidade; chuva/lago/evaporação/plantas entram nos balanços. Calor difunde e troca na fronteira; não é solver completo de Richards, vapor, gelo ou termodinâmica.</p>
+<p>Gases usam uma rede de volumes e fluxo Q_ab=G_ab×(p_a−p_b+H_ab). A condutância escala com raio^4/comprimento e abertura; pressão de entrada depende de vento. Difusão/advecção e fronteiras transportam quantidades; respiração consome O2 e produz CO2 em uma razão ilustrativa0,8. Células novas registram troca geométrica, sem contar isso como ventilação. Um gargalo afeta o solver na atualização seguinte.</p>
+<h2>Vida coletiva e reprodução</h2>
+<p>Nutrição transfere alimento de fontes finitas, reservas e inglúvias; contatos compartilham, em vez de clonar recursos. Prole/resíduos têm transportadora e destino. Estoques por câmara, deterioração e transporte dependem do perfil.</p>
+<p>Fundação: voo, encontro, perda de asas, seleção/escavação do abrigo, tampão e naníticas. Claustral e semiclaustral têm orçamentos distintos. Reservas maternas, maturação térmica, memória de diapausa/casulos, espermateca e risco de morte são opcionais/versionados; não somar indiscriminadamente regras de perfis antigos. Genes/parentesco e mutações alteram fenótipos, com limites e custos demonstrativos.</p>
+<h2>Ecologia, aprendizado e observador</h2>
+<p>Plantas respondem a água/temperatura/luz; materiais têm umidade/decomposição. Predadores usam movimento e perseguição limitados. Pulgões/melaço, proteção, lagartas miméticas e relações de odor/território usam regras exploratórias locais. Não há cadeia alimentar completa ou diversidade taxonômica realista garantida.</p>
+<p>RL opcional tem recompensas definidas pelo projeto e comparação com baselines. Previsões copiam o mundo ou extrapolam contagens; nunca alteram o passado observado. CSV guarda leituras reais do tick, não valores dos futuros simulados.</p>
+<h2>Proveniência e limites</h2>
+<p>Parâmetros de demonstração, condições experimentais de referência e propostas não implementadas são categorias diferentes no catálogo. O uso de uma equação conhecida não transfere automaticamente seus parâmetros ou validação empírica. A documentação deve mudar quando fórmulas, fronteiras, ordem ou perfis mudarem.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="submodelos.txt" download="viveiro-pt-BR-modelo-submodelos.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>
