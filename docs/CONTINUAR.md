@@ -33,10 +33,17 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-**Próximo passo em T4.** Identificar séries empíricas de volume por réplica
-em protocolo compatível e verificar licença e procedência. B8 concluiu a
-avaliação exploratória de 72 h. A forma da saturação é a principal diferença
-a investigar quando os dados estiverem disponíveis.
+**Próximo passo em T4.** Identificar séries empíricas independentes
+de volume por réplica com protocolo, procedência e licença verificáveis.
+Para estimar fadiga, procurar duração e frequência de escavação e repouso
+por operária em condições comparáveis. Fixar novos parâmetros e critérios
+antes de comparar com observações reservadas.
+
+A [comparação de fadiga](planejamento/buhl-fadiga.md) encerrou 30 rodadas
+pareadas de 72 h no [PR #111](https://github.com/albreis/viveiro/pull/111).
+A fonte registrada é `2be875ba67da45df10c56875615c6a7aa82e1449`.
+A variante ficou aquém dos critérios exploratórios. A regra segue
+opcional na arena para investigação. B7 continua pendente.
 
 As cinco fases de UX e T3 foram validadas tecnicamente. T1 examinou 78 estados
 com zero violações do axe. As verificações manuais seguem no roteiro de

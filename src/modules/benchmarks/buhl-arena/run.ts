@@ -1,3 +1,4 @@
+import { BUHL_DIG_FATIGUE } from "./dig-fatigue.ts";
 import { BuhlArena, BUHL_DISK_MM } from "./geometry.ts";
 import { BUHL_INDIVIDUAL, normalizeBuhlLabPlan } from "./settings.ts";
 import { BuhlSoilLedger } from "./soil.ts";
@@ -18,7 +19,7 @@ export function runBuhlLab(
   const sample = (tick: number) => ({
     timeSeconds: tick / ticksPerSecond,
     ...soil.sample(),
-    ...workers.sample(),
+    ...workers.sample(tick),
   });
   const samples = [sample(0)];
   for (let tick = 1; tick <= total; tick++) {
@@ -39,6 +40,9 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
         : "viveiro-disco-contato-v2",
     mechanism: plan.mechanism,
     contactAccess: plan.contactAccess,
+    ...(plan.digFatigue
+      ? { digFatigue: { rule: plan.digFatigue, ...BUHL_DIG_FATIGUE } }
+      : {}),
     calibrated: false,
     geometryMm: BUHL_DISK_MM,
     timeUnit: "s",
