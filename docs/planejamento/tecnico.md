@@ -30,8 +30,8 @@ A matriz de 78 estados passou com zero violações automáticas. O [relatório](
   pt/en, teclado e estados abertos; testes dirigidos onde houver lógica nova.
 - [x] Verificar que alterar o layout não muda hashes/execução do modelo.
 
-Gestos físicos e conforto real no celular têm uma verificação individual própria;
-simular viewport não substitui essa experiência.
+A experiência em celular físico foi [confirmada pelo usuário](voce-sozinho.md).
+Os testes em viewport cobrem a regressão técnica do layout.
 
 ## T3 — P1.1: carregamento e desempenho em execução
 

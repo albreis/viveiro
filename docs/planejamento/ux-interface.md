@@ -51,12 +51,12 @@ cena em 820×1180, navegação da barra por teclado e acesso ao rodapé.
 | UX-16 | Cena no primeiro quadro | Canvas inteiro visível em 390×844, com aulas recolhidas | Entregue |
 | UX-17 | Drawer de controles | Ambiente/Intervir/Tempo/Dados; ajustar e posicionar sem rolar a página; preservar foco, Escape e estado, sem IDs duplicados | Entregue |
 | UX-18 | Áreas de toque | Alvos ≥44×44px; slider tem área de interação de 44px, não apenas trilho/manopla maiores | Entregue |
-| UX-19 | Gestos compatíveis com a página | Um dedo rola; dois orbitam; pinça aproxima; primeira pessoa verificada no Chrome emulado. A confirmação física fica na fila individual | Entregue |
+| UX-19 | Gestos compatíveis com a página | Um dedo rola; dois orbitam; pinça aproxima; primeira pessoa verificada no Chrome emulado. Teste geral em celular confirmado pelo usuário | Entregue |
 | UX-20 | Ajuda contextual ao toque | Detectar ponteiro/gesto, não só largura; teclado continua descobrível quando disponível; dicas descrevem ações realmente implementadas | Entregue |
 
 A [validação da fase 4](../validacoes/ux-fase-4.json) cobre o primeiro quadro,
-a gaveta e os gestos no Chrome emulado. UX-19/20 continuam na fila individual
-para confirmação em aparelho físico.
+a gaveta e os gestos no Chrome emulado. Em 05/11/2026, o usuário confirmou
+funcionamento adequado no POCO X6. [Registro do teste](voce-sozinho.md).
 
 ## Fase 5 — Explicações das métricas
 
@@ -75,7 +75,7 @@ com detalhes abertos por teclado e as entradas da comparação de ventilação e
 - [ ] Save/reset/checkpoint/restore, plano/hash e seleção preservados.
 - [ ] Reavaliar zoom depois das mudanças; o teste anterior relatado pelo usuário
   continua registrado, com escopo limitado ao estado então observado.
-- [ ] Confirmar UX-19/20 em aparelho físico na [fila individual](voce-sozinho.md).
+- [x] Confirmar UX-19/20 em aparelho físico na [fila individual](voce-sozinho.md).
 
 A fonte menciona arquivos JS antigos; usar os módulos TS atuais, por exemplo
 `status-view.ts`. Não criar controles duplicados em breakpoints nem embutir

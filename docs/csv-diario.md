@@ -77,8 +77,9 @@ do experimento e o índice de varredura em português e inglês, inclusive
 após trocar o idioma com os resultados prontos. O hash de reprodução e
 o da execução dentro da retomada bateram. Um segundo leitor conferiu
 as 240 linhas e 22 colunas do CSV relatado, com os mesmos valores e
-vazios após a conversão. A conferência em planilha com localidade
-Brasil segue em [tarefas individuais](planejamento/voce-sozinho.md).
+vazios após a conversão. O [aceite P1.6B2-C](planejamento/voce-sozinho.md)
+registra o ensaio em planilha com localidade EUA e a conferência técnica
+do CSV em português.
 
 
 -41 testes dirigidos: coleta, ausência, agregação, pesos por volume, retenção,

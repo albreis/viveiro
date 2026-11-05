@@ -15,7 +15,8 @@ implementação entregue não equivale a validação científica por espécie.
 | P0.1–P0.4 | Licenças/integração, GitHub Pages separado, citação e DOI 0.46.0 conferidos |
 | P1.1A/P1.2A | Perfil leve e tour implementados; aceites reais de hardware/novato continuam abertos |
 | P1.3/P1.4A/P1.5 | Sete aulas, seis roteiros ainda sem parecer docente e PWA offline |
-| P1.6A/B1/B2-L | CSV diário, acessibilidade/teclado, Lighthouse 97/100; manual/estados adicionais seguem abertos |
+| P1.6A/B1/B2-L | CSV diário, acessibilidade por teclado e Lighthouse 97/100 |
+| P1.6B2-C/R/Z e UX-19/20 | CSV em localidade EUA, NVDA, zoom e uso no POCO X6 confirmados pelo usuário. [Registro](voce-sozinho.md) |
 | P2.1 | ODD com estados, unidades, hipóteses e equações |
 | P2.2A/B | CLI, manifestos, aritmética portátil e paridade dos cenários ensaiados |
 | P2.3/P2.4 | Varreduras retomáveis e sensibilidade Morris |
