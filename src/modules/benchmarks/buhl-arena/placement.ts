@@ -1,3 +1,4 @@
+import { modelMath } from "../../../libs/model-math.ts";
 import { seededRandom } from "../../../libs/seeded-random.ts";
 import { BUHL_DISK_MM, type ArenaPoint, type BuhlArena } from "./geometry.ts";
 
@@ -24,19 +25,19 @@ export function placeBuhlWorkers(
     attempt < workers * 100 && points.length < workers;
     attempt++
   ) {
-    const distance = Math.sqrt(rng.range(inner ** 2, outer ** 2));
+    const distance = Math.sqrt(rng.range(inner * inner, outer * outer));
     const angle = rng.range(0, 2 * Math.PI);
     const point = {
-      xMm: distance * Math.cos(angle),
-      zMm: distance * Math.sin(angle),
+      xMm: distance * modelMath.cos(angle),
+      zMm: distance * modelMath.sin(angle),
     };
     if (arena.material(arena.indexAt(point)) !== "floor") continue;
     if (
-      points.some(
-        (p) =>
-          (point.xMm - p.xMm) ** 2 + (point.zMm - p.zMm) ** 2 <
-          separationMm ** 2,
-      )
+      points.some((p) => {
+        const dx = p.xMm - point.xMm;
+        const dz = p.zMm - point.zMm;
+        return dx * dx + dz * dz < separationMm * separationMm;
+      })
     )
       continue;
     points.push(point);

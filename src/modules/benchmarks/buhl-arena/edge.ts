@@ -1,3 +1,4 @@
+import { modelMath } from "../../../libs/model-math.ts";
 import type { BuhlArena } from "./geometry.ts";
 import { chancePerTick } from "./settings.ts";
 
@@ -102,7 +103,7 @@ export class BuhlEdgeContact {
   #strength(target: number, tick: number): number {
     const mark = this.#marks?.get(target);
     return mark
-      ? mark.value * Math.exp(-this.#decayPerTick * (tick - mark.tick))
+      ? mark.value * modelMath.exp(-this.#decayPerTick * (tick - mark.tick))
       : 0;
   }
 

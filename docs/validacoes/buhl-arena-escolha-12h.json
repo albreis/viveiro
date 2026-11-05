@@ -421,5 +421,7 @@
       "tickMilliseconds": 50,
       "pitchMm": 0.8
     }
-  }
+  },
+  "runSourceCommit": "c7e2688bbd4b5eb0cd8cc87f951b0abb01f1a6c5",
+  "runArithmetic": "ecmascript-native-f64-v1"
 }

@@ -1,3 +1,4 @@
+import { modelMath } from "../../../libs/model-math.ts";
 import { BUHL_DISK_MM } from "./geometry.ts";
 import type { BuhlGroupSize } from "./placement.ts";
 
@@ -121,4 +122,4 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
 }
 
 export const chancePerTick = (rate: number, seconds: number) =>
-  -Math.expm1(-rate * seconds);
+  -modelMath.expm1(-rate * seconds);

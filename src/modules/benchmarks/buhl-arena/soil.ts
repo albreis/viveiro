@@ -21,7 +21,9 @@ export class BuhlSoilLedger {
     this.arena = arena;
     this.density = density;
     this.cellMassMicrograms = Math.round(arena.cellVolumeCm3 * density * 1e6);
-    this.#removedByCell = new Uint32Array(arena.cellsPerSide ** 2);
+    this.#removedByCell = new Uint32Array(
+      arena.cellsPerSide * arena.cellsPerSide,
+    );
   }
 
   nextLoad(target: number): number {
