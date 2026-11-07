@@ -107,5 +107,28 @@
     ],
     "errors": []
   },
-  "scope": "Implementation verification before factorial pilot; no biological calibration claimed"
+  "scope": "Implementation verification before factorial pilot; no biological calibration claimed",
+  "longRun": {
+    "sourceCommit": "906ffac32087cceef13d3c8d97261a8385eca4a9",
+    "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+    "runtime": "v24.22.1",
+    "runCount": 60,
+    "sampleCount": 13020,
+    "balances": true,
+    "trafficExcavationZero": true,
+    "morphologyIdenticalAcrossArms": true,
+    "archiveRepeatedExactly": true,
+    "csvSha256Lf": "4938574c7019ed3e7dc963a467a14e92f8754a3f55c071fc6d0d2442ab6c0e03",
+    "analysisScriptSha256Lf": "cc5b19a10a20c31219be5fce36d8a93fe4b58bdf5ffc25226585c9688cc27371"
+  },
+  "figure": {
+    "python": "3.14.7",
+    "matplotlib": "3.11.2",
+    "size": [
+      1080,
+      1350
+    ],
+    "sha256": "1a411fceef5cadbe939d64cbb4d5e629a26ac1cfb0a60e0bc8f187cbf528cdb6",
+    "visuallyChecked": true
+  }
 }
