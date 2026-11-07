@@ -34,6 +34,17 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+**Decisão mais recente de 07/11: manter a morfologia.** O perfil Narbonne v2
+já permanece no terrário 3D; a restauração histórica afetou a projeção na
+arena separada. Seguir [K0–K6](planejamento/buhl-parametrizacao.md) e
+[TRACE](planejamento/buhl-trace.md). Priorizar parâmetros individuais com
+fonte/incerteza, sem ajustar volumes coletivos para coincidir com Buhl.
+Não reclassificar comparações já examinadas como validação independente.
+Próximo trabalho técnico: K1, relógio e geometria físicos no World, seguido
+pelo registro de parâmetros e microensaios. `buhlComparable` continua falso.
+Esta atualização altera o plano; não executa lotes nem restaura a arena antiga.
+Os parágrafos seguintes preservam o histórico das decisões anteriores.
+
 Em 07/11, após examinar o novo lote, o mantenedor pediu voltar à fadiga
 apenas de escavação. A branch `codex/buhl-restaurar-fadiga-escavacao`
 restaura o código da arena ao estado anterior ao PR #126.

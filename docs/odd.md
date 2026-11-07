@@ -21,6 +21,14 @@ resposta probabilística e diferença entre previsão e observação. Não são 
 empíricos usados para calibração. POM, dados reservados e validação externa
 continuam dependências da fase de pesquisa do cronograma.
 
+Atualização de propósito em 07/11/2026: a morfologia permanece no terrário,
+com lacunas quantitativas identificadas. A parametrização individual será
+avaliada sem ajustar a produção coletiva para coincidir com Buhl. Os dados
+já usados na escolha de variantes continuam comparações retrospectivas;
+a mudança de abordagem não os torna independentes. A concordância parcial
+na escala entre grupos não demonstra acerto dos volumes ou da curva temporal.
+O histórico da arena separada não valida o motor 3D.
+
 ## 2. Entidades, variáveis de estado e escalas
 
 [Estados e unidades](odd/estados.md) distingue agentes, prole, colônias,

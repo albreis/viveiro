@@ -20,6 +20,11 @@ empírica como se a réplica do experimento já estivesse pronta.
 
 ## Próximos passos concretos
 
+Atualização de 07/11: manter a morfologia do motor real e seguir
+[K0–K6](buhl-parametrizacao.md), com fontes individuais e [TRACE](buhl-trace.md).
+A preferência anterior pelo lote que mais se aproximou dos volumes foi revista;
+os ensaios antigos continuam preservados e Buhl não volta a ser independente.
+
 1. Separar o tempo físico do relógio biológico acelerado. Hoje 100 passos
    representam um dia do modelo. Não converter esse dia em 24 horas reais.
 2. Criar o ambiente controlado do experimento, com dimensões em milímetros,
