@@ -40,7 +40,12 @@ principal de escavação e executar novamente as 72 horas. Branch
 O novo plano tem cinco seeds para cada grupo de 50, 100 e 200 operárias.
 Saída `.runtime/buhl-narbonne-operarias-72h`; retomar apenas com a mesma
 fonte e `--resume`, sem iniciar executor concorrente nem alterar módulos
-do motor durante o lote. Usar apenas fadiga de escavação. Ao concluir,
+do motor durante o lote. Usar apenas fadiga de escavação. A fonte do lote
+é `046542f9988f9131abde961f073752b699de9f7b` e o PR em rascunho é #126.
+A suíte teve 540/541 aprovações: corrigir depois do lote o `this.#side ** 2`
+na alocação de `body-contacts.ts` para multiplicação inteira equivalente,
+sem mudar a dinâmica. Preservar a fonte real dos dados e verificar a
+equivalência contra trechos já gravados. A QA do Chrome passou. Ao concluir,
 conferir balanços, comparar com os CSVs antigos e publicar as curvas reais.
 
 
