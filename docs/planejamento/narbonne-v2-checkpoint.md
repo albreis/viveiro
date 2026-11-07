@@ -18,7 +18,12 @@ A entrega não cria tag, release nem depósito no Zenodo.
 
 ## Próximo passo concreto
 
-Conferir o aceite de integração/publicação do PR #124. Depois, retomar
+Conferir a integração do PR #124. A publicação privada está pendente: o
+conector Sites retornou 404 `project_not_found` em 07/11, na consulta e na
+emissão de credencial do projeto existente. Preservar sua identidade e
+audiência e publicar quando o acesso ao mesmo projeto for restabelecido.
+
+O dev local continua em G na porta 4173. Depois, retomar
 [T6](fundacao-comparavel.md), começando pelo protocolo de ablação de reserva,
 casulo e estação. B7 aguarda os dados independentes solicitados à autora.
 A automação continua pausada até novo pedido explícito.

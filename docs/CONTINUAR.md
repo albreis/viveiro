@@ -38,7 +38,11 @@ A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
 ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)
 registra 538 testes aprovados, Chrome pt/en, seis rodadas de 80 dias,
 gráficos e limites científicos. O [checkpoint](planejamento/narbonne-v2-checkpoint.md)
-indica a conferência de integração/publicação e a retomada de T6.
+indica a conferência de integração e a retomada de T6.
+A publicação privada está pendente: em 07/11 o conector Sites retornou
+`NOT_FOUND/project_not_found` (404) tanto na consulta quanto na emissão de
+credencial para o projeto existente. Preservar identidade e audiência.
+Retentar a publicação somente após restabelecer o acesso ao mesmo projeto.
 
 O perfil [Messor de Narbonne](planejamento/messor-narbonne.md) fixa a
 população de referência e registra as lacunas de evidência. Em B7,
