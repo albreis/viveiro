@@ -22,6 +22,8 @@ export class BuhlActivity {
   #failedDigs = 0;
   #removedMicrograms = 0;
   #blockedMoves = 0;
+  #unloadedSteps = 0;
+  #loadedSteps = 0;
 
   constructor(workers: number, secondsPerTick: number) {
     this.#lastActive = new Uint32Array(workers + 1);
@@ -39,6 +41,12 @@ export class BuhlActivity {
 
   carrying(id: number, tick: number): void {
     this.#carryingTicks++;
+    this.moved(id, tick);
+  }
+
+  stepped(id: number, tick: number, loaded: boolean): void {
+    if (loaded) this.#loadedSteps++;
+    else this.#unloadedSteps++;
     this.moved(id, tick);
   }
 
@@ -108,6 +116,8 @@ export class BuhlActivity {
       workersAdjacentToSand,
       adjacentIdleWorkers,
       blockedMoves: this.#blockedMoves,
+      unloadedSteps: this.#unloadedSteps,
+      loadedSteps: this.#loadedSteps,
       diggingSeconds,
       carryingSeconds: this.#carryingTicks * this.#secondsPerTick,
       successfulDigs: this.#successfulDigs,
