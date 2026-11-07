@@ -1,3 +1,5 @@
+import { seedMeals, serveSeedRation } from "./seed-rations.ts";
+import { reproductiveRest } from "../biology/reproductive-calendar.ts";
 import { physicalStockVisit } from "../stores/local.ts";
 import { takeStock } from "../stores/ledger.ts";
 import { seasonFactors } from "../seasons/update.ts";
@@ -35,13 +37,18 @@ export function feedFromStock(world: ColonyWorld, ant: ColonyAgent) {
   ant.crop += amount;
 }
 export function updateNutrition(world: ColonyWorld) {
+  const solid = seedMeals(world);
+  const mother = solid
+    ? world.ants.find((ant) => ant.kind === "queen")
+    : undefined;
   for (const ant of world.ants) {
     ensureIndividual(world.seed, ant);
     const queen = ant.kind === "queen";
     if (queen && isClaustral(world)) continue;
-    if (queen && ant.life && ant.crop < 0.04) feedFromStock(world, ant);
+    if (queen && (ant.life || solid) && ant.crop < 0.04)
+      feedFromStock(world, ant);
     if (queen) {
-      const factor = seasonFactors(world).activity,
+      const factor = seasonFactors(world).activity * reproductiveRest(world),
         need = 0.0006 * factor,
         demand = 0.001 * factor;
       const maternal =
@@ -60,6 +67,10 @@ export function updateNutrition(world: ColonyWorld) {
       const amount = Math.min(ant.crop, 0.0003, (100 - ant.energy) / 500);
       ant.crop -= amount;
       ant.energy = Math.min(100, ant.energy + amount * 500);
+    }
+    if (solid) {
+      serveSeedRation(world, ant, mother);
+      continue;
     }
     if (ant.crop < 0.04 || (ant.socialUntil || 0) > world.tick) continue;
     const partner = neighborsOf(world, ant, 0.5).find(

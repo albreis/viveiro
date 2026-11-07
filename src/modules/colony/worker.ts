@@ -1,3 +1,4 @@
+import { seedMeals } from "./seed-rations.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import {
   rememberRoomClimate,
@@ -78,10 +79,15 @@ export function updateColonyWorker(
       return true;
     }
     if (!ant.route?.length) {
-      const destination = roomNode(
-        world.nest,
-        ant.crop < 0.15 ? "storage" : "royal",
-      );
+      const solid = seedMeals(world);
+      const destination = solid
+        ? roomNode(
+            world.nest,
+            ant.seedRation ? "royal" : "storage",
+            0,
+            ant.colonyId || 1,
+          )
+        : roomNode(world.nest, ant.crop < 0.15 ? "storage" : "royal");
       ant.bioTask = { kind: "care", destination };
       requestRoute(world, ant, destination);
       return true;

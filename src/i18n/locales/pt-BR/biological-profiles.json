@@ -40,5 +40,7 @@
   "biology.profile.generic-effort-demo@1": "Fadiga · esforço no terrário",
   "biology.description.generic-effort-demo@1": "Operárias acumulam esforço em deslocamentos e escavações e se recuperam com o tempo. Carga, relevo, desvios e condições locais entram no cálculo exploratório.",
   "biology.profile.messor-narbonne@1": "Messor de Narbonne · referência de Buhl",
-  "biology.description.messor-narbonne@1": "Espécie-base do Viveiro. Perfil exploratório da população que Buhl chamou Messor sancta, provavelmente Messor bouvieri. Porte das operárias, caminhada em superfície e forrageamento de sementes têm referências próprias."
+  "biology.description.messor-narbonne@1": "Espécie-base do Viveiro. Perfil exploratório da população que Buhl chamou Messor sancta, provavelmente Messor bouvieri. Porte das operárias, caminhada em superfície e forrageamento de sementes têm referências próprias.",
+  "biology.profile.messor-narbonne@2": "Messor de Narbonne · ciclo e alimentação",
+  "biology.description.messor-narbonne@2": "Perfil exploratório de Narbonne, provável Messor bouvieri. Sementes preparadas, marcha em galerias, tamanho dos alados e calendário mediterrâneo demonstrativo."
 }

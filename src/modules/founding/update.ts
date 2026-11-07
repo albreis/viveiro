@@ -1,3 +1,4 @@
+import { reproductiveRest } from "../biology/reproductive-calendar.ts";
 import { updateSiteSurvey } from "../chambers/survey.ts";
 import { updateFoundressForaging } from "../semiclaustral/update.ts";
 import { seasonFactors } from "../seasons/update.ts";
@@ -17,7 +18,8 @@ export function updateFounding(world: FoundingWorld) {
     return;
   }
   advanceMaternalReserves(world);
-  const demand = 0.001 * seasonFactors(world).activity;
+  const rest = f.phase === "claustral" ? reproductiveRest(world) : 1;
+  const demand = 0.001 * seasonFactors(world).activity * rest;
   const paid = spendReserve(world, "maintenance", demand);
   if (paid < demand) world.queenHealth = Math.max(0, world.queenHealth - 0.15);
   queen.energy = world.queenHealth;

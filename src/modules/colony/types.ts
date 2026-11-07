@@ -26,6 +26,7 @@ export interface ColonyAgent extends SoilAgent {
   genome?: import("../genetics/genome.ts").Genome;
   age: number;
   crop: number;
+  seedRation?: number;
   caste: "minor" | "major";
   traits: Traits;
   role: Role;

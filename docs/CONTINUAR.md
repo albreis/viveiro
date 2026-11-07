@@ -34,6 +34,10 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+A etapa `codex/narbonne-ciclo-nutricao` está pausada a pedido do
+mantenedor. Os [quatro ajustes e os testes pendentes](planejamento/narbonne-v2-checkpoint.md)
+estão registrados para retomada.
+
 O perfil [Messor de Narbonne](planejamento/messor-narbonne.md) fixa a
 população de referência e registra as lacunas de evidência. Em B7,
 pedir procedência taxonômica quando chegarem os dados da autora e

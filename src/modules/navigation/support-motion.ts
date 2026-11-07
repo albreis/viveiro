@@ -1,3 +1,4 @@
+import { tunnelWalkingSpeed } from "../biology/tunnel-reference.ts";
 import { recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
@@ -32,6 +33,7 @@ export function advanceSupportedMotion(
 ) {
   const motion = ant.supportMotion;
   if (!motion) return;
+  speed = tunnelWalkingSpeed(world, ant, speed);
   const point = motion.points[0];
   if (!point) {
     ant.tunnelCenter = motion.center;
@@ -128,6 +130,7 @@ export function settleSupport(
   speed: number,
 ) {
   if ((ant.y || 0) >= -0.04) return false;
+  speed = tunnelWalkingSpeed(world, ant, speed);
   const current = position(ant),
     field = sampleSupport(world.nest, current);
   if (Math.abs(field.distance - 0.008) <= 0.012) return false;

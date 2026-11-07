@@ -1,3 +1,4 @@
+import { tunnelWalkingSpeed } from "../biology/tunnel-reference.ts";
 import { recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type { AgentState, NavigationWorld, Vec3 } from "./types.ts";
@@ -66,7 +67,7 @@ export function recoverStall(world: NavigationWorld, ant: AgentState) {
     return false;
   }
   const direction = tangent(nav.escapeDirection, normal),
-    speed = ant.speed * 0.85;
+    speed = tunnelWalkingSpeed(world, ant, ant.speed * 0.85);
   const step = chooseSupportedStep(
     world,
     ant,

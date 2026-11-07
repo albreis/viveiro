@@ -1,3 +1,4 @@
+import { referenceFounderScale } from "../biology/founder-reference.ts";
 import {
   applyReferenceWorker,
   clampWorkerScale,
@@ -59,6 +60,7 @@ export function createAgent(
     expressGenome(ant, ant.genome);
   }
   if (reference) ant.bodyScale = clampWorkerScale(reference, ant.bodyScale);
+  ant.bodyScale = referenceFounderScale(world, ant) ?? ant.bodyScale;
   initializeLife(world, ant);
   return ant;
 }

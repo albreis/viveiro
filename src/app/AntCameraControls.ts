@@ -1,4 +1,4 @@
-import { workerReference } from "../modules/biology/worker-reference.ts";
+import { modeledLength } from "../modules/biology/founder-reference.ts";
 import { digReadiness } from "../modules/fatigue/effort-model.ts";
 import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { translateSource } from "../i18n/source.ts";
@@ -150,7 +150,7 @@ export class AntCameraControls {
     }
     select.value = String(this.selectedId ?? "");
     const ant = ants.find((ant) => ant.id === this.selectedId);
-    const reference = ant && workerReference(selectedWorld, ant);
+    const length = ant && modeledLength(selectedWorld, ant);
     const state = ant ? translateSource(ant.state ?? "", locale.locale) : "";
     messageSource(
       element("ant-state"),
@@ -180,9 +180,9 @@ export class AntCameraControls {
                   infection: Math.round(ant.life.infection * 100),
                 })
               : "") +
-            (reference
+            (length
               ? t("controls.camera.workerLength", {
-                  size: format(ant.bodyScale * reference.bodyMm),
+                  size: format(length),
                 })
               : "") +
             (ant.effort

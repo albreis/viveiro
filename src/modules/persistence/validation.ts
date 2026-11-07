@@ -1,3 +1,4 @@
+import { validateSeedRations } from "../colony/seed-rations.ts";
 import { validateEffort } from "../fatigue/validation.ts";
 import { validateOptionalInputs } from "../experiments/parameters.ts";
 import { validateDaily } from "../observations/validation.ts";
@@ -81,6 +82,7 @@ function validateWorld(value: unknown): asserts value is WorldWire {
     validateDaily(c.dailyObservations, w.tick);
     validateEffort(c);
     const profile = resolveBiologicalProfile(c.biologicalProfile);
+    validateSeedRations(c.ants, profile.seedMeals === true);
     validateSoilMaterial(
       c,
       profile.materialModel === "relative-demo",
