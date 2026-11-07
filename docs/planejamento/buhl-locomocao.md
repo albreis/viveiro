@@ -74,3 +74,12 @@ Retomada usa `--resume`, na mesma fonte e pasta. Nenhum resultado será
 multiplicado por 1,6 nos dados medidos. Gráficos e relatório terão curvas
 obtidas pela execução real de cada braço. A escolha de uma referência
 experimental não altera automaticamente velocidade/carga no terrário 3D.
+
+## Verificações antes das 72 h
+
+545/545 testes, TypeScript/Vite/i18n e os quatro braços no Chrome 157
+passaram. O piloto concluiu 60 execuções de 2 h, com 420 amostras,
+balanços preservados, trânsito sem abrir areia e portes idênticos entre
+braços. A base reproduziu exatamente todas as amostras históricas até
+2 h nos 15 pares. [Recibo](../validacoes/buhl-locomocao-piloto.json).
+Nenhum coeficiente foi escolhido ou alterado após esse piloto.
