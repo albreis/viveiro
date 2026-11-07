@@ -1,0 +1,94 @@
+{
+  "sourceRunCommit": "046542f9988f9131abde961f073752b699de9f7b",
+  "suite": {
+    "tests": 542,
+    "passed": 542,
+    "failed": 0,
+    "durationMs": 190969.7332
+  },
+  "build": {
+    "typescript": true,
+    "viteModules": 491,
+    "i18nLocales": [
+      "pt-BR",
+      "en"
+    ],
+    "i18nMessages": 1368
+  },
+  "browser": {
+    "chrome": "157.0.8103.38",
+    "workerProfile": {
+      "schema": 1,
+      "id": "messor-narbonne",
+      "version": 2
+    },
+    "run1200Seconds": true,
+    "phenotypes": 50,
+    "balances": true,
+    "bodyContactActive": true,
+    "pageErrors": []
+  },
+  "contactComparisonWith3D": {
+    "moves": 2000,
+    "allMatched": true
+  },
+  "oldControls": {
+    "buhl1200SecondsExact": true,
+    "narbonneV1CsvAndManifestExact": true
+  },
+  "data": {
+    "runs": 15,
+    "samples": 3255,
+    "phenotypes": 1750,
+    "allMassBudgetsExact": true,
+    "allCellBudgetsExact": true,
+    "trafficOpenedCells": 0
+  },
+  "integerAllocationEquivalence": {
+    "change": "Integer bucket-array allocation: side ** 2 replaced by side * side",
+    "supportedBucketSidesChecked": [
+      1,
+      1000
+    ],
+    "exactIntegerAllocation": true,
+    "pairedPrefixes": {
+      "runs": 15,
+      "durationSeconds": 1200,
+      "samplesPerRun": 2,
+      "allWorkerPhenotypesIdentical": true,
+      "exactObjectEquality": true
+    },
+    "runFingerprint": "e5d097d64313459fc49f61cedb82c88373b648d939c3a20a1fd3606a1154453d",
+    "finalModelFingerprint": "a1cf56c1f4a6dc7ce57f4d0c44521956478d45a2bfe423454927d62f51d6d795"
+  },
+  "artifacts": {
+    "docs/validacoes/figuras/buhl-narbonne-comparacao-1080x1350.png": {
+      "sha256": "469d41fcf17e60a36008feee93755a9328c2e5e097babb8563efeb623ad07b1f",
+      "pixels": [
+        1080,
+        1350
+      ]
+    },
+    "docs/validacoes/figuras/buhl-narbonne-50-1080x1350.png": {
+      "sha256": "907254ba7d3711fc54dee2cae567df77847d95197f89db24b25564cd370e06be",
+      "pixels": [
+        1080,
+        1350
+      ]
+    },
+    "docs/validacoes/figuras/buhl-narbonne-100-1080x1350.png": {
+      "sha256": "d22a9ce651bb0d71425272fe67760e737658d2895e1debee54c846be59ccb5a6",
+      "pixels": [
+        1080,
+        1350
+      ]
+    },
+    "docs/validacoes/figuras/buhl-narbonne-200-1080x1350.png": {
+      "sha256": "0a8e91ff2c92730797bc4f109b54c7c5684a379a0a8453384a6b6d0880ebe723",
+      "pixels": [
+        1080,
+        1350
+      ]
+    }
+  }
+}

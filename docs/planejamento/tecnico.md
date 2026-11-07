@@ -87,6 +87,10 @@ por necessidade concreta; não reabrir essa entrega como se os 13 JS restassem.
 - [x] Comparar três pares de seeds por 80 dias e arquivar gráficos, balanços
   e resultados anteriores à correção do jejum. [Relatório](narbonne-v2.md).
 
+- [x] Integrar as regras de operárias de Narbonne à arena física e repetir
+  15 rodadas de 72 h. [Curvas reais, desvios e proveniência](buhl-narbonne-operarias.md).
+  O MAE piorou nos três grupos e a escala entre grupos se aproximou da referência.
+
 ## T6 — Fundação claustral × semiclaustral comparável
 
 - [ ] Medir a contribuição de reserva inicial, casulo e estação na diferença de

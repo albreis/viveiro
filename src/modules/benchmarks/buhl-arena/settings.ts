@@ -1,3 +1,8 @@
+import {
+  resolveBiologicalProfile,
+  profileReference,
+} from "../../biology/catalog.ts";
+import type { BiologicalReference } from "../../biology/types.ts";
 import { modelMath } from "../../../libs/model-math.ts";
 import {
   normalizeBuhlMicroclimate,
@@ -18,6 +23,7 @@ export const BUHL_INDIVIDUAL = Object.freeze({
 export type BuhlMechanism = "local" | "edge-follow" | "edge-recruit";
 
 export interface BuhlLabPlan {
+  workerProfile?: BiologicalReference;
   mechanism: BuhlMechanism;
   contactAccess: number;
   digFatigue?: "work-recovery" | "action-recovery";
@@ -36,6 +42,7 @@ export interface BuhlLabPlan {
 }
 
 const keys = new Set([
+  "workerProfile",
   "seed",
   "mechanism",
   "contactAccess",
@@ -117,7 +124,25 @@ export function normalizeBuhlLabPlan(input: unknown): BuhlLabPlan {
       mechanism !== "edge-follow")
   )
     throw Error("A fadiga experimental requer seguimento da parede.");
+  const workerProfile = Object.hasOwn(raw, "workerProfile")
+    ? resolveBiologicalProfile(raw.workerProfile)
+    : undefined;
+  if (
+    workerProfile &&
+    (!workerProfile.workerReference || !Object.hasOwn(raw, "microclimate"))
+  )
+    throw Error(
+      "O perfil de operárias exige referência de porte e microclima explícito.",
+    );
   return {
+    ...(workerProfile
+      ? {
+          workerProfile: profileReference(
+            workerProfile.id,
+            workerProfile.version,
+          ),
+        }
+      : {}),
     ...(digFatigue === "work-recovery" || digFatigue === "action-recovery"
       ? { digFatigue }
       : {}),

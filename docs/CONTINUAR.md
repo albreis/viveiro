@@ -34,6 +34,19 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+O pedido de integrar as operárias ao ensaio principal de escavação foi
+executado na branch `codex/buhl-narbonne-operarias`, PR #126.
+As 15 rodadas de 72 h terminaram com as cinco seeds por grupo e perfil
+`messor-narbonne@2` ativo. Médias finais de 15,76/23,86/36,66 cm³ para
+50/100/200 operárias. O MAE piorou nos três grupos; a escala entre
+grupos se aproximou da referência. [Dados, curvas e limites](planejamento/buhl-narbonne-operarias.md).
+A fonte real do lote é `046542f9988f9131abde961f073752b699de9f7b`.
+Após o lote houve apenas a correção equivalente da alocação inteira,
+verificada contra os 15 trechos iniciais e os fenótipos gravados.
+Conferir o aceite final do PR #126 e a publicação pendente antes de
+retomar T6 ou planejar a ablação separada de temperatura, contato e carga.
+Não repetir o lote concluído nem substituir seus dados por curvas antigas.
+
 A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
 ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)
 registra 538 testes aprovados, Chrome pt/en, seis rodadas de 80 dias,
