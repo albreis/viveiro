@@ -34,9 +34,11 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-A etapa `codex/narbonne-ciclo-nutricao` está pausada a pedido do
-mantenedor. Os [quatro ajustes e os testes pendentes](planejamento/narbonne-v2-checkpoint.md)
-estão registrados para retomada.
+A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
+ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)
+registra 538 testes aprovados, Chrome pt/en, seis rodadas de 80 dias,
+gráficos e limites científicos. O [checkpoint](planejamento/narbonne-v2-checkpoint.md)
+indica a conferência de integração/publicação e a retomada de T6.
 
 O perfil [Messor de Narbonne](planejamento/messor-narbonne.md) fixa a
 população de referência e registra as lacunas de evidência. Em B7,

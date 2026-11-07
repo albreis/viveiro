@@ -12,11 +12,14 @@ A validação de uma colônia em três dimensões exige medidas próprias.
 [Challet et al., 2005](https://doi.org/10.1007/s00040-005-0821-1) ·
 [Cerdá e Retana, 1994](https://doi.org/10.1111/j.1439-0418.1994.tb00735.x)
 
-O perfil `messor-narbonne@1` é o padrão para novas sessões do terrário.
+O perfil `messor-narbonne@2` é o padrão para novas sessões do terrário.
+Os [quatro ajustes, curvas e limites da v2](narbonne-v2.md) estão documentados.
+A v1 mantém os parâmetros e regras originais.
 O seletor **Perfil biológico** permite adotá-lo em um novo cenário e
 a ficha de uma operária mostra seu comprimento modelado. Saves e replays
 carregam seu identificador e versão. Para repetir no laboratório CLI,
-selecione explicitamente `--profile messor-narbonne@1`.
+selecione explicitamente `--profile messor-narbonne@2` para o perfil atual,
+ou `messor-narbonne@1` para repetir os ensaios anteriores.
 
 ## O nome oficial identifica a população estudada
 

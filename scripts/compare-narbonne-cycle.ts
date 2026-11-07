@@ -1,3 +1,5 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { mkdirSync, existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { parseArgs } from "node:util";
@@ -62,7 +64,20 @@ try {
         folder,
         "rodada-" + String(index + 1).padStart(2, "0") + ".json",
       );
-      if (existsSync(file)) return readSweepJson(file);
+      if (existsSync(file)) {
+        const saved = readSweepJson(file) as {
+          plan: unknown;
+          result: { csv: string; manifest: string };
+        };
+        assert.deepEqual(saved.plan, job);
+        const manifest = JSON.parse(saved.result.manifest);
+        assert.deepEqual(manifest.plan, job);
+        assert.equal(
+          createHash("sha256").update(saved.result.csv).digest("hex"),
+          manifest.csv.sha256,
+        );
+        return saved;
+      }
       const result = await new Promise<Record<string, unknown>>(
         (done, fail) => {
           const worker = new Worker(

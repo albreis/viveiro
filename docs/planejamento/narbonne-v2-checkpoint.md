@@ -1,42 +1,24 @@
 # Checkpoint de Narbonne v2
 
-Trabalho pausado a pedido do mantenedor. A base é a main `248242e`,
-do PR #123. O perfil de referência publicado é `messor-narbonne@1`.
+07/11/2026. Etapa retomada e implementada no
+[PR #124](https://github.com/albreis/viveiro/pull/124).
+A pausa anterior e seu rascunho estão preservados no histórico Git.
 
-## Implementação em rascunho
+- [x] Tamanho modelado da rainha/princesa e do macho, com aproximações declaradas.
+- [x] Caminhada subterrânea por temperatura local, porte, apoio e carga.
+- [x] Transporte local de porções da despensa para a rainha, perda por morte e balanço.
+- [x] Calendário sazonal versionado, janelas separadas e indicação na interface.
+- [x] Corrigir jejum após acesso piloto físico sem interromper a remoção do tampão.
+- [x] Comparar três pares de seeds por 80 dias e preservar resultados desfavoráveis.
+- [x] 538 testes, TypeScript/Vite, Chrome pt/en, CLI oficial e controle histórico de Buhl.
 
-- `messor-narbonne@2` versiona alados com comprimentos de referência
-  exploratórios de 11 mm para rainha/princesa e 8 mm para macho. O
-  catálogo de Baroni Urbani aponta uma descrição de rainha na p. 31,
-  sem medidas confirmadas para os alados de Narbonne.
-- Marcha das operárias em galerias usa temperatura local, inclinação de
-  apoio e carga. Os multiplicadores de parede e carga de solo são
-  hipóteses. Buhl mediu marcha livre fora do disco.
-- A operária de cuidado retira uma porção do estoque e pode entregá-la
-  à rainha na mesma câmara. A v2 desativa a troca líquida genérica.
-  A alimentação da prole ainda usa o orçamento coletivo existente.
-- Calendário mediterrâneo demonstrativo de 80 dias do modelo. A
-  sessão começa no outono. A postura abre na primavera, a produção
-  de alados tem janela própria e o voo continua dependente de chuva
-  recente. O repouso reduz a manutenção da rainha. A inspiração é
-  qualitativa, a partir de [Cerdan](https://dictionnaire-amoureux-des-fourmis.fr/M/Moissoneuses/Cerdan-Insectes1989-Messor.pdf).
+[Regras, gráfico, limites e reprodução](narbonne-v2.md).
+O perfil `messor-narbonne@1` e todos os perfis anteriores continuam preservados.
+A entrega não cria tag, release nem depósito no Zenodo.
 
-O TypeScript e o build Vite passaram antes da pausa. A etapa aguarda
-teste funcional, comparação de curvas e revisão em navegador.
+## Próximo passo concreto
 
-## Retomada
-
-1. Garantir que a cuidadora que retira a porção na despensa roteie
-   imediatamente para a rainha e que a morte da portadora contabilize
-   a porção como resíduo. Verificar balanço, distância e replay.
-2. Testar a fundação padrão de duas formigas até a primeira postura e
-   reabertura. Testar as janelas de postura, alados, voo e recuperação
-   de save. Mostrar a janela sazonal atual na interface.
-3. Rodar no CLI pares de fundação `messor-narbonne@1` e
-   `messor-narbonne@2` com as mesmas seeds por pelo menos 60 dias.
-   Comparar dias até a primeira postura, curvas de adultos/prole e
-   estoque. Se necessário, coletar a série de terra removida no motor.
-   Conferir o disco de Buhl contra uma amostra arquivada antes de
-   interpretar as curvas 3D. O benchmark roda em protocolo separado.
-4. Rodar suíte completa e Chrome, atualizar o PR existente e publicar
-   depois do aceite técnico.
+Conferir o aceite de integração/publicação do PR #124. Depois, retomar
+[T6](fundacao-comparavel.md), começando pelo protocolo de ablação de reserva,
+casulo e estação. B7 aguarda os dados independentes solicitados à autora.
+A automação continua pausada até novo pedido explícito.

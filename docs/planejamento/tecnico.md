@@ -80,6 +80,13 @@ substituir a validação de Buhl por seleção de resultados mais favoráveis.
 A migração da UI/renderer já foi entregue. O legado de simulação pode migrar
 por necessidade concreta; não reabrir essa entrega como se os 13 JS restassem.
 
+## Narbonne — ajustes da população de referência
+
+- [x] Entregar tamanho dos alados, marcha subterrânea, alimentação por sementes
+  e calendário sazonal no perfil versionado `messor-narbonne@2`.
+- [x] Comparar três pares de seeds por 80 dias e arquivar gráficos, balanços
+  e resultados anteriores à correção do jejum. [Relatório](narbonne-v2.md).
+
 ## T6 — Fundação claustral × semiclaustral comparável
 
 - [ ] Medir a contribuição de reserva inicial, casulo e estação na diferença de
