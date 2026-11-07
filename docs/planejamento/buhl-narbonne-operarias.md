@@ -1,5 +1,12 @@
 # Buhl — transferência do perfil de operárias de Narbonne
 
+**Histórico. A integração foi retirada da arena em 07/11/2026 a pedido
+do mantenedor.** A configuração principal voltou à fadiga apenas de
+escavação. Os resultados desta página continuam preservados.
+[Registro da restauração](buhl-restauracao.md).
+Os comandos abaixo descrevem o ensaio histórico e exigem sua fonte
+original; o plano com `workerProfile` não é aceito pela arena restaurada.
+
 Protocolo fixado em 07/11/2026 antes do novo lote de 72 horas. Os PRs
 #123 e #124 já estão integrados. Este ensaio liga suas regras de operárias
 à arena física e mede o efeito do conjunto no gráfico principal de solo
@@ -63,9 +70,8 @@ node scripts/sweep-buhl-arena.ts --plan docs/validacoes/buhl-narbonne-operarias-
 
 O lote é retomável com `--resume` na mesma fonte. Não mudar módulos do motor
 durante sua execução, substituir a pasta ou iniciar outro executor.
-As 15 rodadas terminaram. O próximo diagnóstico é separar temperatura,
-contato corporal e carga em ablações pareadas, fixando os planos antes
-de executar e conservando a comparação empírica independente de B7.
+As 15 rodadas terminaram. A investigação desta variante foi encerrada
+por decisão do mantenedor; não iniciar ablações sem novo pedido.
 
 ## Resultado das 15 rodadas
 

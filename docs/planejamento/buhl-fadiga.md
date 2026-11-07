@@ -50,6 +50,13 @@ empíricas independentes segue pendente.
   trânsito em todas as amostras. A concordância numérica de um lote
   não encerra P3.2 ou P3.3.
 
+## Configuração principal restaurada
+
+Após o ensaio de morfologia, o mantenedor pediu voltar à configuração
+anterior em 07/11/2026. A integração corporal da arena foi retirada.
+O [retorno à fadiga de escavação](buhl-restauracao.md) preserva todos os
+dados e as fontes da variante desfavorável.
+
 ## Preferência para os próximos ensaios
 
 Em 07/11/2026, o mantenedor escolheu a fadiga apenas de escavação como

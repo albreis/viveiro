@@ -2,7 +2,7 @@ import { resolveBiologicalProfile } from "./catalog.ts";
 import type { BiologicalReference, WorkerReference } from "./types.ts";
 import type { AgentState } from "../navigation/types.ts";
 import type { ColonyAgent } from "../colony/types.ts";
-import { referenceWorkerMorphology } from "./worker-morphology.ts";
+import { hashSeed } from "../simulation/seed.ts";
 
 interface ReferenceHost {
   biologicalProfile?: BiologicalReference;
@@ -23,7 +23,12 @@ export function applyReferenceWorker(
   seed: string,
   ant: ColonyAgent,
 ) {
-  Object.assign(ant, referenceWorkerMorphology(reference, seed, ant.id));
+  const [min, max] = reference.bodyRangeMm;
+  const draw = hashSeed(seed + ":" + ant.id + ":reference-size") / 4294967296;
+  // Illustrative distribution biased toward smaller workers.
+  const fraction = draw * draw * draw;
+  ant.bodyScale = (min + (max - min) * fraction) / reference.bodyMm;
+  ant.headScale = 1 + fraction * 0.35;
   ant.speed *=
     (MESH_BODY_UNITS *
       REFERENCE_WALK_SECONDS *

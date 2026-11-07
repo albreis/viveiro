@@ -32,22 +32,19 @@ export function runBuhlLab(
       progress(tick, total);
   }
   const activityByWorker = workers.individualActivity();
-  const workerPhenotypes = workers.workerPhenotypes();
   return {
     seed: plan.seed,
     workers: plan.workers,
     samples,
     ...(activityByWorker ? { activityByWorker } : {}),
-    ...(workerPhenotypes ? { workerPhenotypes } : {}),
   };
 }
 
 export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
   return {
     protocol: "disco-fixo-2005",
-    model: plan.workerProfile
-      ? "viveiro-disco-narbonne-v1"
-      : plan.mechanism === "local"
+    model:
+      plan.mechanism === "local"
         ? "viveiro-disco-local-v1"
         : "viveiro-disco-contato-v2",
     mechanism: plan.mechanism,
@@ -73,13 +70,6 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
       : {}),
     ...(plan.microclimate
       ? { microclimate: { ...plan.microclimate, ...BUHL_CLIMATE_ASSUMPTIONS } }
-      : {}),
-    ...(plan.workerProfile
-      ? {
-          workerProfile: plan.workerProfile,
-          workerTransfer:
-            "shared morphology, temperature response, carried-soil gallery speed and planar contact ellipse",
-        }
       : {}),
     calibrated: false,
     geometryMm: BUHL_DISK_MM,

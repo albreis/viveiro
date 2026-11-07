@@ -34,18 +34,27 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-O pedido de integrar as operárias ao ensaio principal de escavação foi
-executado na branch `codex/buhl-narbonne-operarias`, PR #126.
-As 15 rodadas de 72 h terminaram com as cinco seeds por grupo e perfil
-`messor-narbonne@2` ativo. Médias finais de 15,76/23,86/36,66 cm³ para
-50/100/200 operárias. O MAE piorou nos três grupos; a escala entre
-grupos se aproximou da referência. [Dados, curvas e limites](planejamento/buhl-narbonne-operarias.md).
-A fonte real do lote é `046542f9988f9131abde961f073752b699de9f7b`.
-Após o lote houve apenas a correção equivalente da alocação inteira,
-verificada contra os 15 trechos iniciais e os fenótipos gravados.
-Conferir o aceite final do PR #126 e a publicação pendente antes de
-retomar T6 ou planejar a ablação separada de temperatura, contato e carga.
-Não repetir o lote concluído nem substituir seus dados por curvas antigas.
+Em 07/11, após examinar o novo lote, o mantenedor pediu voltar à fadiga
+apenas de escavação. A branch `codex/buhl-restaurar-fadiga-escavacao`
+restaura o código da arena ao estado anterior ao PR #126.
+Usar `docs/validacoes/buhl-fadiga-local-plano.json` como configuração principal:
+médias arquivadas de 19,92/36,15/64,46 cm³ para 50/100/200 operárias.
+[Alcance da restauração e limitação dos motores](planejamento/buhl-restauracao.md).
+
+O ensaio de morfologia do PR #126, seus dados e gráficos ficam preservados
+como histórico. Não reativar a integração nem iniciar ablações sem novo
+pedido. O retorno do código não conta como nova execução de 72 h.
+A arena usa motor plano próprio. Validar o comportamento do terrário
+3D exigirá um cenário controlado com o mesmo motor dos agentes.
+B7 continua pendente de evidência empírica independente.
+
+Novo pedido autorizado: após integrar esta restauração, criar a branch
+`codex/cenario-buhl-motor-viveiro` a partir da main. Construir um cenário
+controlado que use o mesmo motor de agentes e escavação do terrário,
+com métricas comparáveis a Buhl. Resolver a conversão de espaço e tempo
+antes de chamar uma execução de 72 horas físicas. Não substituir esse
+pedido por novas regras do motor plano antigo.
+
 
 A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
 ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)

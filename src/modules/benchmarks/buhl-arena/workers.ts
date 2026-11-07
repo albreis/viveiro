@@ -1,6 +1,4 @@
-import { moveBuhlWorker, type BuhlMotionContext } from "./worker-motion.ts";
-import { BuhlWorkerProfile } from "./worker-profile.ts";
-import { BuhlBodyContacts } from "./body-contacts.ts";
+import { motionWork } from "../../fatigue/motion-work.ts";
 import { BuhlMicroclimate } from "./microclimate.ts";
 import { BuhlActivity } from "./activity.ts";
 import { BuhlDigFatigue } from "./dig-fatigue.ts";
@@ -23,8 +21,6 @@ interface DigTask {
 }
 interface Worker extends EdgeContact {
   id: number;
-  bodyScale: number;
-  headScale: number;
   load: number;
   dig: DigTask | null;
 }
@@ -40,8 +36,6 @@ export class BuhlLabWorkers {
   readonly #activity?: BuhlActivity;
   readonly #microclimate?: BuhlMicroclimate;
   readonly #walkingEffortPerStep: number;
-  readonly #profile?: BuhlWorkerProfile;
-  readonly #motion: BuhlMotionContext;
   #steps = 0;
 
   private readonly arena: BuhlArena;
@@ -52,7 +46,6 @@ export class BuhlLabWorkers {
     this.arena = arena;
     this.soil = soil;
     this.plan = plan;
-    if (plan.workerProfile) this.#profile = new BuhlWorkerProfile(plan);
     this.#random = seededRandom(plan.seed + ":buhl-lab-workers-v1").random;
     this.#occupied = new Uint16Array(arena.cellsPerSide * arena.cellsPerSide);
     const seconds = plan.tickMilliseconds / 1000;
@@ -100,10 +93,6 @@ export class BuhlLabWorkers {
       return {
         ...(plan.digFatigue ? { digFatigue: new BuhlDigFatigue(seconds) } : {}),
         id,
-        ...(this.#profile?.body(plan.seed, id) ?? {
-          bodyScale: 1,
-          headScale: 1,
-        }),
         cell,
         heading: Math.floor(this.#random() * 4),
         load: 0,
@@ -113,25 +102,6 @@ export class BuhlLabWorkers {
         dig: null,
       };
     });
-    this.#motion = {
-      arena,
-      soil,
-      plan,
-      random: this.#random,
-      occupied: this.#occupied,
-      edge: this.#edge,
-      activity: this.#activity,
-      walkingEffortPerStep: this.#walkingEffortPerStep,
-      ...(this.#profile
-        ? {
-            contacts: new BuhlBodyContacts(
-              arena,
-              this.#agents,
-              this.#profile.mmPerModelUnit,
-            ),
-          }
-        : {}),
-    };
   }
 
   step(tick: number): void {
@@ -159,16 +129,7 @@ export class BuhlLabWorkers {
       }
       this.#edge?.observe(worker);
       if (!worker.load && this.#startDig(worker, tick)) continue;
-      const chance = this.#profile
-        ? (this.#profile.walkingSpeed(
-            worker.load / BUHL_INDIVIDUAL.pelletMicrograms,
-            this.arena.material(worker.cell) === "gallery",
-          ) *
-            (this.plan.tickMilliseconds / 1000)) /
-          this.plan.pitchMm
-        : this.#moveChance;
-      if (this.#random() < chance && moveBuhlWorker(this.#motion, worker, tick))
-        this.#steps++;
+      if (this.#random() < this.#moveChance) this.#move(worker, tick);
     }
   }
 
@@ -199,17 +160,58 @@ export class BuhlLabWorkers {
     return true;
   }
 
-  workerPhenotypes() {
-    if (!this.#profile) return undefined;
-    const ref = this.#profile.reference;
-    return this.#agents.map((a) => ({
-      id: a.id,
-      bodyMm: a.bodyScale * ref.bodyMm,
-      bodyScale: a.bodyScale,
-      headScale: a.headScale,
-      walkingMmPerSecond: this.#profile!.walkingMmPerSecond,
-      loadedGalleryWalkingMmPerSecond: this.#profile!.walkingSpeed(1, true),
-    }));
+  #move(worker: Worker, tick: number): void {
+    const draw = this.#random();
+    const turn = draw < 0.04 ? 1 : draw < 0.08 ? 3 : draw < 0.085 ? 2 : 0;
+    const side = draw < 0.5 ? 1 : 3;
+    const facing = (worker.heading + turn) & 3;
+    let target = -1;
+    let direction = facing;
+    let occupiedNeighbor = false;
+    for (let attempt = 0; attempt < 4; attempt++) {
+      const offset =
+        attempt === 0 ? 0 : attempt === 1 ? side : attempt === 2 ? 4 - side : 2;
+      const heading = (facing + offset) & 3;
+      const cell = this.arena.neighbor(worker.cell, heading);
+      if (this.#occupied[cell]) {
+        occupiedNeighbor = true;
+        continue;
+      }
+      if (!this.arena.walkable(cell)) continue;
+      if (target < 0) {
+        target = cell;
+        direction = heading;
+      }
+      if (!worker.following || this.#edge!.firstFace(cell, heading) >= 0) {
+        target = cell;
+        direction = heading;
+        break;
+      }
+    }
+    if (target < 0) {
+      if (occupiedNeighbor) this.#activity?.blocked(worker.id, tick);
+      return;
+    }
+    this.#activity?.moved(worker.id, tick);
+    if (this.#walkingEffortPerStep)
+      worker.digFatigue?.recordEffort(
+        tick,
+        motionWork(
+          this.#walkingEffortPerStep,
+          worker.load / BUHL_INDIVIDUAL.pelletMicrograms,
+        ),
+      );
+    this.#occupied[worker.cell] = 0;
+    this.#occupied[target] = worker.id;
+    worker.cell = target;
+    worker.heading = direction;
+    this.#steps++;
+    if (
+      !worker.load &&
+      this.soil.hasDeposit(target) &&
+      this.#random() < this.plan.pickupPerContact
+    )
+      worker.load = this.soil.pickUp(target);
   }
 
   individualActivity() {
@@ -233,7 +235,6 @@ export class BuhlLabWorkers {
         ? { meanDigReadiness: readiness / this.#agents.length }
         : {}),
       distanceMm: this.#steps * this.arena.pitchMm,
-      ...this.#motion.contacts?.sample(),
       ...(this.#microclimate
         ? { microclimate: this.#microclimate.sample(tick) }
         : {}),
