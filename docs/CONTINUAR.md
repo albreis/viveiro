@@ -34,6 +34,15 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+Atualização de 07/11: novo pedido autorizou a branch da main
+`codex/buhl-velocidade-carga` e os testes de velocidade/carga mantendo a
+morfologia. Seguir o [ensaio fatorial](planejamento/buhl-locomocao.md).
+Quatro braços, cinco seeds, 50/100/200, piloto 2 h e lote 72 h. O ganho
+1,6 é hipótese, nunca multiplicador de produção. Não alterar a fonte
+durante os lotes nem encerrar o dev. Preservar os PRs #128/#129 do cenário
+World; esta análise na arena histórica não conclui sua escala física.
+
+
 Em 07/11, após examinar o novo lote, o mantenedor pediu voltar à fadiga
 apenas de escavação. A branch `codex/buhl-restaurar-fadiga-escavacao`
 restaura o código da arena ao estado anterior ao PR #126.

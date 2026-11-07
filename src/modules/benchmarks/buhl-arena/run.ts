@@ -6,6 +6,8 @@ import { BuhlArena, BUHL_DISK_MM } from "./geometry.ts";
 import { BUHL_INDIVIDUAL, normalizeBuhlLabPlan } from "./settings.ts";
 import { BuhlSoilLedger } from "./soil.ts";
 import { BuhlLabWorkers } from "./workers.ts";
+import { BuhlWorkerProfile } from "./worker-profile.ts";
+import { BUHL_WALKING_OBSERVATION } from "./locomotion.ts";
 
 export function runBuhlLab(
   input: unknown,
@@ -32,21 +34,27 @@ export function runBuhlLab(
       progress(tick, total);
   }
   const activityByWorker = workers.individualActivity();
+  const workerPhenotypes = workers.workerPhenotypes();
   return {
     seed: plan.seed,
     workers: plan.workers,
     samples,
     ...(activityByWorker ? { activityByWorker } : {}),
+    ...(workerPhenotypes ? { workerPhenotypes } : {}),
   };
 }
 
 export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
+  const profile = plan.locomotion ? new BuhlWorkerProfile(plan) : undefined;
   return {
     protocol: "disco-fixo-2005",
-    model:
-      plan.mechanism === "local"
-        ? "viveiro-disco-local-v1"
-        : "viveiro-disco-contato-v2",
+    model: plan.locomotion
+      ? "viveiro-disco-locomocao-v1"
+      : plan.workerProfile
+        ? "viveiro-disco-narbonne-v1"
+        : plan.mechanism === "local"
+          ? "viveiro-disco-local-v1"
+          : "viveiro-disco-contato-v2",
     mechanism: plan.mechanism,
     contactAccess: plan.contactAccess,
     ...(plan.digFatigue
@@ -70,6 +78,25 @@ export function describeBuhlLab(plan: ReturnType<typeof normalizeBuhlLabPlan>) {
       : {}),
     ...(plan.microclimate
       ? { microclimate: { ...plan.microclimate, ...BUHL_CLIMATE_ASSUMPTIONS } }
+      : {}),
+    ...(plan.workerProfile
+      ? {
+          workerProfile: plan.workerProfile,
+          workerTransfer: plan.locomotion
+            ? "shared morphology and planar contact ellipse; explicit assay locomotion"
+            : "shared morphology, temperature response, carried-soil gallery speed and planar contact ellipse",
+        }
+      : {}),
+    ...(profile
+      ? {
+          locomotion: {
+            ...plan.locomotion,
+            unloadedMmPerSecond: profile.walkingSpeed(0, false),
+            loadedGalleryMmPerSecond: profile.walkingSpeed(1, true),
+            observation: BUHL_WALKING_OBSERVATION,
+            scope: "arena intervention; no change to default terrarium profile",
+          },
+        }
       : {}),
     calibrated: false,
     geometryMm: BUHL_DISK_MM,
