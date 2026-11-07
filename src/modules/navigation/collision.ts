@@ -1,4 +1,3 @@
-import { WORKER_CONTACT } from "./body-contact.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type {
   AgentState,
@@ -44,13 +43,9 @@ export function positionClear(
     const across = x * side.x + y * side.y + z * side.z;
     const bodyScale = ((entity.bodyScale || 1) + (other.bodyScale || 1)) / 2;
     const radius =
-      (["queen", "gyne"].includes(other.kind || "")
-        ? 0.53
-        : WORKER_CONTACT.length) * bodyScale;
+      (["queen", "gyne"].includes(other.kind || "") ? 0.53 : 0.38) * bodyScale;
     const width =
-      (["queen", "gyne"].includes(other.kind || "")
-        ? 0.25
-        : WORKER_CONTACT.width) * bodyScale;
+      (["queen", "gyne"].includes(other.kind || "") ? 0.25 : 0.14) * bodyScale;
     if (
       height < 0.18 &&
       modelMath.pow(along / radius, 2) + modelMath.pow(across / width, 2) < 1

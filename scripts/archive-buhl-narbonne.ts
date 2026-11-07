@@ -1,22 +1,31 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { readCsv } from "../src/libs/csv-reader.ts";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { assessBuhlPhysicalSeries } from "./lib/buhl-physical-check.ts";
 import { readSweepJson, immutableSweepFile } from "./lib/sweep-files.ts";
-import type { BuhlLabRun } from "../src/modules/benchmarks/buhl-arena/run.ts";
+import type { BiologicalReference } from "../src/modules/biology/types.ts";
 import type { BuhlLabPlan } from "../src/modules/benchmarks/buhl-arena/settings.ts";
+
+// Historical data remains readable after the optional morphology engine was removed.
+interface ArchivedRun {
+  seed: string;
+  workers: number;
+  samples: Record<string, number>[];
+  workerPhenotypes?: Record<string, number>[];
+}
+type ArchivedPlan = BuhlLabPlan & { workerProfile?: BiologicalReference };
 
 const [folder, sourceCommit, ...extra] = process.argv.slice(2);
 if (!folder || !/^[a-f0-9]{40}$/.test(sourceCommit ?? "") || extra.length)
   throw Error("Uso: node scripts/archive-buhl-narbonne.ts PASTA SHA_DA_FONTE");
 const source = readSweepJson(join(folder, "series.json"), 8 * 1024 * 1024) as {
   sourceFingerprint: string;
-  runs: BuhlLabRun[];
+  runs: ArchivedRun[];
 };
 const manifest = readSweepJson(join(folder, "plano.json")) as {
-  plans: BuhlLabPlan[];
+  plans: ArchivedPlan[];
   sourceFingerprint: string;
   runtime: string;
 };
@@ -182,9 +191,16 @@ const receipt = {
   oldSeriesSha256Lf: previous.arms.local.publishedSeriesSha256Lf,
 };
 const prefix = "docs/validacoes/buhl-narbonne-operarias";
-immutableSweepFile(prefix + "-72h.csv", seriesCsv);
-immutableSweepFile(prefix + "-fenotipos.csv", bodyCsv);
-immutableSweepFile(
+function publishHistorical(path: string, text: string) {
+  if (existsSync(path)) {
+    assert.equal(readFileSync(path, "utf8").replaceAll("\r\n", "\n"), text);
+    return;
+  }
+  immutableSweepFile(path, text);
+}
+publishHistorical(prefix + "-72h.csv", seriesCsv);
+publishHistorical(prefix + "-fenotipos.csv", bodyCsv);
+publishHistorical(
   prefix + "-comparacao.json",
   JSON.stringify(receipt, null, 2) + "\n",
 );

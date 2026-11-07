@@ -34,9 +34,10 @@ O modelo continua exploratório, sem calibração biológica concluída.
   subterrânea, alimentação e calendário. 538 testes e seis rodadas de 80 dias
   com curvas, balanços e proveniência.
 
-- [x] [Novo ensaio principal de Buhl com operárias de Narbonne](planejamento/buhl-narbonne-operarias.md):
-  15 rodadas de 72 h, com porte, contato corporal e marcha atualizados.
-  Resultados desfavoráveis preservados; calibração continua pendente.
+- [x] [Ensaio histórico de Buhl com operárias de Narbonne](planejamento/buhl-narbonne-operarias.md):
+  15 rodadas concluídas e preservadas. Integração de morfologia retirada a
+  pedido do mantenedor; [fadiga de escavação anterior restaurada](planejamento/buhl-restauracao.md).
+  Calibração continua pendente.
 
 - [x] [Página privada de leitura do cronograma](cronograma-privado.md): busca,
   filtros e áreas por responsabilidade; gerada destes documentos, fora do build público.
