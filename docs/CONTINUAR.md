@@ -247,3 +247,13 @@ identidade por réplica, compatibilidade do protocolo e permissão de reuso.
 Um futuro ajuste deve reservar novas seeds do simulador e observações reais
 antes de comparar mecanismos de saturação. Os instrumentos de T5 estão prontos
 para receber observações, pareceres e contribuições reais.
+
+Checkpoint de segurança: o lote de acesso de 72 h está em execução,
+com um único coordenador. Plano e rodadas concluídas estão preservados
+em `docs/validacoes/buhl-acesso-72h-checkpoint.zip`; não restaurar sobre
+um executor ativo. Consulte `.runtime/buhl-acesso-geometrico-72h`.
+Ao terminar: `node scripts/archive-buhl-access.ts .runtime/buhl-acesso-geometrico-72h 906ffac32087cceef13d3c8d97261a8385eca4a9`.
+Para o gráfico, usar Python 3.14 com `PYTHONPATH=.runtime/buhl-plot-deps`
+e `MPLCONFIGDIR=.runtime/buhl-plot-config`, executando `scripts/plot-buhl-access.py`.
+Validar a figura, registrar resultados em buhl-acesso-geometrico.md e
+atualizar o PR #130. Os 60 ensaios anteriores já estão publicados na branch.
