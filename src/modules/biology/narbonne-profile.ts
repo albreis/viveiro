@@ -39,6 +39,7 @@ export function createNarbonneProfile(
           }),
           founderBodyMm: Object.freeze({ queen: 11, male: 8 }),
           seedMeals: true as const,
+          establishmentModel: "pilot-access" as const,
           reproductiveCalendar: Object.freeze({
             yearDays: 80,
             initialDay: 59,

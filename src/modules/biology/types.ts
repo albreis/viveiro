@@ -74,6 +74,7 @@ export interface BiologicalProfile {
   readonly founderBodyMm?: { readonly queen: number; readonly male: number };
   readonly reproductiveCalendar?: import("./reproductive-calendar.ts").ReproductiveCalendar;
   readonly seedMeals?: true;
+  readonly establishmentModel?: "pilot-access";
   readonly forageModel?: "seed-trails";
   readonly foundation: "claustral" | "semiclaustral" | "unknown";
   readonly cocoon: "present" | "absent" | "unspecified";

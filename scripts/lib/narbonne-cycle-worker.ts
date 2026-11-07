@@ -30,6 +30,7 @@ const world = new World(
 let firstEggTick: number | null = null;
 let firstWorkerTick: number | null = null;
 let establishedTick: number | null = null;
+let fullOpeningTick: number | null = null;
 const samples: object[] = [];
 function sample() {
   const soil = soilBalance(world);
@@ -70,6 +71,8 @@ while (world.tick < plan.days * 100) {
     firstWorkerTick = world.tick;
   if (establishedTick === null && world.founding?.phase === "established")
     establishedTick = world.tick;
+  if (fullOpeningTick === null && world.founding?.seal?.phase === "opened")
+    fullOpeningTick = world.tick;
   if (world.tick % 100 === 0) sample();
 }
 const result = await experimentResult(
@@ -82,5 +85,6 @@ parentPort!.postMessage({
   firstEggTick,
   firstWorkerTick,
   establishedTick,
+  fullOpeningTick,
   samples,
 });
