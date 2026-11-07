@@ -34,6 +34,16 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+Pedido prioritário de 07/11: integrar os ajustes das operárias ao ensaio
+principal de escavação e executar novamente as 72 horas. Branch
+`codex/buhl-narbonne-operarias`, [protocolo fixado](planejamento/buhl-narbonne-operarias.md).
+O novo plano tem cinco seeds para cada grupo de 50, 100 e 200 operárias.
+Saída `.runtime/buhl-narbonne-operarias-72h`; retomar apenas com a mesma
+fonte e `--resume`, sem iniciar executor concorrente nem alterar módulos
+do motor durante o lote. Usar apenas fadiga de escavação. Ao concluir,
+conferir balanços, comparar com os CSVs antigos e publicar as curvas reais.
+
+
 A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
 ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)
 registra 538 testes aprovados, Chrome pt/en, seis rodadas de 80 dias,
