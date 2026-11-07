@@ -46,8 +46,15 @@ export function arriveColony(
       support.normal,
       world.nest.nodes[node],
     );
-  } else if (task.kind === "care") task.until = world.tick + 15;
-  else {
+  } else if (task.kind === "care") {
+    const queen = ant.seedRation
+      ? world.ants.find((a) => a.kind === "queen")
+      : undefined;
+    if (queen?.node != null && queen.node !== node) {
+      task.destination = queen.node;
+      requestRoute(world, ant, task.destination);
+    } else task.until = world.tick + 15;
+  } else {
     ant.node = null;
     ant.tunnelCenter = null;
     ant.tunnelY = 0;

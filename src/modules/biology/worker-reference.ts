@@ -65,7 +65,7 @@ export function surfaceWalkingSpeed(
 ) {
   const reference = workerReference(host, ant);
   if (!reference) return speed;
-  if (ant.carrying > 0 && reference.seedForaging)
+  if ((ant.carrying > 0 || ant.seedRation) && reference.seedForaging)
     speed *= workerSizeFactor(
       reference,
       ant,

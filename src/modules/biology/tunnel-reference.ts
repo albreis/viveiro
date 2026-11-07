@@ -23,7 +23,7 @@ export function tunnelWalkingSpeed(
   const wall = 1 - Math.max(0, ant.normal?.y ?? 1);
   const soil = Math.min(1, (ant.carryingSoil ?? 0) / 0.022);
   const seed =
-    ant.carrying > 0 && reference.seedForaging
+    (ant.carrying > 0 || ant.seedRation) && reference.seedForaging
       ? workerSizeFactor(
           reference,
           ant,

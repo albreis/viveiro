@@ -42,5 +42,9 @@
   "biology.profile.messor-narbonne@1": "Narbonne Messor · Buhl reference",
   "biology.description.messor-narbonne@1": "Viveiro’s reference population. Exploratory profile based on the ants Buhl called Messor sancta, probably Messor bouvieri. Worker size, surface walking and seed foraging use specific references.",
   "biology.profile.messor-narbonne@2": "Narbonne Messor · season and feeding",
-  "biology.description.messor-narbonne@2": "Exploratory Narbonne profile, likely Messor bouvieri. Prepared seeds, underground walking, reproductive caste sizes and a demonstration Mediterranean calendar."
+  "biology.description.messor-narbonne@2": "Exploratory Narbonne profile, likely Messor bouvieri. Prepared seeds, underground walking, reproductive caste sizes and a demonstration Mediterranean calendar.",
+  "biology.calendar.flight": " Autumn flight window, requiring recent rain.",
+  "biology.calendar.alates": " Demonstration reproductive brood window.",
+  "biology.calendar.laying": " Demonstration egg-laying window.",
+  "biology.calendar.rest": " Seasonal pause in egg laying. The spring window returns next cycle."
 }

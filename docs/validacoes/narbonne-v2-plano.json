@@ -1,0 +1,14 @@
+{
+  "seeds": ["SEMENTE-42", "NARBONNE-CICLO-1", "NARBONNE-CICLO-2"],
+  "versions": [1, 2],
+  "days": 60,
+  "parameters": {
+    "humidity": 68,
+    "light": 72,
+    "randomness": 28,
+    "reposeAngle": 36,
+    "temperatureC": 24,
+    "windX": 0,
+    "windZ": 0
+  }
+}

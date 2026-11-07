@@ -19,6 +19,7 @@ export function takeSeedRation(world: ColonyWorld, ant: ColonyAgent) {
   if (
     ant.kind !== "worker" ||
     ant.seedRation ||
+    !world.ants.some((a) => a.kind === "queen" && a.crop < 0.3) ||
     !physicalStockVisit(world, ant)
   )
     return;

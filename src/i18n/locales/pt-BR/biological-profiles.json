@@ -42,5 +42,9 @@
   "biology.profile.messor-narbonne@1": "Messor de Narbonne · referência de Buhl",
   "biology.description.messor-narbonne@1": "Espécie-base do Viveiro. Perfil exploratório da população que Buhl chamou Messor sancta, provavelmente Messor bouvieri. Porte das operárias, caminhada em superfície e forrageamento de sementes têm referências próprias.",
   "biology.profile.messor-narbonne@2": "Messor de Narbonne · ciclo e alimentação",
-  "biology.description.messor-narbonne@2": "Perfil exploratório de Narbonne, provável Messor bouvieri. Sementes preparadas, marcha em galerias, tamanho dos alados e calendário mediterrâneo demonstrativo."
+  "biology.description.messor-narbonne@2": "Perfil exploratório de Narbonne, provável Messor bouvieri. Sementes preparadas, marcha em galerias, tamanho dos alados e calendário mediterrâneo demonstrativo.",
+  "biology.calendar.flight": " Voo de outono disponível após chuva.",
+  "biology.calendar.alates": " Período demonstrativo de produção de alados.",
+  "biology.calendar.laying": " Período demonstrativo de postura.",
+  "biology.calendar.rest": " Postura em pausa sazonal. A janela de primavera retorna no próximo ciclo."
 }

@@ -213,7 +213,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   );
   if (physicalDistance > speed || dot(normal, footing.normal) < 0.75) {
     startSupportedMotion(world, ant, footing, footing.normal, next);
-    advanceSupportedMotion(world, ant, speed);
+    advanceSupportedMotion(world, ant, ant.speed * 0.85);
     return;
   }
   nav.velocity = sub(footing, position(ant));
