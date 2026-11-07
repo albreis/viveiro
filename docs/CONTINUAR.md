@@ -48,7 +48,12 @@ A arena usa motor plano próprio. Validar o comportamento do terrário
 3D exigirá um cenário controlado com o mesmo motor dos agentes.
 B7 continua pendente de evidência empírica independente.
 
-Novo pedido autorizado: após integrar esta restauração, criar a branch
+Restauração integrada no PR #127, main `d88c31e`. Nova branch já criada:
+`codex/cenario-buhl-motor-viveiro`. [Checkpoint do cenário real](planejamento/buhl-motor-compartilhado.md).
+Há um piloto com coorte adulta usando `World.step` e métricas do solo,
+mas ainda não é comparável a Buhl. Priorizar tempo físico e geometria.
+
+Pedido autorizado original: após integrar esta restauração, criar a branch
 `codex/cenario-buhl-motor-viveiro` a partir da main. Construir um cenário
 controlado que use o mesmo motor de agentes e escavação do terrário,
 com métricas comparáveis a Buhl. Resolver a conversão de espaço e tempo
