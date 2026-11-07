@@ -38,7 +38,7 @@ O [plano](../validacoes/buhl-narbonne-operarias-plano.json) fixa 24 °C,
 A água neutra mantém o fator de tempo por pelota em um. Esses números não
 são uma reconstrução das condições ausentes do estudo de Buhl.
 
-Serão comparadas as séries novas às séries arquivadas de controle e de fadiga
+Foram comparadas as séries novas às séries arquivadas de controle e de fadiga
 de escavação, nas mesmas cinco seeds. Relatar volume em 12 e 72 horas, MAE nos
 seis tempos de 12 a 72 horas, cobertura da leitura ±3 cm³, taxa tardia,
 diferenças pareadas e dispersão. Preservar resultados desfavoráveis.
@@ -63,5 +63,80 @@ node scripts/sweep-buhl-arena.ts --plan docs/validacoes/buhl-narbonne-operarias-
 
 O lote é retomável com `--resume` na mesma fonte. Não mudar módulos do motor
 durante sua execução, substituir a pasta ou iniciar outro executor.
-O próximo passo é concluir as rodadas, conferir os balanços e gerar a
-comparação visual com as séries anteriores.
+As 15 rodadas terminaram. O próximo diagnóstico é separar temperatura,
+contato corporal e carga em ablações pareadas, fixando os planos antes
+de executar e conservando a comparação empírica independente de B7.
+
+## Resultado das 15 rodadas
+
+Fonte das rodadas: `046542f9988f9131abde961f073752b699de9f7b`.
+Node 24.22.1, aritmética nativa. O novo lote gerou 3.255 amostras e
+1.750 fenótipos individuais registrados. O eixo das curvas é o volume
+novo de galeria aberta no disco (`voidVolumeCm3`); o CSV também preserva
+volume removido por massa e areia parcialmente escavada.
+
+![Curvas com as operárias atualizadas](../validacoes/figuras/buhl-narbonne-comparacao-1080x1350.png)
+
+| Operárias | Fadiga anterior em 72 h | Nova configuração em 72 h | Tabela de Buhl 2005 | MAE anterior → novo |
+| --- | ---: | ---: | ---: | ---: |
+| 50 | 19,92 cm³ | 15,76 cm³ | 25,35 cm³ | 4,39 → 6,72 cm³ |
+| 100 | 36,15 cm³ | 23,86 cm³ | 37,15 cm³ | 3,01 → 9,67 cm³ |
+| 200 | 64,46 cm³ | 36,66 cm³ | 65,27 cm³ | 2,07 → 15,52 cm³ |
+
+O desvio padrão entre as cinco seeds no ponto final foi 0,69, 0,94 e
+2,59 cm³, respectivamente. As diferenças pareadas médias foram
+−4,16, −12,29 e −27,80 cm³. Todas as 15 diferenças individuais foram negativas.
+
+Os volumes e o MAE das curvas pioraram nos três grupos. A cobertura
+da faixa de leitura ficou em 16,7%, 16,7% e 0%. A faixa de ±3 cm³ é
+incerteza de digitalização da curva de 2001; a tabela de 2005 tem outra
+média final e sua dispersão descritiva própria. As figuras separam ambas.
+
+A inclinação log-log entre grupos passou de 0,847 para **0,609**,
+agora dentro da faixa de leitura de 0,500–0,747. Esse é um ganho no
+padrão de escala, enquanto os volumes absolutos continuam abaixo das
+referências. Não basta para declarar a configuração calibrada.
+
+A marcha sem carga ficou em 11,02 mm/s a 24 °C, frente à âncora de
+15,05 mm/s do ensaio antigo sem microclima explícito. Com carga inteira
+de terra em galeria, ficou em 9,37 mm/s. A elipse corporal também
+rejeitou encontros antes aceitos pela exclusão de uma célula.
+Esses mecanismos dão caminhos plausíveis para a redução, mas este lote
+não mede a contribuição isolada de cada um.
+
+Os balanços inteiros de massa e células foram preservados nas 3.255
+amostras e o trânsito abriu zero células em todas elas. Não se ajustaram
+coeficientes após observar essas curvas. A nova opção permanece
+experimental. O ensaio antigo e sua interpretação estão preservados.
+
+## Dados, imagens e validação
+
+- [CSV das 3.255 amostras](../validacoes/buhl-narbonne-operarias-72h.csv).
+- [Portes e velocidades dos 1.750 indivíduos](../validacoes/buhl-narbonne-operarias-fenotipos.csv).
+- [Comparação, planos, pares por seed e hashes](../validacoes/buhl-narbonne-operarias-comparacao.json).
+- PNGs individuais: [50](../validacoes/figuras/buhl-narbonne-50-1080x1350.png),
+  [100](../validacoes/figuras/buhl-narbonne-100-1080x1350.png) e
+  [200](../validacoes/figuras/buhl-narbonne-200-1080x1350.png).
+- [Verificações da implementação e equivalência](../validacoes/buhl-narbonne-verificacao.json).
+
+O gerador `scripts/archive-buhl-narbonne.ts` confere os hashes dos registros,
+o pareamento com o CSV antigo, todos os balanços e os portes registrados.
+`scripts/plot-buhl-narbonne.py` confere SHA-256 e médias antes dos quatro PNGs.
+
+Uma checagem de arquitetura numérica detectou `side ** 2` na alocação
+inteira dos buckets. A fonte ficou fixa durante todas as rodadas. Depois
+do lote, a expressão foi substituída por `side * side`, sem alteração
+biológica. A equivalência inteira foi conferida para todos os tamanhos
+de bucket suportados, de 1 a 1.000. A reexecução dos primeiros 1.200 segundos
+dos 15 planos preservou as amostras e todos os fenótipos exatamente.
+O recibo distingue a impressão digital da fonte das rodadas e a fonte
+final. Os dados longos continuam atribuídos à fonte que os produziu.
+
+A conferência de contato comparou dois mil deslocamentos indexados à
+função real 3D em apoio plano. O Chrome 157 também executou a arena nova
+e confirmou perfil, fenótipos, contatos ativos e balanços. Os saves
+do usuário não foram usados para testes. A fonte antiga continua
+reproduzindo o controle de Buhl e o CSV/manifesto da v1 do terrário.
+
+A suíte final passou em **542/542 testes**. TypeScript, 1.368 mensagens pt/en
+e o build Vite de 491 módulos também passaram. [PR #126](https://github.com/albreis/viveiro/pull/126).

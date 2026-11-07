@@ -32,7 +32,7 @@ export class BuhlBodyContacts {
       Math.ceil((this.#length * maxScale) / arena.pitchMm),
     );
     this.#side = Math.ceil(arena.cellsPerSide / this.#span);
-    this.#heads = new Int16Array(this.#side ** 2).fill(-1);
+    this.#heads = new Int16Array(this.#side * this.#side).fill(-1);
     this.#near = new Uint16Array(this.#heads.length);
     this.#next = new Int16Array(agents.length).fill(-1);
     this.#previous = new Int16Array(agents.length).fill(-1);

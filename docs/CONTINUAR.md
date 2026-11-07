@@ -34,20 +34,18 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
-Pedido prioritário de 07/11: integrar os ajustes das operárias ao ensaio
-principal de escavação e executar novamente as 72 horas. Branch
-`codex/buhl-narbonne-operarias`, [protocolo fixado](planejamento/buhl-narbonne-operarias.md).
-O novo plano tem cinco seeds para cada grupo de 50, 100 e 200 operárias.
-Saída `.runtime/buhl-narbonne-operarias-72h`; retomar apenas com a mesma
-fonte e `--resume`, sem iniciar executor concorrente nem alterar módulos
-do motor durante o lote. Usar apenas fadiga de escavação. A fonte do lote
-é `046542f9988f9131abde961f073752b699de9f7b` e o PR em rascunho é #126.
-A suíte teve 540/541 aprovações: corrigir depois do lote o `this.#side ** 2`
-na alocação de `body-contacts.ts` para multiplicação inteira equivalente,
-sem mudar a dinâmica. Preservar a fonte real dos dados e verificar a
-equivalência contra trechos já gravados. A QA do Chrome passou. Ao concluir,
-conferir balanços, comparar com os CSVs antigos e publicar as curvas reais.
-
+O pedido de integrar as operárias ao ensaio principal de escavação foi
+executado na branch `codex/buhl-narbonne-operarias`, PR #126.
+As 15 rodadas de 72 h terminaram com as cinco seeds por grupo e perfil
+`messor-narbonne@2` ativo. Médias finais de 15,76/23,86/36,66 cm³ para
+50/100/200 operárias. O MAE piorou nos três grupos; a escala entre
+grupos se aproximou da referência. [Dados, curvas e limites](planejamento/buhl-narbonne-operarias.md).
+A fonte real do lote é `046542f9988f9131abde961f073752b699de9f7b`.
+Após o lote houve apenas a correção equivalente da alocação inteira,
+verificada contra os 15 trechos iniciais e os fenótipos gravados.
+Conferir o aceite final do PR #126 e a publicação pendente antes de
+retomar T6 ou planejar a ablação separada de temperatura, contato e carga.
+Não repetir o lote concluído nem substituir seus dados por curvas antigas.
 
 A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
 ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)
