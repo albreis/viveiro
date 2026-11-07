@@ -1,3 +1,4 @@
+import { reproductiveStatus } from "./reproductive-status.ts";
 import { locale, t, message, messageSource } from "../i18n/runtime.ts";
 import { profileLabel, profileDescription } from "../i18n/biology.ts";
 import type { MessageKey } from "../i18n/catalogs.ts";
@@ -160,6 +161,8 @@ export function renderBiologyStatus(world: FamilyWorld): void {
       version: p.version,
       temperature: locale.number(world.params.temperatureC ?? 24),
       humidity: locale.number(world.params.humidity),
-    }) + t(world.biologicalProfile ? "biology.preserved" : "biology.legacy"),
+    }) +
+      t(world.biologicalProfile ? "biology.preserved" : "biology.legacy") +
+      reproductiveStatus(world),
   );
 }

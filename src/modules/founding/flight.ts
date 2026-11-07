@@ -1,3 +1,4 @@
+import { reproductiveWindow } from "../biology/reproductive-calendar.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { registerMating } from "../fertility/model.ts";
 import { beginSiteSurvey } from "../chambers/survey.ts";
@@ -30,6 +31,7 @@ export function flightReadiness(
   if (!f) return 0;
   if (world.landscape.rainPulse > 0.15) f.lastRain = world.tick;
   if (
+    !reproductiveWindow(world, "flight") ||
     world.tick - f.lastRain > 300 ||
     world.params.humidity < 45 ||
     world.params.humidity > 88 ||

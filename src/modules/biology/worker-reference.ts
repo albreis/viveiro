@@ -8,7 +8,7 @@ interface ReferenceHost {
   biologicalProfile?: BiologicalReference;
 }
 
-const MESH_BODY_UNITS = 0.445;
+export const MESH_BODY_UNITS = 0.445;
 const REFERENCE_WALK_SECONDS = 0.05;
 const DEFAULT_SPEED_MEAN = 0.0875;
 
@@ -65,18 +65,30 @@ export function surfaceWalkingSpeed(
 ) {
   const reference = workerReference(host, ant);
   if (!reference) return speed;
-  if (ant.carrying > 0 && reference.seedForaging)
+  if ((ant.carrying > 0 || ant.seedRation) && reference.seedForaging)
     speed *= workerSizeFactor(
       reference,
       ant,
       reference.seedForaging.loadedWalkingFactor,
     );
+  return (
+    (speed * walkingAtTemperature(reference, celsius)) /
+    reference.openWalkingMmPerSecond
+  );
+}
+
+export function temperatureWalkingFactor(
+  reference: WorkerReference,
+  celsius: number,
+) {
+  return (
+    walkingAtTemperature(reference, celsius) / reference.openWalkingMmPerSecond
+  );
+}
+function walkingAtTemperature(reference: WorkerReference, celsius: number) {
   const points = reference.temperatures;
   let previous = points[0];
-  if (celsius <= previous.celsius)
-    return (
-      (speed * previous.speedMmPerSecond) / reference.openWalkingMmPerSecond
-    );
+  if (celsius <= previous.celsius) return previous.speedMmPerSecond;
   for (let i = 1; i < points.length; i++) {
     const point = points[i];
     if (celsius <= point.celsius) {
@@ -85,9 +97,9 @@ export function surfaceWalkingSpeed(
       const walking =
         previous.speedMmPerSecond +
         fraction * (point.speedMmPerSecond - previous.speedMmPerSecond);
-      return (speed * walking) / reference.openWalkingMmPerSecond;
+      return walking;
     }
     previous = point;
   }
-  return (speed * previous.speedMmPerSecond) / reference.openWalkingMmPerSecond;
+  return previous.speedMmPerSecond;
 }

@@ -28,6 +28,7 @@ export const loaded = (ant: AgentState) =>
   !!(
     ant.hasFood ||
     ant.carrying > 0 ||
+    ant.seedRation ||
     ant.carryingBrood ||
     ant.carryingMimic ||
     ant.carryingSoil ||

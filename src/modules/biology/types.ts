@@ -51,6 +51,10 @@ export interface WorkerReference {
   readonly bodyMm: number;
   readonly bodyRangeMm: readonly [number, number];
   readonly openWalkingMmPerSecond: number;
+  readonly tunnelWalking?: {
+    readonly wallFactor: number;
+    readonly soilLoadFactor: number;
+  };
   readonly seedForaging?: {
     readonly searchFactor: readonly [number, number];
     readonly loadedWalkingFactor: readonly [number, number];
@@ -67,6 +71,10 @@ export interface BiologicalProfile {
   readonly modelSpecies: null;
   readonly referenceSpecies: string | null;
   readonly workerReference?: WorkerReference;
+  readonly founderBodyMm?: { readonly queen: number; readonly male: number };
+  readonly reproductiveCalendar?: import("./reproductive-calendar.ts").ReproductiveCalendar;
+  readonly seedMeals?: true;
+  readonly establishmentModel?: "pilot-access";
   readonly forageModel?: "seed-trails";
   readonly foundation: "claustral" | "semiclaustral" | "unknown";
   readonly cocoon: "present" | "absent" | "unspecified";

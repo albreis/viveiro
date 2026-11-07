@@ -128,7 +128,10 @@ export class ColonyView {
     let n = 0;
     for (const ant of world.ants) {
       if (visibleIds && !visibleIds.has(ant.id)) continue;
-      if ((!ant.carrying && !ant.carryingWaste) || ant.id === followId)
+      if (
+        (!ant.carrying && !ant.carryingWaste && !ant.seedRation) ||
+        ant.id === followId
+      )
         continue;
       d.position.copy(this.mouth(ant, pose));
       d.rotation.set(0, ant.id, 0);

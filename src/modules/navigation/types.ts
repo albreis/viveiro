@@ -47,6 +47,7 @@ export interface AgentState {
   state?: string;
   energy: number;
   carrying: number;
+  seedRation?: number;
   colonyId?: number;
   knownEdges?: [number, number, number][];
   recentNodes?: number[];

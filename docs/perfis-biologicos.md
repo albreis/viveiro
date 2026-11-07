@@ -19,9 +19,12 @@ Se um checkpoint atual usa perfil/schema/versão desconhecidos, a gravação aut
 ## População de referência
 
 Novas sessões do terrário usam [Messor de Narbonne](planejamento/messor-narbonne.md)
-por padrão. O perfil `messor-narbonne@1` separa as âncoras de tamanho e
+por padrão. O perfil original `messor-narbonne@1` separa as âncoras de tamanho e
 locomoção das estratégias de dieta e desenvolvimento. A atribuição a
-*Messor bouvieri* é provisória e os perfis genéricos continuam selecionáveis.
+_Messor bouvieri_ é provisória e os perfis genéricos continuam selecionáveis.
+O padrão atual é `messor-narbonne@2`, com [ciclo, alimentação, alados e
+caminhada em galerias versionados](planejamento/narbonne-v2.md).
+Os planos e saves anteriores continuam fixados na v1.
 
 ## Estratégias e dados ainda necessários
 

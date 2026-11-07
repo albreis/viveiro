@@ -22,6 +22,7 @@ implementação entregue não equivale a validação científica por espécie.
 | P2.3/P2.4 | Varreduras retomáveis e sensibilidade Morris |
 | P2.5/P2.6/P2.7 | Extensões tipadas, editor de perfis e i18n pt-BR/en |
 | P4.1A/P4.2A | Estrutura de contribuições e galeria com dez receitas internas |
+| Narbonne v2 | [Quatro ajustes, seis rodadas de 80 dias e curvas](narbonne-v2.md); 538 testes e Chrome pt/en |
 | Pós-P2 | Auditoria A/B, UI/renderer migrados para TS estrito; legado da simulação segue gradual |
 
 [Histórico integral com aceites, PRs e evidências](https://github.com/albreis/viveiro/blob/17d5f70070a4e32df6ce1a6bf68dd9b8f5861fbd/docs/cronograma.md).

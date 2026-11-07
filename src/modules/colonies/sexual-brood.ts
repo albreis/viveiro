@@ -1,3 +1,4 @@
+import { reproductiveWindow } from "../biology/reproductive-calendar.ts";
 import { canFertilize } from "../fertility/model.ts";
 import { addStock, takeStock } from "../stores/ledger.ts";
 import { layingComfort } from "../development/sensing.ts";
@@ -28,6 +29,7 @@ export function laySexualBrood(w: ColonyWorld) {
   }
   if (
     !queen ||
+    !reproductiveWindow(w, "alates") ||
     layingComfort(w) <= 0 ||
     queen.age < 25 ||
     w.queenHealth < 60 ||

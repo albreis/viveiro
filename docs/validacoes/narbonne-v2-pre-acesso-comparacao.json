@@ -1,0 +1,270 @@
+{
+  "schema": "viveiro-narbonne-cycle-v1",
+  "calibrated": false,
+  "sourceCommit": "bdc889662303b2b26aa67e9a04c01c823679ae3d",
+  "modelFingerprint": "03621fa322e29b8db81b242e90436bd9699b584174160ef5e3eaeb318da360e6",
+  "ticksPerModelDay": 100,
+  "seriesSha256Lf": "ed41900cf9e5895d3934f33c237d42e3f380e9a6b7cca9958773c250dda7dea3",
+  "sampleCount": 486,
+  "maxBalanceError": 5.702105454474804e-13,
+  "runs": [
+    {
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "SEMENTE-42",
+        "days": 80,
+        "startMode": "founding",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "messor-narbonne",
+          "version": 1
+        },
+        "parameters": {
+          "humidity": 68,
+          "light": 72,
+          "randomness": 28,
+          "reposeAngle": 36,
+          "temperatureC": 24,
+          "windX": 0,
+          "windZ": 0
+        }
+      },
+      "firstEggTick": 2270,
+      "firstWorkerTick": 2459,
+      "establishedTick": 3818,
+      "fullOpeningTick": null,
+      "final": {
+        "day": 80,
+        "adults": 14,
+        "workers": 13,
+        "brood": 0,
+        "food": 1.2,
+        "queenHealth": 100,
+        "soilRemoved": 2.6581311881443144,
+        "soilEroded": 0,
+        "balanceMaxError": 2.7977620220553945e-13,
+        "laying": true,
+        "phase": "established"
+      },
+      "csvSha256": "826d2eae3bb2d3420458935309260cf1996064e6d59c923539ea01e909cb2241",
+      "arithmetic": "stdlib-f64-v1",
+      "finalRootRng": 2076336666,
+      "recordSha256": "92bcee137b67b2144b3c887b4e4ad65a0ad2acddad83b07205e3983106f62fce"
+    },
+    {
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "SEMENTE-42",
+        "days": 80,
+        "startMode": "founding",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "messor-narbonne",
+          "version": 2
+        },
+        "parameters": {
+          "humidity": 68,
+          "light": 72,
+          "randomness": 28,
+          "reposeAngle": 36,
+          "temperatureC": 24,
+          "windX": 0,
+          "windZ": 0
+        }
+      },
+      "firstEggTick": 3800,
+      "firstWorkerTick": 3985,
+      "establishedTick": 6325,
+      "fullOpeningTick": null,
+      "final": {
+        "day": 80,
+        "adults": 14,
+        "workers": 13,
+        "brood": 0,
+        "food": 2.632889442113796,
+        "queenHealth": 100,
+        "soilRemoved": 2.128835416696422,
+        "soilEroded": 0,
+        "balanceMaxError": 5.861977570020827e-14,
+        "laying": false,
+        "phase": "established"
+      },
+      "csvSha256": "0e76610d67564c413a22e80ac13d68d062a38f3403e55251728a6c79f8ac71cb",
+      "arithmetic": "stdlib-f64-v1",
+      "finalRootRng": 3539149245,
+      "recordSha256": "1bc3edfe699120f82d49d3451c5f4b641f32750a9de0e869705cc9d2a033ca11"
+    },
+    {
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "NARBONNE-CICLO-1",
+        "days": 80,
+        "startMode": "founding",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "messor-narbonne",
+          "version": 1
+        },
+        "parameters": {
+          "humidity": 68,
+          "light": 72,
+          "randomness": 28,
+          "reposeAngle": 36,
+          "temperatureC": 24,
+          "windX": 0,
+          "windZ": 0
+        }
+      },
+      "firstEggTick": 1914,
+      "firstWorkerTick": 2316,
+      "establishedTick": 4343,
+      "fullOpeningTick": null,
+      "final": {
+        "day": 80,
+        "adults": 13,
+        "workers": 12,
+        "brood": 0,
+        "food": 1.2,
+        "queenHealth": 100,
+        "soilRemoved": 3.046834379214706,
+        "soilEroded": 0,
+        "balanceMaxError": 2.3092638912203256e-13,
+        "laying": true,
+        "phase": "established"
+      },
+      "csvSha256": "1b61d724da1bbc3496b4a14e4633e97819945c665527b840f61098ac3086f5ce",
+      "arithmetic": "stdlib-f64-v1",
+      "finalRootRng": 438854600,
+      "recordSha256": "e3bf607fd5375e257e495bf69a89c6248d48c2d2aa31f1514371e42acfda0e42"
+    },
+    {
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "NARBONNE-CICLO-1",
+        "days": 80,
+        "startMode": "founding",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "messor-narbonne",
+          "version": 2
+        },
+        "parameters": {
+          "humidity": 68,
+          "light": 72,
+          "randomness": 28,
+          "reposeAngle": 36,
+          "temperatureC": 24,
+          "windX": 0,
+          "windZ": 0
+        }
+      },
+      "firstEggTick": 3800,
+      "firstWorkerTick": 4212,
+      "establishedTick": null,
+      "fullOpeningTick": null,
+      "final": {
+        "day": 80,
+        "adults": 5,
+        "workers": 4,
+        "brood": 0,
+        "food": 8.210930772150947,
+        "queenHealth": 26.499999999998998,
+        "soilRemoved": 2.2176369948938803,
+        "soilEroded": 0,
+        "balanceMaxError": 3.943512183468556e-13,
+        "laying": false,
+        "phase": "claustral"
+      },
+      "csvSha256": "07e9c047733a4a40bdae7f9f523130179f53fdb2df90d88ac8477083f9dd020f",
+      "arithmetic": "stdlib-f64-v1",
+      "finalRootRng": 4075339850,
+      "recordSha256": "d394b3b7d0e6baa56168297871974db18b03e1573be2fa076410bdce3c084038"
+    },
+    {
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "NARBONNE-CICLO-2",
+        "days": 80,
+        "startMode": "founding",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "messor-narbonne",
+          "version": 1
+        },
+        "parameters": {
+          "humidity": 68,
+          "light": 72,
+          "randomness": 28,
+          "reposeAngle": 36,
+          "temperatureC": 24,
+          "windX": 0,
+          "windZ": 0
+        }
+      },
+      "firstEggTick": 1968,
+      "firstWorkerTick": 2192,
+      "establishedTick": 5968,
+      "fullOpeningTick": null,
+      "final": {
+        "day": 80,
+        "adults": 16,
+        "workers": 15,
+        "brood": 0,
+        "food": 0.5735765450129418,
+        "queenHealth": 100,
+        "soilRemoved": 2.6252692145490415,
+        "soilEroded": 0,
+        "balanceMaxError": 5.702105454474804e-13,
+        "laying": true,
+        "phase": "established"
+      },
+      "csvSha256": "715a14082ea1d40ad95ac19f93a2f54426326c239a0b783c9a6d7c1ee68b40e8",
+      "arithmetic": "stdlib-f64-v1",
+      "finalRootRng": 1011635514,
+      "recordSha256": "f196508c1da8c3ed177e396b76b9aac35cfbb8015d8d40c5fdbbc659de7cccec"
+    },
+    {
+      "plan": {
+        "schema": "viveiro-experiment-v1",
+        "seed": "NARBONNE-CICLO-2",
+        "days": 80,
+        "startMode": "founding",
+        "biologicalProfile": {
+          "schema": 1,
+          "id": "messor-narbonne",
+          "version": 2
+        },
+        "parameters": {
+          "humidity": 68,
+          "light": 72,
+          "randomness": 28,
+          "reposeAngle": 36,
+          "temperatureC": 24,
+          "windX": 0,
+          "windZ": 0
+        }
+      },
+      "firstEggTick": 3800,
+      "firstWorkerTick": 4018,
+      "establishedTick": null,
+      "fullOpeningTick": null,
+      "final": {
+        "day": 80,
+        "adults": 3,
+        "workers": 2,
+        "brood": 0,
+        "food": 4.444347420988342,
+        "queenHealth": 77.79999999999916,
+        "soilRemoved": 2.1242700874610088,
+        "soilEroded": 0,
+        "balanceMaxError": 3.8546943414985435e-13,
+        "laying": false,
+        "phase": "claustral"
+      },
+      "csvSha256": "7c74a361b774bdb6956629c08bd93f4f36c730898038a8f24ff7ff823907b5ba",
+      "arithmetic": "stdlib-f64-v1",
+      "finalRootRng": 2862082126,
+      "recordSha256": "921667ec3781802c38ac12e358ae82187edc187aaebab9a101185310d4b6e84b"
+    }
+  ]
+}

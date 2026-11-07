@@ -19,6 +19,17 @@ export function addWaste(world: ColonyWorld, item: Omit<Waste, "id">) {
 }
 export function leaveCorpse(world: ColonyWorld, ant: ColonyAgent) {
   loseFoundressLoad(world, ant);
+  if (ant.seedRation) {
+    addWaste(world, {
+      x: ant.x,
+      y: (ant.y ?? 0) + 0.02,
+      z: ant.z,
+      mass: ant.seedRation,
+      kind: "food",
+      stored: false,
+    });
+    delete ant.seedRation;
+  }
   for (const item of world.colony.waste)
     if (item.carrier === ant.id) {
       delete item.carrier;

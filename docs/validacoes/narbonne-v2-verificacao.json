@@ -1,0 +1,52 @@
+{
+  "sourceCommit": "a6267260d1008c0c4f5225c66600480dc9ba31d7",
+  "suite": {
+    "tests": 538,
+    "passed": 538,
+    "failed": 0,
+    "durationMs": 193675.1083
+  },
+  "build": {
+    "typescript": true,
+    "vite": true,
+    "i18nMessages": 1368,
+    "locales": [
+      "pt-BR",
+      "en"
+    ]
+  },
+  "browser": {
+    "name": "Chrome",
+    "version": "157.0.8103.38",
+    "isolatedContexts": true,
+    "checks": [
+      "default profile v2",
+      "seasonal window labels in pt-BR/en",
+      "import snapshot",
+      "modeled queen length 11 mm",
+      "canvas",
+      "zero page errors"
+    ]
+  },
+  "officialCli80Days": {
+    "seed": "SEMENTE-42",
+    "csvAndManifestByteIdentical": true
+  },
+  "legacyV1": {
+    "archived12DaysByteIdentical": true,
+    "threePaired80DayRunsUnchanged": true
+  },
+  "buhlControl": {
+    "workers": 50,
+    "durationSeconds": 1200,
+    "twoArchivedSamplesUnchanged": true,
+    "full72HourReassessment": false
+  },
+  "replay": {
+    "portable": true,
+    "steps": 200,
+    "afterPhysicalPilotAccess": true,
+    "remainingPlugPhysicallyRemoved": true,
+    "fullOpeningTick": 6145
+  }
+}

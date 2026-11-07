@@ -1,3 +1,4 @@
+import { tunnelWalkingSpeed } from "../biology/tunnel-reference.ts";
 import { recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { edgePassable } from "../sealing/passage.ts";
@@ -107,7 +108,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   const forward = normalize(delta),
     normal = ant.normal || { x: 0, y: 1, z: 0 };
   const neighbors = neighborsOf(world, ant),
-    speed = ant.speed * 0.85;
+    speed = tunnelWalkingSpeed(world, ant, ant.speed * 0.85);
   const idleYield = idleYieldOn(world);
   if (
     idleYield &&
@@ -212,7 +213,7 @@ export function moveInNest(world: NavigationWorld, ant: AgentState) {
   );
   if (physicalDistance > speed || dot(normal, footing.normal) < 0.75) {
     startSupportedMotion(world, ant, footing, footing.normal, next);
-    advanceSupportedMotion(world, ant, speed);
+    advanceSupportedMotion(world, ant, ant.speed * 0.85);
     return;
   }
   nav.velocity = sub(footing, position(ant));

@@ -1,3 +1,4 @@
+import { reproductiveWindow } from "../biology/reproductive-calendar.ts";
 import { seasonFactors } from "../seasons/update.ts";
 import type { Brood, ColonyWorld } from "../colony/types.ts";
 import { sampleClimate } from "../microclimate/grid.ts";
@@ -20,6 +21,7 @@ export function broodEnvironment(w: ColonyWorld, b: Brood) {
   };
 }
 export function layingComfort(w: ColonyWorld): number {
+  if (!reproductiveWindow(w, "laying")) return 0;
   if (!thermalDevelopment(w)) return 1;
   const q = w.ants.find((a) => a.kind === "queen");
   if (!q) return 0;

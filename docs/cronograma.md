@@ -1,6 +1,6 @@
 # Cronograma de entregas
 
-Atualizado em 05/11/2026. Plano operacional dividido por responsabilidade.
+Atualizado em 07/11/2026. Plano operacional dividido por responsabilidade.
 Os IDs P0–P4 continuam válidos. `[x]` indica aceite registrado; `[ ]` indica
 trabalho pendente, inclusive quando a implementação já existe.
 
@@ -29,6 +29,10 @@ O modelo continua exploratório, sem calibração biológica concluída.
 - [x] UX: 21 melhorias implementadas em cinco fases. O usuário confirmou
   funcionamento adequado no POCO X6 em 05/11.
 - [ ] Dados adicionais: **opcionais**, para ampliar evidências depois; não bloqueiam Buhl/UX.
+
+- [x] [Narbonne v2](planejamento/narbonne-v2.md): tamanho dos alados, marcha
+  subterrânea, alimentação e calendário. 538 testes e seis rodadas de 80 dias
+  com curvas, balanços e proveniência.
 
 - [x] [Página privada de leitura do cronograma](cronograma-privado.md): busca,
   filtros e áreas por responsabilidade; gerada destes documentos, fora do build público.
