@@ -49,6 +49,10 @@ Resultados de carregamento não são medidas de FPS.
 ## T4 — P3: análise e calibração já iniciadas
 
 - [ ] Seguir a [retomada Buhl](buhl.md), preservando branch, anexos e experimentos.
+- [ ] **K1–K6 — Morfologia e parametrização individual:** construir o cenário
+  físico com o motor real, registrar fontes/incertezas e explicar os desvios
+  sem ajustar volumes a Buhl. [Plano e aceites](buhl-parametrizacao.md).
+  Comparação histórica e avaliação independente permanecem separadas.
 - [x] Distinguir reconciliação de código, execução de benchmark, calibração,
   validação reservada e replicação por equipe independente.
 - [x] Definir unidades/tempo físico e critérios antes do ajuste; resultados

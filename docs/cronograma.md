@@ -69,6 +69,10 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [Triagem de microclima](planejamento/buhl-microclima.md) e [esforço no terrário 3D](planejamento/fadiga-esforco.md) disponíveis como investigações exploratórias.
    [Pendências e critérios](planejamento/buhl.md).
    [População de referência e auditoria biológica](planejamento/messor-narbonne.md).
+   Decisão de 07/11: manter a morfologia e priorizar parametrização individual,
+   sem perseguir os volumes de Buhl. [K0–K6 e limites das conclusões](planejamento/buhl-parametrizacao.md).
+   Inclinação entre grupos parcialmente compatível não equivale à curva completa;
+   Buhl já usado na seleção continua uma comparação retrospectiva.
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.
 6. **T6 — Fundação claustral × semiclaustral comparável:** a semiclaustral começa

@@ -68,6 +68,11 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
 - [ ] **B7 — Calibrar e reservar dados:** ajuste exploratório de 12 h
   concluído. A configuração foi congelada antes de usar as seeds
   reservadas. Faltam observações empíricas independentes por réplica.
+  Em 07/11, o mantenedor decidiu manter a morfologia e priorizar medidas
+  individuais, sem ajustar volumes coletivos para coincidir com Buhl.
+  Seguir [K0–K6 e seus critérios](buhl-parametrizacao.md) e o
+  [registro TRACE](buhl-trace.md). O uso histórico de Buhl na seleção de
+  variantes permanece declarado; mudar a abordagem não o torna independente.
   **E-mail enviado em 05/11/2026.** O mantenedor solicitou à Dra. Camille
   Buhl os dados por réplica e as condições de reuso. Aguardando resposta.
   [Método, escolha e plano reservado](buhl-ajuste.md).
