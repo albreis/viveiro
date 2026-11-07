@@ -1,0 +1,44 @@
+{
+  "groups": [
+    50,
+    100,
+    200
+  ],
+  "seeds": [
+    "ARENA-FADIGA-1",
+    "ARENA-FADIGA-2",
+    "ARENA-FADIGA-3",
+    "ARENA-FADIGA-4",
+    "ARENA-FADIGA-5"
+  ],
+  "settings": {
+    "workerProfile": {
+      "schema": 1,
+      "id": "messor-narbonne",
+      "version": 2
+    },
+    "digFatigue": "work-recovery",
+    "microclimate": {
+      "temperatureC": 24,
+      "initialSandWaterFraction": 0.08,
+      "airRelativeHumidity": 0.8,
+      "airflowIndex": 0,
+      "drying": false
+    },
+    "mechanism": "edge-follow",
+    "contactAccess": 1,
+    "sampleEverySeconds": 1200,
+    "tickMilliseconds": 50,
+    "pitchMm": 0.8,
+    "separationMm": 5,
+    "dryDensityMgPerMm3": 1.5,
+    "digRatePerSecond": 0.0283,
+    "pickupPerContact": 0.102,
+    "observeActivity": true,
+    "durationSeconds": 259200,
+    "locomotion": {
+      "walkingSource": "profile-temperature",
+      "soilLoadFactor": 0.85
+    }
+  }
+}

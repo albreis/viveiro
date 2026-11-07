@@ -34,6 +34,16 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+Estado mais recente: PR #130, branch `codex/buhl-velocidade-carga`.
+Os 60 ensaios fatoriais de 72 h e o piloto de acesso foram concluídos e
+arquivados. Velocidade/carga não recuperaram 1,6. Seguir
+[diagnóstico de acesso](planejamento/buhl-acesso-geometrico.md): próximo
+lote é `.runtime/buhl-acesso-geometrico-72h`, 15 rodadas de acesso 1,
+com base nas 15 já concluídas de acesso 0,35. Não iniciar concorrente.
+Modelo congelado em 906ffac; fingerprint 696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882.
+Arquivar o resultado e atualizar o PR antes de interrupção; B7 segue aberto.
+
+
 Atualização de 07/11: novo pedido autorizou a branch da main
 `codex/buhl-velocidade-carga` e os testes de velocidade/carga mantendo a
 morfologia. Seguir o [ensaio fatorial](planejamento/buhl-locomocao.md).

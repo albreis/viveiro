@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { assessBuhlPhysicalSeries } from "./lib/buhl-physical-check.ts";
@@ -14,6 +14,11 @@ if (!folder || !/^[a-f0-9]{40}$/.test(sourceCommit ?? "") || extra.length)
   );
 const read = (p: string) => JSON.parse(readFileSync(p, "utf8"));
 const sha = (s: string) => createHash("sha256").update(s).digest("hex");
+const publish = (path: string, text: string) => {
+  if (existsSync(path))
+    assert.equal(readFileSync(path, "utf8").replaceAll("\r\n", "\n"), text);
+  else immutableSweepFile(path, text);
+};
 const experiment = read(join(folder, "experimento.json"));
 const completed = read(join(folder, "concluido.json"));
 assert.equal(completed.stage, "72h");
@@ -194,8 +199,8 @@ const csv =
     )
     .join("\n") + "\n";
 const prefix = "docs/validacoes/buhl-locomocao";
-immutableSweepFile(prefix + "-72h.csv", csv);
-immutableSweepFile(
+publish(prefix + "-72h.csv", csv);
+publish(
   prefix + "-resultado.json",
   JSON.stringify(
     {
@@ -203,6 +208,9 @@ immutableSweepFile(
       calibrated: false,
       independentEmpiricalValidation: false,
       sourceCommit,
+      analysisScriptSha256Lf: sha(
+        readFileSync(new URL(import.meta.url), "utf8").replaceAll("\r\n", "\n"),
+      ),
       sourceFingerprint: fingerprint,
       runCount: 60,
       sampleCount: csvRows.length - 1,

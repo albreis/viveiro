@@ -89,7 +89,7 @@ Nenhum coeficiente foi escolhido ou alterado após esse piloto.
 Implementação e plano enviados no [PR #130](https://github.com/albreis/viveiro/pull/130).
 Fonte congelada das rodadas: `906ffac` (fingerprint
 `696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882`).
-Um coordenador está executando os quatro braços em `.runtime/buhl-locomocao-72h`.
+Os quatro braços terminaram em `.runtime/buhl-locomocao-72h`.
 Não iniciar outro. Arquivos `rodada-*.json` são gravados ao concluir cada réplica;
 `concluido.json` só existe após as 60. O dev 4173 permanece rodando.
 
@@ -108,3 +108,35 @@ passagem por cima de outras operárias em túneis cheios. A projeção plana
 atual exclui esse grau de liberdade e pode produzir restrições adicionais.
 Isso é hipótese estrutural para investigação posterior com apoio físico;
 não foi corrigido nem usado como fator de ganho neste ensaio de quatro braços.
+
+## Resultado das 60 rodadas de 72 h
+
+| Operárias | Base | Só velocidade | Só carga | Ambos | Buhl 2001 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 50 | 15,76 | 14,71 | 15,84 | 16,30 | 25 |
+| 100 | 23,86 | 24,13 | 23,59 | 23,41 | 37 |
+| 200 | 36,66 | 38,03 | 38,60 | 38,80 | 59 |
+
+Médias em cm³, cinco seeds por grupo. A combinação mudou a média final
+em +3,4%, −1,9% e +5,8%, respectivamente. Não recuperou o fator 1,6.
+As inclinações foram 0,609/0,685/0,643/0,626 para base/velocidade/carga/ambos.
+São padrões parciais, não validação. A tabela de 2005 permanece separada
+na figura e no diagnóstico. O efeito não acompanha o inverso simples da velocidade.
+
+[Dados das 13.020 amostras](../validacoes/buhl-locomocao-72h.csv) e
+[diagnósticos, planos e hashes](../validacoes/buhl-locomocao-resultado.json).
+![Quatro braços medidos](../validacoes/figuras/buhl-locomocao-1080x1350.png)
+
+Todos os balanços e portes foram conferidos pelo arquivador; trânsito
+abriu zero células. Arquivamento repetido produziu os mesmos artefatos.
+O tempo médio cavando na base foi 4,9%/3,7%/2,8% do tempo-operária;
+com velocidade maior, 4,6%/3,7%/2,9%. Esses números são do modelo.
+Volume removido por massa excede vazio aberto em cerca de 5–8% na base;
+essa diferença de métrica não explica 60%.
+
+A próxima investigação é o [acesso geométrico](buhl-acesso-geometrico.md).
+A restrição 0,35 foi ajustada para a aproximação antiga por célula e pode
+sobrepor-se à exclusão corporal. Em reentrâncias, a renovação de contato
+requer mudança de face; uma operária imobilizada pode perder novas tentativas.
+São hipóteses de estrutura, não causas comprovadas por esses quatro braços.
+A fadiga de 1 h/recuperação de 24 h também continua hipótese não medida.

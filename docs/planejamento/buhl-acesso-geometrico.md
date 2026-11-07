@@ -48,3 +48,19 @@ de contato antenal; sua representação e evidências precisam ser investigadas.
 A remoção do fator é uma ablação da hipótese de acesso, sem promoção
 automática ao padrão do terrário. B7 continua aberto. Dados anteriores
 permanecem preservados; nenhum fator de produtividade 1,6 será aplicado.
+
+## Piloto concluído e continuação fixada
+
+15 rodadas de 2 h, 105 amostras, balanços preservados e fenótipos idênticos.
+A mudança de acesso 0,35 → 1 elevou o volume médio de 0,282 → 0,884 cm³
+(50), 0,861 → 2,055 cm³ (100) e 1,908 → 3,755 cm³ (200).
+Razões: 3,14/2,39/1,97. [CSV](../validacoes/buhl-acesso-geometrico-piloto.csv)
+e [planos, pares e hashes](../validacoes/buhl-acesso-geometrico-piloto.json).
+Isso mede influência no modelo; não justifica extrapolação para 72 h.
+
+Após esse piloto, fixar o mesmo contraste em 72 h, sem escolher valor
+intermediário. [Plano de 72 h](../validacoes/buhl-acesso-geometrico-72h-plano.json).
+A base são as 15 rodadas completas do braço base do fatorial. Usar o mesmo
+motor/fingerprint, propriedades corporais e parâmetros individuais; gerar
+mais 15 rodadas com acesso 1. Essa continuação é exploratória após o piloto.
+Comando: `node scripts/sweep-buhl-arena.ts --plan docs/validacoes/buhl-acesso-geometrico-72h-plano.json --out .runtime/buhl-acesso-geometrico-72h --jobs 6`.

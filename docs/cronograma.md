@@ -70,7 +70,7 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [Pendências e critérios](planejamento/buhl.md).
    [População de referência e auditoria biológica](planejamento/messor-narbonne.md).
    [Ensaio fatorial de velocidade/carga com morfologia](planejamento/buhl-locomocao.md):
-   novo experimento autorizado em 07/11, sem multiplicador de volume.
+   60 rodadas concluídas sem recuperar 1,6. [Diagnóstico do acesso](planejamento/buhl-acesso-geometrico.md) em continuação.
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.
 6. **T6 — Fundação claustral × semiclaustral comparável:** a semiclaustral começa
