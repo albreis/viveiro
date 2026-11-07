@@ -50,6 +50,14 @@ empíricas independentes segue pendente.
   trânsito em todas as amostras. A concordância numérica de um lote
   não encerra P3.2 ou P3.3.
 
+## Preferência para os próximos ensaios
+
+Em 07/11/2026, o mantenedor escolheu a fadiga apenas de escavação como
+referência principal para continuar a investigação. Usar o plano explícito
+`buhl-fadiga-local-plano.json`; preservar o controle e os planos legados.
+O aceite científico continua em aberto, incluindo o desvio com 50 operárias.
+[Imagens para compartilhar e distinção entre as referências](buhl-graficos.md).
+
 ## Reprodução
 
 ```sh

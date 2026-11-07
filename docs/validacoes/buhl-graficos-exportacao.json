@@ -1,0 +1,20 @@
+{
+  "sourceRunCommit": "2be875ba67da45df10c56875615c6a7aa82e1449",
+  "sourceSeriesSha256Lf": {
+    "controle": "da86d38dd247e521711ae4aa02b1d49fa3d94e1089957956d6eb31619d67d7ca",
+    "local": "f25ef4b9781baea08530d46484f35ee5734328a37fcf1cbbe9bda64373830473"
+  },
+  "renderer": "Matplotlib 3.11.2",
+  "pixels": [
+    1080,
+    1350
+  ],
+  "format": "PNG",
+  "newModelRuns": false,
+  "files": {
+    "docs/validacoes/figuras/buhl-fadiga-comparacao-1080x1350.png": "3af6355c27bfb1cea8e3cf01062bc2363aa149c17711da97b732fc8300d6a5b1",
+    "docs/validacoes/figuras/buhl-fadiga-50-1080x1350.png": "66ed14242142a5ba58031bbf7405846a4706d9cd17acb0be28a478f00ff32833",
+    "docs/validacoes/figuras/buhl-fadiga-100-1080x1350.png": "8442990db2193da117150792435eb7762ea5a5706200b998fa957f0919de9361",
+    "docs/validacoes/figuras/buhl-fadiga-200-1080x1350.png": "1c4a6912f1dc12f5af2a0df05ac9d95e1b02a32445289efdbbf9eebb3e6d94a4"
+  }
+}
