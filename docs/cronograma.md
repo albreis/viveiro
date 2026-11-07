@@ -59,6 +59,7 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [Avaliação de 72 h](validacao.md). [Fadiga local em 30 rodadas pareadas](planejamento/buhl-fadiga.md).
    [Triagem de microclima](planejamento/buhl-microclima.md) e [esforço no terrário 3D](planejamento/fadiga-esforco.md) disponíveis como investigações exploratórias.
    [Pendências e critérios](planejamento/buhl.md).
+   [População de referência e auditoria biológica](planejamento/messor-narbonne.md).
 5. **T5 — Apoio às validações humanas:** instrumentos e relatórios reproduzíveis
    para docentes, piloto, contribuições e publicação.
 6. **T6 — Fundação claustral × semiclaustral comparável:** a semiclaustral começa

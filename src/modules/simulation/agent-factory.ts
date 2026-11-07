@@ -1,3 +1,8 @@
+import {
+  applyReferenceWorker,
+  clampWorkerScale,
+  workerReference,
+} from "../biology/worker-reference.ts";
 import { initializeLife } from "../survival/initialize.ts";
 import { genomeForAgent } from "../genetics/reproduction.ts";
 import { expressGenome } from "../genetics/phenotype.ts";
@@ -47,10 +52,13 @@ export function createAgent(
     node: null,
     ...individualTraits(world.seed, id, kind),
   };
+  const reference = workerReference(world, ant);
+  if (reference) applyReferenceWorker(reference, world.seed, ant);
   if (world.genetics) {
     ant.genome = genomeForAgent(world, id, kind, suppliedGenome);
     expressGenome(ant, ant.genome);
   }
+  if (reference) ant.bodyScale = clampWorkerScale(reference, ant.bodyScale);
   initializeLife(world, ant);
   return ant;
 }

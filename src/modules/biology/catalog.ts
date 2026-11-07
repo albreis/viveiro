@@ -1,3 +1,7 @@
+import {
+  NARBONNE_PROFILE_ID,
+  NARBONNE_PROFILE_VERSION,
+} from "./narbonne-profile.ts";
 import { survivalRecords } from "./survival-records.ts";
 import { fertilityRecords } from "./fertility-records.ts";
 import { materialRecords } from "./material-records.ts";
@@ -49,6 +53,9 @@ export function profileReference(
   if (!profile) throw new UnsupportedBiologicalProfile();
   return { schema: 1, id: profile.id, version: profile.version };
 }
+export const officialBiologicalProfile = () =>
+  profileReference(NARBONNE_PROFILE_ID, NARBONNE_PROFILE_VERSION);
+
 export function resolveBiologicalProfile(value?: unknown): BiologicalProfile {
   if (value === undefined) return biologicalProfiles[0];
   if (!value || typeof value !== "object")

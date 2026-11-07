@@ -1,3 +1,4 @@
+import { surfaceWalkingSpeed } from "../biology/worker-reference.ts";
 import { effortEnabled, recordMotionEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { blocksVegetation } from "../predators/vegetation.ts";
@@ -28,6 +29,12 @@ export function moveSurface(
   predator = false,
 ) {
   if (!predator) {
+    speed = surfaceWalkingSpeed(
+      world,
+      entity,
+      speed,
+      world.params?.temperatureC ?? 24,
+    );
     const nav = navigationState(entity),
       neighbors = neighborsOf(world, entity);
     const forward = {

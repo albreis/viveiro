@@ -34,6 +34,7 @@
   "controls.camera.state": "{state} · distance {distance} u. · age {age} d · {healthLabel} {health}%",
   "controls.camera.body": "body",
   "controls.camera.health": "health",
+  "controls.camera.workerLength": " · modeled length {size} mm",
   "controls.camera.digReadiness": " · digging readiness {readiness}%",
   "controls.camera.energy": " · energy {energy}% · infection {infection}%",
   "controls.camera.empty": "No living ants.",

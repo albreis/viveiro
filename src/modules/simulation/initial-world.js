@@ -1,3 +1,4 @@
+import { producesSeeds, seedForaging } from "../biology/seed-foraging.ts";
 import { attachExtension } from "../extensions/world.ts";
 import { applyInitialInputs } from "../experiments/initial-inputs.ts";
 import { modelMath } from "../../libs/model-math.ts";
@@ -98,8 +99,11 @@ export function initializeWorld(world, seed, parameters, options = {}) {
     world.nest,
     () => world.nextId++,
   );
-  for (let i = 0; i < 14; i++) {
-    const p = world.plants[(i * 3 + 1) % world.plants.length];
+  const foodPlants = seedForaging(world)
+    ? world.plants.filter(producesSeeds)
+    : world.plants;
+  for (let i = 0; i < 14 && foodPlants.length; i++) {
+    const p = foodPlants[(i * 3 + 1) % foodPlants.length];
     world.patches.push({
       id: world.nextId++,
       x: p.x,

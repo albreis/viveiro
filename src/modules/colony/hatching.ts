@@ -1,3 +1,7 @@
+import {
+  clampWorkerScale,
+  workerReference,
+} from "../biology/worker-reference.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { DAUGHTER_RESERVE } from "../colonies/sexual-brood.ts";
 import type { ColonyWorld, Brood } from "./types.ts";
@@ -36,6 +40,8 @@ export function hatchWorker(world: ColonyWorld, brood: Brood) {
   if (brood.nanitic) {
     ant.nanitic = true;
     ant.bodyScale *= 0.72;
+    const reference = workerReference(world, ant);
+    if (reference) ant.bodyScale = clampWorkerScale(reference, ant.bodyScale);
     ant.headScale = 1;
     ant.caste = "minor";
     if (world.founding) world.founding.nanitics++;

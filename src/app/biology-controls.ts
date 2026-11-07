@@ -9,6 +9,7 @@ import {
   biologicalProfileKey,
   biologicalReferenceFromKey,
   latestProfileReference,
+  officialBiologicalProfile,
   resolveBiologicalProfile,
 } from "../modules/biology/catalog.ts";
 import { renderBiologicalParameters } from "./biology-parameters.ts";
@@ -40,7 +41,7 @@ function renderProfileOptions(select: HTMLSelectElement): void {
 export function selectedBiologicalProfile(): BiologicalReference {
   return biologicalReferenceFromKey(
     (document.getElementById("biology-profile") as HTMLSelectElement | null)
-      ?.value || biologicalProfileKey(latestProfileReference()),
+      ?.value || biologicalProfileKey(officialBiologicalProfile()),
   );
 }
 export function installBiologyControls(world: FamilyWorld): void {
