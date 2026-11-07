@@ -72,8 +72,12 @@ antes de comparar com observações reservadas.
 A [comparação de fadiga](planejamento/buhl-fadiga.md) encerrou 30 rodadas
 pareadas de 72 h no [PR #111](https://github.com/albreis/viveiro/pull/111).
 A fonte registrada é `2be875ba67da45df10c56875615c6a7aa82e1449`.
-A variante ficou aquém dos critérios exploratórios. A regra segue
-opcional na arena para investigação. B7 continua pendente.
+A variante ficou aquém dos critérios exploratórios. Em 07/11 o mantenedor
+escolheu a fadiga apenas de escavação como referência principal dos próximos
+ensaios: usar explicitamente `docs/validacoes/buhl-fadiga-local-plano.json`.
+Preservar o controle, a variante por ação e o significado dos planos antigos.
+A escolha operacional não encerra B7. Os [quatro PNGs 4:5](planejamento/buhl-graficos.md)
+foram exportados das séries arquivadas, sem novas rodadas.
 
 O [CSV para planilhas](csv-diario.md) segue o idioma selecionado.
 P1.6B2-C e P1.6B2-R concluídos em 05/11 após o relato de importação
