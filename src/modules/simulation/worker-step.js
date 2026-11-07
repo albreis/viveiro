@@ -1,3 +1,4 @@
+import { seedDetectionRange } from "../biology/seed-foraging.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { deathLabels } from "../survival/labels.ts";
 import { updateLife } from "../survival/update.ts";
@@ -173,7 +174,7 @@ export function updateWorkers(world, suitability, exposure) {
       }
     } else {
       let nearest = null,
-        best = 2.3;
+        best = seedDetectionRange(world, ant, 2.3);
       for (const patch of world.patches) {
         const d = distance(ant, patch);
         if (patch.amount > 0.12 && d < best) {

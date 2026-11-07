@@ -4,7 +4,7 @@ import { t, messageSource } from "../i18n/runtime.ts";
 import type { installDailyControls } from "./daily-controls.ts";
 import type { installLessonControls } from "./lesson-controls.ts";
 import type { installPerformanceControls } from "./performance-controls.ts";
-import { latestProfileReference } from "../modules/biology/catalog.ts";
+import { officialBiologicalProfile } from "../modules/biology/catalog.ts";
 import type { ForecastClient } from "../services/forecast-client.ts";
 import type { AntCameraControls } from "./AntCameraControls.ts";
 import {
@@ -39,7 +39,7 @@ export abstract class AppState {
   initial: SessionState["initial"] = {
     seed: "SEMENTE-42",
     startMode: "founding",
-    biologicalProfile: latestProfileReference(),
+    biologicalProfile: officialBiologicalProfile(),
     params: { humidity: 58, light: 72, randomness: 28 },
   };
   interventions: SessionState["interventions"] = [];

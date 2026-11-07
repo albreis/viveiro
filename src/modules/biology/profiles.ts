@@ -1,3 +1,4 @@
+import { createNarbonneProfile } from "./narbonne-profile.ts";
 import { EFFORT_PROFILE } from "../fatigue/effort-model.ts";
 import { createReproductiveProfiles } from "./reproductive-profiles.ts";
 import { createMicroclimateProfiles } from "./microclimate-profiles.ts";
@@ -118,6 +119,7 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
   }),
   ...microclimateProfiles,
   ...createReproductiveProfiles(generic),
+  createNarbonneProfile(microclimateProfiles[2]),
   Object.freeze({
     ...microclimateProfiles[2],
     id: EFFORT_PROFILE,

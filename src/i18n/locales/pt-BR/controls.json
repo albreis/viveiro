@@ -34,6 +34,7 @@
   "controls.camera.state": "{state} · percurso {distance} u. · idade {age} d · {healthLabel} {health}%",
   "controls.camera.body": "corpo",
   "controls.camera.health": "saúde",
+  "controls.camera.workerLength": " · comprimento modelado {size} mm",
   "controls.camera.digReadiness": " · prontidão para escavar {readiness}%",
   "controls.camera.energy": " · energia {energy}% · infecção {infection}%",
   "controls.camera.empty": "Nenhuma formiga viva.",

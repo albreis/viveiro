@@ -16,6 +16,13 @@ Saves legados sem referência continuam com comportamento numérico anterior. Co
 
 Se um checkpoint atual usa perfil/schema/versão desconhecidos, a gravação automática fica protegida. Havendo cópia anterior compatível, ela abre pausada com aviso, e o original permanece preservado. Recuperar/importar explicitamente um checkpoint conhecido ou criar outro experimento são ações distintas disponíveis na interface. Isso não cria suporte a uma versão futura: é preciso a versão compatível do motor para reconstruí-la.
 
+## População de referência
+
+Novas sessões do terrário usam [Messor de Narbonne](planejamento/messor-narbonne.md)
+por padrão. O perfil `messor-narbonne@1` separa as âncoras de tamanho e
+locomoção das estratégias de dieta e desenvolvimento. A atribuição a
+*Messor bouvieri* é provisória e os perfis genéricos continuam selecionáveis.
+
 ## Estratégias e dados ainda necessários
 
 O contrato distingue fundação claustral/semiclaustral/desconhecida, casulo presente/ausente/não especificado e sazonalidade. Nesta entrega os perfis executáveis ainda usam a fundação claustral genérica; casulos e diapausa não são calibrados. As etapas 10/11 implementarão os mecanismos e novos perfis apropriados, sem inferir espécie a partir do nome de uma referência climática.

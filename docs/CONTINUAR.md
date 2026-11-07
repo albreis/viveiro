@@ -34,6 +34,11 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+O perfil [Messor de Narbonne](planejamento/messor-narbonne.md) fixa a
+população de referência e registra as lacunas de evidência. Em B7,
+pedir procedência taxonômica quando chegarem os dados da autora e
+preservar a separação entre o protocolo em disco e o terrário 3D.
+
 Para retomar a fila técnica, conferir Git e os PRs de T6 e seguir o
 [plano de fundação comparável](planejamento/fundacao-comparavel.md).
 

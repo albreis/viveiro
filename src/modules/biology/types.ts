@@ -47,12 +47,27 @@ export interface BiologicalSource {
   readonly license: string;
   readonly accessedAt: string;
 }
+export interface WorkerReference {
+  readonly bodyMm: number;
+  readonly bodyRangeMm: readonly [number, number];
+  readonly openWalkingMmPerSecond: number;
+  readonly seedForaging?: {
+    readonly searchFactor: readonly [number, number];
+    readonly loadedWalkingFactor: readonly [number, number];
+  };
+  readonly temperatures: readonly [
+    { readonly celsius: number; readonly speedMmPerSecond: number },
+    ...{ readonly celsius: number; readonly speedMmPerSecond: number }[],
+  ];
+}
 export interface BiologicalProfile {
   readonly id: string;
   readonly version: number;
   readonly label: string;
   readonly modelSpecies: null;
   readonly referenceSpecies: string | null;
+  readonly workerReference?: WorkerReference;
+  readonly forageModel?: "seed-trails";
   readonly foundation: "claustral" | "semiclaustral" | "unknown";
   readonly cocoon: "present" | "absent" | "unspecified";
   readonly seasonality: "unmodelled" | "seasonal" | "nonseasonal";

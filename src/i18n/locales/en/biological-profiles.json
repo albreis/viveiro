@@ -38,5 +38,7 @@
   "biology.preserved": "Profile preserved in the experiment.",
   "biology.legacy": "Legacy save recognized as generic, without rewriting its parameters.",
   "biology.profile.generic-effort-demo@1": "Fatigue · terrarium effort",
-  "biology.description.generic-effort-demo@1": "Workers build up effort when moving and digging and recover over time. Load, slopes, detours and local conditions feed the exploratory calculation."
+  "biology.description.generic-effort-demo@1": "Workers build up effort when moving and digging and recover over time. Load, slopes, detours and local conditions feed the exploratory calculation.",
+  "biology.profile.messor-narbonne@1": "Narbonne Messor · Buhl reference",
+  "biology.description.messor-narbonne@1": "Viveiro’s reference population. Exploratory profile based on the ants Buhl called Messor sancta, probably Messor bouvieri. Worker size, surface walking and seed foraging use specific references."
 }

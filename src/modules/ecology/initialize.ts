@@ -1,3 +1,4 @@
+import { seedForaging } from "../biology/seed-foraging.ts";
 import type { FamilyWorld } from "../colonies/types.ts";
 import type { EcologyState } from "./types.ts";
 import { seededRandom } from "../../libs/seeded-random.ts";
@@ -8,9 +9,11 @@ import { speciesOf } from "../landscape/species.ts";
 export function ensureEcology(w: FamilyWorld): EcologyState {
   if (w.ecology) return w.ecology;
   const { random } = seededRandom(w.seed + ":trophobiosis"),
-    eligible = w.plants.filter((p) =>
-      ["shrub", "flower", "grass", "tree"].includes(speciesOf(p)),
-    );
+    eligible = seedForaging(w)
+      ? []
+      : w.plants.filter((p) =>
+          ["shrub", "flower", "grass", "tree"].includes(speciesOf(p)),
+        );
   const hosts = [...eligible]
     .sort((a, b) => a.id - b.id)
     .filter(() => random() < 0.3)

@@ -1,3 +1,4 @@
+import { producesSeeds, seedForaging } from "../biology/seed-foraging.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { recordDaily } from "../observations/record.ts";
 import { survivalIntervention } from "../survival/intervention.ts";
@@ -193,15 +194,17 @@ export class World {
         health: 1,
         hydration: this.params.humidity / 100,
       });
-      this.patches.push({
-        id: this.nextId++,
-        x,
-        z,
-        sourcePlant: this.plants.at(-1).id,
-        amount: 0.25,
-        capacity: 3,
-        discovered: false,
-      });
+      const plant = this.plants.at(-1);
+      if (!seedForaging(this) || producesSeeds(plant))
+        this.patches.push({
+          id: this.nextId++,
+          x,
+          z,
+          sourcePlant: plant.id,
+          amount: 0.25,
+          capacity: 3,
+          discovered: false,
+        });
       this.log("Uma nova planta começa a crescer.", "plant");
     } else if (type === "predator") {
       if (
