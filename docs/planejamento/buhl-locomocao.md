@@ -83,3 +83,28 @@ balanços preservados, trânsito sem abrir areia e portes idênticos entre
 braços. A base reproduziu exatamente todas as amostras históricas até
 2 h nos 15 pares. [Recibo](../validacoes/buhl-locomocao-piloto.json).
 Nenhum coeficiente foi escolhido ou alterado após esse piloto.
+
+## Checkpoint do lote longo
+
+Implementação e plano enviados no [PR #130](https://github.com/albreis/viveiro/pull/130).
+Fonte congelada das rodadas: `906ffac` (fingerprint
+`696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882`).
+Um coordenador está executando os quatro braços em `.runtime/buhl-locomocao-72h`.
+Não iniciar outro. Arquivos `rodada-*.json` são gravados ao concluir cada réplica;
+`concluido.json` só existe após as 60. O dev 4173 permanece rodando.
+
+Depois da conclusão: `node scripts/archive-buhl-locomotion.ts
+.runtime/buhl-locomocao-72h SHA_COMPLETO_DA_FONTE` e
+`python scripts/plot-buhl-locomotion.py`. O SHA completo está em
+`.runtime/buhl-locomocao-source.txt`. Conferir balanços, curvas, ganhos e
+atividade; atualizar este relatório/checkpoint e enviar os dados ao GitHub.
+
+O controle longo concluiu as 15 rodadas: as 3.255 amostras coincidem
+exatamente com o lote histórico, incluindo volumes, massa e contatos.
+[Conferência integral](../validacoes/buhl-locomocao-controle.json).
+
+Limitação a manter na interpretação: o apêndice de Buhl (2005) relata
+passagem por cima de outras operárias em túneis cheios. A projeção plana
+atual exclui esse grau de liberdade e pode produzir restrições adicionais.
+Isso é hipótese estrutural para investigação posterior com apoio físico;
+não foi corrigido nem usado como fator de ganho neste ensaio de quatro braços.
