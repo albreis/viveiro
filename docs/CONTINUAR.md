@@ -18,12 +18,20 @@ sem cota por equipe ou trava global de mordidas. Saves antigos permanecem
 fixados no perfil anterior. 547 testes, build Vite e Chrome pt/en aprovados,
 incluindo igualdade numérica CLI/navegador, visão lateral e primeira pessoa.
 
-Lote de 12 execuções pareadas (50/100/200, duas seeds, v2/v3, 2.000 ticks)
-em andamento em `.runtime/dig-access-world-2000.json`. Próximo passo: concluir
-o lote, arquivar resultados e gráficos sem omitir diferenças desfavoráveis,
-concluir o PR. O usuário pediu as imagens das curvas do motor real, separando
-terra removida, alargamento e entrega; não converter este lote para horas/cm³
-de Buhl. B7 e calibração continuam pendentes. Não criar tags/releases/Zenodo.
+Lote **12/12 concluído**, 2.000 ticks por execução, 50/100/200 operárias,
+duas seeds e pares v2/v3. [Dados](validacoes/escavacao-acesso-viveiro.json),
+[evidência](validacoes/escavacao-acesso-viveiro-qa.json) e quatro gráficos
+arquivados. [PR #131](https://github.com/albreis/viveiro/pull/131). O usuário
+pediu comparação **relativa** com Buhl: os gráficos registram explicitamente
+normalização por volume próprio versus uma escala comum ancorada no grupo 100.
+Não ler a normalização como ajuste de escala física ou validação.
+
+As frentes escavam mais que na v2, mas as razões de volume entre grupos ainda
+diferem de Buhl: 0,77/1/0,80 versus 0,68/1/1,59. Próximo passo concreto, se
+retomados os ensaios quantitativos: usar o protocolo controlado do PR #128,
+resolver espaço/tempo e a inicialização da população antes de atribuir a
+diferença a uma regra biológica. Não transferir coeficientes para forçar a
+curva. B7 e calibração seguem pendentes. Não criar tags/releases/Zenodo.
 
 ## Estado preservado
 

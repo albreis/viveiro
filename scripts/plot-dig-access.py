@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+from matplotlib.ticker import FuncFormatter, MaxNLocator
 import numpy as np
 
 parser = argparse.ArgumentParser()
@@ -35,7 +36,7 @@ def series(n, version, field):
 def canvas(title, subtitle):
     fig, axes = plt.subplots(3, 1, figsize=(10.8, 13.5), dpi=100)
     fig.patch.set_facecolor(BG)
-    fig.subplots_adjust(left=.12, right=.95, top=.79, bottom=.17, hspace=.48)
+    fig.subplots_adjust(left=.12, right=.95, top=.79, bottom=.18, hspace=.75)
     fig.text(.10, .955, "viveiro. / ENSAIO DO MOTOR 3D", fontsize=13, weight="bold", color=COLORS[3])
     fig.text(.10, .913, title, fontsize=28, weight="bold")
     fig.text(.10, .881, subtitle, fontsize=15)
@@ -48,6 +49,8 @@ def canvas(title, subtitle):
         ax.set_xticks([0, 500, 1000, 1500, 2000])
         ax.set_ylabel("Volume (u. do modelo)")
         ax.tick_params(length=0)
+        ax.yaxis.set_major_locator(MaxNLocator(nbins=5))
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: format(v, ".3g").replace(".", ",")))
     axes[-1].set_xlabel("Ticks do motor (100 ticks = 1 dia do modelo)")
     fig.text(.10, .098, "2 seeds pareadas por grupo · médias; faixas mostram mínimo–máximo.", fontsize=11)
     fig.text(.10, .073, "Grupos preparados em ninho procedural; excesso inicia na superfície.", fontsize=11)
@@ -58,7 +61,7 @@ def canvas(title, subtitle):
 fig, axes = canvas("Escavação no Viveiro", "Antes e depois do acesso geométrico às frentes")
 limit = max(series(n, v, "removed")[3].max() for n in [50, 100, 200] for v in [2, 3]) * 1.12
 for ax, n in zip(axes, [50, 100, 200]):
-    ax.set_title(f"{n} operárias", loc="left", fontsize=18, weight="bold", pad=10)
+    ax.set_title(f"{n} operárias", loc="left", fontsize=17, weight="bold", pad=10)
     ax.set_ylim(0, limit)
     for v in [2, 3]:
         ticks, mean, low, high = series(n, v, "removed")
@@ -74,7 +77,7 @@ plt.close(fig)
 fig, axes = canvas("Origem e destino da terra", "Narbonne v3 · grupos de 50, 100 e 200 operárias")
 for ax, field, title in zip(axes, ["frontRemoved", "traffic", "deposited"],
         ["Escavação nas frentes", "Alargamento por congestionamento", "Entregue na superfície"]):
-    ax.set_title(title, loc="left", fontsize=18, weight="bold", pad=10)
+    ax.set_title(title, loc="left", fontsize=17, weight="bold", pad=10)
     highmax = max(series(n, 3, field)[3].max() for n in [50, 100, 200])
     ax.set_ylim(0, highmax * 1.15 if highmax else 1)
     for n in [50, 100, 200]:

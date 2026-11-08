@@ -1,0 +1,2757 @@
+{
+  "schema": "viveiro-dig-access-world-v1",
+  "baseCommit": "d88c31edcdfc2f96a6dee13bdba6a7f83647b720",
+  "sourceFingerprint": "ff65833d40594ad241bac893602b2895970df028c51220840f5087cc51c12e45",
+  "node": "v24.22.1",
+  "plannedRuns": 12,
+  "results": [
+    {
+      "options": {
+        "seed": "DIG-ACCESS-1",
+        "workers": 50,
+        "profileVersion": 2,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 1.0408340855860843e-16,
+      "maxStepToSpeed": 0.842303433289444,
+      "maxSupportGap": 0.012000000000001128,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.07654462566398731,
+          "deposited": 0,
+          "frontRemoved": 0.022040290933364966,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 1
+        },
+        {
+          "tick": 200,
+          "removed": 0.1012500384666738,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373605145,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.1012500384666738,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373605145,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.1012500384666738,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373605145,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.1012500384666738,
+          "deposited": 0.022040290933364966,
+          "frontRemoved": 0.04674570373605145,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.1012500384666738,
+          "deposited": 0.022040290933364966,
+          "frontRemoved": 0.04674570373605145,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 700,
+          "removed": 0.1012500384666738,
+          "deposited": 0.022040290933364966,
+          "frontRemoved": 0.04674570373605145,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 1
+        },
+        {
+          "tick": 800,
+          "removed": 0.1522785192129296,
+          "deposited": 0.022040290933364966,
+          "frontRemoved": 0.09777418448230718,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.1522785192129296,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.09777418448230718,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.1522785192129296,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.09777418448230718,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.176983932015616,
+          "deposited": 0.04674570373605145,
+          "frontRemoved": 0.12247959728499354,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "636d0f22dbde40628ccffdb901539bf8bd632e7b4e13c97f351aa3825cd2ab2b",
+      "wallSeconds": 40.34189670000001
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-1",
+        "workers": 50,
+        "profileVersion": 3,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 1.1102230246251565e-16,
+      "maxStepToSpeed": 0.8786668489698347,
+      "maxSupportGap": 0.024721928027533403,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.05450433473062235,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 200,
+          "removed": 0.05450433473062235,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 7,
+          "atFace": 1
+        },
+        {
+          "tick": 300,
+          "removed": 0.10458064125709811,
+          "deposited": 0,
+          "frontRemoved": 0.050076306526475774,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 1
+        },
+        {
+          "tick": 400,
+          "removed": 0.1292860540597847,
+          "deposited": 0,
+          "frontRemoved": 0.07478171932916237,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 9,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.1539914668624713,
+          "deposited": 0,
+          "frontRemoved": 0.09948713213184894,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 9,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.17829425972262955,
+          "deposited": 0,
+          "frontRemoved": 0.12378992499200725,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 700,
+          "removed": 0.17829425972262955,
+          "deposited": 0,
+          "frontRemoved": 0.12378992499200725,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.19482534513571295,
+          "deposited": 0,
+          "frontRemoved": 0.14032101040509065,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 15,
+          "atFace": 4
+        },
+        {
+          "tick": 900,
+          "removed": 0.2804517719401368,
+          "deposited": 0,
+          "frontRemoved": 0.22594743720951463,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.2804517719401368,
+          "deposited": 0.050478926469003926,
+          "frontRemoved": 0.22594743720951463,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 17,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.30515718474282344,
+          "deposited": 0.1292860540597847,
+          "frontRemoved": 0.2506528500122012,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.36135595475004534,
+          "deposited": 0.1292860540597847,
+          "frontRemoved": 0.2506528500122012,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 17,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.36135595475004534,
+          "deposited": 0.1535888469199433,
+          "frontRemoved": 0.2506528500122012,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 17,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.38606136755273196,
+          "deposited": 0.18000209745410128,
+          "frontRemoved": 0.27535826281488784,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 18,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.410766780355418,
+          "deposited": 0.18000209745410128,
+          "frontRemoved": 0.30006367561757386,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 18,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.410766780355418,
+          "deposited": 0.18000209745410128,
+          "frontRemoved": 0.30006367561757386,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 18,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.4354721931581049,
+          "deposited": 0.2609062802640093,
+          "frontRemoved": 0.32476908842026075,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.45858327082218825,
+          "deposited": 0.2609062802640093,
+          "frontRemoved": 0.347880166084344,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.45858327082218825,
+          "deposited": 0.2609062802640093,
+          "frontRemoved": 0.347880166084344,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.49811193130648646,
+          "deposited": 0.2609062802640093,
+          "frontRemoved": 0.3874088265686423,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 1
+        }
+      ],
+      "initialStateSha256": "636d0f22dbde40628ccffdb901539bf8bd632e7b4e13c97f351aa3825cd2ab2b",
+      "wallSeconds": 55.0623196
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-1",
+        "workers": 100,
+        "profileVersion": 2,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 2.7755575615628914e-16,
+      "maxStepToSpeed": 0.900333813965365,
+      "maxSupportGap": 0.012000000000000573,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.15181454774596048,
+          "deposited": 0,
+          "frontRemoved": 0.022040290933360334,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 4,
+          "atFace": 1
+        },
+        {
+          "tick": 200,
+          "removed": 0.17651996054864627,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373604611,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.2504881214531052,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373604611,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.2504881214531052,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373604611,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.2504881214531052,
+          "deposited": 0,
+          "frontRemoved": 0.04674570373604611,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 1
+        },
+        {
+          "tick": 600,
+          "removed": 0.26207883383797537,
+          "deposited": 0,
+          "frontRemoved": 0.05833641612091631,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 1
+        },
+        {
+          "tick": 700,
+          "removed": 0.27666050955407034,
+          "deposited": 0,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.33285927956129224,
+          "deposited": 0,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.33285927956129224,
+          "deposited": 0,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.33285927956129224,
+          "deposited": 0,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.33285927956129224,
+          "deposited": 0,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.33285927956129224,
+          "deposited": 0.024705412802685782,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.33285927956129224,
+          "deposited": 0.024705412802685782,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.33285927956129224,
+          "deposited": 0.024705412802685782,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.33285927956129224,
+          "deposited": 0.024705412802685782,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.3858770750524266,
+          "deposited": 0.04674570373604611,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 9,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.6966154743142636,
+          "deposited": 0.10125003846666847,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 9,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.6966154743142636,
+          "deposited": 0.17521819937112737,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 1.0170141346930484,
+          "deposited": 0.2282359948622617,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 1.0170141346930484,
+          "deposited": 0.2282359948622617,
+          "frontRemoved": 0.07291809183701128,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "256249d1d6fd1a33862728676356eac65fad02f63e638798207319afa97400d8",
+      "wallSeconds": 59.4529921
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-1",
+        "workers": 100,
+        "profileVersion": 3,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 3.7470027081099033e-16,
+      "maxStepToSpeed": 0.900363587159254,
+      "maxSupportGap": 0.017781794851894177,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.13009129394483768,
+          "deposited": 0,
+          "frontRemoved": 0.07558695921421527,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 200,
+          "removed": 0.13009129394483768,
+          "deposited": 0,
+          "frontRemoved": 0.07558695921421527,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.1547967067475238,
+          "deposited": 0,
+          "frontRemoved": 0.10029237201690136,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.1696199544291354,
+          "deposited": 0,
+          "frontRemoved": 0.11511561969851294,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 1
+        },
+        {
+          "tick": 500,
+          "removed": 0.20089538798088336,
+          "deposited": 0,
+          "frontRemoved": 0.14639105325026086,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 13,
+          "atFace": 2
+        },
+        {
+          "tick": 600,
+          "removed": 0.20583647054142065,
+          "deposited": 0.026578753551370404,
+          "frontRemoved": 0.15133213581079816,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 12,
+          "atFace": 2
+        },
+        {
+          "tick": 700,
+          "removed": 0.3125104215097695,
+          "deposited": 0.026578753551370404,
+          "frontRemoved": 0.20180731677192495,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 13,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.3125104215097695,
+          "deposited": 0.0827775235585923,
+          "frontRemoved": 0.20180731677192495,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 12,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.3125104215097695,
+          "deposited": 0.0827775235585923,
+          "frontRemoved": 0.20180731677192495,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 13,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.3655282170009038,
+          "deposited": 0.0827775235585923,
+          "frontRemoved": 0.20180731677192495,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 14,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.3655282170009038,
+          "deposited": 0.0827775235585923,
+          "frontRemoved": 0.20180731677192495,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 14,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.39509418837562205,
+          "deposited": 0.0827775235585923,
+          "frontRemoved": 0.23137328814664307,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 15,
+          "atFace": 2
+        },
+        {
+          "tick": 1300,
+          "removed": 0.4935052326365278,
+          "deposited": 0.0827775235585923,
+          "frontRemoved": 0.2751183152949286,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.4935052326365278,
+          "deposited": 0.10748293636127788,
+          "frontRemoved": 0.2751183152949286,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.6324873445289129,
+          "deposited": 0.10748293636127788,
+          "frontRemoved": 0.29982372809761504,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.6324873445289129,
+          "deposited": 0.10748293636127788,
+          "frontRemoved": 0.29982372809761504,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.6324873445289129,
+          "deposited": 0.10748293636127788,
+          "frontRemoved": 0.29982372809761504,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.94322574379075,
+          "deposited": 0.10748293636127788,
+          "frontRemoved": 0.29982372809761504,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 20,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.94322574379075,
+          "deposited": 0.10748293636127788,
+          "frontRemoved": 0.29982372809761504,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 20,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.94322574379075,
+          "deposited": 0.13381728735248874,
+          "frontRemoved": 0.29982372809761504,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 20,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "256249d1d6fd1a33862728676356eac65fad02f63e638798207319afa97400d8",
+      "wallSeconds": 73.8414056
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-1",
+        "workers": 200,
+        "profileVersion": 2,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 2.7755575615628914e-17,
+      "maxStepToSpeed": 0.9056867230226272,
+      "maxSupportGap": 0.0194335856087982,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.08051942036245865,
+          "deposited": 0,
+          "frontRemoved": 0.02601508563183628,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 1
+        },
+        {
+          "tick": 200,
+          "removed": 0.10522483316514489,
+          "deposited": 0,
+          "frontRemoved": 0.050720498434522546,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.10522483316514489,
+          "deposited": 0,
+          "frontRemoved": 0.050720498434522546,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.10522483316514489,
+          "deposited": 0,
+          "frontRemoved": 0.050720498434522546,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.10522483316514489,
+          "deposited": 0,
+          "frontRemoved": 0.050720498434522546,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.10522483316514489,
+          "deposited": 0,
+          "frontRemoved": 0.050720498434522546,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 1
+        },
+        {
+          "tick": 700,
+          "removed": 0.13139722126610853,
+          "deposited": 0,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.13139722126610853,
+          "deposited": 0,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.13139722126610853,
+          "deposited": 0,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.13139722126610853,
+          "deposited": 0,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.13139722126610853,
+          "deposited": 0.024705412802686264,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.13139722126610853,
+          "deposited": 0.024705412802686264,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.13139722126610853,
+          "deposited": 0.024705412802686264,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.13139722126610853,
+          "deposited": 0.024705412802686264,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.13139722126610853,
+          "deposited": 0.024705412802686264,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.13139722126610853,
+          "deposited": 0.050877800903649906,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.13139722126610853,
+          "deposited": 0.050877800903649906,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.13139722126610853,
+          "deposited": 0.050877800903649906,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.13139722126610853,
+          "deposited": 0.050877800903649906,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.13139722126610853,
+          "deposited": 0.050877800903649906,
+          "frontRemoved": 0.07689288653548619,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "59179ab1e430eaad86a86e5b6fb529c856dbbf6cc3f7d7977444e76543998f7e",
+      "wallSeconds": 116.64201320000002
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-1",
+        "workers": 200,
+        "profileVersion": 3,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 5.551115123125783e-17,
+      "maxStepToSpeed": 0.9141971021587523,
+      "maxSupportGap": 0.01923470216516481,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.12976919799082037,
+          "deposited": 0,
+          "frontRemoved": 0.07526486326019804,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 200,
+          "removed": 0.15447461079350663,
+          "deposited": 0,
+          "frontRemoved": 0.09997027606288425,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.17918002359619303,
+          "deposited": 0,
+          "frontRemoved": 0.12467568886557058,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.17918002359619303,
+          "deposited": 0,
+          "frontRemoved": 0.12467568886557058,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.17918002359619303,
+          "deposited": 0,
+          "frontRemoved": 0.12467568886557058,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 14,
+          "atFace": 4
+        },
+        {
+          "tick": 600,
+          "removed": 0.23985946563241411,
+          "deposited": 0,
+          "frontRemoved": 0.18535513090179173,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 15,
+          "atFace": 2
+        },
+        {
+          "tick": 700,
+          "removed": 0.2546021893255203,
+          "deposited": 0,
+          "frontRemoved": 0.2000978545948979,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 15,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.2672950140579765,
+          "deposited": 0,
+          "frontRemoved": 0.21279067932735407,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 1
+        },
+        {
+          "tick": 900,
+          "removed": 0.3013189240621982,
+          "deposited": 0,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.3013189240621982,
+          "deposited": 0,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.3013189240621982,
+          "deposited": 0,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.3013189240621982,
+          "deposited": 0,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.3013189240621982,
+          "deposited": 0,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.3013189240621982,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.3013189240621982,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.3013189240621982,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.3013189240621982,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.3013189240621982,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.3013189240621982,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.2468145893315758,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 1
+        },
+        {
+          "tick": 2000,
+          "removed": 0.32352668202490237,
+          "deposited": 0.024705412802686358,
+          "frontRemoved": 0.26902234729428,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 16,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "59179ab1e430eaad86a86e5b6fb529c856dbbf6cc3f7d7977444e76543998f7e",
+      "wallSeconds": 84.63676980000001
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-2",
+        "workers": 50,
+        "profileVersion": 2,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 2.7755575615628914e-17,
+      "maxStepToSpeed": 0.913208147273484,
+      "maxSupportGap": 0.011839808881827014,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.006167642532525992,
+          "deposited": 0,
+          "frontRemoved": 0.006167642532525992,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 2
+        },
+        {
+          "tick": 200,
+          "removed": 0.051071654875677955,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.051071654875677955,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.051071654875677955,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.1945052024736541,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 3,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.1945052024736541,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 700,
+          "removed": 0.1945052024736541,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.1945052024736541,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.1945052024736541,
+          "deposited": 0,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.1945052024736541,
+          "deposited": 0.05107165487567795,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.1945052024736541,
+          "deposited": 0.19450520247365408,
+          "frontRemoved": 0.051071654875677955,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.22037894269078534,
+          "deposited": 0.19450520247365408,
+          "frontRemoved": 0.0769453950928092,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.22037894269078534,
+          "deposited": 0.19450520247365408,
+          "frontRemoved": 0.0769453950928092,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "c154af377115508de47204d69fed9292032ecfa8e02dfe24a2babe5c6280148f",
+      "wallSeconds": 18.308471900000004
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-2",
+        "workers": 50,
+        "profileVersion": 3,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 3.3306690738754696e-16,
+      "maxStepToSpeed": 0.8422546522855301,
+      "maxSupportGap": 0.040515358133149486,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.07601840301728877,
+          "deposited": 0,
+          "frontRemoved": 0.07601840301728877,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 200,
+          "removed": 0.10096414382079177,
+          "deposited": 0,
+          "frontRemoved": 0.10096414382079177,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.10096414382079177,
+          "deposited": 0,
+          "frontRemoved": 0.10096414382079177,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.10096414382079177,
+          "deposited": 0,
+          "frontRemoved": 0.10096414382079177,
+          "workers": 50,
+          "openFronts": 1,
+          "assigned": 7,
+          "atFace": 1
+        },
+        {
+          "tick": 500,
+          "removed": 0.1273285842578181,
+          "deposited": 0,
+          "frontRemoved": 0.1273285842578181,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 18,
+          "atFace": 3
+        },
+        {
+          "tick": 600,
+          "removed": 0.2532685524408431,
+          "deposited": 0,
+          "frontRemoved": 0.20337532776004882,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 21,
+          "atFace": 1
+        },
+        {
+          "tick": 700,
+          "removed": 0.2981722290046261,
+          "deposited": 0.024947419700349558,
+          "frontRemoved": 0.24827900432383196,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 22,
+          "atFace": 1
+        },
+        {
+          "tick": 800,
+          "removed": 0.30316171294469596,
+          "deposited": 0.024947419700349558,
+          "frontRemoved": 0.25326848826390186,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 24,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.30316171294469596,
+          "deposited": 0.024947419700349558,
+          "frontRemoved": 0.25326848826390186,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 24,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.30316171294469596,
+          "deposited": 0.05107098331693924,
+          "frontRemoved": 0.25326848826390186,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 24,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.30316171294469596,
+          "deposited": 0.05107098331693924,
+          "frontRemoved": 0.25326848826390186,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 24,
+          "atFace": 1
+        },
+        {
+          "tick": 1200,
+          "removed": 0.4693706196951011,
+          "deposited": 0.05107098331693924,
+          "frontRemoved": 0.276043847416331,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 26,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.6014992677829349,
+          "deposited": 0.10096420799773356,
+          "frontRemoved": 0.3009912671166806,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 26,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.6014992677829349,
+          "deposited": 0.12373956715016265,
+          "frontRemoved": 0.3009912671166806,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 27,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.6513924282867877,
+          "deposited": 0.12373956715016265,
+          "frontRemoved": 0.3508844276205332,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 27,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.6663608801069975,
+          "deposited": 0.12373956715016265,
+          "frontRemoved": 0.3658528794407431,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 27,
+          "atFace": 1
+        },
+        {
+          "tick": 1700,
+          "removed": 0.6763398479871374,
+          "deposited": 0.12373956715016265,
+          "frontRemoved": 0.37583184732088304,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 27,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.7012872676874871,
+          "deposited": 0.12373956715016265,
+          "frontRemoved": 0.40077926702123273,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 28,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.7262346873878364,
+          "deposited": 0.12373956715016265,
+          "frontRemoved": 0.4257266867215821,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 29,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.7262346873878364,
+          "deposited": 0.1486853079536657,
+          "frontRemoved": 0.4257266867215821,
+          "workers": 50,
+          "openFronts": 2,
+          "assigned": 29,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "c154af377115508de47204d69fed9292032ecfa8e02dfe24a2babe5c6280148f",
+      "wallSeconds": 20.442516000000005
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-2",
+        "workers": 100,
+        "profileVersion": 2,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 1.1102230246251565e-16,
+      "maxStepToSpeed": 0.9132103092414388,
+      "maxSupportGap": 0.012075605424322906,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.006168649870634983,
+          "deposited": 0,
+          "frontRemoved": 0.006168649870634983,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 2
+        },
+        {
+          "tick": 200,
+          "removed": 0.05107232643441725,
+          "deposited": 0,
+          "frontRemoved": 0.05107232643441725,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.05107232643441725,
+          "deposited": 0,
+          "frontRemoved": 0.05107232643441725,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.05107232643441725,
+          "deposited": 0,
+          "frontRemoved": 0.05107232643441725,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.1945058740323934,
+          "deposited": 0,
+          "frontRemoved": 0.05107232643441725,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.3964355018289899,
+          "deposited": 0,
+          "frontRemoved": 0.05107232643441725,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 1
+        },
+        {
+          "tick": 700,
+          "removed": 0.49715693779401887,
+          "deposited": 0,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.49715693779401887,
+          "deposited": 0,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.49715693779401887,
+          "deposited": 0.04989322468079432,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.49715693779401887,
+          "deposited": 0.04989322468079432,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.5085146324608636,
+          "deposited": 0.04989322468079432,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.5085146324608636,
+          "deposited": 0.10393023086082501,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.5085146324608636,
+          "deposited": 0.10393023086082501,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.7680475564835036,
+          "deposited": 0.10393023086082501,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 9,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.8194918658694003,
+          "deposited": 0.10393023086082501,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.8194918658694003,
+          "deposited": 0.12887597166432746,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.8194918658694003,
+          "deposited": 0.12887597166432746,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.8194918658694003,
+          "deposited": 0.12887597166432746,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.8194918658694003,
+          "deposited": 0.12887597166432746,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.831326107165623,
+          "deposited": 0.12887597166432746,
+          "frontRemoved": 0.10190053771865182,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 11,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "860fcb09df49b3c76cc0e121ffb9d84bf1a122f52f10030fd7e1e25010fab56f",
+      "wallSeconds": 39.81132880000002
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-2",
+        "workers": 100,
+        "profileVersion": 3,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 2.3592239273284576e-16,
+      "maxStepToSpeed": 0.9132080180956976,
+      "maxSupportGap": 0.025839409841526655,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.07102287504856948,
+          "deposited": 0,
+          "frontRemoved": 0.07102287504856948,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 9,
+          "atFace": 1
+        },
+        {
+          "tick": 200,
+          "removed": 0.12590551949249185,
+          "deposited": 0,
+          "frontRemoved": 0.12590551949249185,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 11,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.17613593867801244,
+          "deposited": 0,
+          "frontRemoved": 0.12590551949249185,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 12,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.19110439049822203,
+          "deposited": 0,
+          "frontRemoved": 0.14087397131270143,
+          "workers": 100,
+          "openFronts": 1,
+          "assigned": 12,
+          "atFace": 1
+        },
+        {
+          "tick": 500,
+          "removed": 0.20108335837836172,
+          "deposited": 0,
+          "frontRemoved": 0.15085293919284112,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 19,
+          "atFace": 2
+        },
+        {
+          "tick": 600,
+          "removed": 0.2521282839483218,
+          "deposited": 0,
+          "frontRemoved": 0.2018978647628012,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 29,
+          "atFace": 0
+        },
+        {
+          "tick": 700,
+          "removed": 0.30202312334902,
+          "deposited": 0.02494574080350217,
+          "frontRemoved": 0.2517927041634995,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 32,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.312001419670421,
+          "deposited": 0.02494574080350217,
+          "frontRemoved": 0.26177100048490054,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 35,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.312001419670421,
+          "deposited": 0.02494574080350217,
+          "frontRemoved": 0.26177100048490054,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 35,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.4709470810484031,
+          "deposited": 0.02494574080350217,
+          "frontRemoved": 0.26177100048490054,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 36,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.4709470810484031,
+          "deposited": 0.07484058020420058,
+          "frontRemoved": 0.26177100048490054,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 38,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.514959773860301,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.30578369329679855,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 40,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.545872185926276,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3107731772368685,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 41,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.545872185926276,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3107731772368685,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 41,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.6222878393106288,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3257406217189699,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 1
+        },
+        {
+          "tick": 1600,
+          "removed": 0.6322661356320296,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3357189180403708,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.6322661356320296,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3357189180403708,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.6527381141498256,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3357189180403708,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.6527381141498256,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3357189180403708,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.6527381141498256,
+          "deposited": 0.12473374070805245,
+          "frontRemoved": 0.3357189180403708,
+          "workers": 100,
+          "openFronts": 2,
+          "assigned": 43,
+          "atFace": 1
+        }
+      ],
+      "initialStateSha256": "860fcb09df49b3c76cc0e121ffb9d84bf1a122f52f10030fd7e1e25010fab56f",
+      "wallSeconds": 42.38074709999998
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-2",
+        "workers": 200,
+        "profileVersion": 2,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 5.551115123125783e-17,
+      "maxStepToSpeed": 0.9226544897320894,
+      "maxSupportGap": 0.01200000000000035,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.006160591165769324,
+          "deposited": 0,
+          "frontRemoved": 0.006160591165769324,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 2
+        },
+        {
+          "tick": 200,
+          "removed": 0.05106292461207469,
+          "deposited": 0,
+          "frontRemoved": 0.05106292461207469,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.05106292461207469,
+          "deposited": 0,
+          "frontRemoved": 0.05106292461207469,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.05106292461207469,
+          "deposited": 0,
+          "frontRemoved": 0.05106292461207469,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 2,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.05106292461207469,
+          "deposited": 0,
+          "frontRemoved": 0.05106292461207469,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.07694371619596156,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 700,
+          "removed": 0.07694371619596156,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.07694371619596156,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.07694371619596156,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 4,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.12683694087675587,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.12683694087675587,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1200,
+          "removed": 0.12683694087675587,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 5,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.28578260225473795,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 6,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.28578260225473795,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 6,
+          "atFace": 0
+        },
+        {
+          "tick": 1500,
+          "removed": 0.28578260225473795,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 6,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.33722691164063456,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1700,
+          "removed": 0.33722691164063456,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.33722691164063456,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.33722691164063456,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 7,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.39022230573163363,
+          "deposited": 0,
+          "frontRemoved": 0.07694371619596155,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 8,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "921e2f9ff64dbf3343964b40c1f06758a55cf92c3cc4d85584037268ee300485",
+      "wallSeconds": 83.1648149
+    },
+    {
+      "options": {
+        "seed": "DIG-ACCESS-2",
+        "workers": 200,
+        "profileVersion": 3,
+        "ticks": 2000
+      },
+      "engine": "World.step",
+      "buhlComparable": false,
+      "timeUnit": "model tick",
+      "volumeUnit": "model volume",
+      "maxBalanceError": 2.7755575615628914e-16,
+      "maxStepToSpeed": 0.9189761100075898,
+      "maxSupportGap": 0.025024380281473933,
+      "samples": [
+        {
+          "tick": 0,
+          "removed": 0,
+          "deposited": 0,
+          "frontRemoved": 0,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 0,
+          "atFace": 0
+        },
+        {
+          "tick": 100,
+          "removed": 0.04608317827371439,
+          "deposited": 0,
+          "frontRemoved": 0.04608317827371439,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 8,
+          "atFace": 3
+        },
+        {
+          "tick": 200,
+          "removed": 0.08100788695735725,
+          "deposited": 0,
+          "frontRemoved": 0.08100788695735725,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 300,
+          "removed": 0.08100788695735725,
+          "deposited": 0,
+          "frontRemoved": 0.08100788695735725,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 400,
+          "removed": 0.08100788695735725,
+          "deposited": 0,
+          "frontRemoved": 0.08100788695735725,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 500,
+          "removed": 0.08100788695735725,
+          "deposited": 0,
+          "frontRemoved": 0.08100788695735725,
+          "workers": 200,
+          "openFronts": 1,
+          "assigned": 10,
+          "atFace": 0
+        },
+        {
+          "tick": 600,
+          "removed": 0.10579628612348053,
+          "deposited": 0,
+          "frontRemoved": 0.10579628612348053,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 13,
+          "atFace": 1
+        },
+        {
+          "tick": 700,
+          "removed": 0.18156654463815589,
+          "deposited": 0,
+          "frontRemoved": 0.18156654463815586,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 18,
+          "atFace": 0
+        },
+        {
+          "tick": 800,
+          "removed": 0.325000092236132,
+          "deposited": 0,
+          "frontRemoved": 0.18156654463815586,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 20,
+          "atFace": 0
+        },
+        {
+          "tick": 900,
+          "removed": 0.3499475119364814,
+          "deposited": 0,
+          "frontRemoved": 0.20651396433850533,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 24,
+          "atFace": 0
+        },
+        {
+          "tick": 1000,
+          "removed": 0.4978401335530472,
+          "deposited": 0.024947419700349464,
+          "frontRemoved": 0.20651396433850533,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 25,
+          "atFace": 0
+        },
+        {
+          "tick": 1100,
+          "removed": 0.6299687816408809,
+          "deposited": 0.024947419700349464,
+          "frontRemoved": 0.23146138403885474,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 29,
+          "atFace": 1
+        },
+        {
+          "tick": 1200,
+          "removed": 0.6299687816408809,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.23146138403885474,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 36,
+          "atFace": 0
+        },
+        {
+          "tick": 1300,
+          "removed": 0.6299687816408809,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.23146138403885474,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1400,
+          "removed": 0.8002302177316079,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.23146138403885474,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 1
+        },
+        {
+          "tick": 1500,
+          "removed": 0.8485896326809895,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.2798207989882364,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1600,
+          "removed": 0.8485896326809895,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.2798207989882364,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 1
+        },
+        {
+          "tick": 1700,
+          "removed": 0.8785265363214091,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.30975770262865593,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1800,
+          "removed": 0.9034739560217587,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.33470512232900546,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 1900,
+          "removed": 0.9233606670808691,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.33470512232900546,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        },
+        {
+          "tick": 2000,
+          "removed": 0.9483080867812187,
+          "deposited": 0.04989483940069889,
+          "frontRemoved": 0.3596525420293549,
+          "workers": 200,
+          "openFronts": 2,
+          "assigned": 42,
+          "atFace": 0
+        }
+      ],
+      "initialStateSha256": "921e2f9ff64dbf3343964b40c1f06758a55cf92c3cc4d85584037268ee300485",
+      "wallSeconds": 83.82798940000008
+    }
+  ]
+}
