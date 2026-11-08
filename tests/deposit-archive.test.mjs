@@ -1,7 +1,8 @@
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, mkdtempSync, copyFileSync } from "node:fs";
+import { readFileSync, mkdtempSync, copyFileSync, mkdirSync } from "node:fs";
 import { join, resolve } from "node:path";
 import {
   prepareDeposit,
@@ -10,8 +11,27 @@ import {
 import { verifyDepositZip } from "../scripts/lib/deposit-verify.ts";
 
 test("o pacote real é reproduzível e qualquer arquivo extra, ausente ou alterado é rejeitado", () => {
-  const root = resolve(".");
-  const prepared = prepareDeposit(root, resolve(".runtime/deposits"));
+  const checkout = resolve("."),
+    output = resolve(".runtime/deposits");
+  mkdirSync(output, { recursive: true });
+  const root = mkdtempSync(join(output, "repository-"));
+  // Test the current source before publication. The tag exists only inside this
+  // isolated fixture; no ref or remote in the working repository is changed.
+  const git = (...args) => execFileSync("git", args, { windowsHide: true });
+  git(
+    "clone",
+    "--shared",
+    "--no-checkout",
+    "--single-branch",
+    "--no-tags",
+    checkout,
+    root,
+  );
+  for (const file of ["CITATION.cff", ".zenodo.json"])
+    copyFileSync(join(checkout, file), join(root, file));
+  const version = JSON.parse(readFileSync(join(root, "CITATION.cff"))).version;
+  git("-C", root, "tag", "v" + version, "HEAD");
+  const prepared = prepareDeposit(root, output);
   const first = archiveDeposit(root, prepared.folder, prepared.manifest);
   const secondFolder = mkdtempSync(resolve(".runtime/deposits/retry-"));
   for (const file of [
