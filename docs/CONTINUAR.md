@@ -35,14 +35,17 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 ## Próximo passo concreto
 
 Estado mais recente: PR #130, branch `codex/buhl-velocidade-carga`.
-Os 60 ensaios fatoriais de 72 h e o piloto de acesso foram concluídos e
-arquivados. Velocidade/carga não recuperaram 1,6. Seguir
-[diagnóstico de acesso](planejamento/buhl-acesso-geometrico.md): próximo
-lote é `.runtime/buhl-acesso-geometrico-72h`, 15 rodadas de acesso 1,
-com base nas 15 já concluídas de acesso 0,35. Não iniciar concorrente.
+Concluídos 75 ensaios de 72 h e 75 pilotos de 2 h, com artefatos e figuras.
+Velocidade/carga não recuperaram 1,6; acesso geométrico 1 elevou o volume
+em 44,7%/54,6%/51,0%. [Relatório completo](planejamento/buhl-acesso-geometrico.md).
+Foram 16/18 pontos dentro da incerteza de digitalização, sem validação independente.
+Nenhum executor de Buhl permanece ativo; não há lote a retomar.
 Modelo congelado em 906ffac; fingerprint 696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882.
-Arquivar o resultado e atualizar o PR antes de interrupção; B7 segue aberto.
+Próximo passo técnico: escala física do cenário World do PR #128, mantendo
+as evidências desta arena separadas e B7 aberto. Preservar o PR #129 e os
+históricos; não escolher novos parâmetros apenas para bater volumes.
 
+### Histórico de decisões anteriores
 
 Atualização de 07/11: novo pedido autorizou a branch da main
 `codex/buhl-velocidade-carga` e os testes de velocidade/carga mantendo a
@@ -248,12 +251,9 @@ Um futuro ajuste deve reservar novas seeds do simulador e observações reais
 antes de comparar mecanismos de saturação. Os instrumentos de T5 estão prontos
 para receber observações, pareceres e contribuições reais.
 
-Checkpoint de segurança: o lote de acesso de 72 h está em execução,
-com um único coordenador. Plano e rodadas concluídas estão preservados
-em `docs/validacoes/buhl-acesso-72h-checkpoint.zip`; não restaurar sobre
-um executor ativo. Consulte `.runtime/buhl-acesso-geometrico-72h`.
-Ao terminar: `node scripts/archive-buhl-access.ts .runtime/buhl-acesso-geometrico-72h 906ffac32087cceef13d3c8d97261a8385eca4a9`.
-Para o gráfico, usar Python 3.14 com `PYTHONPATH=.runtime/buhl-plot-deps`
-e `MPLCONFIGDIR=.runtime/buhl-plot-config`, executando `scripts/plot-buhl-access.py`.
-Validar a figura, registrar resultados em buhl-acesso-geometrico.md e
-atualizar o PR #130. Os 60 ensaios anteriores já estão publicados na branch.
+Checkpoint final de acesso: lote concluído e arquivado. O ZIP de segurança
+`docs/validacoes/buhl-acesso-72h-checkpoint.zip` é uma fotografia parcial
+anterior, não substitui o CSV/recibo completo. Não restaurar sobre saves.
+Reprodução do arquivamento: `node scripts/archive-buhl-access.ts .runtime/buhl-acesso-geometrico-72h 906ffac32087cceef13d3c8d97261a8385eca4a9`.
+Para figuras, usar Python 3.14 com `PYTHONPATH=.runtime/buhl-plot-deps` e
+`MPLCONFIGDIR=.runtime/buhl-plot-config`. O dev 4173 deve permanecer ativo.

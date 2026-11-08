@@ -1,0 +1,1026 @@
+{
+  "schema": "viveiro-buhl-access-72h-v1",
+  "calibrated": false,
+  "independentEmpiricalValidation": false,
+  "purpose": "72h exploratory ablation; retrospective comparison",
+  "durationSeconds": 259200,
+  "sourceCommit": "906ffac32087cceef13d3c8d97261a8385eca4a9",
+  "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+  "runtime": "v24.22.1",
+  "analysisScriptSha256Lf": "ecf898b6b443e233dcbf16465093432435cb41ebe568c3e362ee75af56caa7da",
+  "csvSha256Lf": "c95a8811b7a2d0c1a7d4f47de361d40efe531b825b32435443f9cdc4c82a0c1d",
+  "baseSeriesSha256Lf": "55e34104abfe106201e421f58cdc75b3e2e9a42f4eb877fb650134000f98910d",
+  "runCount": 15,
+  "sampleCount": 3255,
+  "plans": [
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-1",
+      "workers": 50,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-1",
+      "workers": 100,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-1",
+      "workers": 200,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-2",
+      "workers": 50,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-2",
+      "workers": 100,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-2",
+      "workers": 200,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-3",
+      "workers": 50,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-3",
+      "workers": 100,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-3",
+      "workers": 200,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-4",
+      "workers": 50,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-4",
+      "workers": 100,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-4",
+      "workers": 200,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-5",
+      "workers": 50,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-5",
+      "workers": 100,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    },
+    {
+      "locomotion": {
+        "walkingSource": "profile-temperature",
+        "soilLoadFactor": 0.85
+      },
+      "workerProfile": {
+        "schema": 1,
+        "id": "messor-narbonne",
+        "version": 2
+      },
+      "digFatigue": "work-recovery",
+      "microclimate": {
+        "temperatureC": 24,
+        "initialSandWaterFraction": 0.08,
+        "airRelativeHumidity": 0.8,
+        "airflowIndex": 0,
+        "drying": false
+      },
+      "observeActivity": true,
+      "seed": "ARENA-FADIGA-5",
+      "workers": 200,
+      "mechanism": "edge-follow",
+      "contactAccess": 1,
+      "durationSeconds": 259200,
+      "sampleEverySeconds": 1200,
+      "tickMilliseconds": 50,
+      "pitchMm": 0.8,
+      "separationMm": 5,
+      "dryDensityMgPerMm3": 1.5,
+      "digRatePerSecond": 0.0283,
+      "pickupPerContact": 0.102
+    }
+  ],
+  "runHashes": [
+    "bfe8d12bc234f47e2161bed36c68635602a42958474011ac447b1b7b7f4a17c1",
+    "1056700f83fe4a41a1f428d9e1e1cedf594eb0fa89354af52eda9a05aff12a3b",
+    "6e7b4f789d91f240865e224070f97fac223fc7097d1ceca33da770ab5a8e7ab5",
+    "1c0a8a4112189835b4bbb3df14f51bcc44160b8d2913bf0662f6eec2e5bdaa4d",
+    "01ee8b5effe2f7d2064917c6ffb686e18524d16aeb7e3b7b9b225cad977fddae",
+    "43426bfce3ada1a1550a167862b82e4227ceb2050c3b4bc4bdf955a8e9942abd",
+    "ef8c32df22ce14b7a50eb2c27a5bdda8ba027f80449f5a6a7d1bbbab4a942c27",
+    "8b14c93d4d65b11e3e05a427d952e0cf7996c092837544e1cadbe6d803a587a9",
+    "f5da065cda6f6c1cd08688f887c0030fbb48d67f7ad5bbc999c78fab5cbf23b1",
+    "e05ede4ade6d0619fc0cd51862899f46a5c2bf51ce57d4b6ef9880087aed6e84",
+    "5541d6c5b834ad9c65616ffb68b5b204eb81d89892a0a4f3d9cbed20461a5c01",
+    "d8d4851d9c266d060bad5e72cac260b2abaaebb80d267fb50724f932ce2f72b7",
+    "09a0dbf4f65e82211770554f781cfb7d24a9b38edc3c5b110d52360c058fe2b0",
+    "d8f9acf4bcbc66f68cb6b625945482ebdb4b37454911cc63c2590b464a8fa7a2",
+    "4fac59f47ff5d23479824271e18a2205fefa5cf57f05d214d25e911a726dcab5"
+  ],
+  "balances": true,
+  "trafficExcavationZero": true,
+  "morphologyUnchanged": true,
+  "comparisons": [
+    {
+      "workers": 50,
+      "pairs": [
+        {
+          "seed": "ARENA-FADIGA-1",
+          "baseCm3": 14.601600000000003,
+          "accessOneCm3": 25.187200000000004,
+          "deltaCm3": 10.585600000000001,
+          "baseDiggingSeconds": 592771.15,
+          "accessOneDiggingSeconds": 1010817
+        },
+        {
+          "seed": "ARENA-FADIGA-2",
+          "baseCm3": 16.2144,
+          "accessOneCm3": 19.417600000000004,
+          "deltaCm3": 3.2032000000000025,
+          "baseDiggingSeconds": 658303.5,
+          "accessOneDiggingSeconds": 781490.5
+        },
+        {
+          "seed": "ARENA-FADIGA-3",
+          "baseCm3": 15.680000000000003,
+          "accessOneCm3": 23.347200000000004,
+          "deltaCm3": 7.667200000000001,
+          "baseDiggingSeconds": 634198.3,
+          "accessOneDiggingSeconds": 930592.75
+        },
+        {
+          "seed": "ARENA-FADIGA-4",
+          "baseCm3": 16.323200000000003,
+          "accessOneCm3": 25.740800000000004,
+          "deltaCm3": 9.4176,
+          "baseDiggingSeconds": 658285.65,
+          "accessOneDiggingSeconds": 1023995.3500000001
+        },
+        {
+          "seed": "ARENA-FADIGA-5",
+          "baseCm3": 15.996800000000002,
+          "accessOneCm3": 20.384000000000004,
+          "deltaCm3": 4.387200000000002,
+          "baseDiggingSeconds": 644891.2000000001,
+          "accessOneDiggingSeconds": 815561.5
+        }
+      ],
+      "baseMeanCm3": 15.763200000000003,
+      "accessOneMeanCm3": 22.815360000000005,
+      "ratioOfMeans": 1.4473812423873327
+    },
+    {
+      "workers": 100,
+      "pairs": [
+        {
+          "seed": "ARENA-FADIGA-1",
+          "baseCm3": 24.038400000000003,
+          "accessOneCm3": 35.74720000000001,
+          "deltaCm3": 11.708800000000004,
+          "baseDiggingSeconds": 955842,
+          "accessOneDiggingSeconds": 1409456.25
+        },
+        {
+          "seed": "ARENA-FADIGA-2",
+          "baseCm3": 24.105600000000006,
+          "accessOneCm3": 38.75840000000001,
+          "deltaCm3": 14.652800000000003,
+          "baseDiggingSeconds": 967022.55,
+          "accessOneDiggingSeconds": 1520080.5
+        },
+        {
+          "seed": "ARENA-FADIGA-3",
+          "baseCm3": 23.747200000000003,
+          "accessOneCm3": 37.830400000000004,
+          "deltaCm3": 14.083200000000001,
+          "baseDiggingSeconds": 940819.9,
+          "accessOneDiggingSeconds": 1489417.7000000002
+        },
+        {
+          "seed": "ARENA-FADIGA-4",
+          "baseCm3": 24.995200000000004,
+          "accessOneCm3": 34.204800000000006,
+          "deltaCm3": 9.209600000000002,
+          "baseDiggingSeconds": 993071.3500000001,
+          "accessOneDiggingSeconds": 1346984.4500000002
+        },
+        {
+          "seed": "ARENA-FADIGA-5",
+          "baseCm3": 22.393600000000003,
+          "accessOneCm3": 37.87200000000001,
+          "deltaCm3": 15.478400000000004,
+          "baseDiggingSeconds": 895363.1000000001,
+          "accessOneDiggingSeconds": 1490181.2000000002
+        }
+      ],
+      "baseMeanCm3": 23.856,
+      "accessOneMeanCm3": 36.882560000000005,
+      "ratioOfMeans": 1.5460496311200538
+    },
+    {
+      "workers": 200,
+      "pairs": [
+        {
+          "seed": "ARENA-FADIGA-1",
+          "baseCm3": 37.87520000000001,
+          "accessOneCm3": 57.54880000000001,
+          "deltaCm3": 19.6736,
+          "baseDiggingSeconds": 1479674.3,
+          "accessOneDiggingSeconds": 2237752.65
+        },
+        {
+          "seed": "ARENA-FADIGA-2",
+          "baseCm3": 32.288000000000004,
+          "accessOneCm3": 52.94080000000001,
+          "deltaCm3": 20.652800000000006,
+          "baseDiggingSeconds": 1275431.6,
+          "accessOneDiggingSeconds": 2071185.4000000001
+        },
+        {
+          "seed": "ARENA-FADIGA-3",
+          "baseCm3": 38.80960000000001,
+          "accessOneCm3": 47.06880000000001,
+          "deltaCm3": 8.2592,
+          "baseDiggingSeconds": 1519223.05,
+          "accessOneDiggingSeconds": 1832536.9000000001
+        },
+        {
+          "seed": "ARENA-FADIGA-4",
+          "baseCm3": 36.416000000000004,
+          "accessOneCm3": 61.65440000000001,
+          "deltaCm3": 25.238400000000006,
+          "baseDiggingSeconds": 1429563.9000000001,
+          "accessOneDiggingSeconds": 2391914.5
+        },
+        {
+          "seed": "ARENA-FADIGA-5",
+          "baseCm3": 37.891200000000005,
+          "accessOneCm3": 57.60960000000001,
+          "deltaCm3": 19.718400000000003,
+          "baseDiggingSeconds": 1488353.35,
+          "accessOneDiggingSeconds": 2235318.3000000003
+        }
+      ],
+      "baseMeanCm3": 36.656000000000006,
+      "accessOneMeanCm3": 55.364480000000015,
+      "ratioOfMeans": 1.5103797468354432
+    }
+  ],
+  "diagnostic": {
+    "schema": "viveiro-buhl-arena-diagnostico-v1",
+    "calibrated": false,
+    "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+    "secondsPerTick": 0.05,
+    "references": {
+      "curve": "Buhl et al. (2001), Fig. 2a; digitalização aproximada.",
+      "readingErrorCm3": 3,
+      "final": "Buhl et al. (2005), Tabela 1, disco fixo; doi:10.1007/s00265-004-0906-2"
+    },
+    "groups": [
+      {
+        "workers": 50,
+        "replicateSeeds": [
+          "ARENA-FADIGA-1",
+          "ARENA-FADIGA-2",
+          "ARENA-FADIGA-3",
+          "ARENA-FADIGA-4",
+          "ARENA-FADIGA-5"
+        ],
+        "curve": [
+          {
+            "hour": 0,
+            "simulatedMeanCm3": 0,
+            "simulatedSampleSdCm3": 0,
+            "readCm3": 0,
+            "bandCm3": [
+              0,
+              0
+            ],
+            "within": true
+          },
+          {
+            "hour": 12,
+            "simulatedMeanCm3": 6.700800000000001,
+            "simulatedSampleSdCm3": 0.05593138653743548,
+            "readCm3": 6,
+            "bandCm3": [
+              3,
+              9
+            ],
+            "within": true
+          },
+          {
+            "hour": 24,
+            "simulatedMeanCm3": 11.359360000000002,
+            "simulatedSampleSdCm3": 0.4297505881322329,
+            "readCm3": 12,
+            "bandCm3": [
+              9,
+              15
+            ],
+            "within": true
+          },
+          {
+            "hour": 36,
+            "simulatedMeanCm3": 14.887680000000003,
+            "simulatedSampleSdCm3": 1.0789354160467628,
+            "readCm3": 16.5,
+            "bandCm3": [
+              13.5,
+              19.5
+            ],
+            "within": true
+          },
+          {
+            "hour": 48,
+            "simulatedMeanCm3": 17.752320000000005,
+            "simulatedSampleSdCm3": 1.710223526911029,
+            "readCm3": 20.5,
+            "bandCm3": [
+              17.5,
+              23.5
+            ],
+            "within": true
+          },
+          {
+            "hour": 60,
+            "simulatedMeanCm3": 20.359680000000004,
+            "simulatedSampleSdCm3": 2.3363655604378355,
+            "readCm3": 23,
+            "bandCm3": [
+              20,
+              26
+            ],
+            "within": true
+          },
+          {
+            "hour": 72,
+            "simulatedMeanCm3": 22.815360000000005,
+            "simulatedSampleSdCm3": 2.825020461518819,
+            "readCm3": 25,
+            "bandCm3": [
+              22,
+              28
+            ],
+            "within": true
+          }
+        ],
+        "maeCm3": 1.7543999999999969,
+        "readBandCoverage": 1,
+        "finalCm3": 22.815360000000005,
+        "earlyFraction": [
+          {
+            "hour": 24,
+            "simulated": 0.4978821285309546,
+            "read": 0.48
+          },
+          {
+            "hour": 48,
+            "simulated": 0.7780863418328705,
+            "read": 0.82
+          }
+        ],
+        "articleFinal72h": {
+          "observedMeanCm3": 25.35,
+          "observedSdCm3": 11,
+          "observedN": 5,
+          "descriptiveBandCm3": [
+            14.350000000000001,
+            36.35
+          ],
+          "withinDescriptiveBand": true
+        }
+      },
+      {
+        "workers": 100,
+        "replicateSeeds": [
+          "ARENA-FADIGA-1",
+          "ARENA-FADIGA-2",
+          "ARENA-FADIGA-3",
+          "ARENA-FADIGA-4",
+          "ARENA-FADIGA-5"
+        ],
+        "curve": [
+          {
+            "hour": 0,
+            "simulatedMeanCm3": 0,
+            "simulatedSampleSdCm3": 0,
+            "readCm3": 0,
+            "bandCm3": [
+              0,
+              0
+            ],
+            "within": true
+          },
+          {
+            "hour": 12,
+            "simulatedMeanCm3": 11.885440000000003,
+            "simulatedSampleSdCm3": 0.25891737678263316,
+            "readCm3": 10,
+            "bandCm3": [
+              7,
+              13
+            ],
+            "within": true
+          },
+          {
+            "hour": 24,
+            "simulatedMeanCm3": 19.394560000000002,
+            "simulatedSampleSdCm3": 0.3949466394337338,
+            "readCm3": 19,
+            "bandCm3": [
+              16,
+              22
+            ],
+            "within": true
+          },
+          {
+            "hour": 36,
+            "simulatedMeanCm3": 24.644480000000005,
+            "simulatedSampleSdCm3": 1.0801993297535413,
+            "readCm3": 26,
+            "bandCm3": [
+              23,
+              29
+            ],
+            "within": true
+          },
+          {
+            "hour": 48,
+            "simulatedMeanCm3": 29.202560000000005,
+            "simulatedSampleSdCm3": 1.3697521410824671,
+            "readCm3": 31,
+            "bandCm3": [
+              28,
+              34
+            ],
+            "within": true
+          },
+          {
+            "hour": 60,
+            "simulatedMeanCm3": 33.23968000000001,
+            "simulatedSampleSdCm3": 1.4986604792280336,
+            "readCm3": 34,
+            "bandCm3": [
+              31,
+              37
+            ],
+            "within": true
+          },
+          {
+            "hour": 72,
+            "simulatedMeanCm3": 36.882560000000005,
+            "simulatedSampleSdCm3": 1.8611561482046588,
+            "readCm3": 37,
+            "bandCm3": [
+              34,
+              40
+            ],
+            "within": true
+          }
+        ],
+        "maeCm3": 1.0517866666666638,
+        "readBandCoverage": 1,
+        "finalCm3": 36.882560000000005,
+        "earlyFraction": [
+          {
+            "hour": 24,
+            "simulated": 0.5258463620746499,
+            "read": 0.5135135135135135
+          },
+          {
+            "hour": 48,
+            "simulated": 0.7917715039303129,
+            "read": 0.8378378378378378
+          }
+        ],
+        "articleFinal72h": {
+          "observedMeanCm3": 37.15,
+          "observedSdCm3": 9.2,
+          "observedN": 5,
+          "descriptiveBandCm3": [
+            27.95,
+            46.349999999999994
+          ],
+          "withinDescriptiveBand": true
+        }
+      },
+      {
+        "workers": 200,
+        "replicateSeeds": [
+          "ARENA-FADIGA-1",
+          "ARENA-FADIGA-2",
+          "ARENA-FADIGA-3",
+          "ARENA-FADIGA-4",
+          "ARENA-FADIGA-5"
+        ],
+        "curve": [
+          {
+            "hour": 0,
+            "simulatedMeanCm3": 0,
+            "simulatedSampleSdCm3": 0,
+            "readCm3": 0,
+            "bandCm3": [
+              0,
+              0
+            ],
+            "within": true
+          },
+          {
+            "hour": 12,
+            "simulatedMeanCm3": 18.598400000000005,
+            "simulatedSampleSdCm3": 0.7039345424114373,
+            "readCm3": 17,
+            "bandCm3": [
+              14,
+              20
+            ],
+            "within": true
+          },
+          {
+            "hour": 24,
+            "simulatedMeanCm3": 29.498880000000007,
+            "simulatedSampleSdCm3": 1.4596834286926739,
+            "readCm3": 31,
+            "bandCm3": [
+              28,
+              34
+            ],
+            "within": true
+          },
+          {
+            "hour": 36,
+            "simulatedMeanCm3": 37.445760000000014,
+            "simulatedSampleSdCm3": 2.797447430783999,
+            "readCm3": 39,
+            "bandCm3": [
+              36,
+              42
+            ],
+            "within": true
+          },
+          {
+            "hour": 48,
+            "simulatedMeanCm3": 44.31552000000001,
+            "simulatedSampleSdCm3": 4.163329498370265,
+            "readCm3": 47,
+            "bandCm3": [
+              44,
+              50
+            ],
+            "within": true
+          },
+          {
+            "hour": 60,
+            "simulatedMeanCm3": 50.16640000000001,
+            "simulatedSampleSdCm3": 5.048250770316389,
+            "readCm3": 54,
+            "bandCm3": [
+              51,
+              57
+            ],
+            "within": false
+          },
+          {
+            "hour": 72,
+            "simulatedMeanCm3": 55.364480000000015,
+            "simulatedSampleSdCm3": 5.569278290048001,
+            "readCm3": 59,
+            "bandCm3": [
+              56,
+              62
+            ],
+            "within": false
+          }
+        ],
+        "maeCm3": 2.4678933333333255,
+        "readBandCoverage": 0.6666666666666666,
+        "finalCm3": 55.364480000000015,
+        "earlyFraction": [
+          {
+            "hour": 24,
+            "simulated": 0.532812373565145,
+            "read": 0.5254237288135594
+          },
+          {
+            "hour": 48,
+            "simulated": 0.8004323349555527,
+            "read": 0.7966101694915254
+          }
+        ],
+        "articleFinal72h": {
+          "observedMeanCm3": 65.27,
+          "observedSdCm3": 22.4,
+          "observedN": 10,
+          "descriptiveBandCm3": [
+            42.87,
+            87.66999999999999
+          ],
+          "withinDescriptiveBand": true
+        }
+      }
+    ],
+    "scale": {
+      "simulatedSlope": 0.6394776350579264,
+      "digitizationBand": [
+        0.5000000000000003,
+        0.747382345874789
+      ],
+      "withinDigitizationBand": true
+    }
+  }
+}

@@ -90,10 +90,10 @@ Implementação e plano enviados no [PR #130](https://github.com/albreis/viveiro
 Fonte congelada das rodadas: `906ffac` (fingerprint
 `696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882`).
 Os quatro braços terminaram em `.runtime/buhl-locomocao-72h`.
-Não iniciar outro. Arquivos `rodada-*.json` são gravados ao concluir cada réplica;
+Arquivos `rodada-*.json` foram gravados ao concluir cada réplica;
 `concluido.json` só existe após as 60. O dev 4173 permanece rodando.
 
-Depois da conclusão: `node scripts/archive-buhl-locomotion.ts
+Reprodução: `node scripts/archive-buhl-locomotion.ts
 .runtime/buhl-locomocao-72h SHA_COMPLETO_DA_FONTE` e
 `python scripts/plot-buhl-locomotion.py`. O SHA completo está em
 `.runtime/buhl-locomocao-source.txt`. Conferir balanços, curvas, ganhos e
@@ -134,7 +134,7 @@ com velocidade maior, 4,6%/3,7%/2,9%. Esses números são do modelo.
 Volume removido por massa excede vazio aberto em cerca de 5–8% na base;
 essa diferença de métrica não explica 60%.
 
-A próxima investigação é o [acesso geométrico](buhl-acesso-geometrico.md).
+A continuação de [acesso geométrico](buhl-acesso-geometrico.md) foi concluída.
 A restrição 0,35 foi ajustada para a aproximação antiga por célula e pode
 sobrepor-se à exclusão corporal. Em reentrâncias, a renovação de contato
 requer mudança de face; uma operária imobilizada pode perder novas tentativas.
