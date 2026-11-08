@@ -1,0 +1,351 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Viveiro · a saga da escavação</title><style>* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #dce3d7;
+  color: #203c34;
+}
+body {
+  width: 1080px;
+}
+article {
+  width: 1080px;
+  height: 1350px;
+  padding: 64px 78px 54px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: #f8f8f1;
+  gap: 20px;
+}
+.dark {
+  background: #153d34;
+  color: #f7f7ed;
+}
+.brand {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 27px;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+.brand strong {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+.count {
+  font-size: 25px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+.section {
+  font-size: 24px;
+  letter-spacing: 1.8px;
+  line-height: 1.35;
+  color: #008474;
+  margin-top: 16px;
+  font-weight: 600;
+}
+.dark .section {
+  color: #c6d0aa;
+}
+h1 {
+  font-size: 66px;
+  letter-spacing: -2.6px;
+  line-height: 1.04;
+  font-weight: 650;
+  white-space: pre-line;
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+.lead {
+  font-size: 33px;
+  line-height: 1.3;
+  max-width: 900px;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  justify-content: center;
+}
+.note {
+  font-size: 22px;
+  line-height: 1.38;
+  color: #536a5e;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #d7dfd2;
+}
+.dark .note {
+  color: #ccd6c6;
+  border-color: #5a7463;
+}
+.legend {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-size: 25px;
+  line-height: 1.25;
+}
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.legend i {
+  height: 5px;
+  width: 38px;
+  background: var(--key);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.legend .dashed {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--key) 0 9px,
+    transparent 9px 14px
+  );
+}
+.chart {
+  width: 100%;
+  display: block;
+  flex-shrink: 0;
+}
+.chart-label {
+  font-size: 27px;
+  font-weight: 600;
+  color: #5e7163;
+}
+.takeaway {
+  font-size: 30px;
+  line-height: 1.3;
+  color: #345448;
+}
+.dark .takeaway {
+  color: #d8e2c9;
+}
+.population-line {
+  font-size: 59px;
+  font-weight: 650;
+  letter-spacing: -1px;
+}
+.population-line span {
+  font-weight: 300;
+  color: #9ba58d;
+}
+.population-line small {
+  font-size: 31px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+article > * {
+  flex-shrink: 0;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+}
+.body > * {
+  flex-shrink: 0;
+}
+.body > img {
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.cover h1 {
+  font-size: 91px;
+  line-height: 1.02;
+  letter-spacing: -3.5px;
+}
+.cover .lead {
+  max-width: 810px;
+}
+.cover .body {
+  justify-content: flex-end;
+  gap: 12px;
+}
+.cover-photo {
+  width: 1080px;
+  margin-left: -78px;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center 58%;
+  display: block;
+}
+.photo-caption {
+  font-size: 22px;
+  color: #d3ddc5;
+}
+.cover .note {
+  border: 0;
+  padding-top: 0;
+  font-size: 23px;
+}
+.factor {
+  font-size: 159px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -7px;
+}
+.factor span {
+  font-size: 105px;
+  color: #b8ca9f;
+}
+.factor-caption {
+  font-size: 32px;
+  color: #dbe4ce;
+}
+.plain-list {
+  margin-top: 28px;
+  font-size: 37px;
+  line-height: 1.6;
+}
+.results h1 {
+  font-size: 76px;
+}
+.results .body {
+  gap: 13px;
+  justify-content: flex-start;
+}
+.mini-result {
+  margin-top: 5px;
+}
+.mini-result > p {
+  font-size: 29px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.mini-result > p span {
+  font-size: 26px;
+  color: #5d7161;
+}
+.results .legend {
+  font-size: 25px;
+  gap: 22px;
+}
+.big-number {
+  font-size: 224px;
+  line-height: 1;
+  letter-spacing: -10px;
+  font-weight: 600;
+}
+.big-number span {
+  font-size: 100px;
+  color: #afc39c;
+  letter-spacing: -5px;
+}
+.big-explanation {
+  font-size: 45px;
+  line-height: 1.18;
+  max-width: 860px;
+}
+.gain-line {
+  font-size: 43px;
+  color: #d6dfb7;
+  margin-top: 32px;
+  letter-spacing: -0.8px;
+}
+.gain-key {
+  font-size: 26px;
+  color: #c1d0ba;
+}
+.world .body {
+  justify-content: center;
+  gap: 20px;
+}
+.world-photo {
+  width: 1080px;
+  margin-left: -78px;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.proof-line {
+  font-size: 34px;
+}
+.proof-line strong {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+.proof-line span {
+  margin: 0 18px;
+  color: #99a78b;
+}
+.reference-caption {
+  font-size: 28px;
+  color: #8c682d;
+}
+.next-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+}
+.next-list p {
+  font-size: 36px;
+  line-height: 1.3;
+  display: flex;
+  gap: 28px;
+  align-items: baseline;
+}
+.next-list span {
+  font-size: 25px;
+  color: #aec694;
+  flex-shrink: 0;
+}
+.closing {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-top: 36px;
+  letter-spacing: -0.6px;
+  color: #e5ebce;
+}
+.slide-separator {
+  height: 24px;
+  background: #dce3d7;
+}
+@media print {
+  .slide-separator {
+    display: none;
+  }
+  article {
+    page-break-after: always;
+  }
+}
+</style><body><article id="01-capa" class="dark cover"><div class="brand"><strong>viveiro.</strong><span class="count">01 / 12</span></div><div class="section">A SAGA DA ESCAVAÇÃO</div><h1>Mais detalhe.
+Menos terra.
+O que faltava?</h1><p class="lead">A investigação que mudou o jeito de nossas formigas cavarem.</p><div class="body"><img class="cover-photo" src="assets/terrario-isometrico.png" alt="Captura real do terrário Viveiro"/><p class="photo-caption">Imagem do próprio simulador.</p></div><p class="note">Viveiro · diário de desenvolvimento · novembro de 2026</p></article><div class="slide-separator"></div><article id="02-referencia" class="light "><div class="brand"><strong>viveiro.</strong><span class="count">02 / 12</span></div><div class="section">UMA REFERÊNCIA REAL</div><h1>A pergunta era:
+nossas formigas
+cavam parecido?</h1><p class="lead">Usamos como referência as curvas de escavação de Buhl.</p><div class="body"><div class="population-line">50 <span>·</span> 100 <span>·</span> 200 <small>operárias</small></div><div class="legend"><span style="--key:#387ba2"><i class=""></i>50 operárias</span><span style="--key:#008474"><i class=""></i>100 operárias</span><span style="--key:#a16e28"><i class=""></i>200 operárias</span></div><svg class="chart" viewBox="0 0 924 440" role="img" aria-label="Curvas de volume escavado"><g fill="#203c34" font-family="Arial,sans-serif" font-size="26"><line x1="72" y1="376" x2="899" y2="376" stroke="#d9e0d6"/><text x="58" y="385" text-anchor="end">0</text><line x1="72" y1="198" x2="899" y2="198" stroke="#d9e0d6"/><text x="58" y="207" text-anchor="end">35</text><line x1="72" y1="20" x2="899" y2="20" stroke="#d9e0d6"/><text x="58" y="29" text-anchor="end">70</text><text x="72" y="409" text-anchor="middle">0</text><text x="209.83333333333331" y="409" text-anchor="middle">12</text><text x="347.66666666666663" y="409" text-anchor="middle">24</text><text x="485.5" y="409" text-anchor="middle">36</text><text x="623.3333333333333" y="409" text-anchor="middle">48</text><text x="761.1666666666667" y="409" text-anchor="middle">60</text><text x="899" y="409" text-anchor="middle">72</text><polyline points="72,376 209.83333333333331,345.48571428571427 347.66666666666663,314.9714285714286 485.5,292.0857142857143 623.3333333333333,271.74285714285713 761.1666666666667,259.0285714285714 899,248.85714285714286" stroke="#387ba2" stroke-width="6" fill="none" /><circle cx="72" cy="376" r="5" fill="#387ba2"/><circle cx="209.83333333333331" cy="345.48571428571427" r="5" fill="#387ba2"/><circle cx="347.66666666666663" cy="314.9714285714286" r="5" fill="#387ba2"/><circle cx="485.5" cy="292.0857142857143" r="5" fill="#387ba2"/><circle cx="623.3333333333333" cy="271.74285714285713" r="5" fill="#387ba2"/><circle cx="761.1666666666667" cy="259.0285714285714" r="5" fill="#387ba2"/><circle cx="899" cy="248.85714285714286" r="5" fill="#387ba2"/><polyline points="72,376 209.83333333333331,325.14285714285717 347.66666666666663,279.37142857142857 485.5,243.77142857142857 623.3333333333333,218.34285714285716 761.1666666666667,203.0857142857143 899,187.82857142857142" stroke="#008474" stroke-width="6" fill="none" /><circle cx="72" cy="376" r="5" fill="#008474"/><circle cx="209.83333333333331" cy="325.14285714285717" r="5" fill="#008474"/><circle cx="347.66666666666663" cy="279.37142857142857" r="5" fill="#008474"/><circle cx="485.5" cy="243.77142857142857" r="5" fill="#008474"/><circle cx="623.3333333333333" cy="218.34285714285716" r="5" fill="#008474"/><circle cx="761.1666666666667" cy="203.0857142857143" r="5" fill="#008474"/><circle cx="899" cy="187.82857142857142" r="5" fill="#008474"/><polyline points="72,376 209.83333333333331,289.54285714285714 347.66666666666663,218.34285714285716 485.5,177.65714285714284 623.3333333333333,136.9714285714286 761.1666666666667,101.37142857142857 899,75.94285714285712" stroke="#a16e28" stroke-width="6" fill="none" /><circle cx="72" cy="376" r="5" fill="#a16e28"/><circle cx="209.83333333333331" cy="289.54285714285714" r="5" fill="#a16e28"/><circle cx="347.66666666666663" cy="218.34285714285716" r="5" fill="#a16e28"/><circle cx="485.5" cy="177.65714285714284" r="5" fill="#a16e28"/><circle cx="623.3333333333333" cy="136.9714285714286" r="5" fill="#a16e28"/><circle cx="761.1666666666667" cy="101.37142857142857" r="5" fill="#a16e28"/><circle cx="899" cy="75.94285714285712" r="5" fill="#a16e28"/><text x="462" y="438" text-anchor="middle">Tempo (horas)</text></g></svg></div><p class="note">Referência: Buhl (2001), Fig. 2a. Volumes em cm³, leitura aproximada com incerteza de ±3 cm³. Grupos acompanhados por 72 h.</p></article><div class="slide-separator"></div><article id="03-primeira-fadiga" class="light "><div class="brand"><strong>viveiro.</strong><span class="count">03 / 12</span></div><div class="section">O PRIMEIRO FREIO</div><h1>Sem fadiga,
+cavavam demais.</h1><p class="lead">A fadiga de escavação reduziu o excesso e aproximou os grupos de 100 e 200.</p><div class="body"><p class="chart-label">100 operárias · volume de galeria em cm³</p><div class="legend"><span style="--key:#9ca8a1"><i class=""></i>Sem fadiga</span><span style="--key:#008474"><i class=""></i>Só escavação</span><span style="--key:#a16e28"><i class="dashed"></i>Buhl 2001</span></div><svg class="chart" viewBox="0 0 924 470" role="img" aria-label="Curvas de volume escavado"><g fill="#203c34" font-family="Arial,sans-serif" font-size="26"><line x1="72" y1="406" x2="899" y2="406" stroke="#d9e0d6"/><text x="58" y="415" text-anchor="end">0</text><line x1="72" y1="213" x2="899" y2="213" stroke="#d9e0d6"/><text x="58" y="222" text-anchor="end">35</text><line x1="72" y1="20" x2="899" y2="20" stroke="#d9e0d6"/><text x="58" y="29" text-anchor="end">70</text><text x="72" y="439" text-anchor="middle">0</text><text x="209.83333333333331" y="439" text-anchor="middle">12</text><text x="347.66666666666663" y="439" text-anchor="middle">24</text><text x="485.5" y="439" text-anchor="middle">36</text><text x="623.3333333333333" y="439" text-anchor="middle">48</text><text x="761.1666666666667" y="439" text-anchor="middle">60</text><text x="899" y="439" text-anchor="middle">72</text><polyline points="72,406 209.83333333333331,342.2848548571428 347.66666666666663,284.01870628571425 485.5,226.7195428571428 623.3333333333333,169.44861257142847 761.1666666666667,114.12929828571419 899,60.443977142857136" stroke="#9ca8a1" stroke-width="6" fill="none" /><circle cx="72" cy="406" r="5" fill="#9ca8a1"/><circle cx="209.83333333333331" cy="342.2848548571428" r="5" fill="#9ca8a1"/><circle cx="347.66666666666663" cy="284.01870628571425" r="5" fill="#9ca8a1"/><circle cx="485.5" cy="226.7195428571428" r="5" fill="#9ca8a1"/><circle cx="623.3333333333333" cy="169.44861257142847" r="5" fill="#9ca8a1"/><circle cx="761.1666666666667" cy="114.12929828571419" r="5" fill="#9ca8a1"/><circle cx="899" cy="60.443977142857136" r="5" fill="#9ca8a1"/><polyline points="72,406 209.83333333333331,356.0590994285714 347.66666666666663,321.18058057142855 485.5,290.5264457142857 623.3333333333333,261.53100799999993 761.1666666666667,233.9048777142857 899,206.67754057142852" stroke="#008474" stroke-width="6" fill="none" /><circle cx="72" cy="406" r="5" fill="#008474"/><circle cx="209.83333333333331" cy="356.0590994285714" r="5" fill="#008474"/><circle cx="347.66666666666663" cy="321.18058057142855" r="5" fill="#008474"/><circle cx="485.5" cy="290.5264457142857" r="5" fill="#008474"/><circle cx="623.3333333333333" cy="261.53100799999993" r="5" fill="#008474"/><circle cx="761.1666666666667" cy="233.9048777142857" r="5" fill="#008474"/><circle cx="899" cy="206.67754057142852" r="5" fill="#008474"/><polyline points="72,406 209.83333333333331,350.8571428571429 347.66666666666663,301.22857142857146 485.5,262.62857142857143 623.3333333333333,235.05714285714288 761.1666666666667,218.5142857142857 899,201.97142857142856" stroke="#a16e28" stroke-width="6" fill="none" stroke-dasharray="9 9"/><circle cx="72" cy="406" r="5" fill="#a16e28"/><circle cx="209.83333333333331" cy="350.8571428571429" r="5" fill="#a16e28"/><circle cx="347.66666666666663" cy="301.22857142857146" r="5" fill="#a16e28"/><circle cx="485.5" cy="262.62857142857143" r="5" fill="#a16e28"/><circle cx="623.3333333333333" cy="235.05714285714288" r="5" fill="#a16e28"/><circle cx="761.1666666666667" cy="218.5142857142857" r="5" fill="#a16e28"/><circle cx="899" cy="201.97142857142856" r="5" fill="#a16e28"/><text x="462" y="468" text-anchor="middle">Tempo (horas)</text></g></svg><p class="takeaway">Com 50, o erro piorou. O primeiro freio ainda não resolvia tudo.</p></div><p class="note">Arena, 72 h, médias de cinco seeds. Sem fadiga: 62,67 cm³. Só fadiga de escavação: 36,15 cm³. Curva de Buhl: cerca de 37 cm³.</p></article><div class="slide-separator"></div><article id="04-esforco-clima" class="light "><div class="brand"><strong>viveiro.</strong><span class="count">04 / 12</span></div><div class="section">MAIS CUSTOS, NOVAS INCERTEZAS</div><h1>Andar e carregar
+também entraram
+na conta.</h1><p class="lead">A versão com fadiga por ações puxou o volume ainda mais para baixo.</p><div class="body"><p class="chart-label">100 operárias · volume em 72 h (cm³)</p><div class="legend"><span style="--key:#008474"><i class=""></i>Só escavação</span><span style="--key:#9473aa"><i class=""></i>Ações + escavação</span></div><svg class="chart" viewBox="0 0 924 290" role="img" aria-label="Comparação de volumes"><g fill="#203c34" font-family="Arial,sans-serif"><line x1="760.9047619047619" y1="10" x2="760.9047619047619" y2="260" stroke="#a16e28" stroke-width="3" stroke-dasharray="8 7"/><text x="0" y="77.75" font-size="28"><tspan x="0" dy="0">Só</tspan><tspan x="0" dy="32">escavação</tspan></text><rect x="220" y="66.75" width="530.6207492063494" height="34" fill="#008474"/><text x="762.6207492063494" y="93.27" font-size="26">36,30</text><text x="0" y="195.25" font-size="28"><tspan x="0" dy="0">Ações +</tspan><tspan x="0" dy="32">escavação</tspan></text><rect x="220" y="184.25" width="419.6251428571429" height="34" fill="#9473aa"/><text x="651.6251428571429" y="210.77" font-size="26">28,70</text></g></svg><p class="takeaway">Também testamos água, temperatura e fluxo em 48 rodadas de 2 h. Os efeitos dependiam das regras e das condições.</p></div><p class="note">Fadiga por ações: três seeds. Linha dourada: Buhl 2001, 37 cm³. A triagem ambiental foi outro lote. Coeficientes ainda sem calibração independente.</p></article><div class="slide-separator"></div><article id="05-morfologia" class="light "><div class="brand"><strong>viveiro.</strong><span class="count">05 / 12</span></div><div class="section">O CORPO MUDOU O RESULTADO</div><h1>Corpos mais
+detalhados.
+Volumes menores.</h1><p class="lead">Porte, contato entre corpos, marcha térmica e carga mudaram juntos.</p><div class="body"><div class="legend"><span style="--key:#008474"><i class=""></i>Antes</span><span style="--key:#9473aa"><i class=""></i>Com morfologia</span></div><svg class="chart" viewBox="0 0 924 390" role="img" aria-label="Comparação de volumes"><g fill="#203c34" font-family="Arial,sans-serif"><text x="0" y="89.83333333333334" font-size="28"><tspan x="0" dy="0">50 operárias</tspan></text><rect x="220" y="42.83333333333334" width="174.74369828571437" height="34" fill="#008474"/><text x="406.74369828571434" y="69.35333333333334" font-size="26">19,92</text><rect x="220" y="84.83333333333334" width="138.26578285714288" height="34" fill="#9473aa"/><text x="370.2657828571429" y="111.35333333333334" font-size="26">15,76</text><text x="0" y="201.5" font-size="28"><tspan x="0" dy="0">100 operárias</tspan></text><rect x="220" y="154.5" width="317.0569691428572" height="34" fill="#008474"/><text x="549.0569691428573" y="181.02" font-size="26">36,15</text><rect x="220" y="196.5" width="209.25120000000004" height="34" fill="#9473aa"/><text x="441.25120000000004" y="223.02" font-size="26">23,86</text><text x="0" y="313.1666666666667" font-size="28"><tspan x="0" dy="0">200 operárias</tspan></text><rect x="220" y="266.1666666666667" width="565.4133028571429" height="34" fill="#008474"/><text x="797.4133028571429" y="292.68666666666667" font-size="26">64,46</text><rect x="220" y="308.1666666666667" width="321.52548571428576" height="34" fill="#9473aa"/><text x="553.5254857142858" y="334.68666666666667" font-size="26">36,66</text></g></svg><p class="takeaway">Chegamos a restaurar a versão anterior. Depois decidimos manter a morfologia e investigar a restrição.</p></div><p class="note">Arena, 72 h, médias de cinco seeds, em cm³. O ensaio mudou vários mecanismos juntos e não isolava qual deles causava a queda.</p></article><div class="slide-separator"></div><article id="06-velocidade-carga" class="light "><div class="brand"><strong>viveiro.</strong><span class="count">06 / 12</span></div><div class="section">A HIPÓTESE DA VELOCIDADE</div><h1>Andaram mais
+rápido. A curva
+quase não mudou.</h1><p class="lead">Testamos velocidade, penalidade de carga e a combinação das duas.</p><div class="body"><p class="chart-label">100 operárias · volume em 72 h (cm³)</p><svg class="chart" viewBox="0 0 924 450" role="img" aria-label="Comparação de volumes"><g fill="#203c34" font-family="Arial,sans-serif"><line x1="760.9047619047619" y1="10" x2="760.9047619047619" y2="420" stroke="#a16e28" stroke-width="3" stroke-dasharray="8 7"/><text x="0" y="83.375" font-size="28"><tspan x="0" dy="0">Base</tspan></text><rect x="220" y="57.375" width="348.7520000000001" height="34" fill="#9ca8a1"/><text x="580.7520000000002" y="83.895" font-size="26">23,86</text><text x="0" y="167.125" font-size="28"><tspan x="0" dy="0">Mais</tspan><tspan x="0" dy="32">velocidade</tspan></text><rect x="220" y="156.125" width="352.7096685714286" height="34" fill="#008474"/><text x="584.7096685714287" y="182.645" font-size="26">24,13</text><text x="0" y="265.875" font-size="28"><tspan x="0" dy="0">Sem penalidade</tspan><tspan x="0" dy="32">de carga</tspan></text><rect x="220" y="254.875" width="344.87853714285717" height="34" fill="#9473aa"/><text x="576.8785371428571" y="281.395" font-size="26">23,59</text><text x="0" y="379.625" font-size="28"><tspan x="0" dy="0">As duas</tspan></text><rect x="220" y="353.625" width="342.2681600000001" height="34" fill="#387ba2"/><text x="574.2681600000001" y="380.145" font-size="26">23,41</text></g></svg><p class="reference-caption">Linha dourada: Buhl, cerca de 37 cm³.</p></div><p class="note">60 execuções de 72 h: quatro condições, três tamanhos de grupo e cinco seeds. A velocidade sozinha não explicava a diferença de volume.</p></article><div class="slide-separator"></div><article id="07-filtro-acesso" class="dark "><div class="brand"><strong>viveiro.</strong><span class="count">07 / 12</span></div><div class="section">A REGRA QUE MERECIA UM TESTE</div><h1>O corpo já
+limitava o acesso.
+Havia outro filtro.</h1><p class="lead">Além da colisão física, a arena ainda reduzia as oportunidades de acesso à frente.</p><div class="body"><div class="factor">0,35 <span>→</span> 1</div><p class="factor-caption">Retiramos apenas a redução adicional.</p><div class="plain-list"><p>Corpo: mantido.</p><p>Carga e velocidade: mantidas.</p><p>Fadiga de escavação: mantida.</p></div></div><p class="note">Hipótese de restrição excessiva. Fator 1 remove o filtro extra, sem garantir que toda formiga consiga cavar. Não aplicamos um multiplicador ao volume.</p></article><div class="slide-separator"></div><article id="08-melhor-curva" class="light results"><div class="brand"><strong>viveiro.</strong><span class="count">08 / 12</span></div><div class="section">O ENSAIO MAIS PROMISSOR NA ARENA</div><h1>As curvas
+se aproximaram.</h1><div class="body"><div class="legend"><span style="--key:#008474"><i class=""></i>Morfologia + acesso físico</span><span style="--key:#a16e28"><i class="dashed"></i>Buhl 2001 · leitura</span></div><div class="mini-result"><p><strong>50 operárias</strong><span>22,82 / 25 cm³</span></p><svg class="chart" viewBox="0 0 924 188" role="img" aria-label="Curvas de volume escavado"><g fill="#203c34" font-family="Arial,sans-serif" font-size="23"><line x1="72" y1="142" x2="899" y2="142" stroke="#d9e0d6"/><text x="58" y="151" text-anchor="end">0</text><line x1="72" y1="81" x2="899" y2="81" stroke="#d9e0d6"/><text x="58" y="90" text-anchor="end">15</text><line x1="72" y1="20" x2="899" y2="20" stroke="#d9e0d6"/><text x="58" y="29" text-anchor="end">30</text><text x="72" y="179" text-anchor="middle">0</text><text x="485.5" y="179" text-anchor="middle">36</text><text x="899" y="179" text-anchor="middle">72</text><polygon points="72,142 209.83333333333331,129.8 347.66666666666663,105.4 485.5,87.1 623.3333333333333,70.83333333333333 761.1666666666667,60.66666666666667 899,52.533333333333346 899,28.133333333333326 761.1666666666667,36.266666666666666 623.3333333333333,46.43333333333334 485.5,62.7 347.66666666666663,81 209.83333333333331,105.4 72,142" fill="#a16e28" opacity=".13"/><polyline points="72,142 209.83333333333331,114.75008 347.66666666666663,95.80526933333333 485.5,81.45676799999998 623.3333333333333,69.80723199999998 761.1666666666667,59.203967999999975 899,49.21753599999998" stroke="#008474" stroke-width="5" fill="none" /><circle cx="72" cy="142" r="4" fill="#008474"/><circle cx="209.83333333333331" cy="114.75008" r="4" fill="#008474"/><circle cx="347.66666666666663" cy="95.80526933333333" r="4" fill="#008474"/><circle cx="485.5" cy="81.45676799999998" r="4" fill="#008474"/><circle cx="623.3333333333333" cy="69.80723199999998" r="4" fill="#008474"/><circle cx="761.1666666666667" cy="59.203967999999975" r="4" fill="#008474"/><circle cx="899" cy="49.21753599999998" r="4" fill="#008474"/><polyline points="72,142 209.83333333333331,117.6 347.66666666666663,93.19999999999999 485.5,74.89999999999999 623.3333333333333,58.633333333333326 761.1666666666667,48.466666666666654 899,40.33333333333333" stroke="#a16e28" stroke-width="5" fill="none" stroke-dasharray="9 9"/><circle cx="72" cy="142" r="4" fill="#a16e28"/><circle cx="209.83333333333331" cy="117.6" r="4" fill="#a16e28"/><circle cx="347.66666666666663" cy="93.19999999999999" r="4" fill="#a16e28"/><circle cx="485.5" cy="74.89999999999999" r="4" fill="#a16e28"/><circle cx="623.3333333333333" cy="58.633333333333326" r="4" fill="#a16e28"/><circle cx="761.1666666666667" cy="48.466666666666654" r="4" fill="#a16e28"/><circle cx="899" cy="40.33333333333333" r="4" fill="#a16e28"/></g></svg></div><div class="mini-result"><p><strong>100 operárias</strong><span>36,88 / 37 cm³</span></p><svg class="chart" viewBox="0 0 924 188" role="img" aria-label="Curvas de volume escavado"><g fill="#203c34" font-family="Arial,sans-serif" font-size="23"><line x1="72" y1="142" x2="899" y2="142" stroke="#d9e0d6"/><text x="58" y="151" text-anchor="end">0</text><line x1="72" y1="81" x2="899" y2="81" stroke="#d9e0d6"/><text x="58" y="90" text-anchor="end">22,5</text><line x1="72" y1="20" x2="899" y2="20" stroke="#d9e0d6"/><text x="58" y="29" text-anchor="end">45</text><text x="72" y="179" text-anchor="middle">0</text><text x="485.5" y="179" text-anchor="middle">36</text><text x="899" y="179" text-anchor="middle">72</text><polygon points="72,142 209.83333333333331,123.02222222222223 347.66666666666663,98.62222222222222 485.5,79.64444444444445 623.3333333333333,66.08888888888889 761.1666666666667,57.95555555555556 899,49.82222222222222 899,33.55555555555556 761.1666666666667,41.6888888888889 623.3333333333333,49.82222222222222 485.5,63.377777777777766 347.66666666666663,82.35555555555555 209.83333333333331,106.75555555555556 72,142" fill="#a16e28" opacity=".13"/><polyline points="72,142 209.83333333333331,109.77725155555555 347.66666666666663,89.41919288888889 485.5,75.18607644444444 623.3333333333333,62.828615111111105 761.1666666666667,51.883534222222195 899,42.00728177777776" stroke="#008474" stroke-width="5" fill="none" /><circle cx="72" cy="142" r="4" fill="#008474"/><circle cx="209.83333333333331" cy="109.77725155555555" r="4" fill="#008474"/><circle cx="347.66666666666663" cy="89.41919288888889" r="4" fill="#008474"/><circle cx="485.5" cy="75.18607644444444" r="4" fill="#008474"/><circle cx="623.3333333333333" cy="62.828615111111105" r="4" fill="#008474"/><circle cx="761.1666666666667" cy="51.883534222222195" r="4" fill="#008474"/><circle cx="899" cy="42.00728177777776" r="4" fill="#008474"/><polyline points="72,142 209.83333333333331,114.88888888888889 347.66666666666663,90.48888888888888 485.5,71.51111111111112 623.3333333333333,57.95555555555556 761.1666666666667,49.82222222222222 899,41.6888888888889" stroke="#a16e28" stroke-width="5" fill="none" stroke-dasharray="9 9"/><circle cx="72" cy="142" r="4" fill="#a16e28"/><circle cx="209.83333333333331" cy="114.88888888888889" r="4" fill="#a16e28"/><circle cx="347.66666666666663" cy="90.48888888888888" r="4" fill="#a16e28"/><circle cx="485.5" cy="71.51111111111112" r="4" fill="#a16e28"/><circle cx="623.3333333333333" cy="57.95555555555556" r="4" fill="#a16e28"/><circle cx="761.1666666666667" cy="49.82222222222222" r="4" fill="#a16e28"/><circle cx="899" cy="41.6888888888889" r="4" fill="#a16e28"/></g></svg></div><div class="mini-result"><p><strong>200 operárias</strong><span>55,36 / 59 cm³</span></p><svg class="chart" viewBox="0 0 924 188" role="img" aria-label="Curvas de volume escavado"><g fill="#203c34" font-family="Arial,sans-serif" font-size="23"><line x1="72" y1="142" x2="899" y2="142" stroke="#d9e0d6"/><text x="58" y="151" text-anchor="end">0</text><line x1="72" y1="81" x2="899" y2="81" stroke="#d9e0d6"/><text x="58" y="90" text-anchor="end">35</text><line x1="72" y1="20" x2="899" y2="20" stroke="#d9e0d6"/><text x="58" y="29" text-anchor="end">70</text><text x="72" y="179" text-anchor="middle">0</text><text x="485.5" y="179" text-anchor="middle">36</text><text x="899" y="179" text-anchor="middle">72</text><polygon points="72,142 209.83333333333331,117.6 347.66666666666663,93.19999999999999 485.5,79.25714285714287 623.3333333333333,65.31428571428572 761.1666666666667,53.114285714285714 899,44.39999999999999 899,33.94285714285715 761.1666666666667,42.65714285714286 623.3333333333333,54.85714285714286 485.5,68.8 347.66666666666663,82.74285714285713 209.83333333333331,107.14285714285714 72,142" fill="#a16e28" opacity=".13"/><polyline points="72,142 209.83333333333331,109.5856457142857 347.66666666666663,90.58766628571428 485.5,76.7373897142857 623.3333333333333,64.76437942857142 761.1666666666667,54.567131428571415 899,45.507620571428546" stroke="#008474" stroke-width="5" fill="none" /><circle cx="72" cy="142" r="4" fill="#008474"/><circle cx="209.83333333333331" cy="109.5856457142857" r="4" fill="#008474"/><circle cx="347.66666666666663" cy="90.58766628571428" r="4" fill="#008474"/><circle cx="485.5" cy="76.7373897142857" r="4" fill="#008474"/><circle cx="623.3333333333333" cy="64.76437942857142" r="4" fill="#008474"/><circle cx="761.1666666666667" cy="54.567131428571415" r="4" fill="#008474"/><circle cx="899" cy="45.507620571428546" r="4" fill="#008474"/><polyline points="72,142 209.83333333333331,112.37142857142857 347.66666666666663,87.97142857142858 485.5,74.02857142857142 623.3333333333333,60.08571428571429 761.1666666666667,47.885714285714286 899,39.17142857142858" stroke="#a16e28" stroke-width="5" fill="none" stroke-dasharray="9 9"/><circle cx="72" cy="142" r="4" fill="#a16e28"/><circle cx="209.83333333333331" cy="112.37142857142857" r="4" fill="#a16e28"/><circle cx="347.66666666666663" cy="87.97142857142858" r="4" fill="#a16e28"/><circle cx="485.5" cy="74.02857142857142" r="4" fill="#a16e28"/><circle cx="623.3333333333333" cy="60.08571428571429" r="4" fill="#a16e28"/><circle cx="761.1666666666667" cy="47.885714285714286" r="4" fill="#a16e28"/><circle cx="899" cy="39.17142857142858" r="4" fill="#a16e28"/></g></svg></div></div><p class="note">Verde: médias de cinco seeds. Dourado: curva lida e faixa de ±3 cm³. Pontos a cada 12 h. Morfologia e fadiga de escavação preservadas, sem reescalar o volume.</p></article><div class="slide-separator"></div><article id="09-evidencia-limite" class="dark "><div class="brand"><strong>viveiro.</strong><span class="count">09 / 12</span></div><div class="section">UM RESULTADO MELHOR, COM LIMITES</div><h1>A melhora
+foi medida.</h1><div class="body"><div class="big-number">16<span>/18</span></div><p class="big-explanation">pontos médios ficaram dentro da faixa de leitura de ±3 cm³.</p><p class="gain-line">Ganho de volume: 44,7% · 54,6% · 51,0%</p><p class="gain-key">50 · 100 · 200 operárias</p><p class="takeaway">Os dois pontos fora da faixa foram do grupo de 200, em 60 e 72 h.</p></div><p class="note">Faixa de leitura não é variabilidade biológica. Buhl já orientou escolhas do modelo. Este é um resultado de desenvolvimento, sem validação independente concluída.</p></article><div class="slide-separator"></div><article id="10-motor-3d" class="light world"><div class="brand"><strong>viveiro.</strong><span class="count">10 / 12</span></div><div class="section">LEVANDO A IDEIA AO VIVEIRO</div><h1>Da arena plana
+para o motor 3D.</h1><p class="lead">O princípio virou acesso por contato, apoio e espaço livre para o corpo.</p><div class="body"><img class="world-photo" src="assets/terrario-tuneis.png" alt="Captura real do Viveiro com os túneis visíveis"/><div class="proof-line"><strong>547</strong> testes <span>·</span> <strong>12</strong> execuções</div><p class="takeaway">Quem saiu para transportar terra deixa de ocupar uma vaga artificial na frente.</p></div><p class="note">Integração Narbonne v3 testada no World. O 3D usa tempo e volumes próprios. A fadiga de escavação da arena ainda não foi transferida para esse perfil.</p></article><div class="slide-separator"></div><article id="11-novo-gargalo" class="light "><div class="brand"><strong>viveiro.</strong><span class="count">11 / 12</span></div><div class="section">O QUE A INTEGRAÇÃO REVELOU</div><h1>Cavar e entregar
+não são a
+mesma etapa.</h1><p class="lead">Com 100 e 200, as frentes produziram quase igual. A entrega foi bem diferente.</p><div class="body"><div class="legend"><span style="--key:#a16e28"><i class=""></i>100 operárias</span><span style="--key:#008474"><i class=""></i>200 operárias</span></div><svg class="chart" viewBox="0 0 924 390" role="img" aria-label="Comparação de volumes"><g fill="#203c34" font-family="Arial,sans-serif"><text x="0" y="117.75" font-size="28"><tspan x="0" dy="0">Nas frentes</tspan></text><rect x="220" y="70.75" width="487.7789809109041" height="34" fill="#a16e28"/><text x="719.7789809109041" y="97.27" font-size="26">0,318</text><rect x="220" y="112.75" width="482.5079775558898" height="34" fill="#008474"/><text x="714.5079775558897" y="139.27" font-size="26">0,314</text><text x="0" y="285.25" font-size="28"><tspan x="0" dy="0">Na superfície</tspan></text><rect x="220" y="238.25" width="198.43791403646537" height="34" fill="#a16e28"/><text x="430.4379140364654" y="264.77" font-size="26">0,129</text><rect x="220" y="280.25" width="57.255693566098174" height="34" fill="#008474"/><text x="289.25569356609816" y="306.77" font-size="26">0,037</text></g></svg><p class="takeaway">Congestionamento é uma hipótese para investigar. Ainda precisamos medir o tempo bloqueado e controlar a posição inicial.</p></div><p class="note">World 3D, duas seeds por grupo, 2.000 ticks. Volumes em unidades do modelo. Estas condições não equivalem às 72 h da arena ou do laboratório.</p></article><div class="slide-separator"></div><article id="12-proximos-passos" class="dark "><div class="brand"><strong>viveiro.</strong><span class="count">12 / 12</span></div><div class="section">ONDE ESTAMOS AGORA</div><h1>Uma hipótese
+mais promissora.
+Novos testes.</h1><p class="lead">Nosso melhor cenário atual na arena preserva a morfologia e a fadiga de escavação, com o acesso revisto.</p><div class="body"><div class="next-list"><p><span>01</span> Medir espera e transporte no 3D.</p><p><span>02</span> Controlar acesso e população inicial.</p><p><span>03</span> Avaliar com dados independentes.</p></div><p class="closing">O progresso está no código,<br/>nos dados e nos erros registrados.</p></div><p class="note">Viveiro · modelo exploratório em desenvolvimento. Repositório: github.com/albreis/viveiro · Acompanhe os próximos ensaios.</p></article></body></html>

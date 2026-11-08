@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 760px;
+        overflow: hidden;
+        background: #e5e9da;
+      }
+      #world {
+        width: 1080px;
+        height: 760px;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="biome-label" hidden></span>
+    <div id="world"></div>
+    <script type="module">
+      import { prepareDigAccess } from "/src/modules/benchmarks/dig-access.ts";
+      import { Terrarium } from "/src/modules/renderer/scene.ts";
+      import { SoilMesher } from "/src/services/SoilMesher.ts";
+      console.log("Preparing World");
+      const w = prepareDigAccess({
+        seed: "DIG-ACCESS-1",
+        workers: 50,
+        profileVersion: 3,
+      });
+      w.step(350);
+      console.log("Preparing mesh");
+      const m = new SoilMesher("full");
+      const data = await m.prepare(w.nest);
+      console.log("Creating scene");
+      const s = new Terrarium(document.getElementById("world"), w, () => {}, {
+        data,
+        mesher: m,
+      });
+      console.log("Scene ready");
+      s.setInterior(true);
+      s.setView(false);
+      window.viveiroCapture = { world: w, scene: s };
+      function frame() {
+        s.update(w, performance.now() / 1000, 1);
+        s.render();
+        requestAnimationFrame(frame);
+      }
+      frame();
+      window.ready = true;
+    </script>
+  </body>
+</html>

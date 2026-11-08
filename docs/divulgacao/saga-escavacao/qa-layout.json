@@ -1,0 +1,103 @@
+{
+  "browser": "157.0.8103.38",
+  "width": 1080,
+  "height": 1350,
+  "cards": [
+    {
+      "slug": "01-capa",
+      "height": 1350,
+      "noteTop": 1264.265625,
+      "bodyBottom": 1244.265625,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "02-referencia",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "03-primeira-fadiga",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "04-esforco-clima",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "05-morfologia",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "06-velocidade-carga",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "07-filtro-acesso",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "08-melhor-curva",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "09-evidencia-limite",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "10-motor-3d",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "11-novo-gargalo",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    },
+    {
+      "slug": "12-proximos-passos",
+      "height": 1350,
+      "noteTop": 1214.28125,
+      "bodyBottom": 1194.28125,
+      "overlap": false,
+      "overflow": []
+    }
+  ]
+}
