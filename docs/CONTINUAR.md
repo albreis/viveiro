@@ -5,6 +5,23 @@ conferir Git/PRs e preservar saves, branches e tags. As últimas entregas
 técnicas de T4 estão no [relatório da triagem](planejamento/buhl-microclima.md). A pendência
 científica de B7 requer séries empíricas independentes por réplica.
 
+## Publicação consolidada 0.48.0 — autorizada em 08/11/2026
+
+O mantenedor pediu organizar os PRs, integrar o motor ajustado e publicar uma
+única tag/release no GitHub para a integração automática do Zenodo. Esta
+orientação substitui a pausa anterior de tags. Não criar depósito manual.
+
+Branch de preparação: `codex/consolidar-versao-0-48-0`. Inclui os heads dos
+PRs #130/#131/#132 por merge, preservando as branches e o histórico. O plano
+K0–K6/TRACE do #129 foi incorporado sem ativar o runner experimental do #128.
+Encerrar #128/#129 como preservados/absorvidos somente depois da main validada.
+
+Metadados de pacote, lock, CFF e .zenodo.json estão na 0.48.0 (08/11/2026),
+com autoria pessoal e ORCID preservados. [Preparação da release](validacoes/preparacao-0.48.0.md).
+Próximo passo: testes completos, paridade/navegador e build público; integrar
+uma única fonte na main e publicar `v0.48.0` com GitHub Release. Aguardar o
+Pages concluir. Zenodo recebe pela integração existente, sem ação manual.
+
 ## Pedido atual — acesso geométrico no motor 3D
 
 Em 07/11, o mantenedor aprovou a hipótese do PR #130 e pediu implementá-la
@@ -31,7 +48,7 @@ diferem de Buhl: 0,77/1/0,80 versus 0,68/1/1,59. Próximo passo concreto, se
 retomados os ensaios quantitativos: usar o protocolo controlado do PR #128,
 resolver espaço/tempo e a inicialização da população antes de atribuir a
 diferença a uma regra biológica. Não transferir coeficientes para forçar a
-curva. B7 e calibração seguem pendentes. Não criar tags/releases/Zenodo.
+curva. B7 e calibração seguem pendentes. A pausa histórica de tags foi substituída pela autorização da 0.48.0 acima.
 
 ## Material de divulgação — saga da escavação
 

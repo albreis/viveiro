@@ -71,6 +71,10 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   Os [ensaios de acesso com corpos explícitos](buhl-acesso-geometrico.md)
   concluíram 15 rodadas adicionais: ganho de 44,7–54,6% e 16/18 pontos na
   faixa de digitalização. Não encerram este aceite nem validam o motor 3D.
+  Manter a morfologia e seguir [K0–K6](buhl-parametrizacao.md) e
+  [TRACE](buhl-trace.md), com fontes/incertezas e separação entre comparação
+  histórica e avaliação independente. A mudança de abordagem não reclassifica
+  Buhl como dado independente.
   **E-mail enviado em 05/11/2026.** O mantenedor solicitou à Dra. Camille
   Buhl os dados por réplica e as condições de reuso. Aguardando resposta.
   [Método, escolha e plano reservado](buhl-ajuste.md).

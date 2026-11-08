@@ -3,7 +3,7 @@
   "message": "Cite esta versão do Viveiro usando os metadados abaixo. O modelo é exploratório e ainda não foi calibrado por espécie.",
   "type": "software",
   "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
-  "abstract": "Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima, ciclo de vida e experimentos reproduzíveis por seed. Os mecanismos não constituem calibração biológica ou validação de engenharia.",
+  "abstract": "Simulador exploratório em Three.js com agentes locais, terreno procedural, microclima, ciclo de vida e experimentos reproduzíveis por seed. Narbonne v3 usa acesso físico às frentes de escavação e preserva perfis anteriores. A arena de Buhl e o World 3D têm relógios e unidades distintos; os ensaios não constituem validação biológica independente.",
   "authors": [
     {
       "given-names": "Everaldo",
@@ -11,10 +11,10 @@
       "orcid": "https://orcid.org/0009-0008-0719-8722"
     }
   ],
-  "version": "0.47.0",
-  "date-released": "2026-11-05",
+  "version": "0.48.0",
+  "date-released": "2026-11-08",
   "repository-code": "https://github.com/albreis/viveiro",
-  "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.47.0/",
+  "url": "https://viveiro.ersolucoesweb.com.br/releases/v0.48.0/",
   "license": "MIT",
   "keywords": [
     "artificial life",

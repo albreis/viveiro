@@ -1,5 +1,15 @@
 # Versões
 
+## 0.48.0 — Acesso físico à escavação e ensaios de morfologia — 08/11/2026
+
+- Novos terrários usam Narbonne v3: acesso à frente exige solo real, apoio, alcance e espaço para o corpo. Perfis/saves v1/v2 continuam fixados nas regras anteriores.
+- Remove a cota abstrata que contava transportadoras ausentes e permite mordidas de operárias distintas quando há espaço físico, com guarda individual por tick.
+- Mantém porte, marcha, alimentação e calendário da v2; separa os módulos de trabalho e reparo.
+- Arena de Buhl recupera a morfologia opcional e inclui contrastes de velocidade, carga e acesso, com 75 rodadas de 72 h e 75 pilotos de 2 h preservados.
+- Integração World conferida em 12 execuções de 2.000 ticks, com balanços, apoio, persistência e paridade CLI/navegador. Escalas distintas da arena; fadiga de escavação não transferida para Narbonne.
+- Acrescenta planejamento de parametrização individual, TRACE, dados/gráficos e carrossel da investigação. B7 e validação independente permanecem abertos.
+- Consolida os PRs #130, #131 e #132 e o planejamento útil do #129. O protótipo #128 fica preservado na branch, fora da release ativa.
+
 ## 0.47.0 — Interface por dispositivo e arena de Buhl — 05/11/2026
 
 - Experiência reorganizada para desktop, tablet e celular: painéis com rolagem da página, fixação limitada ao terrário, abas da Colônia no fluxo da coluna, controles e gestos no celular.

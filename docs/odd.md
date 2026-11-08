@@ -21,6 +21,12 @@ resposta probabilística e diferença entre previsão e observação. Não são 
 empíricos usados para calibração. POM, dados reservados e validação externa
 continuam dependências da fase de pesquisa do cronograma.
 
+A morfologia permanece no terrário, com lacunas quantitativas identificadas.
+A parametrização individual segue o [plano K0–K6](planejamento/buhl-parametrizacao.md)
+e o [registro TRACE](planejamento/buhl-trace.md). Buhl já orientou a seleção
+de variantes e continua referência de desenvolvimento. Uma nova abordagem
+não torna esses dados independentes, e o resultado da arena não valida o World.
+
 ## 2. Entidades, variáveis de estado e escalas
 
 [Estados e unidades](odd/estados.md) distingue agentes, prole, colônias,
