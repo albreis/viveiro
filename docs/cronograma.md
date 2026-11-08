@@ -1,12 +1,15 @@
 # Cronograma de entregas
 
-Atualizado em 07/11/2026. Plano operacional dividido por responsabilidade.
+Atualizado em 08/11/2026. Plano operacional dividido por responsabilidade.
 Os IDs P0–P4 continuam válidos. `[x]` indica aceite registrado; `[ ]` indica
 trabalho pendente, inclusive quando a implementação já existe.
 
 ## Situação atual
 
-**Última release: [0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0).**
+**Versão consolidada: [0.48.0](https://github.com/albreis/viveiro/releases/tag/v0.48.0).**
+554 testes, build Vite/público, CodeQL e Chrome pt/en aprovados.
+[Recibo da consolidação](validacoes/release-0.48.0.json). Publicação única
+autorizada; a integração GitHub–Zenodo é automática, sem depósito manual.
 P2.1–P2.7 implementados e publicados. UI/renderer em TypeScript estrito;
 474 testes e build aprovados na entrega. [Recibo](validacoes/release-0.46.0.json).
 O modelo continua exploratório, sem calibração biológica concluída.

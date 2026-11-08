@@ -1,0 +1,94 @@
+{
+  "version": "0.48.0",
+  "recordedAt": "2026-11-08T02:46:32.283Z",
+  "testedSourceSha": "8b1d38f18fd4e5c591bfa88d5d6dc59a1db2340f",
+  "testedTree": "e824f9e90363eec5edd97f0f9a4201337c2d6f73",
+  "runtime": "v24.22.1",
+  "tests": {
+    "command": "npm test",
+    "total": 554,
+    "passed": 554,
+    "failed": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "warning": "Aviso preexistente do chunk Three.js maior que 500 kB."
+  },
+  "initialFailuresResolved": [
+    "Links do planejamento no ODD apontavam para páginas ausentes do bundle público. Agora apontam para a documentação no GitHub.",
+    "O teste de arquivo exigia a tag da próxima versão antes da publicação. Agora cria somente uma tag em um repositório isolado de teste, sem alterar refs no checkout do mantenedor."
+  ],
+  "trajectories": {
+    "runs": 12,
+    "ticks": 100,
+    "archivedSource": "330e5019a903d05b1c53788a7eb74c0221faa6d5",
+    "initialPhysicalStateEqual": true,
+    "allSamplesEqual": true,
+    "metadataNormalization": {
+      "path": "dailyObservations.points[].modelVersion",
+      "from": "0.48.0",
+      "to": "0.47.0"
+    },
+    "note": "Apenas a cópia do snapshot usada no hash normalizou o número da versão; o World executado não foi modificado."
+  },
+  "developmentBrowser": {
+    "browser": "157.0.8103.38",
+    "cases": [
+      {
+        "lang": "pt-BR",
+        "description": "Perfil exploratório de Narbonne com acesso físico às frentes de escavação. Mantém porte, marcha, alimentação e calendário da revisão 2; não calibrado por espécie. Fundação genérica claustral. Casulos e sazonalidade sem calibração por espécie.",
+        "population": 50,
+        "cliParity": true,
+        "firstPerson": true,
+        "resumed": true,
+        "errors": []
+      },
+      {
+        "lang": "en",
+        "description": "Exploratory Narbonne profile with physical access to digging fronts. Retains body sizes, walking, feeding and calendar from revision 2; not calibrated for a species. Generic claustral founding. Cocoons and seasonality are not calibrated by species.",
+        "population": 50,
+        "cliParity": true,
+        "firstPerson": true,
+        "resumed": true,
+        "errors": []
+      }
+    ]
+  },
+  "publicBundleBrowser": {
+    "browser": "157.0.8103.38",
+    "sourceSha": "8b1d38f18fd4e5c591bfa88d5d6dc59a1db2340f",
+    "privateFilesExcluded": true,
+    "cases": [
+      {
+        "lang": "pt-BR",
+        "version": "0.48.0",
+        "profile": "messor-narbonne@3",
+        "publicODD": true,
+        "errors": []
+      },
+      {
+        "lang": "en",
+        "version": "0.48.0",
+        "profile": "messor-narbonne@3",
+        "publicODD": true,
+        "errors": []
+      }
+    ]
+  },
+  "codeql": {
+    "result": "success",
+    "run": "https://github.com/albreis/viveiro/actions/runs/42439615065"
+  },
+  "publication": {
+    "tag": "v0.48.0",
+    "mechanism": "Uma tag e GitHub Release; Pages usa o fluxo existente. Zenodo recebe pela integração configurada.",
+    "manualZenodoDeposit": false,
+    "privateSiteChanged": false
+  },
+  "limitations": [
+    "World e arena usam relógios e unidades distintos.",
+    "A fadiga da arena não foi transferida automaticamente ao perfil Narbonne.",
+    "Buhl é referência de desenvolvimento; B7 e calibração empírica independente permanecem pendentes."
+  ]
+}

@@ -1,6 +1,6 @@
 # Continuação — cronograma por responsabilidade
 
-05/11/2026. Trabalhar em G:/Projetos/viveiro, ler AGENTS.md e cronograma.md,
+08/11/2026. Trabalhar em G:/Projetos/viveiro, ler AGENTS.md e cronograma.md,
 conferir Git/PRs e preservar saves, branches e tags. As últimas entregas
 técnicas de T4 estão no [relatório da triagem](planejamento/buhl-microclima.md). A pendência
 científica de B7 requer séries empíricas independentes por réplica.
@@ -62,7 +62,8 @@ alterados. Há fonte HTML, módulos pequenos e exportação validada em Chrome.
 
 ## Estado preservado
 
-Última release **[0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0)**.
+Versão consolidada **[0.48.0](https://github.com/albreis/viveiro/releases/tag/v0.48.0)**,
+com publicação autorizada e verificações registradas acima.
 A versão 0.46.0 teve fonte `7f4d20674206916ea443ef2f359097da5ca18731`.
 P2.1–P2.7 publicados; P2.8/P5 descartados. PRs76–80 entregaram comunidade,
 galeria com dez receitas internas, contraste A/B e UI/renderer em TS estrito.
