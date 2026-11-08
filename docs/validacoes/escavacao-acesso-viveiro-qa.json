@@ -1,0 +1,69 @@
+{
+  "schema": "viveiro-dig-access-world-qa-v1",
+  "sourceModelCommit": "acbc1e12291a5fd9f346a429cb36ca7c745ca45d",
+  "sourceFingerprint": "ff65833d40594ad241bac893602b2895970df028c51220840f5087cc51c12e45",
+  "rawResultsSha256": "c76fad48ce4dcd265000446ace931510abd4d2e098f799516e264fe6a9801506",
+  "buhlReferenceSha256": "5fc9e7ab38fa2f8852f18319dc77c9f6c0d04059a6050fec127a241a5af2048c",
+  "node": "v24.22.1",
+  "tests": {
+    "passed": 547,
+    "failed": 0,
+    "durationMs": 318285.4296
+  },
+  "build": {
+    "passed": true,
+    "modules": 493,
+    "locales": [
+      "pt-BR",
+      "en"
+    ],
+    "messages": 1370,
+    "warning": "Existing Three.js chunk larger than 500 kB"
+  },
+  "browser": {
+    "browser": "157.0.8103.38",
+    "cases": [
+      {
+        "lang": "pt-BR",
+        "description": "Perfil exploratÃ³rio de Narbonne com acesso fÃ­sico Ã s frentes de escavaÃ§Ã£o. MantÃ©m porte, marcha, alimentaÃ§Ã£o e calendÃ¡rio da revisÃ£o 2; nÃ£o calibrado por espÃ©cie. FundaÃ§Ã£o genÃ©rica claustral. Casulos e sazonalidade sem calibraÃ§Ã£o por espÃ©cie.",
+        "population": 50,
+        "cliParity": true,
+        "firstPerson": true,
+        "resumed": true,
+        "errors": []
+      },
+      {
+        "lang": "en",
+        "description": "Exploratory Narbonne profile with physical access to digging fronts. Retains body sizes, walking, feeding and calendar from revision 2; not calibrated for a species. Generic claustral founding. Cocoons and seasonality are not calibrated by species.",
+        "population": 50,
+        "cliParity": true,
+        "firstPerson": true,
+        "resumed": true,
+        "errors": []
+      }
+    ]
+  },
+  "worldRuns": {
+    "planned": 12,
+    "completed": 12,
+    "ticksEach": 2000,
+    "maxMassBalanceError": 3.7470027081099033e-16,
+    "maxStepToNominalSpeed": 0.9226544897320894,
+    "maxSupportGapModelUnits": 0.040515358133149486,
+    "allPopulationsRetained": true
+  },
+  "reproductionScriptsSha256Lf": {
+    "scripts/check-dig-access.ts": "4e6ab829a31d7df3c4687274300783eb95b6ad8c70f95e878ca5af6ec7aa669a",
+    "scripts/plot-dig-access.py": "37626eb4ed437f36fe5c354b4f486b37a9a1864f134839217dd3088f66b476c8",
+    "scripts/plot-dig-access-relative.py": "565d51a8a4a001d45e9b74a6908a940a3774b88a1b3c36b7094895b54a8698db",
+    "scripts/qa/dig-access.mjs": "f28da4e313a32d3de7a9e8af9ed98a41842ded4a4d3df2c238789b8ae5717d7a"
+  },
+  "figures": {
+    "viveiro-acesso-comparacao-1080x1350.png": "ae5db587ce16925f1e90ee62611f80b570ca0246af0736af69bab3a389734174",
+    "viveiro-acesso-transporte-1080x1350.png": "1d42ad370d3e2dbc7f1aef423df23f84b992f86c14941c4d927d346d15d51aea",
+    "viveiro-buhl-padrao-relativo-1080x1350.png": "d198fd327d40f02bc06560d77c7b480719f0801bec66b0f64f7f7f17f2d0abdf",
+    "viveiro-buhl-proporcao-grupos-1080x1350.png": "2b972c56ff79437788481ca562993a38aa04b369d52d804b6eec4e558367174a"
+  },
+  "buhlComparablePhysicalUnits": false,
+  "independentEmpiricalValidation": false
+}

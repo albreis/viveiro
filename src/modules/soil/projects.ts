@@ -45,7 +45,7 @@ export function proposeDig(world: SoilWorld, from: number): DigProject | null {
   world.log("Uma operária iniciou uma nova frente de escavação.", "dig");
   return project;
 }
-function advanceFront(world: SoilWorld, project: DigProject) {
+export function advanceDigFront(world: SoilWorld, project: DigProject) {
   const front = world.nest.nodes[project.front];
   const top = surfaceHeight(world.nest.relief, front.x, front.z),
     emerged = front.y >= top - 0.15;
@@ -102,7 +102,7 @@ export function digBite(world: SoilWorld, ant: SoilAgent, project: DigProject) {
     delta = sub(project.goal, front),
     remaining = modelMath.hypot(delta.x, delta.y, delta.z);
   if (remaining < 0.001) {
-    advanceFront(world, project);
+    advanceDigFront(world, project);
     return;
   }
   const step = Math.min(

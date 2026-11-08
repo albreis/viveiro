@@ -46,5 +46,7 @@
   "biology.calendar.flight": " Voo de outono disponível após chuva.",
   "biology.calendar.alates": " Período demonstrativo de produção de alados.",
   "biology.calendar.laying": " Período demonstrativo de postura.",
-  "biology.calendar.rest": " Postura em pausa sazonal. A janela de primavera retorna no próximo ciclo."
+  "biology.calendar.rest": " Postura em pausa sazonal. A janela de primavera retorna no próximo ciclo.",
+  "biology.profile.messor-narbonne@3": "Messor de Narbonne · acesso físico à escavação",
+  "biology.description.messor-narbonne@3": "Perfil exploratório de Narbonne com acesso físico às frentes de escavação. Mantém porte, marcha, alimentação e calendário da revisão 2; não calibrado por espécie."
 }

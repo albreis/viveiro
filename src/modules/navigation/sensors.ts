@@ -14,11 +14,7 @@ const indexes = new WeakMap<NavigationWorld, NeighborIndex>();
 const CELL = 0.8;
 const key = (x: number, y: number, z: number) => x + ":" + y + ":" + z;
 
-export function neighborsOf(
-  world: NavigationWorld,
-  agent: AgentState,
-  radius = 1.2,
-): AgentState[] {
+function neighborIndex(world: NavigationWorld): NeighborIndex {
   let index = indexes.get(world);
   if (!index || index.tick !== world.tick) {
     index = { tick: world.tick, cells: new Map(), queries: new Map() };
@@ -33,6 +29,15 @@ export function neighborsOf(
     }
     indexes.set(world, index);
   }
+  return index;
+}
+
+export function neighborsOf(
+  world: NavigationWorld,
+  agent: AgentState,
+  radius = 1.2,
+): AgentState[] {
+  const index = neighborIndex(world);
   const queryKey = agent.id + ":" + radius;
   if (index.queries.has(queryKey)) return index.queries.get(queryKey)!;
   const result: AgentState[] = [],
@@ -64,4 +69,27 @@ export function neighborsOf(
 
 export function invalidateNeighbors(world: NavigationWorld) {
   indexes.delete(world);
+}
+
+/** Strict occupancy at a proposed work site, not at the ant's current cell. */
+export function neighborsAt(world: NavigationWorld, point: Vec3, radius = 1.2) {
+  const index = neighborIndex(world),
+    result: AgentState[] = [];
+  const span = Math.ceil(radius / CELL);
+  const cx = Math.floor(point.x / CELL),
+    cy = Math.floor(point.y / CELL),
+    cz = Math.floor(point.z / CELL);
+  for (let y = cy - span; y <= cy + span; y++)
+    for (let z = cz - span; z <= cz + span; z++)
+      for (let x = cx - span; x <= cx + span; x++)
+        for (const other of index.cells.get(key(x, y, z)) || [])
+          if (
+            modelMath.hypot(
+              other.x - point.x,
+              (other.y || 0) - point.y,
+              other.z - point.z,
+            ) <= radius
+          )
+            result.push(other);
+  return result;
 }

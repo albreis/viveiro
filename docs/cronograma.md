@@ -34,6 +34,12 @@ O modelo continua exploratório, sem calibração biológica concluída.
   subterrânea, alimentação e calendário. 538 testes e seis rodadas de 80 dias
   com curvas, balanços e proveniência.
 
+- [x] [Narbonne v3 — acesso físico à escavação no motor 3D](planejamento/escavacao-acesso-viveiro.md):
+  implementação no [PR #131](https://github.com/albreis/viveiro/pull/131),
+  547 testes, build, Chrome pt/en e 12 execuções pareadas concluídas.
+  Saves v1/v2 preservados. Quatro figuras arquivadas, incluindo comparação
+  relativa com Buhl. Escala entre grupos e calibração continuam pendentes.
+
 - [x] [Ensaio histórico de Buhl com operárias de Narbonne](planejamento/buhl-narbonne-operarias.md):
   15 rodadas concluídas e preservadas. Integração de morfologia retirada a
   pedido do mantenedor; [fadiga de escavação anterior restaurada](planejamento/buhl-restauracao.md).

@@ -5,6 +5,34 @@ conferir Git/PRs e preservar saves, branches e tags. As últimas entregas
 técnicas de T4 estão no [relatório da triagem](planejamento/buhl-microclima.md). A pendência
 científica de B7 requer séries empíricas independentes por réplica.
 
+## Pedido atual — acesso geométrico no motor 3D
+
+Em 07/11, o mantenedor aprovou a hipótese do PR #130 e pediu implementá-la
+no motor do Viveiro em branch nova da main. Este pedido substitui a orientação
+histórica de manter a morfologia fora de ensaios novos; não apaga as restaurações
+ou os lotes anteriores. Branch: `codex/escavacao-acesso-geometrico-viveiro`, base
+`d88c31e`. [Regras e protocolo](planejamento/escavacao-acesso-viveiro.md).
+
+Narbonne v3 mantém o corpo e os mecanismos da v2 e usa acesso físico à frente,
+sem cota por equipe ou trava global de mordidas. Saves antigos permanecem
+fixados no perfil anterior. 547 testes, build Vite e Chrome pt/en aprovados,
+incluindo igualdade numérica CLI/navegador, visão lateral e primeira pessoa.
+
+Lote **12/12 concluído**, 2.000 ticks por execução, 50/100/200 operárias,
+duas seeds e pares v2/v3. [Dados](validacoes/escavacao-acesso-viveiro.json),
+[evidência](validacoes/escavacao-acesso-viveiro-qa.json) e quatro gráficos
+arquivados. [PR #131](https://github.com/albreis/viveiro/pull/131). O usuário
+pediu comparação **relativa** com Buhl: os gráficos registram explicitamente
+normalização por volume próprio versus uma escala comum ancorada no grupo 100.
+Não ler a normalização como ajuste de escala física ou validação.
+
+As frentes escavam mais que na v2, mas as razões de volume entre grupos ainda
+diferem de Buhl: 0,77/1/0,80 versus 0,68/1/1,59. Próximo passo concreto, se
+retomados os ensaios quantitativos: usar o protocolo controlado do PR #128,
+resolver espaço/tempo e a inicialização da população antes de atribuir a
+diferença a uma regra biológica. Não transferir coeficientes para forçar a
+curva. B7 e calibração seguem pendentes. Não criar tags/releases/Zenodo.
+
 ## Estado preservado
 
 Última release **[0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0)**.

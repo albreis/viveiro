@@ -1,0 +1,55 @@
+{
+  "source": "Buhl, Deneubourg, Grimal & Theraulaz (2001). Actes Coll. Insectes Sociaux 14: 52-105",
+  "sourceUrl": "https://dictionnaire-amoureux-des-fourmis.fr/Noms%20propres/Publis/2001/ACTES-COLLOQUES-INSECTES-SOCIAUX-VOL14-Buhlf.pdf",
+  "sourceModule": "src/modules/benchmarks/buhl-2005-data.ts",
+  "figure": "2a",
+  "digitizationUncertaintyCm3": 3,
+  "independentRawReplicates": false,
+  "hours": [
+    0,
+    12,
+    24,
+    36,
+    48,
+    60,
+    72
+  ],
+  "groups": [
+    {
+      "workers": 50,
+      "curveCm3": [
+        0,
+        6,
+        12,
+        16.5,
+        20.5,
+        23,
+        25
+      ]
+    },
+    {
+      "workers": 100,
+      "curveCm3": [
+        0,
+        10,
+        19,
+        26,
+        31,
+        34,
+        37
+      ]
+    },
+    {
+      "workers": 200,
+      "curveCm3": [
+        0,
+        17,
+        31,
+        39,
+        47,
+        54,
+        59
+      ]
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { geometricDigAccess } from "./access-rule.ts";
+import { availableDigSite } from "./front-access.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import type { DigProject, SoilAgent, SoilWorld } from "./types.ts";
 
@@ -140,6 +142,7 @@ export function joinProbability(world: SoilWorld, project: DigProject) {
  */
 export function recruitingProject(world: SoilWorld, ant: SoilAgent) {
   if (ant.node == null) return null;
+  const geometric = geometricDigAccess(world);
   const crews = new Map<number, number>();
   for (const a of world.ants)
     if (a.soilTask?.projectId)
@@ -150,7 +153,13 @@ export function recruitingProject(world: SoilWorld, ant: SoilAgent) {
   let best: DigProject | null = null,
     strongest = -1;
   for (const p of world.soil.projects) {
-    if (p.completed || (crews.get(p.id) || 0) >= crewLimit(world)) continue;
+    if (
+      p.completed ||
+      (geometric
+        ? availableDigSite(world, ant, p) === null
+        : (crews.get(p.id) || 0) >= crewLimit(world))
+    )
+      continue;
     const mark = markAt(world, p);
     if (mark > strongest) {
       best = p;

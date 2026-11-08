@@ -33,6 +33,34 @@ reparo dependem de tarefas. Agregados representam parcelas de solo. Repouso,
 umidade, composição, compactação, vão e dano modulam deslizamento/suporte por
 heurísticas. Não é DEM de todos os grãos nem cálculo geotécnico calibrado.
 
+### Acesso físico às frentes — Narbonne v3
+
+`messor-narbonne@3` mantém porte, marcha, nutrição e calendário da v2 e
+substitui a cota abstrata de equipe por contato geométrico. Uma frente é
+amostrada em 13 raios locais (centro e anel) até encontrar solo efetivamente
+exposto. O agente precisa alcançar o apoio, estar ao alcance do corpo e ter
+espaço livre de outras formigas. Vidro e posições sem apoio não autorizam
+mordidas. O deslocamento até o contato usa a navegação apoiada existente.
+
+Cada operária em contato pode completar uma mordida a cada quatro ciclos de
+trabalho, com guarda própria por tick. O bloqueio anterior de uma mordida por
+projeto/tick não se aplica à v3. A ordem sequencial dos agentes continua
+importando: uma mordida move o apoio consultado pelo próximo agente. Se não
+há lugar, a formiga recua ou leva sua carga, em vez de escavar à distância.
+Transportadoras ausentes da frente não ocupam uma vaga abstrata de escavação.
+Recrutamento, tarefas, capacidade de carga, comprimento por mordida e balanços
+continuam usando as regras existentes. A estigmergia opcional mantém sua
+probabilidade de adesão; só sua cota `perFront` é substituída na v3.
+
+A discretização da face, alcance de meia malha corporal e tolerâncias do
+apoio são hipóteses numéricas, não medidas de mandíbula ou contato da espécie.
+O material removido ainda usa o volume aproximado de cápsulas. Não foi
+introduzido um multiplicador de produção, uma conversão para cm³, o relógio
+físico da arena ou seus coeficientes de fadiga. Narbonne mantém a fisiologia
+que já tinha no terrário; a fadiga por ações continua no perfil experimental
+que a habilita. V1/v2 e perfis sem `excavationAccess` preservam suas regras.
+Ver [implementação e ensaios](../planejamento/escavacao-acesso-viveiro.md).
+
 ## Água, calor e gases
 
 Água do entorno poroso troca conservativamente entre células por gradiente de

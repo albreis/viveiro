@@ -6,7 +6,7 @@ import type {
   NavigationState,
   Vec3,
 } from "./types.ts";
-import { neighborsOf } from "./sensors.ts";
+import { neighborsAt, neighborsOf } from "./sensors.ts";
 import { givingWay, idleYieldOn, working } from "./idle-yield.ts";
 
 export function positionClear(
@@ -16,6 +16,7 @@ export function positionClear(
   heading: number,
   pitch = 0,
   normal: Vec3 = { x: 0, y: 1, z: 0 },
+  allowEscape = true,
 ) {
   const forward = {
     x: modelMath.cos(heading) * modelMath.cos(pitch),
@@ -28,8 +29,12 @@ export function positionClear(
     z: forward.x * normal.y - forward.y * normal.x,
   };
   const squeeze = idleYieldOn(world) && working(entity);
-  for (const other of neighborsOf(world, entity)) {
-    if (squeeze && givingWay(world, other)) continue;
+  const neighbors = allowEscape
+    ? neighborsOf(world, entity)
+    : neighborsAt(world, point);
+  for (const other of neighbors) {
+    if (other.id === entity.id) continue;
+    if (allowEscape && squeeze && givingWay(world, other)) continue;
     const x = point.x - other.x,
       y = (point.y || 0) - (other.y || 0),
       z = point.z - other.z;
@@ -38,7 +43,7 @@ export function positionClear(
       modelMath.pow(entity.x - other.x, 2) +
       modelMath.pow((entity.y || 0) - (other.y || 0), 2) +
       modelMath.pow(entity.z - other.z, 2);
-    if (distance > previous + 0.0001) continue; // Escape from an existing overlap remains possible.
+    if (allowEscape && distance > previous + 0.0001) continue; // Escape from an existing overlap remains possible.
     const height = Math.abs(x * normal.x + y * normal.y + z * normal.z);
     const along = x * forward.x + y * forward.y + z * forward.z;
     const across = x * side.x + y * side.y + z * side.z;
