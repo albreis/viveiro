@@ -45,6 +45,10 @@ O modelo continua exploratório, sem calibração biológica concluída.
   pedido do mantenedor; [fadiga de escavação anterior restaurada](planejamento/buhl-restauracao.md).
   Calibração continua pendente.
 
+- [x] [Carrossel da saga de escavação](divulgacao/saga-escavacao/README.md):
+  12 imagens 4:5, gráficos com dados arquivados, legenda e texto alternativo.
+  Material de divulgação com limites científicos explícitos; não encerra P3.
+
 - [x] [Página privada de leitura do cronograma](cronograma-privado.md): busca,
   filtros e áreas por responsabilidade; gerada destes documentos, fora do build público.
 

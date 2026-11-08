@@ -1,0 +1,27 @@
+Mais detalhe. Menos terra. O que faltava? 🐜
+
+No Viveiro, nosso simulador de formigueiro, queríamos saber se as formigas virtuais escavavam de um jeito parecido com o observado por Buhl.
+
+O caminho teve várias tentativas:
+
+• Sem fadiga, a arena escavava demais.
+• A fadiga de escavação aproximou os grupos de 100 e 200, mas piorou o de 50.
+• Fadiga por ações e condições ambientais trouxeram novos custos e incertezas.
+• Ao incluir porte, contato corporal, marcha e carga, o volume caiu mais.
+• Aumentar a velocidade e retirar a penalidade de carga quase não mudou as curvas.
+
+A pista veio de uma regra: o corpo já limitava o acesso à frente, mas ainda havia um filtro extra. Retiramos apenas essa redução, mantendo morfologia e fadiga de escavação.
+
+Nas médias de cinco seeds por grupo, a arena chegou a 22,82 / 36,88 / 55,36 cm³ em 72 h. A curva lida de Buhl termina perto de 25 / 37 / 59 cm³ para 50 / 100 / 200 operárias.
+
+Foi nosso cenário mais promissor nessa investigação. Em 16 dos 18 pontos médios comparados, o resultado ficou na faixa de leitura de ±3 cm³. Essa faixa representa incerteza de digitalização, não variabilidade biológica.
+
+O princípio de acesso físico já foi levado ao motor 3D. A integração passou por 547 testes e 12 execuções, mas tem outro relógio e outras unidades. A fadiga de escavação da arena ainda não foi transferida para esse perfil.
+
+Agora investigamos espera, congestionamento e transporte. As versões desfavoráveis continuam arquivadas. Calibração e validação independente seguem abertas.
+
+Seeds são repetições com aleatoriedade controlada.
+Referência: Buhl et al. (2001), Fig. 2a; artigo de 2005: doi.org/10.1007/s00265-004-0906-2
+Código e dados: github.com/albreis/viveiro
+
+#Viveiro #VidaArtificial #Simulacao #Formigas #CienciaAberta

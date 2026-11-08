@@ -1,0 +1,94 @@
+{
+  "format": "viveiro-instagram-carousel-v1",
+  "cards": 12,
+  "aspectRatio": "4:5",
+  "orderedImages": [
+    {
+      "file": "01-capa.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 244227,
+      "sha256": "5895e36ce3d6d80e22b359d3d23382f4d80f833f25613d40441d33613f083120"
+    },
+    {
+      "file": "02-referencia.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 110863,
+      "sha256": "c4d0af55bdef230bff3edabf22f638aaa221b618c87d4545b9f41c16998a6f81"
+    },
+    {
+      "file": "03-primeira-fadiga.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 119127,
+      "sha256": "d37f85bec7ea774a2073c113e2610c1859d79c39aacf4d40a7bc240e4a7731c2"
+    },
+    {
+      "file": "04-esforco-clima.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 116603,
+      "sha256": "58d08d747c3577467e36ac82586e4c6911dd546c9e55e8973869b19bcc2047ee"
+    },
+    {
+      "file": "05-morfologia.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 109322,
+      "sha256": "9e3756e4cb8628be5af23222de030e2ffc2be8ba773918e1f7eba4117952ad60"
+    },
+    {
+      "file": "06-velocidade-carga.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 104244,
+      "sha256": "e46783f3f4b402cd8ef4803c0afd96c2667744f8bf9f9ac786c5012a3470a446"
+    },
+    {
+      "file": "07-filtro-acesso.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 105843,
+      "sha256": "169993ae5b76b0c4560d9a8d0866f13963f3ff4ca44634909a18cbc1ee1feb5d"
+    },
+    {
+      "file": "08-melhor-curva.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 124443,
+      "sha256": "62e2bfbf6f5d8a2dd466faf2a034e48907588d7405274d17a3bab6a9729e5168"
+    },
+    {
+      "file": "09-evidencia-limite.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 100129,
+      "sha256": "63f7aa23706999b317f6f2e5d3b714da0abb8b8d276d9e7d7543205a6aca462d"
+    },
+    {
+      "file": "10-motor-3d.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 236250,
+      "sha256": "ade4efff0533af852695c64fdb9dc17533a30f90a9fe781b3cb9ed60a3205845"
+    },
+    {
+      "file": "11-novo-gargalo.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 108006,
+      "sha256": "8a292f22e5324bb463d01c06b4c269d3d57a51c7aead6e088f6c7147f5bc927c"
+    },
+    {
+      "file": "12-proximos-passos.png",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 114432,
+      "sha256": "bde4a2cbd3d9589f1112edbf298ee144913959c067f0b761f7dacb48bf3a7d81"
+    }
+  ],
+  "captionCharacters": 1804,
+  "browser": "157.0.8103.38",
+  "factsSha256Lf": "7449dc978f1e261ff359d68e2029c858dc568d0bbbad2a086604cade0a40eaa9"
+}

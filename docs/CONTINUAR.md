@@ -33,6 +33,16 @@ resolver espaço/tempo e a inicialização da população antes de atribuir a
 diferença a uma regra biológica. Não transferir coeficientes para forçar a
 curva. B7 e calibração seguem pendentes. Não criar tags/releases/Zenodo.
 
+## Material de divulgação — saga da escavação
+
+Carrossel de 12 PNGs 1080×1350, legenda e texto alternativo prontos em
+[docs/divulgacao/saga-escavacao](divulgacao/saga-escavacao/README.md).
+Branch `codex/carrossel-saga-escavacao`, dependente do PR #131. Conta os
+ensaios desfavoráveis, a revisão de acesso e os limites científicos.
+As imagens distinguem arena e World 3D. A melhor configuração citada é da
+arena, com morfologia e fadiga de escavação. Os dados e o motor não foram
+alterados. Há fonte HTML, módulos pequenos e exportação validada em Chrome.
+
 ## Estado preservado
 
 Última release **[0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0)**.

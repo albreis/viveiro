@@ -1,0 +1,12 @@
+01. Capa: Mais detalhe, menos terra, o que faltava? Captura do terrário virtual e introdução à investigação de escavação do Viveiro.
+02. Referência: curvas lidas de Buhl para grupos de 50, 100 e 200 operárias durante 72 horas. O volume aumenta com o tamanho do grupo.
+03. Fadiga: com 100 operárias, a simulação sem fadiga termina em 62,67 cm³. Com fadiga de escavação, 36,15 cm³, perto dos 37 cm³ da curva de referência. O erro com 50 piorou.
+04. Ações: no lote de três seeds e 100 operárias, fadiga de escavação produz 36,30 cm³ e fadiga por ações mais escavação, 28,70 cm³. Água, temperatura e fluxo foram testados em outro lote de 48 rodadas de duas horas.
+05. Morfologia: volumes de 50, 100 e 200 caem de 19,92, 36,15 e 64,46 para 15,76, 23,86 e 36,66 cm³. Vários mecanismos mudaram juntos. A morfologia foi preservada para investigação.
+06. Locomoção: com 100 operárias, base, mais velocidade, retirada da penalidade de carga e ambas resultam em 23,86, 24,13, 23,59 e 23,41 cm³. Mudanças pequenas frente à referência de 37.
+07. Acesso: o corpo já restringia colisões e havia um filtro extra de 0,35. Foi testada sua retirada, usando fator 1, mantendo corpo, carga, velocidade e fadiga de escavação.
+08. Curvas mais próximas: com acesso revisto, as médias da arena terminam em 22,82, 36,88 e 55,36 cm³ para 50, 100 e 200, frente a 25, 37 e 59 na curva lida. Morfologia e fadiga de escavação foram mantidas.
+09. Evidência: 16 de 18 pontos médios caem na faixa de leitura de mais ou menos 3 cm³. Os dois fora são de 200, em 60 e 72 horas. Essa faixa não representa variabilidade biológica e a validação independente segue aberta.
+10. Integração: captura real dos túneis no motor 3D. Acesso por contato, apoio e espaço corporal, verificado em 547 testes e 12 execuções. Unidades e relógio próprios, sem transferir a fadiga da arena para esse perfil.
+11. Transporte: no 3D, 100 e 200 removem nas frentes 0,318 e 0,314 unidades. As entregas na superfície são 0,129 e 0,037. Congestionamento é uma hipótese ainda não isolada.
+12. Próximos passos: medir espera e transporte no 3D, controlar acesso e posição inicial e avaliar com dados independentes. O melhor cenário atual é exploratório e pertence à arena.
