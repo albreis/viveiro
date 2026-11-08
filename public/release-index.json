@@ -1,8 +1,14 @@
 {
   "format": "viveiro-release-index",
   "version": 1,
-  "latest": "v0.47.0",
+  "latest": "v0.48.0",
   "releases": [
+    {
+      "tag": "v0.48.0",
+      "version": "0.48.0",
+      "sourceSha": "a39f11a10c8dfdf8d40c29f69d5c2102ee45ff42",
+      "url": "releases/v0.48.0/"
+    },
     {
       "tag": "v0.47.0",
       "version": "0.47.0",

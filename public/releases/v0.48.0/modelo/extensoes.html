@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extensões locais tipadas · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.48.0">
+<link rel="manifest" href="/releases/v0.48.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="extensoes.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/extensoes.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Extensões locais tipadas</h1>
+<p>A API de pesquisa separa observações, sensores, submodelos de sinais e pesos de decisão. ACO continua sendo o padrão; adicionar um arquivo não muda experimentos antigos nem o terrário salvo.</p>
+<h2>Criar em um arquivo</h2>
+<p>Copie <code>src/extensions/balanced.ts</code>, altere <code>id</code>, <code>version</code> e as funções. O export default usa <code>satisfies DecisionExtension</code>. Os contratos ficam em <code>src/modules/extensions/types.ts</code>.</p>
+<ul>
+<li><code>SensorSystem.sample(LocalInput)</code> deriva sinais finitos de energia, carga e saídas adjacentes.</li>
+<li><code>DecisionSubmodel.compute(DecisionFrame)</code> transforma sinais; recebe apenas observações e resultados anteriores da mesma decisão.</li>
+<li><code>DecisionPolicy.weights(DecisionFrame)</code> devolve um peso não negativo por saída. A soma deve ser positiva; o simulador usa seu RNG por seed para amostrar.</li>
+</ul>
+<p>Observações são cópias congeladas; não incluem World, posições globais, estoques, mapa completo ou referências mutáveis dos agentes. As saídas já passaram pela verificação física de passagem. A política não devolve uma posição e não escava, move alimento ou altera o relógio. Submodelos desta API são transformações locais de sinais, não substituições arbitrárias dos solvers de gases/solo.</p>
+<p>Um peso só pode valer de 0 a 1.000.000. Sensores/submodelos têm até 16 instâncias por estágio, 32 sinais por instância e sinais finitos de módulo até 1.000.000. Saída inválida encerra o experimento com erro explícito, sem fallback silencioso.</p>
+<h2>Executar e comparar</h2>
+<pre tabindex="0" role="region" aria-label="Código ou equação em texto"><code>npm run experiment -- --extension src/extensions/balanced.ts --seed MINHA-SEED --start established --profile generic-demo@1 --days 5 --out ensaio-novo
+npm run compare:policy -- --extension src/extensions/balanced.ts --days 5 --replicates 4 --seed POLICY-43 --out comparacao-nova</code></pre>
+<p>A segunda CLI executa ACO e extensão com a mesma seed em cada réplica, guarda CSVs e manifestos individuais e produz <code>comparacao.csv</code>. Réplicas diferentes recebem seeds diferentes. O protocolo registra perfil, horizonte, identidade e hash da extensão. Contagens de decisões ajudam a distinguir uma política realmente acionada de um ensaio curto sem operárias.</p>
+<p>O exemplo favorece conforto e evita visitas repetidas. É uma hipótese de programação, não um comportamento validado por espécie. Melhorar um resultado interno não demonstra maior realismo biológico. Comparações não substituem P3.</p>
+<h2>Reproduzir e restaurar</h2>
+<p>O plano/manifesto guarda <code>{schema, id, version, sourceSha256}</code>. O hash SHA-256 é da fonte com finais de linha normalizados para LF. Uma versão instalada não pode ser substituída por fonte diferente. Não se reutilizam registros de outra versão ou outro hash. O caminho local do arquivo não integra o manifesto.</p>
+<p>No navegador, apenas extensões incluídas no bundle estão disponíveis. O exemplo é incluído; selecione sua referência no plano JSON do laboratório isolado. Um JSON nunca autoriza importar um arquivo ou URL. Extensões novas exigem compilação do bundle ou o argumento explícito <code>--extension</code> na CLI.</p>
+<p>Ao restaurar um snapshot que usa extensão, a mesma identidade deve estar registrada antes de <code>World.restore</code>; identidade ausente ou alterada produz erro antes da continuação. Os módulos de desenvolvimento podem usar <code>loadTrustedExtension</code> antes da restauração. O resto do save e as colisões conservam os mesmos validadores.</p>
+<h2>Limite de confiança</h2>
+<p><code>--extension</code> executa código local de desenvolvedor com as permissões do processo Node. Tipos, observações congeladas e validação de pesos são um contrato do modelo, <strong>não uma sandbox de segurança</strong>. Use somente arquivos revisados de confiança. Importações transitivas são responsabilidade do autor; o hash do manifesto identifica apenas o arquivo indicado. Para um pacote com dependências externas, fixe também versões/fontes em seu próprio protocolo.</p>
+<p>Para reprodução científica, funções devem ser puras e determinísticas: não use <code>Math.random</code>, relógio real, rede, arquivos mutáveis ou estado global. A amostragem é feita pelo RNG do simulador, não pela extensão. Os testes do exemplo verificam repetição e limites locais; não certificam extensões de terceiros.</p>
+<h2>Ensaio registrado</h2>
+<p>Quatro réplicas pareadas, cinco dias, generic-demo@1 estabelecido. A escolha foi acionada de fato nas quatro execuções customizadas; resultados são internos ao modelo, sem evidência de superioridade biológica.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela de dados"><table><thead><tr><th scope="col">Réplica</th><th scope="col">População ACO</th><th scope="col">População extensão</th><th scope="col">Decisões extensão</th></tr></thead><tbody><tr><td>1</td><td>25</td><td>23</td><td>71</td></tr><tr><td>2</td><td>23</td><td>25</td><td>89</td></tr><tr><td>3</td><td>29</td><td>21</td><td>88</td></tr><tr><td>4</td><td>28</td><td>23</td><td>88</td></tr></tbody></table></div>
+<p><a href="../experimentos/policies-043/comparacao.csv">Dados da comparação</a>, <a href="../experimentos/policies-043/protocolo.json">protocolo completo</a> e <a href="../experimentos/policies-043/arquivos.json">arquivos individuais com hashes</a>.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="extensoes.txt" download="viveiro-pt-BR-modelo-extensoes.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>

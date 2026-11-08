@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morris sensitivity · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.48.0">
+<link rel="manifest" href="/releases/v0.48.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/sensibilidade.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="sensibilidade.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Model sensitivity: Morris</h1>
+<p>Version 0.42.0; 4 trajectories, 2 paired replicates, 10 days, 12 inputs and 104 runs.</p>
+<p>Ranking by final adult population (µ*). Effects are per normalized range unit, not per physical unit. Larger values depend on horizon, profile and selected ranges. Ties do not establish a distinct causal ordering.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Data table"><table><thead><tr><th scope="col">Rank</th><th scope="col">Parameter</th><th scope="col">µ*</th><th scope="col">sigma</th></tr></thead><tbody><tr><td>1</td><td>temperatureC</td><td>29.0625</td><td>34.0645</td></tr><tr><td>2</td><td>initialFood</td><td>9.1875</td><td>10.7711</td></tr><tr><td>3</td><td>light</td><td>2.0625</td><td>2.4780</td></tr><tr><td>4</td><td>windZ</td><td>0.7500</td><td>1.5000</td></tr><tr><td>5</td><td>humidity</td><td>0.3750</td><td>0.7500</td></tr><tr><td>6</td><td>initialRainPulse</td><td>0.0000</td><td>0.0000</td></tr><tr><td>7</td><td>photoperiodHours</td><td>0.0000</td><td>0.0000</td></tr><tr><td>8</td><td>randomness</td><td>0.0000</td><td>0.0000</td></tr><tr><td>9</td><td>reposeAngle</td><td>0.0000</td><td>0.0000</td></tr><tr><td>10</td><td>surfaceDiffusionScale</td><td>0.0000</td><td>0.0000</td></tr></tbody></table></div>
+<p>Profile generic-demo@5, established nest. The screening window is an exploratory choice within catalog bounds, not a biological confidence range. All inputs and ranges are model hypotheses/approximations, not calibrated uncertainties. Sigma combines nonlinearity/interactions and residual noise. Four trajectories do not give calibration precision; zeros may indicate an inactive mechanism in this scenario.</p>
+<p>We retain inputs, responses per replicate, CSVs/manifests per World and indices for every parameter, including those outside the top ten. Replicates are averaged per point before computing each elementary effect. Missing data remain missing.</p>
+<h2>Interpreting the top ten</h2>
+<p>The top ten is a screening order of 12 inputs, not the discovery of ten nonzero effects. In this run, only five inputs changed final population. Zero ties are ordered by identifier, without scientific priority. P3.2 must also consider other metrics, horizons and real data before choosing adjustments.</p>
+<h2>Input provenance</h2>
+<ul>
+<li>humidity: %; range [45, 85]; approximation; src/modules/simulation/environment-step.js; microclimate/boundaries.ts.</li>
+<li>light: %; range [35, 85]; approximation; src/modules/landscape/dynamics.ts.</li>
+<li>randomness: %; range [10, 60]; hypothesis; src/modules/simulation/worker-step.js.</li>
+<li>reposeAngle: degrees; range [20, 50]; approximation; src/modules/granular/update.ts.</li>
+<li>temperatureC: °C; range [18, 30]; approximation; src/modules/microclimate/boundaries.ts.</li>
+<li>windX: model units; range [-1.5, 1.5]; approximation; src/modules/simulation/environment-step.js.</li>
+<li>windZ: model units; range [-1.5, 1.5]; approximation; src/modules/simulation/environment-step.js.</li>
+<li>photoperiodHours: h/model day; range [8, 16]; hypothesis; src/modules/seasons/update.ts.</li>
+<li>initialFood: food units; range [10, 24]; hypothesis; src/modules/experiments/initial-inputs.ts.</li>
+<li>initialRainPulse: relative 0–1; range [0, 0.4]; hypothesis; src/modules/experiments/initial-inputs.ts; landscape/dynamics.ts.</li>
+<li>surfaceDiffusionScale: D multiplier; range [0.5, 1.5]; approximation; src/modules/simulation/environment-step.js; chemistry/reaction-diffusion.ts.</li>
+<li>surfaceEvaporationScale: lambda multiplier; range [0.5, 1.5]; approximation; src/modules/simulation/environment-step.js; chemistry/reaction-diffusion.ts.</li>
+</ul>
+<h2>Method and reproduction</h2>
+<p>EE = (Y_after − Y_before)/(x_after − x_before), with x normalized to [0,1]. µ is the mean effect, µ* the mean absolute effect and sigma the sample standard deviation (n−1). Each input has four effects after averaging two paired replicates per point.</p>
+<p>Vanilla Morris, even grid, step p/[2(p-1)], one input per step. Seeds are shared between points of one trajectory/replicate; other trajectories/replicates receive other seeds. This implementation has no Campolongo optimization or confidence bootstrap.</p>
+<p>Primary references: <a href="https://doi.org/10.1080/00401706.1991.10484804">Morris 1991</a>, <a href="https://salib.readthedocs.io/en/stable/_modules/SALib/sample/morris/morris.html">SALib sampling</a> and <a href="https://salib.readthedocs.io/en/stable/_modules/SALib/analyze/morris.html">SALib analysis</a>. Viveiro uses its own design RNG; it does not promise NumPy-identical samples.</p>
+<p><code>npm run sensitivity -- --out nova-pasta --jobs 4</code> reproduces the default protocol. <code>--resume</code> checks existing files and source identity before reuse. Identical model, version, source, plan and seeds are required.</p>
+<p>Design identity: 953d4559c329bf56385f9230dc69712560baf1035a187be368d6cde10de44d23. Normalized source: 43ddce7466fe4b4bd4459795ec9b75f9ab23ba75f17310eb2a5912021a62c156.</p>
+<h2>Raw data from this study</h2>
+<p><a href="../../experimentos/morris-042/desenho.json">Design and plans</a>, <a href="../../experimentos/morris-042/entradas.csv">inputs</a>, <a href="../../experimentos/morris-042/respostas.csv">individual responses</a>, <a href="../../experimentos/morris-042/indices.csv">complete indices</a>, <a href="../../experimentos/morris-042/resultados.json">elementary effects</a> and <a href="../../experimentos/morris-042/arquivos.json">individual files with hashes</a>. Each run has a CSV and manifest in the same directory under the index filenames.</p>
+<p>Files were generated with the source identified above. Future source edits must use a different directory and preserve this study. The first broad-range study was retained locally; it showed only a thermal effect on this metric. The window above was chosen to investigate that behavior, without selection using external biological data.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="sensibilidade.txt" download="viveiro-en-modelo-sensibilidade.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

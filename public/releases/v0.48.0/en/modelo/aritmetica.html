@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portable arithmetic · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.48.0">
+<link rel="manifest" href="/releases/v0.48.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/aritmetica.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="aritmetica.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Portable experiment arithmetic</h1>
+<p>Numerical contract stdlib-f64-v1, introduced in 0.40.0 for P2.2B. The biological model remains exploratory, without species calibration.</p>
+<h2>Measured problem</h2>
+<p>In 0.39.0, identical engine/seed/parameters produced differences of a few bits already in initial position and friction. Within ten days, populations also diverged. Original raw data remain in tests/fixtures/cli-native-039; they were not deleted or rounded to create an appearance of equality.</p>
+<h2>Separate, explicit contracts</h2>
+<p>src/libs/model-math.ts starts with the environment’s native functions. The 3D terrarium and legacy saves retain ecmascript-native-f64-v1. Routing operations through the service preserved the native 1,000-tick CSV exactly, normalizing only the software version to compare it with the earlier capture. There is no global Math patch, or change to biological rules or the RNG.</p>
+<p>The CLI and experiment page start their own Workers. Only in those contexts does installPortableMath select stdlib JavaScript functions, with pinned direct versions and transitive dependencies locked in package-lock.json. Node uses worker_threads; the browser uses WebWorker. Backend and internal library buffers are isolated by Worker. Do not switch the numerical policy of a living World.</p>
+<p>The manifest records the policy. Reproduction requires identical code version, lockfile, seed, versioned profile, parameters and policy. A portable experiment CSV can follow a different trajectory from the same native terrarium. Do not reinterpret a native save as if the portable backend generated it. Experiments export observations, not complete portable saves.</p>
+<h2>Operations and precision</h2>
+<p>exp/expm1, sin/cos/tan/tanh, atan/atan2, log/log1p, cbrt, hypot and exponentiation are routed through the service. log is the natural logarithm, implemented through stdlib ln. Core ** operators also use pow, including fractional exponents. stdlib hypot accepts two arguments; the adapter reduces vectors in fixed order starting from zero, respecting infinity’s precedence over NaN.</p>
+<p>The stdlib JavaScript kernels retain explicit argument reductions and coefficients. Primary references: <a href="https://github.com/stdlib-js/math-base-special-exp">exp</a>, <a href="https://github.com/stdlib-js/math-base-special-sin">sin</a>, <a href="https://github.com/stdlib-js/math-base-special-tan">tan</a> and <a href="https://github.com/stdlib-js/math-base-special-hypot">hypot</a>. We use those implementations, not a new untested approximation.</p>
+<p>Sums, products, divisions and sqrt remain environment Float64 operations. Equality was measured in the runtimes actually tested; it does not prove universal correct rounding of every function in every JavaScript engine. The surface ODD reference remains independent and does not import this backend.</p>
+<h2>Scheduling</h2>
+<p>Every tick executes the same World.step. Progress is emitted every 25 ticks. The browser Worker inserts no timers between batches: the interface runs on another thread and cancels through terminate. This avoids timer-throttling delays in background tabs. Rendering does not decide how many ticks enter the output.</p>
+<h2>Reproducible evidence</h2>
+<p>Four cases in tests/fixtures/cli-portable-040: regression for seed QA-CLI-039, a nest with health/soil/gases, semiclaustral founding and another worker seed. Each retains its plan, CSV and manifest produced independently in Node and a real browser. Both files are byte-identical across environments. They total 4,400 ticks per environment. These are not measurements of natural ant colonies.</p>
+<p>Regressions run the isolated CLI and compare files with actual browser captures. Analytical tests check values, domains, NaN/infinity, signed zero and 3D norm; a concurrent test checks Worker isolation. AST auditing prevents reintroducing approximate native functions or ** into the routed core. Renderer, native service and ODD reference have explicit contractual exclusions.</p>
+<p>The complete model suite passed 396 tests before adding the four captured cases as regressions. Subsequent targeted checks and bundle QA are recorded in docs/validacoes/paridade-0.40.0.json. Do not present this internal verification as external scientific replication or ecological calibration.</p>
+<h2>Dependencies and distribution</h2>
+<p>Numerical functions and original authors’ notices retain applicable Apache 2.0, MIT and BSD/Sun notices. scripts/generate-numeric-notices.ts generates an index and small files in public/notices/ from the installed lockfile dependencies. Each package notice has at most 109 lines in this revision; the full Apache license is separate. Do not remove notices from distributed bundles.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="aritmetica.txt" download="viveiro-en-modelo-aritmetica.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

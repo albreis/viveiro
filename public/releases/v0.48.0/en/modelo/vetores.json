@@ -1,0 +1,102 @@
+{
+  "schema": "viveiro-odd-field-v1",
+  "absoluteTolerance": 1e-12,
+  "provenance": "Analytical small-grid cases and repeated 2x2 transition matrix powers, documented in docs/odd/replicacao.md. No laboratory data.",
+  "cases": [
+    {
+      "id": "difusao-tres-celulas",
+      "input": [0, 1, 0],
+      "parameters": {
+        "width": 3,
+        "height": 1,
+        "cellSize": 1,
+        "diffusion": 0.1,
+        "decay": 0,
+        "dt": 1
+      },
+      "expected": [0.1, 0.8, 0.1]
+    },
+    {
+      "id": "vento-positivo",
+      "input": [1, 0],
+      "parameters": {
+        "width": 2,
+        "height": 1,
+        "cellSize": 1,
+        "diffusion": 0,
+        "decay": 0,
+        "dt": 1,
+        "windX": 0.25
+      },
+      "expected": [0.75, 0.25]
+    },
+    {
+      "id": "vento-negativo",
+      "input": [0, 1],
+      "parameters": {
+        "width": 2,
+        "height": 1,
+        "cellSize": 1,
+        "diffusion": 0,
+        "decay": 0,
+        "dt": 1,
+        "windX": -0.25
+      },
+      "expected": [0.25, 0.75]
+    },
+    {
+      "id": "evaporacao-sem-vizinhos",
+      "input": [2],
+      "parameters": {
+        "width": 1,
+        "height": 1,
+        "cellSize": 1,
+        "diffusion": 0,
+        "decay": 0.6931471805599453,
+        "dt": 1
+      },
+      "expected": [1]
+    },
+    {
+      "id": "canto-fechado-2d",
+      "input": [1, 0, 0, 0],
+      "parameters": {
+        "width": 2,
+        "height": 2,
+        "cellSize": 1,
+        "diffusion": 0.1,
+        "decay": 0,
+        "dt": 1
+      },
+      "expected": [0.8, 0.1, 0.1, 0]
+    },
+    {
+      "id": "quatro-subpassos",
+      "input": [1, 0],
+      "parameters": {
+        "width": 2,
+        "height": 1,
+        "cellSize": 1,
+        "diffusion": 0.5,
+        "decay": 0,
+        "dt": 1,
+        "windX": 1
+      },
+      "expected": [0.296875, 0.703125]
+    },
+    {
+      "id": "quatro-subpassos-com-evaporacao",
+      "input": [1, 0],
+      "parameters": {
+        "width": 2,
+        "height": 1,
+        "cellSize": 1,
+        "diffusion": 0.5,
+        "decay": 0.6931471805599453,
+        "dt": 1,
+        "windX": 1
+      },
+      "expected": [0.1484375, 0.3515625]
+    }
+  ]
+}

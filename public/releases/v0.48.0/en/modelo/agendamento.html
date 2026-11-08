@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Process order · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.48.0">
+<link rel="manifest" href="/releases/v0.48.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Skip to content</a>
+<header><a href="../../index.html?lang=en">← Back to the laboratory</a><a href="index.html">ODD documentation</a></header>
+<nav class="document-languages" aria-label="Language"><a href="../../modelo/agendamento.html" lang="pt-BR" hreflang="pt-BR">Português</a> · <a href="agendamento.html" lang="en" hreflang="en" aria-current="page">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Process order</h1>
+<p>Part 3 of the <a href="index.html">ODD</a>, checked against colonies/update.ts and simulation/environment-step.js. Updates are sequential; changing their order changes the model even with the same seed. Local operations may use simultaneous buffers without making the entire tick simultaneous.</p>
+<h2>Before the tick</h2>
+<p>stepSession reapplies all interventions whose tick is less than or equal to A’s current tick, in recorded order. It applies the same intervention to B when B exists. It then executes exactly one A step and one B step. An intervention at tick t occurs after the closing observation already recorded at t and before advancing to t+1. A separate current reading can therefore differ from the closing observation of that same tick.</p>
+<h2>One family advance</h2>
+<ol>
+<li>updateEnvironment increments the tick. It updates soil water/heat when due, calculates humidity suitability, updates the landscape, and transports/evaporates surface pheromone. Worker deposits occur later in the tick.</li>
+<li>Capture the current colony list; rebuild habitat/neighborhood references.</li>
+<li>Prepare social chemistry; update ecology, territory and chemical encounters.</li>
+<li>Update reference odors on the graph; then erosion, granular aggregates and ventilation. Gases are shared; calculate disease exposure.</li>
+<li>For each colony, root followed by daughters: synchronize IDs/limits, update fertility and seasonality, then brood and adult life cycles.</li>
+<li>Predators act on the combined list. Predation and other deaths are recorded; loads are dropped, waste is generated and dead agents are removed.</li>
+<li>Rebuild the neighborhood. For each colony, update nutrition/trophallaxis, stock spoilage and notices, without free redistribution of reserves.</li>
+<li>Coordinate reproductive encounters and allocation of new colonies. A daughter created here did not receive the per-colony block already finished this tick.</li>
+<li>Record daily closing observations when tick is a multiple of 100. If 25 ticks have elapsed since the previous census, record the chart point. This reading is observational.</li>
+</ol>
+<h2>Adult order inside a colony</h2>
+<p>First retain previous poses for interpolation, then update founding. Adults are visited in array order without global shuffling. Age, health/mortality and the sexual branch precede worker tasks.</p>
+<p>For living workers: learning/energy cost; encounters, infiltration, seasonal shelter, plug work, stuck recovery, mimicry/aphids, an existing soil task, colony organization and a new soil task. A branch consuming the action ends that individual’s processing for the tick.</p>
+<p>Without a priority task, the worker considers an internal route and then surface movement. Danger sensing, returning/collection and ACO precede displacement. While moving on the surface with food, it deposits 0.25 chemical unit in the final cell, limited by deposit capacity. This deposit is transported in the next updateEnvironment. There is no anticipatory feedback.</p>
+<h2>Frequencies and clock</h2>
+<p>The environment/main decisions advance each tick. Water/heat and gases integrate in 10-tick windows with their own substeps; granular/excavation and profile effects have specific routines. Surface reaction–diffusion uses dt=1 per tick. The chart samples every 25 ticks; the daily CSV uses 100.</p>
+<p>The visible clock accumulates real-time credit and drains whole ticks. A hidden page pauses normal advance; the advance Worker uses stepSession until the budget or target is reached, without skipping ticks. Canceling does not apply an incomplete partial world. Simulation while the page is closed is not implemented.</p>
+<p>Forecasts execute copies with their own replicate seeds. Rendering, camera, exporting and reading the ODD must not consume the observed run’s RNG.</p></main>
+<nav aria-label="Model documents"><h2>Model documents</h2><ul><li><a href="index.html">Viveiro ODD</a></li>
+<li><a href="estados.html">Entities, states and scales</a></li>
+<li><a href="agendamento.html">Process order</a></li>
+<li><a href="conceitos.html">Design concepts</a></li>
+<li><a href="inicializacao.html">Initialization and inputs</a></li>
+<li><a href="submodelos.html">Submodel map</a></li>
+<li><a href="reacao-difusao.html">Reimplementable reaction–diffusion</a></li>
+<li><a href="replicacao.html">Vectors and replication</a></li>
+<li><a href="aritmetica.html">Portable arithmetic</a></li>
+<li><a href="varreduras.html">Sweeps and resuming</a></li>
+<li><a href="sensibilidade.html">Morris sensitivity</a></li>
+<li><a href="extensoes.html">Typed local extensions</a></li>
+<li><a href="perfis.html">Parameter editor and profiles</a></li></ul></nav>
+<p><a href="agendamento.txt" download="viveiro-en-modelo-agendamento.txt">Download this document’s source</a></p>
+<footer>Viveiro · Exploratory model · Original documentation CC BY 4.0 · External review pending.</footer></body></html>

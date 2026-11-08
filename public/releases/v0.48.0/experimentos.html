@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="experiments.pageTitle">Experimentos reproduzíveis · Viveiro</title>
+    <script type="module" crossorigin src="/releases/v0.48.0/assets/experiments-BTcKIZcw.js"></script>
+    <link rel="modulepreload" crossorigin href="/releases/v0.48.0/assets/biology-BmUMgxDe.js">
+    <link rel="modulepreload" crossorigin href="/releases/v0.48.0/assets/catalog-DbvH8Cyj.js">
+    <link rel="modulepreload" crossorigin href="/releases/v0.48.0/assets/spreadsheet-csv-DXSy2Gsc.js">
+    <link rel="stylesheet" crossorigin href="/releases/v0.48.0/assets/biology-4FSXfl__.css">
+    <link rel="stylesheet" crossorigin href="/releases/v0.48.0/assets/catalog-CeJydyD2.css">
+    <link rel="stylesheet" crossorigin href="/releases/v0.48.0/assets/experiments-Bu6JU1pM.css">
+  <meta name="viveiro-offline" content="0.48.0">
+<link rel="manifest" href="/releases/v0.48.0/app-manifest.json">
+</head>
+  <body>
+    <a class="skip" href="#conteudo"
+      ><span data-i18n="experiments.skip"></span
+    ></a>
+    <header>
+      <a href="./index.html" data-i18n-href="./index.html"
+        ><span data-i18n="experiments.back">← Voltar ao laboratório</span></a
+      ><a href="./modelo/index.html" data-i18n-href="./modelo/index.html"
+        ><span data-i18n="experiments.modelLink"></span
+      ></a>
+      <a
+        href="./galeria.html"
+        data-i18n-href="./galeria.html"
+        data-i18n="gallery.nav"
+      >Galeria de experimentos</a>
+    </header>
+    <main id="conteudo" tabindex="-1">
+  <p id="experiment-version">
+    <span data-i18n="experiments.versionInitial">Viveiro · Modelo exploratório</span>
+  </p>
+  <h1><span data-i18n="experiments.title">Repita e compare os dados.</span></h1>
+  <p>
+    <span data-i18n="experiments.description">Execute uma configuração isolada e baixe as observações. A mesma configuração pode ser repetida no terminal. Seu terrário e seus checkpoints continuam preservados.</span>
+  </p>
+  <label for="experiment-policy"
+    ><span data-i18n="experiments.policy.label"></span
+  ></label>
+  <select id="experiment-policy" aria-describedby="policy-help">
+    <option value="aco" data-i18n="experiments.policy.aco">ACO padrão</option>
+    <option value="balanced" data-i18n="experiments.policy.example">Conforto e carga (experimental)</option>
+    <option
+      value="manual"
+      disabled
+      data-i18n="experiments.policy.manual"
+    >Política informada no JSON</option>
+  </select>
+  <p id="policy-help">
+    <span data-i18n="experiments.policy.help">A escolha altera somente este experimento.</span>
+    <a href="./modelo/extensoes.html" data-i18n-href="./modelo/extensoes.html"
+      ><span data-i18n="experiments.policy.link">Conhecer as hipóteses da política e criar uma extensão</span></a
+    >.
+  </p>
+  <label for="experiment-plan"
+    ><strong><span data-i18n="experiments.plan.label">Configuração do experimento (JSON)</span></strong
+  ></label>
+  <textarea
+    id="experiment-plan"
+    rows="22"
+    spellcheck="false"
+    aria-describedby="experiment-help"
+  ></textarea>
+  <p id="experiment-help">
+    <span data-i18n="experiments.plan.help">Informe seed, dias inteiros de 0 a 365, modo inicial e perfil com versão. Parâmetros: umidade, luz e aleatoriedade de 0 a 100; repouso de 15 a 55°; temperatura de 5 a 45 °C; ventos X/Z de −4 a 4 unidades. Valores omitidos recebem padrões explícitos no manifesto.</span>
+  </p>
+  <div class="experiment-actions">
+    <button id="experiment-run" type="button">
+      <span data-i18n="experiments.run">Rodar experimento</span></button
+    ><button id="experiment-cancel" type="button" disabled>
+      <span data-i18n="common.cancel">Cancelar</span>
+    </button>
+  </div>
+  <progress
+    id="experiment-progress"
+    value="0"
+    max="1"
+    data-i18n-aria-label="experiments.progress" aria-label="Progresso do experimento"
+  ></progress>
+  <p id="experiment-status" role="status">
+    <span data-i18n="experiments.ready">Pronto para iniciar.</span>
+  </p>
+  <p id="experiment-error" role="alert" tabindex="-1"></p>
+  <section
+    id="experiment-results"
+    tabindex="-1"
+    data-i18n-aria-label="experiments.results.label" aria-label="Resultados do experimento"
+    hidden
+  >
+    <h2><span data-i18n="experiments.results.title">Observações prontas</span></h2>
+    <p>
+      <span data-i18n="experiments.results.help">O CSV para planilha segue o idioma da interface. O manifesto registra a configuração, a versão e o SHA-256 de dados.csv para reprodução.</span>
+    </p>
+    <ul>
+      <li>
+        <a id="experiment-csv" download="dados.csv"
+          ><span data-i18n="experiments.download.csv"></span
+        ></a>
+      </li>
+      <li id="experiment-csv-canonical-option" hidden>
+        <a id="experiment-csv-canonical" download="dados.csv"
+          ><span data-i18n="experiments.download.canonicalCsv"></span
+        ></a>
+      </li>
+      <li>
+        <a id="experiment-manifest" download="manifesto.json"
+          ><span data-i18n="experiments.download.manifest"></span
+        ></a>
+      </li>
+      <li>
+        <a id="experiment-config" download="configuracao.json"
+          ><span data-i18n="experiments.download.plan"></span
+        ></a>
+      </li>
+    </ul>
+  </section>
+  <h2><span data-i18n="experiments.terminal.title">Repetir no terminal</span></h2>
+  <p>
+    <span data-i18n="experiments.terminal.help">Na fonte desta mesma versão, com Node 24, salve a configuração baixada e execute:</span>
+  </p>
+  <pre
+    tabindex="0"
+    role="region"
+    data-i18n-aria-label="experiments.terminal.command" aria-label="Comando para repetir o experimento"
+  ><code>npm run experiment -- --plan configuracao.json --out resultado-novo</code></pre>
+  <p>
+    <span data-i18n="experiments.terminal.output">A pasta de saída precisa ser nova. O comando gera dados.csv e manifesto.json. Para configurar por argumentos:</span>
+  </p>
+  <pre
+    tabindex="0"
+    role="region"
+    data-i18n-aria-label="experiments.terminal.example" aria-label="Exemplo de configuração no terminal"
+  ><code>npm run experiment -- --seed SEMENTE-42 --days 3 --humidity 68 --profile generic-demo@5 --out resultado-novo</code></pre>
+  <p>
+    <span data-i18n="experiments.limits">Um dia do modelo equivale a 100 ticks. Os valores são exploratórios e não calibrados por espécie. Experimentos isolados usam a política aritmética portátil stdlib-f64-v1. Para comparar arquivos, use a mesma versão do Viveiro, configuração e política indicada no manifesto. O terrário 3D e os saves existentes continuam usando a política nativa, que pode gerar trajetórias diferentes. Sem consulta de clima real ou continuidade em servidor.</span>
+  </p>
+  <section id="varredura" aria-labelledby="sweep-title">
+  <h2 id="sweep-title"><span data-i18n="sweeps.title">Uma pergunta, várias condições.</span></h2>
+  <p>
+    <span data-i18n="sweeps.description">Varie um parâmetro e repita cada condição. O exemplo compara cinco umidades com dez réplicas: 50 execuções independentes do terrário salvo.</span>
+  </p>
+  <p>
+    <span data-i18n="sweeps.pairing">A mesma réplica usa a mesma seed entre valores para comparar condições pareadas. Réplicas diferentes recebem outras seeds. São experimentos do modelo, sem calibração por espécie.</span>
+  </p>
+  <label for="sweep-plan"><span data-i18n="sweeps.plan">Configuração da varredura (JSON)</span></label>
+  <textarea
+    id="sweep-plan"
+    rows="16"
+    spellcheck="false"
+    aria-describedby="sweep-help"
+  ></textarea>
+  <p id="sweep-help">
+    <span data-i18n="sweeps.help">Parâmetros: humidity, light, randomness, reposeAngle, temperatureC, windX ou windZ. No navegador: até 200 execuções e 10.000 observações diárias previstas. Baixe a retomada antes de fechar esta página; não há salvamento automático da varredura.</span>
+  </p>
+  <label for="sweep-jobs"><span data-i18n="sweeps.parallel">Execuções paralelas</span></label>
+  <select id="sweep-jobs">
+    <option value="1">1</option>
+    <option value="2" selected>2</option>
+    <option value="4">4</option>
+  </select>
+  <div class="experiment-actions">
+    <button id="sweep-run"><span data-i18n="sweeps.run">Executar / continuar varredura</span></button>
+    <button id="sweep-cancel" disabled>
+      <span data-i18n="sweeps.cancel">Interromper varredura</span>
+    </button>
+    <button id="sweep-reset">
+      <span data-i18n="sweeps.clear">Limpar resultados da varredura</span>
+    </button>
+  </div>
+  <label for="sweep-import"><span data-i18n="sweeps.import">Importar retomada da varredura</span></label>
+  <input id="sweep-import" type="file" accept=".json,application/json" />
+  <progress
+    id="sweep-progress"
+    max="50"
+    value="0"
+    data-i18n-aria-label="sweeps.progress" aria-label="Progresso da varredura"
+  ></progress>
+  <p id="sweep-status" role="status" aria-live="polite">
+    <span data-i18n="sweeps.ready">Pronto para comparar cinco valores e dez réplicas.</span>
+  </p>
+  <p id="sweep-error" role="alert" tabindex="-1"></p>
+  <div id="sweep-downloads" hidden>
+    <a id="sweep-checkpoint" download="retomada.json"
+      ><span data-i18n="sweeps.download.checkpoint"></span
+    ></a>
+    <a id="sweep-summary" download="resumo.csv"
+      ><span data-i18n="sweeps.download.summary"></span
+    ></a>
+    <p>
+      <span data-i18n="sweeps.download.help">O JSON inclui os CSVs e manifestos de cada execução. Para arquivos separados por execução, use o terminal.</span>
+    </p>
+  </div>
+  <h3><span data-i18n="sweeps.terminal.title">Executar no terminal</span></h3>
+  <p>
+    <span data-i18n="sweeps.terminal.help">Na fonte desta versão, este comando executa as 50 combinações do exemplo:</span>
+  </p>
+  <pre
+    tabindex="0"
+    role="region"
+    data-i18n-aria-label="sweeps.terminal.command" aria-label="Comando da varredura"
+  ><code>npm run sweep -- --out resultado-novo --jobs 2</code></pre>
+  <p>
+    <span data-i18n="sweeps.terminal.repeat">Repita com</span> <code>--resume</code>
+    <span data-i18n="sweeps.terminal.resume">para continuar a mesma pasta, ou use</span>
+    <code>--checkpoint retomada.json --out outra-pasta</code>
+    <span data-i18n="sweeps.terminal.import">para importar os resultados baixados. Configurações personalizadas:</span>
+    <code>--plan varredura.json</code>.
+  </p>
+  <p>
+    <a href="./modelo/varreduras.html" data-i18n-href="./modelo/varreduras.html"
+      ><span data-i18n="sweeps.link"></span
+    ></a>
+  </p>
+</section>
+
+</main>
+
+    <footer><span data-i18n="common.license">Viveiro · Código MIT · Documentação original CC BY 4.0</span></footer>
+  </body>
+</html>

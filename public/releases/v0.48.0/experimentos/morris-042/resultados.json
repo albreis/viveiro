@@ -1,0 +1,3006 @@
+{
+  "schema": "viveiro-morris-results-v1",
+  "modelVersion": "0.42.0",
+  "designId": "953d4559c329bf56385f9230dc69712560baf1035a187be368d6cde10de44d23",
+  "calibrated": false,
+  "primaryMetric": "population",
+  "rankings": {
+    "population": [
+      {
+        "parameter": "temperatureC",
+        "n": 4,
+        "mu": 26.8125,
+        "muStar": 29.0625,
+        "sigma": 34.06450682161713
+      },
+      {
+        "parameter": "initialFood",
+        "n": 4,
+        "mu": 9.1875,
+        "muStar": 9.1875,
+        "sigma": 10.771054962258804
+      },
+      {
+        "parameter": "light",
+        "n": 4,
+        "mu": 1.6875,
+        "muStar": 2.0625,
+        "sigma": 2.478028450199876
+      },
+      {
+        "parameter": "windZ",
+        "n": 4,
+        "mu": 0.75,
+        "muStar": 0.75,
+        "sigma": 1.5
+      },
+      {
+        "parameter": "humidity",
+        "n": 4,
+        "mu": -0.37499999999999994,
+        "muStar": 0.37499999999999994,
+        "sigma": 0.7499999999999999
+      },
+      {
+        "parameter": "initialRainPulse",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "photoperiodHours",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "randomness",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "reposeAngle",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "surfaceDiffusionScale",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "surfaceEvaporationScale",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "windX",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      }
+    ],
+    "brood": [
+      {
+        "parameter": "initialFood",
+        "n": 4,
+        "mu": 10.125,
+        "muStar": 10.125,
+        "sigma": 7.487489565935968
+      },
+      {
+        "parameter": "temperatureC",
+        "n": 4,
+        "mu": -2.625,
+        "muStar": 7.125,
+        "sigma": 9.75
+      },
+      {
+        "parameter": "light",
+        "n": 4,
+        "mu": -1.875,
+        "muStar": 2.625,
+        "sigma": 3.944933459514875
+      },
+      {
+        "parameter": "windZ",
+        "n": 4,
+        "mu": -0.75,
+        "muStar": 0.75,
+        "sigma": 1.5
+      },
+      {
+        "parameter": "humidity",
+        "n": 4,
+        "mu": 0.5625,
+        "muStar": 0.5625,
+        "sigma": 0.7180703308172536
+      },
+      {
+        "parameter": "initialRainPulse",
+        "n": 4,
+        "mu": -0.375,
+        "muStar": 0.375,
+        "sigma": 0.4330127018922193
+      },
+      {
+        "parameter": "surfaceDiffusionScale",
+        "n": 4,
+        "mu": 0.375,
+        "muStar": 0.375,
+        "sigma": 0.75
+      },
+      {
+        "parameter": "randomness",
+        "n": 4,
+        "mu": 0.1875,
+        "muStar": 0.1875,
+        "sigma": 0.375
+      },
+      {
+        "parameter": "photoperiodHours",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "reposeAngle",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "surfaceEvaporationScale",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "windX",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      }
+    ],
+    "food": [
+      {
+        "parameter": "temperatureC",
+        "n": 4,
+        "mu": -7.69322880832882,
+        "muStar": 8.25512880832881,
+        "sigma": 11.706167703299545
+      },
+      {
+        "parameter": "initialFood",
+        "n": 4,
+        "mu": 7.040730439874043,
+        "muStar": 7.040730439874043,
+        "sigma": 5.617977083017503
+      },
+      {
+        "parameter": "initialRainPulse",
+        "n": 4,
+        "mu": 0.2768022892077845,
+        "muStar": 0.2768022892077845,
+        "sigma": 0.4273168875346918
+      },
+      {
+        "parameter": "light",
+        "n": 4,
+        "mu": -0.09699556912081808,
+        "muStar": 0.26525443087918393,
+        "sigma": 0.4278413721702986
+      },
+      {
+        "parameter": "humidity",
+        "n": 4,
+        "mu": -0.2574554398737241,
+        "muStar": 0.2574554398737241,
+        "sigma": 0.5053564733840256
+      },
+      {
+        "parameter": "randomness",
+        "n": 4,
+        "mu": 0.1284750000000001,
+        "muStar": 0.1284750000000001,
+        "sigma": 0.14841934678471008
+      },
+      {
+        "parameter": "surfaceDiffusionScale",
+        "n": 4,
+        "mu": -0.07875000000000036,
+        "muStar": 0.07875000000000036,
+        "sigma": 0.15750000000000072
+      },
+      {
+        "parameter": "windZ",
+        "n": 4,
+        "mu": 0.04656385395335259,
+        "muStar": 0.04656385395335259,
+        "sigma": 0.09312770790670519
+      },
+      {
+        "parameter": "photoperiodHours",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "reposeAngle",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "surfaceEvaporationScale",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "windX",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      }
+    ],
+    "oxygen": [
+      {
+        "parameter": "temperatureC",
+        "n": 4,
+        "mu": -0.13686199224251494,
+        "muStar": 0.14240596941091388,
+        "sigma": 0.1647160328226367
+      },
+      {
+        "parameter": "initialFood",
+        "n": 4,
+        "mu": -0.01639211254403783,
+        "muStar": 0.01639211254403783,
+        "sigma": 0.01857260442203033
+      },
+      {
+        "parameter": "light",
+        "n": 4,
+        "mu": 0.001129540097382087,
+        "muStar": 0.0037158127331751167,
+        "sigma": 0.005394754841637703
+      },
+      {
+        "parameter": "initialRainPulse",
+        "n": 4,
+        "mu": -0.002045396677214484,
+        "muStar": 0.0021313342773146005,
+        "sigma": 0.00313097919854233
+      },
+      {
+        "parameter": "windZ",
+        "n": 4,
+        "mu": -0.0012174497842334375,
+        "muStar": 0.0012229527067457724,
+        "sigma": 0.002442240128419236
+      },
+      {
+        "parameter": "humidity",
+        "n": 4,
+        "mu": 0.0000788931002766447,
+        "muStar": 0.0006397127173425332,
+        "sigma": 0.001000137246754047
+      },
+      {
+        "parameter": "randomness",
+        "n": 4,
+        "mu": -0.00003654070066128057,
+        "muStar": 0.0005103643445711903,
+        "sigma": 0.0008344888664917215
+      },
+      {
+        "parameter": "surfaceDiffusionScale",
+        "n": 4,
+        "mu": -0.0001673741224470504,
+        "muStar": 0.0001673741224470504,
+        "sigma": 0.0003347482448941008
+      },
+      {
+        "parameter": "windX",
+        "n": 4,
+        "mu": -0.00001345863150659099,
+        "muStar": 0.00001345863150659099,
+        "sigma": 0.000019520636036224068
+      },
+      {
+        "parameter": "reposeAngle",
+        "n": 4,
+        "mu": 3.19664295034272e-11,
+        "muStar": 3.19664295034272e-11,
+        "sigma": 6.39328590068544e-11
+      },
+      {
+        "parameter": "photoperiodHours",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "surfaceEvaporationScale",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      }
+    ],
+    "carbonDioxide": [
+      {
+        "parameter": "temperatureC",
+        "n": 4,
+        "mu": 0.1094895937941406,
+        "muStar": 0.11392477552868367,
+        "sigma": 0.13177282625805672
+      },
+      {
+        "parameter": "initialFood",
+        "n": 4,
+        "mu": 0.013113690035215841,
+        "muStar": 0.013113690035215841,
+        "sigma": 0.014858083537604923
+      },
+      {
+        "parameter": "light",
+        "n": 4,
+        "mu": -0.0009036320778815405,
+        "muStar": 0.002972650186571421,
+        "sigma": 0.004315803873302744
+      },
+      {
+        "parameter": "initialRainPulse",
+        "n": 4,
+        "mu": 0.001636317341769748,
+        "muStar": 0.0017050674218951362,
+        "sigma": 0.002504783358866323
+      },
+      {
+        "parameter": "windZ",
+        "n": 4,
+        "mu": 0.0009739598274254519,
+        "muStar": 0.0009783621653937083,
+        "sigma": 0.0019537921027572513
+      },
+      {
+        "parameter": "humidity",
+        "n": 4,
+        "mu": -0.00006311448022128764,
+        "muStar": 0.0005117701738274524,
+        "sigma": 0.0008001097973502645
+      },
+      {
+        "parameter": "randomness",
+        "n": 4,
+        "mu": 0.0000292325605273612,
+        "muStar": 0.000408291475663191,
+        "sigma": 0.0006675910932034549
+      },
+      {
+        "parameter": "surfaceDiffusionScale",
+        "n": 4,
+        "mu": 0.0001338992979553963,
+        "muStar": 0.0001338992979553963,
+        "sigma": 0.0002677985959107926
+      },
+      {
+        "parameter": "windX",
+        "n": 4,
+        "mu": 0.000010766905165903763,
+        "muStar": 0.000010766905165903763,
+        "sigma": 0.00001561650883222041
+      },
+      {
+        "parameter": "reposeAngle",
+        "n": 4,
+        "mu": -2.5573803491552024e-11,
+        "muStar": 2.5573803491552024e-11,
+        "sigma": 5.114760698310404e-11
+      },
+      {
+        "parameter": "photoperiodHours",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      },
+      {
+        "parameter": "surfaceEvaporationScale",
+        "n": 4,
+        "mu": 0,
+        "muStar": 0,
+        "sigma": 0
+      }
+    ]
+  },
+  "effects": {
+    "population": [
+      {
+        "trajectory": 1,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "light",
+        "value": 2.9999999999999996
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialFood",
+        "value": 6.75
+      },
+      {
+        "trajectory": 1,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "temperatureC",
+        "value": -2.9999999999999996
+      },
+      {
+        "trajectory": 2,
+        "parameter": "humidity",
+        "value": -1.4999999999999998
+      },
+      {
+        "trajectory": 2,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "temperatureC",
+        "value": 63
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "light",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialFood",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "light",
+        "value": 4.5
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialFood",
+        "value": 24.75
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "temperatureC",
+        "value": -1.4999999999999998
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windZ",
+        "value": 3
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialFood",
+        "value": 5.25
+      },
+      {
+        "trajectory": 4,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "temperatureC",
+        "value": 48.75
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "light",
+        "value": -0.75
+      }
+    ],
+    "brood": [
+      {
+        "trajectory": 1,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialRainPulse",
+        "value": -0.7499999999999999
+      },
+      {
+        "trajectory": 1,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "light",
+        "value": -1.4999999999999998
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialFood",
+        "value": 15
+      },
+      {
+        "trajectory": 1,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "temperatureC",
+        "value": 2.2499999999999996
+      },
+      {
+        "trajectory": 2,
+        "parameter": "humidity",
+        "value": 0.7499999999999999
+      },
+      {
+        "trajectory": 2,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "temperatureC",
+        "value": 6.75
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "light",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialFood",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "randomness",
+        "value": 0.75
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceDiffusionScale",
+        "value": 1.5
+      },
+      {
+        "trajectory": 3,
+        "parameter": "light",
+        "value": -7.5
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialFood",
+        "value": 16.5
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "temperatureC",
+        "value": -3.7499999999999996
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windZ",
+        "value": -3
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialFood",
+        "value": 9
+      },
+      {
+        "trajectory": 4,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "humidity",
+        "value": 1.5
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialRainPulse",
+        "value": -0.75
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "temperatureC",
+        "value": -15.75
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "light",
+        "value": 1.5
+      }
+    ],
+    "food": [
+      {
+        "trajectory": 1,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialRainPulse",
+        "value": 0.16019999999999898
+      },
+      {
+        "trajectory": 1,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "light",
+        "value": -0.724500000000004
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialFood",
+        "value": 6.001100000000174
+      },
+      {
+        "trajectory": 1,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "temperatureC",
+        "value": 0.16379999999999625
+      },
+      {
+        "trajectory": 2,
+        "parameter": "humidity",
+        "value": -0.014400000000001077
+      },
+      {
+        "trajectory": 2,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "temperatureC",
+        "value": -24.260923800000747
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "light",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialFood",
+        "value": 14.000000000000803
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialRainPulse",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "randomness",
+        "value": 0.2514000000000006
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceDiffusionScale",
+        "value": -0.31500000000000145
+      },
+      {
+        "trajectory": 3,
+        "parameter": "light",
+        "value": 0.11699999999998295
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialFood",
+        "value": 0.3626000000001739
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialRainPulse",
+        "value": 0.03749999999999986
+      },
+      {
+        "trajectory": 3,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "humidity",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "temperatureC",
+        "value": 0.9599999999999821
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windZ",
+        "value": 0.18625541581341035
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windZ",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialFood",
+        "value": 7.79922175949502
+      },
+      {
+        "trajectory": 4,
+        "parameter": "randomness",
+        "value": 0.26249999999999973
+      },
+      {
+        "trajectory": 4,
+        "parameter": "humidity",
+        "value": -1.0154217594948953
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialRainPulse",
+        "value": 0.9095091568311391
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windX",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "temperatureC",
+        "value": -7.635791433314513
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "light",
+        "value": 0.21951772351674867
+      }
+    ],
+    "oxygen": [
+      {
+        "trajectory": 1,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windX",
+        "value": -0.0000027094249617221067
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialRainPulse",
+        "value": 0.0001718752001895751
+      },
+      {
+        "trajectory": 1,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "light",
+        "value": -0.005172545263421923
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialFood",
+        "value": -0.017581928454665885
+      },
+      {
+        "trajectory": 1,
+        "parameter": "humidity",
+        "value": -5.329070518200751e-15
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windZ",
+        "value": 0.000009354048042808927
+      },
+      {
+        "trajectory": 1,
+        "parameter": "temperatureC",
+        "value": 0.011025598759957232
+      },
+      {
+        "trajectory": 2,
+        "parameter": "humidity",
+        "value": -0.0011216392341264478
+      },
+      {
+        "trajectory": 2,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "temperatureC",
+        "value": -0.2688713862439691
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windZ",
+        "value": 4.329848639628153e-7
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windX",
+        "value": -6.613899721230609e-7
+      },
+      {
+        "trajectory": 2,
+        "parameter": "light",
+        "value": -8.16413603388355e-12
+      },
+      {
+        "trajectory": 2,
+        "parameter": "reposeAngle",
+        "value": 1.278657180137088e-10
+      },
+      {
+        "trajectory": 2,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialFood",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialRainPulse",
+        "value": 1.0658141036401503e-14
+      },
+      {
+        "trajectory": 3,
+        "parameter": "randomness",
+        "value": -0.0010938100904649417
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceDiffusionScale",
+        "value": -0.0006694964897882016
+      },
+      {
+        "trajectory": 3,
+        "parameter": "light",
+        "value": 0.0017872921605270875
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windX",
+        "value": -0.00004235834457588794
+      },
+      {
+        "trajectory": 3,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialFood",
+        "value": -0.042009267327618005
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialRainPulse",
+        "value": -0.001807767206782884
+      },
+      {
+        "trajectory": 3,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "humidity",
+        "value": 0.00011244708908542121
+      },
+      {
+        "trajectory": 3,
+        "parameter": "temperatureC",
+        "value": 0.00006235557684064473
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windZ",
+        "value": -0.00488080498195842
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windZ",
+        "value": 0.0000012188121178979825
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialFood",
+        "value": -0.005977254393867426
+      },
+      {
+        "trajectory": 4,
+        "parameter": "randomness",
+        "value": 0.0009476472878198194
+      },
+      {
+        "trajectory": 4,
+        "parameter": "humidity",
+        "value": 0.0013247645461529345
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialRainPulse",
+        "value": -0.006545694702275284
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windX",
+        "value": -0.000008105366516630852
+      },
+      {
+        "trajectory": 4,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "temperatureC",
+        "value": -0.2896645370628885
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "light",
+        "value": 0.00790341350058732
+      }
+    ],
+    "carbonDioxide": [
+      {
+        "trajectory": 1,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windX",
+        "value": 0.0000021675398602649665
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialRainPulse",
+        "value": -0.0001375001602450104
+      },
+      {
+        "trajectory": 1,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 1,
+        "parameter": "light",
+        "value": 0.004138036210825326
+      },
+      {
+        "trajectory": 1,
+        "parameter": "initialFood",
+        "value": 0.014065542763736463
+      },
+      {
+        "trajectory": 1,
+        "parameter": "humidity",
+        "value": 1.2656542480726785e-14
+      },
+      {
+        "trajectory": 1,
+        "parameter": "windZ",
+        "value": -0.000007483238352437582
+      },
+      {
+        "trajectory": 1,
+        "parameter": "temperatureC",
+        "value": -0.008820479007827708
+      },
+      {
+        "trajectory": 2,
+        "parameter": "humidity",
+        "value": 0.0008973113871996729
+      },
+      {
+        "trajectory": 2,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "temperatureC",
+        "value": 0.21509710899522805
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windZ",
+        "value": -3.4638785472232425e-7
+      },
+      {
+        "trajectory": 2,
+        "parameter": "windX",
+        "value": 5.291119731208604e-7
+      },
+      {
+        "trajectory": 2,
+        "parameter": "light",
+        "value": 6.554434078820392e-12
+      },
+      {
+        "trajectory": 2,
+        "parameter": "reposeAngle",
+        "value": -1.022952139662081e-10
+      },
+      {
+        "trajectory": 2,
+        "parameter": "randomness",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialFood",
+        "value": 0
+      },
+      {
+        "trajectory": 2,
+        "parameter": "initialRainPulse",
+        "value": -5.766220834146907e-15
+      },
+      {
+        "trajectory": 3,
+        "parameter": "randomness",
+        "value": 0.0008750480723811044
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0.0005355971918215852
+      },
+      {
+        "trajectory": 3,
+        "parameter": "light",
+        "value": -0.001429833728551974
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windX",
+        "value": 0.00003388667562345682
+      },
+      {
+        "trajectory": 3,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialFood",
+        "value": 0.03360741386204662
+      },
+      {
+        "trajectory": 3,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "initialRainPulse",
+        "value": 0.0014462137654835114
+      },
+      {
+        "trajectory": 3,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 3,
+        "parameter": "humidity",
+        "value": -0.00008995767120370533
+      },
+      {
+        "trajectory": 3,
+        "parameter": "temperatureC",
+        "value": -0.000049884461258462014
+      },
+      {
+        "trajectory": 3,
+        "parameter": "windZ",
+        "value": 0.0039046439856383203
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windZ",
+        "value": -9.750497293528613e-7
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialFood",
+        "value": 0.004781803515080285
+      },
+      {
+        "trajectory": 4,
+        "parameter": "randomness",
+        "value": -0.0007581178302716596
+      },
+      {
+        "trajectory": 4,
+        "parameter": "humidity",
+        "value": -0.0010598116368937746
+      },
+      {
+        "trajectory": 4,
+        "parameter": "initialRainPulse",
+        "value": 0.005236555761846257
+      },
+      {
+        "trajectory": 4,
+        "parameter": "windX",
+        "value": 0.000006484293206772407
+      },
+      {
+        "trajectory": 4,
+        "parameter": "photoperiodHours",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "reposeAngle",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "temperatureC",
+        "value": 0.2317316296504205
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceEvaporationScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "surfaceDiffusionScale",
+        "value": 0
+      },
+      {
+        "trajectory": 4,
+        "parameter": "light",
+        "value": -0.006322730800353948
+      }
+    ]
+  },
+  "responses": [
+    {
+      "id": "t001-p000-r001",
+      "trajectory": 1,
+      "point": 0,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.76411255201141,
+        "carbonDioxide": 0.15070995839107904
+      }
+    },
+    {
+      "id": "t001-p000-r002",
+      "trajectory": 1,
+      "point": 0,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.078933333333449,
+        "oxygen": 20.852427174890508,
+        "carbonDioxide": 0.08005826008755074
+      }
+    },
+    {
+      "id": "t001-p001-r001",
+      "trajectory": 1,
+      "point": 1,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.76411255201141,
+        "carbonDioxide": 0.15070995839107904
+      }
+    },
+    {
+      "id": "t001-p001-r002",
+      "trajectory": 1,
+      "point": 1,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.078933333333449,
+        "oxygen": 20.852427174890508,
+        "carbonDioxide": 0.08005826008755074
+      }
+    },
+    {
+      "id": "t001-p002-r001",
+      "trajectory": 1,
+      "point": 2,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.76411255201141,
+        "carbonDioxide": 0.15070995839107904
+      }
+    },
+    {
+      "id": "t001-p002-r002",
+      "trajectory": 1,
+      "point": 2,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.078933333333449,
+        "oxygen": 20.852427174890508,
+        "carbonDioxide": 0.08005826008755074
+      }
+    },
+    {
+      "id": "t001-p003-r001",
+      "trajectory": 1,
+      "point": 3,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.76411255201141,
+        "carbonDioxide": 0.15070995839107904
+      }
+    },
+    {
+      "id": "t001-p003-r002",
+      "trajectory": 1,
+      "point": 3,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.078933333333449,
+        "oxygen": 20.852427174890508,
+        "carbonDioxide": 0.08005826008755074
+      }
+    },
+    {
+      "id": "t001-p004-r001",
+      "trajectory": 1,
+      "point": 4,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.76411255201141,
+        "carbonDioxide": 0.15070995839107904
+      }
+    },
+    {
+      "id": "t001-p004-r002",
+      "trajectory": 1,
+      "point": 4,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.078933333333449,
+        "oxygen": 20.852427174890508,
+        "carbonDioxide": 0.08005826008755074
+      }
+    },
+    {
+      "id": "t001-p005-r001",
+      "trajectory": 1,
+      "point": 5,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.76411362904963,
+        "carbonDioxide": 0.150709096760321
+      }
+    },
+    {
+      "id": "t001-p005-r002",
+      "trajectory": 1,
+      "point": 5,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.078933333333449,
+        "oxygen": 20.85242248528568,
+        "carbonDioxide": 0.0800620117714558
+      }
+    },
+    {
+      "id": "t001-p006-r001",
+      "trajectory": 1,
+      "point": 6,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.764113629049625,
+        "carbonDioxide": 0.1507090967603241
+      }
+    },
+    {
+      "id": "t001-p006-r002",
+      "trajectory": 1,
+      "point": 6,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 19,
+        "food": 6.86533333333345,
+        "oxygen": 20.852193318352093,
+        "carbonDioxide": 0.08024534531844603
+      }
+    },
+    {
+      "id": "t001-p007-r001",
+      "trajectory": 1,
+      "point": 7,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 12,
+        "food": 0.9193333333334393,
+        "oxygen": 20.764113629049625,
+        "carbonDioxide": 0.1507090967603241
+      }
+    },
+    {
+      "id": "t001-p007-r002",
+      "trajectory": 1,
+      "point": 7,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 19,
+        "food": 6.86533333333345,
+        "oxygen": 20.852193318352093,
+        "carbonDioxide": 0.08024534531844603
+      }
+    },
+    {
+      "id": "t001-p008-r001",
+      "trajectory": 1,
+      "point": 8,
+      "replicate": 1,
+      "metrics": {
+        "population": 35,
+        "brood": 15,
+        "food": 1.5325333333334488,
+        "oxygen": 20.76898980416738,
+        "carbonDioxide": 0.14680815666610642
+      }
+    },
+    {
+      "id": "t001-p008-r002",
+      "trajectory": 1,
+      "point": 8,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 18,
+        "food": 7.218133333333446,
+        "oxygen": 20.85421387025223,
+        "carbonDioxide": 0.07862890379822997
+      }
+    },
+    {
+      "id": "t001-p009-r001",
+      "trajectory": 1,
+      "point": 9,
+      "replicate": 1,
+      "metrics": {
+        "population": 26,
+        "brood": 0,
+        "food": 0.7491999999999963,
+        "oxygen": 20.791809820565767,
+        "carbonDioxide": 0.1285521435473983
+      }
+    },
+    {
+      "id": "t001-p009-r002",
+      "trajectory": 1,
+      "point": 9,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 13,
+        "food": 0,
+        "oxygen": 20.854836425126734,
+        "carbonDioxide": 0.0781308598986228
+      }
+    },
+    {
+      "id": "t001-p010-r001",
+      "trajectory": 1,
+      "point": 10,
+      "replicate": 1,
+      "metrics": {
+        "population": 26,
+        "brood": 0,
+        "food": 0.7491999999999963,
+        "oxygen": 20.791809820565756,
+        "carbonDioxide": 0.12855214354739997
+      }
+    },
+    {
+      "id": "t001-p010-r002",
+      "trajectory": 1,
+      "point": 10,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 13,
+        "food": 0,
+        "oxygen": 20.854836425126752,
+        "carbonDioxide": 0.07813085989860426
+      }
+    },
+    {
+      "id": "t001-p011-r001",
+      "trajectory": 1,
+      "point": 11,
+      "replicate": 1,
+      "metrics": {
+        "population": 26,
+        "brood": 0,
+        "food": 0.7491999999999963,
+        "oxygen": 20.791818778917673,
+        "carbonDioxide": 0.12854497686600166
+      }
+    },
+    {
+      "id": "t001-p011-r002",
+      "trajectory": 1,
+      "point": 11,
+      "replicate": 2,
+      "metrics": {
+        "population": 11,
+        "brood": 13,
+        "food": 0,
+        "oxygen": 20.854839938838897,
+        "carbonDioxide": 0.07812804892886598
+      }
+    },
+    {
+      "id": "t001-p012-r001",
+      "trajectory": 1,
+      "point": 12,
+      "replicate": 1,
+      "metrics": {
+        "population": 26,
+        "brood": 0,
+        "food": 0.5308000000000013,
+        "oxygen": 20.78684800104078,
+        "carbonDioxide": 0.13252159916733
+      }
+    },
+    {
+      "id": "t001-p012-r002",
+      "trajectory": 1,
+      "point": 12,
+      "replicate": 2,
+      "metrics": {
+        "population": 15,
+        "brood": 10,
+        "food": 0,
+        "oxygen": 20.84510991836917,
+        "carbonDioxide": 0.08591206530464124
+      }
+    },
+    {
+      "id": "t002-p000-r001",
+      "trajectory": 2,
+      "point": 0,
+      "replicate": 1,
+      "metrics": {
+        "population": 52,
+        "brood": 3,
+        "food": 0.7145333333332837,
+        "oxygen": 20.673682386931535,
+        "carbonDioxide": 0.22305409045480865
+      }
+    },
+    {
+      "id": "t002-p000-r002",
+      "trajectory": 2,
+      "point": 0,
+      "replicate": 2,
+      "metrics": {
+        "population": 32,
+        "brood": 16,
+        "food": 2.2509333333334784,
+        "oxygen": 20.753982856942784,
+        "carbonDioxide": 0.15881371444563433
+      }
+    },
+    {
+      "id": "t002-p001-r001",
+      "trajectory": 2,
+      "point": 1,
+      "replicate": 1,
+      "metrics": {
+        "population": 54,
+        "brood": 2,
+        "food": 0.7325333333332849,
+        "oxygen": 20.67517790591033,
+        "carbonDioxide": 0.22185767527179667
+      }
+    },
+    {
+      "id": "t002-p001-r002",
+      "trajectory": 2,
+      "point": 1,
+      "replicate": 2,
+      "metrics": {
+        "population": 32,
+        "brood": 16,
+        "food": 2.2521333333334788,
+        "oxygen": 20.75398285694282,
+        "carbonDioxide": 0.1588137144457134
+      }
+    },
+    {
+      "id": "t002-p002-r001",
+      "trajectory": 2,
+      "point": 2,
+      "replicate": 1,
+      "metrics": {
+        "population": 54,
+        "brood": 2,
+        "food": 0.7325333333332849,
+        "oxygen": 20.67517790591033,
+        "carbonDioxide": 0.22185767527179667
+      }
+    },
+    {
+      "id": "t002-p002-r002",
+      "trajectory": 2,
+      "point": 2,
+      "replicate": 2,
+      "metrics": {
+        "population": 32,
+        "brood": 16,
+        "food": 2.2521333333334788,
+        "oxygen": 20.75398285694282,
+        "carbonDioxide": 0.1588137144457134
+      }
+    },
+    {
+      "id": "t002-p003-r001",
+      "trajectory": 2,
+      "point": 3,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893969723757383,
+        "carbonDioxide": 0.046824220994062166
+      }
+    },
+    {
+      "id": "t002-p003-r002",
+      "trajectory": 2,
+      "point": 3,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893686220754393,
+        "carbonDioxide": 0.047051023396477196
+      }
+    },
+    {
+      "id": "t002-p004-r001",
+      "trajectory": 2,
+      "point": 4,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893969723757383,
+        "carbonDioxide": 0.046824220994062166
+      }
+    },
+    {
+      "id": "t002-p004-r002",
+      "trajectory": 2,
+      "point": 4,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893686220754393,
+        "carbonDioxide": 0.047051023396477196
+      }
+    },
+    {
+      "id": "t002-p005-r001",
+      "trajectory": 2,
+      "point": 5,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893969723757383,
+        "carbonDioxide": 0.046824220994062166
+      }
+    },
+    {
+      "id": "t002-p005-r002",
+      "trajectory": 2,
+      "point": 5,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893686220754393,
+        "carbonDioxide": 0.047051023396477196
+      }
+    },
+    {
+      "id": "t002-p006-r001",
+      "trajectory": 2,
+      "point": 6,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893970142106625,
+        "carbonDioxide": 0.04682388631471449
+      }
+    },
+    {
+      "id": "t002-p006-r002",
+      "trajectory": 2,
+      "point": 6,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893686379718304,
+        "carbonDioxide": 0.04705089622535191
+      }
+    },
+    {
+      "id": "t002-p007-r001",
+      "trajectory": 2,
+      "point": 7,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.89396971223044,
+        "carbonDioxide": 0.04682423021565121
+      }
+    },
+    {
+      "id": "t002-p007-r002",
+      "trajectory": 2,
+      "point": 7,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893687691447784,
+        "carbonDioxide": 0.047049846841784364
+      }
+    },
+    {
+      "id": "t002-p008-r001",
+      "trajectory": 2,
+      "point": 8,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893969712230376,
+        "carbonDioxide": 0.04682423021565715
+      }
+    },
+    {
+      "id": "t002-p008-r002",
+      "trajectory": 2,
+      "point": 8,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.89368769145873,
+        "carbonDioxide": 0.04704984683303917
+      }
+    },
+    {
+      "id": "t002-p009-r001",
+      "trajectory": 2,
+      "point": 9,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893969712230376,
+        "carbonDioxide": 0.04682423021565715
+      }
+    },
+    {
+      "id": "t002-p009-r002",
+      "trajectory": 2,
+      "point": 9,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893687691629218,
+        "carbonDioxide": 0.04704984669664555
+      }
+    },
+    {
+      "id": "t002-p010-r001",
+      "trajectory": 2,
+      "point": 10,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 17.180833333334185,
+        "oxygen": 20.893969712230376,
+        "carbonDioxide": 0.04682423021565715
+      }
+    },
+    {
+      "id": "t002-p010-r002",
+      "trajectory": 2,
+      "point": 10,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 18.15173173333357,
+        "oxygen": 20.893687691629218,
+        "carbonDioxide": 0.04704984669664555
+      }
+    },
+    {
+      "id": "t002-p011-r001",
+      "trajectory": 2,
+      "point": 11,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 7.847499999999773,
+        "oxygen": 20.893969712230376,
+        "carbonDioxide": 0.04682423021565715
+      }
+    },
+    {
+      "id": "t002-p011-r002",
+      "trajectory": 2,
+      "point": 11,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 8.818398400000245,
+        "oxygen": 20.893687691629218,
+        "carbonDioxide": 0.04704984669664555
+      }
+    },
+    {
+      "id": "t002-p012-r001",
+      "trajectory": 2,
+      "point": 12,
+      "replicate": 1,
+      "metrics": {
+        "population": 1,
+        "brood": 5,
+        "food": 7.847499999999773,
+        "oxygen": 20.89396971223039,
+        "carbonDioxide": 0.046824230215657
+      }
+    },
+    {
+      "id": "t002-p012-r002",
+      "trajectory": 2,
+      "point": 12,
+      "replicate": 2,
+      "metrics": {
+        "population": 1,
+        "brood": 4,
+        "food": 8.818398400000245,
+        "oxygen": 20.893687691629193,
+        "carbonDioxide": 0.0470498466966534
+      }
+    },
+    {
+      "id": "t003-p000-r001",
+      "trajectory": 3,
+      "point": 0,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 17,
+        "food": 0.6261333333334724,
+        "oxygen": 20.776577723317356,
+        "carbonDioxide": 0.14073782134604979
+      }
+    },
+    {
+      "id": "t003-p000-r002",
+      "trajectory": 3,
+      "point": 0,
+      "replicate": 2,
+      "metrics": {
+        "population": 38,
+        "brood": 14,
+        "food": 1.6865333333334278,
+        "oxygen": 20.71693522090978,
+        "carbonDioxide": 0.18845182327235388
+      }
+    },
+    {
+      "id": "t003-p001-r001",
+      "trajectory": 3,
+      "point": 1,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 16,
+        "food": 0.8361333333334724,
+        "oxygen": 20.776958615415996,
+        "carbonDioxide": 0.14043310766714
+      }
+    },
+    {
+      "id": "t003-p001-r002",
+      "trajectory": 3,
+      "point": 1,
+      "replicate": 2,
+      "metrics": {
+        "population": 38,
+        "brood": 14,
+        "food": 1.1413333333334272,
+        "oxygen": 20.718012742265092,
+        "carbonDioxide": 0.18758980618808882
+      }
+    },
+    {
+      "id": "t003-p002-r001",
+      "trajectory": 3,
+      "point": 2,
+      "replicate": 1,
+      "metrics": {
+        "population": 39,
+        "brood": 16,
+        "food": 0.8361333333334724,
+        "oxygen": 20.776958615415996,
+        "carbonDioxide": 0.14043310766714
+      }
+    },
+    {
+      "id": "t003-p002-r002",
+      "trajectory": 3,
+      "point": 2,
+      "replicate": 2,
+      "metrics": {
+        "population": 38,
+        "brood": 16,
+        "food": 0.7213333333334253,
+        "oxygen": 20.717120080278708,
+        "carbonDioxide": 0.18830393577718427
+      }
+    },
+    {
+      "id": "t003-p003-r001",
+      "trajectory": 3,
+      "point": 3,
+      "replicate": 1,
+      "metrics": {
+        "population": 41,
+        "brood": 13,
+        "food": 0.5681333333334033,
+        "oxygen": 20.782632919548607,
+        "carbonDioxide": 0.1358936643610997
+      }
+    },
+    {
+      "id": "t003-p003-r002",
+      "trajectory": 3,
+      "point": 3,
+      "replicate": 2,
+      "metrics": {
+        "population": 42,
+        "brood": 9,
+        "food": 1.1453333333334716,
+        "oxygen": 20.71382883236013,
+        "carbonDioxide": 0.19093693411182197
+      }
+    },
+    {
+      "id": "t003-p004-r001",
+      "trajectory": 3,
+      "point": 4,
+      "replicate": 1,
+      "metrics": {
+        "population": 41,
+        "brood": 13,
+        "food": 0.5681333333334033,
+        "oxygen": 20.78268682939253,
+        "carbonDioxide": 0.13585053648593914
+      }
+    },
+    {
+      "id": "t003-p004-r002",
+      "trajectory": 3,
+      "point": 4,
+      "replicate": 2,
+      "metrics": {
+        "population": 42,
+        "brood": 9,
+        "food": 1.1453333333334716,
+        "oxygen": 20.71383140030898,
+        "carbonDioxide": 0.19093487975281792
+      }
+    },
+    {
+      "id": "t003-p005-r001",
+      "trajectory": 3,
+      "point": 5,
+      "replicate": 1,
+      "metrics": {
+        "population": 41,
+        "brood": 13,
+        "food": 0.5681333333334033,
+        "oxygen": 20.78268682939253,
+        "carbonDioxide": 0.13585053648593914
+      }
+    },
+    {
+      "id": "t003-p005-r002",
+      "trajectory": 3,
+      "point": 5,
+      "replicate": 2,
+      "metrics": {
+        "population": 42,
+        "brood": 9,
+        "food": 1.1453333333334716,
+        "oxygen": 20.71383140030898,
+        "carbonDioxide": 0.19093487975281792
+      }
+    },
+    {
+      "id": "t003-p006-r001",
+      "trajectory": 3,
+      "point": 6,
+      "replicate": 1,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 1.1799999999999764,
+        "oxygen": 20.801640328125163,
+        "carbonDioxide": 0.12068773749988704
+      }
+    },
+    {
+      "id": "t003-p006-r002",
+      "trajectory": 3,
+      "point": 6,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 0.050000000000000044,
+        "oxygen": 20.750890258013165,
+        "carbonDioxide": 0.16128779358947457
+      }
+    },
+    {
+      "id": "t003-p007-r001",
+      "trajectory": 3,
+      "point": 7,
+      "replicate": 1,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 1.1799999999999764,
+        "oxygen": 20.801640328125163,
+        "carbonDioxide": 0.12068773749988704
+      }
+    },
+    {
+      "id": "t003-p007-r002",
+      "trajectory": 3,
+      "point": 7,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 0.050000000000000044,
+        "oxygen": 20.750890258013165,
+        "carbonDioxide": 0.16128779358947457
+      }
+    },
+    {
+      "id": "t003-p008-r001",
+      "trajectory": 3,
+      "point": 8,
+      "replicate": 1,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 1.1799999999999764,
+        "oxygen": 20.801640328125043,
+        "carbonDioxide": 0.12068773750004674
+      }
+    },
+    {
+      "id": "t003-p008-r002",
+      "trajectory": 3,
+      "point": 8,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 0.09999999999999998,
+        "oxygen": 20.74847990173758,
+        "carbonDioxide": 0.1632160786099595
+      }
+    },
+    {
+      "id": "t003-p009-r001",
+      "trajectory": 3,
+      "point": 9,
+      "replicate": 1,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 1.1799999999999764,
+        "oxygen": 20.801640328125043,
+        "carbonDioxide": 0.12068773750004674
+      }
+    },
+    {
+      "id": "t003-p009-r002",
+      "trajectory": 3,
+      "point": 9,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 0.09999999999999998,
+        "oxygen": 20.74847990173758,
+        "carbonDioxide": 0.1632160786099595
+      }
+    },
+    {
+      "id": "t003-p010-r001",
+      "trajectory": 3,
+      "point": 10,
+      "replicate": 1,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 1.1799999999999764,
+        "oxygen": 20.801640328123142,
+        "carbonDioxide": 0.12068773750158426
+      }
+    },
+    {
+      "id": "t003-p010-r002",
+      "trajectory": 3,
+      "point": 10,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 0,
+        "food": 0.09999999999999998,
+        "oxygen": 20.74862983119159,
+        "carbonDioxide": 0.16309613504681703
+      }
+    },
+    {
+      "id": "t003-p011-r001",
+      "trajectory": 3,
+      "point": 11,
+      "replicate": 1,
+      "metrics": {
+        "population": 28,
+        "brood": 1,
+        "food": 0,
+        "oxygen": 20.796646523068784,
+        "carbonDioxide": 0.12468278154487021
+      }
+    },
+    {
+      "id": "t003-p011-r002",
+      "trajectory": 3,
+      "point": 11,
+      "replicate": 2,
+      "metrics": {
+        "population": 24,
+        "brood": 4,
+        "food": 0,
+        "oxygen": 20.753540495476834,
+        "carbonDioxide": 0.1591676036185424
+      }
+    },
+    {
+      "id": "t003-p012-r001",
+      "trajectory": 3,
+      "point": 12,
+      "replicate": 1,
+      "metrics": {
+        "population": 28,
+        "brood": 1,
+        "food": 0,
+        "oxygen": 20.796612385035107,
+        "carbonDioxide": 0.12471009197189625
+      }
+    },
+    {
+      "id": "t003-p012-r002",
+      "trajectory": 3,
+      "point": 12,
+      "replicate": 2,
+      "metrics": {
+        "population": 28,
+        "brood": 0,
+        "food": 0.24834055441788044,
+        "oxygen": 20.747066893534566,
+        "carbonDioxide": 0.1643464851723674
+      }
+    },
+    {
+      "id": "t004-p000-r001",
+      "trajectory": 4,
+      "point": 0,
+      "replicate": 1,
+      "metrics": {
+        "population": 19,
+        "brood": 5,
+        "food": 0.10999999999999982,
+        "oxygen": 20.826234547998464,
+        "carbonDioxide": 0.10101236160121818
+      }
+    },
+    {
+      "id": "t004-p000-r002",
+      "trajectory": 4,
+      "point": 0,
+      "replicate": 2,
+      "metrics": {
+        "population": 17,
+        "brood": 10,
+        "food": 0.2059999999999999,
+        "oxygen": 20.817657757370313,
+        "carbonDioxide": 0.10787379410376932
+      }
+    },
+    {
+      "id": "t004-p001-r001",
+      "trajectory": 4,
+      "point": 1,
+      "replicate": 1,
+      "metrics": {
+        "population": 19,
+        "brood": 5,
+        "food": 0.10999999999999982,
+        "oxygen": 20.82623395843475,
+        "carbonDioxide": 0.10101283325218421
+      }
+    },
+    {
+      "id": "t004-p001-r002",
+      "trajectory": 4,
+      "point": 1,
+      "replicate": 2,
+      "metrics": {
+        "population": 17,
+        "brood": 10,
+        "food": 0.2059999999999999,
+        "oxygen": 20.817659972016855,
+        "carbonDioxide": 0.10787202238649748
+      }
+    },
+    {
+      "id": "t004-p002-r001",
+      "trajectory": 4,
+      "point": 2,
+      "replicate": 1,
+      "metrics": {
+        "population": 19,
+        "brood": 13,
+        "food": 6.276029012659797,
+        "oxygen": 20.82433499453032,
+        "carbonDioxide": 0.10253200437572348
+      }
+    },
+    {
+      "id": "t004-p002-r002",
+      "trajectory": 4,
+      "point": 2,
+      "replicate": 2,
+      "metrics": {
+        "population": 24,
+        "brood": 14,
+        "food": 4.438933333333561,
+        "oxygen": 20.811589263396126,
+        "carbonDioxide": 0.11272858928306526
+      }
+    },
+    {
+      "id": "t004-p003-r001",
+      "trajectory": 4,
+      "point": 3,
+      "replicate": 1,
+      "metrics": {
+        "population": 19,
+        "brood": 13,
+        "food": 6.626029012659798,
+        "oxygen": 20.825598524247415,
+        "carbonDioxide": 0.10152118060202796
+      }
+    },
+    {
+      "id": "t004-p003-r002",
+      "trajectory": 4,
+      "point": 3,
+      "replicate": 2,
+      "metrics": {
+        "population": 24,
+        "brood": 14,
+        "food": 4.438933333333561,
+        "oxygen": 20.811589263396126,
+        "carbonDioxide": 0.11272858928306526
+      }
+    },
+    {
+      "id": "t004-p004-r001",
+      "trajectory": 4,
+      "point": 4,
+      "replicate": 1,
+      "metrics": {
+        "population": 19,
+        "brood": 15,
+        "food": 5.272133333333269,
+        "oxygen": 20.82736487697514,
+        "carbonDioxide": 0.10010809841987435
+      }
+    },
+    {
+      "id": "t004-p004-r002",
+      "trajectory": 4,
+      "point": 4,
+      "replicate": 2,
+      "metrics": {
+        "population": 24,
+        "brood": 14,
+        "food": 4.438933333333561,
+        "oxygen": 20.811589263396606,
+        "carbonDioxide": 0.11272858928269382
+      }
+    },
+    {
+      "id": "t004-p005-r001",
+      "trajectory": 4,
+      "point": 5,
+      "replicate": 1,
+      "metrics": {
+        "population": 18,
+        "brood": 17,
+        "food": 5.532533333333282,
+        "oxygen": 20.824370933052986,
+        "carbonDioxide": 0.10250325355759426
+      }
+    },
+    {
+      "id": "t004-p005-r002",
+      "trajectory": 4,
+      "point": 5,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 11,
+        "food": 5.391212209108402,
+        "oxygen": 20.80585561438239,
+        "carbonDioxide": 0.11731550849410224
+      }
+    },
+    {
+      "id": "t004-p006-r001",
+      "trajectory": 4,
+      "point": 6,
+      "replicate": 1,
+      "metrics": {
+        "population": 18,
+        "brood": 17,
+        "food": 5.532533333333282,
+        "oxygen": 20.824370794660176,
+        "carbonDioxide": 0.10250336427186266
+      }
+    },
+    {
+      "id": "t004-p006-r002",
+      "trajectory": 4,
+      "point": 6,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 11,
+        "food": 5.391212209108402,
+        "oxygen": 20.805866559930557,
+        "carbonDioxide": 0.11730675205555816
+      }
+    },
+    {
+      "id": "t004-p007-r001",
+      "trajectory": 4,
+      "point": 7,
+      "replicate": 1,
+      "metrics": {
+        "population": 18,
+        "brood": 17,
+        "food": 5.532533333333282,
+        "oxygen": 20.824370794660176,
+        "carbonDioxide": 0.10250336427186266
+      }
+    },
+    {
+      "id": "t004-p007-r002",
+      "trajectory": 4,
+      "point": 7,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 11,
+        "food": 5.391212209108402,
+        "oxygen": 20.805866559930557,
+        "carbonDioxide": 0.11730675205555816
+      }
+    },
+    {
+      "id": "t004-p008-r001",
+      "trajectory": 4,
+      "point": 8,
+      "replicate": 1,
+      "metrics": {
+        "population": 18,
+        "brood": 17,
+        "food": 5.532533333333282,
+        "oxygen": 20.824370794660176,
+        "carbonDioxide": 0.10250336427186266
+      }
+    },
+    {
+      "id": "t004-p008-r002",
+      "trajectory": 4,
+      "point": 8,
+      "replicate": 2,
+      "metrics": {
+        "population": 25,
+        "brood": 11,
+        "food": 5.391212209108402,
+        "oxygen": 20.805866559930557,
+        "carbonDioxide": 0.11730675205555816
+      }
+    },
+    {
+      "id": "t004-p009-r001",
+      "trajectory": 4,
+      "point": 9,
+      "replicate": 1,
+      "metrics": {
+        "population": 55,
+        "brood": 1,
+        "food": 0.7426902980223316,
+        "oxygen": 20.63480426785454,
+        "carbonDioxide": 0.2541565857163584
+      }
+    },
+    {
+      "id": "t004-p009-r002",
+      "trajectory": 4,
+      "point": 9,
+      "replicate": 2,
+      "metrics": {
+        "population": 53,
+        "brood": 6,
+        "food": 0,
+        "oxygen": 20.609213703985674,
+        "carbonDioxide": 0.27462903681162304
+      }
+    },
+    {
+      "id": "t004-p010-r001",
+      "trajectory": 4,
+      "point": 10,
+      "replicate": 1,
+      "metrics": {
+        "population": 55,
+        "brood": 1,
+        "food": 0.7426902980223316,
+        "oxygen": 20.63480426785454,
+        "carbonDioxide": 0.2541565857163584
+      }
+    },
+    {
+      "id": "t004-p010-r002",
+      "trajectory": 4,
+      "point": 10,
+      "replicate": 2,
+      "metrics": {
+        "population": 53,
+        "brood": 6,
+        "food": 0,
+        "oxygen": 20.609213703985674,
+        "carbonDioxide": 0.27462903681162304
+      }
+    },
+    {
+      "id": "t004-p011-r001",
+      "trajectory": 4,
+      "point": 11,
+      "replicate": 1,
+      "metrics": {
+        "population": 55,
+        "brood": 1,
+        "food": 0.7426902980223316,
+        "oxygen": 20.63480426785454,
+        "carbonDioxide": 0.2541565857163584
+      }
+    },
+    {
+      "id": "t004-p011-r002",
+      "trajectory": 4,
+      "point": 11,
+      "replicate": 2,
+      "metrics": {
+        "population": 53,
+        "brood": 6,
+        "food": 0,
+        "oxygen": 20.609213703985674,
+        "carbonDioxide": 0.27462903681162304
+      }
+    },
+    {
+      "id": "t004-p012-r001",
+      "trajectory": 4,
+      "point": 12,
+      "replicate": 1,
+      "metrics": {
+        "population": 54,
+        "brood": 5,
+        "food": 0,
+        "oxygen": 20.615682235514843,
+        "carbonDioxide": 0.2694542115881172
+      }
+    },
+    {
+      "id": "t004-p012-r002",
+      "trajectory": 4,
+      "point": 12,
+      "replicate": 2,
+      "metrics": {
+        "population": 55,
+        "brood": 0,
+        "food": 0.45,
+        "oxygen": 20.617797851657922,
+        "carbonDioxide": 0.26776171867366944
+      }
+    }
+  ],
+  "sourceFingerprint": "43ddce7466fe4b4bd4459795ec9b75f9ab23ba75f17310eb2a5912021a62c156"
+}

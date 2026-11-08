@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vetores e replicação · Viveiro</title><link rel="stylesheet" href="modelo.css"><meta name="viveiro-offline" content="0.48.0">
+<link rel="manifest" href="/releases/v0.48.0/app-manifest.json">
+</head>
+<body><a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a href="../index.html?lang=pt-BR">← Voltar ao laboratório</a><a href="index.html">Documentação ODD</a></header>
+<nav class="document-languages" aria-label="Idioma"><a href="replicacao.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">Português</a> · <a href="../en/modelo/replicacao.html" lang="en" hreflang="en">English</a></nav>
+<main id="conteudo" tabindex="-1"><h1>Vetores e replicação</h1>
+<p>A <a href="reacao-difusao.html">especificação do campo</a> é suficiente para escrever outro solver. Estes casos verificam fronteiras, índices, sentido do vento, subpassos e evaporação. Não são observações de laboratório.</p>
+<h2>Downloads e execução</h2>
+<ul>
+<li><a href="referencia.txt">Referência autônoma em TypeScript</a>: salvar como reference-field.ts.</li>
+<li><a href="vetores.json">Vetores de entrada e saída</a>: JSON com schema e tolerância.</li>
+<li><a href="verificador.txt">Verificador de referência</a>: fonte do pequeno runner do repositório.</li>
+</ul>
+<p>Na fonte completa, com Node 24 e sem dependências adicionais:</p>
+<pre tabindex="0" role="region" aria-label="Código ou equação em texto"><code>node scripts/check-odd-reference.ts
+node --test tests/odd.test.mjs tests/odd-pages.test.mjs</code></pre>
+<p>O primeiro comando importa apenas a referência e os vetores; não o solver químico de produção. O segundo compara os dois por caminhos de cálculo distintos, além de conferir exemplos analíticos e páginas. O runner mostra o erro real por caso. Não foram criados resultados de um reimplementador externo fictício.</p>
+<h2>Casos calculáveis à mão</h2>
+<p>Os parâmetros comuns abaixo são h=1, T=1, lambda=0 e vento zero, salvo indicação.</p>
+<ol>
+<li>Grade 3×1, C=[0,1,0], D=0,1: N=1; saída [0,1;0,8;0,1] (ponto e vírgula separa componentes para não confundir vírgula decimal). JSON usa ponto decimal.</li>
+<li>Grade 2×1, C=[1,0], D=0, vx=0,25: saída [0,75;0,25]. Com C=[0,1] e vx=−0,25, a saída é[0,25;0,75]. A fronteira fechada não perde massa por advecção.</li>
+<li>Grade 1×1, C=[2], D=0, lambda=ln(2): saída [1]. Não há faces internas.</li>
+<li>Grade 2×2, C=[1,0,0,0] por linhas, D=0,1: saída [0,8;0,1;0,1;0]. A célula diagonal não recebe fluxo direto naquele subpasso.</li>
+<li>Grade 2×1, C=[1,0], D=0,5, vx=1: R=3, N=4, delta=0,25. A matriz por subpasso é:</li>
+</ol>
+<pre tabindex="0" role="region" aria-label="Código ou equação em texto"><code>[ 0.625  0.125 ]
+[ 0.375  0.875 ]</code></pre>
+<p>Aplicada quatro vezes, produz [0,296875;0,703125]. Com lambda=ln(2), a saída final é metade disso: [0,1484375;0,3515625], pois cada subpasso aplica o mesmo fator exponencial. Estes sete casos (contando sentidos e evaporação separados) estão fixados no JSON, sem gerar esperados usando o solver de produção.</p>
+<h2>Tolerância e limites da evidência</h2>
+<p>Usar erro absoluto por componente≤1e-12 nesses vetores pequenos. Não exigir bytes idênticos entre duas somas de ponto flutuante com ordens diferentes. Identidade de CSV/replay da mesma implementação é outro critério, da CLI.</p>
+<p>Testes adicionais variam dimensões retangulares, sinais do vento, espaçamento, difusão e duração; conferem preservação da entrada, conservação e não negatividade. Referência e comparação foram escritas pelo mesmo projeto: são verificação interna de consistência com o ODD. Auditoria científica/replicação externa, escala física e calibração com medições permanecem abertas.</p>
+<p>Páginas/documentos têm a mesma fonte Markdown. Equações/código são texto escapado, sem executar o conteúdo. O pacote de fonte inclui explicitamente esses documentos públicos; checkpoints e documentos operacionais não são expostos pelo gerador.</p></main>
+<nav aria-label="Documentos do modelo"><h2>Documentos do modelo</h2><ul><li><a href="index.html">ODD do Viveiro</a></li>
+<li><a href="estados.html">Entidades, estados e escalas</a></li>
+<li><a href="agendamento.html">Ordem dos processos</a></li>
+<li><a href="conceitos.html">Conceitos de desenho</a></li>
+<li><a href="inicializacao.html">Inicialização e entradas</a></li>
+<li><a href="submodelos.html">Mapa dos submodelos</a></li>
+<li><a href="reacao-difusao.html">Reação-difusão reimplementável</a></li>
+<li><a href="replicacao.html">Vetores e replicação</a></li>
+<li><a href="aritmetica.html">Aritmética portátil</a></li>
+<li><a href="varreduras.html">Varreduras e retomada</a></li>
+<li><a href="sensibilidade.html">Sensibilidade Morris</a></li>
+<li><a href="extensoes.html">Extensões locais tipadas</a></li>
+<li><a href="perfis.html">Editor e perfis de parâmetros</a></li></ul></nav>
+<p><a href="replicacao.txt" download="viveiro-pt-BR-modelo-replicacao.txt">Baixar a fonte deste documento</a></p>
+<footer>Viveiro · Modelo exploratório · Documentação original CC BY4.0 · Revisão externa pendente.</footer></body></html>
