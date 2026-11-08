@@ -1,15 +1,15 @@
 {
   "title": "Viveiro: terrário 3D e simulação multiagente de formigas",
   "upload_type": "software",
-  "version": "0.47.0",
-  "publication_date": "2026-11-05",
+  "version": "0.48.0",
+  "publication_date": "2026-11-08",
   "creators": [
     {
       "name": "Reis da Silva, Everaldo",
       "orcid": "0009-0008-0719-8722"
     }
   ],
-  "description": "<p>Viveiro 0.47.0: interface reorganizada para desktop, tablet e celular, com gestos, legibilidade e métricas destacadas; auditorias de acessibilidade automatizadas; CSV no idioma da interface; arena física de Buhl com geometria, contato, recrutamento, fadiga local, diagnósticos de 72 horas e sensibilidade por Morris.</p><p>Os experimentos continuam exploratórios e não calibrados por espécie; as comparações com Buhl são diagnósticos, não validação biológica. Fonte integral na tag v0.47.0. Código original MIT; documentação e imagens originais CC BY 4.0; terceiros conservam suas licenças e avisos.</p>",
+  "description": "<p>Viveiro 0.48.0: motor 3D com acesso físico às frentes de escavação no perfil Narbonne v3. O apoio no terreno, o alcance e a ocupação corporal substituem cotas de equipe e o bloqueio global de mordidas; saves e perfis v1/v2 conservam suas regras. Mantém morfologia, marcha, nutrição e calendário do perfil anterior.</p><p>Inclui a integração opcional de morfologia na arena de Buhl, ensaios pareados de velocidade/carga e acesso, dados e gráficos arquivados, plano de parametrização individual e registro TRACE. O World e a arena continuam motores distintos, com escalas de tempo e volume próprias. As comparações com Buhl são retrospectivas e de desenvolvimento; calibração e validação empírica independente permanecem abertas. A fadiga de escavação da arena não foi transferida automaticamente para Narbonne v3.</p><p>Fonte integral na tag v0.48.0. Código original MIT; documentação e imagens originais CC BY 4.0; terceiros conservam suas licenças e avisos.</p>",
   "access_right": "open",
   "license": "MIT",
   "keywords": [
@@ -21,12 +21,12 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.47.0/",
+      "identifier": "https://viveiro.ersolucoesweb.com.br/releases/v0.48.0/",
       "relation": "isSupplementTo",
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/albreis/viveiro/tree/v0.47.0",
+      "identifier": "https://github.com/albreis/viveiro/tree/v0.48.0",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

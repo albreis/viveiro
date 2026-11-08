@@ -14,6 +14,10 @@ It is not calibrated for a species and does not predict real colony outcomes.
 Internal verification is not biological, geotechnical or engineering validation.
 Read the [English ODD specification](src/i18n/locales/en/docs/odd.md) for scope.
 
+Version **0.48.0** uses Narbonne v3 for new terrariums, with physical access
+to excavation fronts. Workers must reach supported soil with room for their
+bodies. Older saves retain their pinned profiles and rules. [Changes and limits](CHANGELOG.md).
+
 ## Start
 
 Requires Node.js 24.

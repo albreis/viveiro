@@ -17,6 +17,10 @@ Terrário 3D de formigas no navegador. Cada formiga é um agente autônomo que s
 - Rodar experimentos prontos para sala de aula e exportar os dados em JSON ou CSV.
 - Rodar experimentos sem interface, pela linha de comando, com saída idêntica à do navegador.
 
+Na **0.48.0**, novos terrários usam Narbonne v3 com acesso físico à escavação.
+As operárias precisam alcançar solo apoiado e ter espaço para o corpo. Saves
+antigos mantêm seus perfis e regras. [Mudanças e limites](CHANGELOG.md).
+
 ## Começar
 
 Requer Node.js 24.

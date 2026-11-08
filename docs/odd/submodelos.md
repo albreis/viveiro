@@ -59,7 +59,7 @@ introduzido um multiplicador de produção, uma conversão para cm³, o relógio
 físico da arena ou seus coeficientes de fadiga. Narbonne mantém a fisiologia
 que já tinha no terrário; a fadiga por ações continua no perfil experimental
 que a habilita. V1/v2 e perfis sem `excavationAccess` preservam suas regras.
-Ver [implementação e ensaios](../planejamento/escavacao-acesso-viveiro.md).
+Ver [implementação e ensaios](https://github.com/albreis/viveiro/blob/main/docs/planejamento/escavacao-acesso-viveiro.md).
 
 ## Água, calor e gases
 

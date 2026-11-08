@@ -48,6 +48,12 @@ Resultados de carregamento não são medidas de FPS.
 
 ## T4 — P3: análise e calibração já iniciadas
 
+- [ ] **K1–K6 — Cenário físico e parametrização individual:** seguir o
+  [plano](buhl-parametrizacao.md), com fontes, incertezas, microensaios e
+  protocolo controlado no motor real. A integração de acesso na 0.48.0
+  não conclui a réplica física de Buhl nem a validação independente.
+
+
 - [ ] Seguir a [retomada Buhl](buhl.md), preservando branch, anexos e experimentos.
 - [x] **Ensaios de morfologia, velocidade/carga e acesso:** 75 rodadas de
   72 h, controles reproduzidos, balanços e figuras. Acesso 1 ganhou 44,7–54,6%.
