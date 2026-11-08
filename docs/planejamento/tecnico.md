@@ -49,6 +49,10 @@ Resultados de carregamento não são medidas de FPS.
 ## T4 — P3: análise e calibração já iniciadas
 
 - [ ] Seguir a [retomada Buhl](buhl.md), preservando branch, anexos e experimentos.
+- [x] **Ensaios de morfologia, velocidade/carga e acesso:** 75 rodadas de
+  72 h, controles reproduzidos, balanços e figuras. Acesso 1 ganhou 44,7–54,6%.
+  [Resultados e limites](buhl-acesso-geometrico.md). É comparação retrospectiva;
+  calibração biológica e avaliação com o motor World continuam pendentes.
 - [x] Distinguir reconciliação de código, execução de benchmark, calibração,
   validação reservada e replicação por equipe independente.
 - [x] Definir unidades/tempo físico e critérios antes do ajuste; resultados

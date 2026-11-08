@@ -1,0 +1,63 @@
+{
+  "schema": "viveiro-buhl-locomotion-factorial-v1",
+  "baseCommit": "d88c31edcdfc2f96a6dee13bdba6a7f83647b720",
+  "historicalSourceCommit": "046542f9988f9131abde961f073752b699de9f7b",
+  "historicalSeriesSha256Lf": "8b55a2a0fa4bfe91e8ccddc9c1719ff32d78eb73f3427e983b2e354c5814712c",
+  "groups": [50, 100, 200],
+  "seeds": [
+    "ARENA-FADIGA-1",
+    "ARENA-FADIGA-2",
+    "ARENA-FADIGA-3",
+    "ARENA-FADIGA-4",
+    "ARENA-FADIGA-5"
+  ],
+  "pilotSeconds": 7200,
+  "longSeconds": 259200,
+  "settings": {
+    "workerProfile": {
+      "schema": 1,
+      "id": "messor-narbonne",
+      "version": 2
+    },
+    "digFatigue": "work-recovery",
+    "microclimate": {
+      "temperatureC": 24,
+      "initialSandWaterFraction": 0.08,
+      "airRelativeHumidity": 0.8,
+      "airflowIndex": 0,
+      "drying": false
+    },
+    "mechanism": "edge-follow",
+    "contactAccess": 0.35,
+    "sampleEverySeconds": 1200,
+    "tickMilliseconds": 50,
+    "pitchMm": 0.8,
+    "separationMm": 5,
+    "dryDensityMgPerMm3": 1.5,
+    "digRatePerSecond": 0.0283,
+    "pickupPerContact": 0.102,
+    "observeActivity": true
+  },
+  "arms": [
+    {
+      "id": "base",
+      "walkingSource": "profile-temperature",
+      "soilLoadFactor": 0.85
+    },
+    {
+      "id": "velocidade",
+      "walkingSource": "buhl-observed",
+      "soilLoadFactor": 0.85
+    },
+    {
+      "id": "carga",
+      "walkingSource": "profile-temperature",
+      "soilLoadFactor": 1
+    },
+    {
+      "id": "ambos",
+      "walkingSource": "buhl-observed",
+      "soilLoadFactor": 1
+    }
+  ]
+}
