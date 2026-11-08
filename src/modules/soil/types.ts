@@ -7,6 +7,8 @@ export interface SoilTask {
   phase: "dig" | "haul" | "dump" | "return" | "repair";
   entrance?: number;
   digTicks: number;
+  /** Per-worker guard for geometry-v1; absent from legacy saves. */
+  lastWorkedTick?: number;
   reversing?: boolean;
   sourceNode?: number;
 }

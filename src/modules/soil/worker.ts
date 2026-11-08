@@ -1,10 +1,11 @@
-import { readyForDigBite, recordDigEffort } from "../fatigue/terrarium.ts";
 import { modelMath } from "../../libs/model-math.ts";
-import { approachDigFace } from "./approach.ts";
+import { workAtDigFace } from "./digging.ts";
+import { repairSoil } from "./repair.ts";
+import { geometricDigAccess } from "./access-rule.ts";
+import { availableDigSite } from "./front-access.ts";
 import { requestRoute } from "../navigation/local-routing.ts";
 import type { SoilAgent, SoilWorld } from "./types.ts";
 import { proposeDig } from "./projects.ts";
-import { digBite } from "./projects.ts";
 import { beginSoilHaul, enterForSoil } from "./routing.ts";
 import { depositSoil, distance3 } from "./ledger.ts";
 import {
@@ -20,7 +21,6 @@ import {
   settleSupport,
 } from "../navigation/support-motion.ts";
 
-const CAPACITY = 0.022;
 export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
   if (
     !ant.soilTask &&
@@ -30,6 +30,7 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
   )
     return false;
   const stigmergy = world.soil.stigmergy;
+  const geometric = geometricDigAccess(world);
   if (
     !ant.soilTask &&
     ant.node != null &&
@@ -70,8 +71,10 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
             (p) =>
               !p.completed &&
               ant.node === p.from &&
-              world.ants.filter((a) => a.soilTask?.projectId === p.id).length <
-                2,
+              (geometric
+                ? availableDigSite(world, ant, p) !== null
+                : world.ants.filter((a) => a.soilTask?.projectId === p.id)
+                    .length < 2),
           );
       if (
         !project ||
@@ -128,43 +131,7 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     task.reversing = false;
     beginSoilHaul(world, ant);
   }
-  if (task.phase === "repair") {
-    const rubble = world.nest.rubble?.find((p) => p.id === task.rubbleId);
-    if (!rubble || rubble.mass < 0.0001) {
-      if ((ant.carryingSoil || 0) > 0) beginSoilHaul(world, ant);
-      else delete ant.soilTask;
-      return true;
-    }
-    if (distance3({ x: ant.x, y: ant.y || 0, z: ant.z }, rubble) > 0.8) {
-      const edge =
-        rubble.edge === undefined ? null : world.nest.links[rubble.edge];
-      if (edge && !ant.route?.length)
-        ant.route = [edge[0] === ant.node ? edge[1] : edge[0]];
-      if (ant.route?.length) world.moveInNest(ant);
-      return true;
-    }
-    ant.state = "Removendo terra de um bloqueio";
-    if (++task.digTicks % 5) return true;
-    const mass = Math.min(
-      0.007,
-      rubble.mass,
-      CAPACITY - (ant.carryingSoil || 0),
-    );
-    recordDigEffort(world, ant, mass / 0.007);
-    rubble.mass -= mass;
-    ant.carryingSoil = (ant.carryingSoil || 0) + mass;
-    world.nest.revision++;
-    if (ant.carryingSoil >= CAPACITY - 0.0001 || rubble.mass < 0.0001) {
-      // Walk back to the start of this segment before selecting a new route.
-      if (ant.route?.length && ant.navigation) {
-        ant.navigation.retreating = true;
-        task.reversing = true;
-        delete ant.supportMotion;
-      }
-      beginSoilHaul(world, ant);
-    }
-    return true;
-  }
+  if (task.phase === "repair") return repairSoil(world, ant, task);
   if (task.phase === "dump") {
     ant.state = "Levando terra para fora";
     if (settleSupport(world, ant, ant.speed * 0.85)) return true;
@@ -247,25 +214,5 @@ export function updateSoilWorker(world: SoilWorld, ant: SoilAgent): boolean {
     }
     return true;
   }
-  task.phase = "dig";
-  const front = world.nest.nodes[project.front];
-  if (
-    distance3({ x: ant.x, y: ant.y || 0, z: ant.z }, front) >
-    Math.max(0.46, world.nest.nodes[project.from].r + 0.18)
-  ) {
-    approachDigFace(world, ant, project);
-    return true;
-  }
-  ant.state = "Escavando a frente do túnel";
-  if (
-    ++task.digTicks % 4 === 0 &&
-    project.lastWorkedTick !== world.tick &&
-    readyForDigBite(world, ant)
-  ) {
-    project.lastWorkedTick = world.tick;
-    digBite(world, ant, project);
-    settleSupport(world, ant, ant.speed * 0.85);
-  }
-  if ((ant.carryingSoil || 0) >= CAPACITY) beginSoilHaul(world, ant);
-  return true;
+  return workAtDigFace(world, ant, project);
 }

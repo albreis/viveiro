@@ -121,6 +121,7 @@ export const biologicalProfiles: readonly BiologicalProfile[] = Object.freeze([
   ...createReproductiveProfiles(generic),
   createNarbonneProfile(microclimateProfiles[2], 1),
   createNarbonneProfile(microclimateProfiles[2], 2),
+  createNarbonneProfile(microclimateProfiles[2], 3),
   Object.freeze({
     ...microclimateProfiles[2],
     id: EFFORT_PROFILE,

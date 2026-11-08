@@ -46,5 +46,7 @@
   "biology.calendar.flight": " Autumn flight window, requiring recent rain.",
   "biology.calendar.alates": " Demonstration reproductive brood window.",
   "biology.calendar.laying": " Demonstration egg-laying window.",
-  "biology.calendar.rest": " Seasonal pause in egg laying. The spring window returns next cycle."
+  "biology.calendar.rest": " Seasonal pause in egg laying. The spring window returns next cycle.",
+  "biology.profile.messor-narbonne@3": "Narbonne Messor · physical digging access",
+  "biology.description.messor-narbonne@3": "Exploratory Narbonne profile with physical access to digging fronts. Retains body sizes, walking, feeding and calendar from revision 2; not calibrated for a species."
 }

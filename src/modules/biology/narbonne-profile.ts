@@ -1,7 +1,7 @@
 import type { BiologicalProfile, WorkerReference } from "./types.ts";
 
 export const NARBONNE_PROFILE_ID = "messor-narbonne";
-export const NARBONNE_PROFILE_VERSION = 2;
+export const NARBONNE_PROFILE_VERSION = 3;
 
 const workers: WorkerReference = Object.freeze({
   bodyMm: 5,
@@ -28,7 +28,7 @@ export function createNarbonneProfile(
     version,
     referenceSpecies: "Messor de Narbonne",
     workerReference: workers,
-    ...(version === 2
+    ...(version >= 2
       ? {
           workerReference: Object.freeze({
             ...workers,
@@ -50,14 +50,17 @@ export function createNarbonneProfile(
           }),
         }
       : {}),
+    ...(version >= 3 ? { excavationAccess: "geometry-v1" as const } : {}),
     forageModel: "seed-trails",
     cocoon: "absent",
-    seasonality: version === 2 ? "seasonal" : "unmodelled",
+    seasonality: version >= 2 ? "seasonal" : "unmodelled",
     dormancyModel: undefined,
     label: "Messor de Narbonne · referência de Buhl",
     description:
-      version === 2
-        ? "Perfil exploratório de Narbonne, provável Messor bouvieri. Sementes preparadas, marcha em galerias, tamanho dos alados e calendário mediterrâneo demonstrativo."
-        : "Espécie-base do Viveiro. Perfil exploratório da população que Buhl chamou Messor sancta, provavelmente Messor bouvieri. Porte das operárias, caminhada em superfície e forrageamento de sementes têm referências próprias.",
+      version >= 3
+        ? "Perfil exploratório de Narbonne com acesso físico às frentes de escavação. Mantém porte, marcha, alimentação e calendário da revisão 2; não calibrado por espécie."
+        : version >= 2
+          ? "Perfil exploratório de Narbonne, provável Messor bouvieri. Sementes preparadas, marcha em galerias, tamanho dos alados e calendário mediterrâneo demonstrativo."
+          : "Espécie-base do Viveiro. Perfil exploratório da população que Buhl chamou Messor sancta, provavelmente Messor bouvieri. Porte das operárias, caminhada em superfície e forrageamento de sementes têm referências próprias.",
   });
 }

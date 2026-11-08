@@ -5,6 +5,26 @@ conferir Git/PRs e preservar saves, branches e tags. As últimas entregas
 técnicas de T4 estão no [relatório da triagem](planejamento/buhl-microclima.md). A pendência
 científica de B7 requer séries empíricas independentes por réplica.
 
+## Pedido atual — acesso geométrico no motor 3D
+
+Em 07/11, o mantenedor aprovou a hipótese do PR #130 e pediu implementá-la
+no motor do Viveiro em branch nova da main. Este pedido substitui a orientação
+histórica de manter a morfologia fora de ensaios novos; não apaga as restaurações
+ou os lotes anteriores. Branch: `codex/escavacao-acesso-geometrico-viveiro`, base
+`d88c31e`. [Regras e protocolo](planejamento/escavacao-acesso-viveiro.md).
+
+Narbonne v3 mantém o corpo e os mecanismos da v2 e usa acesso físico à frente,
+sem cota por equipe ou trava global de mordidas. Saves antigos permanecem
+fixados no perfil anterior. 547 testes, build Vite e Chrome pt/en aprovados,
+incluindo igualdade numérica CLI/navegador, visão lateral e primeira pessoa.
+
+Lote de 12 execuções pareadas (50/100/200, duas seeds, v2/v3, 2.000 ticks)
+em andamento em `.runtime/dig-access-world-2000.json`. Próximo passo: concluir
+o lote, arquivar resultados e gráficos sem omitir diferenças desfavoráveis,
+concluir o PR. O usuário pediu as imagens das curvas do motor real, separando
+terra removida, alargamento e entrega; não converter este lote para horas/cm³
+de Buhl. B7 e calibração continuam pendentes. Não criar tags/releases/Zenodo.
+
 ## Estado preservado
 
 Última release **[0.47.0](https://github.com/albreis/viveiro/releases/tag/v0.47.0)**.
