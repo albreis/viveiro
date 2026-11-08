@@ -34,6 +34,28 @@ Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuári
 
 ## Próximo passo concreto
 
+Estado mais recente: PR #130, branch `codex/buhl-velocidade-carga`.
+Concluídos 75 ensaios de 72 h e 75 pilotos de 2 h, com artefatos e figuras.
+Velocidade/carga não recuperaram 1,6; acesso geométrico 1 elevou o volume
+em 44,7%/54,6%/51,0%. [Relatório completo](planejamento/buhl-acesso-geometrico.md).
+Foram 16/18 pontos dentro da incerteza de digitalização, sem validação independente.
+Nenhum executor de Buhl permanece ativo; não há lote a retomar.
+Modelo congelado em 906ffac; fingerprint 696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882.
+Próximo passo técnico: escala física do cenário World do PR #128, mantendo
+as evidências desta arena separadas e B7 aberto. Preservar o PR #129 e os
+históricos; não escolher novos parâmetros apenas para bater volumes.
+
+### Histórico de decisões anteriores
+
+Atualização de 07/11: novo pedido autorizou a branch da main
+`codex/buhl-velocidade-carga` e os testes de velocidade/carga mantendo a
+morfologia. Seguir o [ensaio fatorial](planejamento/buhl-locomocao.md).
+Quatro braços, cinco seeds, 50/100/200, piloto 2 h e lote 72 h. O ganho
+1,6 é hipótese, nunca multiplicador de produção. Não alterar a fonte
+durante os lotes nem encerrar o dev. Preservar os PRs #128/#129 do cenário
+World; esta análise na arena histórica não conclui sua escala física.
+
+
 Em 07/11, após examinar o novo lote, o mantenedor pediu voltar à fadiga
 apenas de escavação. A branch `codex/buhl-restaurar-fadiga-escavacao`
 restaura o código da arena ao estado anterior ao PR #126.
@@ -228,3 +250,10 @@ identidade por réplica, compatibilidade do protocolo e permissão de reuso.
 Um futuro ajuste deve reservar novas seeds do simulador e observações reais
 antes de comparar mecanismos de saturação. Os instrumentos de T5 estão prontos
 para receber observações, pareceres e contribuições reais.
+
+Checkpoint final de acesso: lote concluído e arquivado. O ZIP de segurança
+`docs/validacoes/buhl-acesso-72h-checkpoint.zip` é uma fotografia parcial
+anterior, não substitui o CSV/recibo completo. Não restaurar sobre saves.
+Reprodução do arquivamento: `node scripts/archive-buhl-access.ts .runtime/buhl-acesso-geometrico-72h 906ffac32087cceef13d3c8d97261a8385eca4a9`.
+Para figuras, usar Python 3.14 com `PYTHONPATH=.runtime/buhl-plot-deps` e
+`MPLCONFIGDIR=.runtime/buhl-plot-config`. O dev 4173 deve permanecer ativo.

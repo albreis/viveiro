@@ -1,0 +1,36 @@
+{
+  "schema": "viveiro-buhl-locomotion-pilot-v1",
+  "durationSeconds": 7200,
+  "runCount": 60,
+  "sampleCount": 420,
+  "balances": true,
+  "trafficExcavationZero": true,
+  "morphologyIdenticalAcrossArms": true,
+  "baselineExactAtAllHistoricalSamples": true,
+  "arms": [
+    {
+      "id": "base",
+      "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+      "runCount": 15,
+      "seriesSha256": "be94c7d4281f55689efc90f55d16dd8b282144cfa037923782536a5fa21dc18e"
+    },
+    {
+      "id": "velocidade",
+      "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+      "runCount": 15,
+      "seriesSha256": "39aa8af11e8be1ed1104c4e23269ebcfe100bd8d2965a2c7cfda192c4806b8e1"
+    },
+    {
+      "id": "carga",
+      "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+      "runCount": 15,
+      "seriesSha256": "4f0fbc12b0aab0667c67d0f35efcfcfb110db222f4482209dae904c4bee5e20c"
+    },
+    {
+      "id": "ambos",
+      "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+      "runCount": 15,
+      "seriesSha256": "6f6d661d57088263b780cbcb66813cf19690ee7eb8e6c3bbc1bf85d20816a315"
+    }
+  ]
+}

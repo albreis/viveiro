@@ -1,0 +1,48 @@
+{
+  "schema": "viveiro-buhl-access-verification-v1",
+  "sourceCommit": "906ffac32087cceef13d3c8d97261a8385eca4a9",
+  "sourceFingerprint": "696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882",
+  "runtime": "v24.22.1",
+  "runCount": 15,
+  "sampleCount": 3255,
+  "allPairedFinalDifferencesPositive": true,
+  "balances": true,
+  "trafficExcavationZero": true,
+  "morphologyUnchanged": true,
+  "csvSha256Lf": "c95a8811b7a2d0c1a7d4f47de361d40efe531b825b32435443f9cdc4c82a0c1d",
+  "analysisScriptSha256Lf": "ecf898b6b443e233dcbf16465093432435cb41ebe568c3e362ee75af56caa7da",
+  "figure": {
+    "python": "3.14.7",
+    "matplotlib": "3.11.2",
+    "size": [
+      1080,
+      1350
+    ],
+    "sha256": "b2e88cd23004b3f2615fde67a478c5e5d74a87bb496efa9e348bb416854da4cd",
+    "visuallyChecked": true
+  },
+  "independentEmpiricalValidation": false,
+  "browser": {
+    "version": "157.0.8103.38",
+    "technicalTaskVisible": true,
+    "b7Pending": true,
+    "assay": {
+      "access": 1,
+      "workers": 50,
+      "mass": true,
+      "cells": true,
+      "traffic": 0
+    },
+    "errors": []
+  },
+  "pageTests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "archiveRepeatedExactly": true,
+  "build": {
+    "typescript": true,
+    "vite": true,
+    "i18n": true
+  }
+}
