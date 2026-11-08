@@ -18,9 +18,15 @@ Encerrar #128/#129 como preservados/absorvidos somente depois da main validada.
 
 Metadados de pacote, lock, CFF e .zenodo.json estão na 0.48.0 (08/11/2026),
 com autoria pessoal e ORCID preservados. [Preparação da release](validacoes/preparacao-0.48.0.md).
-Próximo passo: testes completos, paridade/navegador e build público; integrar
-uma única fonte na main e publicar `v0.48.0` com GitHub Release. Aguardar o
-Pages concluir. Zenodo recebe pela integração existente, sem ação manual.
+554/554 testes, build Vite/público, CodeQL, Chrome pt/en e 12 trajetórias
+aprovados. [Recibo](validacoes/release-0.48.0.json). A integração e publicação
+única estão autorizadas. Ao retomar, conferir primeiro se `v0.48.0` e a
+GitHub Release já existem: não duplicar, mover ou recriar a tag. Conferir
+o Pages. Zenodo recebe pela integração existente, sem ação manual.
+
+Depois desta publicação, o próximo trabalho científico é K1–K6: resolver
+relógio físico, condições iniciais e unidades antes de novos lotes comparáveis
+a Buhl. O fechamento do piloto #128 não conclui essa tarefa.
 
 ## Pedido atual — acesso geométrico no motor 3D
 

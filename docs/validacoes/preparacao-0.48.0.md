@@ -28,9 +28,19 @@ arena e World e não declara DOI antes do depósito automático. O .zenodo.json
 
 ## Verificação antes da tag
 
-20 testes dirigidos do motor/arena/citação e build passaram na combinação
-inicial. A suíte completa, paridade das trajetórias, navegador e build público
-serão registrados antes de integrar a preparação à main.
+**554/554 testes aprovados**, sem falhas, após corrigir os links do ODD e
+isolar a tag de teste em um repositório temporário. Build Vite e build público
+aprovados. Chrome 157 em português/inglês: paridade CLI, lateral, primeira
+pessoa, retomada e bundle versionado, sem erros JavaScript. O cronograma e
+os arquivos operacionais continuam fora do bundle público. CodeQL aprovado.
+
+As 12 trajetórias pareadas repetiram exatamente os valores arquivados até
+100 ticks. O hash inicial só divergia no campo de observação
+`modelVersion`: 0.47.0 → 0.48.0. A normalização desse campo foi aplicada
+apenas à cópia usada na comparação; nenhum estado físico foi alterado.
+
+[Recibo técnico completo](release-0.48.0.json). Depois deste recibo, só
+documentação de publicação pode mudar sem repetir os testes do motor.
 
 A publicação será uma única tag e GitHub Release, com notas da versão. O
 workflow da tag acrescenta o artefato a `site-publico` e dispara o deploy
