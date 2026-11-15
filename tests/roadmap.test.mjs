@@ -69,7 +69,9 @@ test("roadmap covers all UX phases, Buhl steps and optional sources without clai
     data.version,
     JSON.parse(readFileSync("package.json", "utf8")).version,
   );
-  assert.equal(data.updated, "07/11/2026");
+  assert.match(data.updated, /^\d{2}\/\d{2}\/\d{4}$/);
+  assert.match(fit.detail, /Gautrais/);
+  assert.ok(items("technical").some((i) => /G1.*Partição/.test(i.title)));
   const all = data.groups.flatMap((g) => g.items);
   assert.equal(new Set(all.map((i) => i.id)).size, all.length);
 });

@@ -49,7 +49,10 @@ export function summarizeDevelopment(replicas: DevelopmentObservations) {
       const sampleSD =
         n > 1
           ? Math.sqrt(
-              values.reduce((sum, value) => sum + (value - mean!) ** 2, 0) /
+              values.reduce((sum, value) => {
+                const delta = value - mean!;
+                return sum + delta * delta;
+              }, 0) /
                 (n - 1),
             )
           : null;

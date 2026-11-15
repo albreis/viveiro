@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
-import { isAbsolute, join, relative, resolve, sep } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   measureGautraisDevelopment,
@@ -90,7 +90,8 @@ try {
       "Final graph and last frame are separate products; not independent observations.",
     ],
   };
-  mkdirSync(output, { recursive: true });
+  mkdirSync(dirname(output), { recursive: true });
+  mkdirSync(output); // Exclusive directory creation also prevents mixed concurrent outputs.
   writeFileSync(
     join(output, "development.json"),
     JSON.stringify(report, null, 2) + "\n",
