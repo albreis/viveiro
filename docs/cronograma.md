@@ -152,6 +152,12 @@ testes adequados, conferência no navegador e PRs em ordem. Preservar saves, tag
 branches e o Site privado. Público: GitHub Pages; não atualizar o Site público
 antigo. Manter dev em `http://127.0.0.1:4173/` a partir de G.
 
-Esta reorganização não gera tag/release/depósito Zenodo. A integração automática
-já está ativa; próximas versões consolidadas precisam de metadados atualizados.
+**Publicação pausada em 15/11/2026:** não criar ou enviar novas tags/GitHub
+Releases agora. Reunir mais entregas em branches/PRs e aguardar nova instrução
+para a versão consolidada. A integração GitHub–Zenodo já está ativa; não
+fazer depósito manual nem reescrever tags.
+
+[Comparativo editorial revisado após G0/G1](divulgacao/comparativo-gautrais.md):
+ganho metodológico registrado, validação biológica ainda pendente; notas
+dos concorrentes mantidas como referências históricas sem nova auditoria.
 [Checkpoint operacional](CONTINUAR.md).

@@ -670,7 +670,7 @@
             <b>27</b><span>pull requests integrados, um por etapa</span>
           </div>
           <div class="stat">
-            <b>217</b><span>testes automatizados do modelo</span>
+            <b>562</b><span>testes automatizados na suíte · G0/G1</span>
           </div>
           <div class="stat">
             <b>~18,9 mil</b><span>linhas de código em src</span>
@@ -1536,13 +1536,15 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
 
       <section id="comparacao">
         <div class="narrow" style="display: grid; gap: 12px">
-          <p class="eyebrow">Comparação com o mercado</p>
+          <p class="eyebrow">Comparação editorial · referências históricas</p>
           <h2>Onde o Viveiro se encaixa</h2>
           <p>
-            Comparação qualitativa com plataformas de modelagem, simuladores
-            educacionais e jogos de formigas. As colunas descrevem o que vem
-            pronto; NetLogo, GAMA e Mesa permitem construir quase tudo, mas
-            exigem programar.
+            Inventário histórico de plataformas de modelagem, simuladores
+            educacionais e jogos de formigas. Em 15/11/2026 foi revisada somente
+            a evidência metodológica do Viveiro; as demais ferramentas não
+            receberam nova auditoria nesta atualização. As colunas descrevem o
+            que vem pronto; NetLogo, GAMA e Mesa permitem construir quase tudo,
+            mas exigem programar.
           </p>
         </div>
         <div class="table-wrap">
@@ -1569,12 +1571,12 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
                 <td class="y">Colônia completa</td>
                 <td class="y">Sim</td>
                 <td class="y">Solo, água, calor, gases</td>
-                <td class="y">217 testes</td>
+                <td class="y">Balanços testados; suíte total de 562 testes</td>
                 <td class="y">Sim, com checkpoints</td>
                 <td class="y">MAE, RMSE, cobertura</td>
                 <td class="p">Parâmetros e intervenções</td>
                 <td class="n0">Projeto novo, sem publicações</td>
-                <td>Gratuito (sem licença definida)</td>
+                <td>Gratuito; código MIT, documentação CC BY 4.0</td>
               </tr>
               <tr>
                 <th>NetLogo</th>
@@ -1685,11 +1687,10 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
         </div>
         <div class="narrow" style="display: grid; gap: 10px">
           <p>
-            <b>Diferencial do Viveiro:</b> nenhuma das outras ferramentas
-            entrega pronto um formigueiro em que navegação, química, solo,
-            microclima, genética, prole e previsão rodam acoplados no mesmo
-            modelo, com conservação testada e replay por seed, direto no
-            navegador.
+            <b>Integração do Viveiro:</b> navegação, química, solo, microclima,
+            genética, prole e previsão no navegador, com testes de conservação e
+            replay por seed. O acoplamento é uma característica do projeto; a
+            calibração biológica continua pendente.
           </p>
           <p>
             <b>Onde perde:</b> maturidade, base de publicações, comunidade,
@@ -1708,14 +1709,17 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
       <section id="ranking">
         <div class="narrow" style="display: grid; gap: 12px">
           <p class="eyebrow">Ranking educacional</p>
-          <h2>Quem serve melhor em sala de aula</h2>
+          <h2>Notas editoriais por contexto</h2>
           <p>
-            Notas de 0 a 10 por critério, atribuídas a partir da análise do
-            repositório e do conhecimento público sobre cada ferramenta. São
-            avaliações editoriais, não medições. As linhas tracejadas mostram
-            onde o Viveiro chega ao concluir o cronograma atual do projeto
-            (etapas 10C a 14) e as fases do
-            <a href="#plano">plano para o 1º lugar</a>.
+            Revisão parcial em 15/11/2026: notas de 0 a 10, com os pesos
+            originais. Rigor/transparência e reprodutibilidade do Viveiro foram
+            revistos com as evidências de G0/G1 e a infraestrutura já existente.
+            Validação e literatura permanece em 3/10; G2–G4 estão pendentes. As
+            notas dos concorrentes são referências históricas sem nova
+            auditoria. A ordenação desta matriz não é um levantamento atual do
+            mercado.
+            <a href="comparativo-gautrais.md">Critérios, evidências e limites</a
+            >.
           </p>
         </div>
         <div class="toggle" role="group" aria-label="Contexto do ranking">
@@ -1726,6 +1730,16 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
             Escolas (ensino médio)
           </button>
         </div>
+        <p class="narrow" id="score-update">
+          Universidades: 6,05 → 6,40 (+0,35). Escolas: 6,70 → 6,85 (+0,15). Os
+          demais critérios do Viveiro não foram reavaliados nesta revisão
+          parcial. Projeções futuras ficam fora do gráfico atual.
+        </p>
+        <p class="narrow" id="release-status">
+          Novas tags e GitHub Releases estão pausadas por decisão do mantenedor
+          em 15/11/2026. O trabalho segue em branches e PRs até uma nova
+          instrução para a versão consolidada.
+        </p>
         <p class="weights" id="weights"></p>
         <div class="rank" id="rank" aria-live="polite"></div>
         <p class="narrow" id="rank-note"></p>
@@ -1739,15 +1753,23 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
 
       <section id="plano">
         <div class="narrow" style="display: grid; gap: 12px">
-          <p class="eyebrow">Plano para o 1º lugar</p>
-          <h2>Passos de implementação, em ordem</h2>
+          <p class="eyebrow">Plano e projeções históricos</p>
+          <h2>Plano original, preservado para consulta</h2>
+          <p>
+            Este trecho conserva metas, prazos e notas anteriores a esta
+            revisão. Não representa novos aceites nem promessa de posição no
+            mercado. O <a href="../cronograma.md">cronograma ativo</a> registra
+            o que foi entregue; a instrução atual mantém tags e releases
+            pausadas.
+          </p>
           <p>
             Cinco fases. A fase C conclui o cronograma que o projeto já tem
             (etapas 10C, 12, 13 e 14) e corre em paralelo às fases 1 e 2. Cada
             passo diz o que fazer, onde mexer no repositório, quando está pronto
             e qual critério do ranking ele sobe. Siga as regras do AGENTS.md em
             todos: branch própria com prefixo <code>codex/</code>, testes do
-            modelo, verificação no navegador, tag da versão e publicação.
+            modelo e verificação no navegador. Entregar em branches e PRs; uma
+            nova tag/release consolidada aguarda instrução do mantenedor.
           </p>
           <p>
             <b>Resumo:</b> as fases 0 e 1 bastam para o 1º lugar em escolas. Nas
@@ -1772,7 +1794,7 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
               <tr>
                 <th>Critério</th>
                 <th>Peso</th>
-                <th>Hoje</th>
+                <th>Base histórica</th>
                 <th>Só cronograma 10C–14</th>
                 <th>Cronograma e fases 0–2</th>
                 <th>Após fase 3</th>
@@ -1781,7 +1803,9 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
             </thead>
             <tbody>
               <tr>
-                <th colspan="7">Universidades · líder atual: NetLogo 8,50</th>
+                <th colspan="7">
+                  Universidades · referência histórica: NetLogo 8,50
+                </th>
               </tr>
               <tr>
                 <td>Rigor e transparência</td>
@@ -1856,7 +1880,7 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
                 <td></td>
               </tr>
               <tr>
-                <th colspan="7">Escolas · líder atual: PhET 8,70</th>
+                <th colspan="7">Escolas · referência histórica: PhET 8,70</th>
               </tr>
               <tr>
                 <td>Engajamento visual</td>
@@ -2824,7 +2848,7 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
               ["Engajamento visual", 0.1],
               ["Material didático e comunidade", 0.15],
             ],
-            note: "NetLogo lidera porque é a referência de ensino de modelagem, com décadas de literatura e edição total pelo aluno. O Viveiro tem as maiores notas em rigor, reprodutibilidade e visual, mas perde em validação, extensibilidade e material didático. Concluir só o cronograma (10C a 14) sobe a nota de 6,05 para 6,40 e passa o PhET (5º lugar): o modelo fica mais completo, mas o que falta é validação e material didático. Cronograma mais fases 0 a 2 levam ao 2º lugar (8,30). O 1º lugar (8,90) só vem com a fase 3, que depende de dados reais, de revisão por pares e das etapas 13 e 14 concluídas.",
+            note: "Revisão editorial parcial: rigor/transparência 8→9 e reprodutibilidade 9→10 elevam o Viveiro de 6,05 para 6,40 com os pesos originais. A nota de validação/literatura continua 3. Os 10 pontos em reprodutibilidade descrevem esta rubrica e não significam replicação independente. Notas dos concorrentes mantidas da matriz histórica; posições não são um ranking atual auditado.",
           },
           esc: {
             label: "Escolas",
@@ -2836,15 +2860,15 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
               ["Rigor conceitual", 0.15],
               ["Português", 0.1],
             ],
-            note: "PhET lidera com folga por ser simples, traduzido e acompanhado de planos de aula. O Viveiro empata no segundo grupo: é o mais envolvente visualmente entre as opções científicas e está em português, mas ainda falta guia do professor. O cronograma sozinho rende pouco aqui (6,70 para 6,85). As fases 0 e 1 bastam para passar o PhET; com o cronograma concluído, a nota chega a 9,10 contra 8,70.",
+            note: "Revisão editorial parcial: rigor conceitual 8→9 leva o Viveiro de 6,70 para 6,85. Facilidade, material didático, acesso e português não foram reavaliados aqui. G0/G1 organizam evidências e limites; G2–G4 ainda precisam avaliar o motor. As demais notas são referências históricas, sem nova auditoria.",
           },
         };
         var tools = [
           {
             n: "Viveiro",
             us: true,
-            uni: [8, 9, 3, 4, 7, 9, 3],
-            esc: [9, 6, 3, 6, 8, 10],
+            uni: [9, 10, 3, 4, 7, 9, 3],
+            esc: [9, 6, 3, 6, 9, 10],
           },
           {
             n: "Viveiro só com o cronograma (10C–14)",
@@ -2905,6 +2929,9 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
         }
         function render(c) {
           var list = tools
+            .filter(function (t) {
+              return !t.proj;
+            })
             .map(function (t) {
               return { t: t, s: score(t, c) };
             })
@@ -2947,22 +2974,26 @@ Experimento clássico: rode a mesma seed duas vezes, mude uma única intervenç�
               })
               .join("") +
             "<th>Total</th></tr></thead><tbody>";
-          tools.forEach(function (t) {
-            h +=
-              "<tr" +
-              (t.us ? ' class="us"' : "") +
-              "><th>" +
-              t.n +
-              "</th>" +
-              t[c]
-                .map(function (v) {
-                  return "<td>" + v + "</td>";
-                })
-                .join("") +
-              "<td><b>" +
-              score(t, c).toFixed(2).replace(".", ",") +
-              "</b></td></tr>";
-          });
+          tools
+            .filter(function (t) {
+              return !t.proj;
+            })
+            .forEach(function (t) {
+              h +=
+                "<tr" +
+                (t.us ? ' class="us"' : "") +
+                "><th>" +
+                t.n +
+                "</th>" +
+                t[c]
+                  .map(function (v) {
+                    return "<td>" + v + "</td>";
+                  })
+                  .join("") +
+                "<td><b>" +
+                score(t, c).toFixed(2).replace(".", ",") +
+                "</b></td></tr>";
+            });
           tbl.innerHTML = h + "</tbody>";
           document.querySelectorAll(".toggle button").forEach(function (b) {
             b.setAttribute(

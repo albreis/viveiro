@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-15",
+  "scope": "Editorial comparison and publication pause; no changes to simulation code.",
+  "tests": {
+    "command": "node --test tests/editorial-comparison.test.mjs tests/roadmap.test.mjs",
+    "passed": 9,
+    "failed": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "knownWarning": "Existing Three.js chunk size warning"
+  },
+  "browser": {
+    "browser": "157.0.8103.51",
+    "cases": [
+      {
+        "width": 1440,
+        "height": 1000,
+        "university": "6,40",
+        "school": "6,85",
+        "biologicalScoreUnchanged": true,
+        "projectionRowsExcluded": true,
+        "publicationPauseVisible": true,
+        "errors": []
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "university": "6,40",
+        "school": "6,85",
+        "biologicalScoreUnchanged": true,
+        "projectionRowsExcluded": true,
+        "publicationPauseVisible": true,
+        "errors": []
+      }
+    ]
+  },
+  "publication": {
+    "newTags": false,
+    "newReleases": false,
+    "zenodoDeposit": false
+  },
+  "changes": {
+    "university": {
+      "before": 6.05,
+      "after": 6.4
+    },
+    "school": {
+      "before": 6.7,
+      "after": 6.85
+    },
+    "biologicalValidation": 3,
+    "competitorsReaudited": false
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema": "viveiro-editorial-score-review-v1",
+  "date": "2026-11-15",
+  "scope": "Partial editorial review of rigor/transparency/reproducibility after G0/G1, including the existing verification infrastructure. Not a measured causal gain of G1 alone.",
+  "evidencePR": 135,
+  "evidenceSourceSha": "1468c20be55f78f0e5f5ea013ee654003494f3d9",
+  "scientificValidationCompleted": false,
+  "contexts": {
+    "uni": {
+      "label": "Universidades",
+      "criteria": [
+        "Rigor e transparência do modelo",
+        "Reprodutibilidade",
+        "Validação e literatura",
+        "Aluno estende o modelo",
+        "Acesso e custo",
+        "Engajamento visual",
+        "Material didático e comunidade"
+      ],
+      "weights": [
+        0.2,
+        0.15,
+        0.15,
+        0.15,
+        0.1,
+        0.1,
+        0.15
+      ],
+      "before": [
+        8,
+        9,
+        3,
+        4,
+        7,
+        9,
+        3
+      ],
+      "after": [
+        9,
+        10,
+        3,
+        4,
+        7,
+        9,
+        3
+      ],
+      "beforeTotal": 6.05,
+      "afterTotal": 6.4
+    },
+    "esc": {
+      "label": "Escolas",
+      "criteria": [
+        "Engajamento visual",
+        "Facilidade de uso",
+        "Material didático",
+        "Acesso, custo e hardware",
+        "Rigor conceitual",
+        "Português"
+      ],
+      "weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.15,
+        0.15,
+        0.1
+      ],
+      "before": [
+        9,
+        6,
+        3,
+        6,
+        8,
+        10
+      ],
+      "after": [
+        9,
+        6,
+        3,
+        6,
+        9,
+        10
+      ],
+      "beforeTotal": 6.7,
+      "afterTotal": 6.85
+    }
+  },
+  "rationale": [
+    {
+      "criterion": "Rigor e transparência do modelo",
+      "before": 8,
+      "after": 9,
+      "evidence": "Frozen plan before new replica metrics, disclosed previous exposure and Buhl 2004 dependency, closed reserved-metric gate and published limitations."
+    },
+    {
+      "criterion": "Reprodutibilidade",
+      "before": 9,
+      "after": 10,
+      "evidence": "Versioned source and protocol, verified 5,019 graph files, immutable analysis output, 562 tests and CLI/browser checks. Ten is an editorial rubric level, not independent replication."
+    },
+    {
+      "criterion": "Rigor conceitual (escolas)",
+      "before": 8,
+      "after": 9,
+      "evidence": "Explicit distinction between computational verification, parameter choice and biological evaluation; no automatic interpretation of disconnected multigraphs."
+    }
+  ],
+  "competitors": {
+    "reaudited": false,
+    "baseline": "Historical editorial matrix in kit-divulgacao.html, retained without changing competitor values.",
+    "dataSha256": "bc3b812b7e66cc2285bde86cdf3cf49fcc255ed7aba2e53d845ed9523cc027e9"
+  },
+  "limits": [
+    "Other Viveiro criteria were not rerated in this partial review.",
+    "No validated biological prediction or independent replication is inferred.",
+    "Projection rows are omitted from the current chart; the original plan remains labeled as historical.",
+    "Relative positions only order this historical matrix; they are not a current market survey."
+  ],
+  "publication": {
+    "newTagsPaused": true,
+    "newReleasesPaused": true,
+    "manualZenodoDeposit": false,
+    "resume": "Only after a new maintainer instruction for a consolidated version."
+  }
+}
