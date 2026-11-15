@@ -75,8 +75,18 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   [TRACE](buhl-trace.md), com fontes/incertezas e separação entre comparação
   histórica e avaliação independente. A mudança de abordagem não reclassifica
   Buhl como dado independente.
-  **E-mail enviado em 05/11/2026.** O mantenedor solicitou à Dra. Camille
-  Buhl os dados por réplica e as condições de reuso. Aguardando resposta.
+  **Decisão de 15/11/2026: B7 deixa de depender de resposta dos autores.**
+  O e-mail de 05/11/2026 foi para um endereço provavelmente incorreto
+  (o primeiro autor é Jérôme Buhl) e não teve resposta. O mantenedor
+  pode tentar novo contato; dados recebidos no futuro entram como evidência
+  adicional, sem bloquear esta etapa. A avaliação reservada passa a usar
+  dados públicos, começando pelas séries por réplica de
+  [Gautrais et al. 2014](../validacoes/gautrais-2014.md) (*Messor sancta*,
+  Data S1 da PLOS ONE, reuso livre). Antes de qualquer ajuste, fixar as
+  métricas de rede, a lista de réplicas reservadas e o plano de análise.
+  Registrar que essas séries podem vir dos mesmos experimentos de Buhl 2004;
+  sem essa verificação, o resultado é teste de padrão não usado no ajuste,
+  não replicação independente.
   [Método, escolha e plano reservado](buhl-ajuste.md).
   [Gráficos de Buhl e do Viveiro sem e com fadiga](buhl-fadiga.md#curvas-de-0-a-72-h).
   [Relatório sobre agregação, água, temperatura e ventilação](buhl-variaveis.md).

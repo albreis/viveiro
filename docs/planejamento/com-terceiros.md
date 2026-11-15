@@ -10,6 +10,7 @@ pareceres e acordos não pode ser simulado por outro agente de IA.
 | P1.4B | Docentes de Biologia e Física | Pareceres reais dos seis roteiros, correções aplicadas e aceites documentados |
 | P1.7 | Escola, docentes e 2–3 turmas | Piloto real, SUS médio >70, pré/pós-teste e relatório; coletar somente dados/consentimentos apropriados ao protocolo |
 | P3.1 | Laboratório de mirmecologia | Acordo e dados compatíveis com permissão/licença; dados já abertos não exigem nova autorização por padrão |
+| Autores de Buhl et al. (opcional) | Dados por réplica e condições de reuso | Contato tentado em 05/11/2026; desde 15/11 não bloqueia B7/P3.3, que usa dados públicos (Gautrais et al. 2014). Dados recebidos entram como evidência adicional |
 | P3 — revisão complementar (opcional) | Pesquisadores/revisores independentes | Reprodução externa dos dados/protocolo/limites; não é novo requisito de P3.3, cujo aceite continua MAE/cobertura em dados reservados |
 | P3.4 | Revisores/editoria JOSS | Pareceres e aceite reais; a [preparação](../publicacao/preparacao.md) separa autoria, histórico público e evidências de uso em pesquisa |
 | P4.1B | Primeiro colaborador externo | Contribuição real revisada e integrada; tarefa aberta pelo mantenedor não conta |
