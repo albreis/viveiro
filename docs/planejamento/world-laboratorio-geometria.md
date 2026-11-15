@@ -63,7 +63,7 @@ antes da avaliação. Um cenário sem galerias é o estado antes do alinhamento.
 [Plano de preparação](../validacoes/world-laboratorio-geometria-plano.json).
 
 ```powershell
-node scripts/prepare-world-laboratory.ts --plan docs/validacoes/world-laboratorio-geometria-plano.json --output .runtime/world-laboratorio-geometria
+node scripts/prepare-world-laboratory.ts --plan docs/validacoes/world-laboratorio-geometria-plano.json --output .runtime/world-laboratorio-geometria-portable
 node scripts/qa/world-laboratory.mjs
 ```
 
@@ -79,3 +79,13 @@ relógios, limites locais/Fluon, taxas e filas de ações, volume removido real,
 transporte/massa, retomada e convergência de passo. G2-B continua aberto para
 segmentação convergida e convenção comum. G3 só congela predições elegíveis
 depois desses requisitos; G4 permanece fechado. Não há nova tag ou depósito.
+
+## Política numérica do preparo
+
+A primeira conferência nativa encontrou diferenças de um bit em coordenadas
+entre Node e Chrome. Elas não foram arredondadas nem ocultadas com tolerância.
+O CLI e a conferência passaram a usar o backend portátil já existente
+`stdlib-f64-v1`, antes de criar qualquer World e em processo/contexto isolado.
+A cena interativa mantém sua aritmética nativa. O primeiro preparo nativo foi
+preservado; a reprodução portátil usa pasta distinta e registra sua política.
+O QA exige hashes idênticos do snapshot inteiro, além dos relatórios.

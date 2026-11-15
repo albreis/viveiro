@@ -1,3 +1,4 @@
+import { installPortableMath } from "../src/libs/portable-math.ts";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
@@ -30,6 +31,7 @@ try {
     throw Error("Commit source before preparing laboratory");
   const sourceSha = git("rev-parse", "HEAD"),
     sourceFingerprint = modelSourceFingerprint(checkout);
+  installPortableMath(); // Dedicated CLI process, before creating any World.
   const results = plan.groups.map((workers) => {
     const { world, report } = prepareLaboratoryWorld({ ...plan, workers });
     const cohort = world.ants.map(
@@ -66,6 +68,7 @@ try {
     sourceSha,
     sourceFingerprint,
     node: process.version,
+    arithmeticPolicy: "stdlib-f64-v1",
     plan,
     physicalProtocolCompatible: false,
     physicalDynamicsIntegrated: false,

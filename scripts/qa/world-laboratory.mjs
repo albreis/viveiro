@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright-core";
-const folder = process.argv[2] ?? ".runtime/world-laboratorio-geometria";
+const folder =
+  process.argv[2] ?? ".runtime/world-laboratorio-geometria-portable";
 const expected = JSON.parse(readFileSync(folder + "/preparation.json", "utf8"));
 const browser = await chromium.launch({
   channel: "chrome",
@@ -14,13 +15,17 @@ try {
     page = await context.newPage(),
     errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("http://127.0.0.1:4173/?lang=pt-BR");
-  await page.locator("#loading").waitFor({ state: "hidden", timeout: 60000 });
-  assert.equal(
-    await page.locator("#biology-profile").inputValue(),
-    "messor-narbonne@3",
+  // A fresh realm without the live terrarium; never replace its math backend.
+  await page.route("**/__qa/laboratory", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<!doctype html><title>Laboratory numeric QA</title>",
+    }),
   );
+  await page.goto("http://127.0.0.1:4173/__qa/laboratory");
   const result = await page.evaluate(async (plan) => {
+    const { installPortableMath } = await import("/src/libs/portable-math.ts");
+    installPortableMath();
     const { prepareLaboratoryWorld } =
       await import("/src/modules/benchmarks/gautrais/laboratory/setup.ts");
     const { sampleWorldSection } =
@@ -36,18 +41,6 @@ try {
       const snapshotSha256 = Array.from(new Uint8Array(digest), (v) =>
         v.toString(16).padStart(2, "0"),
       ).join("");
-      const cohort = world.ants.map(
-        ({ id, x, y, z, angle, bodyScale, speed, age }) => ({
-          id,
-          x,
-          y,
-          z,
-          angle,
-          bodyScale,
-          speed,
-          age,
-        }),
-      );
       const g = world.nest.laboratory,
         mask = sampleWorldSection(world.nest, {
           y: -g.sandDepth / 2,
@@ -67,11 +60,18 @@ try {
       }
       if (!blocked || before !== JSON.stringify(world.snapshot()))
         throw Error("Clock guard failed");
-      rows.push({ workers, report, cohort, snapshotSha256 });
+      rows.push({ workers, report, snapshotSha256 });
     }
     return rows;
   }, expected.plan);
-  assert.deepEqual(result, expected.results);
+  assert.deepEqual(
+    result,
+    expected.results.map(({ workers, report, snapshotSha256 }) => ({
+      workers,
+      report,
+      snapshotSha256,
+    })),
+  );
   assert.deepEqual(errors, []);
   await context.close();
   const visual = await browser.newPage({
@@ -87,6 +87,7 @@ try {
     groups: 3,
     workers: 350,
     cliBrowserSnapshotExact: true,
+    arithmeticPolicy: "stdlib-f64-v1",
     blankSubstrate: true,
     physicalClockGuard: true,
     freshContext: true,
