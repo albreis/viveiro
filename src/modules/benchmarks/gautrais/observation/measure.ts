@@ -2,7 +2,7 @@ import { graphTopology } from "../topology.ts";
 import { maskTopology, roundedLift, type PlanarMask } from "./mask.ts";
 import { thinMask } from "./thin.ts";
 import { skeletonGraph } from "./pixel-graph.ts";
-export const NETWORK_OBSERVER_ID = "physical-section-4fg8bg-degree2-v1";
+export const NETWORK_OBSERVER_ID = "physical-section-4fg8bg-degree2-v2";
 export function observePhysicalNetwork(mask: PlanarMask) {
   const before = maskTopology(mask),
     lifted = roundedLift(mask),

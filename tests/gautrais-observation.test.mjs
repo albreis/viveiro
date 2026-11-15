@@ -170,3 +170,14 @@ test("actual fixed pilot plan is accepted independently of key order; invalid pl
   ])
     assert.throws(() => normalizeWorldObservationPlan({ ...raw, ...change }));
 });
+
+test("diagonal disambiguation never cuts notches in a solid straight wall", () => {
+  for (const rows of [["111111", "111111"], ["1"], ["111", "111", "111"]]) {
+    const input = mask(rows),
+      lifted = roundedLift(input);
+    assert.ok(lifted.cells.every((value) => value === 1));
+    assert.deepEqual(maskTopology(lifted, true), { components: 1, holes: 0 });
+  }
+  const diagonal = roundedLift(mask(["10", "01"]));
+  assert.deepEqual(maskTopology(diagonal, true), { components: 2, holes: 0 });
+});

@@ -92,13 +92,13 @@ export function roundedLift(mask: PlanarMask): PlanarMask {
     mask.cells[y * mask.width + x] === 1;
   for (let y = 0; y <= mask.height; y++)
     for (let x = 0; x <= mask.width; x++) {
-      if (
-        occupied(x - 1, y - 1) &&
-        occupied(x, y - 1) &&
-        occupied(x - 1, y) &&
-        occupied(x, y)
-      )
-        continue;
+      const a = occupied(x - 1, y - 1),
+        b = occupied(x, y - 1),
+        c = occupied(x - 1, y),
+        d = occupied(x, y);
+      // Only ambiguous diagonal pairs need separation. Cutting every boundary
+      // vertex creates artificial notches along straight and stair-step walls.
+      if (!(a && d && !b && !c) && !(b && c && !a && !d)) continue;
       for (const ny of [3 * y - 1, 3 * y])
         for (const nx of [3 * x - 1, 3 * x])
           if (nx >= 0 && ny >= 0 && nx < width && ny < height)

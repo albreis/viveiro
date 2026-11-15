@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright-core";
+const pilotRoot = process.argv[2] ?? ".runtime/gautrais-g2-piloto";
 const expected = JSON.parse(
-  readFileSync(".runtime/gautrais-g2-piloto/world-observation.json", "utf8"),
+  readFileSync(pilotRoot + "/world-observation.json", "utf8"),
 );
 const browser = await chromium.launch({
   channel: "chrome",
@@ -85,7 +86,7 @@ try {
     viewport: { width: 1100, height: 760 },
   });
   const svg = readFileSync(
-    ".runtime/gautrais-g2-piloto/workers-50-tick-120-y--2-pitch-0.2.svg",
+    pilotRoot + "/workers-50-tick-120-y--2-pitch-0.2.svg",
     "utf8",
   );
   await visual.setContent(
@@ -111,7 +112,7 @@ try {
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(JSON.stringify(report));
-  await context.close();
+  await visual.close();
 } finally {
   await browser.close();
 }

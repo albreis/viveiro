@@ -12,7 +12,7 @@ tem posição, limites, resolução e unidades explícitos. Ar fora do solo não
 une artificialmente as entradas. O corte 3D não é apresentado como ninho inteiro.
 
 A discretização usa conectividade 4 para vazios e 8 para fundo. Uma ampliação
-com cantos resolvidos permite afinamento direcional com remoções locais
+com contatos exclusivamente diagonais separados permite afinamento direcional com remoções locais
 que preservam componentes e buracos. Faces 2×2 preenchidas são área, não
 ciclos de galerias. A rede é comprimida por cadeias de grau 2, preservando
 componentes e ciclos; loops usam dois nós e arestas paralelas.
@@ -53,3 +53,8 @@ variou com a grade; o corte y = −2 também mudou de 3 para 2 componentes.
 **G2 não passou ainda pela comparabilidade.** Corrigir/verificar segmentação
 sem escolher grade por ajuste aos dados. K1 pode avançar em geometria/relógio
 sem abrir a reserva. G3/G4 continuam bloqueados por esses requisitos.
+
+A revisão v2 do operador corrige dentes artificiais: a ampliação só corta
+vértices com dois pixels ocupados em diagonal, sem entalhar paredes cheias.
+O ensaio v1 permanece arquivado. Isso corrige a instrumentação, não uma regra
+biológica, e não transforma automaticamente ramificações em medidas convergidas.
