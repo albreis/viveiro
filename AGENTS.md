@@ -1,5 +1,7 @@
 # Regras deste projeto
 
+- Pausa de publicação determinada em 15/11/2026: não criar nem enviar novas tags ou GitHub Releases até nova instrução do mantenedor para uma versão consolidada. Continuar em branches, commits, push, PRs e dev. A integração GitHub–Zenodo já está ativa; não criar depósitos manuais. Preservar tags existentes.
+
 - Cada etapa funcional deve começar em uma branch própria com prefixo codex/.
 - Assim que concluir uma etapa, faça commit, push e crie ou atualize seu PR automaticamente, conforme pedido do usuário.
 - Abra os PRs em ordem de dependência. Em branches encadeadas, compare com a etapa anterior para isolar o diff; após integrar a anterior, ajuste a base do próximo PR para main.

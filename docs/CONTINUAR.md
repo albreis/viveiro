@@ -16,6 +16,15 @@ opcional; não enviar novas mensagens. Gautrais 2014 passa a integrar T4.
 Os demais dados adicionais permanecem opcionais. P3.1, revisão docente,
 piloto com turmas e demais aceites humanos não mudaram.
 
+## Comparativo e pausa de publicação — 15/11/2026
+
+O mantenedor autorizou a [revisão editorial do comparativo](divulgacao/comparativo-gautrais.md),
+com ganhos metodológicos de G0/G1 e validação biológica ainda pendente.
+Branch `codex/comparativo-gautrais`, dependente do #135; preservar sua branch.
+**Não criar ou enviar novas tags nem GitHub Releases agora.** Continuar as
+entregas em branches/PRs e dev, reunir mais mudanças e aguardar nova instrução
+para a versão consolidada do Zenodo. Não fazer depósito manual.
+
 ## Próximo passo concreto
 
 G1 entregue no [PR #135](https://github.com/albreis/viveiro/pull/135).
