@@ -53,7 +53,7 @@ Contato com Buhl é opcional. O inventário já existe; a próxima implementaç�
 é o protocolo por réplica e o leitor de métricas, sem alterar o motor.
 
 - [x] **G0 — Fonte e novo escopo:** artigo, suplemento e hash conferidos.
-- [ ] **G1 — Partição e métricas de desenvolvimento:** plano congelado, leitor
+- [x] **G1 — Partição e métricas de desenvolvimento:** plano congelado, leitor
   testado, resultados só da partição ímpar e proveniência reproduzível.
 - [ ] **G2–G4 — Comparação e avaliação:** mesma definição de rede, predições
   congeladas, reserva, MAE/cobertura e relatório; sem alegação de independência.

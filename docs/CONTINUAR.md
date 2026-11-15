@@ -18,11 +18,21 @@ piloto com turmas e demais aceites humanos não mudaram.
 
 ## Próximo passo concreto
 
-Congelar e enviar o [plano de partição](validacoes/gautrais-2014-plano.json)
-antes de analisar novas métricas por réplica. Implementar G1 com módulos
-pequenos em TypeScript, reutilizando o leitor existente. Analisar somente
-as 15 réplicas ímpares de desenvolvimento. As 13 pares ficam reservadas,
-com todos os seus quadros na mesma partição.
+G1 entregue no [PR #135](https://github.com/albreis/viveiro/pull/135).
+O #134 foi mesclado durante esta etapa (main 42a9033); o #135 foi
+retargetado para main, sem novas mudanças de arquivos na base. Plano congelado e enviado no commit 794f3d0 antes das
+novas métricas; implementação de análise no commit 57f65fc.
+[Dados de desenvolvimento](validacoes/gautrais-2014-desenvolvimento.json) e
+[relatório](validacoes/gautrais-2014-desenvolvimento.md). Foram 15 réplicas,
+12 séries, 99 observações; 5.019 arquivos conferidos por hash. A reserva
+continua bloqueada no CLI. Correção da estatística não mudou nenhum valor.
+
+Próximo passo: G2, definir e extrair os mesmos observáveis de rede do
+simulador. Não equiparar o grafo lógico do World à rede física segmentada
+do artigo, nem aplicar meshedness conectada aos dados desconectados.
+Fixar a comparação/projeção e testar grafos sintéticos antes de novas
+rodadas. G3 congela predições; somente G4 abre métricas reservadas.
+Conferir o estado do #135 antes de retomar. Sem nova tag por esta etapa.
 
 O ZIP local em `.runtime/buhl-gautrais-data-s1.zip` confere com o hash
 publicado no inventário. Dados extraídos em `.runtime/buhl-gautrais-s1/S12`.

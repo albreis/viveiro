@@ -10,7 +10,7 @@ não representa certificação, revisão externa ou TRACE completo já concluíd
 | Parte | O que registrar | Situação atual |
 | --- | --- | --- |
 | Formulação do problema | Propósito, população, contexto e decisões permitidas | Exploração de mecanismos e ensino; previsão de volumes reais não validada |
-| Avaliação dos dados | Fonte, licença, amostra, unidades, erros e dependências | Curvas digitalizadas/tabelas disponíveis; réplicas independentes pendentes |
+| Avaliação dos dados | Fonte, licença, amostra, unidades, erros e dependências | Gautrais público integra G0–G4 desde 15/11; inventário, partição e exposição anterior registrados, sem presumir independência |
 | Modelo conceitual | Justificativa dos mecanismos e alternativas | Morfologia mantida por decisão explícita; hipóteses quantitativas ainda abertas |
 | Verificação da implementação | Testes, conservação, relógio, geometria e contato | Arena e World distintos; comparabilidade física de World pendente |
 | Verificação das saídas | Plausibilidade e consistência das métricas | Dados históricos preservados; não substituem observações biológicas |

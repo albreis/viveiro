@@ -55,3 +55,12 @@ de parâmetros próprios. A correspondência de réplicas com as curvas de
 2001/2005 não está estabelecida; não declarar independência nem usar o
 conjunto como teste reservado sem verificar a proveniência. Este inventário
 não é uma avaliação empírica de saídas do Viveiro.
+
+## Etapa ativa desde 15/11/2026
+
+O mantenedor promoveu esta fonte a T4/B7 no PR #134.
+O [plano G0–G4](../planejamento/gautrais-avaliacao.md) preserva a exposição
+da auditoria e as dependências conhecidas. [G1](gautrais-2014-desenvolvimento.md)
+implementa a análise por réplica apenas de desenvolvimento; não declara
+replicação independente nem encerra a calibração. O contato com os autores
+continua opcional e não bloqueia o trabalho técnico.

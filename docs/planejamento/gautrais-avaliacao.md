@@ -5,7 +5,7 @@
 ## Sequência técnica
 
 - [x] **G0 — Escopo e fonte:** conferir artigo, suplemento e inventário local. O ZIP de 5.173.127 bytes coincide com o SHA-256 arquivado.
-- [ ] **G1 — Protocolo e dados:** congelar [plano e partição](../validacoes/gautrais-2014-plano.json), testar leitor/métricas, analisar somente desenvolvimento e arquivar proveniência.
+- [x] **G1 — Protocolo e dados:** congelar [plano e partição](../validacoes/gautrais-2014-plano.json), testar leitor/métricas, analisar somente desenvolvimento e arquivar proveniência.
 - [ ] **G2 — Mesmo observável no simulador:** extrair rede do motor declarado e verificar convenções de nós, componentes, câmaras, túneis, periferia e relógio. A contagem de nós internos do World não equivale automaticamente aos grafos do artigo.
 - [ ] **G3 — Predições congeladas:** cenário compatível, parâmetros, sensibilidade, réplicas/seeds, nível da faixa e protocolo de comparação. Resolver K1–K6 onde necessário. Não ajustar olhando as réplicas reservadas.
 - [ ] **G4 — Avaliação reservada e relatório:** abrir a partição reservada só depois de G3, calcular MAE/cobertura por métrica/grupo e registrar resultados favoráveis e desfavoráveis. Não declarar independência inexistente.
@@ -27,3 +27,12 @@ O artigo reanalisa experimentos de Buhl 2004. A correspondência com as curvas d
 A descrição do artigo usa a autoria Camille Buhl e cita trabalhos anteriores com inicial J. Isso não confirma, por si só, que o endereço usado no e-mail estava errado. Mantém-se o registro do contato tentado, sem diagnóstico sobre a entrega.
 
 [Artigo e disponibilidade](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0109436) · [Inventário](../validacoes/gautrais-2014.md) · [TRACE](buhl-trace.md).
+
+## Primeira entrega G1
+
+Leitor e CLI implementados. A análise de desenvolvimento calculou 15 grafos
+finais e 84 quadros selecionados (99 observações), sem calcular métricas de
+reserva. Os 5.019 arquivos passaram pela checagem de integridade.
+[Dados gerados](../validacoes/gautrais-2014-desenvolvimento.json) ·
+[Relatório e reprodução](../validacoes/gautrais-2014-desenvolvimento.md).
+G2–G4 e B7 permanecem abertos.

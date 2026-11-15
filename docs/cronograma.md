@@ -77,7 +77,8 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
 3. **T3 — Desempenho técnico entregue:** [TBT, CLS e ensaio de FPS](qa-desempenho.md).
    O ensaio em equipamento escolar segue no aceite P1.1B.
 4. **T4 — Buhl/P3:** B1–B6 e B8 entregues. B7 tem ajuste exploratório e
-   avaliação em seeds reservadas. Faltam séries empíricas independentes.
+   avaliação em seeds reservadas. Falta a avaliação de observações por réplica
+   com cenário compatível, MAE/cobertura e dependências explicitadas.
    Desde 15/11/2026 a validação usa dados públicos e não depende de resposta
    de Buhl: primeiro as séries por réplica de [Gautrais et al. 2014](validacoes/gautrais-2014.md).
    Executar [G0–G4](planejamento/gautrais-avaliacao.md): fonte e partição →

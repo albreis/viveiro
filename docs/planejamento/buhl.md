@@ -67,7 +67,8 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   [Mecanismos e ablação às seis horas](buhl-mecanismos.md).
 - [ ] **B7 — Calibrar e reservar dados:** ajuste exploratório de 12 h
   concluído. A configuração foi congelada antes de usar as seeds
-  reservadas. Faltam observações empíricas independentes por réplica.
+  reservadas. Falta avaliar observações empíricas por réplica, com cenário
+  compatível, MAE/cobertura e a exposição/dependência dos dados explícitas.
   Os [ensaios de acesso com corpos explícitos](buhl-acesso-geometrico.md)
   concluíram 15 rodadas adicionais: ganho de 44,7–54,6% e 16/18 pontos na
   faixa de digitalização. Não encerram este aceite nem validam o motor 3D.
