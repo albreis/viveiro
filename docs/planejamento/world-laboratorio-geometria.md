@@ -89,3 +89,28 @@ O CLI e a conferência passaram a usar o backend portátil já existente
 A cena interativa mantém sua aritmética nativa. O primeiro preparo nativo foi
 preservado; a reprodução portátil usa pasta distinta e registra sua política.
 O QA exige hashes idênticos do snapshot inteiro, além dos relatórios.
+
+## Conferência da preparação
+
+Fonte nativa inicial `4a9632fcdcc3d256608aa8117e0f801a993023ed`:
+[resultado preservado](../validacoes/world-laboratorio-geometria/preparation-native.json).
+Fonte portátil `e8325544f7ad2a3ffe855ab11ba5f04e9340a108`, fingerprint
+`c48db5b0e2fb4c2090fee7b3a60701069254ba26b3dfd882f1170affc78bc2c6`:
+[resultado portátil](../validacoes/world-laboratorio-geometria/preparation.json).
+
+Chrome 157 e Node 24.22.1 produziram hashes **idênticos dos snapshots completos**
+das três coortes, totalizando 350 operárias, com `stdlib-f64-v1` em contexto
+isolado. Substrato vazio, guarda do relógio e ausência de mutação conferidos.
+O teste de regressão mantém as mesmas 4.800 amostras do campo anterior ao refactor
+(hash `4ab1bd2217dee8d7379ff2a854544dc2a63e81508ca784b46e0c1616a455531f`).
+O controle legado usa aritmética nativa, como a cena interativa.
+
+![Preparação: areia, cobertura e centros das 200 operárias](../validacoes/figuras/world-laboratorio-geometria.png)
+
+Os pontos representam centros para inspeção da distribuição. Não são silhuetas
+em escala, nem uma rodada de escavação. A igualdade entre implementações é
+verificação computacional e não valida parâmetros biológicos.
+
+582/582 testes, 21 dirigidos e build estrito/i18n/Vite aprovados.
+O CLI recusou sobrescrever o preparo e rejeitou grupo inválido antes de criar
+saída. O plano G1 conserva seu SHA-256. [Recibo](../validacoes/world-laboratorio-geometria-qa.json).
