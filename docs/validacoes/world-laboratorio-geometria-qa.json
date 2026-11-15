@@ -1,0 +1,36 @@
+{
+  "sourceSha": "e8325544f7ad2a3ffe855ab11ba5f04e9340a108",
+  "sourceFingerprint": "c48db5b0e2fb4c2090fee7b3a60701069254ba26b3dfd882f1170affc78bc2c6",
+  "arithmeticPolicy": "stdlib-f64-v1",
+  "node": "v24.22.1",
+  "fullTests": 582,
+  "directedTests": 21,
+  "failedTests": 0,
+  "build": "passed",
+  "browser": {
+    "browser": "157.0.8103.51",
+    "groups": 3,
+    "workers": 350,
+    "cliBrowserSnapshotExact": true,
+    "arithmeticPolicy": "stdlib-f64-v1",
+    "blankSubstrate": true,
+    "physicalClockGuard": true,
+    "freshContext": true,
+    "pageErrors": []
+  },
+  "legacyFieldSamplesUnchanged": 4800,
+  "legacyFieldSha256": "4ab1bd2217dee8d7379ff2a854544dc2a63e81508ca784b46e0c1616a455531f",
+  "existingOutputRefused": true,
+  "invalidPlanRefusedBeforeOutput": true,
+  "physicalDynamicsIntegrated": false,
+  "physicalProtocolCompatible": false,
+  "reservedMetricsComputed": false,
+  "g1PlanUnchanged": true,
+  "artifactHashesUtf8Lf": {
+    "preparation-native.json": "7178c5e8617e5720bbbf7a349bb7dda0db16ada6d40ae8a0eb89839098181a29",
+    "preparation.json": "d78743fe9fd48a8ab569674fb3b355f0be6791969541b5590530e1d19f1a614b",
+    "workers-100.svg": "54c6941ab83a516ff9d00da0d2acaa828c1fb03438ac0d5e8a0bead8d7e6f63e",
+    "workers-200.svg": "9ec6a2db8dbc8a51d2ef6cb54f87649d72dac4efaba63d3b265c4b645286e043",
+    "workers-50.svg": "6921180a77280bc1c9ff9d2e4d65bc5fc99b3cf3331c63c1b59674a598eb90b6"
+  }
+}

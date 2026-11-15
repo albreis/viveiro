@@ -1,3 +1,4 @@
+import { validateLaboratoryGeometry } from "../../../terrain/laboratory.ts";
 import { sampleSoil } from "../../../terrain/field.ts";
 import type { NestState } from "../../../navigation/types.ts";
 import { observePhysicalNetwork } from "./measure.ts";
@@ -15,16 +16,21 @@ export function sampleWorldSection(
   section: WorldSection,
 ): PlanarMask {
   const { y, minX, maxX, minZ, maxZ, pitch } = section;
+  const lab = nest.laboratory;
+  if (lab) validateLaboratoryGeometry(lab);
+  const boundX = lab?.sandRadius ?? 10,
+    boundZ = lab?.sandRadius ?? 6.5,
+    minimumY = lab ? -lab.sandDepth : -4.2;
   if (
     ![y, minX, maxX, minZ, maxZ, pitch].every(Number.isFinite) ||
     pitch <= 0 ||
     minX >= maxX ||
     minZ >= maxZ ||
-    minX < -10 ||
-    maxX > 10 ||
-    minZ < -6.5 ||
-    maxZ > 6.5 ||
-    y <= -4.2 ||
+    minX < -boundX ||
+    maxX > boundX ||
+    minZ < -boundZ ||
+    maxZ > boundZ ||
+    y <= minimumY ||
     y >= 0
   )
     throw Error("Section must be inside the actual World soil bounds");
@@ -41,14 +47,21 @@ export function sampleWorldSection(
     throw Error("Section pitch must divide the bounded grid");
   const cells = new Uint8Array(width * height);
   for (let z = 0; z < height; z++)
-    for (let x = 0; x < width; x++)
+    for (let x = 0; x < width; x++) {
+      const point = {
+        x: minX + (x + 0.5) * pitch,
+        y,
+        z: minZ + (z + 0.5) * pitch,
+      };
+      // Exterior air is not an excavated peripheral ring of the disk.
+      const inSubstrate =
+        !lab ||
+        point.x * point.x + point.z * point.z <=
+          lab.sandRadius * lab.sandRadius;
       cells[z * width + x] = Number(
-        sampleSoil(nest, {
-          x: minX + (x + 0.5) * pitch,
-          y,
-          z: minZ + (z + 0.5) * pitch,
-        }).distance > 0,
+        inSubstrate && sampleSoil(nest, point).distance > 0,
       );
+    }
   return { width, height, cells, pitch, originX: minX, originY: minZ };
 }
 export function observeWorldSection(nest: NestState, section: WorldSection) {

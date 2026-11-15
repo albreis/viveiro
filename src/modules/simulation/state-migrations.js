@@ -34,6 +34,10 @@ import {
   projectSupport,
 } from "../terrain/terrain.js";
 export function restoreWorld(snapshot, prototype, checkBudget = true) {
+  if (snapshot.nest?.laboratory)
+    throw Error(
+      "Laboratory preparations are not terrarium saves; rebuild from their K1 setup plan",
+    );
   const world = Object.create(prototype);
   Object.assign(world, JSON.parse(JSON.stringify(snapshot)));
   validateExtensionState(world);
