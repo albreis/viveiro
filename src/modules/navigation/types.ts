@@ -106,6 +106,7 @@ export interface NestNode extends Vec3 {
 }
 
 export interface NestState {
+  laboratory?: import("../terrain/laboratory.ts").LaboratoryGeometry;
   plugs?: import("../sealing/types.ts").EntrancePlug[];
   relief?: import("../landscape/types.ts").Hill[];
   nodes: NestNode[];

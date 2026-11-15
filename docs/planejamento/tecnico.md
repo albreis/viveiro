@@ -62,6 +62,9 @@ o cenário de laboratório antes de G4, conforme escolha do mantenedor.
 - [ ] **G3–G4 — Predições e avaliação:** cenário K1 compatível, protocolo e
   predições congelados antes da reserva; MAE/cobertura e relatório com limites.
 
+- [x] **K1-A — Preparação geométrica:** disco sem galerias, coortes adultas e
+  consultas físicas no World. [Implementação e limites](world-laboratorio-geometria.md).
+  O preparo bloqueia ticks até integrar o relógio/transporte.
 - [ ] **K1–K6 — Cenário físico e parametrização individual:** seguir o
   [plano](buhl-parametrizacao.md), com fontes, incertezas, microensaios e
   protocolo controlado no motor real. A integração de acesso na 0.48.0

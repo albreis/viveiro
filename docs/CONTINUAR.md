@@ -49,9 +49,16 @@ segundo piloto preservado, 574 testes e nova igualdade CLI/Chrome aprovados.
 A normalização de grau 2 altera a definição de N/E: exige emenda congelada,
 não reescrever o plano G1. Não usar o piloto como predição G3 ou avaliação G4.
 
-Próximos passos concretos: adaptar K1 no World por entregas pequenas, começando
-por geometria controlada sem galerias e unidades/relógio explícitos; testar
-conservação/passo/CLI-app. Resolver artefatos de segmentação do G2, mantendo
+K1-A iniciado em `codex/world-laboratorio-geometria`, dependente do #137:
+[geometria no World](planejamento/world-laboratorio-geometria.md), disco sem
+galerias, campo físico/apoio e coortes adultas. Auxiliares dimensionais auditam
+o conflito entre relógio legado e marcha; **a dinâmica física não foi integrada**.
+World.step/advance recusam esse preparo antes de mutações. Validar CLI/Chrome,
+regressão legada, commit/push/PR antes de seguir.
+
+Próximos passos concretos: K1-B integrar relógio físico e biológico, limites
+locais/Fluon, taxas e filas de ações; depois material/volume efetivo, retomada
+e convergência temporal. Não retirar a trava enquanto estiver incompleto. Resolver artefatos de segmentação do G2, mantendo
 observáveis equivalentes em dados/modelo. Só depois congelar G3 e abrir G4.
 Conferir os PRs #135–#137 antes de nova branch; preservar a cadeia. Sem tags.
 

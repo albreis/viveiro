@@ -33,6 +33,7 @@
     "scripts/inventory-i18n.ts",
     "scripts/check-dig-access.ts",
     "scripts/analyze-gautrais.ts",
-    "scripts/observe-gautrais-world.ts"
+    "scripts/observe-gautrais-world.ts",
+    "scripts/prepare-world-laboratory.ts"
   ]
 }

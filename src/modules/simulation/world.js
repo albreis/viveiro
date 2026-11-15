@@ -1,3 +1,4 @@
+import { assertLaboratoryRunnable } from "../terrain/laboratory.ts";
 import { producesSeeds, seedForaging } from "../biology/seed-foraging.ts";
 import { modelMath } from "../../libs/model-math.ts";
 import { recordDaily } from "../observations/record.ts";
@@ -289,6 +290,7 @@ export class World {
     for (let n = 0; n < count; n++) this.advance();
   }
   advance() {
+    assertLaboratoryRunnable(this.nest);
     return advanceFamily(this);
   }
   lifeLimit(ant) {

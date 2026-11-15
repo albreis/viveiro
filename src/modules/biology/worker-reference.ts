@@ -9,7 +9,7 @@ interface ReferenceHost {
 }
 
 export const MESH_BODY_UNITS = 0.445;
-const REFERENCE_WALK_SECONDS = 0.05;
+export const REFERENCE_WALK_SECONDS = 0.05;
 const DEFAULT_SPEED_MEAN = 0.0875;
 
 export function workerReference(host: ReferenceHost, ant: AgentState) {
