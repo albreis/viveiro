@@ -24,7 +24,8 @@ retargetado para main, sem novas mudanças de arquivos na base. Plano congelado 
 novas métricas; implementação de análise no commit 57f65fc.
 [Dados de desenvolvimento](validacoes/gautrais-2014-desenvolvimento.json) e
 [relatório](validacoes/gautrais-2014-desenvolvimento.md). Foram 15 réplicas,
-12 séries, 99 observações; 5.019 arquivos conferidos por hash. A reserva
+12 séries, 99 observações; 5.019 arquivos conferidos por hash.
+562 testes, build e Chrome pt/en aprovados; [recibo](validacoes/gautrais-2014-g1-qa.json). A reserva
 continua bloqueada no CLI. Correção da estatística não mudou nenhum valor.
 
 Próximo passo: G2, definir e extrair os mesmos observáveis de rede do

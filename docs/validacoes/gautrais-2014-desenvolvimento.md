@@ -44,6 +44,8 @@ G2 deve extrair o mesmo observável do simulador, incluindo câmaras, periferia 
 
 ## Verificação técnica
 
-16 testes dirigidos de grafo, partição, aritmética e cronograma passaram. A regressão completa e a conferência pt/en no navegador estão em execução; serão registradas antes de concluir o PR. As duas falhas da primeira rodada foram a operação de potência na estatística e uma data antiga fixada no teste; nenhuma regra biológica foi alterada.
+**562/562 testes aprovados**, build TypeScript/i18n/Vite e Chrome 157.0.8103.51 em português/desktop e inglês/móvel, sem erros de página. A exclusão do cronograma no build público também passou na suíte. [Recibo](gautrais-2014-g1-qa.json).
+
+Repetir a conferência de navegador com `node scripts/qa/gautrais.mjs` e o dev ativo. As duas falhas da primeira rodada foram a operação de potência na estatística e uma data antiga fixada no teste; nenhuma regra biológica foi alterada.
 
 [Fonte e crédito](https://doi.org/10.1371/journal.pone.0109436): Gautrais, Buhl, Valverde, Kuntz e Theraulaz (2014), Data S1. [Protocolo G0–G4](../planejamento/gautrais-avaliacao.md).
