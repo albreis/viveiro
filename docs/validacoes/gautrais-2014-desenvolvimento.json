@@ -1,0 +1,1650 @@
+{
+  "schema": "viveiro-gautrais-development-v1",
+  "protocolSha256": "7e2216b5aaf64cc710ab305674d37d57346603d1675522c4296e15af46cafd2b",
+  "implementation": {
+    "sourceSha": "57f65fc3fe791f5cf6f6057d6111898db187703e",
+    "node": "v24.22.1"
+  },
+  "integrity": {
+    "graphSetSha256": "6283effdf4dc824a50880228126358ec353112aea5d6ddd3cd5e374c34509938",
+    "graphsVerified": 5019,
+    "reservedBytesReadForIntegrity": true,
+    "reservedMetricsComputed": false
+  },
+  "partition": "development",
+  "independentEmpiricalValidation": false,
+  "predictionProtocolFrozen": false,
+  "priorExposure": "All graphs inventoried on 2026-11-04; topology aggregates already known.",
+  "units": {
+    "topology": "counts and degree",
+    "time": "nominal minutes; latency alignment unverified",
+    "physicalLengthAreaVolume": null
+  },
+  "groups": [
+    {
+      "workers": 50,
+      "replicas": 3,
+      "series": 0,
+      "final": [
+        {
+          "metric": "nodes",
+          "n": 3,
+          "mean": 30,
+          "sampleSD": 4.358898943540674
+        },
+        {
+          "metric": "edges",
+          "n": 3,
+          "mean": 28.333333333333332,
+          "sampleSD": 5.131601439446884
+        },
+        {
+          "metric": "cycleRank",
+          "n": 3,
+          "mean": 2.3333333333333335,
+          "sampleSD": 1.1547005383792515
+        }
+      ]
+    },
+    {
+      "workers": 100,
+      "replicas": 3,
+      "series": 3,
+      "final": [
+        {
+          "metric": "nodes",
+          "n": 3,
+          "mean": 35,
+          "sampleSD": 12.12435565298214
+        },
+        {
+          "metric": "edges",
+          "n": 3,
+          "mean": 37.666666666666664,
+          "sampleSD": 18.230011885167087
+        },
+        {
+          "metric": "cycleRank",
+          "n": 3,
+          "mean": 5.333333333333333,
+          "sampleSD": 5.033222956847167
+        }
+      ]
+    },
+    {
+      "workers": 200,
+      "replicas": 9,
+      "series": 9,
+      "final": [
+        {
+          "metric": "nodes",
+          "n": 9,
+          "mean": 65.77777777777777,
+          "sampleSD": 21.568366754217728
+        },
+        {
+          "metric": "edges",
+          "n": 9,
+          "mean": 77.11111111111111,
+          "sampleSD": 30.624518136798674
+        },
+        {
+          "metric": "cycleRank",
+          "n": 9,
+          "mean": 15.444444444444445,
+          "sampleSD": 9.488296884993524
+        }
+      ]
+    }
+  ],
+  "replicas": [
+    {
+      "id": "A050-01",
+      "workers": 50,
+      "series": false,
+      "partition": "development",
+      "final": {
+        "nodes": 28,
+        "edges": 24,
+        "components": 5,
+        "cycleRank": 1,
+        "parallelEdges": 0,
+        "meanDegree": 1.7142857142857142,
+        "branchingNodes": 9,
+        "deadEnds": 19,
+        "isolatedNodes": 0
+      },
+      "samples": []
+    },
+    {
+      "id": "A050-03",
+      "workers": 50,
+      "series": false,
+      "partition": "development",
+      "final": {
+        "nodes": 35,
+        "edges": 34,
+        "components": 4,
+        "cycleRank": 3,
+        "parallelEdges": 0,
+        "meanDegree": 1.9428571428571428,
+        "branchingNodes": 13,
+        "deadEnds": 22,
+        "isolatedNodes": 0
+      },
+      "samples": []
+    },
+    {
+      "id": "A050-05",
+      "workers": 50,
+      "series": false,
+      "partition": "development",
+      "final": {
+        "nodes": 27,
+        "edges": 27,
+        "components": 3,
+        "cycleRank": 3,
+        "parallelEdges": 0,
+        "meanDegree": 2,
+        "branchingNodes": 12,
+        "deadEnds": 15,
+        "isolatedNodes": 0
+      },
+      "samples": []
+    },
+    {
+      "id": "A100-01",
+      "workers": 100,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 46,
+        "edges": 54,
+        "components": 2,
+        "cycleRank": 10,
+        "parallelEdges": 0,
+        "meanDegree": 2.347826086956522,
+        "branchingNodes": 28,
+        "deadEnds": 18,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 24,
+            "edges": 18,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.5,
+            "branchingNodes": 6,
+            "deadEnds": 18,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 34,
+            "edges": 29,
+            "components": 5,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.7058823529411764,
+            "branchingNodes": 11,
+            "deadEnds": 23,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 40,
+            "edges": 42,
+            "components": 3,
+            "cycleRank": 5,
+            "parallelEdges": 0,
+            "meanDegree": 2.1,
+            "branchingNodes": 20,
+            "deadEnds": 20,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 40,
+            "edges": 43,
+            "components": 2,
+            "cycleRank": 5,
+            "parallelEdges": 0,
+            "meanDegree": 2.15,
+            "branchingNodes": 21,
+            "deadEnds": 19,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 41,
+            "edges": 46,
+            "components": 2,
+            "cycleRank": 7,
+            "parallelEdges": 0,
+            "meanDegree": 2.2439024390243905,
+            "branchingNodes": 23,
+            "deadEnds": 18,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 46,
+            "edges": 54,
+            "components": 2,
+            "cycleRank": 10,
+            "parallelEdges": 0,
+            "meanDegree": 2.347826086956522,
+            "branchingNodes": 28,
+            "deadEnds": 18,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A100-03",
+      "workers": 100,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 37,
+        "edges": 41,
+        "components": 2,
+        "cycleRank": 6,
+        "parallelEdges": 0,
+        "meanDegree": 2.2162162162162162,
+        "branchingNodes": 21,
+        "deadEnds": 15,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 12,
+            "edges": 6,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1,
+            "branchingNodes": 0,
+            "deadEnds": 12,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 14,
+            "edges": 8,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.1428571428571428,
+            "branchingNodes": 1,
+            "deadEnds": 13,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 21,
+            "edges": 18,
+            "components": 3,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.7142857142857142,
+            "branchingNodes": 7,
+            "deadEnds": 13,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 27,
+            "edges": 24,
+            "components": 4,
+            "cycleRank": 1,
+            "parallelEdges": 0,
+            "meanDegree": 1.7777777777777777,
+            "branchingNodes": 10,
+            "deadEnds": 16,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 33,
+            "edges": 32,
+            "components": 3,
+            "cycleRank": 2,
+            "parallelEdges": 0,
+            "meanDegree": 1.9393939393939394,
+            "branchingNodes": 15,
+            "deadEnds": 17,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 37,
+            "edges": 41,
+            "components": 2,
+            "cycleRank": 6,
+            "parallelEdges": 0,
+            "meanDegree": 2.2162162162162162,
+            "branchingNodes": 21,
+            "deadEnds": 15,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A100-05",
+      "workers": 100,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 22,
+        "edges": 18,
+        "components": 4,
+        "cycleRank": 0,
+        "parallelEdges": 0,
+        "meanDegree": 1.6363636363636365,
+        "branchingNodes": 7,
+        "deadEnds": 15,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 8,
+            "edges": 4,
+            "components": 4,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1,
+            "branchingNodes": 0,
+            "deadEnds": 8,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 20,
+            "edges": 14,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.4,
+            "branchingNodes": 4,
+            "deadEnds": 16,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 24,
+            "edges": 17,
+            "components": 7,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.4166666666666667,
+            "branchingNodes": 5,
+            "deadEnds": 19,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 24,
+            "edges": 18,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.5,
+            "branchingNodes": 6,
+            "deadEnds": 18,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 22,
+            "edges": 17,
+            "components": 5,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.5454545454545454,
+            "branchingNodes": 6,
+            "deadEnds": 16,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 22,
+            "edges": 18,
+            "components": 4,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.6363636363636365,
+            "branchingNodes": 7,
+            "deadEnds": 15,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-01",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 80,
+        "edges": 100,
+        "components": 4,
+        "cycleRank": 24,
+        "parallelEdges": 0,
+        "meanDegree": 2.5,
+        "branchingNodes": 40,
+        "deadEnds": 33,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 45,
+            "edges": 33,
+            "components": 12,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.4666666666666666,
+            "branchingNodes": 10,
+            "deadEnds": 35,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 71,
+            "edges": 78,
+            "components": 8,
+            "cycleRank": 15,
+            "parallelEdges": 0,
+            "meanDegree": 2.1971830985915495,
+            "branchingNodes": 32,
+            "deadEnds": 37,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 70,
+            "edges": 85,
+            "components": 3,
+            "cycleRank": 18,
+            "parallelEdges": 0,
+            "meanDegree": 2.4285714285714284,
+            "branchingNodes": 35,
+            "deadEnds": 31,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 81,
+            "edges": 101,
+            "components": 4,
+            "cycleRank": 24,
+            "parallelEdges": 0,
+            "meanDegree": 2.493827160493827,
+            "branchingNodes": 41,
+            "deadEnds": 35,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 79,
+            "edges": 98,
+            "components": 4,
+            "cycleRank": 23,
+            "parallelEdges": 0,
+            "meanDegree": 2.481012658227848,
+            "branchingNodes": 39,
+            "deadEnds": 33,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 80,
+            "edges": 100,
+            "components": 4,
+            "cycleRank": 24,
+            "parallelEdges": 0,
+            "meanDegree": 2.5,
+            "branchingNodes": 40,
+            "deadEnds": 33,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-03",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 89,
+        "edges": 115,
+        "components": 1,
+        "cycleRank": 27,
+        "parallelEdges": 2,
+        "meanDegree": 2.5842696629213484,
+        "branchingNodes": 55,
+        "deadEnds": 29,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 53,
+            "edges": 33,
+            "components": 20,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.2452830188679245,
+            "branchingNodes": 6,
+            "deadEnds": 46,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 80,
+            "edges": 81,
+            "components": 4,
+            "cycleRank": 5,
+            "parallelEdges": 0,
+            "meanDegree": 2.025,
+            "branchingNodes": 35,
+            "deadEnds": 42,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 90,
+            "edges": 97,
+            "components": 3,
+            "cycleRank": 10,
+            "parallelEdges": 0,
+            "meanDegree": 2.1555555555555554,
+            "branchingNodes": 43,
+            "deadEnds": 44,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 93,
+            "edges": 107,
+            "components": 2,
+            "cycleRank": 16,
+            "parallelEdges": 0,
+            "meanDegree": 2.3010752688172045,
+            "branchingNodes": 50,
+            "deadEnds": 40,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 89,
+            "edges": 109,
+            "components": 2,
+            "cycleRank": 22,
+            "parallelEdges": 0,
+            "meanDegree": 2.449438202247191,
+            "branchingNodes": 52,
+            "deadEnds": 32,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 89,
+            "edges": 113,
+            "components": 1,
+            "cycleRank": 25,
+            "parallelEdges": 0,
+            "meanDegree": 2.539325842696629,
+            "branchingNodes": 54,
+            "deadEnds": 30,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-05",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 32,
+        "edges": 29,
+        "components": 5,
+        "cycleRank": 2,
+        "parallelEdges": 0,
+        "meanDegree": 1.8125,
+        "branchingNodes": 11,
+        "deadEnds": 21,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 12,
+            "edges": 6,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1,
+            "branchingNodes": 0,
+            "deadEnds": 12,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 26,
+            "edges": 14,
+            "components": 12,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.0769230769230769,
+            "branchingNodes": 1,
+            "deadEnds": 25,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 31,
+            "edges": 21,
+            "components": 10,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.3548387096774193,
+            "branchingNodes": 5,
+            "deadEnds": 26,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 29,
+            "edges": 21,
+            "components": 8,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.4482758620689655,
+            "branchingNodes": 5,
+            "deadEnds": 24,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 33,
+            "edges": 26,
+            "components": 7,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.5757575757575757,
+            "branchingNodes": 8,
+            "deadEnds": 25,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 32,
+            "edges": 29,
+            "components": 5,
+            "cycleRank": 2,
+            "parallelEdges": 0,
+            "meanDegree": 1.8125,
+            "branchingNodes": 11,
+            "deadEnds": 21,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-07",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 67,
+        "edges": 91,
+        "components": 1,
+        "cycleRank": 25,
+        "parallelEdges": 0,
+        "meanDegree": 2.716417910447761,
+        "branchingNodes": 42,
+        "deadEnds": 25,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 14,
+            "edges": 10,
+            "components": 4,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.4285714285714286,
+            "branchingNodes": 3,
+            "deadEnds": 11,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 29,
+            "edges": 30,
+            "components": 1,
+            "cycleRank": 2,
+            "parallelEdges": 0,
+            "meanDegree": 2.0689655172413794,
+            "branchingNodes": 12,
+            "deadEnds": 17,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 42,
+            "edges": 48,
+            "components": 2,
+            "cycleRank": 8,
+            "parallelEdges": 0,
+            "meanDegree": 2.2857142857142856,
+            "branchingNodes": 21,
+            "deadEnds": 21,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 52,
+            "edges": 65,
+            "components": 2,
+            "cycleRank": 15,
+            "parallelEdges": 0,
+            "meanDegree": 2.5,
+            "branchingNodes": 29,
+            "deadEnds": 22,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 64,
+            "edges": 84,
+            "components": 1,
+            "cycleRank": 21,
+            "parallelEdges": 0,
+            "meanDegree": 2.625,
+            "branchingNodes": 38,
+            "deadEnds": 25,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 67,
+            "edges": 91,
+            "components": 1,
+            "cycleRank": 25,
+            "parallelEdges": 0,
+            "meanDegree": 2.716417910447761,
+            "branchingNodes": 42,
+            "deadEnds": 25,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-09",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 89,
+        "edges": 110,
+        "components": 3,
+        "cycleRank": 24,
+        "parallelEdges": 0,
+        "meanDegree": 2.4719101123595504,
+        "branchingNodes": 54,
+        "deadEnds": 33,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 34,
+            "edges": 18,
+            "components": 16,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.0588235294117647,
+            "branchingNodes": 1,
+            "deadEnds": 33,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 62,
+            "edges": 54,
+            "components": 9,
+            "cycleRank": 1,
+            "parallelEdges": 0,
+            "meanDegree": 1.7419354838709677,
+            "branchingNodes": 20,
+            "deadEnds": 41,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 75,
+            "edges": 79,
+            "components": 5,
+            "cycleRank": 9,
+            "parallelEdges": 0,
+            "meanDegree": 2.1066666666666665,
+            "branchingNodes": 37,
+            "deadEnds": 37,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 80,
+            "edges": 92,
+            "components": 4,
+            "cycleRank": 16,
+            "parallelEdges": 0,
+            "meanDegree": 2.3,
+            "branchingNodes": 45,
+            "deadEnds": 34,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 89,
+            "edges": 105,
+            "components": 4,
+            "cycleRank": 20,
+            "parallelEdges": 0,
+            "meanDegree": 2.359550561797753,
+            "branchingNodes": 52,
+            "deadEnds": 36,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 89,
+            "edges": 110,
+            "components": 3,
+            "cycleRank": 24,
+            "parallelEdges": 0,
+            "meanDegree": 2.4719101123595504,
+            "branchingNodes": 54,
+            "deadEnds": 33,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-11",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 85,
+        "edges": 87,
+        "components": 8,
+        "cycleRank": 10,
+        "parallelEdges": 0,
+        "meanDegree": 2.0470588235294116,
+        "branchingNodes": 36,
+        "deadEnds": 45,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 40,
+            "edges": 21,
+            "components": 19,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.05,
+            "branchingNodes": 1,
+            "deadEnds": 39,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 61,
+            "edges": 49,
+            "components": 12,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.6065573770491803,
+            "branchingNodes": 16,
+            "deadEnds": 44,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 64,
+            "edges": 59,
+            "components": 8,
+            "cycleRank": 3,
+            "parallelEdges": 0,
+            "meanDegree": 1.84375,
+            "branchingNodes": 23,
+            "deadEnds": 39,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 76,
+            "edges": 75,
+            "components": 7,
+            "cycleRank": 6,
+            "parallelEdges": 0,
+            "meanDegree": 1.9736842105263157,
+            "branchingNodes": 31,
+            "deadEnds": 42,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 82,
+            "edges": 83,
+            "components": 7,
+            "cycleRank": 8,
+            "parallelEdges": 0,
+            "meanDegree": 2.024390243902439,
+            "branchingNodes": 35,
+            "deadEnds": 43,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 85,
+            "edges": 87,
+            "components": 8,
+            "cycleRank": 10,
+            "parallelEdges": 0,
+            "meanDegree": 2.0470588235294116,
+            "branchingNodes": 36,
+            "deadEnds": 45,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-13",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 61,
+        "edges": 67,
+        "components": 6,
+        "cycleRank": 12,
+        "parallelEdges": 1,
+        "meanDegree": 2.19672131147541,
+        "branchingNodes": 29,
+        "deadEnds": 29,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 30,
+            "edges": 23,
+            "components": 7,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.5333333333333334,
+            "branchingNodes": 8,
+            "deadEnds": 22,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 50,
+            "edges": 45,
+            "components": 7,
+            "cycleRank": 2,
+            "parallelEdges": 0,
+            "meanDegree": 1.8,
+            "branchingNodes": 18,
+            "deadEnds": 32,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 60,
+            "edges": 57,
+            "components": 8,
+            "cycleRank": 5,
+            "parallelEdges": 0,
+            "meanDegree": 1.9,
+            "branchingNodes": 23,
+            "deadEnds": 36,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 59,
+            "edges": 62,
+            "components": 7,
+            "cycleRank": 10,
+            "parallelEdges": 0,
+            "meanDegree": 2.1016949152542375,
+            "branchingNodes": 28,
+            "deadEnds": 30,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 62,
+            "edges": 65,
+            "components": 7,
+            "cycleRank": 10,
+            "parallelEdges": 0,
+            "meanDegree": 2.096774193548387,
+            "branchingNodes": 29,
+            "deadEnds": 31,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 61,
+            "edges": 66,
+            "components": 6,
+            "cycleRank": 11,
+            "parallelEdges": 0,
+            "meanDegree": 2.1639344262295084,
+            "branchingNodes": 29,
+            "deadEnds": 29,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-15",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 44,
+        "edges": 48,
+        "components": 4,
+        "cycleRank": 8,
+        "parallelEdges": 1,
+        "meanDegree": 2.1818181818181817,
+        "branchingNodes": 17,
+        "deadEnds": 27,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 10,
+            "edges": 8,
+            "components": 2,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.6,
+            "branchingNodes": 2,
+            "deadEnds": 8,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 20,
+            "edges": 19,
+            "components": 2,
+            "cycleRank": 1,
+            "parallelEdges": 0,
+            "meanDegree": 1.9,
+            "branchingNodes": 6,
+            "deadEnds": 14,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 33,
+            "edges": 31,
+            "components": 3,
+            "cycleRank": 1,
+            "parallelEdges": 0,
+            "meanDegree": 1.878787878787879,
+            "branchingNodes": 10,
+            "deadEnds": 23,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 40,
+            "edges": 40,
+            "components": 5,
+            "cycleRank": 5,
+            "parallelEdges": 0,
+            "meanDegree": 2,
+            "branchingNodes": 13,
+            "deadEnds": 26,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 44,
+            "edges": 47,
+            "components": 4,
+            "cycleRank": 7,
+            "parallelEdges": 0,
+            "meanDegree": 2.1363636363636362,
+            "branchingNodes": 16,
+            "deadEnds": 27,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "A200-17",
+      "workers": 200,
+      "series": true,
+      "partition": "development",
+      "final": {
+        "nodes": 45,
+        "edges": 47,
+        "components": 5,
+        "cycleRank": 7,
+        "parallelEdges": 0,
+        "meanDegree": 2.088888888888889,
+        "branchingNodes": 18,
+        "deadEnds": 25,
+        "isolatedNodes": 0
+      },
+      "samples": [
+        {
+          "frame": 1,
+          "nominalMinutes": 0,
+          "metrics": {
+            "nodes": 0,
+            "edges": 0,
+            "components": 0,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": null,
+            "branchingNodes": 0,
+            "deadEnds": 0,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 37,
+          "nominalMinutes": 720,
+          "metrics": {
+            "nodes": 16,
+            "edges": 10,
+            "components": 6,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.25,
+            "branchingNodes": 2,
+            "deadEnds": 14,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 73,
+          "nominalMinutes": 1440,
+          "metrics": {
+            "nodes": 23,
+            "edges": 18,
+            "components": 5,
+            "cycleRank": 0,
+            "parallelEdges": 0,
+            "meanDegree": 1.565217391304348,
+            "branchingNodes": 6,
+            "deadEnds": 17,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 109,
+          "nominalMinutes": 2160,
+          "metrics": {
+            "nodes": 30,
+            "edges": 29,
+            "components": 4,
+            "cycleRank": 3,
+            "parallelEdges": 0,
+            "meanDegree": 1.9333333333333333,
+            "branchingNodes": 12,
+            "deadEnds": 18,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 145,
+          "nominalMinutes": 2880,
+          "metrics": {
+            "nodes": 37,
+            "edges": 36,
+            "components": 6,
+            "cycleRank": 5,
+            "parallelEdges": 0,
+            "meanDegree": 1.945945945945946,
+            "branchingNodes": 15,
+            "deadEnds": 22,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 181,
+          "nominalMinutes": 3600,
+          "metrics": {
+            "nodes": 40,
+            "edges": 42,
+            "components": 5,
+            "cycleRank": 7,
+            "parallelEdges": 0,
+            "meanDegree": 2.1,
+            "branchingNodes": 17,
+            "deadEnds": 22,
+            "isolatedNodes": 0
+          }
+        },
+        {
+          "frame": 217,
+          "nominalMinutes": 4320,
+          "metrics": {
+            "nodes": 45,
+            "edges": 47,
+            "components": 5,
+            "cycleRank": 7,
+            "parallelEdges": 0,
+            "meanDegree": 2.088888888888889,
+            "branchingNodes": 18,
+            "deadEnds": 25,
+            "isolatedNodes": 0
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Data reuses Buhl 2004 experiments; cross-paper overlap with 2001/2005 unresolved.",
+    "No simulation predictions, calibration, MAE or coverage in this preparation stage.",
+    "No meshedness until disconnected/multigraph/peripheral conventions are verified.",
+    "Final graph and last frame are separate products; not independent observations."
+  ]
+}

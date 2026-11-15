@@ -1,6 +1,6 @@
 # Cronograma de entregas
 
-Atualizado em 08/11/2026. Plano operacional dividido por responsabilidade.
+Atualizado em 15/11/2026. Plano operacional dividido por responsabilidade.
 Os IDs P0–P4 continuam válidos. `[x]` indica aceite registrado; `[ ]` indica
 trabalho pendente, inclusive quando a implementação já existe.
 
@@ -77,9 +77,14 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
 3. **T3 — Desempenho técnico entregue:** [TBT, CLS e ensaio de FPS](qa-desempenho.md).
    O ensaio em equipamento escolar segue no aceite P1.1B.
 4. **T4 — Buhl/P3:** B1–B6 e B8 entregues. B7 tem ajuste exploratório e
-   avaliação em seeds reservadas. Faltam séries empíricas independentes.
+   avaliação em seeds reservadas. Falta a avaliação de observações por réplica
+   com cenário compatível, MAE/cobertura e dependências explicitadas.
    Desde 15/11/2026 a validação usa dados públicos e não depende de resposta
    de Buhl: primeiro as séries por réplica de [Gautrais et al. 2014](validacoes/gautrais-2014.md).
+   Executar [G0–G4](planejamento/gautrais-avaliacao.md): fonte e partição →
+   métricas compatíveis → predições congeladas → MAE/cobertura. A auditoria
+   prévia e a reutilização de experimentos impedem chamar a reserva de inédita
+   ou presumir replicação independente.
    [Avaliação de 72 h](validacao.md). [Fadiga local em 30 rodadas pareadas](planejamento/buhl-fadiga.md).
    [Triagem de microclima](planejamento/buhl-microclima.md) e [esforço no terrário 3D](planejamento/fadiga-esforco.md) disponíveis como investigações exploratórias.
    [Pendências e critérios](planejamento/buhl.md).
@@ -95,8 +100,8 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    [Plano e aceites](planejamento/fundacao-comparavel.md).
 
 Os lotes físicos de Buhl usam as ferramentas de retomada e análise de
-sensibilidade. T5 tem instrumentos preparados. As próximas verificações de
-T4 e T5 dependem de dados, observações e retornos reais.
+sensibilidade. T5 tem instrumentos preparados. T4 pode avançar tecnicamente com os dados públicos existentes; somente
+T5 e os aceites humanos condicionados aguardam observações e retornos reais.
 
 ## Aceites que continuam abertos
 
@@ -118,7 +123,8 @@ T4 e T5 dependem de dados, observações e retornos reais.
 ## Incrementos opcionais após o escopo atual
 
 [**P3-OP — Dados abertos adicionais**](planejamento/dados-opcionais.md): trânsito,
-escavação 3D, crescimento, tarefas e redes de contato. Inclui fontes de parâmetro
+escavação 3D, crescimento, tarefas e redes de contato. A fonte Gautrais foi
+promovida a T4/G0–G4 em 15/11; os demais conjuntos continuam opcionais. Inclui fontes de parâmetro
 separadas dos dados de validação. Planejado, sem implementação ou downloads
 volumosos nesta reorganização. Não é requisito novo para encerrar o escopo ativo.
 

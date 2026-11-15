@@ -1,321 +1,87 @@
-# Continuação — cronograma por responsabilidade
+# Continuação do Viveiro
 
-08/11/2026. Trabalhar em G:/Projetos/viveiro, ler AGENTS.md e cronograma.md,
-conferir Git/PRs e preservar saves, branches e tags. As últimas entregas
-técnicas de T4 estão no [relatório da triagem](planejamento/buhl-microclima.md). A pendência
-científica de B7 requer séries empíricas independentes por réplica.
+Atualizado em 15/11/2026. Trabalhar em G:/Projetos/viveiro. Ler AGENTS.md,
+[cronograma](cronograma.md), [T4](planejamento/tecnico.md) e [G0–G4](planejamento/gautrais-avaliacao.md).
 
-## Publicação consolidada 0.48.0 — autorizada em 08/11/2026
+## Pedido ativo e fonte
 
-O mantenedor pediu organizar os PRs, integrar o motor ajustado e publicar uma
-única tag/release no GitHub para a integração automática do Zenodo. Esta
-orientação substitui a pausa anterior de tags. Não criar depósito manual.
+O mantenedor pediu baixar o PR #134, ler a mudança de escopo, atualizar o
+cronograma e continuar implementando. A branch original
+`claude/project-thread-wki9y1`, head 9b1b3f8d46f3f55bc5e0dbfb17b8a12cd82a6440,
+foi baixada e preservada. Nova etapa: `codex/gautrais-protocolo-reservado`,
+dependente de #134. Não duplicar PRs nem atualizar a branch do usuário à força.
 
-Branch de preparação: `codex/consolidar-versao-0-48-0`. Inclui os heads dos
-PRs #130/#131/#132 por merge, preservando as branches e o histórico. O plano
-K0–K6/TRACE do #129 foi incorporado sem ativar o runner experimental do #128.
-Encerrar #128/#129 como preservados/absorvidos somente depois da main validada.
-
-Metadados de pacote, lock, CFF e .zenodo.json estão na 0.48.0 (08/11/2026),
-com autoria pessoal e ORCID preservados. [Preparação da release](validacoes/preparacao-0.48.0.md).
-554/554 testes, build Vite/público, CodeQL, Chrome pt/en e 12 trajetórias
-aprovados. [Recibo](validacoes/release-0.48.0.json). A integração e publicação
-única estão autorizadas. Ao retomar, conferir primeiro se `v0.48.0` e a
-GitHub Release já existem: não duplicar, mover ou recriar a tag. Conferir
-o Pages. Zenodo recebe pela integração existente, sem ação manual.
-
-Depois desta publicação, o próximo trabalho científico é K1–K6: resolver
-relógio físico, condições iniciais e unidades antes de novos lotes comparáveis
-a Buhl. O fechamento do piloto #128 não conclui essa tarefa.
-
-## Pedido atual — acesso geométrico no motor 3D
-
-Em 07/11, o mantenedor aprovou a hipótese do PR #130 e pediu implementá-la
-no motor do Viveiro em branch nova da main. Este pedido substitui a orientação
-histórica de manter a morfologia fora de ensaios novos; não apaga as restaurações
-ou os lotes anteriores. Branch: `codex/escavacao-acesso-geometrico-viveiro`, base
-`d88c31e`. [Regras e protocolo](planejamento/escavacao-acesso-viveiro.md).
-
-Narbonne v3 mantém o corpo e os mecanismos da v2 e usa acesso físico à frente,
-sem cota por equipe ou trava global de mordidas. Saves antigos permanecem
-fixados no perfil anterior. 547 testes, build Vite e Chrome pt/en aprovados,
-incluindo igualdade numérica CLI/navegador, visão lateral e primeira pessoa.
-
-Lote **12/12 concluído**, 2.000 ticks por execução, 50/100/200 operárias,
-duas seeds e pares v2/v3. [Dados](validacoes/escavacao-acesso-viveiro.json),
-[evidência](validacoes/escavacao-acesso-viveiro-qa.json) e quatro gráficos
-arquivados. [PR #131](https://github.com/albreis/viveiro/pull/131). O usuário
-pediu comparação **relativa** com Buhl: os gráficos registram explicitamente
-normalização por volume próprio versus uma escala comum ancorada no grupo 100.
-Não ler a normalização como ajuste de escala física ou validação.
-
-As frentes escavam mais que na v2, mas as razões de volume entre grupos ainda
-diferem de Buhl: 0,77/1/0,80 versus 0,68/1/1,59. Próximo passo concreto, se
-retomados os ensaios quantitativos: usar o protocolo controlado do PR #128,
-resolver espaço/tempo e a inicialização da população antes de atribuir a
-diferença a uma regra biológica. Não transferir coeficientes para forçar a
-curva. B7 e calibração seguem pendentes. A pausa histórica de tags foi substituída pela autorização da 0.48.0 acima.
-
-## Material de divulgação — saga da escavação
-
-Carrossel de 12 PNGs 1080×1350, legenda e texto alternativo prontos em
-[docs/divulgacao/saga-escavacao](divulgacao/saga-escavacao/README.md).
-Branch `codex/carrossel-saga-escavacao`, dependente do PR #131. Conta os
-ensaios desfavoráveis, a revisão de acesso e os limites científicos.
-As imagens distinguem arena e World 3D. A melhor configuração citada é da
-arena, com morfologia e fadiga de escavação. Os dados e o motor não foram
-alterados. Há fonte HTML, módulos pequenos e exportação validada em Chrome.
-
-## Estado preservado
-
-Versão consolidada **[0.48.0](https://github.com/albreis/viveiro/releases/tag/v0.48.0)**,
-com publicação autorizada e verificações registradas acima.
-A versão 0.46.0 teve fonte `7f4d20674206916ea443ef2f359097da5ca18731`.
-P2.1–P2.7 publicados; P2.8/P5 descartados. PRs76–80 entregaram comunidade,
-galeria com dez receitas internas, contraste A/B e UI/renderer em TS estrito.
-474 testes completos, build460módulos, CodeQL e QA aprovados na entrega.
-CSV/manifesto públicos de300ticks idênticos à CLI; ver validacoes/release-0.46.0.json.
-Não reabrir essas entregas nem chamar o legado da simulação de já convertido.
-
-PR82 integrado: Lighthouse13.6.0/Chrome156, acessibilidade97desktop/100móvel;
-desempenho44/33. Aceite Lighthouse >90 concluído, API PageSpeed não usada de novo.
-Os dois alertas desktop e TBT/CLS estão na fila técnica, sem certificação WCAG.
-PageSpeed API: preservar429 anterior; não repetir antes de04/11 21:53:59UTC.
-Usuário informou teste de zoom adequado; registrar escopo não especificado.
-
-DOI automático **10.5281/zenodo.23932885**, versão0.46.0, conferido no registro
-público e no ZIP baixado; ver validacoes/zenodo-0.46.0.json. P0.4 encerrado.
-Não duplicar depósitos, publicar versões intermediárias no Zenodo ou reescrever tags.
-
-Público: https://viveiro.ersolucoesweb.com.br/
-Não atualizar antigo Site público ChatGPT. Site original privado preservado:
-appgprj_6ae6364bc4488191b2757449ed3f7e94, custom/revisão1/um dono/zero externos.
-Fonte privada2ad7611 equivalente à tag; recibo de deploy na evidência da release.
-Dev4173 iniciado em G (PID15348 na última verificação); preview4189 preservado.
-Não encerrar o servidor nem restaurar cenários de teste sobre saves do usuário.
+B7/P3.3 não depende mais de resposta dos autores. O contato de 05/11 é
+opcional; não enviar novas mensagens. Gautrais 2014 passa a integrar T4.
+Os demais dados adicionais permanecem opcionais. P3.1, revisão docente,
+piloto com turmas e demais aceites humanos não mudaram.
 
 ## Próximo passo concreto
 
-Estado mais recente: PR #130, branch `codex/buhl-velocidade-carga`.
-Concluídos 75 ensaios de 72 h e 75 pilotos de 2 h, com artefatos e figuras.
-Velocidade/carga não recuperaram 1,6; acesso geométrico 1 elevou o volume
-em 44,7%/54,6%/51,0%. [Relatório completo](planejamento/buhl-acesso-geometrico.md).
-Foram 16/18 pontos dentro da incerteza de digitalização, sem validação independente.
-Nenhum executor de Buhl permanece ativo; não há lote a retomar.
-Modelo congelado em 906ffac; fingerprint 696ffb2031c61f3895f6a36130a851c6819c3f9c0e79b41721447d07914cc882.
-Próximo passo técnico: escala física do cenário World do PR #128, mantendo
-as evidências desta arena separadas e B7 aberto. Preservar o PR #129 e os
-históricos; não escolher novos parâmetros apenas para bater volumes.
+G1 entregue no [PR #135](https://github.com/albreis/viveiro/pull/135).
+O #134 foi mesclado durante esta etapa (main 42a9033); o #135 foi
+retargetado para main, sem novas mudanças de arquivos na base. Plano congelado e enviado no commit 794f3d0 antes das
+novas métricas; implementação de análise no commit 57f65fc.
+[Dados de desenvolvimento](validacoes/gautrais-2014-desenvolvimento.json) e
+[relatório](validacoes/gautrais-2014-desenvolvimento.md). Foram 15 réplicas,
+12 séries, 99 observações; 5.019 arquivos conferidos por hash.
+562 testes, build e Chrome pt/en aprovados; [recibo](validacoes/gautrais-2014-g1-qa.json). A reserva
+continua bloqueada no CLI. Correção da estatística não mudou nenhum valor.
 
-### Histórico de decisões anteriores
+Próximo passo: G2, definir e extrair os mesmos observáveis de rede do
+simulador. Não equiparar o grafo lógico do World à rede física segmentada
+do artigo, nem aplicar meshedness conectada aos dados desconectados.
+Fixar a comparação/projeção e testar grafos sintéticos antes de novas
+rodadas. G3 congela predições; somente G4 abre métricas reservadas.
+Conferir o estado do #135 antes de retomar. Sem nova tag por esta etapa.
 
-Atualização de 07/11: novo pedido autorizou a branch da main
-`codex/buhl-velocidade-carga` e os testes de velocidade/carga mantendo a
-morfologia. Seguir o [ensaio fatorial](planejamento/buhl-locomocao.md).
-Quatro braços, cinco seeds, 50/100/200, piloto 2 h e lote 72 h. O ganho
-1,6 é hipótese, nunca multiplicador de produção. Não alterar a fonte
-durante os lotes nem encerrar o dev. Preservar os PRs #128/#129 do cenário
-World; esta análise na arena histórica não conclui sua escala física.
+O ZIP local em `.runtime/buhl-gautrais-data-s1.zip` confere com o hash
+publicado no inventário. Dados extraídos em `.runtime/buhl-gautrais-s1/S12`.
+Verificar a integridade sem exibir métricas reservadas. A auditoria de 04/11
+já examinou todos os grafos e publicou médias: esta reserva não é inédita.
+Gautrais reanalisa Buhl 2004; sobreposição com 2001/2005 não estabelecida.
+Não declarar replicação independente nem calibração concluída.
 
+Depois de G1: G2 extrai observáveis comparáveis do simulador; G3 fixa
+protocolo e predições; somente G4 abre a reserva para MAE/cobertura. Não
+calcular meshedness de grafos desconectados como se fossem conectados, nem
+converter coordenadas sem unidade verificada em volume. O plano não ajusta
+o motor para acertar os dados. K1–K6 permanecem requisitos técnicos reais
+onde a comparabilidade física exigir. T6 continua pendente depois da prioridade T4.
 
-Em 07/11, após examinar o novo lote, o mantenedor pediu voltar à fadiga
-apenas de escavação. A branch `codex/buhl-restaurar-fadiga-escavacao`
-restaura o código da arena ao estado anterior ao PR #126.
-Usar `docs/validacoes/buhl-fadiga-local-plano.json` como configuração principal:
-médias arquivadas de 19,92/36,15/64,46 cm³ para 50/100/200 operárias.
-[Alcance da restauração e limitação dos motores](planejamento/buhl-restauracao.md).
+## Estado publicado e regras
 
-O ensaio de morfologia do PR #126, seus dados e gráficos ficam preservados
-como histórico. Não reativar a integração nem iniciar ablações sem novo
-pedido. O retorno do código não conta como nova execução de 72 h.
-A arena usa motor plano próprio. Validar o comportamento do terrário
-3D exigirá um cenário controlado com o mesmo motor dos agentes.
-B7 continua pendente de evidência empírica independente.
+Release 0.48.0 publicada: tag imutável no commit a39f11a10c8dfdf8d40c29f69d5c2102ee45ff42.
+PRs #130–#133 mesclados; #128/#129 encerrados com branches preservadas e
+planejamento útil incorporado. Narbonne v3 tem acesso físico à frente, com
+morfologia/marcha/nutrição/calendário mantidos. Saves v1/v2 permanecem fixados.
+Não transferir silenciosamente a fadiga da arena ao perfil do World.
 
-Novo pedido autorizado: após integrar esta restauração, criar a branch
-`codex/cenario-buhl-motor-viveiro` a partir da main. Construir um cenário
-controlado que use o mesmo motor de agentes e escavação do terrário,
-com métricas comparáveis a Buhl. Resolver a conversão de espaço e tempo
-antes de chamar uma execução de 72 horas físicas. Não substituir esse
-pedido por novas regras do motor plano antigo.
+554 testes e build/CodeQL/Chrome pt/en aprovados na release.
+[Recibo](validacoes/release-0.48.0.json). Arena e World são motores distintos;
+72 h físicas da arena não são 72 h do terrário. Lotes e tentativas anteriores
+ficam preservados; não repetir rodadas caras para reorganizar documentos.
 
+Manter dev em http://127.0.0.1:4173/ a partir de G, sem substituir saves do
+usuário. O servidor foi reiniciado em 15/11; logs em `.runtime/dev-2026-11-15*`.
+Testes de navegador usam contextos novos. Não iniciar outro executor da conversa.
 
-A etapa `codex/narbonne-ciclo-nutricao` foi retomada em 07/11 e os quatro
-ajustes foram implementados no PR #124. O [relatório de Narbonne v2](planejamento/narbonne-v2.md)
-registra 538 testes aprovados, Chrome pt/en, seis rodadas de 80 dias,
-gráficos e limites científicos. O [checkpoint](planejamento/narbonne-v2-checkpoint.md)
-indica a conferência de integração e a retomada de T6.
-A publicação privada está pendente: em 07/11 o conector Sites retornou
-`NOT_FOUND/project_not_found` (404) tanto na consulta quanto na emissão de
-credencial para o projeto existente. Preservar identidade e audiência.
-Retentar a publicação somente após restabelecer o acesso ao mesmo projeto.
+Público: https://viveiro.ersolucoesweb.com.br/ (GitHub Pages). Não publicar
+no Site público antigo nem mudar a privacidade do Site existente. O conector
+do Site privado appgprj_6ae6364bc4488191b2757449ed3f7e94 retornou 404; não
+recriar projeto ou retentar até o acesso ser restabelecido. O cronograma
+continua excluído do build público.
 
-O perfil [Messor de Narbonne](planejamento/messor-narbonne.md) fixa a
-população de referência e registra as lacunas de evidência. Em B7,
-pedir procedência taxonômica quando chegarem os dados da autora e
-preservar a separação entre o protocolo em disco e o terrário 3D.
+Não criar tag/release por etapa nem depósito manual no Zenodo. A integração
+GitHub–Zenodo já está ativa; uma próxima versão consolidada precisa de
+metadados atualizados e autorização contextual. P2.8 e P5 permanecem descartados.
+A retomada automática continua pausada.
 
-Para retomar a fila técnica, conferir Git e os PRs de T6 e seguir o
-[plano de fundação comparável](planejamento/fundacao-comparavel.md).
+Fazer testes adequados, build e conferência no navegador; commit, push e PR
+automáticos em ordem de dependência. Antes de uma interrupção ou de 3%
+restante da janela de uso real, enviar o progresso ao GitHub. Não contornar
+limites nem inventar participantes, dados ausentes ou aceites científicos.
 
-**Próximo passo em T4.** Aguardar a resposta ao e-mail que o mantenedor
-enviou à Dra. Camille Buhl em 05/11/2026. Ao receber dados ou um link,
-conferir protocolo, procedência, licença e quais réplicas ficaram fora
-das curvas já usadas no ajuste.
-A [revisão da escavação](planejamento/buhl-variaveis.md) identificou
-contagens de ativas e agregadas como evidência complementar de Buhl.
-A [instrumentação](planejamento/buhl-atividade.md) mede esforço e massa
-por operária e já tem um piloto pareado de duas horas. A
-[triagem de microclima](planejamento/buhl-microclima.md) concluiu 48 rodadas
-pareadas, com balanço de massa e controle de fluxo com água fixa.
-O [perfil de esforço no terrário 3D](planejamento/fadiga-esforco.md) liga
-locomoção, carga, bloqueio, clima e escavação. A próxima ação de B7 depende
-dos registros independentes solicitados à autora.
-Para estimar fadiga, procurar duração e frequência de escavação e repouso
-por operária em condições comparáveis. Fixar novos parâmetros e critérios
-antes de comparar com observações reservadas.
-
-A [comparação de fadiga](planejamento/buhl-fadiga.md) encerrou 30 rodadas
-pareadas de 72 h no [PR #111](https://github.com/albreis/viveiro/pull/111).
-A fonte registrada é `2be875ba67da45df10c56875615c6a7aa82e1449`.
-A variante ficou aquém dos critérios exploratórios. Em 07/11 o mantenedor
-escolheu a fadiga apenas de escavação como referência principal dos próximos
-ensaios: usar explicitamente `docs/validacoes/buhl-fadiga-local-plano.json`.
-Preservar o controle, a variante por ação e o significado dos planos antigos.
-A escolha operacional não encerra B7. Os [quatro PNGs 4:5](planejamento/buhl-graficos.md)
-foram exportados das séries arquivadas, sem novas rodadas.
-
-O [CSV para planilhas](csv-diario.md) segue o idioma selecionado.
-P1.6B2-C e P1.6B2-R concluídos em 05/11 após o relato de importação
-com localidade EUA e uso de NVDA. UX-19/20 em celular físico também
-foi confirmado pelo usuário. [Escopo dos relatos](planejamento/voce-sozinho.md).
-
-As cinco fases de UX e T3 foram validadas tecnicamente. T1 examinou 78 estados
-com zero violações do axe. As verificações manuais seguem no roteiro de
-acessibilidade. A retomada automática continua PAUSED.
-
-Planos: [técnico](planejamento/tecnico.md), [você sozinho](planejamento/voce-sozinho.md),
-[terceiros](planejamento/com-terceiros.md), [UX](planejamento/ux-interface.md),
-[Buhl](planejamento/buhl.md), [opcionais](planejamento/dados-opcionais.md).
-Zoom testado não elimina regressão após alteração de layout; axe não substitui
-leitor de tela. Não atribuir ao usuário trabalho de código/análise que o agente
-pode executar, nem inventar participantes ou pareceres para concluir os aceites.
-
-## P3 já iniciado em outra branch
-
-`claude/project-thread-kazijj`, cabeça512b8c0fbe07ff015b4be85075e7457f5cf57395,
-PR69 aberto/com conflitos. Não mesclar sem reconciliar com a main atual nem
-modificar a branch original nesta reorganização. Relatório de continuidade e
-Markdown científicos conferidos; índice contextual131arquivos. Versão científica
-antiga0.41.0 não conhece todas as ferramentas P2 atuais.
-
-Preservar anexos e trabalho temporário existente. Próxima sequência científica:
-reconciliar código → testes/referência rt24b → unidades/tempo e critérios →
-varreduras retomáveis/sensibilidade → ajuste justificado → dados reservados e
-MAE/cobertura. Não repetir variantes descartadas. Expoente0,68 isolado não basta:
-curva temporal e escala ainda erram. Dados/modelos de outras espécies não
-calibram automaticamente Messor sancta; comparação NetLogo não é dado empírico.
-
-O usuário acrescentou dados abertos como **incremento opcional**, não bloqueador
-novo: oito propostas em planejamento/dados-opcionais.md, com triagem/licenças/
-colunas ainda a completar. Nenhum pacote volumoso adquirido ou contato enviado.
-
-## Entrega e limites operacionais
-
-Fazer commit/push/PR em ordem, guardar checkpoint antes de interrupção; não iniciar
-executor concorrente. Antes de3% restante da janela real de5h, enviar progresso
-e parar para continuidade manual, conforme pedido. Consultar a cota real sem
-expor conta/créditos; não contornar limites. Não executar benchmarks de horas
-numa rodada cujo objetivo é apenas organizar o cronograma.
-
-## Página privada do cronograma — nova entrega
-
-Página de leitura `/cronograma.html`, gerada dos documentos existentes: busca
-no plano todo, áreas por responsabilidade, UX/Buhl/opcionais/concluídos,
-filtros e impressão. Interface pt/en; conteúdo do plano continua em português.
-Excluída do build público; usar apenas o Site privado owner-only. Sem tag nova.
-Suíte completa479/479; TS/build aprovados. Ver cronograma-privado.md e
-validacoes/cronograma-privado.json para o recibo e a publicação.
-A página exibe a primeira etapa técnica com itens pendentes.
-
-Publicação da página privada concluída pelo PR84, fonte76650820087a14f7d2afbeba3d504772acd44d9e.
-URL: https://viveiro-caos-formigueiro.everaldodev.chatgpt.site/cronograma.html?lang=pt-BR
-Acesso após deploy: custom/revisão1/um dono/zero externos. Conferida em produção,
-console limpo. Recibo atualiza somente documentação; não pede outro deploy/tag.
-
-T1 publicado no Site privado na fonte ae989fa27ca5cc3836e87cb6f96f4d13944de813,
-PR86, implantação appgdep_6aea9ea886e48191b3623df16356710b.
-
-UX-01 a UX-06 publicados no PR87, fonte 0e4be5e807a57e6447c0dd250966cc2dc942c5e3,
-implantação appgdep_6aeaa18c97b88191b19a48fb378c49d7.
-
-UX-07 a UX-11 publicados pelo PR88, com correções de rolagem e de layout nos
-PRs 90–92. Ambiente e Colônia têm altura natural no desktop, e os controles
-secundários ficam depois de Análise e dados. O PR93 acrescentou a prévia
-dos experimentos por mouse e teclado.
-
-UX-12 a UX-15 validados no PR89. Build, 480 testes e 102 estados no Chrome
-passaram. A cena ocupa a largura útil no tablet, e a barra permanece acessível
-durante a rolagem e a navegação por Tab. Ver validacoes/ux-fase-3.json.
-
-UX-16 a UX-20 validados tecnicamente. Build, 22 testes dirigidos e 26 estados
-da auditoria passaram. A gaveta reutiliza os controles e permite intervir
-direto no solo. Rolagem, órbita, pinça e primeira pessoa foram verificadas
-no Chrome com toque emulado. O usuário confirmou o uso no POCO X6 em 05/11.
-
-UX-21 validado. Os cartões de fundação, túneis, ecologia, clima e ar
-mostram as métricas principais e oferecem os detalhes em Saiba mais.
-A troca de A para B na aula de ventilação mudou de uma para duas entradas.
-Build, 19 testes dirigidos e 38 estados no Chrome passaram.
-
-T3 mediu o carregamento em três rodadas alternadas e transferiu a primeira
-malha do solo para o worker. A mediana de TBT caiu nos dois perfis e o CLS
-caiu no desktop. O ensaio de movimento registrou 58,6/59,7 FPS no hardware
-local. Ver qa-desempenho.md. O teste no equipamento escolar permanece aberto.
-
-B1 reconciliado em codex/buhl-reconciliacao. A branch original e os anexos
-foram preservados. Os primeiros 600 ticks de rt24b coincidiram exatamente
-com o arquivo histórico para 50, 100 e 200 operárias. O CLI agora grava
-um resultado verificado por grupo e retoma com as ferramentas de P2.3.
-
-B2 concluído em 04/11/2026. Os três grupos de rt24b (50, 100 e 200)
-completaram 86.400 ticks cada. As 435 amostras e o CSV completo bateram
-exatamente com a referência histórica; ver [recibo](validacoes/buhl-rt24b.json).
-A rodada local está em `.runtime/buhl-rt24b-reconciliado`. Não repetir a
-referência para aceitar B2 de novo. Este resultado não calibra o modelo.
-
-B3 entregue no PR #104. A arena física usa operárias com movimento
-local, areia em disco intacto e contas separadas de abertura de células,
-massa removida e solo transportado. O [protocolo físico](planejamento/buhl-protocolo.md)
-documenta parâmetros e unidades. As escolhas de densidade e dispersão
-permanecem hipóteses declaradas.
-
-B4 concluiu a referência de 72 h com 15 rodadas. O
-[relatório bilateral](planejamento/buhl-criterios.md) conserva o baixo volume
-nos três grupos. B5 entregou retomada por seed/grupo e triagem de
-sensibilidade [Morris](planejamento/buhl-lotes.md).
-
-B6 separou seguimento da parede e recrutamento. A
-[ablação de seis horas](planejamento/buhl-mecanismos.md) conserva os
-resultados de cada mecanismo com as mesmas seeds do controle.
-
-B7 escolheu a configuração no ponto observado de 12 h. As 45
-execuções usaram apenas seeds de desenvolvimento. O
-[plano reservado](validacoes/buhl-arena-reservado-plano.json) preserva
-os parâmetros escolhidos e as cinco seeds separadas. A validação empírica
-continua pendente por falta de observações independentes identificadas.
-
-B8 concluiu as 15 rodadas de 72 h e publicou [avaliação e séries](validacao.md).
-A configuração escolhida ficou próxima das médias de 12 h. O volume continuou
-crescendo demais nas janelas seguintes. A trilha de dados deve preservar
-identidade por réplica, compatibilidade do protocolo e permissão de reuso.
-Um futuro ajuste deve reservar novas seeds do simulador e observações reais
-antes de comparar mecanismos de saturação. Os instrumentos de T5 estão prontos
-para receber observações, pareceres e contribuições reais.
-
-Checkpoint final de acesso: lote concluído e arquivado. O ZIP de segurança
-`docs/validacoes/buhl-acesso-72h-checkpoint.zip` é uma fotografia parcial
-anterior, não substitui o CSV/recibo completo. Não restaurar sobre saves.
-Reprodução do arquivamento: `node scripts/archive-buhl-access.ts .runtime/buhl-acesso-geometrico-72h 906ffac32087cceef13d3c8d97261a8385eca4a9`.
-Para figuras, usar Python 3.14 com `PYTHONPATH=.runtime/buhl-plot-deps` e
-`MPLCONFIGDIR=.runtime/buhl-plot-config`. O dev 4173 deve permanecer ativo.
+[Checkpoint histórico integral de 08/11](https://github.com/albreis/viveiro/blob/9b1b3f8d46f3f55bc5e0dbfb17b8a12cd82a6440/docs/CONTINUAR.md).
+Esse histórico preserva ensaios, seeds, hashes e decisões substituídas; suas
+instruções de aguardar e-mail ou republicar 0.48.0 não são o próximo passo.

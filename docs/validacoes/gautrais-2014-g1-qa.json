@@ -1,0 +1,84 @@
+{
+  "schema": "viveiro-gautrais-g1-qa-v1",
+  "date": "2026-11-15",
+  "scopePR": 134,
+  "deliveryPR": 135,
+  "baselineSourceSha": "a39f11a10c8dfdf8d40c29f69d5c2102ee45ff42",
+  "protocolCommit": "794f3d0b0a2d429c088bbefc6a4dfc619d61b296",
+  "analysisSourceSha": "57f65fc3fe791f5cf6f6057d6111898db187703e",
+  "protocolSha256": "7e2216b5aaf64cc710ab305674d37d57346603d1675522c4296e15af46cafd2b",
+  "tests": {
+    "initial": {
+      "total": 562,
+      "passed": 560,
+      "failed": 2,
+      "issues": [
+        "Native exponent in new descriptive statistic; replaced with delta multiplication without changing values.",
+        "Roadmap test hardcoded an obsolete date; now validates format and the Gautrais task."
+      ]
+    },
+    "final": {
+      "total": 562,
+      "passed": 562,
+      "failed": 0
+    }
+  },
+  "build": {
+    "command": "npm run build",
+    "passed": true,
+    "knownWarning": "Existing Three.js bundle chunk >500 kB"
+  },
+  "browser": {
+    "browser": "157.0.8103.51",
+    "cases": [
+      {
+        "lang": "pt-BR",
+        "width": 1440,
+        "height": 1000,
+        "roadmap": true,
+        "b7Pending": true,
+        "profile": "messor-narbonne@3",
+        "errors": []
+      },
+      {
+        "lang": "en",
+        "width": 390,
+        "height": 844,
+        "roadmap": true,
+        "b7Pending": true,
+        "profile": "messor-narbonne@3",
+        "errors": []
+      }
+    ]
+  },
+  "data": {
+    "replicas": 15,
+    "series": 12,
+    "observations": 99,
+    "graphsVerified": 5019,
+    "reservedMetricsComputed": false,
+    "initialAndCorrectedValuesEqual": true
+  },
+  "code": {
+    "agentRulesChanged": false,
+    "modelParametersChanged": false,
+    "newModuleLines": {
+      "development": 68,
+      "graph": 53,
+      "protocol": 48,
+      "topology": 51,
+      "types": 36
+    }
+  },
+  "publication": {
+    "newTag": false,
+    "newRelease": false,
+    "manualZenodoDeposit": false
+  },
+  "nextStep": "G2: define and extract comparable physical-network observations. G3 freezes predictions before G4 opens reserved metrics.",
+  "codeql": {
+    "result": "success",
+    "run": "https://github.com/albreis/viveiro/actions/runs/43725180497",
+    "sourceSha": "96cdf46e3a6ed326493ea472219e355ee844edbc"
+  }
+}

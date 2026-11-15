@@ -1,0 +1,127 @@
+{
+  "schema": "viveiro-gautrais-protocol-v1",
+  "recordedDate": "2026-11-15",
+  "baselineSourceSha": "a39f11a10c8dfdf8d40c29f69d5c2102ee45ff42",
+  "article": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0109436",
+  "supplement": "https://doi.org/10.1371/journal.pone.0109436.s001",
+  "zipSha256": "e097692104f2011f5c138a992a83cf26d760fd021424f5f52f814fa6b838da11",
+  "graphSetSha256": "6283effdf4dc824a50880228126358ec353112aea5d6ddd3cd5e374c34509938",
+  "license": {
+    "article": "CC BY",
+    "dataStatement": "Supporting information available without restriction; credit article and authors."
+  },
+  "priorExposure": {
+    "inventoryDate": "2026-11-04",
+    "allFilesPreviouslyParsed": true,
+    "knownAggregates": [
+      "nodes",
+      "edges",
+      "components",
+      "cycleRank",
+      "parallelEdges"
+    ],
+    "note": "Aggregates already inspected; this partition is not a pristine blind holdout and cannot erase historical exposure."
+  },
+  "provenance": {
+    "reuseOfBuhl2004": true,
+    "overlapWithBuhl2001And2005": "not-established",
+    "independentEmpiricalValidation": false
+  },
+  "partitionRule": "Odd replica suffixes: development; even: reserved. All frames and final graph of a replica stay together. Outcome-independent rule, fixed after inventory exposure.",
+  "groups": [
+    {
+      "workers": 50,
+      "development": [
+        "A050-01",
+        "A050-03",
+        "A050-05"
+      ],
+      "reserved": [
+        "A050-02",
+        "A050-04"
+      ],
+      "series": false
+    },
+    {
+      "workers": 100,
+      "development": [
+        "A100-01",
+        "A100-03",
+        "A100-05"
+      ],
+      "reserved": [
+        "A100-02",
+        "A100-04"
+      ],
+      "series": true
+    },
+    {
+      "workers": 200,
+      "development": [
+        "A200-01",
+        "A200-03",
+        "A200-05",
+        "A200-07",
+        "A200-09",
+        "A200-11",
+        "A200-13",
+        "A200-15",
+        "A200-17"
+      ],
+      "reserved": [
+        "A200-02",
+        "A200-04",
+        "A200-06",
+        "A200-08",
+        "A200-10",
+        "A200-12",
+        "A200-14",
+        "A200-16",
+        "A200-18"
+      ],
+      "series": true
+    }
+  ],
+  "measurements": {
+    "finalGraph": true,
+    "frames": [
+      1,
+      37,
+      73,
+      109,
+      145,
+      181,
+      217
+    ],
+    "nominalMinutesPerFrame": 20,
+    "timeOrigin": "Ordinal only: (frame-1)*20 min. Latency alignment and physical compatibility must be verified before comparison.",
+    "primary": [
+      "nodes",
+      "edges",
+      "cycleRank"
+    ],
+    "diagnostic": [
+      "components",
+      "parallelEdges",
+      "meanDegree",
+      "branchingNodes",
+      "deadEnds",
+      "isolatedNodes"
+    ],
+    "meshedness": "Not computed: connected/simple/planar and peripheral-node conventions need verification.",
+    "physicalLengthAreaVolume": "Not computed; supplement units and chamber conventions not yet verified."
+  },
+  "evaluation": {
+    "unit": "Replica, not frame. Final graph and final frame are separate products, never pooled as independent observations.",
+    "metrics": [
+      "MAE by metric/group, with replica weighting",
+      "Conditional simulation-ensemble coverage with a declared level"
+    ],
+    "passThresholds": "No biological pass threshold invented. Report deviations; predictive protocol must be fixed before reserved evaluation.",
+    "predictionProtocolFrozen": false,
+    "reservedMetricsMayBeComputed": false,
+    "developmentAnalysisOnly": true,
+    "modelChangesAllowedThisStage": false,
+    "nextGate": "Freeze compatible simulation protocol, parameters, seeds and predictions before opening reserved metrics. Any later adjustment consumes that evaluation."
+  }
+}

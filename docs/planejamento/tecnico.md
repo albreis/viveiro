@@ -48,6 +48,16 @@ Resultados de carregamento não são medidas de FPS.
 
 ## T4 — P3: análise e calibração já iniciadas
 
+Prioridade desde 15/11: [dados públicos de Gautrais, G0–G4](gautrais-avaliacao.md).
+Contato com Buhl é opcional. O inventário já existe; a próxima implementação
+é o protocolo por réplica e o leitor de métricas, sem alterar o motor.
+
+- [x] **G0 — Fonte e novo escopo:** artigo, suplemento e hash conferidos.
+- [x] **G1 — Partição e métricas de desenvolvimento:** plano congelado, leitor
+  testado, resultados só da partição ímpar e proveniência reproduzível.
+- [ ] **G2–G4 — Comparação e avaliação:** mesma definição de rede, predições
+  congeladas, reserva, MAE/cobertura e relatório; sem alegação de independência.
+
 - [ ] **K1–K6 — Cenário físico e parametrização individual:** seguir o
   [plano](buhl-parametrizacao.md), com fontes, incertezas, microensaios e
   protocolo controlado no motor real. A integração de acesso na 0.48.0
@@ -70,7 +80,7 @@ Resultados de carregamento não são medidas de FPS.
 
 A obtenção de dados de reuso permitido não exige automaticamente contato com
 laboratório. O acordo exigido em P3.1 e a revisão independente continuam externos.
-Os [conjuntos adicionais](dados-opcionais.md) são uma expansão opcional, sem
+Gautrais integra agora o escopo ativo; os demais [conjuntos adicionais](dados-opcionais.md) continuam opcionais, sem
 substituir a validação de Buhl por seleção de resultados mais favoráveis.
 
 ## T5 — Apoio técnico a escola, publicação e comunidade
