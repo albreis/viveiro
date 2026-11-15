@@ -49,22 +49,31 @@ segundo piloto preservado, 574 testes e nova igualdade CLI/Chrome aprovados.
 A normalização de grau 2 altera a definição de N/E: exige emenda congelada,
 não reescrever o plano G1. Não usar o piloto como predição G3 ou avaliação G4.
 
-K1-A iniciado em `codex/world-laboratorio-geometria`, dependente do #137:
+K1-A entregue no [PR #138](https://github.com/albreis/viveiro/pull/138),
+branch `codex/world-laboratorio-geometria`, dependente do #137:
 [geometria no World](planejamento/world-laboratorio-geometria.md), disco sem
 galerias, campo físico/apoio e coortes adultas. Auxiliares dimensionais auditam
 o conflito entre relógio legado e marcha; **a dinâmica física não foi integrada**.
-World.step/advance recusam esse preparo antes de mutações. CLI/Chrome portátil conferiram hashes idênticos das três coortes (350
-operárias), após corrigir a diferença nativa de um bit pelo backend isolado.
-4.800 amostras do campo legado continuam idênticas. Fonte e832554, artefatos
-em `docs/validacoes/world-laboratorio-geometria`. 582 testes, 21 dirigidos, build e conferência de cronograma/terrário pt/en
-aprovados. [Recibo](validacoes/world-laboratorio-geometria-qa.json).
+World.step/advance recusam esse preparo antes de mutações. CLI/Chrome portátil
+conferiram hashes idênticos das três coortes (350 operárias), após corrigir a
+diferença nativa de um bit pelo backend isolado. 4.800 amostras do campo legado
+continuam idênticas. Fonte e832554, artefatos em
+`docs/validacoes/world-laboratorio-geometria`. 582 testes, 21 dirigidos, build
+e cronograma/terrário pt/en aprovados. [Recibo](validacoes/world-laboratorio-geometria-qa.json).
 A preparação não executa dinâmica; relógio, material e G4 seguem pendentes.
 
-Próximos passos concretos: K1-B integrar relógio físico e biológico, limites
-locais/Fluon, taxas e filas de ações; depois material/volume efetivo, retomada
-e convergência temporal. Não retirar a trava enquanto estiver incompleto. Resolver artefatos de segmentação do G2, mantendo
-observáveis equivalentes em dados/modelo. Só depois congelar G3 e abrir G4.
-Conferir os PRs #135–#137 antes de nova branch; preservar a cadeia. Sem tags.
+Próximo passo concreto K1-B: versionar o relógio físico/biológico e o domínio
+local de navegação. `surface-motion.ts` ainda usa BOUNDS da caixa, enquanto o
+laboratório tem arena radial maior; World.pheromoneIndex também usa dimensões
+fixas. Fazer microensaios de marcha/contato e taxas de ações antes de retirar
+a trava. Material/volume efetivo, retomada e convergência temporal vêm depois.
+Preservar a equivalência numérica do modo legado e usar backend portátil em
+realm isolado para os ensaios. Não instalar backend sobre World interativo vivo.
+
+Resolver a convergência/segmentação do G2-B, com convenção comum em dados/modelo.
+Só depois congelar G3 e abrir G4. Não tratar o alinhamento a 100 mm descrito na
+estimação do artigo como correspondência já confirmada de todos os quadros S1.
+Conferir PRs #135–#138 antes de nova branch; preservar a cadeia. Sem tags.
 
 O ZIP local em `.runtime/buhl-gautrais-data-s1.zip` confere com o hash
 publicado no inventário. Dados extraídos em `.runtime/buhl-gautrais-s1/S12`.
