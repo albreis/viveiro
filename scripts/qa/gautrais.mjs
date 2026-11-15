@@ -1,10 +1,15 @@
 import assert from "node:assert/strict";
-import { writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright-core";
 const browser = await chromium.launch({
   channel: "chrome",
   args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
 });
+mkdirSync(".runtime", { recursive: true });
+const expectedDate = readFileSync("docs/cronograma.md", "utf8").match(
+  /Atualizado em (\d{2}\/\d{2}\/\d{4})/,
+)?.[1];
+assert.ok(expectedDate);
 const cases = [];
 try {
   for (const [lang, width, height] of [
@@ -32,9 +37,10 @@ try {
         await page.locator("#roadmap-groups").textContent(),
         /G1.*Partição/,
       );
-      assert.match(
-        await page.locator("#roadmap-updated").textContent(),
-        /15\/11\/2026/,
+      assert.ok(
+        (await page.locator("#roadmap-updated").textContent()).includes(
+          expectedDate,
+        ),
       );
       await page.screenshot({
         path: ".runtime/gautrais-roadmap-" + lang + ".png",

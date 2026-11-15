@@ -4,7 +4,7 @@
   "scopePR": 134,
   "deliveryPR": 135,
   "baselineSourceSha": "a39f11a10c8dfdf8d40c29f69d5c2102ee45ff42",
-  "protocolCommit": "794f3d0",
+  "protocolCommit": "794f3d0b0a2d429c088bbefc6a4dfc619d61b296",
   "analysisSourceSha": "57f65fc3fe791f5cf6f6057d6111898db187703e",
   "protocolSha256": "7e2216b5aaf64cc710ab305674d37d57346603d1675522c4296e15af46cafd2b",
   "tests": {
@@ -75,5 +75,10 @@
     "newRelease": false,
     "manualZenodoDeposit": false
   },
-  "nextStep": "G2: define and extract comparable physical-network observations. G3 freezes predictions before G4 opens reserved metrics."
+  "nextStep": "G2: define and extract comparable physical-network observations. G3 freezes predictions before G4 opens reserved metrics.",
+  "codeql": {
+    "result": "success",
+    "run": "https://github.com/albreis/viveiro/actions/runs/43725180497",
+    "sourceSha": "96cdf46e3a6ed326493ea472219e355ee844edbc"
+  }
 }
