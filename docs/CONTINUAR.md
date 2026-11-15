@@ -43,6 +43,8 @@ escolheu **World exclusivamente, adaptar o cenário antes de G4**. Piloto de
 54 cortes arquivado em [relatório](validacoes/gautrais-g2-piloto.md); fonte
 cd4ddf0, fingerprint 6c8705794ea595829faa96afa6f3986e9fe374a60b906e1a702dc4565314bb93.
 573 testes/build passaram; Chrome reproduziu todas as leituras do CLI.
+Revisão v2 no commit 78f3381 corrige entalhes artificiais da ampliação;
+segundo piloto preservado, 574 testes e nova igualdade CLI/Chrome aprovados.
 **G2 ainda não aprovado:** N/E dependem da grade e um corte mudou componentes.
 A normalização de grau 2 altera a definição de N/E: exige emenda congelada,
 não reescrever o plano G1. Não usar o piloto como predição G3 ou avaliação G4.

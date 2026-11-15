@@ -69,3 +69,27 @@ relógio físico/biológico e balanço de material, sem mudar saves existentes.
 Somente depois de ambos passarem será possível congelar G3 e abrir G4.
 O piloto declara `physicalProtocolCompatible: false` e `g3.ready: false`.
 Não é calibração nem validação quantitativa do terrário.
+
+## Correção do operador v2
+
+A inspeção do primeiro ensaio identificou entalhes artificiais produzidos pela
+ampliação. A revisão v2 só separa pares exclusivamente diagonais, mantendo
+paredes cheias intactas. Não mudou regras biológicas, parâmetros ou a grade
+do piloto. Fonte: `78f3381b4c0f717b9455e4e70de94268cb683636`; fingerprint
+`8bb0e630f7e7cd259f08658643a0f5b098e5d1c364198a6d7a1d827371536f96`.
+[Segundo ensaio completo](gautrais-g2-piloto-v2/world-observation.json).
+
+| Corte y | Nós A/B | Arestas A/B | Componentes A/B | Ciclos A/B |
+| --- | --- | --- | --- | --- |
+| −1 | 9 / 7 | 5 / 3 | 4 / 4 | 0 / 0 |
+| −2 | 7 / 7 | 4 / 5 | 3 / 2 | 0 / 0 |
+| −3 | 4 / 2 | 3 / 1 | 1 / 1 | 0 / 0 |
+
+574/574 testes, 11 testes dirigidos, build e as 54 leituras CLI/Chrome passaram novamente.
+A correção reduziu o defeito, mas a divergência entre grades persiste.
+**G2-B continua pendente; não há predição G3/G4 elegível.**
+
+![Mesmo corte com a ampliação corrigida](figuras/gautrais-g2-section-v2.png)
+
+Para reproduzir o segundo ensaio, usar a mesma linha de CLI em saída nova;
+para o QA, passar `.runtime/gautrais-g2-piloto-v2` como argumento posicional.
