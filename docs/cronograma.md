@@ -78,6 +78,8 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    O ensaio em equipamento escolar segue no aceite P1.1B.
 4. **T4 — Buhl/P3:** B1–B6 e B8 entregues. B7 tem ajuste exploratório e
    avaliação em seeds reservadas. Faltam séries empíricas independentes.
+   Desde 15/11/2026 a validação usa dados públicos e não depende de resposta
+   de Buhl: primeiro as séries por réplica de [Gautrais et al. 2014](validacoes/gautrais-2014.md).
    [Avaliação de 72 h](validacao.md). [Fadiga local em 30 rodadas pareadas](planejamento/buhl-fadiga.md).
    [Triagem de microclima](planejamento/buhl-microclima.md) e [esforço no terrário 3D](planejamento/fadiga-esforco.md) disponíveis como investigações exploratórias.
    [Pendências e critérios](planejamento/buhl.md).
