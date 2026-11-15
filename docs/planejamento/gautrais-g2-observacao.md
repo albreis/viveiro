@@ -44,3 +44,12 @@ físico/biológico e balanço de material. Só depois congelar condições,
 parâmetros, seeds, operador e predições. Os grafos pares continuam fechados
 para métricas até essa etapa. A normalização não fornece uma conversão
 de tempo ou volume e não permite declarar calibração concluída.
+
+## Piloto executado
+
+[54 leituras arquivadas](../validacoes/gautrais-g2-piloto.md), CLI/Chrome
+numericamente idênticos e 573 testes aprovados. A contagem de ramificações
+variou com a grade; o corte y = −2 também mudou de 3 para 2 componentes.
+**G2 não passou ainda pela comparabilidade.** Corrigir/verificar segmentação
+sem escolher grade por ajuste aos dados. K1 pode avançar em geometria/relógio
+sem abrir a reserva. G3/G4 continuam bloqueados por esses requisitos.

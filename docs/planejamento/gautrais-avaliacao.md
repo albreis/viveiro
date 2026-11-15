@@ -36,3 +36,10 @@ reserva. Os 5.019 arquivos passaram pela checagem de integridade.
 [Dados gerados](../validacoes/gautrais-2014-desenvolvimento.json) ·
 [Relatório e reprodução](../validacoes/gautrais-2014-desenvolvimento.md).
 G2–G4 e B7 permanecem abertos.
+
+## Avanço G2 e escolha de motor
+
+O mantenedor escolheu World e adaptação K1 antes de G4. [Instrumentação G2](gautrais-g2-observacao.md)
+implementada e conferida em 54 cortes reais; [piloto](../validacoes/gautrais-g2-piloto.md).
+A convergência de resolução não passou; G2 permanece aberto. Os novos N/E
+normalizados não substituem silenciosamente as contagens do plano G1.

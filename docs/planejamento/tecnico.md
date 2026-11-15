@@ -49,14 +49,18 @@ Resultados de carregamento não são medidas de FPS.
 ## T4 — P3: análise e calibração já iniciadas
 
 Prioridade desde 15/11: [dados públicos de Gautrais, G0–G4](gautrais-avaliacao.md).
-Contato com Buhl é opcional. O inventário já existe; a próxima implementação
-é o protocolo por réplica e o leitor de métricas, sem alterar o motor.
+Contato com Buhl é opcional. G0/G1 estão entregues. O alvo é o World; adaptar
+o cenário de laboratório antes de G4, conforme escolha do mantenedor.
 
 - [x] **G0 — Fonte e novo escopo:** artigo, suplemento e hash conferidos.
 - [x] **G1 — Partição e métricas de desenvolvimento:** plano congelado, leitor
   testado, resultados só da partição ímpar e proveniência reproduzível.
-- [ ] **G2–G4 — Comparação e avaliação:** mesma definição de rede, predições
-  congeladas, reserva, MAE/cobertura e relatório; sem alegação de independência.
+- [x] **G2-A — Instrumentação física:** observador readonly, 54 cortes no World,
+  igualdade CLI/Chrome e testes sintéticos. [Piloto e limites](../validacoes/gautrais-g2-piloto.md).
+- [ ] **G2-B — Comparabilidade:** eliminar/verificar artefatos de ramificação,
+  convergência de resolução e convenção comum com os grafos observados.
+- [ ] **G3–G4 — Predições e avaliação:** cenário K1 compatível, protocolo e
+  predições congelados antes da reserva; MAE/cobertura e relatório com limites.
 
 - [ ] **K1–K6 — Cenário físico e parametrização individual:** seguir o
   [plano](buhl-parametrizacao.md), com fontes, incertezas, microensaios e

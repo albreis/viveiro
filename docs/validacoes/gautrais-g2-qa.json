@@ -1,0 +1,20 @@
+{
+  "sourceSha": "cd4ddf0c16f3345d1569ae08e2613739c8970ba8",
+  "fullTests": 573,
+  "failed": 0,
+  "build": "passed",
+  "browser": {
+    "browser": "157.0.8103.51",
+    "observations": 54,
+    "cliBrowserExact": true,
+    "readonly": true,
+    "freshContext": true,
+    "pageErrors": [],
+    "physicalProtocolCompatible": false,
+    "reservedMetricsComputed": false
+  },
+  "resolutionStable": false,
+  "g2Complete": false,
+  "reservedMetricsComputed": false,
+  "dataSha256": "6ee08dbb4a46974e0fed39baa74f94cd0edc42748e5e3f38a2bb408df7083fec"
+}
