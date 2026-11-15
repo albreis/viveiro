@@ -1,6 +1,7 @@
 # P3-OP — Dados abertos adicionais (opcional)
 
-**Proposta do usuário, fora dos requisitos de conclusão do escopo ativo.**
+**Proposta do usuário; os conjuntos abaixo continuam opcionais, exceto Gautrais.**
+Em 15/11/2026 Gautrais passou a integrar T4/B7, seguindo [G0–G4](gautrais-avaliacao.md).
 Incrementa evidência, transparência e valor científico; não bloqueia Buhl, UX ou
 release atual. Não cria parceria presumida nem comprova superioridade sobre concorrentes.
 

@@ -76,8 +76,8 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   histórica e avaliação independente. A mudança de abordagem não reclassifica
   Buhl como dado independente.
   **Decisão de 15/11/2026: B7 deixa de depender de resposta dos autores.**
-  O e-mail de 05/11/2026 foi para um endereço provavelmente incorreto
-  (o primeiro autor é Jérôme Buhl) e não teve resposta. O mantenedor
+  O contato tentado em 05/11/2026 está sem resposta. Não há confirmação
+  documental sobre a entrega ou a validade do endereço. O mantenedor
   pode tentar novo contato; dados recebidos no futuro entram como evidência
   adicional, sem bloquear esta etapa. A avaliação reservada passa a usar
   dados públicos, começando pelas séries por réplica de
@@ -87,7 +87,9 @@ agentes; o acúmulo ocorre também em câmaras. Uma comparação numérica de tr
   Registrar que essas séries podem vir dos mesmos experimentos de Buhl 2004;
   sem essa verificação, o resultado é teste de padrão não usado no ajuste,
   não replicação independente.
-  [Método, escolha e plano reservado](buhl-ajuste.md).
+  [Plano operacional G0–G4](gautrais-avaliacao.md), com a exposição da
+  auditoria de 04/11 registrada e sem acesso às métricas reservadas nesta etapa.
+  [Método histórico, escolha e plano reservado](buhl-ajuste.md).
   [Gráficos de Buhl e do Viveiro sem e com fadiga](buhl-fadiga.md#curvas-de-0-a-72-h).
   [Relatório sobre agregação, água, temperatura e ventilação](buhl-variaveis.md).
   [Instrumentação de atividade e piloto de duas horas](buhl-atividade.md).

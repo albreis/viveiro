@@ -118,7 +118,8 @@ réplicas independentes, e dados de outra espécie não validam este perfil.
 K1–K6 são trabalho técnico até onde houver dados acessíveis. O mantenedor
 recebe decisões e relatórios; não precisa executar código manualmente.
 A fonte das medidas e a avaliação externa permanecem dependências reais.
-O pedido de dados enviado à autora em 05/11 continua registrado em B7.
+O contato de 05/11 continua registrado, mas desde 15/11 é opcional.
+A avaliação com dados públicos segue [G0–G4](gautrais-avaliacao.md).
 Nenhum dado bruto, parecer ou confirmação taxonômica será presumido.
 
 Verificação computacional, parametrização, comparação retrospectiva,
