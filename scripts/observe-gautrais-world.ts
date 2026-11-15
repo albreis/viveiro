@@ -1,3 +1,4 @@
+import { normalizeWorldObservationPlan } from "../src/modules/benchmarks/gautrais/observation/world-plan.ts";
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -19,38 +20,8 @@ try {
     throw Error(
       "Usage: node scripts/observe-gautrais-world.ts --plan PLAN.json --output NEW-FOLDER",
     );
-  const raw = readSweepJson(args[1]) as Record<string, unknown>;
-  if (
-    Object.keys(raw).sort().join(",") !==
-      "groups,pitches,sampleEvery,seed,sectionsY,ticks" ||
-    typeof raw.seed !== "string" ||
-    !/^[A-Z0-9-]{1,64}$/.test(raw.seed) ||
-    !Number.isInteger(raw.ticks) ||
-    Number(raw.ticks) < 1 ||
-    Number(raw.ticks) > 1000 ||
-    !Number.isInteger(raw.sampleEvery) ||
-    Number(raw.sampleEvery) < 1 ||
-    Number(raw.ticks) % Number(raw.sampleEvery) !== 0
-  )
-    throw Error("Invalid bounded observation plan");
-  const groups = raw.groups as number[],
-    pitches = raw.pitches as number[],
-    sectionsY = raw.sectionsY as number[];
-  const validList = (v: unknown): v is number[] =>
-    Array.isArray(v) &&
-    v.length > 0 &&
-    v.length <= 3 &&
-    new Set(v).size === v.length &&
-    v.every((x) => typeof x === "number" && Number.isFinite(x));
-  if (
-    !validList(groups) ||
-    !groups.every((n) => [50, 100, 200].includes(n)) ||
-    !validList(pitches) ||
-    !pitches.every((p) => [0.2, 0.25, 0.5].includes(p)) ||
-    !validList(sectionsY) ||
-    !sectionsY.every((y) => y < 0 && y > -4.2)
-  )
-    throw Error("Invalid observation groups/sections/pitches");
+  const raw = normalizeWorldObservationPlan(readSweepJson(args[1]));
+  const { groups, pitches, sectionsY } = raw;
   const output = resolve(args[3]);
   plainParents(output);
   if (existsSync(output)) throw Error("Observation output already exists");

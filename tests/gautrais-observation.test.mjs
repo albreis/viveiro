@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { normalizeWorldObservationPlan } from "../src/modules/benchmarks/gautrais/observation/world-plan.ts";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { World } from "../src/modules/simulation/world.js";
@@ -145,4 +147,26 @@ test("larger irregular masks retain topology without replacing holes by junction
     );
     assert.equal(observed.metrics.cycleRank, expected.holes, "holes " + sample);
   }
+});
+
+test("actual fixed pilot plan is accepted independently of key order; invalid plans fail", () => {
+  const raw = JSON.parse(
+    readFileSync("docs/validacoes/gautrais-g2-piloto-plano.json"),
+  );
+  assert.deepEqual(
+    normalizeWorldObservationPlan(raw),
+    normalizeWorldObservationPlan(
+      Object.fromEntries(Object.entries(raw).reverse()),
+    ),
+  );
+  for (const change of [
+    { ticks: 0 },
+    { ticks: 100000 },
+    { groups: [50, 50] },
+    { sectionsY: [1] },
+    { pitches: [0.1] },
+    { unexpected: true },
+    { ticks: "120" },
+  ])
+    assert.throws(() => normalizeWorldObservationPlan({ ...raw, ...change }));
 });
