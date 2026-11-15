@@ -1,0 +1,19 @@
+{
+  "seed": "GAUTRAIS-G2-PHYSICAL",
+  "groups": [
+    50,
+    100,
+    200
+  ],
+  "ticks": 120,
+  "sampleEvery": 60,
+  "sectionsY": [
+    -1,
+    -2,
+    -3
+  ],
+  "pitches": [
+    0.2,
+    0.25
+  ]
+}

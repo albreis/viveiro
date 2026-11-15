@@ -1,0 +1,39 @@
+{
+  "sourceSha": "cd4ddf0c16f3345d1569ae08e2613739c8970ba8",
+  "fullTests": 573,
+  "failed": 0,
+  "build": "passed",
+  "browser": {
+    "browser": "157.0.8103.51",
+    "observations": 54,
+    "cliBrowserExact": true,
+    "readonly": true,
+    "freshContext": true,
+    "pageErrors": [],
+    "physicalProtocolCompatible": false,
+    "reservedMetricsComputed": false
+  },
+  "resolutionStable": false,
+  "g2Complete": false,
+  "reservedMetricsComputed": false,
+  "dataSha256": "6ee08dbb4a46974e0fed39baa74f94cd0edc42748e5e3f38a2bb408df7083fec",
+  "operatorV2": {
+    "sourceSha": "78f3381b4c0f717b9455e4e70de94268cb683636",
+    "fullTests": 574,
+    "failed": 0,
+    "directedTests": 11,
+    "build": "passed",
+    "browser": {
+      "browser": "157.0.8103.51",
+      "observations": 54,
+      "cliBrowserExact": true,
+      "readonly": true,
+      "freshContext": true,
+      "pageErrors": [],
+      "physicalProtocolCompatible": false,
+      "reservedMetricsComputed": false
+    },
+    "dataSha256": "19868ef9ed03e86ac1ce8e7bdcca75d034c24452d0a13dcc078555bf241e394f",
+    "resolutionStable": false
+  }
+}

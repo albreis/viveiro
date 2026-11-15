@@ -37,12 +37,23 @@ novas métricas; implementação de análise no commit 57f65fc.
 562 testes, build e Chrome pt/en aprovados; [recibo](validacoes/gautrais-2014-g1-qa.json). A reserva
 continua bloqueada no CLI. Correção da estatística não mudou nenhum valor.
 
-Próximo passo: G2, definir e extrair os mesmos observáveis de rede do
-simulador. Não equiparar o grafo lógico do World à rede física segmentada
-do artigo, nem aplicar meshedness conectada aos dados desconectados.
-Fixar a comparação/projeção e testar grafos sintéticos antes de novas
-rodadas. G3 congela predições; somente G4 abre métricas reservadas.
-Conferir o estado do #135 antes de retomar. Sem nova tag por esta etapa.
+G2 instrumentado no [PR #137](https://github.com/albreis/viveiro/pull/137),
+branch `codex/gautrais-observador-fisico`, dependente do #136. O mantenedor
+escolheu **World exclusivamente, adaptar o cenário antes de G4**. Piloto de
+54 cortes arquivado em [relatório](validacoes/gautrais-g2-piloto.md); fonte
+cd4ddf0, fingerprint 6c8705794ea595829faa96afa6f3986e9fe374a60b906e1a702dc4565314bb93.
+573 testes/build passaram; Chrome reproduziu todas as leituras do CLI.
+Revisão v2 no commit 78f3381 corrige entalhes artificiais da ampliação;
+segundo piloto preservado, 574 testes e nova igualdade CLI/Chrome aprovados.
+**G2 ainda não aprovado:** N/E dependem da grade e um corte mudou componentes.
+A normalização de grau 2 altera a definição de N/E: exige emenda congelada,
+não reescrever o plano G1. Não usar o piloto como predição G3 ou avaliação G4.
+
+Próximos passos concretos: adaptar K1 no World por entregas pequenas, começando
+por geometria controlada sem galerias e unidades/relógio explícitos; testar
+conservação/passo/CLI-app. Resolver artefatos de segmentação do G2, mantendo
+observáveis equivalentes em dados/modelo. Só depois congelar G3 e abrir G4.
+Conferir os PRs #135–#137 antes de nova branch; preservar a cadeia. Sem tags.
 
 O ZIP local em `.runtime/buhl-gautrais-data-s1.zip` confere com o hash
 publicado no inventário. Dados extraídos em `.runtime/buhl-gautrais-s1/S12`.

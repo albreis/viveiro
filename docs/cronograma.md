@@ -85,6 +85,9 @@ já é permitido. Rodar axe-core é trabalho técnico; usar um leitor de tela re
    métricas compatíveis → predições congeladas → MAE/cobertura. A auditoria
    prévia e a reutilização de experimentos impedem chamar a reserva de inédita
    ou presumir replicação independente.
+   G2-A instrumentado em 54 cortes do World, com igualdade CLI/Chrome; G2-B
+   ainda exige convergência de resolução. [Resultado e falha medida](validacoes/gautrais-g2-piloto.md).
+   O mantenedor escolheu adaptar K1 no World antes de G3/G4; a reserva continua fechada.
    [Avaliação de 72 h](validacao.md). [Fadiga local em 30 rodadas pareadas](planejamento/buhl-fadiga.md).
    [Triagem de microclima](planejamento/buhl-microclima.md) e [esforço no terrário 3D](planejamento/fadiga-esforco.md) disponíveis como investigações exploratórias.
    [Pendências e critérios](planejamento/buhl.md).

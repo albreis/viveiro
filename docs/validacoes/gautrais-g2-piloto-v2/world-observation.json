@@ -1,0 +1,1518 @@
+{
+  "schema": "viveiro-gautrais-world-observation-v1",
+  "operator": "physical-section-4fg8bg-degree2-v2",
+  "sourceSha": "78f3381b4c0f717b9455e4e70de94268cb683636",
+  "sourceFingerprint": "8bb0e630f7e7cd259f08658643a0f5b098e5d1c364198a6d7a1d827371536f96",
+  "node": "v24.22.1",
+  "plan": {
+    "seed": "GAUTRAIS-G2-PHYSICAL",
+    "groups": [
+      50,
+      100,
+      200
+    ],
+    "pitches": [
+      0.2,
+      0.25
+    ],
+    "sectionsY": [
+      -1,
+      -2,
+      -3
+    ],
+    "ticks": 120,
+    "sampleEvery": 60
+  },
+  "engine": "World.step",
+  "biologicalProfile": "messor-narbonne@3",
+  "spaceUnit": "model-unit",
+  "timeUnit": "model-tick",
+  "initialState": "prepared mature procedural nest",
+  "physicalProtocolCompatible": false,
+  "reservedMetricsComputed": false,
+  "modelRulesChanged": false,
+  "g3": {
+    "ready": false,
+    "reasons": [
+      "Experimental sand disk and blank initial substrate are not configured.",
+      "Model ticks are not physical seconds; biological and movement clocks remain coupled.",
+      "Model length/volume and soil transport must be reconciled before physical evaluation."
+    ]
+  },
+  "metricConvention": "Degree-2-normalized topological network; not unmodified paper chamber/node counts.",
+  "results": [
+    {
+      "workers": 50,
+      "samples": [
+        {
+          "tick": 0,
+          "population": 50,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-50-tick-0-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-50-tick-0-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-50-tick-0-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-50-tick-0-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-50-tick-0-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-50-tick-0-y--3-pitch-0.25.svg"
+            }
+          ]
+        },
+        {
+          "tick": 60,
+          "population": 50,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-50-tick-60-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-50-tick-60-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-50-tick-60-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-50-tick-60-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-50-tick-60-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-50-tick-60-y--3-pitch-0.25.svg"
+            }
+          ]
+        },
+        {
+          "tick": 120,
+          "population": 50,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-50-tick-120-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-50-tick-120-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-50-tick-120-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-50-tick-120-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-50-tick-120-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-50-tick-120-y--3-pitch-0.25.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "workers": 100,
+      "samples": [
+        {
+          "tick": 0,
+          "population": 100,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-100-tick-0-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-100-tick-0-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-100-tick-0-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-100-tick-0-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-100-tick-0-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-100-tick-0-y--3-pitch-0.25.svg"
+            }
+          ]
+        },
+        {
+          "tick": 60,
+          "population": 100,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-100-tick-60-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-100-tick-60-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-100-tick-60-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-100-tick-60-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-100-tick-60-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-100-tick-60-y--3-pitch-0.25.svg"
+            }
+          ]
+        },
+        {
+          "tick": 120,
+          "population": 100,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-100-tick-120-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-100-tick-120-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-100-tick-120-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-100-tick-120-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-100-tick-120-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-100-tick-120-y--3-pitch-0.25.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "workers": 200,
+      "samples": [
+        {
+          "tick": 0,
+          "population": 200,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-200-tick-0-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-200-tick-0-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-200-tick-0-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-200-tick-0-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-200-tick-0-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-200-tick-0-y--3-pitch-0.25.svg"
+            }
+          ]
+        },
+        {
+          "tick": 60,
+          "population": 200,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-200-tick-60-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-200-tick-60-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-200-tick-60-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-200-tick-60-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-200-tick-60-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-200-tick-60-y--3-pitch-0.25.svg"
+            }
+          ]
+        },
+        {
+          "tick": 120,
+          "population": 200,
+          "observations": [
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 9,
+                "edges": 5,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1111111111111112,
+                "branchingNodes": 1,
+                "deadEnds": 7,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-200-tick-120-y--1-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -1,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 3,
+                "components": 4,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 0.8571428571428571,
+                "branchingNodes": 0,
+                "deadEnds": 6,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 4,
+                "holes": 0
+              },
+              "image": "workers-200-tick-120-y--1-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 4,
+                "components": 3,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.1428571428571428,
+                "branchingNodes": 1,
+                "deadEnds": 5,
+                "isolatedNodes": 1
+              },
+              "physicalTopology": {
+                "components": 3,
+                "holes": 0
+              },
+              "image": "workers-200-tick-120-y--2-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -2,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 7,
+                "edges": 5,
+                "components": 2,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.4285714285714286,
+                "branchingNodes": 1,
+                "deadEnds": 6,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 2,
+                "holes": 0
+              },
+              "image": "workers-200-tick-120-y--2-pitch-0.25.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.2
+              },
+              "metrics": {
+                "nodes": 4,
+                "edges": 3,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1.5,
+                "branchingNodes": 1,
+                "deadEnds": 3,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-200-tick-120-y--3-pitch-0.2.svg"
+            },
+            {
+              "section": {
+                "y": -3,
+                "minX": -10,
+                "maxX": 10,
+                "minZ": -6.5,
+                "maxZ": 6.5,
+                "pitch": 0.25
+              },
+              "metrics": {
+                "nodes": 2,
+                "edges": 1,
+                "components": 1,
+                "cycleRank": 0,
+                "parallelEdges": 0,
+                "meanDegree": 1,
+                "branchingNodes": 0,
+                "deadEnds": 2,
+                "isolatedNodes": 0
+              },
+              "physicalTopology": {
+                "components": 1,
+                "holes": 0
+              },
+              "image": "workers-200-tick-120-y--3-pitch-0.25.svg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
